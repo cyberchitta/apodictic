@@ -123,12 +123,14 @@ Plus the lab notebook, outside both packages:
 
 - [x] Scaffold: two lake packages (library + Verso doc), file
       skeleton, README.
-- [ ] First axiom: the action axiom (docstring pedigree + Verso
-      chapter). OPEN QUESTION, human to decide: split belief /
-      preference / opportunity-cost into three separable axioms, or
-      state as one jointly constitutive package? Present trade-offs
-      before encoding.
-- [ ] Action framework compiles (Action.lean).
+- [x] Action-axiom shape decided: shape C — action structure as a
+      definition, assertions as separable axioms. Provisional;
+      revisit after Milestone 1. Resolution, rejected alternatives,
+      and micro-decisions in `_notes/2026-08-02-action-axiom-shape.md`.
+- [x] Action framework compiles (Action.lean), first approximation.
+      First axiom in the trusted base: `demonstrated_preference`
+      (human-reviewed 2026-08-02).
+- [ ] Verso chapter "The Action Axiom" written from the notes.
 - [ ] Milestone 1: machine-checked marginal utility with honest
       treatment of the units/indifference problem.
 - [ ] Write-up of findings to date before attempting exchange.
