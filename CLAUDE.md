@@ -34,14 +34,21 @@ approve every axiom and every design decision. Therefore:
   source itself plus the Verso document.
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
-  FINDING. Log it in the findings chapter of the Verso document,
-  don't just resolve it and move on.
-- Design decisions are written into the Verso document AS THEY ARE
-  MADE, not reconstructed later. When a philosophical fork is resolved
-  (encoding choices, axiom strength), the resolution AND the rejected
-  alternative go into the document in the same session — rejected
-  encodings included as type-checked Lean code with the argument for
-  their rejection.
+  FINDING. Log it in `_notes/` in the session it happens; it is
+  promoted to the findings chapter of the Verso document at editorial
+  cadence.
+- Three-tier record. `_notes/` is the contemporaneous lab notebook:
+  every design decision, rejected alternative, dead end, and open
+  question gets a dated entry in `_notes/` IN THE SESSION IT HAPPENS
+  — low ceremony, no quality bar, never refactored for elegance.
+  Nothing may exist only in a chat transcript. Docstrings carry
+  per-declaration pedigree (above). The Verso document is the curated
+  argument, written FROM the notes at editorial cadence — it may lag
+  `_notes/`, never contradict them. Rejected encodings enter the
+  document as type-checked Lean code with the argument for their
+  rejection.
+- End-of-session habit: a `_notes/` entry summarizing decisions made
+  and questions opened.
 - Prefer ugly proofs that compile over elegant proofs. Probative
   value is identical; refactoring is a later luxury.
 
@@ -86,6 +93,15 @@ Two lake packages in this repo:
 Invariant: if Verso lags a Lean toolchain bump, the document waits;
 never downgrade the library's toolchain to accommodate the document.
 Proofs over prose, always.
+
+Plus the lab notebook, outside both packages:
+
+- **`_notes/`** — the contemporaneous record (the machine-standard
+  `_notes` mechanism; see the `working-notes` skill). This project's
+  conventions: Claude edits it as part of the work; dated files per
+  session (`_notes/YYYY-MM-DD-<topic>.md`), plus one pinned
+  exception, `_notes/OPEN.md` — a living list of unresolved questions
+  kept as current state rather than archaeology.
 
 ## Conventions
 
