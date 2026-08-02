@@ -130,9 +130,28 @@ Plus the lab notebook, outside both packages:
 - [x] Action framework compiles (Action.lean), first approximation.
       First axiom in the trusted base: `demonstrated_preference`
       (human-reviewed 2026-08-02).
+- [x] Trusted-base architecture: distinguished frame. The ∀-frame
+      form of `demonstrated_preference` was INCONSISTENT (`False`
+      derived 2026-08-02; witness in notes). Axioms now speak only
+      of the opaque `World`; `humans_act` enters as the non-vacuity
+      axiom — resolving the existence-axiom question (yes, needed:
+      as existence, not inference). Notes:
+      `_notes/2026-08-02-trusted-base-inconsistency.md`.
+- [x] Marginal utility, first pass (allocation version):
+      `marginal_utility` proved via new vocabulary (Allocation.lean:
+      `Stock`, serviceability-homogeneity; `AllocationDisposition`,
+      counterfactual choice) and one new axiom
+      (`allocation_demonstrated_preference`). Praxeological ledger:
+      `World` + that axiom alone — `demonstrated_preference` does no
+      work, and nothing is forced on `Prefers`. Axioms of 2026-08-02
+      pending human review (see OPEN.md). Notes:
+      `_notes/2026-08-02-marginal-utility-design.md`.
 - [ ] Verso chapter "The Action Axiom" written from the notes.
-- [ ] Milestone 1: machine-checked marginal utility with honest
-      treatment of the units/indifference problem.
+- [ ] Milestone 1 completion — the honest units treatment:
+      sub-stock-indexed disposition with homogeneity as an explicit
+      axiom (currently enforced silently by the ℕ index type), and/or
+      decomposition of `allocation_demonstrated_preference` into its
+      three compressed commitments.
 - [ ] Write-up of findings to date before attempting exchange.
 
 ## Sources of record

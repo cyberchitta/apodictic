@@ -1,4 +1,5 @@
 import Apodictic.Action
+import Apodictic.Allocation
 import Apodictic.Axioms
 import Apodictic.MarginalUtility
 
