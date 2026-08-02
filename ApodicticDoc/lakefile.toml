@@ -1,0 +1,25 @@
+# Toolchain note (2026-08-02): the library and mathlib are on Lean
+# v4.32.2 (current stable). Verso tags releases only for minor Lean
+# versions; its newest stable tag is v4.32.0, which builds fine under
+# the v4.32.2 patch release, so this package shares the library's
+# toolchain. If a future Verso tag lags the library's toolchain in a
+# way that breaks the build, the document waits — never downgrade the
+# library (see CLAUDE.md).
+name = "apodictic-doc"
+defaultTargets = ["ApodicticDoc", "generate-doc"]
+
+[[require]]
+name = "verso"
+git = "https://github.com/leanprover/verso"
+rev = "v4.32.0"
+
+[[require]]
+name = "apodictic"
+path = "../Apodictic"
+
+[[lean_lib]]
+name = "ApodicticDoc"
+
+[[lean_exe]]
+name = "generate-doc"
+root = "Main"

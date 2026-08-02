@@ -26,14 +26,22 @@ approve every axiom and every design decision. Therefore:
 - An easy proof is a warning sign, not a success. If a theorem goes
   through suspiciously fast, check whether an axiom is stronger than
   its praxeological pedigree justifies, and raise it.
-- Every new axiom requires: (a) an entry in doc/axioms.md BEFORE it
-  enters Axioms.lean, (b) a Source field (citation to Mises/Rothbard,
-  or "tacit"), (c) a Status field: explicit-in-tradition /
-  suppressed-premise / our-reconstruction.
+- Every `axiom` declaration carries a /-- docstring -/ with two
+  required fields: `Source:` (citation to Mises/Rothbard, or "tacit")
+  and `Status:` (explicit-in-tradition / suppressed-premise /
+  our-reconstruction). Pedigree lives in the docstring, not in a
+  separate hand-authored catalog — the axiom-by-axiom catalog is the
+  source itself plus the Verso document.
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
-  FINDING. Log it in doc/findings.md, don't just resolve it and
-  move on.
+  FINDING. Log it in the findings chapter of the Verso document,
+  don't just resolve it and move on.
+- Design decisions are written into the Verso document AS THEY ARE
+  MADE, not reconstructed later. When a philosophical fork is resolved
+  (encoding choices, axiom strength), the resolution AND the rejected
+  alternative go into the document in the same session — rejected
+  encodings included as type-checked Lean code with the argument for
+  their rejection.
 - Prefer ugly proofs that compile over elegant proofs. Probative
   value is identical; refactoring is a later luxury.
 
@@ -57,20 +65,33 @@ result is a strawman Austrians can rightly dismiss:
 
 ## Structure
 
-- Apodictic/Axioms.lean — the COMPLETE trusted base. Nothing
-  axiom-like anywhere else. Auditable at a glance.
-- Apodictic/Action.lean — agents, ends, means, the action framework.
-- Apodictic/MarginalUtility.lean — first theorem target: Rothbard's
-  allocation version of marginal utility.
-- doc/axioms.md — Layer 1: every axiom in English + notation +
-  pedigree. This document is half the contribution; keep it in sync
-  with the Lean at every commit.
-- doc/findings.md — running log of forced decisions and buried bodies.
+Two lake packages in this repo:
+
+- **Apodictic/** — the library: axioms, action framework, theorems.
+  Depends on mathlib ONLY. This package must ALWAYS build standalone
+  with `lake build`. It is the trusted artifact; nothing may ever
+  block it.
+  - Apodictic/Axioms.lean — the COMPLETE trusted base. Nothing
+    axiom-like anywhere else. Auditable at a glance.
+  - Apodictic/Action.lean — agents, ends, means, the action framework.
+  - Apodictic/MarginalUtility.lean — first theorem target: Rothbard's
+    allocation version of marginal utility.
+- **ApodicticDoc/** — a Verso document package, depending on the
+  Apodictic library. The connected essay lives here: axiom
+  archaeology narrative, findings chapter, design decisions, and
+  REJECTED encodings included as type-checked Lean code with the
+  argument for their rejection. This document is half the
+  contribution; keep it in sync with the Lean at every commit.
+
+Invariant: if Verso lags a Lean toolchain bump, the document waits;
+never downgrade the library's toolchain to accommodate the document.
+Proofs over prose, always.
 
 ## Conventions
 
-- Lean 4 + mathlib. Build with `lake build`; it must pass before
-  any commit.
+- Lean 4 + mathlib. `lake build` in the library package must pass
+  before any commit; the doc package builds when Verso supports the
+  library's toolchain.
 - Use mathlib order-theory vocabulary (Preorder/PartialOrder/
   LinearOrder) but do NOT reach for a stronger typeclass than the
   praxeological argument licenses just to close a goal.
@@ -84,11 +105,13 @@ result is a strawman Austrians can rightly dismiss:
 
 ## Current state / next steps
 
-- [ ] Scaffold: lake project + mathlib, file skeleton, README.
-- [ ] doc/axioms.md entry 1: the action axiom. OPEN QUESTION,
-      human to decide: split belief / preference / opportunity-cost
-      into three separable axioms, or state as one jointly
-      constitutive package? Present trade-offs before encoding.
+- [x] Scaffold: two lake packages (library + Verso doc), file
+      skeleton, README.
+- [ ] First axiom: the action axiom (docstring pedigree + Verso
+      chapter). OPEN QUESTION, human to decide: split belief /
+      preference / opportunity-cost into three separable axioms, or
+      state as one jointly constitutive package? Present trade-offs
+      before encoding.
 - [ ] Action framework compiles (Action.lean).
 - [ ] Milestone 1: machine-checked marginal utility with honest
       treatment of the units/indifference problem.

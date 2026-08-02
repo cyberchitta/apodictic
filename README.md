@@ -20,7 +20,9 @@ The method is **axiom archaeology**: the verbal deductions in *Human
 Action* and *Man, Economy, and State* are enthymemes, arguments with
 suppressed premises. A proof assistant refuses to accept an enthymeme.
 Every hidden assumption must surface as a named axiom, with its pedigree
-documented — explicit in the tradition, tacit, or our reconstruction.
+documented in the axiom's docstring — source (Mises/Rothbard citation,
+or "tacit") and status: explicit in the tradition, suppressed premise,
+or our reconstruction.
 
 The interesting output is not "praxeology: true or false." It is the
 minimal axiom list under each theorem. `#print axioms marginal_utility`
@@ -39,15 +41,23 @@ is the whole point.
 
 ## Structure
 
+Two lake packages:
+
 ```
-Apodictic/
-  Axioms.lean          -- the complete trusted base, nothing else
-  Action.lean          -- agents, ends, means, the action framework
-  MarginalUtility.lean -- first theorem target
-doc/
-  axioms.md            -- every axiom in English + notation, with source
-                       -- and status: explicit / suppressed / reconstruction
+Apodictic/             -- the library. Depends on mathlib only; always
+                       -- builds standalone. The trusted artifact.
+  Apodictic/
+    Axioms.lean        -- the complete trusted base, nothing else
+    Action.lean        -- agents, ends, means, the action framework
+    MarginalUtility.lean -- first theorem target
+ApodicticDoc/          -- Verso document package, depends on the library.
+                       -- The connected essay: axiom archaeology,
+                       -- findings, design decisions, and rejected
+                       -- encodings as type-checked Lean code.
 ```
+
+If Verso lags a Lean toolchain bump, the document waits; the library's
+toolchain is never downgraded to accommodate it. Proofs over prose.
 
 ## Status
 
