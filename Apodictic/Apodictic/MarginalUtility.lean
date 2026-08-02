@@ -1,4 +1,4 @@
-import Apodictic.Action
+import Apodictic.Axioms
 
 /-!
 # Marginal Utility — first theorem target

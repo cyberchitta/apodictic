@@ -1,5 +1,5 @@
-import Apodictic.Axioms
 import Apodictic.Action
+import Apodictic.Axioms
 import Apodictic.MarginalUtility
 
 /-!
