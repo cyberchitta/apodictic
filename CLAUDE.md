@@ -46,7 +46,7 @@ approve every axiom and every design decision. Therefore:
   claims it omits). Pedigree lives in the docstring, not in a
   separate hand-authored catalog — the axiom-by-axiom catalog is the
   source itself plus the Verso document. Docstrings are PEDIGREE
-  ONLY (human decision 2026-09-05): no dates, no note paths, no
+  ONLY (human decision 2026-09-04): no dates, no note paths, no
   "was tried before", no commit hashes. History lives in `_notes/`
   and the archaeology part of the document; the result part quotes
   docstrings live and must read as verdicts.
@@ -118,7 +118,7 @@ Two lake packages in this repo:
   REJECTED encodings included as type-checked Lean code with the
   argument for their rejection. This document is half the
   contribution; it is written from `_notes/` at editorial cadence
-  (human decision 2026-09-05) and may lag the Lean, never
+  (human decision 2026-09-04) and may lag the Lean, never
   contradict it.
 
 Invariant: if Verso lags a Lean toolchain bump, the document waits;
@@ -215,7 +215,7 @@ Plus the lab notebook, outside both packages:
       language is in his own definition of supply (p. 23). Notes:
       `_notes/2026-08-02-marginal-utility-design.md`,
       `_notes/2026-09-04-mes-ch1-marginal-utility-reading.md`.
-- [x] Verso document in two parts, 2026-09-05: "The Result"
+- [x] Verso document in two parts, 2026-09-04: "The Result"
       (`ApodicticDoc/ApodicticDoc/Result.lean`; clean statement of
       vocabulary, axioms, hypotheses, theorems, receipt, findings —
       the human's review surface) and "The Archaeology"
@@ -225,7 +225,7 @@ Plus the lab notebook, outside both packages:
       quote docstrings live via `{docstring}`. Doc package builds
       under Verso v4.32.0 on the library's toolchain. Human's read
       of the result part doubles as the docstring review.
-- [x] Nozick 1977 §III read 2026-09-05. FINDING: the "Nozick's
+- [x] Nozick 1977 §III read 2026-09-04. FINDING: the "Nozick's
       target" label on the counterfactual axiom was inverted —
       Nozick argues FOR subjunctive preference and against
       Rothbard's "no preference apart from actual choice"; our
@@ -233,7 +233,7 @@ Plus the lab notebook, outside both packages:
       Rothbard's derivation resting on exactly what his doctrine
       forbids (Nozick's cost argument, transposed). Docstring
       commentary reworded, statements untouched. Notes:
-      `_notes/2026-09-05-nozick-1977-reading.md`.
+      `_notes/2026-09-04-nozick-1977-reading.md`.
 - [x] Bundle encoding decided 2026-09-04: ONE preference relation,
       over `Set End`; an ordinary end is a singleton (`PrefersEnd`).
       Human's argument: all ends are composites at some grain, so

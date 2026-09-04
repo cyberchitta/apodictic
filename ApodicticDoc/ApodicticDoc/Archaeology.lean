@@ -20,7 +20,7 @@ rejected code is type-checked here, so the reasons for rejection can
 be inspected rather than trusted.
 
 The part is written from the lab notes of 2026-08-02 and 2026-09-04
-and from Nozick's 1977 paper, read 2026-09-05. Docstrings quoted here
+and from Nozick's 1977 paper, read 2026-09-04. Docstrings quoted here
 are pulled live from the library and carry pedigree only; the
 history is in this part and nowhere in the code.
 
@@ -367,7 +367,7 @@ argument delivers.
 ## What Nozick actually says
 
 Nozick's 1977 paper is this project's adversarial reader, and until
-2026-09-05 the notes and docstrings called this axiom "Nozick's
+2026-09-04 the notes and docstrings called this axiom "Nozick's
 target". Having read §III of the paper, that was inverted.
 
 Nozick lists three Austrian theses about preference and action
