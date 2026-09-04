@@ -1,4 +1,4 @@
-import Apodictic.Axioms
+import Apodictic.Urgency
 
 /-!
 # Marginal Utility — Rothbard's allocation version
@@ -8,19 +8,29 @@ stated about the *marginal utility of a supply* in Rothbard's own
 sense — the end(s) that would be given up on the loss of one unit
 (*MES* p. 27) — via the definition `marginalEnds` below.
 `#print axioms marginal_utility` = `[propext, World,
-urgency_principle, Quot.sound]`; `propext` and `Quot.sound` are
-Lean's logical background (they ride in with the quotient-based
-`Finset`), not praxeological content. The praxeological base of the
-law is `World` + `urgency_principle` alone.
+actual_disposition, ends_distinguishable, swap_dominance,
+Quot.sound]`; `propext` and `Quot.sound` are Lean's logical
+background (they ride in with the quotient-based `Finset`), not
+praxeological content. The praxeological base of the law is `World`
++ `actual_disposition` + `ends_distinguishable` + `swap_dominance`,
+PLUS the hypotheses in the statement: `actual_disposition A` (this
+is the agent's plan), `IndependentUses` (situational), and
+`n ≤ supply` (2026-09-04; before that, `urgency_principle` was
+itself the axiom — see `Apodictic.Urgency`).
 
 What the ledger shows (findings; logged in `_notes/`):
 
 - The law rests entirely on the counterfactual disposition. No
   axiom about ACTUAL action is in the base at all (point-of-first-
   use, 2026-09-04): the bridge `demonstrated_preference` was never
-  cited and is parked. Whether the urgency principle can itself be
-  derived from such a bridge is the open research item — that is
-  where Nozick's objection lives.
+  cited and is parked — and the derivation of the urgency principle
+  (`Apodictic.Urgency`, later the same day) did not need it either:
+  the principle rests on the counterfactual extension alone
+  (`swap_dominance`). That is where Nozick's objection lives, and
+  it is now one line on the receipt.
+- Independence of uses is a HYPOTHESIS of the law, not an axiom:
+  where uses are complementary the theorem does not apply. The
+  supply bound `n ≤ s.units.card` is inherited from the derivation.
 - Preference is over bundles (`Prefers : … → Set End → Set End → Prop`,
   2026-09-04); the law is stated over singleton bundles via
   `PrefersEnd`. Nothing about bundles is used here — the restatement
@@ -95,14 +105,16 @@ every end marginal at supply `n + 1`.
 The marginality of `en` (`_h_marg`, underscored) is UNUSED by the
 proof — see the module docstring. -/
 theorem marginal_utility {agent : World.Agent} {t : World.Time}
-    {s : Stock World agent t} (A : AllocationDisposition s) (n : ℕ) :
+    {s : Stock World agent t} (A : AllocationDisposition s)
+    (hA : actual_disposition A) (hI : World.IndependentUses agent t)
+    (n : ℕ) (hn : n ≤ s.units.card) :
     ∀ en ∈ marginalEnds A n, ∀ en1 ∈ marginalEnds A (n + 1),
       World.PrefersEnd agent t en en1 := by
   intro en hen en1 hen1
   obtain ⟨h_serv, _h_marg⟩ := hen
   obtain ⟨h_serv1, h_marg1⟩ := hen1
   rw [Nat.add_sub_cancel] at h_marg1
-  exact urgency_principle A n en h_serv en1 h_serv1 h_marg1
+  exact urgency_principle A hA hI n hn en h_serv en1 h_serv1 h_marg1
 
 #print axioms marginal_utility
 

@@ -98,8 +98,15 @@ Two lake packages in this repo:
   - Apodictic/Axioms.lean — the COMPLETE trusted base. Nothing
     axiom-like anywhere else. Auditable at a glance.
   - Apodictic/Action.lean — agents, ends, means, the action framework.
+  - Apodictic/Urgency.lean — the urgency principle as a theorem
+    (derived 2026-09-04 from `swap_dominance`; independence of uses
+    is a hypothesis).
   - Apodictic/MarginalUtility.lean — first theorem target: Rothbard's
     allocation version of marginal utility.
+  - Apodictic/Consistency.lean — the consistency ledger, in Lean: a
+    toy frame satisfying every axiom's statement plus asymmetry and
+    the theorems' hypotheses. Evidence, not theory; nothing depends
+    on it; its proofs may be classical.
 - **ApodicticDoc/** — a Verso document package, depending on the
   Apodictic library. The connected essay lives here: axiom
   archaeology narrative, findings chapter, design decisions, and
@@ -143,6 +150,22 @@ Plus the lab notebook, outside both packages:
   central axioms no theorem yet needs are parked with their
   pedigree in `_notes/2026-09-04-parked-axioms.md`. (Human
   decision 2026-09-04: no reviewing axioms that do no work.)
+- Constructive by default (human decision 2026-09-04). No
+  `Classical.choice` on a theorem's receipt. When a proof stalls
+  for want of a case split, ask whether the split is praxeological
+  content (then it is a named axiom, e.g. `ends_distinguishable`)
+  or logical background; never let mathlib's classical lemmas
+  answer that question silently. Check with `#print axioms`.
+- Consistency lives in Lean, not in notes (human decision
+  2026-09-04): every axiom entering `Axioms.lean` gets its statement
+  mirrored as a frame predicate in `Consistency.lean` and satisfied
+  by the toy frame, together with the properties we intend to add
+  (asymmetry) and the theorems' hypotheses (non-vacuity).
+- Universal claims about "the agent's X" must not quantify over
+  the TYPE of X-shaped structures: given one, rivals are definable
+  and the axiom refutes itself (∀-frame crash 2026-08-02;
+  `swap_dominance` 2026-09-04). Name the actual one with an opaque
+  predicate and restrict the axiom to it.
 - Tactic style: plain tactics (intro/apply/exact/cases/constructor/
   simp). No heavy automation (no `decide`/`polyrith`-style closes)
   on philosophically load-bearing steps — the proof should be
@@ -192,17 +215,25 @@ Plus the lab notebook, outside both packages:
       "atomic" is action-relative like unit size. Library switched;
       receipt unchanged; review of the changed docstrings reopened.
       Notes: `_notes/2026-09-04-bundle-encoding-choice.md`.
-- [ ] Derive the urgency principle. Rothbard asserts it "follows
-      from" action (p. 24) without showing how. Scratch-checked
-      2026-09-04 (`_notes/scratch/`): it follows from swap-dominance
-      (counterfactual demonstrated preference over allocations —
-      Nozick's target) + independence of uses (situational, named
-      hypothesis), given decidable identity of ends. To decide at
-      point of first use: swap-dominance as axiom cut in two
-      (actual-action bridge / counterfactual extension) vs one;
-      `DecidableEq World.End` as a named data axiom vs classical.
-      Then `demonstrated_preference` re-enters from parked and
-      `urgency_principle` becomes a theorem.
+- [x] Urgency principle DERIVED 2026-09-04 (`Urgency.lean`). Base is
+      now `World` + `actual_disposition` (opaque predicate: which
+      plan is the agent's) + `ends_distinguishable` (decidable
+      identity of ends, data axiom) + `swap_dominance`
+      (counterfactual demonstrated preference, one-swap form, for
+      the actual disposition); `actual_disposition A`, independence
+      of uses, and `n ≤ supply` are hypotheses of the law. Findings:
+      the actual-action bridge is still uncited (Nozick's target
+      carries the whole load); the general same-size-bundle bridge
+      is not needed; the old axiom over-claimed beyond the supply;
+      an axiom quantified over the disposition TYPE is refutable by
+      a rival plan (same shape as the ∀-frame crash) — hence
+      `actual_disposition`. Human approved the approach in chat;
+      docstrings not yet human-read.
+      Notes: `_notes/2026-09-04-urgency-derivation.md`,
+      `_notes/2026-09-04-swap-dominance-overquantifies.md`.
+- [ ] Route through ACTUAL action? Needs `Action` with bundle
+      choices + a disposition-realization axiom. Shape decision,
+      presented, not taken (OPEN.md).
 - [ ] Milestone 1 completion — the honest units treatment:
       sub-stock-indexed disposition with homogeneity as an explicit
       axiom (currently enforced silently by the ℕ index type); unit

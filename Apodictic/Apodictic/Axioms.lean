@@ -61,58 +61,105 @@ Status: our-reconstruction. The distinguished-frame architecture is
 a formalization decision, not a doctrine of the tradition. -/
 axiom World : ActionFrame
 
-/-- **The urgency principle** (Rothbard), in counterfactual-loss form:
-for an agent's allocation disposition over a stock, every end that
-would still be served with `n` units is preferred to every end that
-would be abandoned in the step down from `n + 1` — the loss falls on
-the least urgent want.
+/-- **Ends are distinguishable**: identity of ends is decidable —
+of any two ends it is settled whether they are the same end.
+
+Source: tacit. The reallocation argument (*MES* p. 27) withdraws
+one unit and asks which want is thereby given up; "the bundle minus
+this end" is an operation on ends that presupposes each end either
+is or is not the one withdrawn. Mises's actor chooses between
+alternatives he tells apart; nothing in the tradition contemplates
+ends whose identity is undecided.
+
+Status: suppressed-premise. Entered 2026-09-04 at first use — the
+derivation of the urgency principle rewrites the served bundle as
+"`e` together with the rest" (`insert_sdiff_self_of_mem`), which
+needs `x = e ∨ x ≠ e` for every end `x`. Without this axiom that
+step is available only classically (mathlib's
+`Set.insert_sdiff_singleton` puts `Classical.choice` on the
+receipt). Human decision: the constructive route with the premise
+NAMED, so it sits on the receipt beside `World` rather than hiding
+as a frame field (a data axiom, like `World` itself). Note:
+`_notes/2026-09-04-urgency-derivation.md`. -/
+axiom ends_distinguishable : DecidableEq World.End
+
+attribute [instance] ends_distinguishable
+
+/-- **The agent's actual disposition** — which allocation plan is
+the one the agent would follow. `AllocationDisposition s` is a type:
+ANY function from supply to served ends meeting the bookkeeping
+conditions inhabits it, and given one such plan, rivals are
+definable. An axiom quantified over the whole type therefore speaks
+of every conceivable plan, not the agent's — and `swap_dominance`
+so stated, applied to a plan and to its one-swap rival, yields
+`X ≻ Y` and `Y ≻ X`, which is `False` the day asymmetry of `Prefers`
+enters (machine-checked 2026-09-04,
+`_notes/scratch/2026-09-04-swap-dominance-clash.lean`; same shape
+as the 2026-08-02 ∀-frame crash, one level down). This predicate is
+the name for "the plan he would follow", so that the axiom can be
+restricted to it.
+
+Source: tacit. Rothbard's argument presupposes ONE value scale and
+ONE allocation per actor ("the" marginal unit, "the" least urgent
+want, *MES* pp. 24–27); the tradition never contemplates rival
+plans for the same actor because it never quantifies over plans.
+
+Status: our-reconstruction. Opaque, Prop-valued, on the receipt. It
+asserts a fact of the matter about WHICH plan is the agent's and
+asserts nothing about existence or uniqueness — whether a complete
+counterfactual table exists at all is Nozick's question and stays
+out of the base (parallel to `humans_act`, parked). The rejected
+alternative, a data axiom handing over THE disposition for every
+stock, would have asserted exactly that. Theorems about
+dispositions take `actual_disposition A` as a hypothesis. -/
+axiom actual_disposition
+    {agent : World.Agent} {t : World.Time} {s : Stock World agent t} :
+    AllocationDisposition s → Prop
+
+/-- **Swap dominance** — counterfactual demonstrated preference over
+allocations, in one-swap form, for the agent's ACTUAL disposition
+(`actual_disposition`; see its docstring for why the restriction is
+load-bearing). For an allocation disposition over a
+stock, at every supply `n` within the stock, the bundle the agent
+would serve is preferred to the bundle obtained by withdrawing one
+served end `e` and serving in its place a serviceable end `e'` that
+was not served.
 
 Source: Rothbard, *MES*, ch. 1, §5.B, pp. 24–27 (Mises Institute
-ed.). The premise: "action uses scarce means to satisfy the most
-urgent of the not yet satisfied wants" (p. 24), offered as a
-"universal fact" that "follows from" action — one sentence, no
-derivation shown. The loss form: "he gives up the least urgent of
-the wants which the larger stock would have satisfied" (p. 25),
-introduced with "Obviously", backed by the reallocation argument
-(p. 27: "follows from the defined interchangeability of units and
-from disregard of past events"). Mises, *Human Action*, ch. VII.1.
+ed.): "action uses scarce means to satisfy the most urgent of the
+not yet satisfied wants" (p. 24); the counterfactual framing is
+Rothbard's own ("suppose ... faced with the necessity of giving up
+one horse"; "he gives up the least urgent of the wants which the
+larger stock would have satisfied", p. 25), backed by the
+reallocation argument (p. 27: "follows from the defined
+interchangeability of units and from disregard of past events").
+Mises, *Human Action*, ch. VII.1.
 
-Status: explicit-in-tradition as doctrine. Its derivation from the
-action axiom is ASSERTED by Rothbard, not shown; whether it can be
-derived from a bridge between action and preference is a separate
-research item (see notes 2026-09-04). The counterfactual-
-dispositional formulation is our-reconstruction, and it carries two
-commitments that a finer archaeology would separate:
-
-1. the extension of preference from actual action to counterfactual
-   choice — explicit in Rothbard's own framing ("suppose ... faced
-   with the necessity of giving up one horse"), and exactly what
-   Nozick contests;
-2. independence of uses: end-level preference read off a comparison
-   of whole allocations differing in one end — tacit; Rothbard's
-   "we assume for simplicity" (p. 26) covers only one-unit-one-end.
-   Since 2026-09-04 `Prefers` ranges over bundles and the conclusion
-   here is singleton preference (`PrefersEnd`), so this commitment
-   is now STATABLE as a hypothesis (`IndependentUses`, scratch-
-   checked) and will leave the axiom when the urgency principle is
-   derived rather than asserted.
-
-NOT asserted here, contrary to the 2026-08-02 docstring: determinacy
-of the drop (that exactly one end goes when one unit goes). This
-axiom quantifies over every dropped end and says nothing about how
-many there are; `exists_marginal` proves only that there is at
-least one. Rothbard's "the marginal unit" presupposes determinacy;
-our law is stated over all marginal ends and does not.
-
-The law of marginal utility follows from this axiom in ONE step —
-which is faithful to the text: Rothbard's own derivation is one
-step from this premise too. The audit finding is upstream: his
-"derived from the fundamental axiom of human action" (p. 27) rests
-on a premise he asserts. -/
-axiom urgency_principle
+Status: explicit-in-tradition as doctrine; the one-swap form is
+our-reconstruction. This is the Nozick fault line, isolated: the
+axiom extends demonstrated preference from actual action to what
+the agent WOULD choose at each supply level — a ranking no single
+action exhibits. Three things it does NOT say. (1) Nothing about
+actual action: the actual-action bridge `demonstrated_preference`
+stays parked, uncited — the urgency principle needs only the
+counterfactual extension, which is the finding. (2) Nothing about
+alternatives differing by more than one swap: the general form
+"preferred to every same-size bundle" was tried first and is not
+needed (its cardinality bookkeeping would also have been classical
+in mathlib). (3) Nothing about independence of uses: reading an
+end-level preference off this bundle-level one is the situational
+hypothesis `IndependentUses` of `urgency_principle`, not part of
+the axiom. Restricted to `n ≤ s.units.card` because the disposition
+is data only within the actual supply (`card_eq`); the former
+axiom `urgency_principle` (commit cffc321) claimed all `n`, which
+was more than the tradition's argument delivers. Supersedes that
+axiom 2026-09-04. -/
+axiom swap_dominance
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
-    (A : AllocationDisposition s) (n : ℕ) :
-    ∀ e ∈ A.wouldServe n, ∀ e', e' ∈ A.wouldServe (n + 1) →
-      e' ∉ A.wouldServe n → World.PrefersEnd agent t e e'
+    (A : AllocationDisposition s) (hA : actual_disposition A)
+    (n : ℕ) (hn : n ≤ s.units.card) :
+    ∀ e ∈ A.wouldServe n, ∀ e' ∈ s.serves, e' ∉ A.wouldServe n →
+      World.Prefers agent t (↑(A.wouldServe n))
+        (insert e' ((↑(A.wouldServe n) : Set World.End) \ {e}))
 
 end Apodictic

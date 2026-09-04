@@ -62,6 +62,19 @@ abbrev ActionFrame.PrefersEnd (F : ActionFrame) (a : F.Agent) (t : F.Time)
     (e e' : F.End) : Prop :=
   F.Prefers a t {e} {e'}
 
+/-- **Independence of uses** — a situational applicability condition,
+NOT an axiom: bundle preference between two bundles that differ in
+one slot transfers to the two ends in that slot. Fails under
+complementarity (B valuable only together with A). Named here so it
+can be a hypothesis of the theorems that need it and be pointed at
+when it does not hold (diagnostic aim, 2026-09-04). Rothbard's "we
+assume for simplicity" (*MES* p. 26) covers one-unit-one-end; this
+is the further tacit assumption his derivation spends. -/
+def ActionFrame.IndependentUses (F : ActionFrame) (a : F.Agent) (t : F.Time) :
+    Prop :=
+  ∀ (S : Set F.End) (e e' : F.End), e ∉ S → e' ∉ S →
+    F.Prefers a t (insert e S) (insert e' S) → F.PrefersEnd a t e e'
+
 /-- An action: an agent, at a time, employs means in the belief that
 they conduce to a chosen end, forgoing at least one alternative end.
 
