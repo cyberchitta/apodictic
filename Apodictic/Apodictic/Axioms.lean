@@ -91,6 +91,11 @@ commitments that a finer archaeology would separate:
 2. independence of uses: end-level preference read off a comparison
    of whole allocations differing in one end — tacit; Rothbard's
    "we assume for simplicity" (p. 26) covers only one-unit-one-end.
+   Since 2026-09-04 `Prefers` ranges over bundles and the conclusion
+   here is singleton preference (`PrefersEnd`), so this commitment
+   is now STATABLE as a hypothesis (`IndependentUses`, scratch-
+   checked) and will leave the axiom when the urgency principle is
+   derived rather than asserted.
 
 NOT asserted here, contrary to the 2026-08-02 docstring: determinacy
 of the drop (that exactly one end goes when one unit goes). This
@@ -108,6 +113,6 @@ axiom urgency_principle
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
     (A : AllocationDisposition s) (n : ℕ) :
     ∀ e ∈ A.wouldServe n, ∀ e', e' ∈ A.wouldServe (n + 1) →
-      e' ∉ A.wouldServe n → World.Prefers agent t e e'
+      e' ∉ A.wouldServe n → World.PrefersEnd agent t e e'
 
 end Apodictic

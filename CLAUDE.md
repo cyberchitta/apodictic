@@ -186,13 +186,23 @@ Plus the lab notebook, outside both packages:
       `_notes/2026-08-02-marginal-utility-design.md`,
       `_notes/2026-09-04-mes-ch1-marginal-utility-reading.md`.
 - [ ] Verso chapter "The Action Axiom" written from the notes.
-- [ ] Derive the urgency principle? Rothbard asserts it "follows
-      from" action (p. 24) without showing how. Attempt: allocation
-      at each supply as an `Action World` over bundles of ends,
-      `demonstrated_preference` re-entering at first use, an
-      independence axiom entered only when the proof stalls. This
-      is where Nozick's objection lives. Encoding choice to present
-      first: bundles as ends vs a composite-end former.
+- [x] Bundle encoding decided 2026-09-04: ONE preference relation,
+      over `Set End`; an ordinary end is a singleton (`PrefersEnd`).
+      Human's argument: all ends are composites at some grain, so
+      "atomic" is action-relative like unit size. Library switched;
+      receipt unchanged; review of the changed docstrings reopened.
+      Notes: `_notes/2026-09-04-bundle-encoding-choice.md`.
+- [ ] Derive the urgency principle. Rothbard asserts it "follows
+      from" action (p. 24) without showing how. Scratch-checked
+      2026-09-04 (`_notes/scratch/`): it follows from swap-dominance
+      (counterfactual demonstrated preference over allocations —
+      Nozick's target) + independence of uses (situational, named
+      hypothesis), given decidable identity of ends. To decide at
+      point of first use: swap-dominance as axiom cut in two
+      (actual-action bridge / counterfactual extension) vs one;
+      `DecidableEq World.End` as a named data axiom vs classical.
+      Then `demonstrated_preference` re-enters from parked and
+      `urgency_principle` becomes a theorem.
 - [ ] Milestone 1 completion — the honest units treatment:
       sub-stock-indexed disposition with homogeneity as an explicit
       axiom (currently enforced silently by the ℕ index type); unit

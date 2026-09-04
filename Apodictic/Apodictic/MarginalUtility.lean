@@ -21,6 +21,10 @@ What the ledger shows (findings; logged in `_notes/`):
   cited and is parked. Whether the urgency principle can itself be
   derived from such a bridge is the open research item — that is
   where Nozick's objection lives.
+- Preference is over bundles (`Prefers : … → Set End → Set End → Prop`,
+  2026-09-04); the law is stated over singleton bundles via
+  `PrefersEnd`. Nothing about bundles is used here — the restatement
+  is one abbreviation; the one-step proof is unchanged.
 - No structural property of `Prefers` is forced: no transitivity,
   no totality. Rothbard's derivation PRESUPPOSES a linear value
   scale over the ends (*MES* pp. 25–26, Figure 3); our premises are
@@ -93,7 +97,7 @@ proof — see the module docstring. -/
 theorem marginal_utility {agent : World.Agent} {t : World.Time}
     {s : Stock World agent t} (A : AllocationDisposition s) (n : ℕ) :
     ∀ en ∈ marginalEnds A n, ∀ en1 ∈ marginalEnds A (n + 1),
-      World.Prefers agent t en en1 := by
+      World.PrefersEnd agent t en en1 := by
   intro en hen en1 hen1
   obtain ⟨h_serv, _h_marg⟩ := hen
   obtain ⟨h_serv1, h_marg1⟩ := hen1

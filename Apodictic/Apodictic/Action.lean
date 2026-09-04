@@ -36,11 +36,31 @@ structure ActionFrame where
   means `m` conduces to end `e`. Means–ends links go only through
   belief — there is no belief-independent means–ends data. -/
   Believes : Agent → Time → Means → End → Prop
-  /-- `Prefers a t e₁ e₂`: at `t`, agent `a` values end `e₁` more
-  highly than end `e₂`. The latent ordinal ranking, strict. Kept
-  distinct from choice; any bridge between them is an axiom in
-  `Apodictic.Axioms`. No properties assumed. -/
-  Prefers : Agent → Time → End → End → Prop
+  /-- `Prefers a t X Y`: at `t`, agent `a` values the bundle of ends
+  `X` more highly than the bundle `Y`. The latent ordinal ranking,
+  strict. Kept distinct from choice; any bridge between them is an
+  axiom in `Apodictic.Axioms`. No properties assumed.
+
+  Over SETS of ends, not ends (encoding decision 2026-09-04, human
+  objection "are not all ends composites?"): the tradition draws no
+  line between an end and a composite — "atomic" only ever means
+  "not further divided by this action", the same relativity as the
+  unit of supply (*MES* p. 28). So there is ONE ranking, over
+  bundles at the grain of the problem, and an end in the ordinary
+  sense is a singleton bundle (`PrefersEnd`). This is what makes
+  independence of uses — bundle preference decomposing into
+  end preference — statable as a named hypothesis instead of being
+  enforced silently by the vocabulary. Shape commitment (audit): a
+  bundle is a `Set` — no multiplicity, no order; and `Set` rather
+  than `Finset` because the opaque `World.End` has no decidable
+  equality. Notes: `_notes/2026-09-04-bundle-encoding-choice.md`. -/
+  Prefers : Agent → Time → Set End → Set End → Prop
+
+/-- Preference between ends in the ordinary sense: singleton-bundle
+preference. Definition, not a second relation. -/
+abbrev ActionFrame.PrefersEnd (F : ActionFrame) (a : F.Agent) (t : F.Time)
+    (e e' : F.End) : Prop :=
+  F.Prefers a t {e} {e'}
 
 /-- An action: an agent, at a time, employs means in the belief that
 they conduce to a chosen end, forgoing at least one alternative end.
