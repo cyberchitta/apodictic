@@ -112,7 +112,9 @@ Two lake packages in this repo:
   archaeology narrative, findings chapter, design decisions, and
   REJECTED encodings included as type-checked Lean code with the
   argument for their rejection. This document is half the
-  contribution; keep it in sync with the Lean at every commit.
+  contribution; it is written from `_notes/` at editorial cadence
+  (human decision 2026-09-05) and may lag the Lean, never
+  contradict it.
 
 Invariant: if Verso lags a Lean toolchain bump, the document waits;
 never downgrade the library's toolchain to accommodate the document.
