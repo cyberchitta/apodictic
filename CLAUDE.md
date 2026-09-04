@@ -14,6 +14,19 @@ surface as a named, documented axiom. The research output is the
 minimal axiom list under each theorem (`#print axioms <thm>`), plus
 the documented archaeology of where each axiom came from.
 
+The aim behind the audit (stated 2026-09-04): Austrian conclusions
+fail to match reality in known cases, so some assumption is off,
+and we want to POINT AT WHICH ONE in any given situation. Two
+consequences for encoding. Cut assumptions as finely as reality can
+pull them apart — a compressed axiom that fails explains nothing.
+And sort by kind of claim: claimed-universal facts about action are
+`axiom`s (on the receipt; if false, praxeology is wrong), while
+situational applicability conditions are named, documented
+hypotheses in the theorem statement (the theorem does not apply
+where they fail). The Austrian defence "the conditions didn't
+hold" then becomes checkable rather than unfalsifiable. Notes:
+`_notes/2026-09-04-diagnostic-aim.md`.
+
 ## Division of labor — read this first
 
 The human is the principal investigator and interrogator. Claude
@@ -112,7 +125,10 @@ Plus the lab notebook, outside both packages:
   LinearOrder) but do NOT reach for a stronger typeclass than the
   praxeological argument licenses just to close a goal.
 - Axiom names are honest: no hiding axioms as instance assumptions
-  or hypotheses smuggled into theorem statements.
+  or hypotheses smuggled into theorem statements. (Situational
+  applicability conditions stated openly as named hypotheses are
+  not smuggling — see the aim above; the rule targets universal
+  claims kept off the receipt.)
 - Axioms enter at point of first use. Nothing lives in Axioms.lean
   unless some theorem's `#print axioms` cites it; doctrinally
   central axioms no theorem yet needs are parked with their
