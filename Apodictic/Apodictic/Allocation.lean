@@ -21,10 +21,10 @@ serviceability-homogeneity: each unit is believed to conduce to
 exactly the ends in `serves` — a BELIEF notion, not a preference
 notion. No indifference between units is asserted anywhere, so the
 strict-only `Prefers` stands and Rothbard's denial that indifference
-is demonstrable in action is not contradicted. First-pass answer to
-the units/indifference trap (encoding decision 2026-08-02); the
-question whether serviceability-homogeneity suffices for the law
-stays checkable rather than assumed away. -/
+is demonstrable in action is not contradicted. Whether
+serviceability-homogeneity suffices for the law — Nozick (1977,
+p. 371) says the law needs indifference — stays checkable rather
+than assumed away. -/
 structure Stock (F : ActionFrame) (agent : F.Agent) (t : F.Time) where
   /-- The units of the good on hand. -/
   units : Finset F.Means
@@ -36,18 +36,18 @@ structure Stock (F : ActionFrame) (agent : F.Agent) (t : F.Time) where
 
 /-- The agent's counterfactual allocation disposition over a stock:
 for each supply size `n`, the ends the agent would serve with `n`
-units, at the stock's single time. A NEW PRIMITIVE beyond `Action` —
-adopted 2026-08-02 because a single actual allocation action cannot
-discriminate among the served ends (they are all inside the chosen
-package); whatever the law of marginal utility rests on, it is not
-actual action alone.
+units, at the stock's single time. A NEW PRIMITIVE beyond `Action`,
+because a single actual allocation action cannot discriminate among
+the served ends (they are all inside the chosen package); whatever
+the law of marginal utility rests on, it is not actual action
+alone.
 
 Field-shape commitment (audit): `wouldServe` is indexed by the
 NUMBER of units, not by which units — interchangeability is enforced
 by the index type, invisible to `#print axioms`. The honest
 deepening (index by sub-stock; homogeneity of the disposition as an
 explicit axiom, grounded or not in `Stock.homog`) is an open
-refinement, logged 2026-08-02.
+refinement.
 
 `card_eq` is the one-unit-per-end idealization: with `n` units (up
 to the stock on hand), exactly `n` ends would be served — units are

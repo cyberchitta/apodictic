@@ -4,9 +4,9 @@ import Mathlib.Data.Set.Basic
 # Action — agents, ends, means, the action framework
 
 Definitions ONLY: this file asserts nothing. The action structure is
-encoded as a definition (shape C, adopted 2026-08-02, provisional):
-being an action commits to all components at once — the jointly
-constitutive reading — but a definition carries no assertion. All
+encoded as a definition: being an action commits to all components
+at once — the jointly constitutive reading — but a definition
+carries no assertion. All
 assertions, including any bridge from choice to the latent ranking,
 are axioms in `Apodictic.Axioms`.
 
@@ -41,19 +41,16 @@ structure ActionFrame where
   strict. Kept distinct from choice; any bridge between them is an
   axiom in `Apodictic.Axioms`. No properties assumed.
 
-  Over SETS of ends, not ends (encoding decision 2026-09-04, human
-  objection "are not all ends composites?"): the tradition draws no
-  line between an end and a composite — "atomic" only ever means
-  "not further divided by this action", the same relativity as the
-  unit of supply (*MES* p. 28). So there is ONE ranking, over
-  bundles at the grain of the problem, and an end in the ordinary
-  sense is a singleton bundle (`PrefersEnd`). This is what makes
-  independence of uses — bundle preference decomposing into
-  end preference — statable as a named hypothesis instead of being
-  enforced silently by the vocabulary. Shape commitment (audit): a
-  bundle is a `Set` — no multiplicity, no order; and `Set` rather
-  than `Finset` because the opaque `World.End` has no decidable
-  equality. Notes: `_notes/2026-09-04-bundle-encoding-choice.md`. -/
+  Over SETS of ends, not ends: the tradition draws no line between
+  an end and a composite — "atomic" only ever means "not further
+  divided by this action", the same relativity as the unit of
+  supply (*MES* p. 28). So there is ONE ranking, over bundles at
+  the grain of the problem, and an end in the ordinary sense is a
+  singleton bundle (`PrefersEnd`). This is what makes independence
+  of uses — bundle preference decomposing into end preference —
+  statable as a named hypothesis instead of being enforced silently
+  by the vocabulary. Shape commitment (audit): a bundle is a `Set` —
+  no multiplicity, no order. -/
   Prefers : Agent → Time → Set End → Set End → Prop
 
 /-- Preference between ends in the ordinary sense: singleton-bundle
@@ -67,7 +64,7 @@ NOT an axiom: bundle preference between two bundles that differ in
 one slot transfers to the two ends in that slot. Fails under
 complementarity (B valuable only together with A). Named here so it
 can be a hypothesis of the theorems that need it and be pointed at
-when it does not hold (diagnostic aim, 2026-09-04). Rothbard's "we
+when it does not hold. Rothbard's "we
 assume for simplicity" (*MES* p. 26) covers one-unit-one-end; this
 is the further tacit assumption his derivation spends. -/
 def ActionFrame.IndependentUses (F : ActionFrame) (a : F.Agent) (t : F.Time) :
@@ -80,9 +77,12 @@ they conduce to a chosen end, forgoing at least one alternative end.
 
 The fields are jointly constitutive — nothing with fewer components
 counts as an action — but this is a definition, not an assertion.
-Shape: our-reconstruction, provisional (see notes 2026-08-02). -/
+Shape: our-reconstruction. No theorem yet uses it: the law of
+marginal utility rests on the counterfactual disposition alone. -/
 structure Action (F : ActionFrame) where
+  /-- The acting person. -/
   agent : F.Agent
+  /-- When the action happens. -/
   time : F.Time
   /-- The end aimed at. -/
   chosen : F.End

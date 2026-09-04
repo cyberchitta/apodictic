@@ -1,5 +1,6 @@
 import VersoManual
-import ApodicticDoc.ActionAxiom
+import ApodicticDoc.Result
+import ApodicticDoc.Archaeology
 
 open Verso.Genre Manual
 
@@ -16,4 +17,6 @@ the narrative of every axiom's pedigree, the findings forced by the
 proof assistant, the design decisions as they were made, and the
 rejected encodings as type-checked code.
 
-{include 1 ApodicticDoc.ActionAxiom}
+{include 1 ApodicticDoc.Result}
+
+{include 1 ApodicticDoc.Archaeology}

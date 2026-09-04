@@ -3,10 +3,11 @@ import Apodictic.Urgency
 /-!
 # Marginal Utility — Rothbard's allocation version
 
-Second pass 2026-09-04 (first pass 2026-08-02). The law is now
-stated about the *marginal utility of a supply* in Rothbard's own
-sense — the end(s) that would be given up on the loss of one unit
-(*MES* p. 27) — via the definition `marginalEnds` below.
+The law is stated about the *marginal utility of a supply* in
+Rothbard's own sense — the end(s) that would be given up on the
+loss of one unit (*MES* p. 27) — via the definition `marginalEnds`
+below, and derived in one step from `urgency_principle`.
+
 `#print axioms marginal_utility` = `[propext, World,
 actual_disposition, ends_distinguishable, swap_dominance,
 Quot.sound]`; `propext` and `Quot.sound` are Lean's logical
@@ -15,46 +16,15 @@ praxeological content. The praxeological base of the law is `World`
 + `actual_disposition` + `ends_distinguishable` + `swap_dominance`,
 PLUS the hypotheses in the statement: `actual_disposition A` (this
 is the agent's plan), `IndependentUses` (situational), and
-`n ≤ supply` (2026-09-04; before that, `urgency_principle` was
-itself the axiom — see `Apodictic.Urgency`).
+`n ≤ supply`.
 
-What the ledger shows (findings; logged in `_notes/`):
-
-- The law rests entirely on the counterfactual disposition. No
-  axiom about ACTUAL action is in the base at all (point-of-first-
-  use, 2026-09-04): the bridge `demonstrated_preference` was never
-  cited and is parked — and the derivation of the urgency principle
-  (`Apodictic.Urgency`, later the same day) did not need it either:
-  the principle rests on the counterfactual extension alone
-  (`swap_dominance`). That is where Nozick's objection lives, and
-  it is now one line on the receipt.
-- Independence of uses is a HYPOTHESIS of the law, not an axiom:
-  where uses are complementary the theorem does not apply. The
-  supply bound `n ≤ s.units.card` is inherited from the derivation.
-- Preference is over bundles (`Prefers : … → Set End → Set End → Prop`,
-  2026-09-04); the law is stated over singleton bundles via
-  `PrefersEnd`. Nothing about bundles is used here — the restatement
-  is one abbreviation; the one-step proof is unchanged.
-- No structural property of `Prefers` is forced: no transitivity,
-  no totality. Rothbard's derivation PRESUPPOSES a linear value
-  scale over the ends (*MES* pp. 25–26, Figure 3); our premises are
-  weaker — the ordering work is done by the disposition.
-- The hypothesis that `en` is *marginal* at `n` is unused (see the
-  proof): the law holds for EVERY end served at `n` against every
-  end marginal at `n + 1`. Rothbard's marginal-vs-marginal statement
-  is weaker than his own premise delivers.
-- The law is strict. So is Rothbard's: "will be less than", "the
-  lower the marginal utility" (pp. 24, 27). Non-increasing is the
-  neoclassical form, not his. Resolved 2026-09-04 by the text.
-- Determinacy is not assumed: `marginalEnds A n` may have more than
-  one element. Rothbard's "the marginal unit" presupposes exactly
-  one; we do not need it for the law.
-- Rothbard's remark (p. 29) that the addition-marginal unit at `n`
-  and the loss-marginal unit at `n + 1` have "identical" value
-  "provided that his ends and their ranking are the same" is
-  DEFINITIONAL here: one disposition supplies both, so
-  `marginalEnds A (n + 1)` — served at `n + 1`, not at `n` — is the
-  same set read either way.
+What the receipt shows is read in the Verso document (part I,
+findings). In brief: no axiom about ACTUAL action is cited — the law
+rests on the subjunctive disposition alone; independence of uses is
+a hypothesis, not an axiom; no structural property of `Prefers` is
+forced; the law is strict, as Rothbard's is; determinacy of the drop
+is not assumed; and the marginality of the end at `n` is unused by
+the proof — the law holds for every end served at `n`.
 -/
 
 namespace Apodictic

@@ -39,12 +39,17 @@ approve every axiom and every design decision. Therefore:
 - An easy proof is a warning sign, not a success. If a theorem goes
   through suspiciously fast, check whether an axiom is stronger than
   its praxeological pedigree justifies, and raise it.
-- Every `axiom` declaration carries a /-- docstring -/ with two
-  required fields: `Source:` (citation to Mises/Rothbard, or "tacit")
-  and `Status:` (explicit-in-tradition / suppressed-premise /
-  our-reconstruction). Pedigree lives in the docstring, not in a
+- Every `axiom` declaration carries a /-- docstring -/ with three
+  required fields: `Source:` (citation to Mises/Rothbard, or "tacit"),
+  `Status:` (explicit-in-tradition / suppressed-premise /
+  our-reconstruction), and `Does not say:` (the nearby stronger
+  claims it omits). Pedigree lives in the docstring, not in a
   separate hand-authored catalog — the axiom-by-axiom catalog is the
-  source itself plus the Verso document.
+  source itself plus the Verso document. Docstrings are PEDIGREE
+  ONLY (human decision 2026-09-05): no dates, no note paths, no
+  "was tried before", no commit hashes. History lives in `_notes/`
+  and the archaeology part of the document; the result part quotes
+  docstrings live and must read as verdicts.
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
   FINDING. Log it in `_notes/` in the session it happens; it is
@@ -210,7 +215,25 @@ Plus the lab notebook, outside both packages:
       language is in his own definition of supply (p. 23). Notes:
       `_notes/2026-08-02-marginal-utility-design.md`,
       `_notes/2026-09-04-mes-ch1-marginal-utility-reading.md`.
-- [ ] Verso chapter "The Action Axiom" written from the notes.
+- [x] Verso document in two parts, 2026-09-05: "The Result"
+      (`ApodicticDoc/ApodicticDoc/Result.lean`; clean statement of
+      vocabulary, axioms, hypotheses, theorems, receipt, findings —
+      the human's review surface) and "The Archaeology"
+      (`Archaeology.lean`; how each axiom was forced, the two
+      crashes as type-checked rejected encodings with red checks,
+      the Nozick reading — the human does not read this part). Both
+      quote docstrings live via `{docstring}`. Doc package builds
+      under Verso v4.32.0 on the library's toolchain. Human's read
+      of the result part doubles as the docstring review.
+- [x] Nozick 1977 §III read 2026-09-05. FINDING: the "Nozick's
+      target" label on the counterfactual axiom was inverted —
+      Nozick argues FOR subjunctive preference and against
+      Rothbard's "no preference apart from actual choice"; our
+      `swap_dominance` is Nozick-shaped, and the receipt shows
+      Rothbard's derivation resting on exactly what his doctrine
+      forbids (Nozick's cost argument, transposed). Docstring
+      commentary reworded, statements untouched. Notes:
+      `_notes/2026-09-05-nozick-1977-reading.md`.
 - [x] Bundle encoding decided 2026-09-04: ONE preference relation,
       over `Set End`; an ordinary end is a singleton (`PrefersEnd`).
       Human's argument: all ends are composites at some grain, so

@@ -3,15 +3,17 @@ import Apodictic.Axioms
 /-!
 # The urgency principle — derived, not asserted
 
-Until 2026-09-04 `urgency_principle` was an axiom (commit cffc321):
-Rothbard says it "follows from" action (*MES* p. 24) without showing
-how, and we asserted what he asserted. Here it is a theorem.
+Rothbard says the urgency principle "follows from" action (*MES*
+p. 24) without showing how. Here it is a theorem, from the
+subjunctive premise `swap_dominance` and two hypotheses.
 
 What the derivation needs, and what it does not:
 
 - `swap_dominance` — the counterfactual bridge: what the agent WOULD
-  serve is preferred to any one-swap alternative. Nozick's target,
-  now a single named axiom.
+  serve is preferred to any one-swap alternative. Subjunctive
+  preference in Nozick's sense (1977, pp. 373–374) — the notion
+  Rothbard's demonstrated-preference doctrine forbids and Nozick
+  says the Austrians need — now a single named axiom.
 - `actual_disposition A` — as a HYPOTHESIS: the plan is the agent's,
   not a rival of the same type. Without it the axiom over-quantified
   (see its docstring).
@@ -21,12 +23,11 @@ What the derivation needs, and what it does not:
   conclusion is read off a bundle-level preference, which is licit
   only where uses are independent. The theorem does not apply where
   they are not; the law of marginal utility inherits the condition.
-- NOT the actual-action bridge `demonstrated_preference` (still
-  parked): the principle rests on the counterfactual extension alone.
+- NOT the actual-action bridge from action to preference (not in
+  the base): the principle rests on the subjunctive extension alone.
 - NOT any structural property of `Prefers`; NOT determinacy of the
   drop; NOT the general "preferred to every same-size bundle" form.
-- Only within the supply (`n ≤ s.units.card`): the former axiom
-  claimed all `n`.
+- Only within the supply (`n ≤ s.units.card`).
 -/
 
 namespace Apodictic
