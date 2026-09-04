@@ -60,8 +60,12 @@ approve every axiom and every design decision. Therefore:
   `_notes/`, never contradict them. Rejected encodings enter the
   document as type-checked Lean code with the argument for their
   rejection.
-- End-of-session habit: a `_notes/` entry summarizing decisions made
-  and questions opened.
+- End-of-session habit: `/sakshi:session-close`, which writes the
+  handoff to `_notes/debriefs/<YYYY-MM-DD>-close.md` with verified and
+  claimed findings kept apart. That report IS the session summary;
+  do not also write a dated summary note. Dated `_notes/` files are
+  for decisions and findings AS THEY HAPPEN, per topic. Start a
+  session that has gone cold with `/sakshi:session-open`.
 - Prefer ugly proofs that compile over elegant proofs. Probative
   value is identical; refactoring is a later luxury.
 
@@ -112,9 +116,14 @@ Plus the lab notebook, outside both packages:
 - **`_notes/`** — the contemporaneous record (the machine-standard
   `_notes` mechanism; see the `working-notes` skill). This project's
   conventions: Claude edits it as part of the work; dated files per
-  session (`_notes/YYYY-MM-DD-<topic>.md`), plus one pinned
-  exception, `_notes/OPEN.md` — a living list of unresolved questions
-  kept as current state rather than archaeology.
+  topic (`_notes/YYYY-MM-DD-<topic>.md`); `_notes/OPEN.md` — a living
+  list of unresolved questions kept as current state rather than
+  archaeology; `_notes/debriefs/` — session-close reports, the only
+  handoff surface; `_notes/sources/` — the Mises Institute editions
+  (gitignored binaries + text extraction); `_notes/field-notes.md` —
+  the declared destination for friction with this repo's own
+  conventions (format in the file header; friction with a
+  portfolio-wide ritual goes to that project's file instead).
 
 ## Conventions
 
