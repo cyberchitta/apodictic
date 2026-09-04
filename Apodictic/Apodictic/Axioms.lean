@@ -17,6 +17,17 @@ Every axiom declaration carries a docstring with two required fields:
 - `Status:` explicit-in-tradition / suppressed-premise /
   our-reconstruction
 
+## Policy: axioms enter at point of first use (adopted 2026-09-04)
+
+No axiom lives here unless some theorem's `#print axioms` cites it.
+An uncited axiom cannot help a proof; it can only make the base
+inconsistent or consume review. Doctrinally central axioms that no
+theorem yet needs — the bridge from actual action to preference
+(`demonstrated_preference`), the existence axiom (`humans_act`) —
+are parked with their pedigree in
+`_notes/2026-09-04-parked-axioms.md` and re-enter with the theorem
+that forces them.
+
 ## Architecture: the distinguished frame (adopted 2026-08-02)
 
 Praxeological axioms speak only of `World`, a frame given
@@ -50,77 +61,50 @@ Status: our-reconstruction. The distinguished-frame architecture is
 a formalization decision, not a doctrine of the tradition. -/
 axiom World : ActionFrame
 
-/-- **Humans act**: there is action. Under the distinguished-frame
-architecture this axiom is load-bearing in a precise, limited sense:
-`World` is opaque, so without it no `Action World` exists and every
-axiom and theorem quantifying over actions is potentially vacuous.
-Its formal role is non-vacuity — it supplies the world with action;
-it is not a premise inside derivations, and `#print axioms` of no
-current theorem cites it. This resolves the open question of whether
-the famous action axiom is formally needed: yes — as existence, not
-as inference.
-
-Source: Mises, *Human Action*, ch. 1 (action as purposeful
-behavior); Rothbard, *MES*, ch. 1. (Exact wording to be verified
-against the Mises Institute editions before quotation in the
-document.)
-
-Status: explicit-in-tradition — THE axiom of the tradition. The
-non-vacuity reading of its formal role is our-reconstruction. -/
-axiom humans_act : Nonempty (Action World)
-
-/-- **Demonstrated preference**: the agent of an action prefers, at
-the time of the action, the chosen end over each forgone end. This is
-the bridge from choice (the `Action` structure) to the latent ranking
-(`Prefers`) — the two are otherwise unconnected.
-
-Source: Rothbard, *Man, Economy, and State*, ch. 1, and "Toward a
-Reconstruction of Utility and Welfare Economics" (1956); Mises,
-*Human Action*, ch. 4 (acting man chooses, and choice sets aside
-what is valued less).
-
-Status: explicit-in-tradition as doctrine; the formulation as a
-one-way bridge from `Action` to `Prefers` is our-reconstruction.
-This is the Nozick/Rothbard fault line formalized: the axiom claims
-only that action *reveals* strict preference at the moment of action
-— nothing about a ranking existing apart from action, and no
-converse (preference does not imply action).
-
-Restated 2026-08-02 over `World` only: the original form quantified
-over every frame and every constructible action, and was inconsistent
-(see `_notes/2026-08-02-trusted-base-inconsistency.md`). -/
-axiom demonstrated_preference (a : Action World) :
-    ∀ e ∈ a.forgone, World.Prefers a.agent a.time a.chosen e
-
-/-- **Allocation demonstrates preference (counterfactual form)**:
+/-- **The urgency principle** (Rothbard), in counterfactual-loss form:
 for an agent's allocation disposition over a stock, every end that
 would still be served with `n` units is preferred to every end that
 would be abandoned in the step down from `n + 1` — the loss falls on
-the least-valued use.
+the least urgent want.
 
-Source: Rothbard, *MES*, ch. 1 (units of a supply are allocated to
-the most highly valued uses; a lost unit deprives only the least
-important use served); Mises, *Human Action*, ch. VII.1.
+Source: Rothbard, *MES*, ch. 1, §5.B, pp. 24–27 (Mises Institute
+ed.). The premise: "action uses scarce means to satisfy the most
+urgent of the not yet satisfied wants" (p. 24), offered as a
+"universal fact" that "follows from" action — one sentence, no
+derivation shown. The loss form: "he gives up the least urgent of
+the wants which the larger stock would have satisfied" (p. 25),
+introduced with "Obviously", backed by the reallocation argument
+(p. 27: "follows from the defined interchangeability of units and
+from disregard of past events"). Mises, *Human Action*, ch. VII.1.
 
-Status: the doctrine — loss falls on the marginal use — is
-explicit-in-tradition. The counterfactual-dispositional formulation
-is our-reconstruction, and it COMPRESSES three distinct commitments
-that a finer decomposition would separate into their own axioms
-(logged 2026-08-02; decomposition is an open refinement):
+Status: explicit-in-tradition as doctrine. Its derivation from the
+action axiom is ASSERTED by Rothbard, not shown; whether it can be
+derived from a bridge between action and preference is a separate
+research item (see notes 2026-09-04). The counterfactual-
+dispositional formulation is our-reconstruction, and it carries two
+commitments that a finer archaeology would separate:
 
-1. the extension of demonstrated preference from actual action to
-   counterfactual choice — exactly what Nozick contests: a single
-   actual allocation cannot discriminate among the served ends;
-2. independence of uses: end-level preference read off a choice
-   between whole allocations differing in one end — the tacit
-   non-complementarity in Rothbard's derivation;
-3. determinacy of the drop-choice: with one unit fewer, exactly the
-   dispositionally marginal end goes.
+1. the extension of preference from actual action to counterfactual
+   choice — explicit in Rothbard's own framing ("suppose ... faced
+   with the necessity of giving up one horse"), and exactly what
+   Nozick contests;
+2. independence of uses: end-level preference read off a comparison
+   of whole allocations differing in one end — tacit; Rothbard's
+   "we assume for simplicity" (p. 26) covers only one-unit-one-end.
+
+NOT asserted here, contrary to the 2026-08-02 docstring: determinacy
+of the drop (that exactly one end goes when one unit goes). This
+axiom quantifies over every dropped end and says nothing about how
+many there are; `exists_marginal` proves only that there is at
+least one. Rothbard's "the marginal unit" presupposes determinacy;
+our law is stated over all marginal ends and does not.
 
 The law of marginal utility follows from this axiom in ONE step —
-the theorem is shallow because the content lives here. That is a
-finding, not a success. -/
-axiom allocation_demonstrated_preference
+which is faithful to the text: Rothbard's own derivation is one
+step from this premise too. The audit finding is upstream: his
+"derived from the fundamental axiom of human action" (p. 27) rests
+on a premise he asserts. -/
+axiom urgency_principle
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
     (A : AllocationDisposition s) (n : ℕ) :
     ∀ e ∈ A.wouldServe n, ∀ e', e' ∈ A.wouldServe (n + 1) →

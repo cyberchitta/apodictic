@@ -113,6 +113,11 @@ Plus the lab notebook, outside both packages:
   praxeological argument licenses just to close a goal.
 - Axiom names are honest: no hiding axioms as instance assumptions
   or hypotheses smuggled into theorem statements.
+- Axioms enter at point of first use. Nothing lives in Axioms.lean
+  unless some theorem's `#print axioms` cites it; doctrinally
+  central axioms no theorem yet needs are parked with their
+  pedigree in `_notes/2026-09-04-parked-axioms.md`. (Human
+  decision 2026-09-04: no reviewing axioms that do no work.)
 - Tactic style: plain tactics (intro/apply/exact/cases/constructor/
   simp). No heavy automation (no `decide`/`polyrith`-style closes)
   on philosophically load-bearing steps — the proof should be
@@ -128,30 +133,46 @@ Plus the lab notebook, outside both packages:
       revisit after Milestone 1. Resolution, rejected alternatives,
       and micro-decisions in `_notes/2026-08-02-action-axiom-shape.md`.
 - [x] Action framework compiles (Action.lean), first approximation.
-      First axiom in the trusted base: `demonstrated_preference`
-      (human-reviewed 2026-08-02).
+      First axiom drafted: `demonstrated_preference` (human-reviewed
+      2026-08-02; PARKED 2026-09-04 — never cited by a theorem).
 - [x] Trusted-base architecture: distinguished frame. The ∀-frame
       form of `demonstrated_preference` was INCONSISTENT (`False`
       derived 2026-08-02; witness in notes). Axioms now speak only
-      of the opaque `World`; `humans_act` enters as the non-vacuity
-      axiom — resolving the existence-axiom question (yes, needed:
-      as existence, not inference). Notes:
-      `_notes/2026-08-02-trusted-base-inconsistency.md`.
-- [x] Marginal utility, first pass (allocation version):
-      `marginal_utility` proved via new vocabulary (Allocation.lean:
-      `Stock`, serviceability-homogeneity; `AllocationDisposition`,
-      counterfactual choice) and one new axiom
-      (`allocation_demonstrated_preference`). Praxeological ledger:
-      `World` + that axiom alone — `demonstrated_preference` does no
-      work, and nothing is forced on `Prefers`. Axioms of 2026-08-02
-      pending human review (see OPEN.md). Notes:
-      `_notes/2026-08-02-marginal-utility-design.md`.
+      of the opaque `World`. Chosen as the simplest formalism that
+      keeps the axiom receipt working (human-confirmed 2026-09-04);
+      the switch to a class-of-frames encoding is mechanical if
+      ever needed. The action axiom DECOMPOSES (definition / bridge
+      / existence) and only the bridge does deductive work — that,
+      not "existence axiom needed", is the finding; `humans_act`
+      is parked, uncited. Notes:
+      `_notes/2026-08-02-trusted-base-inconsistency.md`,
+      `_notes/2026-09-04-first-crash-status.md`.
+- [x] Marginal utility (allocation version), second pass 2026-09-04:
+      `marginal_utility` stated over `marginalEnds` (Rothbard's
+      definition, MES p. 27) from ONE axiom, `urgency_principle`
+      (MES pp. 24–27, renamed from `allocation_demonstrated_preference`
+      after reading the text). Trusted base = `World` +
+      `urgency_principle`. Text-verified findings: the one-step
+      proof is faithful — Rothbard's own derivation is one step from
+      an ASSERTED premise; the law is strict in Rothbard too;
+      he presupposes a linear value scale we don't need;
+      determinacy of the drop is not in the axiom; the indifference
+      language is in his own definition of supply (p. 23). Notes:
+      `_notes/2026-08-02-marginal-utility-design.md`,
+      `_notes/2026-09-04-mes-ch1-marginal-utility-reading.md`.
 - [ ] Verso chapter "The Action Axiom" written from the notes.
+- [ ] Derive the urgency principle? Rothbard asserts it "follows
+      from" action (p. 24) without showing how. Attempt: allocation
+      at each supply as an `Action World` over bundles of ends,
+      `demonstrated_preference` re-entering at first use, an
+      independence axiom entered only when the proof stalls. This
+      is where Nozick's objection lives. Encoding choice to present
+      first: bundles as ends vs a composite-end former.
 - [ ] Milestone 1 completion — the honest units treatment:
       sub-stock-indexed disposition with homogeneity as an explicit
-      axiom (currently enforced silently by the ℕ index type), and/or
-      decomposition of `allocation_demonstrated_preference` into its
-      three compressed commitments.
+      axiom (currently enforced silently by the ℕ index type); unit
+      size is action-relative (MES p. 28); document the p. 23/24
+      indifference tension.
 - [ ] Write-up of findings to date before attempting exchange.
 
 ## Sources of record
