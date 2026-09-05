@@ -285,15 +285,22 @@ Plus the lab notebook, outside both packages:
       receipts unchanged. Unit size is action-relative in the `Stock`
       docstring (p. 28). Notes:
       `_notes/2026-09-05-units-treatment-choice.md`.
-- [ ] Make the repo public (human). Gates the doc site and the
+- [x] Repo made public 2026-09-05 (human). Gated the doc site and the
       article; the article links the receipt.
-- [x] Doc site built 2026-09-05: Lean emitter replacing Verso's page
-      layer (a custom `main`, not an `ExtraStep` — extra steps only run
-      alongside Verso's own HTML), Eleventy/SG consumer in `site/`,
-      Pages Action. Verified locally (build, link check, headless
-      screenshots). NOT deployed: needs the repo public, Pages enabled,
-      DNS for `apodictic.cyberchitta.cc` (human). Open: search/find
-      skipped, page slugs, CSS split home.
+- [x] Doc site built AND DEPLOYED 2026-09-05 — live at
+      `https://apodictic.cyberchitta.cc/`. Lean emitter replacing
+      Verso's page layer (a custom `main`, not an `ExtraStep` — extra
+      steps only run alongside Verso's own HTML), Eleventy/SG consumer
+      in `site/`, Pages Action. Publishing needed no repo change and no
+      `CNAME` file: the custom domain lives in the Pages API config and
+      the Actions deploy preserves it. Verified against production
+      (`build_type: workflow`, cname, `https_enforced`, cert to
+      2026-12-04). SG v0.4.3 released alongside, gating the RSS
+      `<link rel="alternate">` behind an opt-in `site.feed` so this
+      feed-less sub-site stops advertising a feed it does not build;
+      the footer's RSS icon points at the main-site feed and is
+      untouched. Open: search/find skipped, page slugs, CSS split home,
+      light-theme and mobile visual QA.
       `_notes/2026-09-05-doc-site-build.md`.
 - [ ] Before announcing (human): read Nozick 1977 §III yourself; rule
       on the four axiom docstrings via the Verso result part.
