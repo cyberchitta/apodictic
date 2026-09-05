@@ -264,7 +264,19 @@ Plus the lab notebook, outside both packages:
       axiom (currently enforced silently by the ℕ index type); unit
       size is action-relative (MES p. 28); document the p. 23/24
       indifference tension.
-- [ ] Write-up of findings to date before attempting exchange.
+- [ ] Make the repo public (human). Gates the doc site and the
+      article; the article links the receipt.
+- [ ] Doc site: a Lean wrapper (an `ExtraStep` in `ApodicticDoc/Main.lean`)
+      replacing Verso's page layer and emitting Eleventy input; an
+      Eleventy consumer in this repo wired per SG `wire-consumer`
+      (ch-ai-tanya is the analog); GitHub Pages from an Action. Plan,
+      Verso facts, estimate: `_notes/2026-09-05-doc-site-plan.md`.
+- [ ] Before announcing (human): read Nozick 1977 §III yourself; rule
+      on the four axiom docstrings via the Verso result part.
+      `_notes/2026-09-04-announcement-plan.md`.
+- [ ] Write-up of findings to date before attempting exchange — the
+      first article, drafted on the site side from a facts-only brief:
+      `www.cyberchitta.cc/_notes/drafts/apodictic/` (HANDOFF + BRIEF).
 
 ## Sources of record
 
