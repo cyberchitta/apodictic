@@ -59,7 +59,9 @@ approve every axiom and every design decision. Therefore:
   every design decision, rejected alternative, dead end, and open
   question gets a dated entry in `_notes/` IN THE SESSION IT HAPPENS
   — low ceremony, no quality bar, never refactored for elegance.
-  Nothing may exist only in a chat transcript. Docstrings carry
+  Only those four kinds (human decision 2026-09-05): an explainer
+  or an assessment that changes no decision and answers no OPEN.md
+  item stays in chat. Docstrings carry
   per-declaration pedigree (above). The Verso document is the curated
   argument, written FROM the notes at editorial cadence — it may lag
   `_notes/`, never contradict them. Rejected encodings enter the
@@ -289,6 +291,17 @@ Plus the lab notebook, outside both packages:
 - [ ] Write-up of findings to date before attempting exchange — the
       first article, drafted on the site side from a facts-only brief:
       `www.cyberchitta.cc/_notes/drafts/apodictic/` (HANDOFF + BRIEF).
+- [ ] Exchange (MES ch. 2, p. 104; Rothbard 1956): both parties
+      benefit ex ante. The first theorem that cannot avoid the
+      parked bridge `demonstrated_preference` — its hypothesis is an
+      act, its conclusion a preference, and nothing else in the base
+      links the two. Forces one text-explicit axiom, imputation of
+      value from ends to means (MES p. 19), and `Action` over
+      bundles (shared with the route-through-action test). Receipt
+      disjoint from marginal utility's. Expected finding: "benefit"
+      is demonstrated preference by definition. Cost/psychic profit
+      (MES p. 71) is a one-step warm-up; time preference (MES p. 15,
+      HA ch. XVIII §2) is later — it forces order on `Time`.
 
 ## Sources of record
 
