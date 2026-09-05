@@ -119,7 +119,16 @@ Two lake packages in this repo:
   argument for their rejection. This document is half the
   contribution; it is written from `_notes/` at editorial cadence
   (human decision 2026-09-04) and may lag the Lean, never
-  contradict it.
+  contradict it. `generate-doc` does NOT produce Verso's own HTML:
+  `ApodicticDoc/Emit/Eleventy.lean` replaces Verso's page layer and
+  writes an Eleventy input tree (`lake exe generate-doc --output
+  ../site/verso`, run after any document change; the tree is
+  committed).
+- **site/** — the doc site: an Eleventy consumer of Supramental Gold
+  (wired per SG `wire-consumer`; ch-ai-tanya is the analog) that
+  renders `site/verso/` into one page per Verso part. `bun run serve`
+  to view; `.github/workflows/pages.yml` deploys to GitHub Pages
+  without a Lean toolchain.
 
 Invariant: if Verso lags a Lean toolchain bump, the document waits;
 never downgrade the library's toolchain to accommodate the document.
@@ -266,11 +275,14 @@ Plus the lab notebook, outside both packages:
       indifference tension.
 - [ ] Make the repo public (human). Gates the doc site and the
       article; the article links the receipt.
-- [ ] Doc site: a Lean wrapper (an `ExtraStep` in `ApodicticDoc/Main.lean`)
-      replacing Verso's page layer and emitting Eleventy input; an
-      Eleventy consumer in this repo wired per SG `wire-consumer`
-      (ch-ai-tanya is the analog); GitHub Pages from an Action. Plan,
-      Verso facts, estimate: `_notes/2026-09-05-doc-site-plan.md`.
+- [x] Doc site built 2026-09-05: Lean emitter replacing Verso's page
+      layer (a custom `main`, not an `ExtraStep` — extra steps only run
+      alongside Verso's own HTML), Eleventy/SG consumer in `site/`,
+      Pages Action. Verified locally (build, link check, headless
+      screenshots). NOT deployed: needs the repo public, Pages enabled,
+      DNS for `apodictic.cyberchitta.cc` (human). Open: search/find
+      skipped, page slugs, CSS split home.
+      `_notes/2026-09-05-doc-site-build.md`.
 - [ ] Before announcing (human): read Nozick 1977 §III yourself; rule
       on the four axiom docstrings via the Verso result part.
       `_notes/2026-09-04-announcement-plan.md`.

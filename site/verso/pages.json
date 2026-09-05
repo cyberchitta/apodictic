@@ -1,0 +1,560 @@
+[{"url": "/",
+  "titleText": "Apodictic: Machine-Checked Praxeology",
+  "title": "Apodictic: Machine-Checked Praxeology",
+  "sectionNum": "",
+  "prev": null,
+  "path": [],
+  "next":
+  {"url": "/The-Result/#result",
+   "titleText": "The Result",
+   "title": "The Result",
+   "sectionNum": "1."},
+  "localToc": [],
+  "id": "Apodictic___-Machine-Checked-Praxeology",
+  "fragment": "pages/index.html",
+  "depth": 0},
+ {"url": "/The-Result/",
+  "titleText": "The Result",
+  "title": "1. The Result",
+  "sectionNum": "1.",
+  "prev":
+  {"url": "/",
+   "titleText": "Apodictic: Machine-Checked Praxeology",
+   "title": "Apodictic: Machine-Checked Praxeology",
+   "sectionNum": ""},
+  "path": ["The-Result"],
+  "next":
+  {"url":
+   "/The-Result/Vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--Vocabulary",
+   "titleText": "Vocabulary",
+   "title": "Vocabulary",
+   "sectionNum": "1.1."},
+  "localToc": [],
+  "id": "result",
+  "fragment": "pages/The-Result.html",
+  "depth": 1},
+ {"url": "/The-Result/Vocabulary/",
+  "titleText": "Vocabulary",
+  "title": "1.1. Vocabulary",
+  "sectionNum": "1.1.",
+  "prev":
+  {"url": "/The-Result/#result",
+   "titleText": "The Result",
+   "title": "The Result",
+   "sectionNum": "1."},
+  "path": ["The-Result", "Vocabulary"],
+  "next":
+  {"url":
+   "/The-Result/Axioms/#Apodictic___-Machine-Checked-Praxeology--The-Result--Axioms",
+   "titleText": "Axioms",
+   "title": "Axioms",
+   "sectionNum": "1.2."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>ActionFrame</code>",
+    "dest": "/The-Result/Vocabulary/#Apodictic___ActionFrame___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>PrefersEnd</code>",
+    "dest": "/The-Result/Vocabulary/#Apodictic___ActionFrame___PrefersEnd"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>Stock</code>",
+    "dest": "/The-Result/Vocabulary/#Apodictic___Stock___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AllocationDisposition</code>",
+    "dest": "/The-Result/Vocabulary/#Apodictic___AllocationDisposition___mk"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Vocabulary",
+  "fragment": "pages/The-Result/Vocabulary.html",
+  "depth": 2},
+ {"url": "/The-Result/Axioms/",
+  "titleText": "Axioms",
+  "title": "1.2. Axioms",
+  "sectionNum": "1.2.",
+  "prev":
+  {"url":
+   "/The-Result/Vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--Vocabulary",
+   "titleText": "Vocabulary",
+   "title": "Vocabulary",
+   "sectionNum": "1.1."},
+  "path": ["The-Result", "Axioms"],
+  "next":
+  {"url":
+   "/The-Result/Hypotheses/#Apodictic___-Machine-Checked-Praxeology--The-Result--Hypotheses",
+   "titleText": "Hypotheses",
+   "title": "Hypotheses",
+   "sectionNum": "1.3."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>World</code>",
+    "dest": "/The-Result/Axioms/#Apodictic___World"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ends_distinguishable</code>",
+    "dest": "/The-Result/Axioms/#Apodictic___ends_distinguishable"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>actual_disposition</code>",
+    "dest": "/The-Result/Axioms/#Apodictic___actual_disposition"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>swap_dominance</code>",
+    "dest": "/The-Result/Axioms/#Apodictic___swap_dominance"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Axioms",
+  "fragment": "pages/The-Result/Axioms.html",
+  "depth": 2},
+ {"url": "/The-Result/Hypotheses/",
+  "titleText": "Hypotheses",
+  "title": "1.3. Hypotheses",
+  "sectionNum": "1.3.",
+  "prev":
+  {"url":
+   "/The-Result/Axioms/#Apodictic___-Machine-Checked-Praxeology--The-Result--Axioms",
+   "titleText": "Axioms",
+   "title": "Axioms",
+   "sectionNum": "1.2."},
+  "path": ["The-Result", "Hypotheses"],
+  "next":
+  {"url":
+   "/The-Result/Theorems/#Apodictic___-Machine-Checked-Praxeology--The-Result--Theorems",
+   "titleText": "Theorems",
+   "title": "Theorems",
+   "sectionNum": "1.4."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>IndependentUses</code>",
+    "dest":
+    "/The-Result/Hypotheses/#Apodictic___ActionFrame___IndependentUses"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Hypotheses",
+  "fragment": "pages/The-Result/Hypotheses.html",
+  "depth": 2},
+ {"url": "/The-Result/Theorems/",
+  "titleText": "Theorems",
+  "title": "1.4. Theorems",
+  "sectionNum": "1.4.",
+  "prev":
+  {"url":
+   "/The-Result/Hypotheses/#Apodictic___-Machine-Checked-Praxeology--The-Result--Hypotheses",
+   "titleText": "Hypotheses",
+   "title": "Hypotheses",
+   "sectionNum": "1.3."},
+  "path": ["The-Result", "Theorems"],
+  "next":
+  {"url":
+   "/The-Result/The-receipt/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
+   "titleText": "The receipt",
+   "title": "The receipt",
+   "sectionNum": "1.5."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>urgency_principle</code>",
+    "dest": "/The-Result/Theorems/#Apodictic___urgency_principle"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginalEnds</code>",
+    "dest": "/The-Result/Theorems/#Apodictic___marginalEnds"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginal_utility</code>",
+    "dest": "/The-Result/Theorems/#Apodictic___marginal_utility"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Theorems",
+  "fragment": "pages/The-Result/Theorems.html",
+  "depth": 2},
+ {"url": "/The-Result/The-receipt/",
+  "titleText": "The receipt",
+  "title": "1.5. The receipt",
+  "sectionNum": "1.5.",
+  "prev":
+  {"url":
+   "/The-Result/Theorems/#Apodictic___-Machine-Checked-Praxeology--The-Result--Theorems",
+   "titleText": "Theorems",
+   "title": "Theorems",
+   "sectionNum": "1.4."},
+  "path": ["The-Result", "The-receipt"],
+  "next":
+  {"url":
+   "/The-Result/Not-in-the-base/#Apodictic___-Machine-Checked-Praxeology--The-Result--Not-in-the-base",
+   "titleText": "Not in the base",
+   "title": "Not in the base",
+   "sectionNum": "1.6."},
+  "localToc": [],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
+  "fragment": "pages/The-Result/The-receipt.html",
+  "depth": 2},
+ {"url": "/The-Result/Not-in-the-base/",
+  "titleText": "Not in the base",
+  "title": "1.6. Not in the base",
+  "sectionNum": "1.6.",
+  "prev":
+  {"url":
+   "/The-Result/The-receipt/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
+   "titleText": "The receipt",
+   "title": "The receipt",
+   "sectionNum": "1.5."},
+  "path": ["The-Result", "Not-in-the-base"],
+  "next":
+  {"url":
+   "/The-Result/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Result--Consistency",
+   "titleText": "Consistency",
+   "title": "Consistency",
+   "sectionNum": "1.7."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>Action</code>",
+    "dest": "/The-Result/Not-in-the-base/#Apodictic___Action___mk"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Not-in-the-base",
+  "fragment": "pages/The-Result/Not-in-the-base.html",
+  "depth": 2},
+ {"url": "/The-Result/Consistency/",
+  "titleText": "Consistency",
+  "title": "1.7. Consistency",
+  "sectionNum": "1.7.",
+  "prev":
+  {"url":
+   "/The-Result/Not-in-the-base/#Apodictic___-Machine-Checked-Praxeology--The-Result--Not-in-the-base",
+   "titleText": "Not in the base",
+   "title": "Not in the base",
+   "sectionNum": "1.6."},
+  "path": ["The-Result", "Consistency"],
+  "next":
+  {"url":
+   "/The-Result/Findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--Findings",
+   "titleText": "Findings",
+   "title": "Findings",
+   "sectionNum": "1.8."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>swapPrefers</code>",
+    "dest": "/The-Result/Consistency/#Apodictic___Model___swapPrefers"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Consistency",
+  "fragment": "pages/The-Result/Consistency.html",
+  "depth": 2},
+ {"url": "/The-Result/Findings/",
+  "titleText": "Findings",
+  "title": "1.8. Findings",
+  "sectionNum": "1.8.",
+  "prev":
+  {"url":
+   "/The-Result/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Result--Consistency",
+   "titleText": "Consistency",
+   "title": "Consistency",
+   "sectionNum": "1.7."},
+  "path": ["The-Result", "Findings"],
+  "next":
+  {"url": "/The-Archaeology/#archaeology",
+   "titleText": "The Archaeology",
+   "title": "The Archaeology",
+   "sectionNum": "2."},
+  "localToc": [],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Findings",
+  "fragment": "pages/The-Result/Findings.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/",
+  "titleText": "The Archaeology",
+  "title": "2. The Archaeology",
+  "sectionNum": "2.",
+  "prev":
+  {"url":
+   "/The-Result/Findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--Findings",
+   "titleText": "Findings",
+   "title": "Findings",
+   "sectionNum": "1.8."},
+  "path": ["The-Archaeology"],
+  "next":
+  {"url":
+   "/The-Archaeology/The-receipt/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-receipt",
+   "titleText": "The receipt",
+   "title": "The receipt",
+   "sectionNum": "2.1."},
+  "localToc": [],
+  "id": "archaeology",
+  "fragment": "pages/The-Archaeology.html",
+  "depth": 1},
+ {"url": "/The-Archaeology/The-receipt/",
+  "titleText": "The receipt",
+  "title": "2.1. The receipt",
+  "sectionNum": "2.1.",
+  "prev":
+  {"url": "/The-Archaeology/#archaeology",
+   "titleText": "The Archaeology",
+   "title": "The Archaeology",
+   "sectionNum": "2."},
+  "path": ["The-Archaeology", "The-receipt"],
+  "next":
+  {"url":
+   "/The-Archaeology/World-___-the-frame-the-axioms-speak-of/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--World-___-the-frame-the-axioms-speak-of",
+   "titleText": "World: the frame the axioms speak of",
+   "title": "<code>World</code>: the frame the axioms speak of",
+   "sectionNum": "2.2."},
+  "localToc": [],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-receipt",
+  "fragment": "pages/The-Archaeology/The-receipt.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/World-___-the-frame-the-axioms-speak-of/",
+  "titleText": "World : the frame the axioms speak of",
+  "title": "2.2. <code>World</code>: the frame the axioms speak of",
+  "sectionNum": "2.2.",
+  "prev":
+  {"url":
+   "/The-Archaeology/The-receipt/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-receipt",
+   "titleText": "The receipt",
+   "title": "The receipt",
+   "sectionNum": "2.1."},
+  "path": ["The-Archaeology", "World-___-the-frame-the-axioms-speak-of"],
+  "next":
+  {"url":
+   "/The-Archaeology/ends_distinguishable-___-ends-can-be-told-apart/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--ends_distinguishable-___-ends-can-be-told-apart",
+   "titleText": "ends_distinguishable: ends can be told apart",
+   "title": "<code>ends_distinguishable</code>: ends can be told apart",
+   "sectionNum": "2.3."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>World</code>",
+    "dest":
+    "/The-Archaeology/World-___-the-frame-the-axioms-speak-of/#Apodictic___World-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ActionFrame</code>",
+    "dest":
+    "/The-Archaeology/World-___-the-frame-the-axioms-speak-of/#Apodictic___ActionFrame___mk-next"},
+   {"numbering": "1.",
+    "level": 1,
+    "html": "Rejected: axioms over every frame",
+    "dest":
+    "/The-Archaeology/World-___-the-frame-the-axioms-speak-of/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--World-___-the-frame-the-axioms-speak-of--Rejected___-axioms-over-every-frame"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--World-___-the-frame-the-axioms-speak-of",
+  "fragment":
+  "pages/The-Archaeology/World-___-the-frame-the-axioms-speak-of.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/ends_distinguishable-___-ends-can-be-told-apart/",
+  "titleText": "ends_distinguishable : ends can be told apart",
+  "title": "2.3. <code>ends_distinguishable</code>: ends can be told apart",
+  "sectionNum": "2.3.",
+  "prev":
+  {"url":
+   "/The-Archaeology/World-___-the-frame-the-axioms-speak-of/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--World-___-the-frame-the-axioms-speak-of",
+   "titleText": "World: the frame the axioms speak of",
+   "title": "<code>World</code>: the frame the axioms speak of",
+   "sectionNum": "2.2."},
+  "path":
+  ["The-Archaeology", "ends_distinguishable-___-ends-can-be-told-apart"],
+  "next":
+  {"url":
+   "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--actual_disposition-___-which-plan-is-the-agent___s",
+   "titleText": "actual_disposition: which plan is the agent's",
+   "title": "<code>actual_disposition</code>: which plan is the agent's",
+   "sectionNum": "2.4."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>ends_distinguishable</code>",
+    "dest":
+    "/The-Archaeology/ends_distinguishable-___-ends-can-be-told-apart/#Apodictic___ends_distinguishable-next"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--ends_distinguishable-___-ends-can-be-told-apart",
+  "fragment":
+  "pages/The-Archaeology/ends_distinguishable-___-ends-can-be-told-apart.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/",
+  "titleText": "actual_disposition : which plan is the agent's",
+  "title": "2.4. <code>actual_disposition</code>: which plan is the agent's",
+  "sectionNum": "2.4.",
+  "prev":
+  {"url":
+   "/The-Archaeology/ends_distinguishable-___-ends-can-be-told-apart/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--ends_distinguishable-___-ends-can-be-told-apart",
+   "titleText": "ends_distinguishable: ends can be told apart",
+   "title": "<code>ends_distinguishable</code>: ends can be told apart",
+   "sectionNum": "2.3."},
+  "path":
+  ["The-Archaeology", "actual_disposition-___-which-plan-is-the-agent___s"],
+  "next":
+  {"url":
+   "/The-Archaeology/swap_dominance-___-the-one-praxeological-premise/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--swap_dominance-___-the-one-praxeological-premise",
+   "titleText": "swap_dominance: the one praxeological premise",
+   "title": "<code>swap_dominance</code>: the one praxeological premise",
+   "sectionNum": "2.5."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>actual_disposition</code>",
+    "dest":
+    "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/#Apodictic___actual_disposition-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>Stock</code>",
+    "dest":
+    "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/#Apodictic___Stock___mk-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AllocationDisposition</code>",
+    "dest":
+    "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/#Apodictic___AllocationDisposition___mk-next"},
+   {"numbering": "1.",
+    "level": 1,
+    "html": "Rejected: swap dominance over every plan",
+    "dest":
+    "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--actual_disposition-___-which-plan-is-the-agent___s--Rejected___-swap-dominance-over-every-plan"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--actual_disposition-___-which-plan-is-the-agent___s",
+  "fragment":
+  "pages/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/swap_dominance-___-the-one-praxeological-premise/",
+  "titleText": "swap_dominance : the one praxeological premise",
+  "title": "2.5. <code>swap_dominance</code>: the one praxeological premise",
+  "sectionNum": "2.5.",
+  "prev":
+  {"url":
+   "/The-Archaeology/actual_disposition-___-which-plan-is-the-agent___s/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--actual_disposition-___-which-plan-is-the-agent___s",
+   "titleText": "actual_disposition: which plan is the agent's",
+   "title": "<code>actual_disposition</code>: which plan is the agent's",
+   "sectionNum": "2.4."},
+  "path":
+  ["The-Archaeology", "swap_dominance-___-the-one-praxeological-premise"],
+  "next":
+  {"url":
+   "/The-Archaeology/The-hypotheses/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-hypotheses",
+   "titleText": "The hypotheses",
+   "title": "The hypotheses",
+   "sectionNum": "2.6."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>swap_dominance</code>",
+    "dest":
+    "/The-Archaeology/swap_dominance-___-the-one-praxeological-premise/#Apodictic___swap_dominance-next"},
+   {"numbering": "1.",
+    "level": 1,
+    "html": "What Nozick actually says",
+    "dest":
+    "/The-Archaeology/swap_dominance-___-the-one-praxeological-premise/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--swap_dominance-___-the-one-praxeological-premise--What-Nozick-actually-says"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--swap_dominance-___-the-one-praxeological-premise",
+  "fragment":
+  "pages/The-Archaeology/swap_dominance-___-the-one-praxeological-premise.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/The-hypotheses/",
+  "titleText": "The hypotheses",
+  "title": "2.6. The hypotheses",
+  "sectionNum": "2.6.",
+  "prev":
+  {"url":
+   "/The-Archaeology/swap_dominance-___-the-one-praxeological-premise/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--swap_dominance-___-the-one-praxeological-premise",
+   "titleText": "swap_dominance: the one praxeological premise",
+   "title": "<code>swap_dominance</code>: the one praxeological premise",
+   "sectionNum": "2.5."},
+  "path": ["The-Archaeology", "The-hypotheses"],
+  "next":
+  {"url":
+   "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on",
+   "titleText": "What the law does not rest on",
+   "title": "What the law does not rest on",
+   "sectionNum": "2.7."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>IndependentUses</code>",
+    "dest":
+    "/The-Archaeology/The-hypotheses/#Apodictic___ActionFrame___IndependentUses-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>PrefersEnd</code>",
+    "dest":
+    "/The-Archaeology/The-hypotheses/#Apodictic___ActionFrame___PrefersEnd-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginalEnds</code>",
+    "dest": "/The-Archaeology/The-hypotheses/#Apodictic___marginalEnds-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>urgency_principle</code>",
+    "dest":
+    "/The-Archaeology/The-hypotheses/#Apodictic___urgency_principle-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginal_utility</code>",
+    "dest":
+    "/The-Archaeology/The-hypotheses/#Apodictic___marginal_utility-next"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-hypotheses",
+  "fragment": "pages/The-Archaeology/The-hypotheses.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/What-the-law-does-not-rest-on/",
+  "titleText": "What the law does not rest on",
+  "title": "2.7. What the law does not rest on",
+  "sectionNum": "2.7.",
+  "prev":
+  {"url":
+   "/The-Archaeology/The-hypotheses/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-hypotheses",
+   "titleText": "The hypotheses",
+   "title": "The hypotheses",
+   "sectionNum": "2.6."},
+  "path": ["The-Archaeology", "What-the-law-does-not-rest-on"],
+  "next":
+  {"url":
+   "/The-Archaeology/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Consistency",
+   "titleText": "Consistency",
+   "title": "Consistency",
+   "sectionNum": "2.8."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>Action</code>",
+    "dest":
+    "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___Action___mk-next"},
+   {"numbering": "1.",
+    "level": 1,
+    "html": "Rejected: the urgency principle as an axiom",
+    "dest":
+    "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on--Rejected___-the-urgency-principle-as-an-axiom"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on",
+  "fragment": "pages/The-Archaeology/What-the-law-does-not-rest-on.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/Consistency/",
+  "titleText": "Consistency",
+  "title": "2.8. Consistency",
+  "sectionNum": "2.8.",
+  "prev":
+  {"url":
+   "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on",
+   "titleText": "What the law does not rest on",
+   "title": "What the law does not rest on",
+   "sectionNum": "2.7."},
+  "path": ["The-Archaeology", "Consistency"],
+  "next":
+  {"url":
+   "/The-Archaeology/Methodological-findings/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Methodological-findings",
+   "titleText": "Methodological findings",
+   "title": "Methodological findings",
+   "sectionNum": "2.9."},
+  "localToc": [],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Consistency",
+  "fragment": "pages/The-Archaeology/Consistency.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/Methodological-findings/",
+  "titleText": "Methodological findings",
+  "title": "2.9. Methodological findings",
+  "sectionNum": "2.9.",
+  "prev":
+  {"url":
+   "/The-Archaeology/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Consistency",
+   "titleText": "Consistency",
+   "title": "Consistency",
+   "sectionNum": "2.8."},
+  "path": ["The-Archaeology", "Methodological-findings"],
+  "next": null,
+  "localToc": [],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Methodological-findings",
+  "fragment": "pages/The-Archaeology/Methodological-findings.html",
+  "depth": 2}]

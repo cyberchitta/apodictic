@@ -1,0 +1,4 @@
+{"js":
+ [{"src": "popper.min.js", "defer": false},
+  {"src": "tippy-bundle.umd.min.js", "defer": false}],
+ "css": ["tippy-border.css"]}

@@ -1,0 +1,8 @@
+{
+  "title": "apodictic",
+  "tagline": "machine-checked praxeology",
+  "github": "cyberchitta/apodictic",
+  "url": "https://apodictic.cyberchitta.cc",
+  "mainSiteUrl": "https://www.cyberchitta.cc",
+  "description": "Austrian praxeology (Mises, Rothbard) formalized in Lean 4: the axioms each theorem actually rests on, and the archaeology of where each one came from."
+}

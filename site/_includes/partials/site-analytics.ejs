@@ -1,0 +1,14 @@
+<%# Head slot (SG's sanctioned extension point for head additions).
+    Everything a Verso page loads besides the SG bundle: the feature
+    files Verso emitted (KaTeX, tippy, popper), the CSS Verso would have
+    inlined, and the theme mapping onto SG tokens. -%>
+<% for (const css of verso.assets.css) { %>
+<link rel="stylesheet" href="<%= verso.root %>verso-data/<%= css %>">
+<% } %>
+<link rel="stylesheet" href="<%= verso.root %>verso-vars.css">
+<link rel="stylesheet" href="<%= verso.root %>verso-inline.css">
+<link rel="stylesheet" href="/assets/verso-theme.css">
+<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js" integrity="sha384-zbcZAIxlvJtNE3Dp5nxLXdXtXyxwOdnILY1TDPVmKFhl4r4nSUG1r8bcFXGVa4Te" crossorigin="anonymous"></script>
+<% for (const js of verso.assets.js) { %>
+<script src="<%= verso.root %>verso-data/<%= js.src %>"<%= js.defer ? ' defer' : '' %>></script>
+<% } %>

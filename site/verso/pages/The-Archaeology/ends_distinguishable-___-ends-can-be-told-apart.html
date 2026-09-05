@@ -1,0 +1,24 @@
+<section><h1>2.3. <code>ends_distinguishable</code>: ends can be told apart<span class="permalink-widget inline"><a href="/find/?domain=Verso.Genre.Manual.section&amp;name=Apodictic___-Machine-Checked-Praxeology--The-Archaeology--ends_distinguishable-___-ends-can-be-told-apart" title="Permalink">🔗</a></span></h1><div class="namedocs" id="Apodictic___ends_distinguishable-next"><span class="permalink-widget block"><a href="/find/?domain=Verso.Genre.Manual.doc&amp;name=Apodictic.ends_distinguishable" title="Permalink">🔗</a></span><span class="label">axiom</span><pre class="signature hl lean block"><div class="wide-only"><span class="const token" data-binding="const-Apodictic.ends_distinguishable" data-verso-hover="55">Apodictic.ends_distinguishable</span><span class="inter-text"> </span><span class="unknown token" data-binding="">:</span><span class="inter-text"> </span><span class="const token" data-binding="const-DecidableEq" data-verso-hover="56">DecidableEq</span><span class="inter-text"> </span><span class="const token" data-binding="const-Apodictic.World" data-verso-hover="54">World</span><span class="unknown token" data-binding="">.</span><span class="const token" data-binding="const-Apodictic.ActionFrame.End" data-verso-hover="12">End</span></div><div class="narrow-only"><span class="const token" data-binding="const-Apodictic.ends_distinguishable" data-verso-hover="55">Apodictic.ends_distinguishable</span><span class="inter-text"> </span><span class="unknown token" data-binding="">:</span><span class="inter-text">
+  </span><span class="const token" data-binding="const-DecidableEq" data-verso-hover="56">DecidableEq</span><span class="inter-text"> </span><span class="const token" data-binding="const-Apodictic.World" data-verso-hover="54">World</span><span class="unknown token" data-binding="">.</span><span class="const token" data-binding="const-Apodictic.ActionFrame.End" data-verso-hover="12">End</span></div></pre><div class="text"><p><strong>Ends are distinguishable</strong>: identity of ends is decidable —
+of any two ends it is settled whether they are the same end.</p><p>Source: tacit. The reallocation argument (<em>MES</em> p. 27) withdraws
+one unit and asks which want is thereby given up; "the bundle minus
+this end" presupposes that each end either is or is not the one
+withdrawn. Mises's actor chooses between alternatives he tells
+apart; nothing in the tradition contemplates ends whose identity is
+undecided.</p><p>Status: suppressed-premise. A data axiom, like <code class="hl lean inline" data-lean-context="docstring-examples"><span class="const token" data-binding="const-Apodictic.World" data-verso-hover="54">World</span></code>. It is what
+makes "the bundle minus <code class="hl lean inline" data-lean-context="docstring-examples"><span class="unknown token" data-binding="">e</span></code>" constructible; without it that step is
+available only classically, and the library keeps
+<code class="hl lean inline" data-lean-context="docstring-examples"><span class="const token" data-binding="const-Classical.choice" data-verso-hover="57">Classical.choice</span></code> off the receipt so that every case split is
+either named praxeological content or absent.</p><p>Does not say: anything about preference. It is identity of ends,
+not indifference between them.</p></div></div><p>This is the first axiom the constructive-by-default rule surfaced.
+The derivation rewrites a served bundle as "this end together with
+the rest", and that rewrite needs, for every end, that it either is
+or is not the one withdrawn. Mathlib proves the rewrite classically.
+We could have accepted <code>Classical.choice</code> on the receipt, or hidden
+decidable identity as a field of the frame where the receipt cannot
+see it. Naming it is the honest option: it sits beside <code>World</code> as a
+second data axiom, and it says something a reader can dispute. One
+more alternative was rejected: phrasing <code>swap_dominance</code> with the
+served bundle already written as "<code>e</code> together with the rest" on
+both sides, which needs no decidability in the proof only because it
+hides the same identification inside the axiom's wording.</p></section>

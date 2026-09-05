@@ -1,0 +1,38 @@
+---
+layout: layouts/base.ejs
+---
+<%# One page of the Verso document. `p` is the page record from
+    verso.pages (pagination alias in doc.md). The fragment itself is
+    printed by the verso-page element in the page body. %>
+<%
+  const current = p;
+  const bookToc = verso.toc;
+  const renderToc = (nodes) => {
+    let out = '<ol class="verso-toc">';
+    for (const n of nodes) {
+      const here = n.url === current.url;
+      out += `<li${here ? ' class="current"' : ''}>`;
+      out += `<a href="${n.url}">${n.sectionNum ? `<span class="num">${n.sectionNum}</span> ` : ''}${n.title}</a>`;
+      if (n.children && n.children.length) out += renderToc(n.children);
+      out += '</li>';
+    }
+    return out + '</ol>';
+  };
+%>
+<nav class="verso-nav" aria-label="Book">
+  <details class="verso-contents"<%= current.depth === 0 ? ' open' : '' %>>
+    <summary><a href="/"><%- bookToc.title %></a></summary>
+    <%- renderToc(bookToc.children) %>
+  </details>
+</nav>
+<section class="article-content verso-page">
+<%- content %>
+</section>
+<nav class="verso-prev-next" aria-label="Previous and next">
+  <% if (current.prev) { %>
+  <a rel="prev" href="<%= current.prev.url %>">← <%- current.prev.sectionNum ? current.prev.sectionNum + ' ' : '' %><%- current.prev.title %></a>
+  <% } else { %><span></span><% } %>
+  <% if (current.next) { %>
+  <a rel="next" href="<%= current.next.url %>"><%- current.next.sectionNum ? current.next.sectionNum + ' ' : '' %><%- current.next.title %> →</a>
+  <% } else { %><span></span><% } %>
+</nav>

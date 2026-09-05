@@ -1,0 +1,6 @@
+<%# The rendered fragment of one Verso page, looked up by url. -%>
+<%
+  const page = data.verso.byUrl[url];
+  if (!page) throw new Error(`verso-page: no page at ${url}`);
+%>
+<%- page.html %>

@@ -1,0 +1,86 @@
+/* Verso rendering inside the SG chrome.
+   Verso's page layout stylesheet (book.css) is not loaded; the SG bundle
+   owns layout and type. verso-vars.css and verso-inline.css (code
+   highlighting, docstrings, hovers) are, and this file maps Verso's
+   variables onto SG tokens so both themes work, then styles the few
+   surfaces the doc layout adds. */
+
+:root {
+  --verso-structure-font-family: var(--font-sans);
+  --verso-text-font-family: var(--font-sans);
+  --verso-code-font-family: var(--font-mono);
+  --verso-text-color: var(--color-base-content);
+  --verso-code-color: var(--color-base-content);
+  --verso-structure-color: var(--color-base-content);
+  --verso-selected-color: var(--color-base-200);
+  --verso-info-color: var(--color-base-content);
+  --verso-warning-color: var(--color-base-content);
+  --verso-code-keyword-color: var(--color-gold);
+  --verso-code-const-color: var(--color-base-content);
+  --verso-code-var-color: var(--color-base-content);
+  /* Layout variables verso-inline.css reads; defined in Verso's page
+     stylesheet (book.css), which is not loaded. */
+  --verso--content-padding-x: 1.5rem;
+  --verso--box-vertical-margin: 1.5rem;
+  --verso--box-padding: 1rem;
+  --verso-header-height: 0px;
+}
+
+/* From book.css: Verso renders signatures twice (wide and narrow) and
+   shows one per viewport width. */
+.narrow-only { display: none; }
+@media screen and (max-width: 500px) {
+  .wide-only { display: none; }
+  .narrow-only { display: revert; }
+}
+pre, code {
+  font-family: var(--verso-code-font-family);
+  font-variant-ligatures: none;
+  overflow-x: auto;
+  overflow-y: clip;
+}
+.hl.lean.block { margin: 1em 0 1em 0.75em; }
+.hl.lean code { font-family: var(--verso-code-font-family) !important; }
+.verso-page [id] { scroll-margin-top: 1rem; }
+
+/* Permalink widgets point at Verso's /find/ redirector, which this site
+   does not build (v1). */
+.permalink-widget { display: none; }
+
+/* Docstring cards (Verso's .namedocs) on SG surfaces. */
+.namedocs {
+  border-color: var(--color-base-300);
+  background: var(--color-base-100);
+}
+.namedocs .text { border-color: var(--color-base-300); }
+.namedocs .label {
+  color: var(--color-base-content);
+  background: var(--color-base-100);
+  border: 1px solid var(--color-base-300);
+  border-radius: 0.25rem;
+}
+.hl.lean.popup, .tippy-box .hl.lean {
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+}
+
+/* Book navigation added by layouts/verso-page.ejs. */
+.verso-nav { margin: 0 0 1.5rem; font-size: 0.9rem; }
+.verso-contents summary { cursor: pointer; }
+.verso-contents summary a { text-decoration: none; }
+.verso-toc, .verso-toc ol { list-style: none; padding-left: 1rem; margin: 0.25rem 0; }
+.verso-toc > li { margin: 0.15rem 0; }
+.verso-toc .num { color: var(--color-base-content); opacity: 0.6; }
+.verso-toc li.current > a { font-weight: 600; }
+.verso-prev-next {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin: 2.5rem 0 1rem; padding-top: 1rem;
+  border-top: var(--cc-hairline, 1px solid var(--color-base-300));
+  font-size: 0.9rem;
+}
+.verso-prev-next [rel=next] { text-align: right; }
+
+/* Section contents lists emitted by Verso on chapter pages. */
+.verso-page ol.section-toc { list-style: none; padding-left: 0; }
+.verso-page ol.section-toc ol { list-style: none; padding-left: 1.25rem; }
+.verso-page .titlepage .authors { opacity: 0.7; margin-bottom: 1rem; }

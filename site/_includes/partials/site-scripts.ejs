@@ -1,0 +1,4 @@
+<%# Body-end slot. Verso's inline page script (hover docstrings, binding
+    highlights); it fetches verso-docs.json relative to VERSO_ROOT. -%>
+<script>window.VERSO_ROOT = "<%= verso.root %>";</script>
+<script src="<%= verso.root %>verso-inline.js"></script>
