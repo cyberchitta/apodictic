@@ -2,10 +2,15 @@
 
 **Machine-checked praxeology.**
 
-Mises held that the theorems of praxeology, correctly deduced from the
-action axiom, are certain and incontestable in the manner of mathematical
-theorems — apodictically so (*Human Action*, ch. 2, "The A Priori and
-Reality").
+> The theorems attained by correct praxeological reasoning are not only
+> perfectly certain and incontestable, like the correct mathematical
+> theorems. They refer, moreover with the full rigidity of their
+> **apodictic** certainty and incontestability to the reality of action
+> as it appears in life and history. Praxeology conveys exact and
+> precise knowledge of real things.
+>
+> — Mises, *Human Action*, ch. II §3, "The A Priori and Reality"
+> (Scholar's Edition, p. 39; emphasis added)
 
 Mathematical theorems can be machine-checked. So let's check.
 
