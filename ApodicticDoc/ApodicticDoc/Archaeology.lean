@@ -19,8 +19,8 @@ forced, with the encodings we tried and rejected along the way. The
 rejected code is type-checked here, so the reasons for rejection can
 be inspected rather than trusted.
 
-The part is written from the lab notes of 2026-08-02 and 2026-09-04
-and from Nozick's 1977 paper, read 2026-09-04. Docstrings quoted here
+The part is written from the lab notes of 2026-08-02, 2026-09-04
+and 2026-09-05, and from Nozick's 1977 paper, read 2026-09-04. Docstrings quoted here
 are pulled live from the library and carry pedigree only; the
 history is in this part and nowhere in the code.
 
@@ -208,11 +208,24 @@ are all inside the chosen package.
 
 {docstring Apodictic.AllocationDisposition}
 
-Two commitments hide in the field shapes here, where the receipt
-cannot see them. The plan is indexed by the *number* of units, which
-enforces interchangeability silently. And `card_eq` is Rothbard's
-"we assume for simplicity" (p. 26): one unit, one end, no idle units.
-Both are logged for the units milestone.
+One commitment hides in a field shape here, where the receipt cannot
+see it: `card_eq` is Rothbard's "we assume for simplicity" (p. 26),
+one unit, one end, no idle units. A second used to. Until 2026-09-05
+the plan was indexed by the *number* of units, which enforced
+interchangeability silently; that encoding is restated here because
+the crash below happened in it, and its replacement is the subject
+of the units section.
+
+```lean
+/-- SUPERSEDED (2026-09-05): the disposition indexed by how many
+units, not which. Interchangeability of units is a type shape here,
+invisible to the receipt. -/
+structure CountDisposition {agent : World.Agent} {t : World.Time}
+    (s : Stock World agent t) where
+  wouldServe : ℕ → Finset World.End
+  serves_subset : ∀ n, ∀ e ∈ wouldServe n, e ∈ s.serves
+  card_eq : ∀ n ≤ s.units.card, (wouldServe n).card = n
+```
 
 ## Rejected: swap dominance over every plan
 
@@ -224,10 +237,11 @@ the document:
 
 ```lean
 /-- REJECTED (2026-09-04): swap dominance for EVERY disposition, not
-the agent's. Identical to the library axiom minus `hA`. -/
+the agent's. Identical to that day's library axiom minus `hA`, over
+the count-indexed disposition of the time. -/
 axiom swap_dominance_all
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
-    (A : AllocationDisposition s)
+    (A : CountDisposition s)
     (n : ℕ) (hn : n ≤ s.units.card) :
     ∀ e ∈ A.wouldServe n, ∀ e' ∈ s.serves, e' ∉ A.wouldServe n →
       World.Prefers agent t (↑(A.wouldServe n))
@@ -247,7 +261,7 @@ stock has a unit and two serviceable ends.
 ```lean (name := clash)
 theorem swap_dominance_all_clash
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
-    (A : AllocationDisposition s) (n : ℕ) (hn : n ≤ s.units.card)
+    (A : CountDisposition s) (n : ℕ) (hn : n ≤ s.units.card)
     (e : World.End) (he : e ∈ A.wouldServe n)
     (e' : World.End) (he's : e' ∈ s.serves) (hne : e' ∉ A.wouldServe n)
     (hasym : ∀ X Y : Set World.End,
@@ -266,7 +280,7 @@ theorem swap_dominance_all_clash
       rw [A.card_eq n hn] at this
       exact this
     omega
-  let A' : AllocationDisposition s :=
+  let A' : CountDisposition s :=
     { wouldServe := fun m => if m = n then S' else A.wouldServe m
       serves_subset := by
         intro m x hx
@@ -402,16 +416,19 @@ intend to add; transitivity has not been needed.
 
 # The hypotheses
 
-The theorems take three hypotheses. Each is a situational condition,
+The theorems take four hypotheses. Each is a situational condition,
 not a universal claim, and the diagnostic aim puts it in the statement
 so that it can be pointed at when it fails.
 
 The first is `actual_disposition A`: the plan under discussion is the
-agent's. The second is the supply bound, `n ≤ s.units.card`. The
-former axiom quantified over every supply level, which is more than
-the tradition's argument delivers; the disposition is data only
-within the stock on hand, and the derivation gives the law only
-there. The third is independence of uses.
+agent's. The second is that the sub-stocks compared are on hand and
+differ by one unit, `s.OneMore U V`; it descends from the supply
+bound `n ≤ s.units.card` of the count-indexed days. The former axiom
+quantified over every supply level, which is more than the
+tradition's argument delivers; the disposition is data only within
+the stock on hand, and the derivation gives the law only there. The
+third is independence of uses. The fourth, interchangeability of
+units, has its own section below.
 
 {docstring Apodictic.ActionFrame.IndependentUses}
 
@@ -435,6 +452,64 @@ one unit, and it is strict, as his is.
 {docstring Apodictic.urgency_principle}
 
 {docstring Apodictic.marginal_utility}
+
+# The units: where interchangeability is used
+
+The brief named this the known trap: the law needs homogeneous units,
+and Rothbard denies that indifference is demonstrable in action. The
+count-indexed disposition above had walked around it by putting
+interchangeability into a type: a plan that is a function of a number
+cannot depend on which units. The receipt could not see that.
+
+On 2026-09-05 the index became the sub-stock, the set of units the
+agent would have, and interchangeability became a named condition.
+
+{docstring Apodictic.AllocationDisposition.Homogeneous}
+
+The sub-stocks are hypothesized, never constructed: "one unit more"
+is inclusion plus a count, so no decidable equality on units was
+forced, though an `erase`-based statement would have forced one.
+
+{docstring Apodictic.Stock.OneMore}
+
+The prototype compiled at the first attempt, which by the project's
+rule is a warning, and the examination is the finding. Served over
+unserved, the urgency principle, and the law along a chain of named
+units need no interchangeability: each is about one sub-stock, and
+none compares two of the same size. Rothbard's wording, by supply
+size, uses it exactly once, to identify the plan at one sub-stock of
+size `n` with the plan at another. Without it "the marginal utility
+of a supply of `n` units" is not a function of `n`, so the supply-size
+form cannot be stated. That is Nozick's p. 371, "without the notion
+of a unit ... we have no way to state the law", located: a condition
+on stating the law by size, not a premise of the ordering.
+
+{docstring Apodictic.marginal_utility_chain}
+
+Three notions of homogeneity were in play, and the text has all
+three. Equal serviceability, `Stock.homog`, is p. 22, "equally
+capable of rendering the same service", a belief notion; it does no
+formal work in either form of the law. Indifference in value between
+units is p. 23, "Cow A and cow B were valued equally", "regards
+horses B and C indifferently", and it is withdrawn on p. 24:
+interchangeability "does not mean that the concrete units are
+actually valued equally." It is needed nowhere. What the supply-size
+form needs is the third, that the plan ignores which units, and that
+is subjunctive, what the agent would serve with horses A and B
+against B and C. It is the same kind of commitment the base already
+carries in `swap_dominance`, so the trap is one collision, not two.
+
+Where the condition lives was the human's decision. An axiom
+bridging equal serviceability to a homogeneous plan would have put a
+fifth line on the receipt and made `Stock.homog` do work; it would
+also claim a universal fact about action where the text gives a
+definition. Rothbard: "If a specific unit is differently evaluated
+from all other units, then the supply of that good is only one unit"
+(p. 23). Interchangeability is what makes units one supply, so where
+it fails the law's supply-size form is silent about them as one good,
+and a hypothesis says exactly that. The other premise Rothbard names
+for the reallocation, "disregard of past events" (p. 27), has nothing
+to bite on in a one-instant frame, and waits for time to do work.
 
 # What the law does not rest on
 
@@ -485,12 +560,13 @@ hole as the first `swap_dominance`, though that was never checked
 because it was superseded the same day.
 
 ```lean
-/-- SUPERSEDED (2026-09-04, evening): the urgency principle asserted.
-Compare the theorem `urgency_principle`, which has the same
-conclusion under two more hypotheses. -/
+/-- SUPERSEDED (2026-09-04, evening): the urgency principle asserted,
+over the count-indexed disposition of the time. Compare the theorem
+`urgency_principle`, which has the same conclusion under two more
+hypotheses. -/
 axiom urgency_principle_asserted
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
-    (A : AllocationDisposition s) (n : ℕ) :
+    (A : CountDisposition s) (n : ℕ) :
     ∀ e ∈ A.wouldServe n, ∀ e', e' ∈ A.wouldServe (n + 1) →
       e' ∉ A.wouldServe n → World.PrefersEnd agent t e e'
 ```
@@ -502,10 +578,11 @@ The consistency model lives in the library, in
 in prose would defeat the purpose. It was built the evening the
 over-quantified swap dominance was refuted, to show the fixed axiom
 survives asymmetry. What it shows and does not show is stated in the
-result part. Two things remain open: the toy has not been made to
-exhibit a case where the law's conclusion is a non-trivial
-preference, and the transfer from the frame vocabulary to the
-`World` axioms is a reading, not a check.
+result part. The toy was extended on 2026-09-05 to the sub-stock
+plan: it is homogeneous, one-unit steps exist, and each step has a
+marginal end, so the law's conclusion is a non-trivial preference in
+it. What remains open is the transfer from the frame vocabulary to
+the `World` axioms, which is a reading, not a check.
 
 # Methodological findings
 

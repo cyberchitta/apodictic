@@ -97,8 +97,8 @@ attribute [instance] ends_distinguishable
 
 /-- **The agent's actual disposition** — which allocation plan is
 the one the agent would follow. `AllocationDisposition s` is a
-type, inhabited by every function from supply to served ends that
-meets the bookkeeping conditions; this predicate names the agent's
+type, inhabited by every function from sub-stock to served ends
+that meets the bookkeeping conditions; this predicate names the agent's
 own plan, so that an axiom can be restricted to it instead of
 speaking of every conceivable plan.
 
@@ -120,10 +120,10 @@ axiom actual_disposition
     AllocationDisposition s → Prop
 
 /-- **Swap dominance** — subjunctive preference over allocations, in
-one-swap form, for the agent's actual disposition. At every supply
-`n` within the stock, the bundle the agent would serve is preferred
-to the bundle obtained by withdrawing one served end `e` and
-serving in its place a serviceable end `e'` that was not served.
+one-swap form, for the agent's actual disposition. With any sub-stock
+`U` of the units on hand, the bundle the agent would serve is
+preferred to the bundle obtained by withdrawing one served end `e`
+and serving in its place a serviceable end `e'` that was not served.
 
 Source: Rothbard, *MES*, ch. 1, §5.B, pp. 24–27 (Mises Institute
 ed.): "action uses scarce means to satisfy the most urgent of the
@@ -147,14 +147,17 @@ Does not say: (1) anything about actual action — the bridge from
 action to preference is not in the base; (2) anything about
 alternatives differing by more than one swap; (3) anything about
 independence of uses, which is the hypothesis `IndependentUses` of
-the theorems; (4) anything beyond the actual supply
-(`n ≤ s.units.card`), which is all the disposition is data for. -/
+the theorems; (4) anything about units not on hand (`U ⊆ s.units`),
+which is all the disposition is data for; (5) anything about
+interchangeability of units — that two sub-stocks of the same size
+would serve the same ends is the hypothesis `Homogeneous`, not part
+of this axiom. -/
 axiom swap_dominance
     {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
     (A : AllocationDisposition s) (hA : actual_disposition A)
-    (n : ℕ) (hn : n ≤ s.units.card) :
-    ∀ e ∈ A.wouldServe n, ∀ e' ∈ s.serves, e' ∉ A.wouldServe n →
-      World.Prefers agent t (↑(A.wouldServe n))
-        (insert e' ((↑(A.wouldServe n) : Set World.End) \ {e}))
+    (U : Finset World.Means) (hU : U ⊆ s.units) :
+    ∀ e ∈ A.wouldServe U, ∀ e' ∈ s.serves, e' ∉ A.wouldServe U →
+      World.Prefers agent t (↑(A.wouldServe U))
+        (insert e' ((↑(A.wouldServe U) : Set World.End) \ {e}))
 
 end Apodictic

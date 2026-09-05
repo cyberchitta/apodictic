@@ -65,7 +65,16 @@
    {"numbering": null,
     "level": null,
     "html": "<code>AllocationDisposition</code>",
-    "dest": "/The-Result/Vocabulary/#Apodictic___AllocationDisposition___mk"}],
+    "dest": "/The-Result/Vocabulary/#Apodictic___AllocationDisposition___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>Homogeneous</code>",
+    "dest":
+    "/The-Result/Vocabulary/#Apodictic___AllocationDisposition___Homogeneous"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>OneMore</code>",
+    "dest": "/The-Result/Vocabulary/#Apodictic___Stock___OneMore"}],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Vocabulary",
   "fragment": "pages/The-Result/Vocabulary.html",
   "depth": 2},
@@ -152,12 +161,20 @@
   "localToc":
   [{"numbering": null,
     "level": null,
+    "html": "<code>served_over_unserved</code>",
+    "dest": "/The-Result/Theorems/#Apodictic___served_over_unserved"},
+   {"numbering": null,
+    "level": null,
     "html": "<code>urgency_principle</code>",
     "dest": "/The-Result/Theorems/#Apodictic___urgency_principle"},
    {"numbering": null,
     "level": null,
     "html": "<code>marginalEnds</code>",
     "dest": "/The-Result/Theorems/#Apodictic___marginalEnds"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginal_utility_chain</code>",
+    "dest": "/The-Result/Theorems/#Apodictic___marginal_utility_chain"},
    {"numbering": null,
     "level": null,
     "html": "<code>marginal_utility</code>",
@@ -455,9 +472,9 @@
   "path": ["The-Archaeology", "The-hypotheses"],
   "next":
   {"url":
-   "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on",
-   "titleText": "What the law does not rest on",
-   "title": "What the law does not rest on",
+   "/The-Archaeology/The-units___-where-interchangeability-is-used/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-units___-where-interchangeability-is-used",
+   "titleText": "The units: where interchangeability is used",
+   "title": "The units: where interchangeability is used",
    "sectionNum": "2.7."},
   "localToc":
   [{"numbering": null,
@@ -488,9 +505,9 @@
   "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-hypotheses",
   "fragment": "pages/The-Archaeology/The-hypotheses.html",
   "depth": 2},
- {"url": "/The-Archaeology/What-the-law-does-not-rest-on/",
-  "titleText": "What the law does not rest on",
-  "title": "2.7. What the law does not rest on",
+ {"url": "/The-Archaeology/The-units___-where-interchangeability-is-used/",
+  "titleText": "The units: where interchangeability is used",
+  "title": "2.7. The units: where interchangeability is used",
   "sectionNum": "2.7.",
   "prev":
   {"url":
@@ -498,13 +515,51 @@
    "titleText": "The hypotheses",
    "title": "The hypotheses",
    "sectionNum": "2.6."},
+  "path": ["The-Archaeology", "The-units___-where-interchangeability-is-used"],
+  "next":
+  {"url":
+   "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on",
+   "titleText": "What the law does not rest on",
+   "title": "What the law does not rest on",
+   "sectionNum": "2.8."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>Homogeneous</code>",
+    "dest":
+    "/The-Archaeology/The-units___-where-interchangeability-is-used/#Apodictic___AllocationDisposition___Homogeneous-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>OneMore</code>",
+    "dest":
+    "/The-Archaeology/The-units___-where-interchangeability-is-used/#Apodictic___Stock___OneMore-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginal_utility_chain</code>",
+    "dest":
+    "/The-Archaeology/The-units___-where-interchangeability-is-used/#Apodictic___marginal_utility_chain-next"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-units___-where-interchangeability-is-used",
+  "fragment":
+  "pages/The-Archaeology/The-units___-where-interchangeability-is-used.html",
+  "depth": 2},
+ {"url": "/The-Archaeology/What-the-law-does-not-rest-on/",
+  "titleText": "What the law does not rest on",
+  "title": "2.8. What the law does not rest on",
+  "sectionNum": "2.8.",
+  "prev":
+  {"url":
+   "/The-Archaeology/The-units___-where-interchangeability-is-used/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--The-units___-where-interchangeability-is-used",
+   "titleText": "The units: where interchangeability is used",
+   "title": "The units: where interchangeability is used",
+   "sectionNum": "2.7."},
   "path": ["The-Archaeology", "What-the-law-does-not-rest-on"],
   "next":
   {"url":
    "/The-Archaeology/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Consistency",
    "titleText": "Consistency",
    "title": "Consistency",
-   "sectionNum": "2.8."},
+   "sectionNum": "2.9."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -522,35 +577,35 @@
   "depth": 2},
  {"url": "/The-Archaeology/Consistency/",
   "titleText": "Consistency",
-  "title": "2.8. Consistency",
-  "sectionNum": "2.8.",
+  "title": "2.9. Consistency",
+  "sectionNum": "2.9.",
   "prev":
   {"url":
    "/The-Archaeology/What-the-law-does-not-rest-on/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--What-the-law-does-not-rest-on",
    "titleText": "What the law does not rest on",
    "title": "What the law does not rest on",
-   "sectionNum": "2.7."},
+   "sectionNum": "2.8."},
   "path": ["The-Archaeology", "Consistency"],
   "next":
   {"url":
    "/The-Archaeology/Methodological-findings/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Methodological-findings",
    "titleText": "Methodological findings",
    "title": "Methodological findings",
-   "sectionNum": "2.9."},
+   "sectionNum": "2.10."},
   "localToc": [],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Consistency",
   "fragment": "pages/The-Archaeology/Consistency.html",
   "depth": 2},
  {"url": "/The-Archaeology/Methodological-findings/",
   "titleText": "Methodological findings",
-  "title": "2.9. Methodological findings",
-  "sectionNum": "2.9.",
+  "title": "2.10. Methodological findings",
+  "sectionNum": "2.10.",
   "prev":
   {"url":
    "/The-Archaeology/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Archaeology--Consistency",
    "titleText": "Consistency",
    "title": "Consistency",
-   "sectionNum": "2.8."},
+   "sectionNum": "2.9."},
   "path": ["The-Archaeology", "Methodological-findings"],
   "next": null,
   "localToc": [],

@@ -270,11 +270,21 @@ Plus the lab notebook, outside both packages:
 - [ ] Route through ACTUAL action? Needs `Action` with bundle
       choices + a disposition-realization axiom. Shape decision,
       presented, not taken (OPEN.md).
-- [ ] Milestone 1 completion — the honest units treatment:
-      sub-stock-indexed disposition with homogeneity as an explicit
-      axiom (currently enforced silently by the ℕ index type); unit
-      size is action-relative (MES p. 28); document the p. 23/24
-      indifference tension.
+- [x] Milestone 1 completion, 2026-09-05 — the honest units
+      treatment. Disposition indexed by sub-stock (`Finset Means`);
+      interchangeability of units is the named hypothesis
+      `Homogeneous` (human's choice over an axiom: Rothbard makes it
+      definitional of a supply, MES p. 23). FINDING: the ordering
+      (`served_over_unserved`, `urgency_principle`) and the law along
+      a chain of named units (`marginal_utility_chain`) need no
+      interchangeability; Rothbard's supply-size wording
+      (`marginal_utility`) uses it once, to make "the plan at n" a
+      function of n — Nozick p. 371 located on the statement, not the
+      derivation. Indifference between units (p. 23, withdrawn p. 24)
+      is needed nowhere. `swap_dominance` restated over sub-stocks;
+      receipts unchanged. Unit size is action-relative in the `Stock`
+      docstring (p. 28). Notes:
+      `_notes/2026-09-05-units-treatment-choice.md`.
 - [ ] Make the repo public (human). Gates the doc site and the
       article; the article links the receipt.
 - [x] Doc site built 2026-09-05: Lean emitter replacing Verso's page
