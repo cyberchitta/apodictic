@@ -302,8 +302,12 @@ Plus the lab notebook, outside both packages:
       untouched. Open: search/find skipped, page slugs, CSS split home,
       light-theme and mobile visual QA.
       `_notes/2026-09-05-doc-site-build.md`.
-- [ ] Before announcing (human): read Nozick 1977 §III yourself; rule
-      on the four axiom docstrings via the Verso result part.
+- [ ] Gates on the article (human): read Nozick 1977 §III yourself; rule
+      on the four axiom docstrings via the Verso result part. These do
+      NOT lapse with the announcement — the article ends on the Nozick
+      collision, so gate 1 is its load-bearing claim. The ask was struck
+      2026-09-06 (human: no ask, no venue) and the announcement note's
+      false ℕ-index sentence went with it.
       `_notes/2026-09-04-announcement-plan.md`.
 - [ ] Write-up of findings to date before attempting exchange — the
       first article, drafted on the site side from a facts-only brief:
