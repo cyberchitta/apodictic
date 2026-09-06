@@ -13,19 +13,11 @@ set_option verso.code.warnLineLength 0
 tag := "result"
 %%%
 
-Mises said the theorems of praxeology are as certain as the theorems
-of mathematics. They follow from the plain fact that people act, he
-thought, as strictly as a theorem follows from its axioms, and no
-experience could ever overturn one.
-
-This is a test of that claim on a single theorem: Rothbard's law of
-marginal utility, rebuilt in Lean 4, a proof assistant.
-
-A proof assistant will not let you skip a step. Anything a spoken
-argument passes over in silence has to be written down before the
-proof will go through — and written into the theorem's own statement,
-either as a listed assumption or in the type of one. So there is a
-fixed place to look. Read the statement, then read the definitions it
+How to read this page. A proof assistant will not let you skip a
+step. Anything a spoken argument passes over in silence has to be
+written down before the proof will go through — and written into the
+theorem's own statement, either as a listed assumption or in the type
+of one. So there is a fixed place to look. Read the statement, then read the definitions it
 names, and you have seen everything the result depends on. A few
 claims sit one level down, inside a structure the theorem takes as an
 argument, but nothing is off the page.
@@ -37,24 +29,94 @@ the whole reason to do this on a machine.
 Every docstring below is pulled out of the library when this page is
 built. What you read is what was checked.
 
+# The horses
+
+Rothbard's law of marginal utility is derived over three pages of
+*Man, Economy, and State*, and he derives it on a worked case. A man
+owns six horses. This page follows that case throughout — the Lean
+below is about the same six horses, and the point of doing it that way
+is that you can hold his paragraph beside the formal statement and see
+whether they say the same thing.
+
+He sets it up twice. First by acquisition (*MES* p. 24):
+
+> The first horse will fulfill the most urgent wants that a horse can
+> serve; this follows from the universal fact that action uses scarce
+> means to satisfy the most urgent of the not yet satisfied wants.
+
+Then, for the diagram, by counting the ends (pp. 25–26):
+
+> We assume for simplicity that there are 10 ends which the means
+> could fulfill, and that each unit of means is capable of serving one
+> of the ends. If the supply of the good is 6 units, then the first
+> six ends, ranked in order of importance by the valuing individual,
+> are the ones that are being satisfied. Ends ranked 7–10 remain
+> unsatisfied.
+
+And then he takes a horse away (p. 25):
+
+> Assume that a man has a supply of six (interchangeable) horses. …
+> Suppose that he is now faced with the necessity of giving up one
+> horse. … Obviously, he gives up the least urgent of the wants which
+> the larger stock would have satisfied. Thus, if the individual was
+> using one horse for pleasure riding, and he considers this the least
+> important of his wants that were fulfilled by the six horses, the
+> loss of a horse will cause him to give up pleasure riding.
+
+That is the whole derivation. Everything below is an attempt to say it
+in a form a machine will check.
+
+Three pieces of vocabulary carry it, and they are worth naming now
+because the shape of the argument turns on the third. There is a
+**stock** — the six horses, and the ends a horse can serve at all.
+There is a **plan** — for any number of horses he might have, which
+wants he would serve with them. And there is the **preference** the
+plan expresses, which ranks bundles of wants and is not assumed to do
+anything else: not transitive, not complete, no numbers attached. The
+full definitions are in the appendix; nothing before it depends on
+reading them.
+
+The plan is where the trouble starts, and it is worth seeing why
+before the formal statement makes it look inevitable. Rothbard's
+argument compares six horses with five. But the man has six. What he
+would do with five is not something he does — it is a plan spanning
+piles he does not own. Notice that the quotation itself is in the
+subjunctive: "which the larger stock *would have* satisfied".
+
+There is a second horse passage, and it is the one that decides how
+the plan has to be written down (p. 27):
+
+> suppose that the sixth horse that he had previously acquired (named
+> "Seabiscuit") he had placed in the service of pleasure riding.
+> Suppose that he now must lose another horse ("Man o' War") which had
+> arrived earlier, and which was engaged in the more important duty
+> (to him) of leading a wagon. He will still give up end 6 by simply
+> transferring Seabiscuit from this function to the wagon-leading end.
+
+Rothbard names two horses in order to insist that *which* horse goes
+makes no difference. That only means something if the plan could in
+principle have depended on which — so the plan here is indexed by
+which horses, and the claim that it depends only on how many is a
+separate named condition. Both of these conclusions of his are
+theorems below, proved of the six horses.
+
 # The finding
 
 The law of marginal utility needs exactly one premise from praxeology,
 and that premise is not about action.
 
-It is about what the agent *would* do. For each smaller or larger pile
-of units he might have, which wants would he serve? That is a plan
-spanning piles he does not own, not a choice he makes.
+It is about what the man *would* do. For each smaller or larger string
+of horses he might have, which wants would he serve? That is a plan
+spanning stocks he does not own, not a choice he makes.
 
 Rothbard's own premise packs two claims into one sentence: that a man
 acts with the means he has, and that the wants he serves are "the most
 urgent of the not yet satisfied wants" (*MES* p. 24). Only the second
-does any work here. And it does that work in the subjunctive,
-stretched across piles the agent does not have — exactly as Rothbard
-stretches it himself. He sets a stock of six horses beside a stock of
-five and asks which want "the larger stock would have satisfied"
-(p. 25). No single real act can answer that. You have to ask what
-would have happened.
+does any work here. And it does that work in the subjunctive, across
+stocks the man does not have — exactly as his own argument does, when
+it sets six horses beside five and asks which want "the larger stock
+would have satisfied" (p. 25). No single real act can answer that. You
+have to ask what would have happened.
 
 The trouble is Rothbard's own, not something imported from outside. He
 says praxeology "may deal with utilities only as deduced from the
@@ -87,41 +149,8 @@ None of this refutes the law. Lean certifies that the reasoning is
 valid and that it uses nothing beyond what the statement carries. What
 is in question is where the one starting premise came from.
 
-# Vocabulary
+# The one premise
 
-The basic vocabulary is deliberately bare. Preference is just a
-relation: not assumed transitive, not assumed to rank every pair, and
-time is not assumed ordered. Properties get added when a theorem
-forces them, and so far none has.
-
-{docstring Apodictic.ActionFrame}
-
-{docstring Apodictic.ActionFrame.PrefersEnd}
-
-The law is about a stock of units and what the agent would do with
-more or fewer of them.
-
-{docstring Apodictic.Stock}
-
-{docstring Apodictic.AllocationPlan}
-
-One claim sits a level down. `oneUnitOneEnd` — one unit serves one end, with
-no unit left idle — is Rothbard's "we assume for simplicity" (p. 26).
-It is a field of the plan rather than a listed assumption. Every
-theorem below takes a plan `A : AllocationPlan s`, so the claim
-is still on the page; you read it off the type of an argument instead
-of the assumption list. That is the one place an audit has to look
-past the signature.
-
-Interchangeability of units is *not* down there. The plan is indexed
-by which exact units the agent holds. That it depends only on how many
-is a separate named condition, below.
-
-{docstring Apodictic.AllocationPlan.Homogeneous}
-
-{docstring Apodictic.Stock.OneMore}
-
-# Commitments
 
 The library contains no `axiom`. Every praxeological claim is a
 structure, and a theorem that needs one takes it as a named
@@ -141,13 +170,15 @@ deliberately avoids.
 Two rules govern the list. A claim is added only when some theorem
 first needs it, so nothing appears here that no theorem uses. And only
 claims meant to hold universally are commitments; conditions saying
-when a law applies are hypotheses instead, listed below.
+when a law applies are hypotheses instead, and they have a part of
+their own below.
 
 There is exactly one.
 
 {docstring Apodictic.SwapDominant}
 
-# Hypotheses
+# The conditions
+
 
 The theorems take three assumptions besides the commitment. Each is a
 condition on the situation rather than a universal claim about action,
@@ -169,7 +200,8 @@ to refute.
 
 {docstring Apodictic.ActionFrame.IndependentUses}
 
-# Theorems
+# The theorems
+
 
 Rothbard's urgency principle says that losing a unit costs you the
 least urgent want. Here that is a theorem rather than a premise. The
@@ -193,6 +225,7 @@ does.
 {docstring Apodictic.marginal_utility}
 
 # The receipt
+
 
 ```lean (name := receipt)
 #print axioms marginal_utility
@@ -220,13 +253,13 @@ hand; and one data condition on the frame, `[DecidableEq frame.End]`. The
 urgency principle and the chain form carry the same list without
 `Homogeneous`.
 
-# The horses
+# The horses in Lean
 
-Consistency is not a side-question here, and the model is not an
-invented one. It is Rothbard's own worked case (*MES* pp. 25–27): a
-man with six interchangeable horses, ten ends ranked in order of
-importance, each horse able to serve one of them. The six horses serve
-the first six ends; ends 7–10 go unserved.
+The case from the opening, built. This is also the consistency
+argument, and the two jobs are the same job: if Rothbard's own six
+horses satisfy the commitment and every condition at once, then the
+commitment and the conditions are jointly satisfiable and the theorems
+are not about nothing.
 
 Wants are ranks on the man's value scale, and the lower rank is the
 more urgent want:
@@ -266,27 +299,8 @@ earlier horse is Man o' War is arbitrary — Rothbard says only that he
 arrived before Seabiscuit, and nothing about a horse but its identity
 enters any claim.
 
-# Not in the base
+# The other findings
 
-Two claims central to the doctrine are used by no theorem, and so are
-not commitments. The first is the bridge from what a man actually does
-to what he prefers — demonstrated preference, in Rothbard's sense.
-It is written out here in the form it would take, and parked:
-
-```lean
-/-- PARKED: the bridge from actual action to preference. Carried by
-no theorem; lives in the document, not the library. -/
-structure DemonstratedPreference (frame : ActionFrame) : Prop where
-  bridge : ∀ act : Action frame, ∀ givenUp ∈ act.forgone,
-    frame.Prefers act.agent act.time {act.chosen} {givenUp}
-```
-
-The second is the claim that there is any action at all. Action itself
-is a definition here, and no theorem uses it yet.
-
-{docstring Apodictic.Action}
-
-# Findings
 
 What the derivation turned out to be, beyond the premise it rests on.
 
@@ -345,3 +359,62 @@ Findings about the formalizing rather than the doctrine.
   harmless and yields a uniqueness result: `no_rival_swap_dominant`,
   that two plans satisfying the commitment cannot differ by a single
   swap. So "the" value scale is a theorem here, not a premise.
+
+# The vocabulary
+
+Reference. These are the definitions the statements above are written
+in; nothing earlier depends on having read them.
+
+The basic vocabulary is deliberately bare. Preference is just a
+relation: not assumed transitive, not assumed to rank every pair, and
+time is not assumed ordered. Properties get added when a theorem
+forces them, and so far none has.
+
+{docstring Apodictic.ActionFrame}
+
+{docstring Apodictic.ActionFrame.PrefersEnd}
+
+The law is about a stock of units and what the agent would do with
+more or fewer of them.
+
+{docstring Apodictic.Stock}
+
+{docstring Apodictic.AllocationPlan}
+
+One claim sits a level down. `oneUnitOneEnd` — one unit serves one end, with
+no unit left idle — is Rothbard's "we assume for simplicity" (p. 26).
+It is a field of the plan rather than a listed assumption. Every
+theorem below takes a plan `A : AllocationPlan s`, so the claim
+is still on the page; you read it off the type of an argument instead
+of the assumption list. That is the one place an audit has to look
+past the signature.
+
+Interchangeability of units is *not* down there. The plan is indexed
+by which exact units the agent holds. That it depends only on how many
+is a separate named condition, below.
+
+{docstring Apodictic.AllocationPlan.Homogeneous}
+
+{docstring Apodictic.Stock.OneMore}
+
+# Claims no theorem uses
+
+
+Two claims central to the doctrine are used by no theorem, and so are
+not commitments. The first is the bridge from what a man actually does
+to what he prefers — demonstrated preference, in Rothbard's sense.
+It is written out here in the form it would take, and parked:
+
+```lean
+/-- PARKED: the bridge from actual action to preference. Carried by
+no theorem; lives in the document, not the library. -/
+structure DemonstratedPreference (frame : ActionFrame) : Prop where
+  bridge : ∀ act : Action frame, ∀ givenUp ∈ act.forgone,
+    frame.Prefers act.agent act.time {act.chosen} {givenUp}
+```
+
+The second is the claim that there is any action at all. Action itself
+is a definition here, and no theorem uses it yet.
+
+{docstring Apodictic.Action}
+
