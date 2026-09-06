@@ -11,8 +11,9 @@ below, in two forms:
 - `marginal_utility_chain`: along a chain of specific units, what the
   second unit adds is less urgent than what the first added. Needs
   no interchangeability of units.
-- `marginal_utility`: Rothbard's wording, by supply SIZE — "the
-  greater the supply, the lower the marginal utility". Needs
+- `marginal_utility`: Rothbard's wording, by supply SIZE — "The
+  greater the supply of a good, the lower the marginal utility".
+  Needs
   `plan.Homogeneous` (interchangeability), used exactly once: to say
   what "the plan at `n` units" is. Without it the supply-size form
   cannot be stated: interchangeability is a condition on STATING the
@@ -43,9 +44,9 @@ marginality of the end at the smaller supply is unused by the proof
 
 namespace Apodictic
 
-/-- One more unit always serves some new end: there is an end served
-with `more` that is not served with `fewer`. Pure counting, carrying no
-philosophical weight — it just keeps the law from being about
+/-- One more unit always serves some new end: some end is served with
+`more` that is not served with `fewer`. Pure counting, carrying no
+philosophical weight — it only keeps the law from being about
 nothing. -/
 theorem exists_marginal {frame : ActionFrame} {agent : frame.Agent}
     {time : frame.Time} {stock : Stock frame agent time}
@@ -63,20 +64,21 @@ theorem exists_marginal {frame : ActionFrame} {agent : frame.Agent}
     step.2.2] at hle
   exact Nat.not_succ_le_self fewer.card hle
 
-/-- **Marginal utility of the step `U → V`** — of going up by one
-unit — in Rothbard's own sense: the ends the extra unit adds, which
-are the same as the ends that would be given up if it were lost.
+/-- **Marginal utility of a one-unit step**, from `fewer` to `more`,
+in Rothbard's own sense: the ends the extra unit adds, which are the
+same ends that would be given up if it were lost.
 "The marginal utility of the supply is the end that must be given up
 as the result of a loss of the unit" (*MES* p. 27); "he gives up the
 least urgent of the wants which the larger stock would have
 satisfied" (p. 25).
 
-A set of ends rather than a single end, because it is not assumed
-that exactly one end drops (see the module docstring). A `Set` rather
-than a `Finset` for a mechanical reason: subtracting one `Finset`
-from another needs decidable equality on `frame.End`, which an arbitrary
-frame does not give us, and reaching for `Classical` would put
-`Classical.choice` on the receipt for no praxeological reason at all.
+A set of ends rather than a single end, because nothing here assumes
+that exactly one end drops (see the module docstring). It is a `Set`
+rather than a `Finset` for a mechanical reason: subtracting one
+`Finset` from another requires being able to decide when two ends are
+the same end, which an arbitrary frame does not give us — and reaching
+for `Classical` would put `Classical.choice` on the receipt for no
+praxeological reason at all.
 
 A definition, not a claim — Rothbard introduces it as one ("is
 called", "is known as"). What licenses calling this the utility of
@@ -94,10 +96,11 @@ def marginalEnds {frame : ActionFrame} {agent : frame.Agent}
   {want | want ∈ plan.wouldServe more ∧ want ∉ plan.wouldServe fewer}
 
 /-- **The law of marginal utility, along a chain of named units.**
-Take `U ⊂ V ⊂ W`, each one unit more than the last. Every end the
-first step adds is preferred to every end the second step adds.
+Take three sub-stocks, `small` inside `medium` inside `large`, each
+one unit more than the last. Every end the first step adds is
+preferred to every end the second step adds.
 
-No interchangeability of units is needed, because the chain says
+No interchangeability of units is needed, because the chain names
 which units are involved. One application of `urgency_principle`; the
 fact that the first step's end is marginal there goes unused
 (`_notNeeded`). -/
@@ -128,9 +131,10 @@ at a supply of `n` units is preferred to every end marginal at a
 supply of `n + 1` — and that holds for ANY two one-unit steps
 reaching those sizes, which need not have a single unit in common.
 
-`plan.Homogeneous` is needed exactly once, to say that the plan with the
-`n` units below the second step is the plan with the `n` units of the
-first. The fact that the end at `n` is marginal there goes unused
+`plan.Homogeneous` is needed exactly once: to say that the plan at the
+`n` units below the second step is the same as the plan at the `n`
+units of the first. Without it the two steps could not be compared at
+all. The fact that the end at `n` is marginal there goes unused
 (`_notNeeded`). -/
 theorem marginal_utility
     {frame : ActionFrame} [DecidableEq frame.End]

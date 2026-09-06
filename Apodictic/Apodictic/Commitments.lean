@@ -86,8 +86,8 @@ reallocation argument (p. 27: "follows from the defined
 interchangeability of units and from disregard of past events").
 Mises, *Human Action*, ch. VII.1.
 
-Status: explicit-in-tradition as doctrine; the one-swap form and the
-splitting-apart are our-reconstruction. Rothbard's premise fuses two
+Status: explicit-in-tradition as doctrine; the one-swap form, and the
+pulling apart of the two halves below, are our-reconstruction. Rothbard's premise fuses two
 claims in one sentence: that ACTION employs the means, and that the
 wants served are "the most urgent of the not yet satisfied wants"
 (*MES* p. 24). This commitment keeps the ordering half and states it
@@ -95,19 +95,20 @@ subjunctively, over what the agent WOULD serve. The subjunctive is
 Rothbard's own — his derivation compares a stock of six with a stock
 of five and asks which want "the larger stock would have satisfied"
 (p. 25), a comparison no single actual allocation delivers. The
-action half is dropped, not discharged: nothing here bridges an act
-to a preference. That is where the collision lives, and it is
-internal to Rothbard. His own restriction is that praxeology "may
-deal with utilities only as deduced from the concrete actions of
-human beings" (*MES* p. 882 n. 8) — and the premise his law needs is
-not one that restriction admits.
+action half is dropped rather than answered: nothing here bridges an
+act to a preference.
 
-Asserted of ONE plan, not of every plan of that type. This is not a
-hedge. Given one plan, rival plans can be defined, so a claim about
-all of them can be refuted by construction. Stated of the single plan
-a theorem is handed, the question does not arise — and that a rival
-cannot also be swap-dominant becomes a theorem
-(`no_rival_swap_dominant`, `Apodictic.Urgency`) rather than a
+And that is the clash, which is Rothbard's own. He holds that
+praxeology "may deal with utilities only as deduced from the concrete
+actions of human beings" (*MES* p. 882 n. 8). The premise his law
+needs is not of that kind.
+
+Asserted of ONE plan, not of every plan of that shape — and that is
+not a hedge. Given one plan, a rival can always be defined, so a claim
+about all of them could be refuted just by building one. Asserted of
+the single plan a theorem is handed, there is no such rival to build.
+Whether a rival one swap away could also be swap-dominant then becomes
+a theorem (`no_rival_swap_dominant`, `Apodictic.Urgency`) instead of a
 premise.
 
 Does not say:
@@ -117,8 +118,8 @@ Does not say:
 2. Anything about alternatives that differ by more than one swap.
 3. Anything about independence of uses — that is the theorems'
    hypothesis `IndependentUses`.
-4. Anything about units not on hand (`U ⊆ s.units`), which is all
-   the plan is data for.
+4. Anything about units not on hand (`subStock ⊆ stock.units`), which
+   is all the plan speaks about.
 5. Anything about interchangeability of units. That two sub-stocks
    of the same size would serve the same ends is the hypothesis
    `Homogeneous`, and no part of this claim.

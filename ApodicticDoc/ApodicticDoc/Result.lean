@@ -14,29 +14,29 @@ tag := "result"
 %%%
 
 How to read this page. A proof assistant will not let you skip a
-step. Anything a spoken argument passes over in silence has to be
-written down before the proof will go through — and written into the
-theorem's own statement, either as a listed assumption or in the type
-of one. So there is a fixed place to look. Read the statement, then read the definitions it
-names, and you have seen everything the result depends on. A few
-claims sit one level down, inside a structure the theorem takes as an
-argument, but nothing is off the page.
+step, and it makes you write the missing premise into the theorem's
+own statement. So there is one fixed place to look. Read the
+statement, then read the definitions it names, and you have seen
+everything the result depends on. A few claims sit one level down,
+inside a structure the theorem takes as an argument, but nothing is
+off the page.
 
-The list is not padded either. `#lint only unusedArguments` breaks the
-build if an assumption is listed but the proof never uses it. That is
-the whole reason to do this on a machine.
+The list is not padded, either. `#lint only unusedArguments` breaks
+the build if an assumption is listed but the proof never uses it. That
+is the whole reason to do this on a machine: it will not let the list
+grow, and it will not let it shrink.
 
 Every docstring below is pulled out of the library when this page is
 built. What you read is what was checked.
 
 # The horses
 
-Rothbard's law of marginal utility is derived over three pages of
-*Man, Economy, and State*, and he derives it on a worked case. A man
-owns six horses. This page follows that case throughout — the Lean
-below is about the same six horses, and the point of doing it that way
-is that you can hold his paragraph beside the formal statement and see
-whether they say the same thing.
+The law of marginal utility is derived over three pages of *Man,
+Economy, and State*, and Rothbard derives it on a worked case: a man
+who owns six horses. This page follows that case throughout, and the
+Lean at the end is about the same six horses. The point of working
+that way is that you can hold his paragraph beside the formal
+statement and judge for yourself whether they say the same thing.
 
 He sets it up twice. First by acquisition (*MES* p. 24):
 
@@ -76,12 +76,12 @@ anything else: not transitive, not complete, no numbers attached. The
 full definitions are in the appendix; nothing before it depends on
 reading them.
 
-The plan is where the trouble starts, and it is worth seeing why
+The plan is where the trouble starts, and it is worth seeing why now,
 before the formal statement makes it look inevitable. Rothbard's
 argument compares six horses with five. But the man has six. What he
-would do with five is not something he does — it is a plan spanning
-piles he does not own. Notice that the quotation itself is in the
-subjunctive: "which the larger stock *would have* satisfied".
+would do with five is not anything he does — it is a plan covering
+stocks he does not own. His own words give it away: "which the larger
+stock *would have* satisfied".
 
 There is a second horse passage, and it is the one that decides how
 the plan has to be written down (p. 27):
@@ -94,11 +94,11 @@ the plan has to be written down (p. 27):
 > transferring Seabiscuit from this function to the wagon-leading end.
 
 Rothbard names two horses in order to insist that *which* horse goes
-makes no difference. That only means something if the plan could in
-principle have depended on which — so the plan here is indexed by
-which horses, and the claim that it depends only on how many is a
-separate named condition. Both of these conclusions of his are
-theorems below, proved of the six horses.
+makes no difference. That is only worth saying if the plan could have
+depended on which — so here the plan is indexed by which horses, and
+the claim that only the number matters is kept separate, as a named
+condition. Both of these conclusions of his are proved below, of the
+six horses.
 
 # The finding
 
@@ -107,7 +107,7 @@ and that premise is not about action.
 
 It is about what the man *would* do. For each smaller or larger string
 of horses he might have, which wants would he serve? That is a plan
-spanning stocks he does not own, not a choice he makes.
+covering stocks he does not own, not a choice he makes.
 
 Rothbard's own premise packs two claims into one sentence: that a man
 acts with the means he has, and that the wants he serves are "the most
@@ -118,10 +118,14 @@ it sets six horses beside five and asks which want "the larger stock
 would have satisfied" (p. 25). No single real act can answer that. You
 have to ask what would have happened.
 
-The trouble is Rothbard's own, not something imported from outside. He
-says praxeology "may deal with utilities only as deduced from the
-concrete actions of human beings" (*MES* p. 882 n. 8). The premise his
-own law needs is not a premise of that kind.
+Rothbard also sets a rule for what praxeology may use. It "may deal
+with utilities only as deduced from the concrete actions of human
+beings" (*MES* p. 882 n. 8) — only what a man's actual choices show.
+His own law breaks that rule. The man owns six horses; what he would
+have done with five is not something any action of his shows.
+
+This is not an objection from outside. The rule is Rothbard's, the
+premise is Rothbard's, and the two do not fit.
 
 The same trouble turns up a second time, in a place usually discussed
 on its own. The law is expected to founder on units: to state it by
@@ -145,20 +149,23 @@ encoding keeps them apart:
 Telling which of the two gave way in a particular case is exactly what
 an audit like this is for.
 
-None of this refutes the law. Lean certifies that the reasoning is
-valid and that it uses nothing beyond what the statement carries. What
-is in question is where the one starting premise came from.
+None of this makes the law wrong. The machine checked the reasoning:
+the conclusion follows, and the proof uses only what the statement
+lists. One question is left, and it is a narrow one — may praxeology
+use that premise at all?
 
 # The one premise
 
 
-The library contains no `axiom`. Every praxeological claim is a
-structure, and a theorem that needs one takes it as a named
-assumption, so what a theorem rests on is read off its signature. That
-everything listed does real work is enforced by `#lint only
-unusedArguments`, which breaks the build on an assumption the proof
-never uses. The linter can be switched off, so keeping it on is a
-policy and not a theorem. It is never switched off here.
+The library contains no `axiom`. Every praxeological claim is written
+as a structure, and a theorem that needs one takes it as a named
+assumption. So to see what a theorem rests on, you read its statement.
+
+A linter keeps that list honest. `#lint only unusedArguments` breaks
+the build if an assumption is listed but the proof never uses it — so
+nothing can be listed for show. The linter can be switched off, which
+makes keeping it on a promise rather than something the machine
+guarantees. It is never switched off here.
 
 Each commitment records three things. *Source* is a citation, or
 "tacit". *Status* is one of three verdicts: explicit-in-tradition
@@ -168,10 +175,10 @@ faced). *Does not say* lists the stronger nearby claims it
 deliberately avoids.
 
 Two rules govern the list. A claim is added only when some theorem
-first needs it, so nothing appears here that no theorem uses. And only
-claims meant to hold universally are commitments; conditions saying
-when a law applies are hypotheses instead, and they have a part of
-their own below.
+first needs it, so every claim here is one that some theorem actually
+uses. And only claims meant to hold always are commitments; a
+condition that says when a law applies is a hypothesis instead, and
+those have a part of their own below.
 
 There is exactly one.
 
@@ -180,23 +187,23 @@ There is exactly one.
 # The conditions
 
 
-The theorems take three assumptions besides the commitment. Each is a
-condition on the situation rather than a universal claim about action,
-and each stands in the statement so that it can be pointed at when it
-fails. Where one fails the law is silent, not refuted.
+The theorems take three assumptions besides the premise. Each says
+something about the situation rather than about action as such, and
+each is written into the statement, so a reader can point at it and
+say: that is the one that did not hold. Where one fails, the law says
+nothing — it is silent, not wrong.
 
-- `stock.OneMore fewer more`: the two piles compared are both on hand and differ
-  by exactly one unit. The plan is data only there, and the law holds
-  only there.
-- `IndependentUses agent t`: what an end is worth does not depend on
-  which other ends are being served.
-- `plan.Homogeneous`: the plan depends only on how many units, not which
-  ones. Needed by the size-based form of the law alone.
+- `stock.OneMore fewer more`: the two piles compared are both on hand
+  and differ by exactly one unit. The plan says nothing about piles the
+  man does not hold, and neither does the law.
+- `IndependentUses agent time`: what one want is worth does not depend
+  on which other wants are being served.
+- `plan.Homogeneous`: the plan depends only on how many units there
+  are, not on which ones. Only the size-based form of the law needs it.
 
-Which plan is the agent's needs no assumption of its own. The theorems
-talk about the plan they are handed, and the commitment is asserted of
-that plan, so there is nothing quantified over rival plans for a rival
-to refute.
+Nothing here has to say which plan is the man's. A theorem is handed a
+plan and makes its claim about that one, so there is no rival plan
+anyone could build to refute it.
 
 {docstring Apodictic.ActionFrame.IndependentUses}
 
@@ -204,9 +211,9 @@ to refute.
 
 
 Rothbard's urgency principle says that losing a unit costs you the
-least urgent want. Here that is a theorem rather than a premise. The
-commitment in fact delivers something stronger, so that workhorse is
-stated first and the principle follows from it.
+least urgent want. Here that is proved rather than assumed. The
+premise turns out to give more than the principle needs, so the
+stronger statement comes first and the principle follows from it.
 
 {docstring Apodictic.served_over_unserved}
 
@@ -214,9 +221,9 @@ stated first and the principle follows from it.
 
 The law is stated using Rothbard's own definition of the marginal
 utility of a supply: the ends you would give up on losing one unit. It
-comes in two forms. Along a chain of named units it needs no
-interchangeability. In Rothbard's own wording, by size of supply, it
-does.
+comes in two forms. Follow a chain of named units, and no
+interchangeability is needed. State it Rothbard's way, by the size of
+the supply, and it is.
 
 {docstring Apodictic.marginalEnds}
 
@@ -237,29 +244,29 @@ does.
 `propext` and `Quot.sound` are Lean's own logical background. They
 arrive with ordinary mathematics, not with anything praxeological:
 mathlib's finite sets bring both, and so does extensionality for sets.
-`Classical.choice` is absent — no proof here closes a gap by helping
-itself to the principle that every question has a yes-or-no answer.
-The proofs do split into cases, but only on whether two ends are the
-same end, which is why that travels as a declared condition on the
-frame rather than as a silent convenience.
+`Classical.choice` is absent: no proof here fills a gap by assuming
+that every question has a yes-or-no answer. The proofs do split into
+cases, but only on whether two ends are the same end — and that is why
+being able to tell two ends apart is declared in the statement instead
+of slipping in unnoticed.
 
 This output says one thing: the library adds nothing to Lean's logic.
 It is not the list of praxeological assumptions.
 
-Those are in the statement. The law carries one commitment,
-`SwapDominant plan`; three situational conditions — `IndependentUses`,
-`plan.Homogeneous` (the size-based form only), and the two piles being on
-hand; and one data condition on the frame, `[DecidableEq frame.End]`. The
-urgency principle and the chain form carry the same list without
-`Homogeneous`.
+Those are in the statement. The law carries one premise,
+`SwapDominant plan`; three conditions on the situation —
+`IndependentUses`, `plan.Homogeneous` (for the size-based form only),
+and the two piles being on hand; and one condition on the frame,
+`[DecidableEq frame.End]`, which just says two wants can be told
+apart. The urgency principle and the chain form carry the same list
+without `Homogeneous`.
 
 # The horses in Lean
 
-The case from the opening, built. This is also the consistency
-argument, and the two jobs are the same job: if Rothbard's own six
-horses satisfy the commitment and every condition at once, then the
-commitment and the conditions are jointly satisfiable and the theorems
-are not about nothing.
+The case from the opening, built. It does a second job at the same
+time. If Rothbard's own six horses satisfy the premise and every
+condition at once, then those assumptions can all hold together, and
+the theorems are not empty.
 
 Wants are ranks on the man's value scale, and the lower rank is the
 more urgent want:
@@ -267,19 +274,20 @@ more urgent want:
 {docstring Apodictic.Model.rankPrefers}
 
 The man's plan is the obvious one — with any `n` horses he serves the
-`n` most urgent wants — and it satisfies the commitment. Wants can be
-told apart, uses are independent, one-horse steps exist inside the
-stable, each step has a marginal end, and preference is asymmetric. So
-the commitment has a model in which preference is strict, which is the
-reading intended throughout and what `no_rival_swap_dominant` needs.
+`n` most urgent wants — and it satisfies the premise. Wants can be told
+apart, uses are independent, one-horse steps exist inside the stable,
+each step has a marginal end, and preference is asymmetric. That last
+one matters: it means the premise holds somewhere preference is
+strict, which is how it was meant all along and what
+`no_rival_swap_dominant` needs.
 
-Two of the theorems are Rothbard's own conclusions rather than
-bookkeeping. The first is his p. 25 result:
+Two of the theorems here are conclusions Rothbard reached himself, not
+bookkeeping. The first is his result at p. 25:
 
 {docstring Apodictic.Model.loss_of_a_horse_ends_pleasure_riding}
 
-The second is the one he names two horses to make, and it is the
-argument for how the plan is encoded here:
+The second is the point he names two horses in order to make, and it
+is the reason the plan is encoded the way it is:
 
 {docstring Apodictic.Model.which_horse_does_not_matter}
 
@@ -287,22 +295,22 @@ And the last step is the point:
 
 {docstring Apodictic.Model.horses_law_applies}
 
-That is the law itself, at the horse frame, with every assumption
-discharged. Nothing is copied across by hand: `horses_swapDominant`
-proves the very proposition the theorem consumes.
+That is the law itself, applied to the horses, with every assumption
+met. Nothing was copied across by hand: `horses_swapDominant` proves
+exactly the statement the theorem asks for.
 
-Two places where the model is not Rothbard's, both recorded rather
+Two places where this departs from Rothbard, both said out loud rather
 than papered over. His ten ends are "for simplicity", to fit a
-diagram; capping the scale would drag a side condition through every
-theorem and buy nothing, so the good here serves every rank. And which
-earlier horse is Man o' War is arbitrary — Rothbard says only that he
-arrived before Seabiscuit, and nothing about a horse but its identity
-enters any claim.
+diagram; putting a ceiling on the scale would drag an extra condition
+through every theorem and buy nothing, so here the horses can serve
+any rank. And which of the earlier horses is Man o' War is arbitrary —
+Rothbard says only that he arrived before Seabiscuit, and nothing
+about a horse except its identity enters any claim.
 
 # The other findings
 
 
-What the derivation turned out to be, beyond the premise it rests on.
+What else the audit turned up, beyond the one premise.
 
 - Rothbard's derivation is one step from an asserted premise (p. 24).
   The one-step proof is faithful to him; the audit point is that
@@ -310,9 +318,9 @@ What the derivation turned out to be, beyond the premise it rests on.
   on an assertion.
 - The law is strict, as Rothbard's is. Non-increasing marginal utility
   is the neoclassical form, not his.
-- Nothing assumes the drop is determinate. Rothbard's "the marginal
-  unit" takes for granted that exactly one end goes; the law here
-  holds over all of them.
+- Nothing assumes that exactly one want is given up. Rothbard's phrase
+  "the marginal unit" takes that for granted; the law here holds for
+  every want that goes.
 - The proof never uses the fact that the end at the smaller supply is
   the marginal one. The law holds for every end served there against
   every end the next unit would add — and stronger still, a served end
@@ -322,16 +330,17 @@ What the derivation turned out to be, beyond the premise it rests on.
 
 What the law does not need, which is most of what it usually gets.
 
-- No structure on preference is forced: no transitivity, no
-  completeness. Rothbard assumes a single ranked value scale
-  (Figure 3, pp. 25–26). None is needed, because the plan carries the
-  ordering.
+- No property of preference is forced: not transitivity, not
+  completeness. Rothbard assumes a single ranked value scale (Figure 3,
+  pp. 25–26). None of it is needed, because the plan already carries
+  the ordering.
 - Interchangeability of units is not needed for the ordering. With the
   plan indexed by which units, both the urgency principle and the law
   along a chain of named units go through without it. It is needed
-  exactly once, to state the law by size of supply: "the plan at `n`
-  units" is a function of `n` only if two piles of the same size serve
-  the same ends. So it bears on the wording, not on the derivation —
+  exactly once, to state the law by size of supply: the phrase "the
+  plan at `n` units" only picks out one thing if two piles of the same
+  size serve the same ends. So it bears on the wording, not on the
+  derivation —
   which is why it is a hypothesis and not a commitment. Rothbard makes
   it part of what a supply *is* (p. 23), and where it fails the units
   are not one good.
@@ -339,26 +348,28 @@ What the law does not need, which is most of what it usually gets.
   supply with the words "valued equally" and "regards ...
   indifferently" (p. 23), then takes them back on the next page:
   interchangeability "does not mean that the concrete units are
-  actually valued equally" (p. 24). This follows p. 24.
-- Independence of uses is a situational condition, and it can be
-  stated only once preference ranges over bundles of ends rather than
-  single ends. Where uses are complementary the law says nothing, and
-  the statement admits it.
+  actually valued equally" (p. 24). The formalization follows p. 24.
+- Independence of uses is a condition on the situation, and it can only
+  be stated at all once preference ranges over bundles of ends rather
+  than single ends. Where uses are complementary the law says nothing,
+  and the statement admits as much.
 
 Findings about the formalizing rather than the doctrine.
 
-- Being able to tell two ends apart is a suppressed premise of "this
-  bundle, minus this end". Refusing classical logic surfaced it.
+- Being able to tell two ends apart is a suppressed premise of the
+  phrase "this bundle, minus this end". It only came to light because
+  the proofs refuse classical logic.
 - The claim that people act splits into three: a definition, a bridge,
   and an existence claim. Only the bridge could do deductive work, and
   nothing has needed it.
-- A universal claim about "the agent's X" must not be stated over all
-  X-shaped structures. Given one, rivals are definable, and a claim
-  about all of them can be refuted by construction. Asserted instead
-  of the one plan a theorem is handed, the same construction is
-  harmless and yields a uniqueness result: `no_rival_swap_dominant`,
-  that two plans satisfying the commitment cannot differ by a single
-  swap. So "the" value scale is a theorem here, not a premise.
+- Never assert a claim about *every* structure of a given shape — say,
+  every plan the man might have. Given one plan, a rival can always be
+  built that breaks such a claim, so the claim is refutable by
+  construction. Assert it of the single plan a theorem is handed
+  instead, and that same construction becomes harmless. Better: it
+  turns into a result. `no_rival_swap_dominant` proves that two plans
+  satisfying the premise cannot differ by a single swap — so "the"
+  value scale is something proved here, not something assumed.
 
 # The vocabulary
 
@@ -384,14 +395,14 @@ more or fewer of them.
 One claim sits a level down. `oneUnitOneEnd` — one unit serves one end, with
 no unit left idle — is Rothbard's "we assume for simplicity" (p. 26).
 It is a field of the plan rather than a listed assumption. Every
-theorem below takes a plan `A : AllocationPlan s`, so the claim
-is still on the page; you read it off the type of an argument instead
-of the assumption list. That is the one place an audit has to look
-past the signature.
+theorem above takes a plan `plan : AllocationPlan stock`, so the claim
+is still on the page — you read it off the type of an argument instead
+of the list of assumptions. That is the one place an audit has to look
+past the statement itself.
 
-Interchangeability of units is *not* down there. The plan is indexed
-by which exact units the agent holds. That it depends only on how many
-is a separate named condition, below.
+Interchangeability of units is *not* hidden down there. The plan is
+indexed by which exact units the man holds; that it depends only on how
+many of them there are is a separate named condition, below.
 
 {docstring Apodictic.AllocationPlan.Homogeneous}
 
@@ -400,10 +411,11 @@ is a separate named condition, below.
 # Claims no theorem uses
 
 
-Two claims central to the doctrine are used by no theorem, and so are
-not commitments. The first is the bridge from what a man actually does
-to what he prefers — demonstrated preference, in Rothbard's sense.
-It is written out here in the form it would take, and parked:
+Two claims at the centre of the doctrine are used by no theorem here,
+and so are not commitments. The first is the bridge from what a man
+actually does to what he prefers — demonstrated preference, in
+Rothbard's sense. It is written out below in the form it would take,
+and then set aside:
 
 ```lean
 /-- PARKED: the bridge from actual action to preference. Carried by

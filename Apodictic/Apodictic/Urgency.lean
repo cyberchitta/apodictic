@@ -60,14 +60,15 @@ end the good could serve but he would leave unserved.
 
 This is everything `SwapDominant` gives, and it is more than Rothbard
 claims: it sets a served end against ANY unserved end the good could
-serve, not only against the one the next unit would reach. It holds
-under the hypothesis that uses are independent (see the module
-docstring above).
+serve, not only against the one the next unit would reach. It needs
+the hypothesis that uses are independent (see the module docstring
+above).
 
-How the proof goes: swapping the `served` want for the `unserved` one
-gives a bundle the plan beats; the served bundle is that want together with
-the rest (`insert_sdiff_self_of_mem`); the two bundles then differ in
-exactly one slot, and independence reads `e ≻ e'` off that. -/
+How the proof goes: swap the `served` want for the `unserved` one, and
+the plan beats the result. The served bundle is that one want together
+with the rest (`insert_sdiff_self_of_mem`), so the two bundles differ
+in exactly one place — and independence reads the preference between
+those two wants off that. -/
 theorem served_over_unserved {frame : ActionFrame} [DecidableEq frame.End]
     {agent : frame.Agent} {time : frame.Time}
     {stock : Stock frame agent time}
@@ -93,15 +94,15 @@ theorem served_over_unserved {frame : ActionFrame} [DecidableEq frame.End]
   · rw [← hsplit]
     exact hbeats
 
-/-- **The urgency principle** (Rothbard), stated as a loss. Suppose
-the agent had `more` and drops to `fewer`, one unit fewer. Every end he
-would still serve at `fewer` is preferred to every end he would have to
+/-- **The urgency principle** (Rothbard), stated as a loss. Suppose the
+agent had `more` units and drops to `fewer`, one unit fewer. Every end
+he would still serve at `fewer` is preferred to every end he has to
 abandon on the way down: the loss falls on the least urgent want.
 
-One application of `served_over_unserved`. The abandoned end is one
-the good can serve and the plan does not serve at `fewer`; beyond
-supplying that, the fact that `more` is `fewer` plus one unit does no
-work. -/
+One application of `served_over_unserved`. An abandoned end is one the
+good can serve and the plan does not serve at `fewer` — and beyond
+supplying that much, the fact that `more` is exactly one unit larger
+does no work here. -/
 theorem urgency_principle {frame : ActionFrame} [DecidableEq frame.End]
     {agent : frame.Agent} {time : frame.Time}
     {stock : Stock frame agent time}

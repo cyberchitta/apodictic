@@ -33,16 +33,15 @@ structure ActionFrame where
   /-- When action happens. Explicit from the start; no order assumed
   yet. -/
   Time : Type
-  /-- `Believes a t m e`: at time `t`, agent `a` believes that using
-  means `m` helps bring about end `e`. Means and ends are linked only
-  through what the agent believes; there is no means–ends data
-  floating free of belief. -/
+  /-- `Believes agent time means want`: at that time, the agent
+  believes that using those means helps bring about that want. Nothing
+  links a means to an end here except what the agent believes. -/
   Believes : Agent → Time → Means → End → Prop
-  /-- `Prefers a t X Y`: at time `t`, agent `a` values the bundle of
-  ends `X` above the bundle `Y`. This is the ranking behind the
-  agent's choices, and it is strict. It is kept apart from what the
-  agent actually does; any bridge between the two is a commitment in
-  `Apodictic.Commitments`. No properties are assumed.
+  /-- `Prefers agent time X Y`: at that time, the agent values the
+  bundle of ends `X` above the bundle `Y`. This is the ranking behind
+  the agent's choices, and it is strict. It is kept apart from what
+  the agent actually does; anything that bridges the two is a
+  commitment in `Apodictic.Commitments`. No properties are assumed.
 
   It ranges over SETS of ends rather than single ends. The tradition
   draws no line between an end and a composite of ends — "atomic"
@@ -52,8 +51,8 @@ structure ActionFrame where
   an end in the ordinary sense is a bundle with one member
   (`PrefersEnd`). Ranging over bundles is what lets independence of
   uses — bundle preference breaking down into preference between
-  ends — be a named hypothesis, rather than something the vocabulary
-  quietly enforces.
+  ends — can be a named hypothesis, instead of something the
+  vocabulary quietly enforces.
 
   Shape commitment (audit): a bundle is a `Set`, so it carries no
   multiplicity and no order. -/
@@ -70,17 +69,17 @@ abbrev ActionFrame.PrefersEnd (frame : ActionFrame) (agent : frame.Agent)
 universal claim. If two bundles differ in exactly one slot, then
 preferring one bundle to the other carries down to preferring the one
 end to the other. It fails where uses are complementary: where B is
-worth having only alongside A. It is named here so that the theorems
-needing it can carry it as a hypothesis, and so it can be pointed at
+worth having only alongside A. It is named here so that the theorems that
+need it carry it as a hypothesis, and so a reader can point at it
 where it does not hold.
 
 This is NOT a premise Rothbard spends. He ranks wants against each
 other directly, off a scale that is already ranked (*MES* p. 26,
-Figure 3), and never argues from bundles at all. It is the cost of
-OUR decomposition — a claim about bundles plus this condition, in
-place of his one fused claim — and it is where complementarity ends
-up once the pieces are pulled apart. Asserting it instead of
-hypothesizing it would amount to asserting that complementarity never
+Figure 3), and never argues from bundles at all. It is what OUR decomposition costs. Where he
+makes one fused claim, we make a claim about bundles plus this
+condition — and complementarity, which his wording never has to face,
+lands here once the pieces are pulled apart. To assert this rather
+than hypothesize it would be to assert that complementarity never
 happens. -/
 def ActionFrame.IndependentUses (frame : ActionFrame) (agent : frame.Agent)
     (time : frame.Time) : Prop :=

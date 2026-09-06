@@ -65,10 +65,10 @@ def Asymmetric (frame : ActionFrame) : Prop :=
   ∀ (agent : frame.Agent) (time : frame.Time) (X Y : Set frame.End),
     frame.Prefers agent time X Y → ¬ frame.Prefers agent time Y X
 
-/-- A want the horses can serve, identified by its place on the
-agent's value scale: rank 1 is the most urgent, and a smaller number
-is the more urgent want. Rank 0 is not a want; the scale starts at
-one, as Rothbard's does. -/
+/-- A want the horses can serve, named by its place on the man's value
+scale: rank 1 is the most urgent, and the lower the number the more
+urgent the want. There is no rank 0 — the scale starts at one, as
+Rothbard's does. -/
 abbrev Want := ℕ
 
 /-- An individual horse. Horses are told apart only by identity —
@@ -87,12 +87,14 @@ def seabiscuit : Horse := 5
 
 /-- Man o' War — the horse Rothbard names as having arrived earlier,
 engaged in "the more important duty (to him) of leading a wagon"
-(*MES* p. 27). Which earlier horse he is carries no claim. -/
+(*MES* p. 27). Which of the earlier horses he is makes no difference
+to anything claimed here. -/
 def manOWar : Horse := 1
 
-/-- Preference between bundles of wants. `X ≻ Y` exactly when the two
-differ by one swap and the want `X` has instead is the more urgent
-one — which here just means the lower rank. -/
+/-- Preference between bundles of wants. `X` is preferred to `Y`
+exactly when the two differ by a single swap, and the want `X` has in
+place of `Y`'s is the more urgent of the two — which here just means
+the lower rank. -/
 def rankPrefers (X Y : Set Want) : Prop :=
   ∃ w w', w ∈ X ∧ w' ∈ Y ∧ w ∉ Y ∧ w' ∉ X ∧ w < w' ∧ X \ {w} = Y \ {w'}
 
@@ -155,10 +157,10 @@ theorem horses_asymmetric : Asymmetric Horses := by
   subst hv hv'
   exact Nat.lt_asymm hlt hlt'
 
-/-- **The man's plan is swap-dominant** — the commitment itself,
-proved of this frame and this plan. Serving the `n` most urgent wants
-beats any one-swap alternative, because the want swapped in ranks
-below every want swapped out. -/
+/-- **The man's plan is swap-dominant** — the commitment itself, proved
+of this frame and this plan. Serving the `n` most urgent wants beats
+any one-swap alternative, because any want swapped in ranks below
+every want swapped out. -/
 theorem horses_swapDominant (k : ℕ) : SwapDominant (horsePlan k) where
   swap := by
     intro sub _ served hserved unserved hpossible hnot
@@ -279,10 +281,10 @@ theorem which_horse_does_not_matter :
     (Finset.erase_subset _ _) hcard
 
 /-- **The law itself, applied to the horses.** Every hypothesis of
-`marginal_utility_chain` is discharged at this frame. So the
-commitment and the situational conditions can all hold at once, and
-the law is not about nothing. That is the whole consistency argument:
-this type-checks, therefore they fit together. -/
+`marginal_utility_chain` is met at this frame. So the commitment and
+the conditions on the situation can all hold at once, and the law is
+not empty. That is the whole consistency argument: this type-checks,
+therefore they fit together. -/
 theorem horses_law_applies (k n : ℕ) (h : n < k) (h' : n + 1 < k) :
     ∀ addedFirst ∈ marginalEnds (horsePlan k)
         (Finset.range n) (Finset.range (n + 1)),
