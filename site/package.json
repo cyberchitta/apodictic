@@ -7,7 +7,8 @@
     "build": "eleventy",
     "serve": "eleventy --serve",
     "check": "node check-fossils.mjs",
-    "verify": "eleventy && node check-fossils.mjs"
+    "verify": "eleventy && node check-fossils.mjs",
+    "check-quotes": "python3 check-quotes.py"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
