@@ -19,19 +19,20 @@ Mathematical theorems can be machine-checked. So let's check.
 An attempt to formalize the deductive core of Austrian praxeology
 (Mises, Rothbard) in Lean 4, carrying the theorem ladder — marginal
 utility, the law of returns, exchange, price bounds, time preference —
-from an explicit, auditable axiom base.
+from an explicit, auditable base of premises.
 
 The method is **axiom archaeology**: the verbal deductions in *Human
 Action* and *Man, Economy, and State* are enthymemes, arguments with
 suppressed premises. A proof assistant refuses to accept an enthymeme.
-Every hidden assumption must surface as a named axiom, with its pedigree
-documented in the axiom's docstring — source (Mises/Rothbard citation,
-or "tacit") and status: explicit in the tradition, suppressed premise,
-or our reconstruction.
+Every hidden assumption must surface as a named claim the theorem
+carries, with its pedigree documented in that claim's docstring —
+source (Mises/Rothbard citation, or "tacit") and status: explicit in
+the tradition, suppressed premise, or our reconstruction.
 
 The interesting output is not "praxeology: true or false." It is the
-minimal axiom list under each theorem. `#print axioms marginal_utility`
-is the whole point.
+minimal list of claims under each theorem, read off the theorem's own
+signature and kept honest by `#lint only unusedArguments`, which fails
+the build on a premise that does no work. That is the whole point.
 
 ## What this is not
 
@@ -40,7 +41,7 @@ is the whole point.
   preference, real time, no cardinal utility, no given ends–means data
   hanging in a Platonic space. Where honoring these makes proofs harder,
   the difficulty is the finding.
-- Not advocacy. If a theorem needs an axiom Rothbard denied using,
+- Not advocacy. If a theorem needs a premise Rothbard denied using,
   that goes in the paper. If the deductions go through cleanly, that
   goes in the paper too.
 
