@@ -48,7 +48,7 @@ approve every axiom and every design decision. Therefore:
   source itself plus the Verso document. Docstrings are PEDIGREE
   ONLY (human decision 2026-09-04): no dates, no note paths, no
   "was tried before", no commit hashes. History lives in `_notes/`
-  and the archaeology part of the document; the result part quotes
+  and `_notes/`; the result part quotes
   docstrings live and must read as verdicts.
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
@@ -85,8 +85,8 @@ result is a strawman Austrians can rightly dismiss:
   utility functions, not even as a convenience.
 - Preference is over ends; action demonstrates preference. Keep the
   latent ranking and the choice function distinct; any bridge between
-  them is an AXIOM to be flagged (this is the Nozick/Rothbard
-  demonstrated-preference dispute, formalized).
+  them is a COMMITMENT to be flagged (Rothbard's
+  demonstrated-preference doctrine, formalized).
 - Time is explicit in the action framework from the start.
 - No given ends–means data hanging free: means–ends links go through
   the agent's beliefs.
@@ -102,8 +102,10 @@ Two lake packages in this repo:
   Depends on mathlib ONLY. This package must ALWAYS build standalone
   with `lake build`. It is the trusted artifact; nothing may ever
   block it.
-  - Apodictic/Axioms.lean — the COMPLETE trusted base. Nothing
-    axiom-like anywhere else. Auditable at a glance.
+  - Apodictic/Commitments.lean — the COMPLETE set of praxeological
+    assertions. Nothing assertion-like anywhere else. Auditable at a
+    glance. The library declares NO `axiom` (2026-09-06): a claim is
+    a structure, carried by a theorem as a named hypothesis.
   - Apodictic/Action.lean — agents, ends, means, the action framework.
   - Apodictic/Urgency.lean — the urgency principle as a theorem
     (derived 2026-09-04 from `swap_dominance`; independence of uses
@@ -116,10 +118,10 @@ Two lake packages in this repo:
     on it; its proofs may be classical.
 - **ApodicticDoc/** — a Verso document package, depending on the
   Apodictic library. The connected essay lives here: axiom
-  archaeology narrative, findings chapter, design decisions, and
-  REJECTED encodings included as type-checked Lean code with the
-  argument for their rejection. This document is half the
-  contribution; it is written from `_notes/` at editorial cadence
+  the vocabulary, the commitment, the hypotheses, the theorems and
+  the receipt — the human's review surface, and the only part
+  emitted to the site. It is written from `_notes/` at editorial
+  cadence
   (human decision 2026-09-04) and may lag the Lean, never
   contradict it. `generate-doc` does NOT produce Verso's own HTML:
   `ApodicticDoc/Emit/Eleventy.lean` replaces Verso's page layer and
@@ -158,175 +160,66 @@ Plus the lab notebook, outside both packages:
 - Use mathlib order-theory vocabulary (Preorder/PartialOrder/
   LinearOrder) but do NOT reach for a stronger typeclass than the
   praxeological argument licenses just to close a goal.
-- Axiom names are honest: no hiding axioms as instance assumptions
-  or hypotheses smuggled into theorem statements. (Situational
-  applicability conditions stated openly as named hypotheses are
-  not smuggling — see the aim above; the rule targets universal
-  claims kept off the receipt.)
-- Axioms enter at point of first use. Nothing lives in Axioms.lean
-  unless some theorem's `#print axioms` cites it; doctrinally
+- Commitments are honest and legible: every universal claim is a
+  named structure in Commitments.lean and appears in the signature of
+  every theorem that uses it. None may be folded into a field of the
+  vocabulary, where no signature shows it. The receipt IS the
+  signature, and `#lint only unusedArguments` — mandatory, never
+  silenced without a recorded reason — keeps it tight. `_`-prefixing
+  a hypothesis is how "this does no work" is recorded, and each such
+  case is a finding.
+- Commitments enter at point of first use. Nothing lives in
+  Commitments.lean unless some theorem's signature carries it; doctrinally
   central axioms no theorem yet needs are parked with their
   pedigree in `_notes/2026-09-04-parked-axioms.md`. (Human
   decision 2026-09-04: no reviewing axioms that do no work.)
 - Constructive by default (human decision 2026-09-04). No
   `Classical.choice` on a theorem's receipt. When a proof stalls
   for want of a case split, ask whether the split is praxeological
-  content (then it is a named axiom, e.g. `ends_distinguishable`)
-  or logical background; never let mathlib's classical lemmas
-  answer that question silently. Check with `#print axioms`.
+  content (then it is a named commitment) or logical background;
+  never let mathlib's classical lemmas answer that question
+  silently. Check with `#print axioms` — on a library theorem it
+  must print `[propext, Quot.sound]` and nothing else.
 - Consistency lives in Lean, not in notes (human decision
-  2026-09-04): every axiom entering `Axioms.lean` gets its statement
-  mirrored as a frame predicate in `Consistency.lean` and satisfied
-  by the toy frame, together with the properties we intend to add
-  (asymmetry) and the theorems' hypotheses (non-vacuity).
+  2026-09-04): every commitment is satisfied by the toy frame in
+  `Consistency.lean`, together with the properties we intend to add
+  (asymmetry) and the theorems' hypotheses (non-vacuity). It is an
+  INSTANCE: `toy_law_applies` hands the toy plan to the law itself,
+  so no transcription step stands between the model and what the
+  theorems consume.
 - Universal claims about "the agent's X" must not quantify over
   the TYPE of X-shaped structures: given one, rivals are definable
-  and the axiom refutes itself (∀-frame crash 2026-08-02;
-  `swap_dominance` 2026-09-04). Name the actual one with an opaque
-  predicate and restrict the axiom to it.
+  and a claim about all of them is refutable by construction.
+  Assert the claim OF the structure a theorem is handed, and let
+  uniqueness be a theorem where it holds.
 - Tactic style: plain tactics (intro/apply/exact/cases/constructor/
   simp). No heavy automation (no `decide`/`polyrith`-style closes)
   on philosophically load-bearing steps — the proof should be
   readable enough to audit which axioms did the work.
-- Each commit message notes any change to the trusted base.
+- Each commit message notes any change to Commitments.lean.
 
-## Current state / next steps
+## Current state
 
-- [x] Scaffold: two lake packages (library + Verso doc), file
-      skeleton, README.
-- [x] Action-axiom shape decided: shape C — action structure as a
-      definition, assertions as separable axioms. Provisional;
-      revisit after Milestone 1. Resolution, rejected alternatives,
-      and micro-decisions in `_notes/2026-08-02-action-axiom-shape.md`.
-- [x] Action framework compiles (Action.lean), first approximation.
-      First axiom drafted: `demonstrated_preference` (human-reviewed
-      2026-08-02; PARKED 2026-09-04 — never cited by a theorem).
-- [x] Trusted-base architecture: distinguished frame. The ∀-frame
-      form of `demonstrated_preference` was INCONSISTENT (`False`
-      derived 2026-08-02; witness in notes). Axioms now speak only
-      of the opaque `World`. Chosen as the simplest formalism that
-      keeps the axiom receipt working (human-confirmed 2026-09-04);
-      the switch to a class-of-frames encoding is mechanical if
-      ever needed. The action axiom DECOMPOSES (definition / bridge
-      / existence) and only the bridge does deductive work — that,
-      not "existence axiom needed", is the finding; `humans_act`
-      is parked, uncited. Notes:
-      `_notes/2026-08-02-trusted-base-inconsistency.md`,
-      `_notes/2026-09-04-first-crash-status.md`.
-- [x] Marginal utility (allocation version), second pass 2026-09-04:
-      `marginal_utility` stated over `marginalEnds` (Rothbard's
-      definition, MES p. 27) from ONE axiom, `urgency_principle`
-      (MES pp. 24–27, renamed from `allocation_demonstrated_preference`
-      after reading the text). Trusted base = `World` +
-      `urgency_principle`. Text-verified findings: the one-step
-      proof is faithful — Rothbard's own derivation is one step from
-      an ASSERTED premise; the law is strict in Rothbard too;
-      he presupposes a linear value scale we don't need;
-      determinacy of the drop is not in the axiom; the indifference
-      language is in his own definition of supply (p. 23). Notes:
-      `_notes/2026-08-02-marginal-utility-design.md`,
-      `_notes/2026-09-04-mes-ch1-marginal-utility-reading.md`.
-- [x] Verso document in two parts, 2026-09-04: "The Result"
-      (`ApodicticDoc/ApodicticDoc/Result.lean`; clean statement of
-      vocabulary, axioms, hypotheses, theorems, receipt, findings —
-      the human's review surface) and "The Archaeology"
-      (`Archaeology.lean`; how each axiom was forced, the two
-      crashes as type-checked rejected encodings with red checks,
-      the Nozick reading — the human does not read this part). Both
-      quote docstrings live via `{docstring}`. Doc package builds
-      under Verso v4.32.0 on the library's toolchain. Human's read
-      of the result part doubles as the docstring review.
-- [x] Nozick 1977 §III read 2026-09-04. FINDING: the "Nozick's
-      target" label on the counterfactual axiom was inverted —
-      Nozick argues FOR subjunctive preference and against
-      Rothbard's "no preference apart from actual choice"; our
-      `swap_dominance` is Nozick-shaped, and the receipt shows
-      Rothbard's derivation resting on exactly what his doctrine
-      forbids (Nozick's cost argument, transposed). Docstring
-      commentary reworded, statements untouched. Notes:
-      `_notes/2026-09-04-nozick-1977-reading.md`.
-- [x] Bundle encoding decided 2026-09-04: ONE preference relation,
-      over `Set End`; an ordinary end is a singleton (`PrefersEnd`).
-      Human's argument: all ends are composites at some grain, so
-      "atomic" is action-relative like unit size. Library switched;
-      receipt unchanged; review of the changed docstrings reopened.
-      Notes: `_notes/2026-09-04-bundle-encoding-choice.md`.
-- [x] Urgency principle DERIVED 2026-09-04 (`Urgency.lean`). Base is
-      now `World` + `actual_disposition` (opaque predicate: which
-      plan is the agent's) + `ends_distinguishable` (decidable
-      identity of ends, data axiom) + `swap_dominance`
-      (counterfactual demonstrated preference, one-swap form, for
-      the actual disposition); `actual_disposition A`, independence
-      of uses, and `n ≤ supply` are hypotheses of the law. Findings:
-      the actual-action bridge is still uncited (Nozick's target
-      carries the whole load); the general same-size-bundle bridge
-      is not needed; the old axiom over-claimed beyond the supply;
-      an axiom quantified over the disposition TYPE is refutable by
-      a rival plan (same shape as the ∀-frame crash) — hence
-      `actual_disposition`. Human approved the approach in chat;
-      docstrings not yet human-read.
-      Notes: `_notes/2026-09-04-urgency-derivation.md`,
-      `_notes/2026-09-04-swap-dominance-overquantifies.md`.
-- [ ] Route through ACTUAL action? Needs `Action` with bundle
-      choices + a disposition-realization axiom. Shape decision,
-      presented, not taken (OPEN.md).
-- [x] Milestone 1 completion, 2026-09-05 — the honest units
-      treatment. Disposition indexed by sub-stock (`Finset Means`);
-      interchangeability of units is the named hypothesis
-      `Homogeneous` (human's choice over an axiom: Rothbard makes it
-      definitional of a supply, MES p. 23). FINDING: the ordering
-      (`served_over_unserved`, `urgency_principle`) and the law along
-      a chain of named units (`marginal_utility_chain`) need no
-      interchangeability; Rothbard's supply-size wording
-      (`marginal_utility`) uses it once, to make "the plan at n" a
-      function of n — Nozick p. 371 located on the statement, not the
-      derivation. Indifference between units (p. 23, withdrawn p. 24)
-      is needed nowhere. `swap_dominance` restated over sub-stocks;
-      receipts unchanged. Unit size is action-relative in the `Stock`
-      docstring (p. 28). Notes:
-      `_notes/2026-09-05-units-treatment-choice.md`.
-- [x] Repo made public 2026-09-05 (human). Gated the doc site and the
-      article; the article links the receipt.
-- [x] Doc site built AND DEPLOYED 2026-09-05 — live at
-      `https://apodictic.cyberchitta.cc/`. Lean emitter replacing
-      Verso's page layer (a custom `main`, not an `ExtraStep` — extra
-      steps only run alongside Verso's own HTML), Eleventy/SG consumer
-      in `site/`, Pages Action. Publishing needed no repo change and no
-      `CNAME` file: the custom domain lives in the Pages API config and
-      the Actions deploy preserves it. Verified against production
-      (`build_type: workflow`, cname, `https_enforced`, cert to
-      2026-12-04). SG v0.4.3 released alongside, gating the RSS
-      `<link rel="alternate">` behind an opt-in `site.feed` so this
-      feed-less sub-site stops advertising a feed it does not build;
-      the footer's RSS icon points at the main-site feed and is
-      untouched. Open: search/find skipped, page slugs, CSS split home,
-      light-theme and mobile visual QA.
-      `_notes/2026-09-05-doc-site-build.md`.
-- [ ] Gates on the article (human): read Nozick 1977 §III yourself; rule
-      on the four axiom docstrings via the Verso result part. These do
-      NOT lapse with the announcement — the article ends on the Nozick
-      collision, so gate 1 is its load-bearing claim. The ask was struck
-      2026-09-06 (human: no ask, no venue) and the announcement note's
-      false ℕ-index sentence went with it.
-      `_notes/2026-09-04-announcement-plan.md`.
-- [ ] Write-up of findings to date before attempting exchange — the
-      first article, drafted on the site side from a facts-only brief:
-      `www.cyberchitta.cc/_notes/drafts/apodictic/` (HANDOFF + BRIEF).
-- [ ] Exchange (MES ch. 2, p. 104; Rothbard 1956): both parties
-      benefit ex ante. The first theorem that cannot avoid the
-      parked bridge `demonstrated_preference` — its hypothesis is an
-      act, its conclusion a preference, and nothing else in the base
-      links the two. Forces one text-explicit axiom, imputation of
-      value from ends to means (MES p. 19), and `Action` over
-      bundles (shared with the route-through-action test). Receipt
-      disjoint from marginal utility's. Expected finding: "benefit"
-      is demonstrated preference by definition. Cost/psychic profit
-      (MES p. 71) is a one-step warm-up; time preference (MES p. 15,
-      HA ch. XVIII §2) is later — it forces order on `Time`.
+Not here. `_notes/WORKLIST.md` is the worklist — what is done and
+what is next. `_notes/OPEN.md` is the list of unresolved questions.
+`_notes/debriefs/` is the session-close handoff. This file is
+instructions only: it should change when a RULE changes, not from
+session to session.
 
 ## Sources of record
 
 Mises, *Human Action* (esp. chs. 1–7); Rothbard, *Man, Economy, and
-State* (esp. ch. 1); Nozick, "On Austrian Methodology" (1977) as the
-adversarial reader. When citing, verify wording against the Mises
+State* (esp. ch. 1). When citing, verify wording against the Mises
 Institute editions — do not quote from memory.
+- [x] Encoding settled 2026-09-06: praxeological claims are
+      STRUCTURES carried as hypotheses. The library declares no
+      axiom; every receipt reads
+      `[propext, Quot.sound]` and the commitments are read off the
+      signature, kept tight by `#lint only unusedArguments`
+      (verified live — watched go red). `SwapDominant` is the single
+      commitment; `[DecidableEq F.End]` is a data condition. Consistency is an instance, not a mirror
+      (`toy_law_applies`), and `no_rival_swap_dominant` derives that
+      there is "the" value scale rather than presupposing it.
+      Reverses two earlier decisions, deliberately; the linter makes
+      the receipt available without axioms.
+      `_notes/2026-09-06-nozick-removed-decomposition-rationale.md`.

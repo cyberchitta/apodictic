@@ -10,7 +10,7 @@ the agent's counterfactual allocation disposition over it, indexed by
 WHICH units — a sub-stock — not by how many.
 
 Audit note (standing): commitments hide in field SHAPES, where
-`#print axioms` cannot see them. One lives here — see the docstring
+no signature shows. One lives here — see the docstring
 of `AllocationDisposition.card_eq`. Interchangeability of units no
 longer does: it is the named condition `Homogeneous`, a hypothesis of
 the theorems that need it.
@@ -25,9 +25,9 @@ exactly the ends in `serves` — a BELIEF notion, not a preference
 notion. No indifference between units is asserted anywhere, so the
 strict-only `Prefers` stands and Rothbard's denial that indifference
 is demonstrable in action is not contradicted. Whether
-serviceability-homogeneity suffices for the law — Nozick (1977,
-p. 371) says the law needs indifference — stays checkable rather
-than assumed away.
+serviceability-homogeneity suffices for the law, or whether
+indifference between units is needed after all, stays checkable
+rather than assumed away.
 
 What a unit IS is not fixed here: `units` lists whatever enters the
 action as one thing. Rothbard: the law holds "regardless of the size
@@ -75,7 +75,7 @@ structure AllocationDisposition {F : ActionFrame} {agent : F.Agent}
   card_eq : ∀ U ⊆ s.units, (wouldServe U).card = U.card
 
 /-- **Interchangeability of units** — a situational applicability
-condition, NOT an axiom: the plan depends only on how many units, not
+condition, NOT a commitment: the plan depends only on how many units, not
 which. Two sub-stocks of the same size would serve the same ends.
 This is what makes "the plan at `n` units" — and so the marginal
 utility of a supply of `n` — a function of `n`. Rothbard makes it

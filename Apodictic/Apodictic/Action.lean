@@ -8,10 +8,10 @@ encoded as a definition: being an action commits to all components
 at once — the jointly constitutive reading — but a definition
 carries no assertion. All
 assertions, including any bridge from choice to the latent ranking,
-are axioms in `Apodictic.Axioms`.
+are commitments in `Apodictic.Commitments`.
 
 Audit note: commitments can hide in the *shape* of these structures
-(which fields exist, and their types), where `#print axioms` will not
+(which fields exist, and their types), where no signature will
 surface them. Auditing the trusted base includes auditing these
 fields.
 -/
@@ -39,7 +39,7 @@ structure ActionFrame where
   /-- `Prefers a t X Y`: at `t`, agent `a` values the bundle of ends
   `X` more highly than the bundle `Y`. The latent ordinal ranking,
   strict. Kept distinct from choice; any bridge between them is an
-  axiom in `Apodictic.Axioms`. No properties assumed.
+  commitment in `Apodictic.Commitments`. No properties assumed.
 
   Over SETS of ends, not ends: the tradition draws no line between
   an end and a composite — "atomic" only ever means "not further
@@ -64,9 +64,16 @@ NOT an axiom: bundle preference between two bundles that differ in
 one slot transfers to the two ends in that slot. Fails under
 complementarity (B valuable only together with A). Named here so it
 can be a hypothesis of the theorems that need it and be pointed at
-when it does not hold. Rothbard's "we
-assume for simplicity" (*MES* p. 26) covers one-unit-one-end; this
-is the further tacit assumption his derivation spends. -/
+when it does not hold.
+
+NOT a premise Rothbard spends: he asserts the pairwise ranking of
+wants directly, off a scale already ranked (*MES* p. 26, Figure 3),
+and never argues from bundles at all. This is the cost of OUR
+decomposition — a bundle-level commitment plus this condition, in
+place of his single fused claim — and it is where complementarity lands
+once the pieces are pulled apart. Asserting it instead of
+hypothesizing it would be asserting that complementarity never
+obtains. -/
 def ActionFrame.IndependentUses (F : ActionFrame) (a : F.Agent) (t : F.Time) :
     Prop :=
   ∀ (S : Set F.End) (e e' : F.End), e ∉ S → e' ∉ S →

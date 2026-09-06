@@ -15,21 +15,20 @@ below, in two forms:
   greater the supply, the lower the marginal utility". Needs
   `Homogeneous A` (interchangeability), used exactly once: to say
   what "the plan at `n` units" is. Without it the supply-size form
-  cannot be stated — Nozick's point (1977, p. 371) that "without the
-  notion of a unit ... we have no way to state the law", located:
-  interchangeability is a condition on STATING the law by size, not a
-  premise of the ordering.
+  cannot be stated: interchangeability is a condition on STATING the
+  law by size, not a premise of the ordering.
 
-`#print axioms marginal_utility` = `[propext, World,
-actual_disposition, ends_distinguishable, swap_dominance,
-Quot.sound]`; `propext` and `Quot.sound` are Lean's logical
-background (they ride in with the quotient-based `Finset`), not
-praxeological content. The praxeological base of the law is `World`
-+ `actual_disposition` + `ends_distinguishable` + `swap_dominance`,
-PLUS the hypotheses in the statement: `actual_disposition A` (this
-is the agent's plan), `IndependentUses` (situational), `Homogeneous A`
-(situational; supply-size form only), and the sub-stocks being on
-hand.
+`#print axioms marginal_utility` = `[propext, Quot.sound]` —
+Lean's own background (they ride in with the quotient-based
+`Finset`), and nothing else: the library declares no axioms. The
+praxeological content is read off the SIGNATURE instead, and it is
+one commitment plus three situational conditions: `SwapDominant A`
+(the commitment), `IndependentUses` and `Homogeneous A` (situational;
+the latter for the supply-size form only), `[DecidableEq F.End]` (a
+data condition on the frame), and the sub-stocks being on hand. That
+every one of them does real work is enforced by
+`#lint only unusedArguments`, not by the proof term — see
+`Apodictic.Commitments`.
 
 What the receipt shows is read in the Verso document (part I,
 findings). In brief: no axiom about ACTUAL action is cited — the law
@@ -46,9 +45,9 @@ namespace Apodictic
 /-- Non-vacuity: one more unit always serves some new end — an end
 served with `V` but not with `U`. Counting only; not philosophically
 load-bearing. -/
-theorem exists_marginal {agent : World.Agent} {t : World.Time}
-    {s : Stock World agent t} (A : AllocationDisposition s)
-    (U V : Finset World.Means) (hUV : s.OneMore U V) :
+theorem exists_marginal {F : ActionFrame} {agent : F.Agent} {t : F.Time}
+    {s : Stock F agent t} (A : AllocationDisposition s)
+    (U V : Finset F.Means) (hUV : s.OneMore U V) :
     ∃ e ∈ A.wouldServe V, e ∉ A.wouldServe U := by
   by_contra h
   have hsub : A.wouldServe V ⊆ A.wouldServe U := by
@@ -68,7 +67,7 @@ of the unit" (*MES* p. 27); "he gives up the least urgent of the
 wants which the larger stock would have satisfied" (p. 25). A set
 rather than a single end: determinacy of the drop is not assumed
 (see module docstring). A `Set`, not a `Finset`: set difference on
-`Finset` needs decidable equality on `World.End`, which the opaque
+`Finset` needs decidable equality on `F.End`, which the opaque
 world does not supply, and reaching for `Classical` would put
 `Classical.choice` on the receipt for no praxeological reason.
 Definition, not axiom — Rothbard introduces it as a definition ("is
@@ -78,9 +77,9 @@ the ends that they believe the means can serve" (p. 19) — is what
 licenses calling this the utility of the *unit*. Indexed by the
 step, not by a size: which ends a unit adds may depend on which
 units are already on hand unless the plan is `Homogeneous`. -/
-def marginalEnds {agent : World.Agent} {t : World.Time}
-    {s : Stock World agent t} (A : AllocationDisposition s)
-    (U V : Finset World.Means) : Set World.End :=
+def marginalEnds {F : ActionFrame} {agent : F.Agent} {t : F.Time}
+    {s : Stock F agent t} (A : AllocationDisposition s)
+    (U V : Finset F.Means) : Set F.End :=
   {e | e ∈ A.wouldServe V ∧ e ∉ A.wouldServe U}
 
 /-- **The law of marginal utility, along a chain of specific units**:
@@ -90,12 +89,13 @@ of units is needed: the chain names which units. One application of
 `urgency_principle`; the marginality of `e` at the first step is
 unused (`_h_marg`). -/
 theorem marginal_utility_chain
-    {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
-    (A : AllocationDisposition s) (hA : actual_disposition A)
-    (hI : World.IndependentUses agent t)
-    (U V W : Finset World.Means) (_hUV : s.OneMore U V) (hVW : s.OneMore V W) :
+    {F : ActionFrame} [DecidableEq F.End]
+    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
+    (A : AllocationDisposition s) (hA : SwapDominant A)
+    (hI : F.IndependentUses agent t)
+    (U V W : Finset F.Means) (_hUV : s.OneMore U V) (hVW : s.OneMore V W) :
     ∀ e ∈ marginalEnds A U V, ∀ e' ∈ marginalEnds A V W,
-      World.PrefersEnd agent t e e' := by
+      F.PrefersEnd agent t e e' := by
   intro e he e' he'
   obtain ⟨heV, _h_marg⟩ := he
   obtain ⟨he'W, he'V⟩ := he'
@@ -112,14 +112,15 @@ Needs `Homogeneous A`, exactly once: the plan with the `n` units
 below the second step is the plan with the `n` units of the first.
 The marginality of `e` at `n` is unused (`_h_marg`). -/
 theorem marginal_utility
-    {agent : World.Agent} {t : World.Time} {s : Stock World agent t}
-    (A : AllocationDisposition s) (hA : actual_disposition A)
-    (hI : World.IndependentUses agent t) (hH : A.Homogeneous)
-    (U V U' V' : Finset World.Means)
+    {F : ActionFrame} [DecidableEq F.End]
+    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
+    (A : AllocationDisposition s) (hA : SwapDominant A)
+    (hI : F.IndependentUses agent t) (hH : A.Homogeneous)
+    (U V U' V' : Finset F.Means)
     (hUV : s.OneMore U V) (hU'V' : s.OneMore U' V')
     (n : ℕ) (hn : V.card = n) (hn' : V'.card = n + 1) :
     ∀ e ∈ marginalEnds A U V, ∀ e' ∈ marginalEnds A U' V',
-      World.PrefersEnd agent t e e' := by
+      F.PrefersEnd agent t e e' := by
   intro e he e' he'
   obtain ⟨heV, _h_marg⟩ := he
   obtain ⟨he'V', he'U'⟩ := he'
@@ -135,3 +136,5 @@ theorem marginal_utility
 #print axioms marginal_utility
 
 end Apodictic
+
+#lint only unusedArguments

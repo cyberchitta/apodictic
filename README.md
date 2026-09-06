@@ -52,13 +52,12 @@ Two lake packages:
 Apodictic/             -- the library. Depends on mathlib only; always
                        -- builds standalone. The trusted artifact.
   Apodictic/
-    Axioms.lean        -- the complete trusted base, nothing else
+    Commitments.lean   -- every praxeological assertion, nothing else
     Action.lean        -- agents, ends, means, the action framework
     MarginalUtility.lean -- first theorem target
 ApodicticDoc/          -- Verso document package, depends on the library.
-                       -- The connected essay: axiom archaeology,
-                       -- findings, design decisions, and rejected
-                       -- encodings as type-checked Lean code.
+                       -- The result: vocabulary, the commitment, the
+                       -- hypotheses, the theorems, and the receipt.
 ```
 
 If Verso lags a Lean toolchain bump, the document waits; the library's
@@ -75,5 +74,3 @@ indifference problem.
 
 - Mises, *Human Action*, chs. 1–7
 - Rothbard, *Man, Economy, and State*, ch. 1
-- Nozick, "On Austrian Methodology" (1977) — the critique the
-  formalization must survive, not dodge

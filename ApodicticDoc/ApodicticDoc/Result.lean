@@ -14,10 +14,8 @@ tag := "result"
 %%%
 
 What has been proved, from what. This part states the vocabulary,
-the four axioms, the hypotheses, and the two theorems, and reads the
+the commitment, the hypotheses, and the two theorems, and reads the
 receipt. Every docstring is pulled from the library at build time.
-How each piece came to be stated this way, and what was tried and
-refuted before it, is the archaeology part.
 
 # Vocabulary
 
@@ -46,36 +44,39 @@ only on how many is the named condition below.
 
 {docstring Apodictic.Stock.OneMore}
 
-# Axioms
+# Commitments
 
-Every axiom carries three fields. *Source* is a citation or "tacit".
+The library declares no `axiom`. Every praxeological claim is a
+structure, and a theorem that needs one takes it as a named
+hypothesis; what a theorem rests on is therefore read off its
+signature rather than off `#print axioms`. That every listed
+commitment does real work is enforced by `#lint only
+unusedArguments`, which fails the build on a hypothesis the proof
+never uses.
+
+Every commitment carries three fields. *Source* is a citation or "tacit".
 *Status* is one of three verdicts: explicit-in-tradition (Rothbard or
 Mises say it), suppressed-premise (they use it without saying it),
 or our-reconstruction (a formalization decision the tradition never
-faced). *Does not say* lists the nearby stronger claims the axiom
-deliberately omits.
+faced). *Does not say* lists the nearby stronger claims it deliberately
+omits.
 
-Two rules govern the list. An axiom enters at the point of first
-use, so nothing is here that no theorem cites. And only
-claimed-universal facts about action are axioms; conditions under
-which a law applies are hypotheses of the theorem, below.
+Two rules govern the list. A commitment enters at the point of first
+use, so nothing is here that no theorem carries. And only
+claimed-universal facts about action are commitments; conditions
+under which a law applies are hypotheses of the theorem, below.
 
-{docstring Apodictic.World}
+There is exactly one.
 
-{docstring Apodictic.ends_distinguishable}
-
-{docstring Apodictic.actual_disposition}
-
-{docstring Apodictic.swap_dominance}
+{docstring Apodictic.SwapDominant}
 
 # Hypotheses
 
-The theorems take four hypotheses. Each is a situational condition,
-not a universal claim, and each is in the statement so that it can
-be pointed at when it fails. Where one fails the law is silent, not
-refuted.
+The theorems take three hypotheses beyond the commitment. Each is a
+situational condition, not a universal claim, and each is in the
+statement so that it can be pointed at when it fails. Where one
+fails the law is silent, not refuted.
 
-- `actual_disposition A`: the plan under discussion is the agent's.
 - `s.OneMore U V`: the sub-stocks compared are on hand, and differ
   by one unit. The disposition is data only there, and the law holds
   only there.
@@ -84,13 +85,19 @@ refuted.
 - `A.Homogeneous`: the plan depends only on how many units, not
   which. Needed only by the supply-size form of the law.
 
+Which plan is the agent's needs no hypothesis of its own. The
+theorems are about the plan they are handed, and the commitment is
+asserted of that plan; there is nothing quantified over rival plans
+for a rival to refute.
+
 {docstring Apodictic.ActionFrame.IndependentUses}
 
 # Theorems
 
 Rothbard's urgency principle, that the loss of a unit falls on the
 least urgent want, is a theorem here rather than a premise. What the
-axiom delivers is stronger than the principle, so the workhorse is
+the commitment delivers is stronger than the principle, so the
+workhorse is
 stated first.
 
 {docstring Apodictic.served_over_unserved}
@@ -115,35 +122,37 @@ it does.
 #print axioms marginal_utility
 ```
 ```leanOutput receipt
-'Apodictic.marginal_utility' depends on axioms: [propext,
- World,
- actual_disposition,
- ends_distinguishable,
- swap_dominance,
- Quot.sound]
+'Apodictic.marginal_utility' depends on axioms: [propext, Quot.sound]
 ```
 
 `propext` and `Quot.sound` are Lean's logical background; they ride
 in with mathlib's finite sets. `Classical.choice` is absent: the
 library is constructive by default, so that a case split a proof
-needs is either named praxeological content or absent. The remaining
-four are the trusted base. The urgency principle and the chain form
-of the law have the same receipt; the supply-size form differs from
-the chain form only by the hypothesis `A.Homogeneous`, which is not
-an axiom and so does not appear here.
+needs is either named praxeological content or absent. Nothing else
+appears, because the library adds nothing to Lean's logic — which is
+what this output is for, and all it says.
+
+The praxeological content is in the statement instead. The law
+carries one commitment, `SwapDominant A`; three situational
+conditions, `IndependentUses`, `A.Homogeneous` (the supply-size form
+only) and the sub-stocks being on hand; and one data condition on the
+frame, `[DecidableEq F.End]`. The urgency principle and the chain
+form carry the same list less `Homogeneous`.
 
 # Not in the base
 
 Two doctrinally central claims are not cited by any theorem and are
-therefore not axioms. The bridge from actual action to preference,
+therefore not commitments. The bridge from actual action to
+preference,
 demonstrated preference in Rothbard's sense, is stated here in the
 form it would take, and it is parked:
 
 ```lean
-/-- PARKED: the bridge from actual action to preference. Not cited by
-any theorem; lives in the document, not the base. -/
-axiom demonstrated_preference (a : Action World) :
-    ∀ e ∈ a.forgone, World.Prefers a.agent a.time {a.chosen} {e}
+/-- PARKED: the bridge from actual action to preference. Carried by
+no theorem; lives in the document, not the library. -/
+structure DemonstratedPreference (F : ActionFrame) : Prop where
+  bridge : ∀ a : Action F, ∀ e ∈ a.forgone,
+    F.Prefers a.agent a.time {a.chosen} {e}
 ```
 
 So is the existence claim that there is action at all. The structure
@@ -153,33 +162,41 @@ of action itself is a definition, and no theorem uses it yet.
 
 # Consistency
 
-`World` cannot be built, so the axioms cannot be shown consistent by
-building it. What can be built is a frame of the general vocabulary
-in which every axiom's statement holds, together with the property
-we intend to add and the theorems' hypotheses. That frame is
-`Apodictic.Model.Toy`: one agent, one instant, numbers for ends, and
-this preference:
+Consistency is not a side-question here: it is an instance. Build a
+frame, a stock and a plan, prove the plan swap-dominant, and hand the
+whole thing to the theorem. If that type-checks, the commitment and
+the conditions are jointly satisfiable and the law is not vacuous.
+The frame is `Apodictic.Model.Toy`: one agent, one instant, numbers
+for ends, and this preference:
 
 {docstring Apodictic.Model.swapPrefers}
 
-In it, swap dominance holds for the plan that serves the most
-urgent ends, as many as there are units; that plan is actual and
-homogeneous, ends are decidable, uses are independent, one-unit
-steps exist within the stock, each step has a marginal end, and
-preference is asymmetric. So the four axioms have a model with
-strict preference, and the theorems are neither vacuous nor
-trivial. That the model transfers to the `World`
-axioms is the ordinary model-theoretic reading, which Lean cannot
-check because `World` is opaque.
+In it, the plan that serves the most urgent ends — as many as there
+are units — is swap-dominant and homogeneous, ends are decidable,
+uses are independent, one-unit steps exist within the stock, each
+step has a marginal end, and preference is asymmetric. So the
+commitment has a model with strict preference — the reading intended
+throughout, and what `no_rival_swap_dominant` needs.
+
+The last step is the point:
+
+{docstring Apodictic.Model.toy_law_applies}
+
+That is the law itself, at the toy frame, with every hypothesis
+discharged. Nothing is transcribed: `toy_swapDominant` proves the
+same proposition the theorem consumes.
 
 # Findings
 
 - The law of marginal utility rests on one praxeological premise,
   and that premise is subjunctive preference: what the agent *would*
-  serve at each supply. No axiom about actual action is cited.
-  Rothbard's derivation therefore uses what his demonstrated-preference
-  doctrine forbids. This is Nozick's cost argument (1977, §III)
-  transposed to marginal utility and machine-checked.
+  serve at each supply. Nothing about actual action is assumed.
+  Rothbard's own premise (p. 24) fuses a claim about action with a
+  claim about the ordering of wants; only the ordering half, extended
+  subjunctively as his own derivation extends it (p. 25), does any
+  work. So his law needs a premise his own restriction does not
+  admit: praxeology "may deal with utilities only as deduced from the
+  concrete actions of human beings" (p. 882 n. 8).
 - Rothbard's own derivation is one step from an asserted premise
   (p. 24). The one-step proof is faithful to him; the audit point is
   that "derived from the fundamental axiom of human action" (p. 27)
@@ -203,13 +220,12 @@ check because `World` is opaque.
   along a chain of named units hold without it. It is needed once,
   to state the law by supply size: "the plan at `n` units" is a
   function of `n` only if two sub-stocks of the same size serve the
-  same ends. Nozick's remark that without a unit the law cannot be
-  stated (1977, p. 371) lands here, on the statement and not the
-  derivation. Interchangeability is a hypothesis, not an axiom:
+  same ends. It bears on the statement, not the derivation.
+  Interchangeability is a hypothesis, not a commitment:
   Rothbard makes it definitional of a supply (p. 23), and where it
   fails the units are not one good.
-- Rothbard defines a supply with the words Nozick attacks, "valued
-  equally", "regards ... indifferently" (p. 23), and withdraws them
+- Rothbard defines a supply with the words "valued equally" and
+  "regards ... indifferently" (p. 23), and withdraws them
   on the next page: interchangeability "does not mean that the
   concrete units are actually valued equally" (p. 24). The encoding
   follows p. 24. Indifference between units is asserted nowhere, and
@@ -222,9 +238,13 @@ check because `World` is opaque.
   the law is silent, and the statement says so.
 - Decidable identity of ends is a suppressed premise of "the bundle
   minus this end", surfaced by refusing classical logic.
-- The action axiom decomposes into a definition, a bridge, and an
-  existence claim, and only the bridge could do deductive work.
-  Nothing has needed it.
+- The claim that humans act decomposes into a definition, a bridge,
+  and an existence claim, and only the bridge could do deductive
+  work. Nothing has needed it.
 - A universal claim about "the agent's X" must not quantify over the
-  type of X-shaped structures: given one, rivals are definable and
-  the axiom refutes itself. Two such crashes are in the archaeology.
+  type of X-shaped structures: given one, rivals are definable, and a
+  claim about all of them is refutable by construction. Asserted of
+  the plan a theorem is handed, the same construction is harmless and
+  yields a uniqueness result instead — `no_rival_swap_dominant`: two
+  swap-dominant plans cannot differ by one swap. That there is "the"
+  value scale is thus a theorem here, not a premise.
