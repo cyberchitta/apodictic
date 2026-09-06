@@ -21,11 +21,14 @@ assistant — Rothbard's law of marginal utility, derived in Lean 4.
 
 A proof assistant refuses an enthymeme. Whatever a verbal derivation
 passes over in silence has to be written down before the proof will
-close, and once written down it is legible: every claim the law rests
-on stands in the theorem's own statement, and `#lint only
-unusedArguments` fails the build on any of them that does no work. So
-the list below is complete rather than a summary — that is the whole
-reason for doing this in a machine.
+close, and it has to be written down in the theorem's own statement —
+as a hypothesis, or in the type of one. The audit surface is therefore
+bounded and mechanical: read the statement, and read the definitions
+its parameters name. Some claims sit one level down, as fields of a
+structure the theorem takes, but none is off the page. Nor is the list
+padded: `#lint only unusedArguments` fails the build on anything
+standing there that the proof never uses. That is the whole reason for
+doing this in a machine.
 
 Every docstring here is pulled from the library at build time. What
 you read is what was checked.
@@ -73,8 +76,8 @@ given way in a particular case is exactly what an audit like this is
 for.
 
 None of this refutes the law. Lean certifies that the derivation is
-valid and that nothing else is hiding in it. What is in question is
-the pedigree of the one thing it starts from.
+valid and that it uses nothing beyond what its statement carries. What
+is in question is the pedigree of the one thing it starts from.
 
 # Vocabulary
 
@@ -93,11 +96,15 @@ more or fewer of them.
 
 {docstring Apodictic.AllocationDisposition}
 
-One commitment hides in a field shape here, where a signature cannot
-show it: `card_eq` is Rothbard's "we assume for simplicity" (p. 26) —
-one unit, one end, no idle units. Interchangeability of units does
-not hide. The plan is indexed by *which* units, and that it depends
-only on how many is the named condition below.
+One commitment travels a level down, as a field rather than a
+hypothesis: `card_eq` is Rothbard's "we assume for simplicity"
+(p. 26) — one unit, one end, no idle units. Every theorem below takes
+`A : AllocationDisposition s`, so the claim is on the page; it is read
+from the type of a parameter rather than from the hypothesis list, and
+that is the one place an audit has to look past the signature.
+Interchangeability of units is not down there. The plan is indexed by
+*which* units, and that it depends only on how many is the named
+condition below.
 
 {docstring Apodictic.AllocationDisposition.Homogeneous}
 
@@ -110,7 +117,8 @@ structure, and a theorem that needs one takes it as a named
 hypothesis; what a theorem rests on is read off its signature. That
 every claim listed there does real work is enforced by `#lint only
 unusedArguments`, which fails the build on a hypothesis the proof
-never uses.
+never uses. The linter can be silenced, so leaving it on is a policy
+and not a theorem. It is never silenced here.
 
 Each commitment carries three fields. *Source* is a citation, or
 "tacit". *Status* is one of three verdicts: explicit-in-tradition
@@ -182,12 +190,16 @@ it does.
 'Apodictic.marginal_utility' depends on axioms: [propext, Quot.sound]
 ```
 
-`propext` and `Quot.sound` are Lean's logical background; they ride
-in with mathlib's finite sets. `Classical.choice` is absent: the
-library is constructive by default, so that a case split a proof
-needs is either named praxeological content or nothing at all. That
-the library adds nothing to Lean's logic is what this output is for,
-and all it says.
+`propext` and `Quot.sound` are Lean's logical background. They arrive
+with the ordinary mathematical vocabulary the statement is written in,
+not with anything praxeological: mathlib's finite sets bring both, and
+so does extensionality of sets. `Classical.choice` is absent — no
+proof here closes a goal by helping itself to the principle that every
+proposition is decided. The case splits the proofs do make run on
+decidable equality of ends, which is why that travels as a declared
+condition on the frame rather than as a silent convenience. That the
+library adds nothing to Lean's logic is what this output is for, and
+all it says.
 
 The praxeological content is in the statement. The law carries one
 commitment, `SwapDominant A`; three situational conditions,

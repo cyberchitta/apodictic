@@ -19,8 +19,9 @@ below, in two forms:
   law by size, not a premise of the ordering.
 
 `#print axioms marginal_utility` = `[propext, Quot.sound]` —
-Lean's own background (they ride in with the quotient-based
-`Finset`), and nothing else: the library declares no axioms. The
+Lean's own background (both arrive with the quotient-based `Finset`,
+and with set extensionality), and nothing else: the library declares
+no axioms. The
 praxeological content is read off the SIGNATURE instead, and it is
 one commitment plus three situational conditions: `SwapDominant A`
 (the commitment), `IndependentUses` and `Homogeneous A` (situational;
@@ -67,8 +68,8 @@ of the unit" (*MES* p. 27); "he gives up the least urgent of the
 wants which the larger stock would have satisfied" (p. 25). A set
 rather than a single end: determinacy of the drop is not assumed
 (see module docstring). A `Set`, not a `Finset`: set difference on
-`Finset` needs decidable equality on `F.End`, which the opaque
-world does not supply, and reaching for `Classical` would put
+`Finset` needs decidable equality on `F.End`, which an arbitrary
+frame does not supply, and reaching for `Classical` would put
 `Classical.choice` on the receipt for no praxeological reason.
 Definition, not axiom — Rothbard introduces it as a definition ("is
 called", "is known as"). Imputation of value from ends to units —
