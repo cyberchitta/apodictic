@@ -18,10 +18,11 @@ fields.
 
 namespace Apodictic
 
-/-- The primitive vocabulary of the action framework: bare types and
-bare relations. Nothing here has any structural property — no
-transitivity, no totality, no order on `Time`. Strength is added only
-when a theorem forces it, and each forcing is a finding. -/
+/-- The vocabulary everything else is built from: bare types and bare
+relations. Nothing here has any property. Preference is not assumed
+transitive, not assumed to rank every pair, and `Time` is not assumed
+ordered. A property gets added only when some theorem forces it, and
+every such forcing is a finding. -/
 structure ActionFrame where
   /-- Acting persons. -/
   Agent : Type
@@ -32,60 +33,68 @@ structure ActionFrame where
   /-- When action happens. Explicit from the start; no order assumed
   yet. -/
   Time : Type
-  /-- `Believes a t m e`: at `t`, agent `a` believes that employing
-  means `m` conduces to end `e`. Means–ends links go only through
-  belief — there is no belief-independent means–ends data. -/
+  /-- `Believes a t m e`: at time `t`, agent `a` believes that using
+  means `m` helps bring about end `e`. Means and ends are linked only
+  through what the agent believes; there is no means–ends data
+  floating free of belief. -/
   Believes : Agent → Time → Means → End → Prop
-  /-- `Prefers a t X Y`: at `t`, agent `a` values the bundle of ends
-  `X` more highly than the bundle `Y`. The latent ordinal ranking,
-  strict. Kept distinct from choice; any bridge between them is an
-  commitment in `Apodictic.Commitments`. No properties assumed.
+  /-- `Prefers a t X Y`: at time `t`, agent `a` values the bundle of
+  ends `X` above the bundle `Y`. This is the ranking behind the
+  agent's choices, and it is strict. It is kept apart from what the
+  agent actually does; any bridge between the two is a commitment in
+  `Apodictic.Commitments`. No properties are assumed.
 
-  Over SETS of ends, not ends: the tradition draws no line between
-  an end and a composite — "atomic" only ever means "not further
-  divided by this action", the same relativity as the unit of
-  supply (*MES* p. 28). So there is ONE ranking, over bundles at
-  the grain of the problem, and an end in the ordinary sense is a
-  singleton bundle (`PrefersEnd`). This is what makes independence
-  of uses — bundle preference decomposing into end preference —
-  statable as a named hypothesis instead of being enforced silently
-  by the vocabulary. Shape commitment (audit): a bundle is a `Set` —
-  no multiplicity, no order. -/
+  It ranges over SETS of ends rather than single ends. The tradition
+  draws no line between an end and a composite of ends — "atomic"
+  only ever means "not divided further by this action", the same
+  relativity as the size of a unit of supply (*MES* p. 28). So there
+  is ONE ranking, over bundles at whatever grain the problem has, and
+  an end in the ordinary sense is a bundle with one member
+  (`PrefersEnd`). Ranging over bundles is what lets independence of
+  uses — bundle preference breaking down into preference between
+  ends — be a named hypothesis, rather than something the vocabulary
+  quietly enforces.
+
+  Shape commitment (audit): a bundle is a `Set`, so it carries no
+  multiplicity and no order. -/
   Prefers : Agent → Time → Set End → Set End → Prop
 
-/-- Preference between ends in the ordinary sense: singleton-bundle
-preference. Definition, not a second relation. -/
+/-- Preference between two single ends. This is bundle preference
+between two one-member bundles — a definition, not a second
+relation. -/
 abbrev ActionFrame.PrefersEnd (F : ActionFrame) (a : F.Agent) (t : F.Time)
     (e e' : F.End) : Prop :=
   F.Prefers a t {e} {e'}
 
-/-- **Independence of uses** — a situational applicability condition,
-NOT an axiom: bundle preference between two bundles that differ in
-one slot transfers to the two ends in that slot. Fails under
-complementarity (B valuable only together with A). Named here so it
-can be a hypothesis of the theorems that need it and be pointed at
-when it does not hold.
+/-- **Independence of uses** — a condition on the situation, NOT a
+universal claim. If two bundles differ in exactly one slot, then
+preferring one bundle to the other carries down to preferring the one
+end to the other. It fails where uses are complementary: where B is
+worth having only alongside A. It is named here so that the theorems
+needing it can carry it as a hypothesis, and so it can be pointed at
+where it does not hold.
 
-NOT a premise Rothbard spends: he asserts the pairwise ranking of
-wants directly, off a scale already ranked (*MES* p. 26, Figure 3),
-and never argues from bundles at all. This is the cost of OUR
-decomposition — a bundle-level commitment plus this condition, in
-place of his single fused claim — and it is where complementarity lands
-once the pieces are pulled apart. Asserting it instead of
-hypothesizing it would be asserting that complementarity never
-obtains. -/
+This is NOT a premise Rothbard spends. He ranks wants against each
+other directly, off a scale that is already ranked (*MES* p. 26,
+Figure 3), and never argues from bundles at all. It is the cost of
+OUR decomposition — a claim about bundles plus this condition, in
+place of his one fused claim — and it is where complementarity ends
+up once the pieces are pulled apart. Asserting it instead of
+hypothesizing it would amount to asserting that complementarity never
+happens. -/
 def ActionFrame.IndependentUses (F : ActionFrame) (a : F.Agent) (t : F.Time) :
     Prop :=
   ∀ (S : Set F.End) (e e' : F.End), e ∉ S → e' ∉ S →
     F.Prefers a t (insert e S) (insert e' S) → F.PrefersEnd a t e e'
 
-/-- An action: an agent, at a time, employs means in the belief that
-they conduce to a chosen end, forgoing at least one alternative end.
+/-- An action: an agent, at a time, uses means in the belief that they
+will bring about a chosen end, giving up at least one alternative end
+in doing so.
 
-The fields are jointly constitutive — nothing with fewer components
-counts as an action — but this is a definition, not an assertion.
-Shape: our-reconstruction. No theorem yet uses it: the law of
-marginal utility rests on the counterfactual disposition alone. -/
+The fields hold together as a package — nothing with fewer parts
+counts as an action — but this is a definition, so it asserts
+nothing. Shape: our-reconstruction. No theorem uses it yet; the law
+of marginal utility rests on the counterfactual plan alone. -/
 structure Action (F : ActionFrame) where
   /-- The acting person. -/
   agent : F.Agent
@@ -95,16 +104,16 @@ structure Action (F : ActionFrame) where
   chosen : F.End
   /-- The means employed. -/
   means : F.Means
-  /-- Ends forgone in acting — the material of opportunity cost.
-  A bare set: "the next-best alternative" would presuppose ranking
-  structure this file does not have. -/
+  /-- The ends given up by acting — the raw material of opportunity
+  cost. Just a set: saying "the next-best alternative" would
+  presuppose a ranking this file does not have. -/
   forgone : Set F.End
-  /-- Action is choice: something is always forgone (at minimum,
-  inaction). -/
+  /-- Action is choice: something is always given up, if only doing
+  nothing. -/
   forgone_nonempty : forgone.Nonempty
   /-- The chosen end is not among the forgone. -/
   chosen_not_forgone : chosen ∉ forgone
-  /-- The agent believes the employed means conduce to the chosen
+  /-- The agent believes the means used will bring about the chosen
   end. -/
   belief : F.Believes agent time means chosen
 

@@ -32,14 +32,17 @@ What the toy frame establishes:
 namespace Apodictic
 namespace Model
 
-/-- Asymmetry of preference — the intended "strict" reading, not yet
-an axiom (OPEN.md). The model must survive it. -/
+/-- Asymmetry of preference: if `X` is preferred to `Y` then `Y` is
+not preferred to `X`. This is the "strict" reading intended all
+along, and it is not yet a commitment (OPEN.md). The model has to
+survive it. -/
 def Asymmetric (F : ActionFrame) : Prop :=
   ∀ (a : F.Agent) (t : F.Time) (X Y : Set F.End),
     F.Prefers a t X Y → ¬ F.Prefers a t Y X
 
-/-- The toy preference: `X ≻ Y` iff they differ by exactly one swap
-and `X`'s element is the more urgent (smaller number). -/
+/-- The toy preference. `X ≻ Y` exactly when the two differ by one
+swap and the end `X` has instead is the more urgent one — which here
+just means the smaller number. -/
 def swapPrefers (X Y : Set ℕ) : Prop :=
   ∃ e e', e ∈ X ∧ e' ∈ Y ∧ e ∉ Y ∧ e' ∉ X ∧ e < e' ∧ X \ {e} = Y \ {e'}
 
@@ -99,8 +102,8 @@ theorem toy_asymmetric : Asymmetric Toy := by
   subst hf hf'
   omega
 
-/-- **The toy plan is swap-dominant** — the commitment itself, at
-this frame and this plan. -/
+/-- **The toy plan is swap-dominant** — the commitment itself, proved
+of this frame and this plan. -/
 theorem toy_swapDominant (k : ℕ) : SwapDominant (toyPlan k) where
   swap := by
     intro U _ e he e' _ hne
@@ -171,11 +174,11 @@ theorem toy_marginal_nonempty (k n : ℕ) :
     rw [Finset.card_range]
     exact fun h => Nat.lt_irrefl n (Finset.mem_range.mp h)
 
-/-- **The law itself, instantiated.** Every hypothesis of
-`marginal_utility_chain` is discharged at the toy frame, so the
-commitment and the situational conditions are jointly satisfiable and
-the law is not vacuous. This is the whole consistency argument: it
-type-checks, therefore they cohere. -/
+/-- **The law itself, applied.** Every hypothesis of
+`marginal_utility_chain` is discharged at the toy frame. So the
+commitment and the situational conditions can all hold at once, and
+the law is not about nothing. That is the whole consistency argument:
+this type-checks, therefore they fit together. -/
 theorem toy_law_applies (k n : ℕ) (h : n < k) (h' : n + 1 < k) :
     ∀ e ∈ marginalEnds (toyPlan k) (Finset.range n) (Finset.range (n + 1)),
       ∀ e' ∈ marginalEnds (toyPlan k)

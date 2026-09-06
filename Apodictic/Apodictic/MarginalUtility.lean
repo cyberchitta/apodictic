@@ -43,9 +43,10 @@ marginality of the end at the smaller supply is unused by the proof
 
 namespace Apodictic
 
-/-- Non-vacuity: one more unit always serves some new end — an end
-served with `V` but not with `U`. Counting only; not philosophically
-load-bearing. -/
+/-- One more unit always serves some new end: there is an end served
+with `V` that is not served with `U`. Pure counting, carrying no
+philosophical weight — it just keeps the law from being about
+nothing. -/
 theorem exists_marginal {F : ActionFrame} {agent : F.Agent} {t : F.Time}
     {s : Stock F agent t} (A : AllocationDisposition s)
     (U V : Finset F.Means) (hUV : s.OneMore U V) :
@@ -60,35 +61,43 @@ theorem exists_marginal {F : ActionFrame} {agent : F.Agent} {t : F.Time}
   rw [A.card_eq V hUV.2.1, A.card_eq U hU, hUV.2.2] at hle
   exact Nat.not_succ_le_self U.card hle
 
-/-- **Marginal utility of the step `U → V`** (one more unit),
-Rothbard's sense: the ends the extra unit adds — equivalently, the
-ends that would be given up on its loss. "The marginal utility of
-the supply is the end that must be given up as the result of a loss
-of the unit" (*MES* p. 27); "he gives up the least urgent of the
-wants which the larger stock would have satisfied" (p. 25). A set
-rather than a single end: determinacy of the drop is not assumed
-(see module docstring). A `Set`, not a `Finset`: set difference on
-`Finset` needs decidable equality on `F.End`, which an arbitrary
-frame does not supply, and reaching for `Classical` would put
-`Classical.choice` on the receipt for no praxeological reason.
-Definition, not axiom — Rothbard introduces it as a definition ("is
-called", "is known as"). Imputation of value from ends to units —
-"actors value means strictly in accordance with their valuation of
-the ends that they believe the means can serve" (p. 19) — is what
-licenses calling this the utility of the *unit*. Indexed by the
-step, not by a size: which ends a unit adds may depend on which
-units are already on hand unless the plan is `Homogeneous`. -/
+/-- **Marginal utility of the step `U → V`** — of going up by one
+unit — in Rothbard's own sense: the ends the extra unit adds, which
+are the same as the ends that would be given up if it were lost.
+"The marginal utility of the supply is the end that must be given up
+as the result of a loss of the unit" (*MES* p. 27); "he gives up the
+least urgent of the wants which the larger stock would have
+satisfied" (p. 25).
+
+A set of ends rather than a single end, because it is not assumed
+that exactly one end drops (see the module docstring). A `Set` rather
+than a `Finset` for a mechanical reason: subtracting one `Finset`
+from another needs decidable equality on `F.End`, which an arbitrary
+frame does not give us, and reaching for `Classical` would put
+`Classical.choice` on the receipt for no praxeological reason at all.
+
+A definition, not a claim — Rothbard introduces it as one ("is
+called", "is known as"). What licenses calling this the utility of
+the *unit* is imputation of value from ends back to means: "actors
+value means strictly in accordance with their valuation of the ends
+that they believe the means can serve" (p. 19).
+
+Indexed by the step rather than by a size, because which ends a unit
+adds can depend on which units are already on hand — unless the plan
+is `Homogeneous`. -/
 def marginalEnds {F : ActionFrame} {agent : F.Agent} {t : F.Time}
     {s : Stock F agent t} (A : AllocationDisposition s)
     (U V : Finset F.Means) : Set F.End :=
   {e | e ∈ A.wouldServe V ∧ e ∉ A.wouldServe U}
 
-/-- **The law of marginal utility, along a chain of specific units**:
-for `U ⊂ V ⊂ W` each one unit more, every end the step `U → V` adds
-is preferred to every end the step `V → W` adds. No interchangeability
-of units is needed: the chain names which units. One application of
-`urgency_principle`; the marginality of `e` at the first step is
-unused (`_h_marg`). -/
+/-- **The law of marginal utility, along a chain of named units.**
+Take `U ⊂ V ⊂ W`, each one unit more than the last. Every end the
+first step adds is preferred to every end the second step adds.
+
+No interchangeability of units is needed, because the chain says
+which units are involved. One application of `urgency_principle`; the
+fact that `e` is marginal at the first step goes unused
+(`_h_marg`). -/
 theorem marginal_utility_chain
     {F : ActionFrame} [DecidableEq F.End]
     {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
@@ -104,14 +113,17 @@ theorem marginal_utility_chain
 
 /-- **The law of marginal utility** (Rothbard, *MES*, ch. 1, p. 27):
 "The greater the supply of a good, the lower the marginal utility;
-the smaller the supply, the higher the marginal utility." By supply
-SIZE: every end marginal at a supply of `n` units is preferred to
-every end marginal at a supply of `n + 1` — for ANY two one-unit
-steps reaching those sizes; the steps need not share a unit.
+the smaller the supply, the higher the marginal utility."
 
-Needs `Homogeneous A`, exactly once: the plan with the `n` units
-below the second step is the plan with the `n` units of the first.
-The marginality of `e` at `n` is unused (`_h_marg`). -/
+This is the version stated by supply SIZE. Every end that is marginal
+at a supply of `n` units is preferred to every end marginal at a
+supply of `n + 1` — and that holds for ANY two one-unit steps
+reaching those sizes, which need not have a single unit in common.
+
+`Homogeneous A` is needed exactly once, to say that the plan with the
+`n` units below the second step is the plan with the `n` units of the
+first. The fact that `e` is marginal at `n` goes unused
+(`_h_marg`). -/
 theorem marginal_utility
     {F : ActionFrame} [DecidableEq F.End]
     {agent : F.Agent} {t : F.Time} {s : Stock F agent t}

@@ -63,11 +63,18 @@ condition on the frame, not a claim about action.
 
 namespace Apodictic
 
-/-- **Swap dominance** — subjunctive preference over allocations, in
-one-swap form, asserted of a given allocation plan. With any
-sub-stock `U` of the units on hand, the bundle the agent would serve
-is preferred to the bundle obtained by withdrawing one served end `e`
-and serving in its place a serviceable end `e'` that was not served.
+/-- **Swap dominance** — the agent's plan beats every one-swap
+alternative to it.
+
+Take any sub-stock `U` of the units on hand, and the ends the agent
+would serve with it. Now make one swap: drop a served end `e`, and
+put in its place some end `e'` that the good could have served but
+the plan left out. The claim is that the agent prefers the bundle he
+would have served to the swapped bundle.
+
+It is asserted of one given plan, and it is subjunctive throughout —
+it speaks of sub-stocks the agent may not hold and swaps he does not
+make.
 
 Source: Rothbard, *MES*, ch. 1, §5.B, pp. 24–27 (Mises Institute
 ed.): "action uses scarce means to satisfy the most urgent of the
@@ -80,7 +87,7 @@ interchangeability of units and from disregard of past events").
 Mises, *Human Action*, ch. VII.1.
 
 Status: explicit-in-tradition as doctrine; the one-swap form and the
-decomposition are our-reconstruction. Rothbard's premise fuses two
+splitting-apart are our-reconstruction. Rothbard's premise fuses two
 claims in one sentence: that ACTION employs the means, and that the
 wants served are "the most urgent of the not yet satisfied wants"
 (*MES* p. 24). This commitment keeps the ordering half and states it
@@ -95,23 +102,28 @@ deal with utilities only as deduced from the concrete actions of
 human beings" (*MES* p. 882 n. 8) — and the premise his law needs is
 not one that restriction admits.
 
-Asserted of ONE plan, not of every plan of the disposition type.
-That is not a hedge: given one plan, rivals are definable, and a
-claim about all of them is refutable by construction. Here the
-question does not arise — the theorems speak of the plan they are
-handed, and that a rival cannot also be swap-dominant is a theorem
-(`no_rival_swap_dominant`, `Apodictic.Urgency`), not a premise.
+Asserted of ONE plan, not of every plan of that type. This is not a
+hedge. Given one plan, rival plans can be defined, so a claim about
+all of them can be refuted by construction. Stated of the single plan
+a theorem is handed, the question does not arise — and that a rival
+cannot also be swap-dominant becomes a theorem
+(`no_rival_swap_dominant`, `Apodictic.Urgency`) rather than a
+premise.
 
-Does not say: (1) anything about actual action — the bridge from
-action to preference is nowhere in the library; (2) anything about
-alternatives differing by more than one swap; (3) anything about
-independence of uses, which is the hypothesis `IndependentUses` of
-the theorems; (4) anything about units not on hand (`U ⊆ s.units`),
-which is all the disposition is data for; (5) anything about
-interchangeability of units — that two sub-stocks of the same size
-would serve the same ends is the hypothesis `Homogeneous`, not part
-of this claim; (6) that such a plan exists, or that it is unique
-absent further properties of `Prefers`. -/
+Does not say:
+
+1. Anything about actual action. The bridge from action to
+   preference appears nowhere in the library.
+2. Anything about alternatives that differ by more than one swap.
+3. Anything about independence of uses — that is the theorems'
+   hypothesis `IndependentUses`.
+4. Anything about units not on hand (`U ⊆ s.units`), which is all
+   the plan is data for.
+5. Anything about interchangeability of units. That two sub-stocks
+   of the same size would serve the same ends is the hypothesis
+   `Homogeneous`, and no part of this claim.
+6. That such a plan exists, or that it is unique without further
+   properties of `Prefers`. -/
 structure SwapDominant {F : ActionFrame} {agent : F.Agent} {t : F.Time}
     {s : Stock F agent t} (A : AllocationDisposition s) : Prop where
   /-- The one-swap dominance itself. -/

@@ -35,9 +35,10 @@ What the derivation needs, and what it does not:
 
 namespace Apodictic
 
-/-- Withdrawing a member and putting it back is the identity.
-Constructive given decidable equality — mathlib's
-`Set.insert_sdiff_singleton` is classical. -/
+/-- Taking a member out of a set and putting it straight back leaves
+the set alone. Proved here rather than borrowed because mathlib's
+`Set.insert_sdiff_singleton` is classical; with decidable equality
+this version is constructive. -/
 theorem insert_sdiff_self_of_mem {α : Type} [DecidableEq α] {S : Set α}
     {e : α} (h : e ∈ S) : S = insert e (S \ {e}) := by
   apply Set.ext
@@ -52,18 +53,20 @@ theorem insert_sdiff_self_of_mem {α : Type} [DecidableEq α] {S : Set α}
     | inl hxe => rw [hxe]; exact h
     | inr hx' => exact hx'.1
 
-/-- **Served over unserved** — the workhorse: with any sub-stock on
-hand, every end the agent would serve is preferred to every
-serviceable end the agent would not. This is all `SwapDominant`
-delivers, and it is more than Rothbard states: it compares a served
-end with ANY unserved serviceable end, not only with the one the
-next unit would reach. Derived under the hypothesis that uses are
-independent (module docstring).
+/-- **Served over unserved** — the workhorse. Take any sub-stock on
+hand. Every end the agent would serve with it is preferred to every
+end the good could serve but he would leave unserved.
 
-Proof shape: swapping the served `e` for the unserved `e'` is
-dominated; the served bundle is `e` plus the rest
-(`insert_sdiff_self_of_mem`); the two bundles now differ in one slot,
-and independence reads off `e ≻ e'`. -/
+This is everything `SwapDominant` gives, and it is more than Rothbard
+claims: it sets a served end against ANY unserved end the good could
+serve, not only against the one the next unit would reach. It holds
+under the hypothesis that uses are independent (see the module
+docstring above).
+
+How the proof goes: swapping the served `e` for the unserved `e'`
+gives a bundle the plan beats; the served bundle is `e` together with
+the rest (`insert_sdiff_self_of_mem`); the two bundles then differ in
+exactly one slot, and independence reads `e ≻ e'` off that. -/
 theorem served_over_unserved {F : ActionFrame} [DecidableEq F.End]
     {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
     (A : AllocationDisposition s) (hA : SwapDominant A)
@@ -83,14 +86,15 @@ theorem served_over_unserved {F : ActionFrame} [DecidableEq F.End]
   · rw [← hrw]
     exact hpref
 
-/-- **The urgency principle** (Rothbard), in counterfactual-loss form:
-for an agent's allocation disposition over a stock, every end that
-would still be served with the units `U` is preferred to every end
-that would be abandoned in the step down from `V`, one unit more —
-the loss falls on the least urgent want. One application of
-`served_over_unserved`: the abandoned end is serviceable and
-unserved at `U`; that `V` is `U` plus one unit is not used beyond
-that. -/
+/-- **The urgency principle** (Rothbard), stated as a loss. Suppose
+the agent had `V` and drops to `U`, one unit fewer. Every end he
+would still serve at `U` is preferred to every end he would have to
+abandon on the way down: the loss falls on the least urgent want.
+
+One application of `served_over_unserved`. The abandoned end is one
+the good can serve and the plan does not serve at `U`; beyond
+supplying that, the fact that `V` is `U` plus one unit does no
+work. -/
 theorem urgency_principle {F : ActionFrame} [DecidableEq F.End]
     {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
     (A : AllocationDisposition s) (hA : SwapDominant A)
@@ -102,16 +106,16 @@ theorem urgency_principle {F : ActionFrame} [DecidableEq F.End]
   have hU : U ⊆ s.units := fun x hx => hUV.2.1 (hUV.1 hx)
   exact served_over_unserved A hA hI U hU e he e' (A.serves_subset V e' he') hne
 
-/-- **At most one swap-dominant plan, up to one swap.** Given
-asymmetry of preference, two plans over the same stock cannot both be
-swap-dominant while differing by a single swap at some sub-stock.
+/-- **No rival plan, one swap away.** If preference is asymmetric,
+then two plans over the same stock cannot both be swap-dominant while
+differing by a single swap at some sub-stock.
 
-This is what Rothbard means by "the" value scale: that there is one
-is derived here, not presupposed. Rothbard writes as though the
-actor's ranking were simply given ("the" marginal unit, "the" least
-urgent want, *MES* pp. 24–27) and never argues for uniqueness;
-swap dominance plus asymmetry delivers it. Asymmetry travels as a
-hypothesis because `Prefers` has no assumed properties. -/
+This is what Rothbard means by "the" value scale, and here it is
+derived rather than presupposed. He writes as though the actor's
+ranking were simply given — "the" marginal unit, "the" least urgent
+want (*MES* pp. 24–27) — and never argues that there is only one.
+Swap dominance plus asymmetry delivers it. Asymmetry rides along as a
+hypothesis because `Prefers` has no properties assumed of it. -/
 theorem no_rival_swap_dominant {F : ActionFrame} [DecidableEq F.End]
     {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
     (hasym : ∀ X Y : Set F.End, F.Prefers agent t X Y → ¬ F.Prefers agent t Y X)
