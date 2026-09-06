@@ -4,5 +4,5 @@
   "github": "cyberchitta/apodictic",
   "url": "https://apodictic.cyberchitta.cc",
   "mainSiteUrl": "https://www.cyberchitta.cc",
-  "description": "Austrian praxeology (Mises, Rothbard) formalized in Lean 4: the axioms each theorem actually rests on, and the archaeology of where each one came from."
+  "description": "Austrian praxeology machine-checked in Lean 4: what Rothbard's derivation of the law of marginal utility actually assumes, and where each assumption came from."
 }

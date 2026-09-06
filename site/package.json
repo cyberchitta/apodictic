@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "eleventy",
-    "serve": "eleventy --serve"
+    "serve": "eleventy --serve",
+    "check": "node check-fossils.mjs",
+    "verify": "eleventy && node check-fossils.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
