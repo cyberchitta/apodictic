@@ -9,7 +9,7 @@ commitment and two hypotheses.
 
 What the derivation needs, and what it does not:
 
-- `SwapDominant A` — the counterfactual bridge: what the agent WOULD
+- `SwapDominant plan` — the counterfactual bridge: what the agent WOULD
   serve is preferred to any one-swap alternative. Subjunctive — and
   so is Rothbard's own derivation (*MES* p. 25), which compares the
   stock he has with a stock he does not.
@@ -17,7 +17,7 @@ What the derivation needs, and what it does not:
   conclusion is read off a bundle-level preference, which is licit
   only where uses are independent. The theorem does not apply where
   they are not; the law of marginal utility inherits the condition.
-- `[DecidableEq F.End]` — to form "the bundle minus `e`"
+- `[DecidableEq frame.End]` — to form "the bundle minus a want"
   constructively.
 - NOT the actual-action bridge from action to preference (nowhere in
   the library). The action half of Rothbard's fused premise (*MES*
@@ -39,18 +39,19 @@ namespace Apodictic
 the set alone. Proved here rather than borrowed because mathlib's
 `Set.insert_sdiff_singleton` is classical; with decidable equality
 this version is constructive. -/
-theorem insert_sdiff_self_of_mem {α : Type} [DecidableEq α] {S : Set α}
-    {e : α} (h : e ∈ S) : S = insert e (S \ {e}) := by
+theorem insert_sdiff_self_of_mem {α : Type} [DecidableEq α]
+    {bundle : Set α} {want : α} (h : want ∈ bundle) :
+    bundle = insert want (bundle \ {want}) := by
   apply Set.ext
   intro x
   constructor
   · intro hx
-    by_cases hxe : x = e
-    · exact Or.inl hxe
-    · exact Or.inr ⟨hx, hxe⟩
+    by_cases hxWant : x = want
+    · exact Or.inl hxWant
+    · exact Or.inr ⟨hx, hxWant⟩
   · intro hx
     cases hx with
-    | inl hxe => rw [hxe]; exact h
+    | inl hxWant => rw [hxWant]; exact h
     | inr hx' => exact hx'.1
 
 /-- **Served over unserved** — the workhorse. Take any sub-stock on
@@ -63,48 +64,57 @@ serve, not only against the one the next unit would reach. It holds
 under the hypothesis that uses are independent (see the module
 docstring above).
 
-How the proof goes: swapping the served `e` for the unserved `e'`
-gives a bundle the plan beats; the served bundle is `e` together with
+How the proof goes: swapping the `served` want for the `unserved` one
+gives a bundle the plan beats; the served bundle is that want together with
 the rest (`insert_sdiff_self_of_mem`); the two bundles then differ in
 exactly one slot, and independence reads `e ≻ e'` off that. -/
-theorem served_over_unserved {F : ActionFrame} [DecidableEq F.End]
-    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
-    (A : AllocationDisposition s) (hA : SwapDominant A)
-    (hI : F.IndependentUses agent t)
-    (U : Finset F.Means) (hU : U ⊆ s.units) :
-    ∀ e ∈ A.wouldServe U, ∀ e' ∈ s.serves, e' ∉ A.wouldServe U →
-      F.PrefersEnd agent t e e' := by
-  intro e he e' hserv hne
-  have hpref := hA.swap U hU e he e' hserv hne
-  have hmem : e ∈ (↑(A.wouldServe U) : Set F.End) := Finset.mem_coe.mpr he
-  have hrw := insert_sdiff_self_of_mem hmem
-  apply hI ((↑(A.wouldServe U) : Set F.End) \ {e}) e e'
+theorem served_over_unserved {frame : ActionFrame} [DecidableEq frame.End]
+    {agent : frame.Agent} {time : frame.Time}
+    {stock : Stock frame agent time}
+    (plan : AllocationPlan stock) (dominance : SwapDominant plan)
+    (independent : frame.IndependentUses agent time)
+    (subStock : Finset frame.Means) (onHand : subStock ⊆ stock.units) :
+    ∀ served ∈ plan.wouldServe subStock, ∀ unserved ∈ stock.serves,
+      unserved ∉ plan.wouldServe subStock →
+        frame.PrefersEnd agent time served unserved := by
+  intro served hserved unserved hcanServe hnotServed
+  have hbeats := dominance.swap subStock onHand served hserved
+    unserved hcanServe hnotServed
+  have hmem : served ∈ (↑(plan.wouldServe subStock) : Set frame.End) :=
+    Finset.mem_coe.mpr hserved
+  have hsplit := insert_sdiff_self_of_mem hmem
+  apply independent
+    ((↑(plan.wouldServe subStock) : Set frame.End) \ {served})
+    served unserved
   · intro h
     exact h.2 rfl
   · intro h
-    exact hne (Finset.mem_coe.mp h.1)
-  · rw [← hrw]
-    exact hpref
+    exact hnotServed (Finset.mem_coe.mp h.1)
+  · rw [← hsplit]
+    exact hbeats
 
 /-- **The urgency principle** (Rothbard), stated as a loss. Suppose
-the agent had `V` and drops to `U`, one unit fewer. Every end he
-would still serve at `U` is preferred to every end he would have to
+the agent had `more` and drops to `fewer`, one unit fewer. Every end he
+would still serve at `fewer` is preferred to every end he would have to
 abandon on the way down: the loss falls on the least urgent want.
 
 One application of `served_over_unserved`. The abandoned end is one
-the good can serve and the plan does not serve at `U`; beyond
-supplying that, the fact that `V` is `U` plus one unit does no
+the good can serve and the plan does not serve at `fewer`; beyond
+supplying that, the fact that `more` is `fewer` plus one unit does no
 work. -/
-theorem urgency_principle {F : ActionFrame} [DecidableEq F.End]
-    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
-    (A : AllocationDisposition s) (hA : SwapDominant A)
-    (hI : F.IndependentUses agent t)
-    (U V : Finset F.Means) (hUV : s.OneMore U V) :
-    ∀ e ∈ A.wouldServe U, ∀ e', e' ∈ A.wouldServe V →
-      e' ∉ A.wouldServe U → F.PrefersEnd agent t e e' := by
-  intro e he e' he' hne
-  have hU : U ⊆ s.units := fun x hx => hUV.2.1 (hUV.1 hx)
-  exact served_over_unserved A hA hI U hU e he e' (A.serves_subset V e' he') hne
+theorem urgency_principle {frame : ActionFrame} [DecidableEq frame.End]
+    {agent : frame.Agent} {time : frame.Time}
+    {stock : Stock frame agent time}
+    (plan : AllocationPlan stock) (dominance : SwapDominant plan)
+    (independent : frame.IndependentUses agent time)
+    (fewer more : Finset frame.Means) (step : stock.OneMore fewer more) :
+    ∀ kept ∈ plan.wouldServe fewer, ∀ lost, lost ∈ plan.wouldServe more →
+      lost ∉ plan.wouldServe fewer →
+        frame.PrefersEnd agent time kept lost := by
+  intro kept hkept lost hlost hnotKept
+  have onHand : fewer ⊆ stock.units := fun u hu => step.2.1 (step.1 hu)
+  exact served_over_unserved plan dominance independent fewer onHand
+    kept hkept lost (plan.servesOnlyWhatItCan more lost hlost) hnotKept
 
 /-- **No rival plan, one swap away.** If preference is asymmetric,
 then two plans over the same stock cannot both be swap-dominant while
@@ -116,51 +126,61 @@ ranking were simply given — "the" marginal unit, "the" least urgent
 want (*MES* pp. 24–27) — and never argues that there is only one.
 Swap dominance plus asymmetry delivers it. Asymmetry rides along as a
 hypothesis because `Prefers` has no properties assumed of it. -/
-theorem no_rival_swap_dominant {F : ActionFrame} [DecidableEq F.End]
-    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
-    (hasym : ∀ X Y : Set F.End, F.Prefers agent t X Y → ¬ F.Prefers agent t Y X)
-    (A A' : AllocationDisposition s) (hA : SwapDominant A) (hA' : SwapDominant A')
-    (U : Finset F.Means) (hU : U ⊆ s.units)
-    (e e' : F.End)
-    (heA : e ∈ A.wouldServe U) (hes : e ∈ s.serves)
-    (he's : e' ∈ s.serves) (he'A : e' ∉ A.wouldServe U)
-    (hswap : (↑(A'.wouldServe U) : Set F.End)
-              = insert e' ((↑(A.wouldServe U) : Set F.End) \ {e})) :
+theorem no_rival_swap_dominant {frame : ActionFrame} [DecidableEq frame.End]
+    {agent : frame.Agent} {time : frame.Time}
+    {stock : Stock frame agent time}
+    (asymmetry : ∀ X Y : Set frame.End,
+      frame.Prefers agent time X Y → ¬ frame.Prefers agent time Y X)
+    (plan rival : AllocationPlan stock)
+    (dominance : SwapDominant plan) (rivalDominance : SwapDominant rival)
+    (subStock : Finset frame.Means) (onHand : subStock ⊆ stock.units)
+    (served unserved : frame.End)
+    (hserved : served ∈ plan.wouldServe subStock)
+    (hservedPossible : served ∈ stock.serves)
+    (hunservedPossible : unserved ∈ stock.serves)
+    (hunserved : unserved ∉ plan.wouldServe subStock)
+    (hswap : (↑(rival.wouldServe subStock) : Set frame.End)
+              = insert unserved
+                  ((↑(plan.wouldServe subStock) : Set frame.End) \ {served})) :
     False := by
-  have hne : e ≠ e' := fun h => he'A (h ▸ heA)
-  have h1 := hA.swap U hU e heA e' he's he'A
-  rw [← hswap] at h1
-  have he'A' : e' ∈ A'.wouldServe U := by
-    have hm : e' ∈ (↑(A'.wouldServe U) : Set F.End) := by
+  have hne : served ≠ unserved := fun h => hunserved (h ▸ hserved)
+  have hplanBeats := dominance.swap subStock onHand served hserved
+    unserved hunservedPossible hunserved
+  rw [← hswap] at hplanBeats
+  have hunservedInRival : unserved ∈ rival.wouldServe subStock := by
+    have hm : unserved ∈ (↑(rival.wouldServe subStock) : Set frame.End) := by
       rw [hswap]; exact Set.mem_insert _ _
     exact Finset.mem_coe.mp hm
-  have heA' : e ∉ A'.wouldServe U := by
+  have hservedNotInRival : served ∉ rival.wouldServe subStock := by
     intro hmem
-    have hm : e ∈ (↑(A'.wouldServe U) : Set F.End) := Finset.mem_coe.mpr hmem
+    have hm : served ∈ (↑(rival.wouldServe subStock) : Set frame.End) :=
+      Finset.mem_coe.mpr hmem
     rw [hswap] at hm
     rcases hm with h | h
     · exact hne h
     · exact h.2 rfl
-  have h2 := hA'.swap U hU e' he'A' e hes heA'
-  have hback : insert e ((↑(A'.wouldServe U) : Set F.End) \ {e'})
-      = (↑(A.wouldServe U) : Set F.End) := by
+  have hrivalBeats := rivalDominance.swap subStock onHand unserved
+    hunservedInRival served hservedPossible hservedNotInRival
+  have hback : insert served
+      ((↑(rival.wouldServe subStock) : Set frame.End) \ {unserved})
+      = (↑(plan.wouldServe subStock) : Set frame.End) := by
     rw [hswap]
     apply Set.ext
     intro x
     constructor
-    · rintro (rfl | ⟨hx, hxe'⟩)
-      · exact heA
+    · rintro (rfl | ⟨hx, hxUnserved⟩)
+      · exact hserved
       · rcases hx with rfl | hx
-        · exact absurd rfl hxe'
+        · exact absurd rfl hxUnserved
         · exact hx.1
     · intro hx
-      by_cases hxe : x = e
-      · exact Or.inl hxe
-      · refine Or.inr ⟨Or.inr ⟨hx, hxe⟩, ?_⟩
+      by_cases hxServed : x = served
+      · exact Or.inl hxServed
+      · refine Or.inr ⟨Or.inr ⟨hx, hxServed⟩, ?_⟩
         rintro rfl
-        exact he'A (Finset.mem_coe.mp hx)
-  rw [hback] at h2
-  exact hasym _ _ h1 h2
+        exact hunserved (Finset.mem_coe.mp hx)
+  rw [hback] at hrivalBeats
+  exact asymmetry _ _ hplanBeats hrivalBeats
 
 #print axioms served_over_unserved
 #print axioms urgency_principle

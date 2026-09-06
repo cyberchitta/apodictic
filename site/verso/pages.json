@@ -85,13 +85,12 @@
     "dest": "/The-Result/Vocabulary/#Apodictic___Stock___mk"},
    {"numbering": null,
     "level": null,
-    "html": "<code>AllocationDisposition</code>",
-    "dest": "/The-Result/Vocabulary/#Apodictic___AllocationDisposition___mk"},
+    "html": "<code>AllocationPlan</code>",
+    "dest": "/The-Result/Vocabulary/#Apodictic___AllocationPlan___mk"},
    {"numbering": null,
     "level": null,
     "html": "<code>Homogeneous</code>",
-    "dest":
-    "/The-Result/Vocabulary/#Apodictic___AllocationDisposition___Homogeneous"},
+    "dest": "/The-Result/Vocabulary/#Apodictic___AllocationPlan___Homogeneous"},
    {"numbering": null,
     "level": null,
     "html": "<code>OneMore</code>",
@@ -204,17 +203,17 @@
   "path": ["The-Result", "The-receipt"],
   "next":
   {"url":
-   "/The-Result/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Result--Consistency",
-   "titleText": "Consistency",
-   "title": "Consistency",
+   "/The-Result/The-horses/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+   "titleText": "The horses",
+   "title": "The horses",
    "sectionNum": "1.7."},
   "localToc": [],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
   "fragment": "pages/The-Result/The-receipt.html",
   "depth": 2},
- {"url": "/The-Result/Consistency/",
-  "titleText": "Consistency",
-  "title": "1.7. Consistency",
+ {"url": "/The-Result/The-horses/",
+  "titleText": "The horses",
+  "title": "1.7. The horses",
   "sectionNum": "1.7.",
   "prev":
   {"url":
@@ -222,7 +221,7 @@
    "titleText": "The receipt",
    "title": "The receipt",
    "sectionNum": "1.6."},
-  "path": ["The-Result", "Consistency"],
+  "path": ["The-Result", "The-horses"],
   "next":
   {"url":
    "/The-Result/Not-in-the-base/#Apodictic___-Machine-Checked-Praxeology--The-Result--Not-in-the-base",
@@ -232,14 +231,24 @@
   "localToc":
   [{"numbering": null,
     "level": null,
-    "html": "<code>swapPrefers</code>",
-    "dest": "/The-Result/Consistency/#Apodictic___Model___swapPrefers"},
+    "html": "<code>rankPrefers</code>",
+    "dest": "/The-Result/The-horses/#Apodictic___Model___rankPrefers"},
    {"numbering": null,
     "level": null,
-    "html": "<code>toy_law_applies</code>",
-    "dest": "/The-Result/Consistency/#Apodictic___Model___toy_law_applies"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Consistency",
-  "fragment": "pages/The-Result/Consistency.html",
+    "html": "<code>loss_of_a_horse_ends_pleasure_riding</code>",
+    "dest":
+    "/The-Result/The-horses/#Apodictic___Model___loss_of_a_horse_ends_pleasure_riding"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>which_horse_does_not_matter</code>",
+    "dest":
+    "/The-Result/The-horses/#Apodictic___Model___which_horse_does_not_matter"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>horses_law_applies</code>",
+    "dest": "/The-Result/The-horses/#Apodictic___Model___horses_law_applies"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+  "fragment": "pages/The-Result/The-horses.html",
   "depth": 2},
  {"url": "/The-Result/Not-in-the-base/",
   "titleText": "Not in the base",
@@ -247,9 +256,9 @@
   "sectionNum": "1.8.",
   "prev":
   {"url":
-   "/The-Result/Consistency/#Apodictic___-Machine-Checked-Praxeology--The-Result--Consistency",
-   "titleText": "Consistency",
-   "title": "Consistency",
+   "/The-Result/The-horses/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+   "titleText": "The horses",
+   "title": "The horses",
    "sectionNum": "1.7."},
   "path": ["The-Result", "Not-in-the-base"],
   "next":

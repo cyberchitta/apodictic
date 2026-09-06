@@ -11,7 +11,7 @@ WHICH units — a sub-stock — not by how many.
 
 Audit note (standing): commitments hide in field SHAPES, where
 no signature shows. One lives here — see the docstring
-of `AllocationDisposition.card_eq`. Interchangeability of units no
+of `AllocationPlan.oneUnitOneEnd`. Interchangeability of units no
 longer does: it is the named condition `Homogeneous`, a hypothesis of
 the theorems that need it.
 -/
@@ -37,16 +37,18 @@ that enters into concrete human action" (*MES* p. 28). Pairs of
 horses make a different stock, with a "new and shorter scale of
 ends", and a good that "cannot be divided into homogeneous units for
 purposes of action" is a stock of exactly one unit. -/
-structure Stock (F : ActionFrame) (agent : F.Agent) (t : F.Time) where
+structure Stock (frame : ActionFrame) (agent : frame.Agent)
+    (time : frame.Time) where
   /-- The units of the good on hand. -/
-  units : Finset F.Means
+  units : Finset frame.Means
   /-- The ends this good can serve, by the agent's lights. -/
-  serves : Set F.End
+  serves : Set frame.End
   /-- Every unit is believed to serve exactly the ends in
   `serves`. -/
-  homog : ∀ u ∈ units, ∀ e, F.Believes agent t u e ↔ e ∈ serves
+  unitsAlike : ∀ unit ∈ units, ∀ want,
+    frame.Believes agent time unit want ↔ want ∈ serves
 
-/-- The agent's plan for the stock: for each sub-stock `U` — each set
+/-- The agent's plan for the stock: for each `subStock` — each set
 of units he might have — the ends he WOULD serve with exactly those
 units, at the stock's single time.
 
@@ -60,21 +62,23 @@ only on the count is interchangeability of units, and that is not
 built in here — it is the named condition `Homogeneous`, hypothesized
 where a theorem needs it.
 
-Field-shape commitment (audit): `card_eq` is the one-unit-per-end
-idealization. With the units `U` (taken from the stock on hand),
+Field-shape commitment (audit): `oneUnitOneEnd` is the one-unit-per-end
+idealization. With the units of a `subStock` (taken from the stock on hand),
 exactly as many ends would be served as there are units: no unit is
 split, pooled, or left idle. Rothbard says "each unit of means is
 capable of serving one of the ends", and flags it — "We assume for
 simplicity" (*MES* p. 26). The shape of the definition is
 our-reconstruction. -/
-structure AllocationDisposition {F : ActionFrame} {agent : F.Agent}
-    {t : F.Time} (s : Stock F agent t) where
-  /-- The ends that would be served with exactly the units `U`. -/
-  wouldServe : Finset F.Means → Finset F.End
+structure AllocationPlan {frame : ActionFrame} {agent : frame.Agent}
+    {time : frame.Time} (stock : Stock frame agent time) where
+  /-- The ends that would be served with exactly the units `subStock`. -/
+  wouldServe : Finset frame.Means → Finset frame.End
   /-- Units go only to ends the good is believed able to serve. -/
-  serves_subset : ∀ U, ∀ e ∈ wouldServe U, e ∈ s.serves
+  servesOnlyWhatItCan : ∀ subStock, ∀ want ∈ wouldServe subStock,
+    want ∈ stock.serves
   /-- One unit, one end; no idle units — within the actual stock. -/
-  card_eq : ∀ U ⊆ s.units, (wouldServe U).card = U.card
+  oneUnitOneEnd : ∀ subStock ⊆ stock.units,
+    (wouldServe subStock).card = subStock.card
 
 /-- **Interchangeability of units** — a condition on the situation,
 NOT a commitment. The plan depends only on how many units there are,
@@ -89,17 +93,19 @@ one unit" (*MES* p. 23). Where it fails, the units are not one good,
 and the supply-size form of the law does not treat them as one. Like
 the plan it constrains, it speaks of sub-stocks the agent may not
 hold. -/
-def AllocationDisposition.Homogeneous {F : ActionFrame} {agent : F.Agent}
-    {t : F.Time} {s : Stock F agent t} (A : AllocationDisposition s) : Prop :=
-  ∀ U ⊆ s.units, ∀ V ⊆ s.units, U.card = V.card →
-    A.wouldServe U = A.wouldServe V
+def AllocationPlan.Homogeneous {frame : ActionFrame} {agent : frame.Agent}
+    {time : frame.Time} {stock : Stock frame agent time}
+    (plan : AllocationPlan stock) : Prop :=
+  ∀ fewer ⊆ stock.units, ∀ more ⊆ stock.units, fewer.card = more.card →
+    plan.wouldServe fewer = plan.wouldServe more
 
-/-- `V` is `U` plus one more unit, both inside the stock. Said with
+/-- `more` is `fewer` plus one more unit, both inside the stock. Said with
 inclusion and a count rather than by naming the extra unit, so that
 sub-stocks are only ever hypothesized and never built — which is why
 no decidable equality on units is needed anywhere. -/
-def Stock.OneMore {F : ActionFrame} {agent : F.Agent} {t : F.Time}
-    (s : Stock F agent t) (U V : Finset F.Means) : Prop :=
-  U ⊆ V ∧ V ⊆ s.units ∧ V.card = U.card + 1
+def Stock.OneMore {frame : ActionFrame} {agent : frame.Agent}
+    {time : frame.Time} (stock : Stock frame agent time)
+    (fewer more : Finset frame.Means) : Prop :=
+  fewer ⊆ more ∧ more ⊆ stock.units ∧ more.card = fewer.card + 1
 
 end Apodictic

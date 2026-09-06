@@ -62,9 +62,9 @@ structure ActionFrame where
 /-- Preference between two single ends. This is bundle preference
 between two one-member bundles — a definition, not a second
 relation. -/
-abbrev ActionFrame.PrefersEnd (F : ActionFrame) (a : F.Agent) (t : F.Time)
-    (e e' : F.End) : Prop :=
-  F.Prefers a t {e} {e'}
+abbrev ActionFrame.PrefersEnd (frame : ActionFrame) (agent : frame.Agent)
+    (time : frame.Time) (want other : frame.End) : Prop :=
+  frame.Prefers agent time {want} {other}
 
 /-- **Independence of uses** — a condition on the situation, NOT a
 universal claim. If two bundles differ in exactly one slot, then
@@ -82,10 +82,12 @@ place of his one fused claim — and it is where complementarity ends
 up once the pieces are pulled apart. Asserting it instead of
 hypothesizing it would amount to asserting that complementarity never
 happens. -/
-def ActionFrame.IndependentUses (F : ActionFrame) (a : F.Agent) (t : F.Time) :
-    Prop :=
-  ∀ (S : Set F.End) (e e' : F.End), e ∉ S → e' ∉ S →
-    F.Prefers a t (insert e S) (insert e' S) → F.PrefersEnd a t e e'
+def ActionFrame.IndependentUses (frame : ActionFrame) (agent : frame.Agent)
+    (time : frame.Time) : Prop :=
+  ∀ (rest : Set frame.End) (want other : frame.End),
+    want ∉ rest → other ∉ rest →
+      frame.Prefers agent time (insert want rest) (insert other rest) →
+        frame.PrefersEnd agent time want other
 
 /-- An action: an agent, at a time, uses means in the belief that they
 will bring about a chosen end, giving up at least one alternative end
@@ -95,19 +97,19 @@ The fields hold together as a package — nothing with fewer parts
 counts as an action — but this is a definition, so it asserts
 nothing. Shape: our-reconstruction. No theorem uses it yet; the law
 of marginal utility rests on the counterfactual plan alone. -/
-structure Action (F : ActionFrame) where
+structure Action (frame : ActionFrame) where
   /-- The acting person. -/
-  agent : F.Agent
+  agent : frame.Agent
   /-- When the action happens. -/
-  time : F.Time
+  time : frame.Time
   /-- The end aimed at. -/
-  chosen : F.End
+  chosen : frame.End
   /-- The means employed. -/
-  means : F.Means
+  means : frame.Means
   /-- The ends given up by acting — the raw material of opportunity
   cost. Just a set: saying "the next-best alternative" would
   presuppose a ranking this file does not have. -/
-  forgone : Set F.End
+  forgone : Set frame.End
   /-- Action is choice: something is always given up, if only doing
   nothing. -/
   forgone_nonempty : forgone.Nonempty
@@ -115,6 +117,6 @@ structure Action (F : ActionFrame) where
   chosen_not_forgone : chosen ∉ forgone
   /-- The agent believes the means used will bring about the chosen
   end. -/
-  belief : F.Believes agent time means chosen
+  belief : frame.Believes agent time means chosen
 
 end Apodictic

@@ -55,9 +55,9 @@ that forces them.
 Situational applicability conditions are not commitments: they are
 named hypotheses stated where they apply, so that a theorem is silent
 rather than false where they fail. `IndependentUses`
-(`Apodictic.Action`) and `AllocationDisposition.Homogeneous`
+(`Apodictic.Action`) and `AllocationPlan.Homogeneous`
 (`Apodictic.Allocation`) are of that kind. Decidable identity of ends
-travels as the instance argument `[DecidableEq F.End]`; it is a data
+travels as the instance argument `[DecidableEq frame.End]`; it is a data
 condition on the frame, not a claim about action.
 -/
 
@@ -66,9 +66,9 @@ namespace Apodictic
 /-- **Swap dominance** — the agent's plan beats every one-swap
 alternative to it.
 
-Take any sub-stock `U` of the units on hand, and the ends the agent
-would serve with it. Now make one swap: drop a served end `e`, and
-put in its place some end `e'` that the good could have served but
+Take any sub-stock of the units on hand, and the ends the agent
+would serve with it. Now make one swap: drop a `served` end, and
+put in its place an `unserved` one that the good could have served but
 the plan left out. The claim is that the agent prefers the bundle he
 would have served to the swapped bundle.
 
@@ -124,12 +124,14 @@ Does not say:
    `Homogeneous`, and no part of this claim.
 6. That such a plan exists, or that it is unique without further
    properties of `Prefers`. -/
-structure SwapDominant {F : ActionFrame} {agent : F.Agent} {t : F.Time}
-    {s : Stock F agent t} (A : AllocationDisposition s) : Prop where
+structure SwapDominant {frame : ActionFrame} {agent : frame.Agent}
+    {time : frame.Time} {stock : Stock frame agent time}
+    (plan : AllocationPlan stock) : Prop where
   /-- The one-swap dominance itself. -/
-  swap : ∀ U ⊆ s.units, ∀ e ∈ A.wouldServe U, ∀ e' ∈ s.serves,
-    e' ∉ A.wouldServe U →
-      F.Prefers agent t (↑(A.wouldServe U))
-        (insert e' ((↑(A.wouldServe U) : Set F.End) \ {e}))
+  swap : ∀ subStock ⊆ stock.units, ∀ served ∈ plan.wouldServe subStock,
+    ∀ unserved ∈ stock.serves, unserved ∉ plan.wouldServe subStock →
+      frame.Prefers agent time (↑(plan.wouldServe subStock))
+        (insert unserved
+          ((↑(plan.wouldServe subStock) : Set frame.End) \ {served}))
 
 end Apodictic

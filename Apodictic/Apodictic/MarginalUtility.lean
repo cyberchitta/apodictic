@@ -13,7 +13,7 @@ below, in two forms:
   no interchangeability of units.
 - `marginal_utility`: Rothbard's wording, by supply SIZE — "the
   greater the supply, the lower the marginal utility". Needs
-  `Homogeneous A` (interchangeability), used exactly once: to say
+  `plan.Homogeneous` (interchangeability), used exactly once: to say
   what "the plan at `n` units" is. Without it the supply-size form
   cannot be stated: interchangeability is a condition on STATING the
   law by size, not a premise of the ordering.
@@ -23,9 +23,9 @@ Lean's own background (both arrive with the quotient-based `Finset`,
 and with set extensionality), and nothing else: the library declares
 no axioms. The
 praxeological content is read off the SIGNATURE instead, and it is
-one commitment plus three situational conditions: `SwapDominant A`
-(the commitment), `IndependentUses` and `Homogeneous A` (situational;
-the latter for the supply-size form only), `[DecidableEq F.End]` (a
+one commitment plus three situational conditions: `SwapDominant plan`
+(the commitment), `IndependentUses` and `plan.Homogeneous` (situational;
+the latter for the supply-size form only), `[DecidableEq frame.End]` (a
 data condition on the frame), and the sub-stocks being on hand. That
 every one of them does real work is enforced by
 `#lint only unusedArguments`, not by the proof term — see
@@ -44,22 +44,24 @@ marginality of the end at the smaller supply is unused by the proof
 namespace Apodictic
 
 /-- One more unit always serves some new end: there is an end served
-with `V` that is not served with `U`. Pure counting, carrying no
+with `more` that is not served with `fewer`. Pure counting, carrying no
 philosophical weight — it just keeps the law from being about
 nothing. -/
-theorem exists_marginal {F : ActionFrame} {agent : F.Agent} {t : F.Time}
-    {s : Stock F agent t} (A : AllocationDisposition s)
-    (U V : Finset F.Means) (hUV : s.OneMore U V) :
-    ∃ e ∈ A.wouldServe V, e ∉ A.wouldServe U := by
+theorem exists_marginal {frame : ActionFrame} {agent : frame.Agent}
+    {time : frame.Time} {stock : Stock frame agent time}
+    (plan : AllocationPlan stock)
+    (fewer more : Finset frame.Means) (step : stock.OneMore fewer more) :
+    ∃ added ∈ plan.wouldServe more, added ∉ plan.wouldServe fewer := by
   by_contra h
-  have hsub : A.wouldServe V ⊆ A.wouldServe U := by
-    intro e he
-    by_contra hne
-    exact h ⟨e, he, hne⟩
+  have hsub : plan.wouldServe more ⊆ plan.wouldServe fewer := by
+    intro want hwant
+    by_contra hnew
+    exact h ⟨want, hwant, hnew⟩
   have hle := Finset.card_le_card hsub
-  have hU : U ⊆ s.units := fun x hx => hUV.2.1 (hUV.1 hx)
-  rw [A.card_eq V hUV.2.1, A.card_eq U hU, hUV.2.2] at hle
-  exact Nat.not_succ_le_self U.card hle
+  have onHand : fewer ⊆ stock.units := fun u hu => step.2.1 (step.1 hu)
+  rw [plan.oneUnitOneEnd more step.2.1, plan.oneUnitOneEnd fewer onHand,
+    step.2.2] at hle
+  exact Nat.not_succ_le_self fewer.card hle
 
 /-- **Marginal utility of the step `U → V`** — of going up by one
 unit — in Rothbard's own sense: the ends the extra unit adds, which
@@ -72,7 +74,7 @@ satisfied" (p. 25).
 A set of ends rather than a single end, because it is not assumed
 that exactly one end drops (see the module docstring). A `Set` rather
 than a `Finset` for a mechanical reason: subtracting one `Finset`
-from another needs decidable equality on `F.End`, which an arbitrary
+from another needs decidable equality on `frame.End`, which an arbitrary
 frame does not give us, and reaching for `Classical` would put
 `Classical.choice` on the receipt for no praxeological reason at all.
 
@@ -85,10 +87,11 @@ that they believe the means can serve" (p. 19).
 Indexed by the step rather than by a size, because which ends a unit
 adds can depend on which units are already on hand — unless the plan
 is `Homogeneous`. -/
-def marginalEnds {F : ActionFrame} {agent : F.Agent} {t : F.Time}
-    {s : Stock F agent t} (A : AllocationDisposition s)
-    (U V : Finset F.Means) : Set F.End :=
-  {e | e ∈ A.wouldServe V ∧ e ∉ A.wouldServe U}
+def marginalEnds {frame : ActionFrame} {agent : frame.Agent}
+    {time : frame.Time} {stock : Stock frame agent time}
+    (plan : AllocationPlan stock)
+    (fewer more : Finset frame.Means) : Set frame.End :=
+  {want | want ∈ plan.wouldServe more ∧ want ∉ plan.wouldServe fewer}
 
 /-- **The law of marginal utility, along a chain of named units.**
 Take `U ⊂ V ⊂ W`, each one unit more than the last. Every end the
@@ -96,20 +99,25 @@ first step adds is preferred to every end the second step adds.
 
 No interchangeability of units is needed, because the chain says
 which units are involved. One application of `urgency_principle`; the
-fact that `e` is marginal at the first step goes unused
-(`_h_marg`). -/
+fact that the first step's end is marginal there goes unused
+(`_notNeeded`). -/
 theorem marginal_utility_chain
-    {F : ActionFrame} [DecidableEq F.End]
-    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
-    (A : AllocationDisposition s) (hA : SwapDominant A)
-    (hI : F.IndependentUses agent t)
-    (U V W : Finset F.Means) (_hUV : s.OneMore U V) (hVW : s.OneMore V W) :
-    ∀ e ∈ marginalEnds A U V, ∀ e' ∈ marginalEnds A V W,
-      F.PrefersEnd agent t e e' := by
-  intro e he e' he'
-  obtain ⟨heV, _h_marg⟩ := he
-  obtain ⟨he'W, he'V⟩ := he'
-  exact urgency_principle A hA hI V W hVW e heV e' he'W he'V
+    {frame : ActionFrame} [DecidableEq frame.End]
+    {agent : frame.Agent} {time : frame.Time}
+    {stock : Stock frame agent time}
+    (plan : AllocationPlan stock) (dominance : SwapDominant plan)
+    (independent : frame.IndependentUses agent time)
+    (small medium large : Finset frame.Means)
+    (_firstStep : stock.OneMore small medium)
+    (secondStep : stock.OneMore medium large) :
+    ∀ addedFirst ∈ marginalEnds plan small medium,
+      ∀ addedSecond ∈ marginalEnds plan medium large,
+        frame.PrefersEnd agent time addedFirst addedSecond := by
+  intro addedFirst hfirst addedSecond hsecond
+  obtain ⟨hservedAtMedium, _notNeeded⟩ := hfirst
+  obtain ⟨hservedAtLarge, hnotAtMedium⟩ := hsecond
+  exact urgency_principle plan dominance independent medium large secondStep
+    addedFirst hservedAtMedium addedSecond hservedAtLarge hnotAtMedium
 
 /-- **The law of marginal utility** (Rothbard, *MES*, ch. 1, p. 27):
 "The greater the supply of a good, the lower the marginal utility;
@@ -120,30 +128,39 @@ at a supply of `n` units is preferred to every end marginal at a
 supply of `n + 1` — and that holds for ANY two one-unit steps
 reaching those sizes, which need not have a single unit in common.
 
-`Homogeneous A` is needed exactly once, to say that the plan with the
+`plan.Homogeneous` is needed exactly once, to say that the plan with the
 `n` units below the second step is the plan with the `n` units of the
-first. The fact that `e` is marginal at `n` goes unused
-(`_h_marg`). -/
+first. The fact that the end at `n` is marginal there goes unused
+(`_notNeeded`). -/
 theorem marginal_utility
-    {F : ActionFrame} [DecidableEq F.End]
-    {agent : F.Agent} {t : F.Time} {s : Stock F agent t}
-    (A : AllocationDisposition s) (hA : SwapDominant A)
-    (hI : F.IndependentUses agent t) (hH : A.Homogeneous)
-    (U V U' V' : Finset F.Means)
-    (hUV : s.OneMore U V) (hU'V' : s.OneMore U' V')
-    (n : ℕ) (hn : V.card = n) (hn' : V'.card = n + 1) :
-    ∀ e ∈ marginalEnds A U V, ∀ e' ∈ marginalEnds A U' V',
-      F.PrefersEnd agent t e e' := by
-  intro e he e' he'
-  obtain ⟨heV, _h_marg⟩ := he
-  obtain ⟨he'V', he'U'⟩ := he'
-  have hV : V ⊆ s.units := hUV.2.1
-  have hU' : U' ⊆ s.units := fun x hx => hU'V'.2.1 (hU'V'.1 hx)
-  have hcard : V.card = U'.card := by
-    have := hU'V'.2.2
+    {frame : ActionFrame} [DecidableEq frame.End]
+    {agent : frame.Agent} {time : frame.Time}
+    {stock : Stock frame agent time}
+    (plan : AllocationPlan stock) (dominance : SwapDominant plan)
+    (independent : frame.IndependentUses agent time)
+    (interchangeable : plan.Homogeneous)
+    (belowSmaller smaller belowLarger larger : Finset frame.Means)
+    (stepToSmaller : stock.OneMore belowSmaller smaller)
+    (stepToLarger : stock.OneMore belowLarger larger)
+    (n : ℕ) (smallerSize : smaller.card = n)
+    (largerSize : larger.card = n + 1) :
+    ∀ atSmaller ∈ marginalEnds plan belowSmaller smaller,
+      ∀ atLarger ∈ marginalEnds plan belowLarger larger,
+        frame.PrefersEnd agent time atSmaller atLarger := by
+  intro atSmaller hsmaller atLarger hlarger
+  obtain ⟨hservedAtSmaller, _notNeeded⟩ := hsmaller
+  obtain ⟨hservedAtLarger, hnotBelowLarger⟩ := hlarger
+  have smallerOnHand : smaller ⊆ stock.units := stepToSmaller.2.1
+  have belowLargerOnHand : belowLarger ⊆ stock.units :=
+    fun u hu => stepToLarger.2.1 (stepToLarger.1 hu)
+  have sameSize : smaller.card = belowLarger.card := by
+    have := stepToLarger.2.2
     omega
-  rw [hH V hV U' hU' hcard] at heV
-  exact urgency_principle A hA hI U' V' hU'V' e heV e' he'V' he'U'
+  rw [interchangeable smaller smallerOnHand belowLarger belowLargerOnHand
+    sameSize] at hservedAtSmaller
+  exact urgency_principle plan dominance independent belowLarger larger
+    stepToLarger atSmaller hservedAtSmaller atLarger hservedAtLarger
+    hnotBelowLarger
 
 #print axioms marginal_utility_chain
 #print axioms marginal_utility

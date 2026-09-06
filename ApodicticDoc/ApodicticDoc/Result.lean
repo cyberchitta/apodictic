@@ -103,12 +103,12 @@ more or fewer of them.
 
 {docstring Apodictic.Stock}
 
-{docstring Apodictic.AllocationDisposition}
+{docstring Apodictic.AllocationPlan}
 
-One claim sits a level down. `card_eq` — one unit serves one end, with
+One claim sits a level down. `oneUnitOneEnd` — one unit serves one end, with
 no unit left idle — is Rothbard's "we assume for simplicity" (p. 26).
 It is a field of the plan rather than a listed assumption. Every
-theorem below takes a plan `A : AllocationDisposition s`, so the claim
+theorem below takes a plan `A : AllocationPlan s`, so the claim
 is still on the page; you read it off the type of an argument instead
 of the assumption list. That is the one place an audit has to look
 past the signature.
@@ -117,7 +117,7 @@ Interchangeability of units is *not* down there. The plan is indexed
 by which exact units the agent holds. That it depends only on how many
 is a separate named condition, below.
 
-{docstring Apodictic.AllocationDisposition.Homogeneous}
+{docstring Apodictic.AllocationPlan.Homogeneous}
 
 {docstring Apodictic.Stock.OneMore}
 
@@ -154,12 +154,12 @@ condition on the situation rather than a universal claim about action,
 and each stands in the statement so that it can be pointed at when it
 fails. Where one fails the law is silent, not refuted.
 
-- `s.OneMore U V`: the two piles compared are both on hand and differ
+- `stock.OneMore fewer more`: the two piles compared are both on hand and differ
   by exactly one unit. The plan is data only there, and the law holds
   only there.
 - `IndependentUses agent t`: what an end is worth does not depend on
   which other ends are being served.
-- `A.Homogeneous`: the plan depends only on how many units, not which
+- `plan.Homogeneous`: the plan depends only on how many units, not which
   ones. Needed by the size-based form of the law alone.
 
 Which plan is the agent's needs no assumption of its own. The theorems
@@ -214,39 +214,57 @@ This output says one thing: the library adds nothing to Lean's logic.
 It is not the list of praxeological assumptions.
 
 Those are in the statement. The law carries one commitment,
-`SwapDominant A`; three situational conditions — `IndependentUses`,
-`A.Homogeneous` (the size-based form only), and the two piles being on
-hand; and one data condition on the frame, `[DecidableEq F.End]`. The
+`SwapDominant plan`; three situational conditions — `IndependentUses`,
+`plan.Homogeneous` (the size-based form only), and the two piles being on
+hand; and one data condition on the frame, `[DecidableEq frame.End]`. The
 urgency principle and the chain form carry the same list without
 `Homogeneous`.
 
-# Consistency
+# The horses
 
-Consistency is not a side-question here — it is a worked example.
-Build a frame, a stock and a plan; prove the plan satisfies the
-commitment; hand the whole thing to the theorem. If that type-checks,
-the commitment and the conditions can all hold at once, and the law is
-not empty.
+Consistency is not a side-question here, and the model is not an
+invented one. It is Rothbard's own worked case (*MES* pp. 25–27): a
+man with six interchangeable horses, ten ends ranked in order of
+importance, each horse able to serve one of them. The six horses serve
+the first six ends; ends 7–10 go unserved.
 
-The frame is `Apodictic.Model.Toy` — one agent, one instant, numbers
-standing in for ends — and this is its preference:
+Wants are ranks on the man's value scale, and the lower rank is the
+more urgent want:
 
-{docstring Apodictic.Model.swapPrefers}
+{docstring Apodictic.Model.rankPrefers}
 
-In it, the plan that serves the most urgent ends, as many as there are
-units, satisfies the commitment and is homogeneous. Ends can be told
-apart, uses are independent, one-unit steps exist inside the stock,
-each step has a marginal end, and preference is asymmetric. So the
-commitment has a model in which preference is strict — the reading
-intended throughout, and what `no_rival_swap_dominant` needs.
+The man's plan is the obvious one — with any `n` horses he serves the
+`n` most urgent wants — and it satisfies the commitment. Wants can be
+told apart, uses are independent, one-horse steps exist inside the
+stable, each step has a marginal end, and preference is asymmetric. So
+the commitment has a model in which preference is strict, which is the
+reading intended throughout and what `no_rival_swap_dominant` needs.
 
-The last step is the point:
+Two of the theorems are Rothbard's own conclusions rather than
+bookkeeping. The first is his p. 25 result:
 
-{docstring Apodictic.Model.toy_law_applies}
+{docstring Apodictic.Model.loss_of_a_horse_ends_pleasure_riding}
 
-That is the law itself, at the toy frame, with every assumption
-discharged. Nothing is copied across by hand: `toy_swapDominant`
+The second is the one he names two horses to make, and it is the
+argument for how the plan is encoded here:
+
+{docstring Apodictic.Model.which_horse_does_not_matter}
+
+And the last step is the point:
+
+{docstring Apodictic.Model.horses_law_applies}
+
+That is the law itself, at the horse frame, with every assumption
+discharged. Nothing is copied across by hand: `horses_swapDominant`
 proves the very proposition the theorem consumes.
+
+Two places where the model is not Rothbard's, both recorded rather
+than papered over. His ten ends are "for simplicity", to fit a
+diagram; capping the scale would drag a side condition through every
+theorem and buy nothing, so the good here serves every rank. And which
+earlier horse is Man o' War is arbitrary — Rothbard says only that he
+arrived before Seabiscuit, and nothing about a horse but its identity
+enters any claim.
 
 # Not in the base
 
@@ -258,9 +276,9 @@ It is written out here in the form it would take, and parked:
 ```lean
 /-- PARKED: the bridge from actual action to preference. Carried by
 no theorem; lives in the document, not the library. -/
-structure DemonstratedPreference (F : ActionFrame) : Prop where
-  bridge : ∀ a : Action F, ∀ e ∈ a.forgone,
-    F.Prefers a.agent a.time {a.chosen} {e}
+structure DemonstratedPreference (frame : ActionFrame) : Prop where
+  bridge : ∀ act : Action frame, ∀ givenUp ∈ act.forgone,
+    frame.Prefers act.agent act.time {act.chosen} {givenUp}
 ```
 
 The second is the claim that there is any action at all. Action itself
