@@ -127,7 +127,9 @@ Two lake packages in this repo:
   `ApodicticDoc/Emit/Eleventy.lean` replaces Verso's page layer and
   writes an Eleventy input tree (`lake exe generate-doc --output
   ../site/verso`, run after any document change; the tree is
-  committed).
+  committed). It does NOT delete pages that leave the document:
+  dropping or renaming a part needs a manual sweep of
+  `site/verso/pages/`.
 - **site/** — the doc site: an Eleventy consumer of Supramental Gold
   (wired per SG `wire-consumer`; ch-ai-tanya is the analog) that
   renders `site/verso/` into one page per Verso part. `bun run serve`
@@ -211,15 +213,3 @@ session to session.
 Mises, *Human Action* (esp. chs. 1–7); Rothbard, *Man, Economy, and
 State* (esp. ch. 1). When citing, verify wording against the Mises
 Institute editions — do not quote from memory.
-- [x] Encoding settled 2026-09-06: praxeological claims are
-      STRUCTURES carried as hypotheses. The library declares no
-      axiom; every receipt reads
-      `[propext, Quot.sound]` and the commitments are read off the
-      signature, kept tight by `#lint only unusedArguments`
-      (verified live — watched go red). `SwapDominant` is the single
-      commitment; `[DecidableEq F.End]` is a data condition. Consistency is an instance, not a mirror
-      (`toy_law_applies`), and `no_rival_swap_dominant` derives that
-      there is "the" value scale rather than presupposing it.
-      Reverses two earlier decisions, deliberately; the linter makes
-      the receipt available without axioms.
-      `_notes/2026-09-06-nozick-removed-decomposition-rationale.md`.
