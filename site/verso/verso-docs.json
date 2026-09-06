@@ -1,28 +1,25 @@
 {"99":
- "<code>F.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
+ "<code>Apodictic.marginal_utility_chain {F : ActionFrame} [DecidableEq F.End] {agent : F.Agent} {t : F.Time}\n  {s : Stock F agent t} (A : AllocationDisposition s) (hA : SwapDominant A) (hI : F.IndependentUses agent t)\n  (U V W : Finset F.Means) (_hUV : s.OneMore U V) (hVW : s.OneMore V W) (e : F.End) :\n  e ∈ marginalEnds A U V → ∀ e'✝ ∈ marginalEnds A V W, F.PrefersEnd agent t e e'✝</code><span class=\"sep\"></span><code class=\"docstring\">**The law of marginal utility, along a chain of specific units**:\nfor `U ⊂ V ⊂ W` each one unit more, every end the step `U → V` adds\nis preferred to every end the step `V → W` adds. No interchangeability\nof units is needed: the chain names which units. One application of\n`urgency_principle`; the marginality of `e` at the first step is\nunused (`_h_marg`). </code>",
  "98":
- "<code>F.End</code><span class=\"sep\"></span><code class=\"docstring\">The end aimed at. </code>",
+ "<code>Unit.unit : Unit</code><span class=\"sep\"></span><code class=\"docstring\">The only element of the unit type.\n\nIt can be written as an empty tuple: `()`.\n</code>",
  "97":
- "<code>F.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the action happens. </code>",
+ "<code>Finset.range (n : ℕ) : Finset ℕ</code><span class=\"sep\"></span><code class=\"docstring\">`range n` is the set of natural numbers less than `n`. </code>",
  "96":
- "<code>F.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The acting person. </code>",
+ "<code>Apodictic.Model.toyPlan (k : ℕ) : AllocationDisposition (Model.toyStock k)</code><span class=\"sep\"></span><code class=\"docstring\">The plan that serves the most urgent ends, as many as there are\nunits — whichever units they are. </code>",
  "95":
- "<code>Apodictic.Action.mk {F : ActionFrame} (agent : F.Agent) (time : F.Time) (chosen : F.End) (means : F.Means)\n  (forgone : Set F.End) (forgone_nonempty : forgone.Nonempty) (chosen_not_forgone : chosen ∉ forgone)\n  (belief : F.Believes agent time means chosen) : Action F</code>",
- "94":
- "<code>Apodictic.Action.chosen {F : ActionFrame} (self : Action F) : F.End</code><span class=\"sep\"></span><code class=\"docstring\">The end aimed at. </code>",
- "93":
- "<code>Apodictic.Action.time {F : ActionFrame} (self : Action F) : F.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the action happens. </code>",
+ "<code>Apodictic.Model.Toy : ActionFrame</code><span class=\"sep\"></span><code class=\"docstring\">The toy frame: one agent, one instant, ends and means are\nnumbers, everything believed serviceable, preference as above. </code>",
+ "94": "<code>Model.Toy.End</code>",
+ "93": "<code>n + 1 &lt; k</code>",
  "92":
- "<code>Apodictic.Action.agent {F : ActionFrame} (self : Action F) : F.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The acting person. </code>",
- "91":
- "<code>Apodictic.Action.forgone {F : ActionFrame} (self : Action F) : Set F.End</code><span class=\"sep\"></span><code class=\"docstring\">Ends forgone in acting — the material of opportunity cost.\nA bare set: \"the next-best alternative\" would presuppose ranking\nstructure this file does not have. </code>",
- "90": "<code>Action F</code>",
+ "<code>LT.lt.{u} {α : Type u} [self : LT α] : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The less-than relation: `x &lt; y` \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `&lt;` in identifiers is `lt`.</code>",
+ "91": "<code>n &lt; k</code>",
+ "90":
+ "<code>Apodictic.Model.toy_law_applies (k n : ℕ) (h : n &lt; k) (h' : n + 1 &lt; k) (e : Model.Toy.End) :\n  e ∈ marginalEnds (Model.toyPlan k) (Finset.range n) (Finset.range (n + 1)) →\n    ∀ e' ∈ marginalEnds (Model.toyPlan k) (Finset.range (n + 1)) (Finset.range (n + 2)), Model.Toy.PrefersEnd () () e e'</code><span class=\"sep\"></span><code class=\"docstring\">**The law itself, instantiated.** Every hypothesis of\n`marginal_utility_chain` is discharged at the toy frame, so the\ncommitment and the situational conditions are jointly satisfiable and\nthe law is not vacuous. This is the whole consistency argument: it\ntype-checks, therefore they cohere. </code>",
  "9":
  "<code>Apodictic.ActionFrame.Agent (self : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Acting persons. </code>",
- "89":
- "<code>DemonstratedPreference.bridge {F : ActionFrame} (self : DemonstratedPreference F) (a : Action F) (e : F.End) :\n  e ∈ a.forgone → F.Prefers a.agent a.time {a.chosen} {e}</code>",
+ "89": "<code>Set ℕ</code>",
  "88":
- "<code>DemonstratedPreference (F : ActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">PARKED: the bridge from actual action to preference. Carried by\nno theorem; lives in the document, not the library. </code>",
+ "<code>Apodictic.Model.swapPrefers (X Y : Set ℕ) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The toy preference: `X ≻ Y` iff they differ by exactly one swap\nand `X`'s element is the more urgent (smaller number). </code>",
  "87":
  "<code class=\"docstring\">Prints the axioms used by a declaration, directly or indirectly.\nPlease consult [the reference manual](https://lean-lang.org/doc/reference/4.32.2/find/?domain=Verso.Genre.Manual.section&name=validating-proofs) to understand the significance of the output. </code>",
  "86":
@@ -164,39 +161,42 @@
  "12":
  "<code>Apodictic.ActionFrame.End (self : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Ends: states of affairs an agent may value. </code>",
  "117":
- "<code>Apodictic.marginal_utility_chain {F : ActionFrame} [DecidableEq F.End] {agent : F.Agent} {t : F.Time}\n  {s : Stock F agent t} (A : AllocationDisposition s) (hA : SwapDominant A) (hI : F.IndependentUses agent t)\n  (U V W : Finset F.Means) (_hUV : s.OneMore U V) (hVW : s.OneMore V W) (e : F.End) :\n  e ∈ marginalEnds A U V → ∀ e'✝ ∈ marginalEnds A V W, F.PrefersEnd agent t e e'✝</code><span class=\"sep\"></span><code class=\"docstring\">**The law of marginal utility, along a chain of specific units**:\nfor `U ⊂ V ⊂ W` each one unit more, every end the step `U → V` adds\nis preferred to every end the step `V → W` adds. No interchangeability\nof units is needed: the chain names which units. One application of\n`urgency_principle`; the marginality of `e` at the first step is\nunused (`_h_marg`). </code>",
+ "<code>Apodictic.Action.means {F : ActionFrame} (self : Action F) : F.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
  "116":
- "<code>Unit.unit : Unit</code><span class=\"sep\"></span><code class=\"docstring\">The only element of the unit type.\n\nIt can be written as an empty tuple: `()`.\n</code>",
+ "<code>F.Believes self.agent self.time self.means self.chosen</code><span class=\"sep\"></span><code class=\"docstring\">The agent believes the employed means conduce to the chosen\nend. </code>",
  "115":
- "<code>Finset.range (n : ℕ) : Finset ℕ</code><span class=\"sep\"></span><code class=\"docstring\">`range n` is the set of natural numbers less than `n`. </code>",
+ "<code>self.chosen ∉ self.forgone</code><span class=\"sep\"></span><code class=\"docstring\">The chosen end is not among the forgone. </code>",
  "114":
- "<code>Apodictic.Model.toyPlan (k : ℕ) : AllocationDisposition (Model.toyStock k)</code><span class=\"sep\"></span><code class=\"docstring\">The plan that serves the most urgent ends, as many as there are\nunits — whichever units they are. </code>",
+ "<code>Set.Nonempty.{u} {α : Type u} (s : Set α) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The property `s.Nonempty` expresses the fact that the set `s` is not empty. It should be used\nin theorem assumptions instead of `∃ x, x ∈ s` or `s ≠ ∅` as it gives access to a nice API thanks\nto the dot notation. </code>",
  "113":
- "<code>Apodictic.Model.Toy : ActionFrame</code><span class=\"sep\"></span><code class=\"docstring\">The toy frame: one agent, one instant, ends and means are\nnumbers, everything believed serviceable, preference as above. </code>",
- "112": "<code>Model.Toy.End</code>",
- "111": "<code>n + 1 &lt; k</code>",
+ "<code>self.forgone.Nonempty</code><span class=\"sep\"></span><code class=\"docstring\">Action is choice: something is always forgone (at minimum,\ninaction). </code>",
+ "112":
+ "<code>Set F.End</code><span class=\"sep\"></span><code class=\"docstring\">Ends forgone in acting — the material of opportunity cost.\nA bare set: \"the next-best alternative\" would presuppose ranking\nstructure this file does not have. </code>",
+ "111":
+ "<code>F.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
  "110":
- "<code>LT.lt.{u} {α : Type u} [self : LT α] : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The less-than relation: `x &lt; y` \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `&lt;` in identifiers is `lt`.</code>",
+ "<code>F.End</code><span class=\"sep\"></span><code class=\"docstring\">The end aimed at. </code>",
  "11":
  "<code>Apodictic.ActionFrame.Means (self : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Means: scarce resources an agent may employ. </code>",
- "109": "<code>n &lt; k</code>",
+ "109":
+ "<code>F.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the action happens. </code>",
  "108":
- "<code>Apodictic.Model.toy_law_applies (k n : ℕ) (h : n &lt; k) (h' : n + 1 &lt; k) (e : Model.Toy.End) :\n  e ∈ marginalEnds (Model.toyPlan k) (Finset.range n) (Finset.range (n + 1)) →\n    ∀ e' ∈ marginalEnds (Model.toyPlan k) (Finset.range (n + 1)) (Finset.range (n + 2)), Model.Toy.PrefersEnd () () e e'</code><span class=\"sep\"></span><code class=\"docstring\">**The law itself, instantiated.** Every hypothesis of\n`marginal_utility_chain` is discharged at the toy frame, so the\ncommitment and the situational conditions are jointly satisfiable and\nthe law is not vacuous. This is the whole consistency argument: it\ntype-checks, therefore they cohere. </code>",
- "107": "<code>Set ℕ</code>",
+ "<code>F.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The acting person. </code>",
+ "107":
+ "<code>Apodictic.Action.mk {F : ActionFrame} (agent : F.Agent) (time : F.Time) (chosen : F.End) (means : F.Means)\n  (forgone : Set F.End) (forgone_nonempty : forgone.Nonempty) (chosen_not_forgone : chosen ∉ forgone)\n  (belief : F.Believes agent time means chosen) : Action F</code>",
  "106":
- "<code>Apodictic.Model.swapPrefers (X Y : Set ℕ) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The toy preference: `X ≻ Y` iff they differ by exactly one swap\nand `X`'s element is the more urgent (smaller number). </code>",
+ "<code>Apodictic.Action.chosen {F : ActionFrame} (self : Action F) : F.End</code><span class=\"sep\"></span><code class=\"docstring\">The end aimed at. </code>",
  "105":
- "<code>Apodictic.Action.means {F : ActionFrame} (self : Action F) : F.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
+ "<code>Apodictic.Action.time {F : ActionFrame} (self : Action F) : F.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the action happens. </code>",
  "104":
- "<code>F.Believes self.agent self.time self.means self.chosen</code><span class=\"sep\"></span><code class=\"docstring\">The agent believes the employed means conduce to the chosen\nend. </code>",
+ "<code>Apodictic.Action.agent {F : ActionFrame} (self : Action F) : F.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The acting person. </code>",
  "103":
- "<code>self.chosen ∉ self.forgone</code><span class=\"sep\"></span><code class=\"docstring\">The chosen end is not among the forgone. </code>",
- "102":
- "<code>Set.Nonempty.{u} {α : Type u} (s : Set α) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The property `s.Nonempty` expresses the fact that the set `s` is not empty. It should be used\nin theorem assumptions instead of `∃ x, x ∈ s` or `s ≠ ∅` as it gives access to a nice API thanks\nto the dot notation. </code>",
+ "<code>Apodictic.Action.forgone {F : ActionFrame} (self : Action F) : Set F.End</code><span class=\"sep\"></span><code class=\"docstring\">Ends forgone in acting — the material of opportunity cost.\nA bare set: \"the next-best alternative\" would presuppose ranking\nstructure this file does not have. </code>",
+ "102": "<code>Action F</code>",
  "101":
- "<code>self.forgone.Nonempty</code><span class=\"sep\"></span><code class=\"docstring\">Action is choice: something is always forgone (at minimum,\ninaction). </code>",
+ "<code>DemonstratedPreference.bridge {F : ActionFrame} (self : DemonstratedPreference F) (a : Action F) (e : F.End) :\n  e ∈ a.forgone → F.Prefers a.agent a.time {a.chosen} {e}</code>",
  "100":
- "<code>Set F.End</code><span class=\"sep\"></span><code class=\"docstring\">Ends forgone in acting — the material of opportunity cost.\nA bare set: \"the next-best alternative\" would presuppose ranking\nstructure this file does not have. </code>",
+ "<code>DemonstratedPreference (F : ActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">PARKED: the bridge from actual action to preference. Carried by\nno theorem; lives in the document, not the library. </code>",
  "10":
  "<code>Apodictic.ActionFrame.Time (self : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">When action happens. Explicit from the start; no order assumed\nyet. </code>",
  "1":
