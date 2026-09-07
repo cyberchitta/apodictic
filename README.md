@@ -53,11 +53,11 @@ Two lake packages:
 Apodictic/             -- the library. Depends on mathlib only; always
                        -- builds standalone. The trusted artifact.
   Apodictic/
-    Commitments.lean   -- every praxeological assertion, nothing else
+    Praxeology.lean    -- every praxeological claim, nothing else
     Action.lean        -- agents, ends, means, the action framework
     MarginalUtility.lean -- first theorem target
 ApodicticDoc/          -- Verso document package, depends on the library.
-                       -- The result: vocabulary, the commitment, the
+                       -- The result: vocabulary, the claim, the
                        -- hypotheses, the theorems, and the manifest.
 ```
 

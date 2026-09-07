@@ -6,10 +6,10 @@ import Apodictic.MarginalUtility
 # Consistency — Rothbard's horses, machine-checked
 
 The library asserts no axioms; its praxeological content travels as
-hypotheses (`Apodictic.Commitments`). So consistency is an INSTANCE.
+hypotheses (`Apodictic.Praxeology`). So consistency is an INSTANCE.
 Build a concrete frame, a stock, and a plan; prove the plan satisfies
 `SwapDominant`; hand the whole thing to the law. If that type-checks,
-the commitment and every hypothesis are jointly satisfiable, and the
+the praxeological claim and every hypothesis are jointly satisfiable, and the
 theorems are not vacuous. Nothing is transcribed:
 `horses_swapDominant` proves the very proposition
 `marginal_utility_chain` consumes.
@@ -59,7 +59,7 @@ namespace Model
 
 /-- Asymmetry of preference: if `X` is preferred to `Y` then `Y` is
 not preferred to `X`. This is the "strict" reading intended all
-along, and it is not yet a commitment (OPEN.md). The model has to
+along, and it is not yet a praxeological claim (OPEN.md). The model has to
 survive it. -/
 def Asymmetric (praxis : ActionFrame) : Prop :=
   ∀ (agent : praxis.Agent) (time : praxis.Time) (X Y : Set praxis.End),
@@ -157,7 +157,7 @@ theorem horses_asymmetric : Asymmetric Horses := by
   subst hv hv'
   exact Nat.lt_asymm hlt hlt'
 
-/-- **The man's plan is swap-dominant** — the commitment itself, proved
+/-- **The man's plan is swap-dominant** — the claim itself, proved
 of this frame and this plan. Serving the `n` most urgent wants beats
 any one-swap alternative, because any want swapped in ranks below
 every want swapped out. -/
@@ -281,7 +281,7 @@ theorem which_horse_does_not_matter :
     (Finset.erase_subset _ _) hcard
 
 /-- **The law itself, applied to the horses.** Every hypothesis of
-`marginal_utility_chain` is met at this frame. So the commitment and
+`marginal_utility_chain` is met at this frame. So the claim and
 the conditions on the situation can all hold at once, and the law is
 not empty. That is the whole consistency argument: this type-checks,
 therefore they fit together. -/

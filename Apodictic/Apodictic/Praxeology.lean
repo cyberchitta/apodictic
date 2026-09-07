@@ -1,7 +1,7 @@
 import Apodictic.Allocation
 
 /-!
-# Commitments — the COMPLETE set of praxeological assertions
+# Praxeology — the COMPLETE set of praxeological claims
 
 Every substantive claim the theorems rest on lives in this file and
 nowhere else. Nothing assertion-like — no claim folded into a
@@ -9,7 +9,7 @@ structure field of the vocabulary, no premise smuggled into a proof —
 may live in any other module. The file is meant to be auditable at a
 glance.
 
-Each commitment carries a docstring with three fields:
+Each claim carries a docstring with three fields:
 
 - `Source:` citation to Mises / Rothbard, or "tacit"
 - `Status:` explicit-in-tradition / suppressed-premise /
@@ -29,10 +29,10 @@ deliberate:
 - **`#print axioms` on any theorem here prints only Lean's own
   background** (`propext`, `Quot.sound`). That is itself the report:
   we have added nothing to Lean's logic. The praxeological
-  commitments are read off the theorem's SIGNATURE instead.
+  praxeological claims are read off the theorem's SIGNATURE instead.
 - **The manifest is enforced by the unused-argument linter**, not by
   the proof term. `#lint only unusedArguments` fails the build on any
-  hypothesis that did no work, so a listed commitment is a used one.
+  hypothesis that did no work, so a listed claim is a used one.
   It is silenceable (`_`-prefix, `@[nolint unusedArguments]`) — so
   not silencing it is a standing policy, and any write-up must say
   so.
@@ -41,9 +41,9 @@ A claim about a given frame and a given plan quantifies over nothing
 that can be constructed to refute it, and consistency is exhibited by
 building an instance (`Apodictic.Consistency`).
 
-## Policy: commitments enter at point of first use
+## Policy: claims enter at point of first use
 
-No commitment lives here unless some theorem's signature carries it.
+No claim lives here unless some theorem's signature carries it.
 Doctrinally central claims that no theorem yet needs — the bridge
 from actual action to preference (demonstrated preference), the
 existence claim (humans act) — are parked with their pedigree in
@@ -52,13 +52,13 @@ that forces them.
 
 ## What is NOT here
 
-Situational applicability conditions are not commitments: they are
+Situational applicability conditions are not praxeological claims: they are
 named hypotheses stated where they apply, so that a theorem is silent
 rather than false where they fail. `IndependentUses`
 (`Apodictic.Action`) and `AllocationPlan.Homogeneous`
 (`Apodictic.Allocation`) are of that kind. Decidable identity of ends
 travels as the instance argument `[DecidableEq praxis.End]`; it is a data
-condition on the frame, not a claim about action.
+condition on the frame, not a praxeological claim.
 -/
 
 namespace Apodictic
@@ -90,7 +90,7 @@ Status: explicit-in-tradition as doctrine; the one-swap form, and the
 pulling apart of the two halves below, are our-reconstruction. Rothbard's premise fuses two
 claims in one sentence: that ACTION employs the means, and that the
 wants served are "the most urgent of the not yet satisfied wants"
-(*MES* p. 24). This commitment keeps the ordering half and states it
+(*MES* p. 24). This claim keeps the ordering half and states it
 subjunctively, over what the agent WOULD serve. The subjunctive is
 Rothbard's own — his derivation compares a stock of six with a stock
 of five and asks which want "the larger stock would have satisfied"
@@ -100,8 +100,12 @@ act to a preference.
 
 And that is the clash, which is Rothbard's own. He holds that
 praxeology "may deal with utilities only as deduced from the concrete
-actions of human beings" (*MES* p. 882 n. 8). The premise his law
-needs is not of that kind.
+actions of human beings" (*MES* p. 882 n. 8), and he says it again
+inside this very chapter, eight pages past the derivation, in words he
+introduces with "It must be reiterated": "value scales do not exist in
+a void apart from the concrete choices of action", so that there is
+"no need for him to formulate hypothetical value scales" (*MES*
+p. 33). The premise his law needs is not of that kind.
 
 Asserted of ONE plan, not of every plan of that shape — and that is
 not a hedge. Given one plan, a rival can always be defined, so a claim
@@ -119,7 +123,13 @@ Does not say:
 3. Anything about independence of uses — that is the theorems'
    hypothesis `IndependentUses`.
 4. Anything about units not on hand (`subStock ⊆ stock.units`), which
-   is all the plan speaks about.
+   is all the plan speaks about. Rothbard draws that line himself:
+   the hypothetical scales he refuses at *MES* p. 33 are scales for a
+   stock LARGER than the one held. This claim stays inside the
+   holding. It does still range over sub-stocks the agent does not
+   separately choose over, and his first clause there — that scales
+   do not exist apart from concrete choices — is not restricted to
+   the larger case.
 5. Anything about interchangeability of units. That two sub-stocks
    of the same size would serve the same ends is the hypothesis
    `Homogeneous`, and no part of this claim.

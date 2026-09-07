@@ -43,8 +43,12 @@ const RULES = [
     why: "the manifest is the signature; #print axioms only shows Lean's background" },
   { pattern: /\breceipts?\b/i,
     why: "'receipt' was retired 2026-09-07; the word is 'manifest'" },
+  { pattern: /\bcommitments?\b/i,
+    why: "'commitment' was retired 2026-09-07; the words are 'praxeological claim'" },
+  { pattern: /Commitments\.lean/,
+    why: "Commitments.lean was renamed to Praxeology.lean" },
   // --- part slugs dropped by the restructure (2026-09-06) ---
-  { pattern: /href="\/The-Result\/(Axioms|Commitments|Hypotheses|Theorems|Vocabulary|Findings|Not-in-the-base|Consistency|The-receipt)\//,
+  { pattern: /href="\/The-Result\/(Axioms|Commitments|Hypotheses|Theorems|Vocabulary|Findings|Not-in-the-base|Consistency|The-receipt|The-one-premise)\//,
     why: "part renamed by the restructure; this link 404s" },
 ];
 

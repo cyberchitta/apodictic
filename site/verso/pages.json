@@ -66,17 +66,17 @@
   "path": ["The-Result", "The-finding"],
   "next":
   {"url":
-   "/The-Result/The-one-premise/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-premise",
-   "titleText": "The one premise",
-   "title": "The one premise",
+   "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
+   "titleText": "The one claim",
+   "title": "The one claim",
    "sectionNum": "1.3."},
   "localToc": [],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-finding",
   "fragment": "pages/The-Result/The-finding.html",
   "depth": 2},
- {"url": "/The-Result/The-one-premise/",
-  "titleText": "The one premise",
-  "title": "1.3. The one premise",
+ {"url": "/The-Result/The-one-claim/",
+  "titleText": "The one claim",
+  "title": "1.3. The one claim",
   "sectionNum": "1.3.",
   "prev":
   {"url":
@@ -84,7 +84,7 @@
    "titleText": "The finding",
    "title": "The finding",
    "sectionNum": "1.2."},
-  "path": ["The-Result", "The-one-premise"],
+  "path": ["The-Result", "The-one-claim"],
   "next":
   {"url":
    "/The-Result/The-conditions/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
@@ -95,9 +95,9 @@
   [{"numbering": null,
     "level": null,
     "html": "<code>SwapDominant</code>",
-    "dest": "/The-Result/The-one-premise/#Apodictic___SwapDominant___mk"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-premise",
-  "fragment": "pages/The-Result/The-one-premise.html",
+    "dest": "/The-Result/The-one-claim/#Apodictic___SwapDominant___mk"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
+  "fragment": "pages/The-Result/The-one-claim.html",
   "depth": 2},
  {"url": "/The-Result/The-conditions/",
   "titleText": "The conditions",
@@ -105,9 +105,9 @@
   "sectionNum": "1.4.",
   "prev":
   {"url":
-   "/The-Result/The-one-premise/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-premise",
-   "titleText": "The one premise",
-   "title": "The one premise",
+   "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
+   "titleText": "The one claim",
+   "title": "The one claim",
    "sectionNum": "1.3."},
   "path": ["The-Result", "The-conditions"],
   "next":

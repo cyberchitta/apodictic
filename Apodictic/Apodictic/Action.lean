@@ -8,9 +8,9 @@ encoded as a definition: being an action commits to all components
 at once — the jointly constitutive reading — but a definition
 carries no assertion. All
 assertions, including any bridge from choice to the latent ranking,
-are commitments in `Apodictic.Commitments`.
+are praxeological claims in `Apodictic.Praxeology`.
 
-Audit note: commitments can hide in the *shape* of these structures
+Audit note: praxeological claims can hide in the *shape* of these structures
 (which fields exist, and their types), where no signature will
 surface them. Auditing the trusted base includes auditing these
 fields.
@@ -41,7 +41,7 @@ structure ActionFrame where
   bundle of ends `X` above the bundle `Y`. This is the ranking behind
   the agent's choices, and it is strict. It is kept apart from what
   the agent actually does; anything that bridges the two is a
-  commitment in `Apodictic.Commitments`. No properties are assumed.
+  claim in `Apodictic.Praxeology`. No properties are assumed.
 
   It ranges over SETS of ends rather than single ends. The tradition
   draws no line between an end and a composite of ends — "atomic"
@@ -54,7 +54,7 @@ structure ActionFrame where
   ends — can be a named hypothesis, instead of something the
   vocabulary quietly enforces.
 
-  Shape commitment (audit): a bundle is a `Set`, so it carries no
+  Shape claim (audit): a bundle is a `Set`, so it carries no
   multiplicity and no order. -/
   Prefers : Agent → Time → Set End → Set End → Prop
 

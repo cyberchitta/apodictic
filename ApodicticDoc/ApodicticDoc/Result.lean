@@ -141,7 +141,7 @@ from and the condition that makes its usual wording well-formed.
 Twice, though, and not once. These are two different claims, and the
 encoding keeps them apart:
 
-- The premise is a *commitment*. It rides on the signature of every
+- The premise is a *praxeological claim*. It rides on the signature of every
   theorem that uses it. If it is false, the law is false.
 - The condition is a *hypothesis* of one theorem. Where it fails the
   law says nothing — it is silent, not wrong.
@@ -152,9 +152,9 @@ an audit like this is for.
 None of this makes the law wrong. The machine checked the reasoning:
 the conclusion follows, and the proof uses only what the statement
 lists. One question is left, and it is a narrow one — may praxeology
-use that premise at all?
+use that claim at all?
 
-# The one premise
+# The one claim
 
 
 The library contains no `axiom`. Every praxeological claim is written
@@ -167,7 +167,7 @@ nothing can be listed for show. The linter can be switched off, which
 makes keeping it on a promise rather than something the machine
 guarantees. It is never switched off here.
 
-Each commitment records three things. *Source* is a citation, or
+Each claim records three things. *Source* is a citation, or
 "tacit". *Status* is one of three verdicts: explicit-in-tradition
 (Rothbard or Mises say it), suppressed-premise (they use it without
 saying it), or our-reconstruction (a decision the tradition never
@@ -176,7 +176,7 @@ deliberately avoids.
 
 Two rules govern the list. A claim is added only when some theorem
 first needs it, so every claim here is one that some theorem actually
-uses. And only claims meant to hold always are commitments; a
+uses. And only claims meant to hold always belong here; a
 condition that says when a law applies is a hypothesis instead, and
 those have a part of their own below.
 
@@ -237,7 +237,7 @@ the supply, and it is.
 Everything the law carries, in one place. Each line is a binder in the
 theorem's signature, and nothing that is not here is assumed.
 
-- *The premise.* `SwapDominant plan` — the one claim about action.
+- *The premise.* `SwapDominant plan` — the one praxeological claim.
 - *The conditions on the situation.* `stock.OneMore`,
   `IndependentUses`, and `plan.Homogeneous` for the size-based form
   only. These are the three above: they are what an Austrian points at
@@ -312,7 +312,7 @@ about a horse except its identity enters any claim.
 # The other findings
 
 
-What else the audit turned up, beyond the one premise.
+What else the audit turned up, beyond the one claim.
 
 - Rothbard's derivation is one step from an asserted premise (p. 24).
   The one-step proof is faithful to him; the audit point is that
@@ -343,7 +343,7 @@ What the law does not need, which is most of what it usually gets.
   plan at `n` units" only picks out one thing if two piles of the same
   size serve the same ends. So it bears on the wording, not on the
   derivation —
-  which is why it is a hypothesis and not a commitment. Rothbard makes
+  which is why it is a hypothesis and not a praxeological claim. Rothbard makes
   it part of what a supply *is* (p. 23), and where it fails the units
   are not one good.
 - Indifference between units is needed nowhere. Rothbard defines a
@@ -414,7 +414,7 @@ many of them there are is a separate named condition, below.
 
 
 Two claims at the centre of the doctrine are used by no theorem here,
-and so are not commitments. The first is the bridge from what a man
+and so are not on the list. The first is the bridge from what a man
 actually does to what he prefers — demonstrated preference, in
 Rothbard's sense. It is written out below in the form it would take,
 and then set aside:

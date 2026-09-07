@@ -24,13 +24,13 @@ Lean's own background (both arrive with the quotient-based `Finset`,
 and with set extensionality), and nothing else: the library declares
 no axioms. The
 praxeological content is read off the SIGNATURE instead, and it is
-one commitment plus three situational conditions: `SwapDominant plan`
-(the commitment), `IndependentUses` and `plan.Homogeneous` (situational;
+one praxeological claim plus three situational conditions: `SwapDominant plan`
+(the claim), `IndependentUses` and `plan.Homogeneous` (situational;
 the latter for the supply-size form only), `[DecidableEq praxis.End]` (a
 data condition on the frame), and the sub-stocks being on hand. That
 every one of them does real work is enforced by
 `#lint only unusedArguments`, not by the proof term — see
-`Apodictic.Commitments`.
+`Apodictic.Praxeology`.
 
 What the manifest shows is read in the Verso document (part I,
 findings). In brief: no axiom about ACTUAL action is cited — the law

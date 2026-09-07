@@ -9,7 +9,7 @@ the marginal-utility target: a stock of interchangeable units, and
 the agent's counterfactual allocation disposition over it, indexed by
 WHICH units — a sub-stock — not by how many.
 
-Audit note (standing): commitments hide in field SHAPES, where
+Audit note (standing): praxeological claims hide in field SHAPES, where
 no signature shows. One lives here — see the docstring
 of `AllocationPlan.oneUnitOneEnd`. Interchangeability of units no
 longer does: it is the named condition `Homogeneous`, a hypothesis of
@@ -62,7 +62,7 @@ only on the number of them is to say the units are interchangeable,
 and that is not built in here: it is the named condition
 `Homogeneous`, assumed only where a theorem needs it.
 
-Field-shape commitment (audit): `oneUnitOneEnd` says one unit serves
+Field-shape claim (audit): `oneUnitOneEnd` says one unit serves
 one end. Take any sub-stock of the units on hand, and exactly as many
 ends would be served as there are units — no unit split, pooled, or
 left idle. Rothbard says "each unit of means is
@@ -83,7 +83,7 @@ structure AllocationPlan {praxis : ActionFrame} {agent : praxis.Agent}
     (wouldServe subStock).card = subStock.card
 
 /-- **Interchangeability of units** — a condition on the situation,
-NOT a commitment. The plan depends only on how many units there are,
+NOT a praxeological claim. The plan depends only on how many units there are,
 not on which ones: any two sub-stocks of the same size would serve
 the same ends.
 

@@ -85,7 +85,7 @@ result is a strawman Austrians can rightly dismiss:
   utility functions, not even as a convenience.
 - Preference is over ends; action demonstrates preference. Keep the
   latent ranking and the choice function distinct; any bridge between
-  them is a COMMITMENT to be flagged (Rothbard's
+  them is a PRAXEOLOGICAL CLAIM to be flagged (Rothbard's
   demonstrated-preference doctrine, formalized).
 - Time is explicit in the action framework from the start.
 - No given ends–means data hanging free: means–ends links go through
@@ -102,8 +102,8 @@ Two lake packages in this repo:
   Depends on mathlib ONLY. This package must ALWAYS build standalone
   with `lake build`. It is the trusted artifact; nothing may ever
   block it.
-  - Apodictic/Commitments.lean — the COMPLETE set of praxeological
-    assertions. Nothing assertion-like anywhere else. Auditable at a
+  - Apodictic/Praxeology.lean — the COMPLETE set of claims about
+    action. Nothing assertion-like anywhere else. Auditable at a
     glance. The library declares NO `axiom` (2026-09-06): a claim is
     a structure, carried by a theorem as a named hypothesis.
   - Apodictic/Action.lean — agents, ends, means, the action framework.
@@ -117,9 +117,9 @@ Two lake packages in this repo:
     the theorems' hypotheses. Evidence, not theory; nothing depends
     on it; its proofs may be classical.
 - **ApodicticDoc/** — a Verso document package, depending on the
-  Apodictic library. The connected essay lives here: axiom
-  the vocabulary, the commitment, the hypotheses, the theorems and
-  the manifest — the human's review surface, and the only part
+  Apodictic library. The connected essay lives here: the vocabulary,
+  the claim, the hypotheses, the theorems and the manifest — the
+  human's review surface, and the only part
   emitted to the site. It is written from `_notes/` at editorial
   cadence
   (human decision 2026-09-04) and may lag the Lean, never
@@ -162,28 +162,28 @@ Plus the lab notebook, outside both packages:
 - Use mathlib order-theory vocabulary (Preorder/PartialOrder/
   LinearOrder) but do NOT reach for a stronger typeclass than the
   praxeological argument licenses just to close a goal.
-- Commitments are honest and legible: every universal claim is a
-  named structure in Commitments.lean and appears in the signature of
+- Praxeological claims are honest and legible: every universal claim
+  is a named structure in Praxeology.lean and appears in the signature of
   every theorem that uses it. None may be folded into a field of the
   vocabulary, where no signature shows it. The manifest IS the
   signature, and `#lint only unusedArguments` — mandatory, never
   silenced without a recorded reason — keeps it tight. `_`-prefixing
   a hypothesis is how "this does no work" is recorded, and each such
   case is a finding.
-- Commitments enter at point of first use. Nothing lives in
-  Commitments.lean unless some theorem's signature carries it; doctrinally
+- Praxeological claims enter at point of first use. Nothing lives in
+  Praxeology.lean unless some theorem's signature carries it; doctrinally
   central axioms no theorem yet needs are parked with their
   pedigree in `_notes/2026-09-04-parked-axioms.md`. (Human
   decision 2026-09-04: no reviewing axioms that do no work.)
 - Constructive by default (human decision 2026-09-04). No
   `Classical.choice` on a theorem's manifest. When a proof stalls
   for want of a case split, ask whether the split is praxeological
-  content (then it is a named commitment) or logical background;
+  content (then it is a named praxeological claim) or logical background;
   never let mathlib's classical lemmas answer that question
   silently. Check with `#print axioms` — on a library theorem it
   must print `[propext, Quot.sound]` and nothing else.
 - Consistency lives in Lean, not in notes (human decision
-  2026-09-04): every commitment is satisfied by the toy frame in
+  2026-09-04): every praxeological claim is satisfied by the toy frame in
   `Consistency.lean`, together with the properties we intend to add
   (asymmetry) and the theorems' hypotheses (non-vacuity). It is an
   INSTANCE: `toy_law_applies` hands the toy plan to the law itself,
@@ -198,7 +198,7 @@ Plus the lab notebook, outside both packages:
   simp). No heavy automation (no `decide`/`polyrith`-style closes)
   on philosophically load-bearing steps — the proof should be
   readable enough to audit which axioms did the work.
-- Each commit message notes any change to Commitments.lean.
+- Each commit message notes any change to Praxeology.lean.
 
 ## Current state
 

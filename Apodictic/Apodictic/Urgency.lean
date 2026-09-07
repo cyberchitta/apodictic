@@ -1,11 +1,11 @@
-import Apodictic.Commitments
+import Apodictic.Praxeology
 
 /-!
 # The urgency principle — derived, not asserted
 
 Rothbard says the urgency principle "follows from" action (*MES*
 p. 24) without showing how. Here it is a theorem, from one
-commitment and two hypotheses.
+praxeological claim and two hypotheses.
 
 What the derivation needs, and what it does not:
 
