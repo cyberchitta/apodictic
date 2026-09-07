@@ -98,14 +98,18 @@ of five and asks which want "the larger stock would have satisfied"
 action half is dropped rather than answered: nothing here bridges an
 act to a preference.
 
-And that is the clash, which is Rothbard's own. He holds that
-praxeology "may deal with utilities only as deduced from the concrete
-actions of human beings" (*MES* p. 882 n. 8), and he says it again
-inside this very chapter, eight pages past the derivation, in words he
-introduces with "It must be reiterated": "value scales do not exist in
-a void apart from the concrete choices of action", so that there is
-"no need for him to formulate hypothetical value scales" (*MES*
-p. 33). The premise his law needs is not of that kind.
+A tension remains, and it is Rothbard's own, but it is narrower than
+the subjunctive form alone suggests. He holds that praxeology "may
+deal with utilities only as deduced from the concrete actions of human
+beings" (*MES* p. 882 n. 8), and inside this very chapter he writes,
+in words he introduces with "It must be reiterated", that "value
+scales do not exist in a void apart from the concrete choices of
+action" (*MES* p. 33). How far that passage reaches is not settled
+here: what it refuses by name is a scale for a larger stock, and it
+places "adding and subtracting from stock" in the region where the
+actor's choices occur (see `Does not say` #4). The tension this claim
+does carry is with p. 882 n. 8 and with the first clause above: it
+speaks of what the agent WOULD serve, and no act of his shows that.
 
 Asserted of ONE plan, not of every plan of that shape — and that is
 not a hedge. Given one plan, a rival can always be defined, so a claim
@@ -123,13 +127,15 @@ Does not say:
 3. Anything about independence of uses — that is the theorems'
    hypothesis `IndependentUses`.
 4. Anything about units not on hand (`subStock ⊆ stock.units`), which
-   is all the plan speaks about. Rothbard draws that line himself:
-   the hypothetical scales he refuses at *MES* p. 33 are scales for a
-   stock LARGER than the one held. This claim stays inside the
-   holding. It does still range over sub-stocks the agent does not
-   separately choose over, and his first clause there — that scales
-   do not exist apart from concrete choices — is not restricted to
-   the larger case.
+   is all the plan speaks about. Rothbard draws that line himself.
+   The hypothetical scales he refuses at *MES* p. 33 are scales for a
+   stock larger in every good than the one held, and the same
+   sentence puts the other direction inside the region where he says
+   the actor's choices occur: "his choices for adding and subtracting
+   from stock take place in this region". His own derivation
+   subtracts — six horses down to five (p. 25). What this claim does
+   that his text does not is range over EVERY sub-stock, where he
+   licenses choices "in this region" and exhibits one unit down.
 5. Anything about interchangeability of units. That two sub-stocks
    of the same size would serve the same ends is the hypothesis
    `Homogeneous`, and no part of this claim.
