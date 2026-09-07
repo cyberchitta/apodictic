@@ -19,6 +19,9 @@ path = "../Apodictic"
 
 [[lean_lib]]
 name = "ApodicticDoc"
+# `Manifest` is tooling: the document does not import it, so the default
+# root-only glob would leave it unbuilt and free to rot. Name it.
+globs = ["ApodicticDoc", "ApodicticDoc.Manifest"]
 
 [[lean_exe]]
 name = "generate-doc"

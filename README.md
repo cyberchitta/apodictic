@@ -32,7 +32,9 @@ the tradition, suppressed premise, or our reconstruction.
 The interesting output is not "praxeology: true or false." It is the
 minimal list of claims under each theorem, read off the theorem's own
 signature and kept honest by `#lint only unusedArguments`, which fails
-the build on a premise that does no work. That is the whole point.
+the build on a claim that does no work — except where the statement
+records that it does none, by prefixing it with `_`. Such a case is
+itself a finding. That is the whole point.
 
 ## What this is not
 

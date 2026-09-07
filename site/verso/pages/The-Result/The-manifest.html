@@ -1,4 +1,4 @@
-<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/find/?domain=Verso.Genre.Manual.section&amp;name=Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Each line but the last is a
+<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/The-Result/The-manifest/" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Each line but the last is a
 binder in the theorem's signature; the last is what Lean itself
 supplies. Nothing outside this list and the structures its binders
 name is assumed — and those structures carry three claims of their
@@ -25,6 +25,16 @@ And it works one whole binder at a time, so it cannot see a hypothesis
 half of which is used — which happens in both marginal-utility
 theorems. So the guarantee is narrower than "nothing here is idle":
 nothing here is idle except where the statement says so in the only
-way Lean has for saying it. Deriving the list from the theorem itself,
-rather than checking it after the fact, is a command we have not
-written.</p></section>
+way Lean has for saying it.</p><p>The list above is nevertheless not only kept by hand. <code>#manifest</code>
+derives it from the theorem: it walks the signature and sorts every
+binder by kind, deciding that a binder is a praxeological claim when
+the head of its type is declared in <code>Praxeology.lean</code> — the project's
+own rule, asked of the compiler rather than of a maintainer. A claim
+declared in the wrong place therefore appears here as a situational
+condition, which is the mistake worth catching. It closes the first of
+the linter's two limits, because it <strong>lists</strong> <code>_firstStep</code> and marks it
+as doing no work where the linter is silenced by the underscore; it
+does not close the second, since a half-used hypothesis looks whole to
+both. And it inherits a limit of its own: Lean draws no line between a
+signature and a conclusion, so the command cuts at the first anonymous
+binder and reports how many it dropped.</p></section>

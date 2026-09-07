@@ -75,7 +75,7 @@
 .hl.lean .token .hover-info {
   display: none;
   position: absolute;
-  background-color: #e5e5e5;
+  background-color: var(--color-base-200);
   border: 1px solid black;
   padding: 0.5rem;
   z-index: 300;
@@ -135,7 +135,7 @@
 
 @media (hover: hover) {
   .hl.lean .token.binding-hl, .hl.lean .literal:hover, .hl.lean .token.typed:hover {
-    background-color: #eee;
+    background-color: var(--color-base-200);
     border-radius: 2px;
     transition: none;
   }
@@ -165,13 +165,13 @@
 
 @media (hover: hover) {
   .hl.lean .has-info.error:hover {
-    background-color: #ffb3b3;
+    background-color: var(--color-error);
   }
 }
 
 .hl.lean .hover-info.messages > code.error {
-  background-color: #e5e5e5;
-  border-left: 0.2rem solid #ffb3b3;
+  background-color: var(--color-base-200);
+  border-left: 0.2rem solid var(--color-error);
 }
 
 .tippy-box[data-theme~='error'] .hl.lean .hover-info.messages > code.error {
@@ -221,7 +221,7 @@
 }
 
 .hl.lean .hover-info.messages > code.error {
-  background-color: #e5e5e5;
+  background-color: var(--color-base-200);
   border-left: 0.2rem solid var(--verso-warning-color);
 }
 
@@ -237,14 +237,14 @@
 
 @media (hover: hover) {
   .hl.lean .has-info.information:hover {
-    background-color: #4777ff;
+    background-color: var(--color-info);
   }
 }
 
 
 .hl.lean .hover-info.messages > code.information {
-  background-color: #e5e5e5;
-  border-left: 0.2rem solid #4777ff;
+  background-color: var(--color-base-200);
+  border-left: 0.2rem solid var(--color-info);
 }
 
 .tippy-box[data-theme~='info'] .hl.lean .hover-info.messages > code.information {
@@ -276,7 +276,7 @@
   margin-bottom: 0.5rem;
   padding: 0;
   height: 1px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--color-base-300);
 }
 
 .hl.lean code {
@@ -287,11 +287,11 @@
   display: none;
   position: relative;
   width: fit-content;
-  border: 1px solid #888888;
+  border: 1px solid var(--color-base-300);
   border-radius: 0.1rem;
   padding: 0.5rem;
   font-family: sans-serif;
-  background-color: #ffffff;
+  background-color: var(--color-base-100);
 }
 
 .hl.lean.popup .tactic-state {
@@ -301,7 +301,7 @@
   border: none;
   padding: 0.5rem;
   font-family: sans-serif;
-  background-color: #ffffff;
+  background-color: var(--color-base-100);
 }
 
 
@@ -337,7 +337,7 @@
      hovered region: `label:hover` bubbles to ancestor labels, so suppress the highlight on a region
      whose label contains a more deeply nested hovered tactic label. */
   .hl.lean .tactic:has(> .tactic-toggle:not(:checked)) > label:hover:not(:has(.tactic > label:hover)) {
-    background-color: #eeeeee;
+    background-color: var(--color-base-200);
   }
 }
 
@@ -353,7 +353,7 @@
 
 .hl.lean .tactic > label::after {
   content: "";
-  border: 1px solid #bbbbbb;
+  border: 1px solid var(--color-base-300);
   /* These need to be em, not rem, to scale with the font */
   border-radius: 1em;
   height: 0.25em;
@@ -368,16 +368,16 @@
 /*
 @media (hover: hover) {
   .hl.lean .tactic > label:hover::after {
-    border: 1px solid #aaaaaa;
-    background-color: #aaaaaa;
+    border: 1px solid var(--color-base-300);
+    background-color: var(--color-base-300);
     transition: all 0.5s;
   }
 }
 */
 
 .hl.lean .tactic > label:has(+ .tactic-toggle:checked)::after {
-  border: 1px solid #999999;
-  background-color: #999999;
+  border: 1px solid var(--color-base-300);
+  background-color: var(--color-base-300);
   transition: all 0.5s;
 }
 
@@ -540,25 +540,25 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
 }
 
 .tippy-box[data-theme~='lean'] {
-  background-color: #e5e5e5;
+  background-color: var(--color-base-200);
   color: black;
   border: 1px solid black;
 }
 .tippy-box[data-theme~='lean'][data-placement^='top'] > .tippy-arrow::before {
-  border-top-color: #e5e5e5;
+  border-top-color: var(--color-base-200);
 }
 .tippy-box[data-theme~='lean'][data-placement^='bottom'] > .tippy-arrow::before {
-  border-bottom-color: #e5e5e5;
+  border-bottom-color: var(--color-base-200);
 }
 .tippy-box[data-theme~='lean'][data-placement^='left'] > .tippy-arrow::before {
-  border-left-color: #e5e5e5;
+  border-left-color: var(--color-base-200);
 }
 .tippy-box[data-theme~='lean'][data-placement^='right'] > .tippy-arrow::before {
-  border-right-color: #e5e5e5;
+  border-right-color: var(--color-base-200);
 }
 
 .tippy-box[data-theme~='message'][data-placement^='top'] > .tippy-arrow::before {
-  border-top-color: #e5e5e5;
+  border-top-color: var(--color-base-200);
   border-width: 11px 11px 0;
 }
 .tippy-box[data-theme~='message'][data-placement^='top'] > .tippy-arrow::after {
@@ -573,7 +573,7 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
   border-width: 0 11px 11px;
 }
 .tippy-box[data-theme~='message'][data-placement^='left'] > .tippy-arrow::before {
-  border-left-color: #e5e5e5;
+  border-left-color: var(--color-base-200);
   border-width: 11px 0 11px 11px;
 }
 .tippy-box[data-theme~='message'][data-placement^='left'] > .tippy-arrow::after {
@@ -582,7 +582,7 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
 }
 
 .tippy-box[data-theme~='message'][data-placement^='right'] > .tippy-arrow::before {
-  border-right-color: #e5e5e5;
+  border-right-color: var(--color-base-200);
   border-width: 11px 11px 11px 0;
 }
 .tippy-box[data-theme~='message'][data-placement^='right'] > .tippy-arrow::after {
@@ -593,21 +593,21 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
 
 
 .tippy-box[data-theme~='warning'] {
-  background-color: #e5e5e5;
+  background-color: var(--color-base-200);
   color: black;
   border: 3px solid var(--verso-warning-color);
 }
 
 .tippy-box[data-theme~='error'] {
-  background-color: #e5e5e5;
+  background-color: var(--color-base-200);
   color: black;
-  border: 3px solid #f7a7af;
+  border: 3px solid var(--color-error);
 }
 
 .tippy-box[data-theme~='info'] {
-  background-color: #e5e5e5;
+  background-color: var(--color-base-200);
   color: black;
-  border: 3px solid #99b3c2;
+  border: 3px solid var(--color-base-300);
 }
 
 .tippy-box[data-theme~='tactic'] {
@@ -681,7 +681,7 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
 
 .namedocs {
   position: relative;
-  border: solid 1px #98B2C0;
+  border: solid 1px var(--color-base-300);
   border-radius: .5rem;
   padding-top: var(--verso--box-padding);
   margin-top: var(--verso--box-vertical-margin);
@@ -696,7 +696,7 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
   /* Add a padding. this is the same as the margin applied to the first and last child.
      The effect is that the padding looks the same size on all sides. */
   padding: 0 var(--verso--box-padding);
-  border-top: 1px solid #98B2C0;
+  border-top: 1px solid var(--color-base-300);
 }
 
 .namedocs .text > pre {
@@ -717,11 +717,11 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
   position: absolute;
   top: -0.65rem;
   left: 1rem;
-  background: #fff;
+  background: var(--color-base-100);
   padding: 0 .5rem .125rem;
-  border: 1px solid #98B2C0;
+  border: 1px solid var(--color-base-300);
   border-radius: 1rem;
-  color: #555;
+  color: var(--color-base-content);
 }
 
 .namedocs .docstring-section {

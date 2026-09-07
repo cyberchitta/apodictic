@@ -111,6 +111,31 @@ def assetsJson (state : TraverseState) : Json :=
       Json.mkObj [("src", Json.str src), ("defer", Json.bool defer)]))
   ]
 
+/-- Verso's permalink widget (the 🔗 on every heading and docstring)
+points at `/find/?domain=…&name=…`, a route Verso's own page layer
+serves and this emitter does not. On the deployed site all 33 of them
+were 404s, found 2026-09-07 while checking the emitted anchors. No
+route is needed to fix it: the destination is either an anchor on the
+page being written, or the page itself. Rewrite them to that. -/
+def rewritePermalinks (pageUrl : String) (html : String) : String :=
+  match html.splitOn "\"/find/?domain=" with
+  | [] => html
+  | first :: rest =>
+    first ++ String.join (rest.map fun chunk =>
+      match chunk.splitOn "\"" with
+      | query :: after =>
+        let name := (query.splitOn "name=").getLast!
+        -- A docstring permalink names the Lean constant with dots; the
+        -- anchor Verso wrote for it spells the same name with `___`.
+        -- Section names carry no dots, so this is a no-op for them.
+        let anchor := name.replace "." "___"
+        let target :=
+          if (html.splitOn ("id=\"" ++ anchor ++ "\"")).length > 1 then
+            pageUrl ++ "#" ++ anchor
+          else pageUrl
+        "\"" ++ target ++ "\"" ++ String.intercalate "\"" after
+      | [] => chunk)
+
 /-- Emit one part's page (and its children's, while `depth` allows),
 returning the page records in reading order. Mirrors `emitPart`. -/
 partial def emitPart (out : System.FilePath) (config : Config) (state : TraverseState)
@@ -164,7 +189,8 @@ partial def emitPart (out : System.FilePath) (config : Config) (state : Traverse
     if ctxt.path.isEmpty then "pages/index.html"
     else "pages" / (String.intercalate "/" ctxt.path.toList ++ ".html")
   if let some dir := (out / fragment).parent then IO.FS.createDirAll dir
-  IO.FS.writeFile (out / fragment) (render pageContent)
+  IO.FS.writeFile (out / fragment)
+    (rewritePermalinks ctxt.path.link (render pageContent))
 
   let (prev, next) := neighbours bookToc ctxt.path
   let record := Json.mkObj [
@@ -194,6 +220,58 @@ consumer sets `window.VERSO_ROOT` (e.g. `"/verso/"`) before loading it. -/
 def patchInlineJs (js : String) : String :=
   js.replace "fetch(\"-verso-docs.json\")" "fetch(window.VERSO_ROOT + \"verso-docs.json\")"
 
+/-- Verso's inline stylesheet hardcodes 37 colours, every one of them a
+LIGHT-theme value, and this site is a Supramental Gold consumer where
+both themes are token-driven. Left alone they are wrong in dark theme
+on exactly the surfaces Verso injects at RUNTIME — the tippy popup box
+and the hover-info panel, which are why `.tippy-box`/`.hover-info`
+appear in no emitted page and cannot be checked by grepping the HTML.
+
+The patch belongs here and not in `assets/verso-theme.css`, for the
+same reason `patchInlineJs` does: `verso-inline.css` is REWRITTEN on
+every `generate-doc` run, so an edit to the file is reverted silently
+the next time anyone regenerates. Overriding in the theme file instead
+would work, but it means maintaining a shadow copy of Verso's
+selectors and losing every specificity fight Verso later picks.
+
+Semantic hues keep their meaning — SG has `--color-error` and
+`--color-info`, so error red and info blue map to those rather than
+being flattened into a neutral. Ordered longest-first: `#ffffff` must
+not be matched as `#fff` plus a stray `fff`. -/
+def inlineCssColours : List (String × String) :=
+  [ ("#e5e5e5", "var(--color-base-200)")   -- popup + hover-info surface
+  , ("#eeeeee", "var(--color-base-200)")
+  , ("#ffffff", "var(--color-base-100)")
+  , ("#98B2C0", "var(--color-base-300)")   -- namedocs rules
+  , ("#99b3c2", "var(--color-base-300)")
+  , ("#bbbbbb", "var(--color-base-300)")
+  , ("#aaaaaa", "var(--color-base-300)")
+  , ("#999999", "var(--color-base-300)")
+  , ("#888888", "var(--color-base-300)")
+  , ("#ffb3b3", "var(--color-error)")      -- semantic: error
+  , ("#f7a7af", "var(--color-error)")
+  , ("#4777ff", "var(--color-info)")       -- semantic: information
+  , ("#eee", "var(--color-base-200)")
+  , ("#fff", "var(--color-base-100)")
+  , ("#ccc", "var(--color-base-300)")
+  , ("#555", "var(--color-base-content)")
+  ]
+
+/-- Apply `inlineCssColours`, and return whatever hardcoded colour is
+left over. A non-empty leftover means Verso introduced a colour this
+table does not know — the caller reports it rather than letting a
+light-theme value reach dark theme unnoticed. -/
+def patchInlineCss (css : String) : String × Array String :=
+  let patched := inlineCssColours.foldl (fun acc (lit, tok) => acc.replace lit tok) css
+  let chunks := (patched.splitOn "#").drop 1
+  let isHexDigit := fun (c : Char) => c.isDigit || "abcdefABCDEF".contains c
+  let leftover := chunks.filterMap fun chunk =>
+    let hex := chunk.takeWhile Char.isAlphanum
+    if hex.length ≥ 3 then
+      if hex.all isHexDigit then some ("#" ++ hex) else none
+    else none
+  (patched, leftover.toArray)
+
 def emitAll (out : System.FilePath) (config : Config) (text : Part Manual) (state : TraverseState) : EleventyM Unit := do
   let «meta» : Option PartMetadata := text.metadata
   let authors := meta.map (·.authors) |>.getD []
@@ -214,7 +292,10 @@ def emitAll (out : System.FilePath) (config : Config) (text : Part Manual) (stat
     if f.extension == some "map" then IO.FS.removeFile f
   IO.FS.writeFile (out / "verso-vars.css") Verso.Output.Html.«verso-vars.css»
   let css := state.extraCss.toArray.map (·.css) |>.qsort (· < ·)
-  IO.FS.writeFile (out / "verso-inline.css") (String.intercalate "\n" css.toList)
+  let (patchedCss, unmappedColours) := patchInlineCss (String.intercalate "\n" css.toList)
+  if !unmappedColours.isEmpty then
+    Verso.reportError s!"verso-inline.css carries colours no SG token covers: {unmappedColours}. Extend `inlineCssColours` before these reach dark theme."
+  IO.FS.writeFile (out / "verso-inline.css") patchedCss
   let js := state.extraJs.toArray.map (·.js) |>.qsort (· < ·)
   IO.FS.writeFile (out / "verso-inline.js") (patchInlineJs (String.intercalate "\n" js.toList))
   IO.FS.writeFile (out / "assets.json") (assetsJson state).pretty
@@ -227,6 +308,17 @@ def emitAll (out : System.FilePath) (config : Config) (text : Part Manual) (stat
 
   let pages ← emitPart out config state bookToc authors authorshipNote opts ctxt definitionIds linkTargets true config.htmlDepth text
   IO.FS.writeFile (out / "pages.json") (Json.arr pages).pretty
+  -- Reading order, in the one form a consumer cannot get wrong. It is
+  -- already in `pages.json` three ways (list order, the prev/next
+  -- chain, the `toc.json` tree), but a reader that flattens `pages/`
+  -- and trusts the directory listing gets the finding ninth, which is
+  -- what happened to two cold readers on 2026-09-07.
+  IO.FS.writeFile (out / "reading-order.txt") <|
+    String.intercalate "\n"
+      (pages.toList.filterMap fun p =>
+        match p.getObjValAs? String "fragment" with
+        | .ok f => some f
+        | .error _ => none) ++ "\n"
 
 /-- Traverse the document once and write the Eleventy input tree. The
 replacement for `manualMain`: Verso's own page emitters do not run. -/

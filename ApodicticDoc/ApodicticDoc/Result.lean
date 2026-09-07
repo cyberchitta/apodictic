@@ -176,10 +176,13 @@ as a structure, and a theorem that needs one takes it as a named
 assumption. So to see what a theorem rests on, you read its statement.
 
 A linter keeps that list honest. `#lint only unusedArguments` breaks
-the build if an assumption is listed but the proof never uses it — so
-nothing can be listed for show. The linter can be switched off, which
-makes keeping it on a promise rather than something the machine
-guarantees. It is never switched off here.
+the build if an assumption is listed but the proof never uses it, so
+little can be listed for show. Little, and not nothing: the linter can
+be switched off, which makes keeping it on a promise rather than
+something the machine guarantees, and it has two further limits that
+let an idle hypothesis through. All three are set out with the
+manifest below, and one of them turns up a finding. It is never
+switched off here.
 
 Each claim records three things. *Source* is a citation, or
 "tacit". *Status* is one of three verdicts: explicit-in-tradition
@@ -291,9 +294,21 @@ And it works one whole binder at a time, so it cannot see a hypothesis
 half of which is used — which happens in both marginal-utility
 theorems. So the guarantee is narrower than "nothing here is idle":
 nothing here is idle except where the statement says so in the only
-way Lean has for saying it. Deriving the list from the theorem itself,
-rather than checking it after the fact, is a command we have not
-written.
+way Lean has for saying it.
+
+The list above is nevertheless not only kept by hand. `#manifest`
+derives it from the theorem: it walks the signature and sorts every
+binder by kind, deciding that a binder is a praxeological claim when
+the head of its type is declared in `Praxeology.lean` — the project's
+own rule, asked of the compiler rather than of a maintainer. A claim
+declared in the wrong place therefore appears here as a situational
+condition, which is the mistake worth catching. It closes the first of
+the linter's two limits, because it *lists* `_firstStep` and marks it
+as doing no work where the linter is silenced by the underscore; it
+does not close the second, since a half-used hypothesis looks whole to
+both. And it inherits a limit of its own: Lean draws no line between a
+signature and a conclusion, so the command cuts at the first anonymous
+binder and reports how many it dropped.
 
 # The horses in Lean
 
