@@ -9,10 +9,18 @@ it matches the signature it describes. This command derives it: it
 walks a theorem's binder telescope and prints every binder SORTED BY
 KIND, because a flat list destroys the very sort the audit turns on.
 
-It lives in the document package, not the library. The library is the
-trusted artifact and carries axioms, the action framework, and
-theorems; this is tooling that reads them, and it is used where the
-manifest is displayed.
+It lives in the library, beside the `#print axioms` and `#lint only
+unusedArguments` calls it belongs with. All three ask the same kind of
+question of the same artifact, and all three must fail where the
+artifact does. The claim test below asks the environment for a rule
+the library states about itself, so a library build is where a
+violation has to surface: the document package is permitted to lag a
+toolchain bump, and a guard that waits with it is a guard that can
+stop guarding without anyone switching it off.
+
+It declares no `axiom` and proves nothing, so it cannot appear on any
+theorem's `#print axioms`. What it adds to the trusted artifact is
+reading, not trust.
 
 ## It reads one level into the vocabulary
 
@@ -70,7 +78,7 @@ them; a human rules.
 
 open Lean Meta Elab Command
 
-namespace ApodicticDoc.Manifest
+namespace Apodictic.Manifest
 
 /-- The kinds a binder can have on a theorem's manifest, in the order
 the document prints them. -/
@@ -109,12 +117,12 @@ def classify (env : Environment) (bi : BinderInfo) (ty : Expr) (isProp : Bool) :
     | some c => if inPraxeology env c then .claim else .situational
     | none => .situational
 
-end ApodicticDoc.Manifest
+end Apodictic.Manifest
 
-open ApodicticDoc.Manifest in
+open Apodictic.Manifest in
 /-- Print a theorem's manifest: every binder in its signature sorted
 by kind, plus the logical background Lean itself supplies. See
-`ApodicticDoc.Manifest` for what decides a kind and for the two
+`Apodictic.Manifest` for what decides a kind and for the two
 limits. -/
 elab "#manifest " id:ident : command => do
   let n ← liftCoreM <| realizeGlobalConstNoOverload id
@@ -168,3 +176,22 @@ elab "#manifest " id:ident : command => do
   if dropped > 0 then
     out := out ++ s!"\n  ({dropped} trailing binders belong to the conclusion, not the signature)\n"
   logInfo out
+
+/-! ## The manifests
+
+Run here, in the library, for the same reason `#print axioms` and
+`#lint only unusedArguments` are: a build that passes is the claim,
+and a build is the only thing a reader need trust. The document
+displays these; it does not compile them by hand.
+-/
+
+section Manifests
+open Apodictic
+
+#manifest served_over_unserved
+#manifest urgency_principle
+#manifest no_rival_swap_dominant
+#manifest marginal_utility_chain
+#manifest marginal_utility
+
+end Manifests

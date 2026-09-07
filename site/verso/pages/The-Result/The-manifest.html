@@ -1,36 +1,179 @@
 <section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/The-Result/The-manifest/" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Nothing outside this list is
-assumed.</p><ul><li><p><strong>The claim.</strong> <code>SwapDominant plan</code> — the one praxeological claim.</p></li><li><p><strong>The conditions on the situation.</strong> <code>stock.OneMore</code>,
-  <code>IndependentUses</code>, and <code>plan.Homogeneous</code> for the size-based form
-  only. These are the three above: they are what an Austrian points at
-  to say the law did not apply here.</p></li><li><p><strong>A condition on the data.</strong> <code>[DecidableEq praxis.End]</code> — two wants
-  can be told apart.</p></li><li><p><strong>Conditions carried by the vocabulary.</strong> <code>stock.unitsAlike</code> and
-  <code>plan.servesOnlyWhatItCan</code>. These are not binders in the statement:
-  they are fields of the structures the theorem takes as arguments, so
-  whoever supplies a stock and a plan has already discharged them.
-  They are preconditions of using the law in every sense that matters,
-  and they are the assumptions an encoding can hide. They are set out
-  at the end of the vocabulary.</p></li><li><p><strong>Lean's own logical background.</strong> <code>propext</code> and <code>Quot.sound</code>, which
-  arrive with ordinary mathematics: mathlib's finite sets bring both,
-  and so does extensionality for sets. <code>Classical.choice</code> is absent —
-  no proof here fills a gap by assuming that every question has a
-  yes-or-no answer. The proofs do split into cases, but only on
-  whether two ends are the same end, and that is why being able to
-  tell two ends apart is declared in the statement instead of
-  slipping in unnoticed.</p></li></ul><p>The urgency principle and the chain form carry the same manifest
-without <code>Homogeneous</code>.</p><p>This list is not compiled by reading the source. <code>#manifest</code> derives
-it from the theorem itself: it walks the signature and sorts every
-binder by kind, then reads one level into the vocabulary and reports
-the <code>Prop</code> fields of the structures the signature names, deciding that a binder is a praxeological claim when
+assumed. It is not compiled by reading the source, and it is not
+transcribed from a command either: the command runs here, and what
+follows is what it printed.</p><code class="hl lean block" data-lean-context="examples"><span class="has-info information"><span class="hover-container"><span class="hover-info messages"><code class="verso-message information"><span class="text"></span><span class="text">manifest of Apodictic.marginal_utility
+
+  praxeological claims:
+    dominance : SwapDominant plan
+
+  situational conditions:
+    independent : praxis.IndependentUses agent time
+    interchangeable : plan.Homogeneous
+    stepToSmaller : stock.OneMore belowSmaller smaller
+    stepToLarger : stock.OneMore belowLarger larger
+    smallerSize : smaller.card = n
+    largerSize : larger.card = n + 1
+
+  conditions on the data:
+    [DecidableEq praxis.End]
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    belowSmaller : Finset praxis.Means
+    smaller : Finset praxis.Means
+    belowLarger : Finset praxis.Means
+    larger : Finset praxis.Means
+    n : ℕ
+    atSmaller : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (3 trailing binders belong to the conclusion, not the signature)
+</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-12052" data-verso-hover="67">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">marginal_utility</span></span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code><pre class="hl lean lean-output information"><span class="verso-message"><span class="text"></span><span class="text"></span><span class="text">manifest of Apodictic.marginal_utility
+
+  praxeological claims:
+    dominance : SwapDominant plan
+
+  situational conditions:
+    independent : praxis.IndependentUses agent time
+    interchangeable : plan.Homogeneous
+    stepToSmaller : stock.OneMore belowSmaller smaller
+    stepToLarger : stock.OneMore belowLarger larger
+    smallerSize : smaller.card = n
+    largerSize : larger.card = n + 1
+
+  conditions on the data:
+    [DecidableEq praxis.End]
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    belowSmaller : Finset praxis.Means
+    smaller : Finset praxis.Means
+    belowLarger : Finset praxis.Means
+    larger : Finset praxis.Means
+    n : ℕ
+    atSmaller : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (3 trailing binders belong to the conclusion, not the signature)
+</span></span></pre><p>Read it by kind, because the sort is what the audit turns on. The one
+<strong>praxeological claim</strong> is the thing that would have to be true of all
+action for the law to follow. The <strong>situational conditions</strong> are what an
+Austrian points at to say the law did not apply here — they are the
+three set out above, plus the bookkeeping that fixes which two supplies
+are being compared. The <strong>condition on the data</strong> says only that two
+wants can be told apart. The <strong>conditions carried by the vocabulary</strong> are
+not binders at all: they are fields of the structures the theorem takes
+as arguments, so whoever supplies a stock and a plan has already
+discharged them. They are preconditions of using the law in every sense
+that matters, and they are the assumptions an encoding can hide. They
+are set out again at the end of the vocabulary.</p><p>The last line is Lean's own logical background. <code>propext</code> and
+<code>Quot.sound</code> arrive with ordinary mathematics: mathlib's finite sets
+bring both, and so does extensionality for sets. <code>Classical.choice</code> is
+absent — no proof here fills a gap by assuming that every question has
+a yes-or-no answer. The proofs do split into cases, but only on whether
+two ends are the same end, and that is why being able to tell two ends
+apart is declared in the statement instead of slipping in unnoticed.</p><p>The chain form carries the same manifest without <code>Homogeneous</code>, and
+the urgency principle the same again. It is worth printing the chain
+form too, because of one line in it:</p><code class="hl lean block" data-lean-context="examples"><span class="has-info information"><span class="hover-container"><span class="hover-info messages"><code class="verso-message information"><span class="text"></span><span class="text">manifest of Apodictic.marginal_utility_chain
+
+  praxeological claims:
+    dominance : SwapDominant plan
+
+  situational conditions:
+    independent : praxis.IndependentUses agent time
+    _firstStep : stock.OneMore small medium   -- listed, does no work
+    secondStep : stock.OneMore medium large
+
+  conditions on the data:
+    [DecidableEq praxis.End]
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    small : Finset praxis.Means
+    medium : Finset praxis.Means
+    large : Finset praxis.Means
+    addedFirst : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (3 trailing binders belong to the conclusion, not the signature)
+</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-14927" data-verso-hover="67">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">marginal_utility_chain</span></span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code><pre class="hl lean lean-output information"><span class="verso-message"><span class="text"></span><span class="text"></span><span class="text">manifest of Apodictic.marginal_utility_chain
+
+  praxeological claims:
+    dominance : SwapDominant plan
+
+  situational conditions:
+    independent : praxis.IndependentUses agent time
+    _firstStep : stock.OneMore small medium   -- listed, does no work
+    secondStep : stock.OneMore medium large
+
+  conditions on the data:
+    [DecidableEq praxis.End]
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    small : Finset praxis.Means
+    medium : Finset praxis.Means
+    large : Finset praxis.Means
+    addedFirst : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (3 trailing binders belong to the conclusion, not the signature)
+</span></span></pre><p><code>#manifest</code> derives both from the theorem itself: it walks the
+signature and sorts every binder by kind, then reads one level into
+the vocabulary and reports the <code>Prop</code> fields of the structures the
+signature names, deciding that a binder is a praxeological claim when
 the head of its type is declared in <code>Praxeology.lean</code> — the project's
 own rule, asked of the compiler rather than of a maintainer. A claim
-declared in the wrong place therefore shows up here as a situational
+declared in the wrong place therefore shows up as a situational
 condition, which is the mistake worth catching. What it will not do is
 sort what it finds one level down: whether a carried condition could
 fail of a real situation is a judgement about the world, not about the
-term, and the two below are sorted by hand. So what a reader is
-trusting is one step narrower than the list itself: that the prose
-above transcribes what the command prints. Run the command and you
-need not trust even that.</p><p>Three things limit how much that settles, and each is load-bearing.
+term, and the two are sorted by hand in the prose above. That sorting
+is the only thing here a reader is asked to take on anyone's word. The
+lists themselves are printed by the compiler when this page is built,
+and a page that showed anything else would not build.</p><p>Three things limit how much that settles, and each is load-bearing.
 <code>#lint only unusedArguments</code> fails the build on any hypothesis that
 did no work, and it is never switched off here — but switching it off
 is possible, so keeping it on is a promise rather than something the
@@ -40,10 +183,11 @@ the hypothesis does nothing: <code>marginal_utility_chain</code> carries one suc
 binder, <code>_firstStep</code>, and that it does nothing is itself a finding.
 And it works a whole binder at a time, so it cannot see a hypothesis
 half of which is used — which happens in both marginal-utility
-theorems.</p><p><code>#manifest</code> closes the second of those, because it <strong>lists</strong> <code>_firstStep</code>
-and marks it as doing no work exactly where the linter has gone quiet.
-It does not close the third: a half-used hypothesis looks whole to
-both. And it brings a limit of its own — Lean draws no line between a
+theorems.</p><p><code>#manifest</code> closes the second of those, and the output above is the
+proof of it: <code>_firstStep</code> is listed, and marked <strong>listed, does no work</strong>,
+exactly where the linter has gone quiet. That is the line the chain
+form was printed for. It does not close the third: a half-used
+hypothesis looks whole to both. And it brings a limit of its own — Lean draws no line between a
 signature and a conclusion, so the command cuts at the first anonymous
 binder and reports how many it dropped.</p><p>So the guarantee is narrower than "nothing here is idle": nothing here
 is idle except where the statement says so, in the only way Lean has

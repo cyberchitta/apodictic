@@ -266,48 +266,130 @@ the supply, and it is.
 
 
 Everything the law carries, in one place. Nothing outside this list is
-assumed.
+assumed. It is not compiled by reading the source, and it is not
+transcribed from a command either: the command runs here, and what
+follows is what it printed.
 
-- *The claim.* `SwapDominant plan` — the one praxeological claim.
-- *The conditions on the situation.* `stock.OneMore`,
-  `IndependentUses`, and `plan.Homogeneous` for the size-based form
-  only. These are the three above: they are what an Austrian points at
-  to say the law did not apply here.
-- *A condition on the data.* `[DecidableEq praxis.End]` — two wants
-  can be told apart.
-- *Conditions carried by the vocabulary.* `stock.unitsAlike` and
-  `plan.servesOnlyWhatItCan`. These are not binders in the statement:
-  they are fields of the structures the theorem takes as arguments, so
-  whoever supplies a stock and a plan has already discharged them.
-  They are preconditions of using the law in every sense that matters,
-  and they are the assumptions an encoding can hide. They are set out
-  at the end of the vocabulary.
-- *Lean's own logical background.* `propext` and `Quot.sound`, which
-  arrive with ordinary mathematics: mathlib's finite sets bring both,
-  and so does extensionality for sets. `Classical.choice` is absent —
-  no proof here fills a gap by assuming that every question has a
-  yes-or-no answer. The proofs do split into cases, but only on
-  whether two ends are the same end, and that is why being able to
-  tell two ends apart is declared in the statement instead of
-  slipping in unnoticed.
+```lean (name := manifestMU)
+#manifest marginal_utility
+```
+```leanOutput manifestMU
+manifest of Apodictic.marginal_utility
 
-The urgency principle and the chain form carry the same manifest
-without `Homogeneous`.
+  praxeological claims:
+    dominance : SwapDominant plan
 
-This list is not compiled by reading the source. `#manifest` derives
-it from the theorem itself: it walks the signature and sorts every
-binder by kind, then reads one level into the vocabulary and reports
-the `Prop` fields of the structures the signature names, deciding that a binder is a praxeological claim when
+  situational conditions:
+    independent : praxis.IndependentUses agent time
+    interchangeable : plan.Homogeneous
+    stepToSmaller : stock.OneMore belowSmaller smaller
+    stepToLarger : stock.OneMore belowLarger larger
+    smallerSize : smaller.card = n
+    largerSize : larger.card = n + 1
+
+  conditions on the data:
+    [DecidableEq praxis.End]
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    belowSmaller : Finset praxis.Means
+    smaller : Finset praxis.Means
+    belowLarger : Finset praxis.Means
+    larger : Finset praxis.Means
+    n : ℕ
+    atSmaller : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (3 trailing binders belong to the conclusion, not the signature)
+```
+
+Read it by kind, because the sort is what the audit turns on. The one
+*praxeological claim* is the thing that would have to be true of all
+action for the law to follow. The *situational conditions* are what an
+Austrian points at to say the law did not apply here — they are the
+three set out above, plus the bookkeeping that fixes which two supplies
+are being compared. The *condition on the data* says only that two
+wants can be told apart. The *conditions carried by the vocabulary* are
+not binders at all: they are fields of the structures the theorem takes
+as arguments, so whoever supplies a stock and a plan has already
+discharged them. They are preconditions of using the law in every sense
+that matters, and they are the assumptions an encoding can hide. They
+are set out again at the end of the vocabulary.
+
+The last line is Lean's own logical background. `propext` and
+`Quot.sound` arrive with ordinary mathematics: mathlib's finite sets
+bring both, and so does extensionality for sets. `Classical.choice` is
+absent — no proof here fills a gap by assuming that every question has
+a yes-or-no answer. The proofs do split into cases, but only on whether
+two ends are the same end, and that is why being able to tell two ends
+apart is declared in the statement instead of slipping in unnoticed.
+
+The chain form carries the same manifest without `Homogeneous`, and
+the urgency principle the same again. It is worth printing the chain
+form too, because of one line in it:
+
+```lean (name := manifestChain)
+#manifest marginal_utility_chain
+```
+```leanOutput manifestChain
+manifest of Apodictic.marginal_utility_chain
+
+  praxeological claims:
+    dominance : SwapDominant plan
+
+  situational conditions:
+    independent : praxis.IndependentUses agent time
+    _firstStep : stock.OneMore small medium   -- listed, does no work
+    secondStep : stock.OneMore medium large
+
+  conditions on the data:
+    [DecidableEq praxis.End]
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    small : Finset praxis.Means
+    medium : Finset praxis.Means
+    large : Finset praxis.Means
+    addedFirst : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (3 trailing binders belong to the conclusion, not the signature)
+```
+
+`#manifest` derives both from the theorem itself: it walks the
+signature and sorts every binder by kind, then reads one level into
+the vocabulary and reports the `Prop` fields of the structures the
+signature names, deciding that a binder is a praxeological claim when
 the head of its type is declared in `Praxeology.lean` — the project's
 own rule, asked of the compiler rather than of a maintainer. A claim
-declared in the wrong place therefore shows up here as a situational
+declared in the wrong place therefore shows up as a situational
 condition, which is the mistake worth catching. What it will not do is
 sort what it finds one level down: whether a carried condition could
 fail of a real situation is a judgement about the world, not about the
-term, and the two below are sorted by hand. So what a reader is
-trusting is one step narrower than the list itself: that the prose
-above transcribes what the command prints. Run the command and you
-need not trust even that.
+term, and the two are sorted by hand in the prose above. That sorting
+is the only thing here a reader is asked to take on anyone's word. The
+lists themselves are printed by the compiler when this page is built,
+and a page that showed anything else would not build.
 
 Three things limit how much that settles, and each is load-bearing.
 `#lint only unusedArguments` fails the build on any hypothesis that
@@ -321,10 +403,11 @@ And it works a whole binder at a time, so it cannot see a hypothesis
 half of which is used — which happens in both marginal-utility
 theorems.
 
-`#manifest` closes the second of those, because it *lists* `_firstStep`
-and marks it as doing no work exactly where the linter has gone quiet.
-It does not close the third: a half-used hypothesis looks whole to
-both. And it brings a limit of its own — Lean draws no line between a
+`#manifest` closes the second of those, and the output above is the
+proof of it: `_firstStep` is listed, and marked *listed, does no work*,
+exactly where the linter has gone quiet. That is the line the chain
+form was printed for. It does not close the third: a half-used
+hypothesis looks whole to both. And it brings a limit of its own — Lean draws no line between a
 signature and a conclusion, so the command cuts at the first anonymous
 binder and reports how many it dropped.
 
