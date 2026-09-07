@@ -107,52 +107,72 @@ six horses.
 The law of marginal utility needs exactly one praxeological claim,
 and that claim is not about action.
 
-It is about what the man *would* do. For each smaller or larger string
-of horses he might have, which wants would he serve? That is a plan
-covering stocks he does not own, not a choice he makes.
+It is about what the man *would* do. For each string of horses he
+might have, which wants would he serve? That is a plan, not a choice
+he makes.
 
 Rothbard's own premise packs two claims into one sentence: that a man
 acts with the means he has, and that the wants he serves are "the most
 urgent of the not yet satisfied wants" (*MES* p. 24). Only the second
-does any work here. And it does that work in the subjunctive, across
-stocks the man does not have — exactly as his own argument does, when
-it sets six horses beside five and asks which want "the larger stock
-would have satisfied" (p. 25). No single real act can answer that. You
-have to ask what would have happened.
+does any work here. And it does that work in the subjunctive — exactly
+as his own argument does, when it sets six horses beside five and asks
+which want "the larger stock would have satisfied" (p. 25). No single
+real act can answer that.
 
-Rothbard also sets a rule for what praxeology may use. It "may deal
-with utilities only as deduced from the concrete actions of human
-beings" (*MES* p. 882 n. 8) — only what a man's actual choices show.
-The man owns six horses; what he would have done with five is not
-something any action of his shows.
+The subjunctive by itself is not the trouble, and it is worth saying
+why, because it is the obvious complaint and it fails. Reasoning about
+stocks the man does not hold is Rothbard's own practice. He builds the
+law upward from one horse to two to three, he takes it downward from
+six to five, and he says outright that holding none of a good "does
+not affect the principle" (p. 32). What he refuses on p. 33 is
+something else — a scale for a wholly different endowment, (3X, 4Y,
+2Z) against (6X, 8Y, 5Z) — while inside the stock the man actually has
+he allows "adding and subtracting from stock". That line is drawn
+around the stock in hand, not at some distance from it, and stepping
+one unit at a time, as he does, reaches every smaller string of horses
+there is. The formal claim reaches no further than he does.
 
-He saw the difficulty, and exempted this law from the rule by name.
-Inside this same chapter he reiterates the rule — "value scales do not
-exist in a void apart from the concrete choices of action" (p. 33) —
-and on that same page grants the exemption in a subordinate clause,
-with no argument attached: no one can predict the course of a man's
-choices "except that they will follow the law of marginal utility,
-which was deduced from the axiom of action". The deduction he points
-to is the one at pp. 23–25, and it is the one that runs on stocks the
-man does not hold. So the warrant for the exemption is the argument
-that needs it.
+The trouble is the *tense*. His restriction is that "value scales do
+not exist in a void apart from the concrete choices of action", and
+that "there is no need for him to formulate hypothetical value scales"
+(p. 33). His man needs no scale in advance: it shows up choice by
+concrete choice, as each one is made. The plan is a single standing
+object — every string of horses answered at once, before any of the
+choosing. That is precisely the scale in advance that Rothbard says is
+not needed. The complaint is not that we asked what he would do with
+five horses; it is that we gave him a settled answer for all of them
+at once, and no act of his settles it.
+
+He saw a difficulty here, and exempted this law from the restriction
+by name. On that same page, in a subordinate clause with no argument
+attached: no one can predict the course of a man's choices "except
+that they will follow the law of marginal utility, which was deduced
+from the axiom of action". So the one thing that may be said about the
+choices in advance is that they conform to the law — and that is what
+licenses attributing the standing plan. The plan is the premise the
+law is derived from. The warrant for the premise is the conclusion.
+
+The circle is in the warrant, not in the proof. The Lean derives the
+law from the claim; the claim is asserted, never proved, and nothing
+in the derivation reaches back. What runs in a circle is Rothbard's
+licence for asserting it.
 
 This is not an objection from outside. The rule is Rothbard's, the
 claim is Rothbard's, and so is the exemption.
 
-The same trouble turns up a second time, in a place usually discussed
-on its own. The law is expected to founder on units: to state it by
-the size of a supply you seem to need units the agent values equally,
-and Rothbard denies that anyone ever demonstrates indifference by
-acting. Here it does not founder. Indifference is assumed nowhere, and
-the law survives without it. What the size-based wording needs is
-weaker — only that the plan not care *which* units, just how many. But
-that condition also ranges over piles the agent does not hold. So
-Rothbard's restriction rules out both the claim the law is derived
-from and the condition that makes its usual wording well-formed.
+There is a second thing the same plan has to carry, in a place usually
+discussed on its own. The law is expected to founder on units: to
+state it by the size of a supply you seem to need units the agent
+values equally, and Rothbard denies that anyone ever demonstrates
+indifference by acting. Here it does not founder. Indifference is
+assumed nowhere, and the law survives without it. What the size-based
+wording needs is weaker — only that the plan not care *which* units,
+just how many. But that is one more thing the standing plan must
+already have settled, and Rothbard grounds it in his definition of a
+supply rather than deducing it from the axiom of action, so the
+exemption's stated warrant does not obviously extend to it.
 
-Twice, though, and not once. These are two different claims, and the
-encoding keeps them apart:
+Two demands, then, and the encoding keeps them apart:
 
 - The one the law is derived from is a *praxeological claim*. It rides
   on the signature of every theorem that uses it. If it is false, the
@@ -166,7 +186,7 @@ an audit like this is for.
 None of this makes the law wrong. The machine checked the reasoning:
 the conclusion follows, and the proof uses only what the statement
 lists. One question is left, and it is a narrow one — may praxeology
-use that claim at all?
+help itself to that standing plan?
 
 # The other findings
 

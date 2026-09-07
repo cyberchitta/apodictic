@@ -43,13 +43,16 @@ silence has to be written down before the proof will go through, and
 written somewhere a reader can find it.
 
 **What the audit found.** The derivation goes through, and it needs one
-praxeological claim to do it. That claim is subjunctive — it concerns
-stocks the man never held, not anything he does. Rothbard's own
-restriction on what praxeology may use rules such claims out, and he
-exempted this law from that restriction by name, without argument. A
-second subjunctive condition, weaker, is what the law's usual wording
-needs, and it falls under the same restriction. Nothing here shows the
-law false. What is left is a question about its warrant.
+praxeological claim to do it. That claim is not about anything the man
+does. It credits him with a settled answer, held in advance, to what
+he would do with every stock of horses smaller than the one he has —
+and Rothbard's own restriction is that a man needs no such scale in
+advance, because it shows up only in his concrete choices. He exempted
+this law from the restriction by name, and the warrant he gave for the
+exemption is the derivation that needs it. A second demand, weaker,
+is what the law's usual wording needs, and he grounds that one
+elsewhere. Nothing here shows the law false, and nothing in the proof
+runs in a circle. What is left is a question about the warrant.
 
 The case for all of it — the passages, the claim, the conditions, the
 theorems, and the manifest each theorem carries — is in {ref "result"}[The Result].

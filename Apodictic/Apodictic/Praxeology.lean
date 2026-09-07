@@ -98,22 +98,35 @@ of five and asks which want "the larger stock would have satisfied"
 action half is dropped rather than answered: nothing here bridges an
 act to a preference.
 
-A tension remains, and it is Rothbard's own, but it is narrower than
-the subjunctive form alone suggests. He holds that praxeology "may
-deal with utilities only as deduced from the concrete actions of human
+A tension remains, and it is Rothbard's own. It is not that this claim
+reaches stocks the agent does not hold; that reach is his (see
+*Anything about units not on hand*, below). It is that the claim
+attributes a STANDING disposition. The plan is one object, at one
+time, assigning served ends to every sub-stock at once — a value
+scale formulated in advance of the choices it covers. That is the
+thing Rothbard says is not needed. He holds that praxeology "may deal
+with utilities only as deduced from the concrete actions of human
 beings" (*MES* p. 882 n. 8), and inside this very chapter he writes,
 in words he introduces with "It must be reiterated", that "value
 scales do not exist in a void apart from the concrete choices of
-action" (*MES* p. 33). Yet it is on that same page that he exempts
-this law from the restriction, in a subordinate clause and without
-argument: choices cannot be predicted "except that they will follow
-the law of marginal utility, which was deduced from the axiom of
-action". The deduction he points to is the one at pp. 23–25, and it
-runs on scales for stocks the actor does not hold (see *Anything
-about units not on hand*, below). So the exemption's warrant is the argument that needs the
-exemption. That is the tension this claim carries: what the agent
-WOULD serve is not shown by any act of his, and Rothbard's licence
-for reasoning about it rests on itself.
+action", adding that "there is no need for him to formulate
+hypothetical value scales" (*MES* p. 33). His actor needs no scale in
+advance: it is revealed choice by concrete choice as he goes. This
+claim gives him one up front.
+
+Yet it is on that same page that he exempts this law from the
+restriction, in a subordinate clause and without argument: choices
+cannot be predicted "except that they will follow the law of marginal
+utility, which was deduced from the axiom of action". So the one
+thing that may be said in advance about the choices is that they
+follow the law — which is what licenses attributing the standing plan
+this claim is asserted of, and that plan is the premise the law is
+derived from. The warrant for the premise is the conclusion.
+
+The circle is in the WARRANT, not in the proof. Nothing in the Lean
+is circular: `marginal_utility` derives the law from this claim, and
+this claim is asserted, never proved. What is circular is Rothbard's
+licence for asserting it.
 
 Asserted of ONE plan, not of every plan of that shape — and that is
 not a hedge. Given one plan, a rival can always be defined, so a claim
@@ -139,16 +152,22 @@ Does not say:
    obstacle either: "If the actor has no units of some goods in his
    possession, this does not affect the principle" (p. 32). The
    hypothetical scales he refuses on the next page are a different
-   thing — scales for a wholly different multi-good endowment, used
-   to predict what he would choose there — and he exempts this law
-   from the refusal by name: "No one can predict with certainty the
-   course of his choices except that they will follow the law of
-   marginal utility" (p. 33). What this claim does that his text does
-   not is range over arbitrary SUB-STOCKS where he ranges over sizes.
+   thing: scales for a wholly different multi-good endowment,
+   (3X, 4Y, 2Z) against (6X, 8Y, 5Z), where what he permits inside
+   the actual stock is "adding and subtracting" units of it (p. 33).
+   That line is anchored to the stock the agent has, not drawn at
+   some distance from it, and it is closed under the single-unit
+   steps he iterates himself — first horse, then second, then third.
+   Taken downward from a stock, those steps reach every sub-stock of
+   it. So quantifying over all of `subStock ⊆ stock.units` is that
+   region exactly, and not a reach beyond his text.
+
+   Where this claim does depart from him is in INDEXING, not in
+   reach: it speaks of arbitrary sub-stocks where he speaks of sizes.
    The gap between the two is interchangeability, which he assumes
    throughout and this claim does not: it is the hypothesis
-   `Homogeneous`. Stated without that assumption, the claim reaches
-   into a case he never worked in.
+   `Homogeneous`. Stated without that assumption, the claim
+   distinguishes cases he never had to tell apart.
 5. Anything about interchangeability of units. That two sub-stocks
    of the same size would serve the same ends is the hypothesis
    `Homogeneous`, and no part of this claim.
