@@ -10,10 +10,11 @@ the agent's counterfactual allocation disposition over it, indexed by
 WHICH units — a sub-stock — not by how many.
 
 Audit note (standing): praxeological claims hide in field SHAPES, where
-no signature shows. One lives here — see the docstring
-of `AllocationPlan.oneUnitOneEnd`. Interchangeability of units no
-longer does: it is the named condition `Homogeneous`, a hypothesis of
-the theorems that need it.
+no signature shows. Interchangeability of units was pulled out for
+that reason and is now the named condition `Homogeneous`; one unit to
+one end was pulled out and then dropped, no theorem needing it. What
+is left in field position is `servesOnlyWhatItCan`, which cannot fail
+of a real situation.
 -/
 
 namespace Apodictic
@@ -63,13 +64,17 @@ only on the number of them is to say the units are interchangeable,
 and that is not built in here: it is the named condition
 `Homogeneous`, assumed only where a theorem needs it.
 
-Field-shape claim (audit): `oneUnitOneEnd` says one unit serves
-one end. Take any sub-stock of the units on hand, and exactly as many
-ends would be served as there are units — no unit split, pooled, or
-left idle. Rothbard says "each unit of means is
-capable of serving one of the ends", and flags it — "We assume for
-simplicity" (*MES* p. 26). The shape of the definition is
-our-reconstruction. -/
+Field-shape claim (audit): `servesOnlyWhatItCan` is the one condition
+left in field position, and it is definitional — a plan that puts a
+unit to an end the good is not believed able to serve is not a
+coherent plan, rather than a situation that might obtain.
+
+One unit to one end is NOT here, and is nowhere: no theorem needs it.
+Rothbard assumes it and says he is assuming it — "each unit of means
+is capable of serving one of the ends", introduced with "We assume for
+simplicity" (*MES* p. 26) — and the ordering the law asserts turns out
+not to want it. Where an extra unit adds no new end, the law is
+silent, which costs nothing. -/
 structure AllocationPlan {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) where
   /-- The ends the agent would serve with exactly the units in
@@ -79,9 +84,6 @@ structure AllocationPlan {praxis : ActionFrame} {agent : praxis.Agent}
   serve. -/
   servesOnlyWhatItCan : ∀ subStock, ∀ want ∈ wouldServe subStock,
     want ∈ stock.serves
-  /-- One unit, one end; no idle units — within the actual stock. -/
-  oneUnitOneEnd : ∀ subStock ⊆ stock.units,
-    (wouldServe subStock).card = subStock.card
 
 /-- **Interchangeability of units** — a condition on the situation,
 NOT a praxeological claim. The plan depends only on how many units there are,

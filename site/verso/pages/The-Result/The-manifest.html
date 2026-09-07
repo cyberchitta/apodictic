@@ -1,12 +1,15 @@
-<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/The-Result/The-manifest/" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Each line but the last is a
-binder in the theorem's signature; the last is what Lean itself
-supplies. Nothing outside this list and the structures its binders
-name is assumed — and those structures carry three claims of their
-own, set out at the end of the vocabulary.</p><ul><li><p><strong>The claim.</strong> <code>SwapDominant plan</code> — the one praxeological claim.</p></li><li><p><strong>The conditions on the situation.</strong> <code>stock.OneMore</code>,
+<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/The-Result/The-manifest/" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Nothing outside this list is
+assumed.</p><ul><li><p><strong>The claim.</strong> <code>SwapDominant plan</code> — the one praxeological claim.</p></li><li><p><strong>The conditions on the situation.</strong> <code>stock.OneMore</code>,
   <code>IndependentUses</code>, and <code>plan.Homogeneous</code> for the size-based form
   only. These are the three above: they are what an Austrian points at
   to say the law did not apply here.</p></li><li><p><strong>A condition on the data.</strong> <code>[DecidableEq praxis.End]</code> — two wants
-  can be told apart.</p></li><li><p><strong>Lean's own logical background.</strong> <code>propext</code> and <code>Quot.sound</code>, which
+  can be told apart.</p></li><li><p><strong>Conditions carried by the vocabulary.</strong> <code>stock.unitsAlike</code> and
+  <code>plan.servesOnlyWhatItCan</code>. These are not binders in the statement:
+  they are fields of the structures the theorem takes as arguments, so
+  whoever supplies a stock and a plan has already discharged them.
+  They are preconditions of using the law in every sense that matters,
+  and they are the assumptions an encoding can hide. They are set out
+  at the end of the vocabulary.</p></li><li><p><strong>Lean's own logical background.</strong> <code>propext</code> and <code>Quot.sound</code>, which
   arrive with ordinary mathematics: mathlib's finite sets bring both,
   and so does extensionality for sets. <code>Classical.choice</code> is absent —
   no proof here fills a gap by assuming that every question has a
@@ -14,27 +17,34 @@ own, set out at the end of the vocabulary.</p><ul><li><p><strong>The claim.</str
   whether two ends are the same end, and that is why being able to
   tell two ends apart is declared in the statement instead of
   slipping in unnoticed.</p></li></ul><p>The urgency principle and the chain form carry the same manifest
-without <code>Homogeneous</code>.</p><p>This list is kept by hand, so a reader is trusting that it matches the
-signature it describes. What keeps it honest is <code>#lint only
-unusedArguments</code>, which fails the build on any hypothesis that did no
-work. It has two limits, and both are load-bearing. It can be silenced
-by prefixing a hypothesis with <code>_</code>, and doing so is how we record that
-the hypothesis does nothing: <code>marginal_utility_chain</code> carries one such
-binder, <code>_firstStep</code>, and that it does nothing is itself a finding.
-And it works one whole binder at a time, so it cannot see a hypothesis
-half of which is used — which happens in both marginal-utility
-theorems. So the guarantee is narrower than "nothing here is idle":
-nothing here is idle except where the statement says so in the only
-way Lean has for saying it.</p><p>The list above is nevertheless not only kept by hand. <code>#manifest</code>
-derives it from the theorem: it walks the signature and sorts every
-binder by kind, deciding that a binder is a praxeological claim when
+without <code>Homogeneous</code>.</p><p>This list is not compiled by reading the source. <code>#manifest</code> derives
+it from the theorem itself: it walks the signature and sorts every
+binder by kind, then reads one level into the vocabulary and reports
+the <code>Prop</code> fields of the structures the signature names, deciding that a binder is a praxeological claim when
 the head of its type is declared in <code>Praxeology.lean</code> — the project's
 own rule, asked of the compiler rather than of a maintainer. A claim
-declared in the wrong place therefore appears here as a situational
-condition, which is the mistake worth catching. It closes the first of
-the linter's two limits, because it <strong>lists</strong> <code>_firstStep</code> and marks it
-as doing no work where the linter is silenced by the underscore; it
-does not close the second, since a half-used hypothesis looks whole to
-both. And it inherits a limit of its own: Lean draws no line between a
+declared in the wrong place therefore shows up here as a situational
+condition, which is the mistake worth catching. What it will not do is
+sort what it finds one level down: whether a carried condition could
+fail of a real situation is a judgement about the world, not about the
+term, and the two below are sorted by hand. So what a reader is
+trusting is one step narrower than the list itself: that the prose
+above transcribes what the command prints. Run the command and you
+need not trust even that.</p><p>Three things limit how much that settles, and each is load-bearing.
+<code>#lint only unusedArguments</code> fails the build on any hypothesis that
+did no work, and it is never switched off here — but switching it off
+is possible, so keeping it on is a promise rather than something the
+machine guarantees. It can also be silenced one binder at a time, by
+prefixing a hypothesis with <code>_</code>, and doing that is how we record that
+the hypothesis does nothing: <code>marginal_utility_chain</code> carries one such
+binder, <code>_firstStep</code>, and that it does nothing is itself a finding.
+And it works a whole binder at a time, so it cannot see a hypothesis
+half of which is used — which happens in both marginal-utility
+theorems.</p><p><code>#manifest</code> closes the second of those, because it <strong>lists</strong> <code>_firstStep</code>
+and marks it as doing no work exactly where the linter has gone quiet.
+It does not close the third: a half-used hypothesis looks whole to
+both. And it brings a limit of its own — Lean draws no line between a
 signature and a conclusion, so the command cuts at the first anonymous
-binder and reports how many it dropped.</p></section>
+binder and reports how many it dropped.</p><p>So the guarantee is narrower than "nothing here is idle": nothing here
+is idle except where the statement says so, in the only way Lean has
+for saying it.</p></section>

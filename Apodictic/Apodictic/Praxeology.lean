@@ -29,7 +29,7 @@ deliberate:
 - **`#print axioms` on any theorem here prints only Lean's own
   background** (`propext`, `Quot.sound`). That is itself the report:
   we have added nothing to Lean's logic. The praxeological
-  praxeological claims are read off the theorem's SIGNATURE instead.
+  claims are read off the theorem's SIGNATURE instead.
 - **The manifest is enforced by the unused-argument linter**, not by
   the proof term. `#lint only unusedArguments` fails the build on any
   hypothesis that did no work, so a listed claim is a used one.

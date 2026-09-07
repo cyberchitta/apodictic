@@ -44,26 +44,6 @@ marginality of the end at the smaller supply is unused by the proof
 
 namespace Apodictic
 
-/-- One more unit always serves some new end: some end is served with
-`more` that is not served with `fewer`. Pure counting, carrying no
-philosophical weight — it only keeps the law from being about
-nothing. -/
-theorem exists_marginal {praxis : ActionFrame} {agent : praxis.Agent}
-    {time : praxis.Time} {stock : Stock praxis agent time}
-    (plan : AllocationPlan stock)
-    (fewer more : Finset praxis.Means) (step : stock.OneMore fewer more) :
-    ∃ added ∈ plan.wouldServe more, added ∉ plan.wouldServe fewer := by
-  by_contra h
-  have hsub : plan.wouldServe more ⊆ plan.wouldServe fewer := by
-    intro want hwant
-    by_contra hnew
-    exact h ⟨want, hwant, hnew⟩
-  have hle := Finset.card_le_card hsub
-  have onHand : fewer ⊆ stock.units := fun u hu => step.2.1 (step.1 hu)
-  rw [plan.oneUnitOneEnd more step.2.1, plan.oneUnitOneEnd fewer onHand,
-    step.2.2] at hle
-  exact Nat.not_succ_le_self fewer.card hle
-
 /-- **Marginal utility of a one-unit step**, from `fewer` to `more`,
 in Rothbard's own sense: the ends the extra unit adds, which are the
 same ends that would be given up if it were lost.

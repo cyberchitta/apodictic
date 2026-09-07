@@ -124,10 +124,6 @@ def horsePlan (k : ℕ) : AllocationPlan (horseStock k) where
   servesOnlyWhatItCan := by
     intro _ want hwant
     exact (Finset.mem_Icc.mp hwant).1
-  oneUnitOneEnd := by
-    intro sub _
-    rw [Nat.card_Icc]
-    omega
 
 /-- Wants are decidable in this frame — the instance the theorems
 take as `[DecidableEq praxis.End]`. -/
@@ -140,6 +136,11 @@ theorem horses_homogeneous (k : ℕ) : (horsePlan k).Homogeneous := by
   show Finset.Icc 1 fewer.card = Finset.Icc 1 more.card
   rw [hcard]
 
+/-- **Preference is asymmetric in this frame.** Ranks are compared by
+`<`, so no two bundles are each preferred to the other. This is what
+lets the claim hold somewhere preference is strict, which is the
+reading intended throughout and what `no_rival_swap_dominant`
+needs. -/
 theorem horses_asymmetric : Asymmetric Horses := by
   intro _ _ X Y h1 h2
   obtain ⟨w, w', hwX, hw'Y, hwY, hw'X, hlt, heq⟩ := h1

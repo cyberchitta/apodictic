@@ -17,15 +17,15 @@ How to read this page. A proof assistant will not let you skip a
 step, and it makes you write the missing premise into the theorem's
 own statement. So there is one fixed place to look. Read the
 statement, then read the definitions it names, and you have seen
-everything the result depends on. Three claims sit one level down,
-inside the structures the theorem takes as arguments, and they are
-named where those structures are defined; nothing is off the page,
-but this is the one place you have to look past the statement itself.
+everything the result depends on. Two conditions sit one level down,
+inside the structures the theorem takes as arguments — and they are on
+the manifest too, because the command that derives it reads one level
+in. There is no longer anywhere for an assumption to sit unlisted.
 
 The list is not padded, either. `#lint only unusedArguments` breaks
 the build if an assumption is listed but the proof never uses it. That
 is the whole reason to do this on a machine: it will not let the list
-grow, and it will not let it shrink. Its two limits are stated where
+grow, and it will not let it shrink. Its three limits are stated where
 the manifest is, and one of them turns up a finding.
 
 Every docstring below is pulled out of the library when this page is
@@ -75,8 +75,8 @@ There is a **plan** — for any number of horses he might have, which
 wants he would serve with them. And there is the **preference** the
 plan expresses, which ranks bundles of wants and is not assumed to do
 anything else: not transitive, not complete, no numbers attached. The
-full definitions are in the appendix; nothing before it depends on
-reading them.
+full definitions are under *The vocabulary*; nothing before it
+depends on reading them.
 
 The plan is where the trouble starts, and it is worth seeing why now,
 before the formal statement makes it look inevitable. Rothbard's
@@ -222,7 +222,14 @@ Nothing here has to say which plan is the man's. A theorem is handed a
 plan and makes its claim about that one, so there is no rival plan
 anyone could build to refute it.
 
+All three are given in full here, in the order they are listed above,
+because these are the assumptions a reader has to judge.
+
+{docstring Apodictic.Stock.OneMore}
+
 {docstring Apodictic.ActionFrame.IndependentUses}
+
+{docstring Apodictic.AllocationPlan.Homogeneous}
 
 # The theorems
 
@@ -258,11 +265,8 @@ the supply, and it is.
 # The manifest
 
 
-Everything the law carries, in one place. Each line but the last is a
-binder in the theorem's signature; the last is what Lean itself
-supplies. Nothing outside this list and the structures its binders
-name is assumed — and those structures carry three claims of their
-own, set out at the end of the vocabulary.
+Everything the law carries, in one place. Nothing outside this list is
+assumed.
 
 - *The claim.* `SwapDominant plan` — the one praxeological claim.
 - *The conditions on the situation.* `stock.OneMore`,
@@ -271,6 +275,13 @@ own, set out at the end of the vocabulary.
   to say the law did not apply here.
 - *A condition on the data.* `[DecidableEq praxis.End]` — two wants
   can be told apart.
+- *Conditions carried by the vocabulary.* `stock.unitsAlike` and
+  `plan.servesOnlyWhatItCan`. These are not binders in the statement:
+  they are fields of the structures the theorem takes as arguments, so
+  whoever supplies a stock and a plan has already discharged them.
+  They are preconditions of using the law in every sense that matters,
+  and they are the assumptions an encoding can hide. They are set out
+  at the end of the vocabulary.
 - *Lean's own logical background.* `propext` and `Quot.sound`, which
   arrive with ordinary mathematics: mathlib's finite sets bring both,
   and so does extensionality for sets. `Classical.choice` is absent —
@@ -283,32 +294,43 @@ own, set out at the end of the vocabulary.
 The urgency principle and the chain form carry the same manifest
 without `Homogeneous`.
 
-This list is kept by hand, so a reader is trusting that it matches the
-signature it describes. What keeps it honest is `#lint only
-unusedArguments`, which fails the build on any hypothesis that did no
-work. It has two limits, and both are load-bearing. It can be silenced
-by prefixing a hypothesis with `_`, and doing so is how we record that
-the hypothesis does nothing: `marginal_utility_chain` carries one such
-binder, `_firstStep`, and that it does nothing is itself a finding.
-And it works one whole binder at a time, so it cannot see a hypothesis
-half of which is used — which happens in both marginal-utility
-theorems. So the guarantee is narrower than "nothing here is idle":
-nothing here is idle except where the statement says so in the only
-way Lean has for saying it.
-
-The list above is nevertheless not only kept by hand. `#manifest`
-derives it from the theorem: it walks the signature and sorts every
-binder by kind, deciding that a binder is a praxeological claim when
+This list is not compiled by reading the source. `#manifest` derives
+it from the theorem itself: it walks the signature and sorts every
+binder by kind, then reads one level into the vocabulary and reports
+the `Prop` fields of the structures the signature names, deciding that a binder is a praxeological claim when
 the head of its type is declared in `Praxeology.lean` — the project's
 own rule, asked of the compiler rather than of a maintainer. A claim
-declared in the wrong place therefore appears here as a situational
-condition, which is the mistake worth catching. It closes the first of
-the linter's two limits, because it *lists* `_firstStep` and marks it
-as doing no work where the linter is silenced by the underscore; it
-does not close the second, since a half-used hypothesis looks whole to
-both. And it inherits a limit of its own: Lean draws no line between a
+declared in the wrong place therefore shows up here as a situational
+condition, which is the mistake worth catching. What it will not do is
+sort what it finds one level down: whether a carried condition could
+fail of a real situation is a judgement about the world, not about the
+term, and the two below are sorted by hand. So what a reader is
+trusting is one step narrower than the list itself: that the prose
+above transcribes what the command prints. Run the command and you
+need not trust even that.
+
+Three things limit how much that settles, and each is load-bearing.
+`#lint only unusedArguments` fails the build on any hypothesis that
+did no work, and it is never switched off here — but switching it off
+is possible, so keeping it on is a promise rather than something the
+machine guarantees. It can also be silenced one binder at a time, by
+prefixing a hypothesis with `_`, and doing that is how we record that
+the hypothesis does nothing: `marginal_utility_chain` carries one such
+binder, `_firstStep`, and that it does nothing is itself a finding.
+And it works a whole binder at a time, so it cannot see a hypothesis
+half of which is used — which happens in both marginal-utility
+theorems.
+
+`#manifest` closes the second of those, because it *lists* `_firstStep`
+and marks it as doing no work exactly where the linter has gone quiet.
+It does not close the third: a half-used hypothesis looks whole to
+both. And it brings a limit of its own — Lean draws no line between a
 signature and a conclusion, so the command cuts at the first anonymous
 binder and reports how many it dropped.
+
+So the guarantee is narrower than "nothing here is idle": nothing here
+is idle except where the statement says so, in the only way Lean has
+for saying it.
 
 # The horses in Lean
 
@@ -378,6 +400,16 @@ What else the audit turned up, beyond the one claim.
 - Nothing assumes that exactly one want is given up. Rothbard's phrase
   "the marginal unit" takes that for granted; the law here holds for
   every want that goes.
+- One unit to one end is not needed at all. Rothbard assumes it and
+  says he is assuming it — "each unit of means is capable of serving
+  one of the ends", introduced with "We assume for simplicity"
+  (p. 26) — and it reads like a premise of the derivation. It is not a
+  premise of anything here. It was built into what a plan *is*, where
+  no statement showed it; taken out, no theorem asked for it back.
+  Where an extra unit adds no new end the law is simply silent, and
+  the six horses supply a case where it is not silent, so nothing is
+  lost. A simplification its own author flagged, and the ordering does
+  not want it.
 - The proof never uses the fact that the end at the smaller supply is
   the marginal one. The law holds for every end served there against
   every end the next unit would add — and stronger still, a served end
@@ -449,26 +481,35 @@ more or fewer of them.
 
 {docstring Apodictic.AllocationPlan}
 
-Three claims sit a level down, as fields of the two structures every
-theorem above takes as arguments. `oneUnitOneEnd` — one unit serves
-one end, with no unit left idle — is Rothbard's "we assume for
-simplicity" (p. 26). `servesOnlyWhatItCan` says a unit is only ever
-put to an end the good is believed able to serve. `unitsAlike`, a
-field of the stock, says every unit is believed to serve exactly the
-same ends. None is a listed assumption. Every theorem above takes a
-plan `plan : AllocationPlan stock`, over a stock, so all three are
-still on the page — you read them off the types of the arguments
-instead of the list of assumptions. That is the one place an audit has
-to look past the statement itself, and it is why the manifest says
-"this list and the structures its binders name".
+Two conditions sit a level down, as fields of the two structures every
+theorem above takes as arguments. `servesOnlyWhatItCan` says a unit is
+only ever put to an end the good is believed able to serve.
+`unitsAlike`, a field of the stock, says every unit is believed to
+serve exactly the same ends — and that is what fixes the range of
+`stock.serves`, which is in turn what the one claim quantifies over.
+Neither is a binder in any statement, and both are on the manifest
+regardless: `#manifest` reads one level in and reports them, because
+whoever supplies the argument has already discharged them.
+
+The two are not alike, and the manifest does not pretend otherwise. A
+plan that puts a horse to a job the man does not believe a horse can
+do is not a situation that might obtain — it is an incoherent plan, so
+`servesOnlyWhatItCan` assumes nothing about the world. A lame horse is
+a situation that might obtain, so `unitsAlike` does. Which of the two
+a carried condition is cannot be read off the term; it is ruled by
+hand, and this is the ruling.
+
+A third used to sit here, and now sits nowhere. One unit to one end
+can fail of a real stable — two horses to one wagon, or a horse
+standing idle — so it could not stay a field. Taking it out showed
+that no theorem wants it, so it was not made a hypothesis either. See
+the findings.
 
 Interchangeability of units is *not* hidden down there. The plan is
 indexed by which exact units the man holds; that it depends only on how
-many of them there are is a separate named condition, below.
-
-{docstring Apodictic.AllocationPlan.Homogeneous}
-
-{docstring Apodictic.Stock.OneMore}
+many of them there are is a separate named condition,
+`AllocationPlan.Homogeneous`, given in full under *The conditions*
+along with the other two.
 
 # Claims no theorem uses
 

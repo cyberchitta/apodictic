@@ -14,6 +14,28 @@ trusted artifact and carries axioms, the action framework, and
 theorems; this is tooling that reads them, and it is used where the
 manifest is displayed.
 
+## It reads one level into the vocabulary
+
+A binder of a vocabulary type carries that structure's own `Prop`
+fields, and whoever supplies the argument has to discharge them. They
+are preconditions of the theorem in every sense that matters, and they
+are invisible in the signature — which is exactly where an assumption
+goes to hide. So the command projects each vocabulary binder's
+structure and reports its `Prop` fields as a class of their own.
+
+Only structures declared in the `Apodictic` library are opened: this
+audit is not about mathlib's, and `Finset` alone would drag in
+`nodup`. One level only — nothing here nests deeper, and a blind
+recursion would walk into mathlib through the first field that
+mentions it.
+
+What the command cannot do is SORT what it finds there. Whether a
+carried condition is definitional (it could not fail of a real
+situation, so nothing is being assumed about the world) or
+situational (it could fail, and then the theorem is silent) is a
+judgement about the world, not about the term. The command surfaces
+them; a human rules.
+
 ## What decides a binder's kind
 
 - A *praxeological claim* is a binder whose type's head constant is
@@ -27,7 +49,7 @@ manifest is displayed.
 - A *situational condition* is any other `Prop`.
 - Everything else is *vocabulary*: what the claims are about.
 
-## Its two limits, both real
+## Its limits, all real
 
 1. **The signature/conclusion line does not exist in Lean.** A
    theorem's type is one telescope; `∀ x ∈ s, P x` in the CONCLUSION
@@ -62,11 +84,22 @@ def Kind.header : Kind → String
   | .data => "conditions on the data"
   | .vocabulary => "vocabulary (what the claims are about)"
 
+/-- The module a constant was declared in. -/
+def moduleOf (env : Environment) (n : Name) : Option Name :=
+  match env.getModuleIdxFor? n with
+  | some idx => some env.header.moduleNames[idx.toNat]!
+  | none => none
+
 /-- Is `n` declared in the module `Apodictic.Praxeology`? This is the
 whole of the claim test — see the module docstring. -/
 def inPraxeology (env : Environment) (n : Name) : Bool :=
-  match env.getModuleIdxFor? n with
-  | some idx => env.header.moduleNames[idx.toNat]! == `Apodictic.Praxeology
+  moduleOf env n == some `Apodictic.Praxeology
+
+/-- Is `n` declared anywhere in the Apodictic library? Only those
+structures are opened up — see the module docstring. -/
+def inApodictic (env : Environment) (n : Name) : Bool :=
+  match moduleOf env n with
+  | some m => m.getRoot == `Apodictic
   | none => false
 
 def classify (env : Environment) (bi : BinderInfo) (ty : Expr) (isProp : Bool) : Kind :=
@@ -87,8 +120,10 @@ elab "#manifest " id:ident : command => do
   let n ← liftCoreM <| realizeGlobalConstNoOverload id
   let env ← getEnv
   let some ci := env.find? n | throwError "unknown declaration {n}"
-  let (binders, dropped) ← liftTermElabM <| forallTelescopeReducing ci.type fun xs _ => do
+  let (binders, carried, dropped) ← liftTermElabM <|
+      forallTelescopeReducing ci.type fun xs _ => do
     let mut acc := #[]
+    let mut carried := #[]
     let mut dropped := 0
     for x in xs do
       let d ← x.fvarId!.getDecl
@@ -101,8 +136,19 @@ elab "#manifest " id:ident : command => do
         break
       let ty ← instantiateMVars d.type
       let isProp ← Meta.isProp ty
-      acc := acc.push (classify env d.binderInfo ty isProp, d.binderInfo, d.userName, ← ppExpr ty)
-    return (acc, dropped)
+      let kind := classify env d.binderInfo ty isProp
+      acc := acc.push (kind, d.binderInfo, d.userName, ← ppExpr ty)
+      -- One level into the vocabulary: a structure argument carries its
+      -- own `Prop` fields, and whoever supplies it discharges them.
+      -- Apodictic structures only — `Finset` would contribute `nodup`.
+      if kind == .vocabulary then
+        if let some c := ty.getAppFn.constName? then
+          if isStructure env c && inApodictic env c then
+            for f in getStructureFields env c do
+              let fieldTy ← instantiateMVars (← inferType (← Meta.mkProjection x f))
+              if ← Meta.isProp fieldTy then
+                carried := carried.push (s!"{d.userName}.{f}", ← ppExpr fieldTy)
+    return (acc, carried, dropped)
   let mut out := s!"manifest of {n}\n"
   for k in [Kind.claim, Kind.situational, Kind.data, Kind.vocabulary] do
     let these := binders.filter (·.1 == k)
@@ -112,6 +158,11 @@ elab "#manifest " id:ident : command => do
         let shown := if bi == .instImplicit then s!"[{ty}]" else s!"{nm} : {ty}"
         let mark := if nm.toString.startsWith "_" then "   -- listed, does no work" else ""
         out := out ++ s!"    {shown}{mark}\n"
+  if carried.size > 0 then
+    out := out ++ "\n  conditions carried by the vocabulary "
+    out := out ++ "(not binders: discharged by\n  whoever supplies the argument):\n"
+    for (nm, ty) in carried do
+      out := out ++ s!"    {nm} : {ty}\n"
   let axs ← collectAxioms n
   out := out ++ s!"\n  logical background: {axs.toList}\n"
   if dropped > 0 then
