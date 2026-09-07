@@ -61,9 +61,9 @@ structure ActionFrame where
 /-- Preference between two single ends. This is bundle preference
 between two one-member bundles — a definition, not a second
 relation. -/
-abbrev ActionFrame.PrefersEnd (frame : ActionFrame) (agent : frame.Agent)
-    (time : frame.Time) (want other : frame.End) : Prop :=
-  frame.Prefers agent time {want} {other}
+abbrev ActionFrame.PrefersEnd (praxis : ActionFrame) (agent : praxis.Agent)
+    (time : praxis.Time) (want other : praxis.End) : Prop :=
+  praxis.Prefers agent time {want} {other}
 
 /-- **Independence of uses** — a condition on the situation, NOT a
 universal claim. If two bundles differ in exactly one slot, then
@@ -81,12 +81,12 @@ condition — and complementarity, which his wording never has to face,
 lands here once the pieces are pulled apart. To assert this rather
 than hypothesize it would be to assert that complementarity never
 happens. -/
-def ActionFrame.IndependentUses (frame : ActionFrame) (agent : frame.Agent)
-    (time : frame.Time) : Prop :=
-  ∀ (rest : Set frame.End) (want other : frame.End),
+def ActionFrame.IndependentUses (praxis : ActionFrame) (agent : praxis.Agent)
+    (time : praxis.Time) : Prop :=
+  ∀ (rest : Set praxis.End) (want other : praxis.End),
     want ∉ rest → other ∉ rest →
-      frame.Prefers agent time (insert want rest) (insert other rest) →
-        frame.PrefersEnd agent time want other
+      praxis.Prefers agent time (insert want rest) (insert other rest) →
+        praxis.PrefersEnd agent time want other
 
 /-- An action: an agent, at a time, uses means in the belief that they
 will bring about a chosen end, giving up at least one alternative end
@@ -96,19 +96,19 @@ The fields hold together as a package — nothing with fewer parts
 counts as an action — but this is a definition, so it asserts
 nothing. Shape: our-reconstruction. No theorem uses it yet; the law
 of marginal utility rests on the counterfactual plan alone. -/
-structure Action (frame : ActionFrame) where
+structure Action (praxis : ActionFrame) where
   /-- The acting person. -/
-  agent : frame.Agent
+  agent : praxis.Agent
   /-- When the action happens. -/
-  time : frame.Time
+  time : praxis.Time
   /-- The end aimed at. -/
-  chosen : frame.End
+  chosen : praxis.End
   /-- The means employed. -/
-  means : frame.Means
+  means : praxis.Means
   /-- The ends given up by acting — the raw material of opportunity
   cost. Just a set: saying "the next-best alternative" would
   presuppose a ranking this file does not have. -/
-  forgone : Set frame.End
+  forgone : Set praxis.End
   /-- Action is choice: something is always given up, if only doing
   nothing. -/
   forgone_nonempty : forgone.Nonempty
@@ -116,6 +116,6 @@ structure Action (frame : ActionFrame) where
   chosen_not_forgone : chosen ∉ forgone
   /-- The agent believes the means used will bring about the chosen
   end. -/
-  belief : frame.Believes agent time means chosen
+  belief : praxis.Believes agent time means chosen
 
 end Apodictic

@@ -257,7 +257,7 @@ Those are in the statement. The law carries one premise,
 `SwapDominant plan`; three conditions on the situation —
 `IndependentUses`, `plan.Homogeneous` (for the size-based form only),
 and the two piles being on hand; and one condition on the frame,
-`[DecidableEq frame.End]`, which just says two wants can be told
+`[DecidableEq praxis.End]`, which just says two wants can be told
 apart. The urgency principle and the chain form carry the same list
 without `Homogeneous`.
 
@@ -420,9 +420,9 @@ and then set aside:
 ```lean
 /-- PARKED: the bridge from actual action to preference. Carried by
 no theorem; lives in the document, not the library. -/
-structure DemonstratedPreference (frame : ActionFrame) : Prop where
-  bridge : ∀ act : Action frame, ∀ givenUp ∈ act.forgone,
-    frame.Prefers act.agent act.time {act.chosen} {givenUp}
+structure DemonstratedPreference (praxis : ActionFrame) : Prop where
+  bridge : ∀ act : Action praxis, ∀ givenUp ∈ act.forgone,
+    praxis.Prefers act.agent act.time {act.chosen} {givenUp}
 ```
 
 The second is the claim that there is any action at all. Action itself

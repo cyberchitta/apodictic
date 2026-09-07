@@ -61,9 +61,9 @@ namespace Model
 not preferred to `X`. This is the "strict" reading intended all
 along, and it is not yet a commitment (OPEN.md). The model has to
 survive it. -/
-def Asymmetric (frame : ActionFrame) : Prop :=
-  ∀ (agent : frame.Agent) (time : frame.Time) (X Y : Set frame.End),
-    frame.Prefers agent time X Y → ¬ frame.Prefers agent time Y X
+def Asymmetric (praxis : ActionFrame) : Prop :=
+  ∀ (agent : praxis.Agent) (time : praxis.Time) (X Y : Set praxis.End),
+    praxis.Prefers agent time X Y → ¬ praxis.Prefers agent time Y X
 
 /-- A want the horses can serve, named by its place on the man's value
 scale: rank 1 is the most urgent, and the lower the number the more
@@ -130,7 +130,7 @@ def horsePlan (k : ℕ) : AllocationPlan (horseStock k) where
     omega
 
 /-- Wants are decidable in this frame — the instance the theorems
-take as `[DecidableEq frame.End]`. -/
+take as `[DecidableEq praxis.End]`. -/
 instance : DecidableEq Horses.End := inferInstanceAs (DecidableEq ℕ)
 
 /-- **Interchangeability holds of the plan**: it depends on how many

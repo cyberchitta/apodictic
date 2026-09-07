@@ -17,7 +17,7 @@ What the derivation needs, and what it does not:
   conclusion is read off a bundle-level preference, which is licit
   only where uses are independent. The theorem does not apply where
   they are not; the law of marginal utility inherits the condition.
-- `[DecidableEq frame.End]` — to form "the bundle minus a want"
+- `[DecidableEq praxis.End]` — to form "the bundle minus a want"
   constructively.
 - NOT the actual-action bridge from action to preference (nowhere in
   the library). The action half of Rothbard's fused premise (*MES*
@@ -69,23 +69,23 @@ the plan beats the result. The served bundle is that one want together
 with the rest (`insert_sdiff_self_of_mem`), so the two bundles differ
 in exactly one place — and independence reads the preference between
 those two wants off that. -/
-theorem served_over_unserved {frame : ActionFrame} [DecidableEq frame.End]
-    {agent : frame.Agent} {time : frame.Time}
-    {stock : Stock frame agent time}
+theorem served_over_unserved {praxis : ActionFrame} [DecidableEq praxis.End]
+    {agent : praxis.Agent} {time : praxis.Time}
+    {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) (dominance : SwapDominant plan)
-    (independent : frame.IndependentUses agent time)
-    (subStock : Finset frame.Means) (onHand : subStock ⊆ stock.units) :
+    (independent : praxis.IndependentUses agent time)
+    (subStock : Finset praxis.Means) (onHand : subStock ⊆ stock.units) :
     ∀ served ∈ plan.wouldServe subStock, ∀ unserved ∈ stock.serves,
       unserved ∉ plan.wouldServe subStock →
-        frame.PrefersEnd agent time served unserved := by
+        praxis.PrefersEnd agent time served unserved := by
   intro served hserved unserved hcanServe hnotServed
   have hbeats := dominance.swap subStock onHand served hserved
     unserved hcanServe hnotServed
-  have hmem : served ∈ (↑(plan.wouldServe subStock) : Set frame.End) :=
+  have hmem : served ∈ (↑(plan.wouldServe subStock) : Set praxis.End) :=
     Finset.mem_coe.mpr hserved
   have hsplit := insert_sdiff_self_of_mem hmem
   apply independent
-    ((↑(plan.wouldServe subStock) : Set frame.End) \ {served})
+    ((↑(plan.wouldServe subStock) : Set praxis.End) \ {served})
     served unserved
   · intro h
     exact h.2 rfl
@@ -103,15 +103,15 @@ One application of `served_over_unserved`. An abandoned end is one the
 good can serve and the plan does not serve at `fewer` — and beyond
 supplying that much, the fact that `more` is exactly one unit larger
 does no work here. -/
-theorem urgency_principle {frame : ActionFrame} [DecidableEq frame.End]
-    {agent : frame.Agent} {time : frame.Time}
-    {stock : Stock frame agent time}
+theorem urgency_principle {praxis : ActionFrame} [DecidableEq praxis.End]
+    {agent : praxis.Agent} {time : praxis.Time}
+    {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) (dominance : SwapDominant plan)
-    (independent : frame.IndependentUses agent time)
-    (fewer more : Finset frame.Means) (step : stock.OneMore fewer more) :
+    (independent : praxis.IndependentUses agent time)
+    (fewer more : Finset praxis.Means) (step : stock.OneMore fewer more) :
     ∀ kept ∈ plan.wouldServe fewer, ∀ lost, lost ∈ plan.wouldServe more →
       lost ∉ plan.wouldServe fewer →
-        frame.PrefersEnd agent time kept lost := by
+        praxis.PrefersEnd agent time kept lost := by
   intro kept hkept lost hlost hnotKept
   have onHand : fewer ⊆ stock.units := fun u hu => step.2.1 (step.1 hu)
   exact served_over_unserved plan dominance independent fewer onHand
@@ -127,34 +127,34 @@ ranking were simply given — "the" marginal unit, "the" least urgent
 want (*MES* pp. 24–27) — and never argues that there is only one.
 Swap dominance plus asymmetry delivers it. Asymmetry rides along as a
 hypothesis because `Prefers` has no properties assumed of it. -/
-theorem no_rival_swap_dominant {frame : ActionFrame} [DecidableEq frame.End]
-    {agent : frame.Agent} {time : frame.Time}
-    {stock : Stock frame agent time}
-    (asymmetry : ∀ X Y : Set frame.End,
-      frame.Prefers agent time X Y → ¬ frame.Prefers agent time Y X)
+theorem no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End]
+    {agent : praxis.Agent} {time : praxis.Time}
+    {stock : Stock praxis agent time}
+    (asymmetry : ∀ X Y : Set praxis.End,
+      praxis.Prefers agent time X Y → ¬ praxis.Prefers agent time Y X)
     (plan rival : AllocationPlan stock)
     (dominance : SwapDominant plan) (rivalDominance : SwapDominant rival)
-    (subStock : Finset frame.Means) (onHand : subStock ⊆ stock.units)
-    (served unserved : frame.End)
+    (subStock : Finset praxis.Means) (onHand : subStock ⊆ stock.units)
+    (served unserved : praxis.End)
     (hserved : served ∈ plan.wouldServe subStock)
     (hservedPossible : served ∈ stock.serves)
     (hunservedPossible : unserved ∈ stock.serves)
     (hunserved : unserved ∉ plan.wouldServe subStock)
-    (hswap : (↑(rival.wouldServe subStock) : Set frame.End)
+    (hswap : (↑(rival.wouldServe subStock) : Set praxis.End)
               = insert unserved
-                  ((↑(plan.wouldServe subStock) : Set frame.End) \ {served})) :
+                  ((↑(plan.wouldServe subStock) : Set praxis.End) \ {served})) :
     False := by
   have hne : served ≠ unserved := fun h => hunserved (h ▸ hserved)
   have hplanBeats := dominance.swap subStock onHand served hserved
     unserved hunservedPossible hunserved
   rw [← hswap] at hplanBeats
   have hunservedInRival : unserved ∈ rival.wouldServe subStock := by
-    have hm : unserved ∈ (↑(rival.wouldServe subStock) : Set frame.End) := by
+    have hm : unserved ∈ (↑(rival.wouldServe subStock) : Set praxis.End) := by
       rw [hswap]; exact Set.mem_insert _ _
     exact Finset.mem_coe.mp hm
   have hservedNotInRival : served ∉ rival.wouldServe subStock := by
     intro hmem
-    have hm : served ∈ (↑(rival.wouldServe subStock) : Set frame.End) :=
+    have hm : served ∈ (↑(rival.wouldServe subStock) : Set praxis.End) :=
       Finset.mem_coe.mpr hmem
     rw [hswap] at hm
     rcases hm with h | h
@@ -163,8 +163,8 @@ theorem no_rival_swap_dominant {frame : ActionFrame} [DecidableEq frame.End]
   have hrivalBeats := rivalDominance.swap subStock onHand unserved
     hunservedInRival served hservedPossible hservedNotInRival
   have hback : insert served
-      ((↑(rival.wouldServe subStock) : Set frame.End) \ {unserved})
-      = (↑(plan.wouldServe subStock) : Set frame.End) := by
+      ((↑(rival.wouldServe subStock) : Set praxis.End) \ {unserved})
+      = (↑(plan.wouldServe subStock) : Set praxis.End) := by
     rw [hswap]
     apply Set.ext
     intro x

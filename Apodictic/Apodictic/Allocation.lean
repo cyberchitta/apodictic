@@ -37,16 +37,16 @@ that enters into concrete human action" (*MES* p. 28). Pairs of
 horses make a different stock, with a "new and shorter scale of
 ends", and a good that "cannot be divided into homogeneous units for
 purposes of action" is a stock of exactly one unit. -/
-structure Stock (frame : ActionFrame) (agent : frame.Agent)
-    (time : frame.Time) where
+structure Stock (praxis : ActionFrame) (agent : praxis.Agent)
+    (time : praxis.Time) where
   /-- The units of the good on hand. -/
-  units : Finset frame.Means
+  units : Finset praxis.Means
   /-- The ends this good can serve, by the agent's lights. -/
-  serves : Set frame.End
+  serves : Set praxis.End
   /-- Every unit is believed to serve exactly the ends in
   `serves`. -/
   unitsAlike : ∀ unit ∈ units, ∀ want,
-    frame.Believes agent time unit want ↔ want ∈ serves
+    praxis.Believes agent time unit want ↔ want ∈ serves
 
 /-- The agent's plan for the stock: for each `subStock` — each set
 of units he might have — the ends he WOULD serve with exactly those
@@ -69,11 +69,11 @@ left idle. Rothbard says "each unit of means is
 capable of serving one of the ends", and flags it — "We assume for
 simplicity" (*MES* p. 26). The shape of the definition is
 our-reconstruction. -/
-structure AllocationPlan {frame : ActionFrame} {agent : frame.Agent}
-    {time : frame.Time} (stock : Stock frame agent time) where
+structure AllocationPlan {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} (stock : Stock praxis agent time) where
   /-- The ends the agent would serve with exactly the units in
   `subStock`, and no others. -/
-  wouldServe : Finset frame.Means → Finset frame.End
+  wouldServe : Finset praxis.Means → Finset praxis.End
   /-- A unit is only ever put to an end the good is believed able to
   serve. -/
   servesOnlyWhatItCan : ∀ subStock, ∀ want ∈ wouldServe subStock,
@@ -95,8 +95,8 @@ good is only one unit" (*MES* p. 23). Where it fails, the units are
 not one good, and the supply-size form of the law does not treat them
 as one. Like the plan it constrains, it speaks of sub-stocks the agent
 may not hold. -/
-def AllocationPlan.Homogeneous {frame : ActionFrame} {agent : frame.Agent}
-    {time : frame.Time} {stock : Stock frame agent time}
+def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=
   ∀ fewer ⊆ stock.units, ∀ more ⊆ stock.units, fewer.card = more.card →
     plan.wouldServe fewer = plan.wouldServe more
@@ -106,9 +106,9 @@ with an inclusion and a count rather than by naming the extra unit, so
 that sub-stocks are only ever supposed and never constructed — which
 is why nothing here needs to decide when two units are the same
 unit. -/
-def Stock.OneMore {frame : ActionFrame} {agent : frame.Agent}
-    {time : frame.Time} (stock : Stock frame agent time)
-    (fewer more : Finset frame.Means) : Prop :=
+def Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} (stock : Stock praxis agent time)
+    (fewer more : Finset praxis.Means) : Prop :=
   fewer ⊆ more ∧ more ⊆ stock.units ∧ more.card = fewer.card + 1
 
 end Apodictic

@@ -26,7 +26,7 @@ no axioms. The
 praxeological content is read off the SIGNATURE instead, and it is
 one commitment plus three situational conditions: `SwapDominant plan`
 (the commitment), `IndependentUses` and `plan.Homogeneous` (situational;
-the latter for the supply-size form only), `[DecidableEq frame.End]` (a
+the latter for the supply-size form only), `[DecidableEq praxis.End]` (a
 data condition on the frame), and the sub-stocks being on hand. That
 every one of them does real work is enforced by
 `#lint only unusedArguments`, not by the proof term — see
@@ -48,10 +48,10 @@ namespace Apodictic
 `more` that is not served with `fewer`. Pure counting, carrying no
 philosophical weight — it only keeps the law from being about
 nothing. -/
-theorem exists_marginal {frame : ActionFrame} {agent : frame.Agent}
-    {time : frame.Time} {stock : Stock frame agent time}
+theorem exists_marginal {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock)
-    (fewer more : Finset frame.Means) (step : stock.OneMore fewer more) :
+    (fewer more : Finset praxis.Means) (step : stock.OneMore fewer more) :
     ∃ added ∈ plan.wouldServe more, added ∉ plan.wouldServe fewer := by
   by_contra h
   have hsub : plan.wouldServe more ⊆ plan.wouldServe fewer := by
@@ -89,10 +89,10 @@ that they believe the means can serve" (p. 19).
 Indexed by the step rather than by a size, because which ends a unit
 adds can depend on which units are already on hand — unless the plan
 is `Homogeneous`. -/
-def marginalEnds {frame : ActionFrame} {agent : frame.Agent}
-    {time : frame.Time} {stock : Stock frame agent time}
+def marginalEnds {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock)
-    (fewer more : Finset frame.Means) : Set frame.End :=
+    (fewer more : Finset praxis.Means) : Set praxis.End :=
   {want | want ∈ plan.wouldServe more ∧ want ∉ plan.wouldServe fewer}
 
 /-- **The law of marginal utility, along a chain of named units.**
@@ -105,17 +105,17 @@ which units are involved. One application of `urgency_principle`; the
 fact that the first step's end is marginal there goes unused
 (`_notNeeded`). -/
 theorem marginal_utility_chain
-    {frame : ActionFrame} [DecidableEq frame.End]
-    {agent : frame.Agent} {time : frame.Time}
-    {stock : Stock frame agent time}
+    {praxis : ActionFrame} [DecidableEq praxis.End]
+    {agent : praxis.Agent} {time : praxis.Time}
+    {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) (dominance : SwapDominant plan)
-    (independent : frame.IndependentUses agent time)
-    (small medium large : Finset frame.Means)
+    (independent : praxis.IndependentUses agent time)
+    (small medium large : Finset praxis.Means)
     (_firstStep : stock.OneMore small medium)
     (secondStep : stock.OneMore medium large) :
     ∀ addedFirst ∈ marginalEnds plan small medium,
       ∀ addedSecond ∈ marginalEnds plan medium large,
-        frame.PrefersEnd agent time addedFirst addedSecond := by
+        praxis.PrefersEnd agent time addedFirst addedSecond := by
   intro addedFirst hfirst addedSecond hsecond
   obtain ⟨hservedAtMedium, _notNeeded⟩ := hfirst
   obtain ⟨hservedAtLarge, hnotAtMedium⟩ := hsecond
@@ -137,20 +137,20 @@ units of the first. Without it the two steps could not be compared at
 all. The fact that the end at `n` is marginal there goes unused
 (`_notNeeded`). -/
 theorem marginal_utility
-    {frame : ActionFrame} [DecidableEq frame.End]
-    {agent : frame.Agent} {time : frame.Time}
-    {stock : Stock frame agent time}
+    {praxis : ActionFrame} [DecidableEq praxis.End]
+    {agent : praxis.Agent} {time : praxis.Time}
+    {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) (dominance : SwapDominant plan)
-    (independent : frame.IndependentUses agent time)
+    (independent : praxis.IndependentUses agent time)
     (interchangeable : plan.Homogeneous)
-    (belowSmaller smaller belowLarger larger : Finset frame.Means)
+    (belowSmaller smaller belowLarger larger : Finset praxis.Means)
     (stepToSmaller : stock.OneMore belowSmaller smaller)
     (stepToLarger : stock.OneMore belowLarger larger)
     (n : ℕ) (smallerSize : smaller.card = n)
     (largerSize : larger.card = n + 1) :
     ∀ atSmaller ∈ marginalEnds plan belowSmaller smaller,
       ∀ atLarger ∈ marginalEnds plan belowLarger larger,
-        frame.PrefersEnd agent time atSmaller atLarger := by
+        praxis.PrefersEnd agent time atSmaller atLarger := by
   intro atSmaller hsmaller atLarger hlarger
   obtain ⟨hservedAtSmaller, _notNeeded⟩ := hsmaller
   obtain ⟨hservedAtLarger, hnotBelowLarger⟩ := hlarger

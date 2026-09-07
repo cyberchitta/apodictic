@@ -57,7 +57,7 @@ named hypotheses stated where they apply, so that a theorem is silent
 rather than false where they fail. `IndependentUses`
 (`Apodictic.Action`) and `AllocationPlan.Homogeneous`
 (`Apodictic.Allocation`) are of that kind. Decidable identity of ends
-travels as the instance argument `[DecidableEq frame.End]`; it is a data
+travels as the instance argument `[DecidableEq praxis.End]`; it is a data
 condition on the frame, not a claim about action.
 -/
 
@@ -125,14 +125,14 @@ Does not say:
    `Homogeneous`, and no part of this claim.
 6. That such a plan exists, or that it is unique without further
    properties of `Prefers`. -/
-structure SwapDominant {frame : ActionFrame} {agent : frame.Agent}
-    {time : frame.Time} {stock : Stock frame agent time}
+structure SwapDominant {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop where
   /-- The one-swap dominance itself. -/
   swap : ∀ subStock ⊆ stock.units, ∀ served ∈ plan.wouldServe subStock,
     ∀ unserved ∈ stock.serves, unserved ∉ plan.wouldServe subStock →
-      frame.Prefers agent time (↑(plan.wouldServe subStock))
+      praxis.Prefers agent time (↑(plan.wouldServe subStock))
         (insert unserved
-          ((↑(plan.wouldServe subStock) : Set frame.End) \ {served}))
+          ((↑(plan.wouldServe subStock) : Set praxis.End) \ {served}))
 
 end Apodictic
