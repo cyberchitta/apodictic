@@ -231,35 +231,37 @@ the supply, and it is.
 
 {docstring Apodictic.marginal_utility}
 
-# The receipt
+# The manifest
 
 
-```lean (name := receipt)
-#print axioms marginal_utility
-```
-```leanOutput receipt
-'Apodictic.marginal_utility' depends on axioms: [propext, Quot.sound]
-```
+Everything the law carries, in one place. Each line is a binder in the
+theorem's signature, and nothing that is not here is assumed.
 
-`propext` and `Quot.sound` are Lean's own logical background. They
-arrive with ordinary mathematics, not with anything praxeological:
-mathlib's finite sets bring both, and so does extensionality for sets.
-`Classical.choice` is absent: no proof here fills a gap by assuming
-that every question has a yes-or-no answer. The proofs do split into
-cases, but only on whether two ends are the same end — and that is why
-being able to tell two ends apart is declared in the statement instead
-of slipping in unnoticed.
+- *The premise.* `SwapDominant plan` — the one claim about action.
+- *The conditions on the situation.* `stock.OneMore`,
+  `IndependentUses`, and `plan.Homogeneous` for the size-based form
+  only. These are the three above: they are what an Austrian points at
+  to say the law did not apply here.
+- *A condition on the data.* `[DecidableEq praxis.End]` — two wants
+  can be told apart.
+- *Lean's own logical background.* `propext` and `Quot.sound`, which
+  arrive with ordinary mathematics: mathlib's finite sets bring both,
+  and so does extensionality for sets. `Classical.choice` is absent —
+  no proof here fills a gap by assuming that every question has a
+  yes-or-no answer. The proofs do split into cases, but only on
+  whether two ends are the same end, and that is why being able to
+  tell two ends apart is declared in the statement instead of
+  slipping in unnoticed.
 
-This output says one thing: the library adds nothing to Lean's logic.
-It is not the list of praxeological assumptions.
-
-Those are in the statement. The law carries one premise,
-`SwapDominant plan`; three conditions on the situation —
-`IndependentUses`, `plan.Homogeneous` (for the size-based form only),
-and the two piles being on hand; and one condition on the frame,
-`[DecidableEq praxis.End]`, which just says two wants can be told
-apart. The urgency principle and the chain form carry the same list
+The urgency principle and the chain form carry the same manifest
 without `Homogeneous`.
+
+This list is kept by hand, so a reader is trusting that it matches the
+signature it describes. What keeps it honest is `#lint only
+unusedArguments`, which fails the build on any hypothesis that did no
+work: nothing on the list is idle. Deriving the list from the theorem
+itself, rather than checking it after the fact, is a command we have
+not written.
 
 # The horses in Lean
 

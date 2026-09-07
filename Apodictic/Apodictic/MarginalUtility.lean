@@ -32,7 +32,7 @@ every one of them does real work is enforced by
 `#lint only unusedArguments`, not by the proof term — see
 `Apodictic.Commitments`.
 
-What the receipt shows is read in the Verso document (part I,
+What the manifest shows is read in the Verso document (part I,
 findings). In brief: no axiom about ACTUAL action is cited — the law
 rests on the subjunctive disposition alone; independence of uses and
 interchangeability of units are hypotheses, not axioms; no
@@ -77,7 +77,7 @@ that exactly one end drops (see the module docstring). It is a `Set`
 rather than a `Finset` for a mechanical reason: subtracting one
 `Finset` from another requires being able to decide when two ends are
 the same end, which an arbitrary frame does not give us — and reaching
-for `Classical` would put `Classical.choice` on the receipt for no
+for `Classical` would put `Classical.choice` on the manifest for no
 praxeological reason at all.
 
 A definition, not a claim — Rothbard introduces it as one ("is

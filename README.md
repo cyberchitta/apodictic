@@ -58,7 +58,7 @@ Apodictic/             -- the library. Depends on mathlib only; always
     MarginalUtility.lean -- first theorem target
 ApodicticDoc/          -- Verso document package, depends on the library.
                        -- The result: vocabulary, the commitment, the
-                       -- hypotheses, the theorems, and the receipt.
+                       -- hypotheses, the theorems, and the manifest.
 ```
 
 If Verso lags a Lean toolchain bump, the document waits; the library's

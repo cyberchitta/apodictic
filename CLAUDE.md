@@ -20,7 +20,7 @@ and we want to POINT AT WHICH ONE in any given situation. Two
 consequences for encoding. Cut assumptions as finely as reality can
 pull them apart — a compressed axiom that fails explains nothing.
 And sort by kind of claim: claimed-universal facts about action are
-`axiom`s (on the receipt; if false, praxeology is wrong), while
+`axiom`s (on the manifest; if false, praxeology is wrong), while
 situational applicability conditions are named, documented
 hypotheses in the theorem statement (the theorem does not apply
 where they fail). The Austrian defence "the conditions didn't
@@ -119,7 +119,7 @@ Two lake packages in this repo:
 - **ApodicticDoc/** — a Verso document package, depending on the
   Apodictic library. The connected essay lives here: axiom
   the vocabulary, the commitment, the hypotheses, the theorems and
-  the receipt — the human's review surface, and the only part
+  the manifest — the human's review surface, and the only part
   emitted to the site. It is written from `_notes/` at editorial
   cadence
   (human decision 2026-09-04) and may lag the Lean, never
@@ -165,7 +165,7 @@ Plus the lab notebook, outside both packages:
 - Commitments are honest and legible: every universal claim is a
   named structure in Commitments.lean and appears in the signature of
   every theorem that uses it. None may be folded into a field of the
-  vocabulary, where no signature shows it. The receipt IS the
+  vocabulary, where no signature shows it. The manifest IS the
   signature, and `#lint only unusedArguments` — mandatory, never
   silenced without a recorded reason — keeps it tight. `_`-prefixing
   a hypothesis is how "this does no work" is recorded, and each such
@@ -176,7 +176,7 @@ Plus the lab notebook, outside both packages:
   pedigree in `_notes/2026-09-04-parked-axioms.md`. (Human
   decision 2026-09-04: no reviewing axioms that do no work.)
 - Constructive by default (human decision 2026-09-04). No
-  `Classical.choice` on a theorem's receipt. When a proof stalls
+  `Classical.choice` on a theorem's manifest. When a proof stalls
   for want of a case split, ask whether the split is praxeological
   content (then it is a named commitment) or logical background;
   never let mathlib's classical lemmas answer that question

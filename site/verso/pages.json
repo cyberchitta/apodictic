@@ -138,9 +138,9 @@
   "path": ["The-Result", "The-theorems"],
   "next":
   {"url":
-   "/The-Result/The-receipt/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
-   "titleText": "The receipt",
-   "title": "The receipt",
+   "/The-Result/The-manifest/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
+   "titleText": "The manifest",
+   "title": "The manifest",
    "sectionNum": "1.6."},
   "localToc":
   [{"numbering": null,
@@ -166,9 +166,9 @@
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-theorems",
   "fragment": "pages/The-Result/The-theorems.html",
   "depth": 2},
- {"url": "/The-Result/The-receipt/",
-  "titleText": "The receipt",
-  "title": "1.6. The receipt",
+ {"url": "/The-Result/The-manifest/",
+  "titleText": "The manifest",
+  "title": "1.6. The manifest",
   "sectionNum": "1.6.",
   "prev":
   {"url":
@@ -176,7 +176,7 @@
    "titleText": "The theorems",
    "title": "The theorems",
    "sectionNum": "1.5."},
-  "path": ["The-Result", "The-receipt"],
+  "path": ["The-Result", "The-manifest"],
   "next":
   {"url":
    "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
@@ -184,8 +184,8 @@
    "title": "The horses in Lean",
    "sectionNum": "1.7."},
   "localToc": [],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
-  "fragment": "pages/The-Result/The-receipt.html",
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
+  "fragment": "pages/The-Result/The-manifest.html",
   "depth": 2},
  {"url": "/The-Result/The-horses-in-Lean/",
   "titleText": "The horses in Lean",
@@ -193,9 +193,9 @@
   "sectionNum": "1.7.",
   "prev":
   {"url":
-   "/The-Result/The-receipt/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-receipt",
-   "titleText": "The receipt",
-   "title": "The receipt",
+   "/The-Result/The-manifest/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
+   "titleText": "The manifest",
+   "title": "The manifest",
    "sectionNum": "1.6."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":

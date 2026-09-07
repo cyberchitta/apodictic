@@ -36,13 +36,15 @@ const RULES = [
   // --- retired claims ---
   { pattern: /one collision/i, why: "the merged-collision finding was retired" },
   { pattern: /the axioms (each|the) theorem/i,
-    why: "the library declares no axiom; the receipt is the signature" },
+    why: "the library declares no axiom; the manifest is the signature" },
   { pattern: /axioms each theorem actually rests on/i,
     why: "the library declares no axiom" },
-  { pattern: /#print axioms[^.]{0,70}(the whole point|is the receipt)/i,
-    why: "the receipt is the signature; #print axioms only shows Lean's background" },
+  { pattern: /#print axioms[^.]{0,70}(the whole point|is the (receipt|manifest))/i,
+    why: "the manifest is the signature; #print axioms only shows Lean's background" },
+  { pattern: /\breceipts?\b/i,
+    why: "'receipt' was retired 2026-09-07; the word is 'manifest'" },
   // --- part slugs dropped by the restructure (2026-09-06) ---
-  { pattern: /href="\/The-Result\/(Axioms|Commitments|Hypotheses|Theorems|Vocabulary|Findings|Not-in-the-base|Consistency)\//,
+  { pattern: /href="\/The-Result\/(Axioms|Commitments|Hypotheses|Theorems|Vocabulary|Findings|Not-in-the-base|Consistency|The-receipt)\//,
     why: "part renamed by the restructure; this link 404s" },
 ];
 

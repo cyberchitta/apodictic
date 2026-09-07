@@ -1,0 +1,19 @@
+<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/find/?domain=Verso.Genre.Manual.section&amp;name=Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Each line is a binder in the
+theorem's signature, and nothing that is not here is assumed.</p><ul><li><p><strong>The premise.</strong> <code>SwapDominant plan</code> — the one claim about action.</p></li><li><p><strong>The conditions on the situation.</strong> <code>stock.OneMore</code>,
+  <code>IndependentUses</code>, and <code>plan.Homogeneous</code> for the size-based form
+  only. These are the three above: they are what an Austrian points at
+  to say the law did not apply here.</p></li><li><p><strong>A condition on the data.</strong> <code>[DecidableEq praxis.End]</code> — two wants
+  can be told apart.</p></li><li><p><strong>Lean's own logical background.</strong> <code>propext</code> and <code>Quot.sound</code>, which
+  arrive with ordinary mathematics: mathlib's finite sets bring both,
+  and so does extensionality for sets. <code>Classical.choice</code> is absent —
+  no proof here fills a gap by assuming that every question has a
+  yes-or-no answer. The proofs do split into cases, but only on
+  whether two ends are the same end, and that is why being able to
+  tell two ends apart is declared in the statement instead of
+  slipping in unnoticed.</p></li></ul><p>The urgency principle and the chain form carry the same manifest
+without <code>Homogeneous</code>.</p><p>This list is kept by hand, so a reader is trusting that it matches the
+signature it describes. What keeps it honest is <code>#lint only
+unusedArguments</code>, which fails the build on any hypothesis that did no
+work: nothing on the list is idle. Deriving the list from the theorem
+itself, rather than checking it after the fact, is a command we have
+not written.</p></section>

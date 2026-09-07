@@ -30,7 +30,7 @@ deliberate:
   background** (`propext`, `Quot.sound`). That is itself the report:
   we have added nothing to Lean's logic. The praxeological
   commitments are read off the theorem's SIGNATURE instead.
-- **The receipt is enforced by the unused-argument linter**, not by
+- **The manifest is enforced by the unused-argument linter**, not by
   the proof term. `#lint only unusedArguments` fails the build on any
   hypothesis that did no work, so a listed commitment is a used one.
   It is silenceable (`_`-prefix, `@[nolint unusedArguments]`) — so
