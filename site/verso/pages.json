@@ -153,6 +153,10 @@
     "dest": "/The-Result/The-theorems/#Apodictic___urgency_principle"},
    {"numbering": null,
     "level": null,
+    "html": "<code>no_rival_swap_dominant</code>",
+    "dest": "/The-Result/The-theorems/#Apodictic___no_rival_swap_dominant"},
+   {"numbering": null,
+    "level": null,
     "html": "<code>marginalEnds</code>",
     "dest": "/The-Result/The-theorems/#Apodictic___marginalEnds"},
    {"numbering": null,
@@ -223,7 +227,17 @@
     "level": null,
     "html": "<code>horses_law_applies</code>",
     "dest":
-    "/The-Result/The-horses-in-Lean/#Apodictic___Model___horses_law_applies"}],
+    "/The-Result/The-horses-in-Lean/#Apodictic___Model___horses_law_applies"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>horses_homogeneous</code>",
+    "dest":
+    "/The-Result/The-horses-in-Lean/#Apodictic___Model___horses_homogeneous"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>horses_swapDominant</code>",
+    "dest":
+    "/The-Result/The-horses-in-Lean/#Apodictic___Model___horses_swapDominant"}],
   "id":
   "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
   "fragment": "pages/The-Result/The-horses-in-Lean.html",

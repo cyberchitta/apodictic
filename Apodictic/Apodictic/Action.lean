@@ -39,9 +39,12 @@ structure ActionFrame where
   Believes : Agent → Time → Means → End → Prop
   /-- `Prefers agent time X Y`: at that time, the agent values the
   bundle of ends `X` above the bundle `Y`. This is the ranking behind
-  the agent's choices, and it is strict. It is kept apart from what
-  the agent actually does; anything that bridges the two is a
-  claim in `Apodictic.Praxeology`. No properties are assumed.
+  the agent's choices, read as strict — but that reading is not
+  assumed anywhere: NO properties are imposed on this relation, strict
+  or otherwise, and a theorem that needs one says so. It is kept apart
+  from what the agent actually does; nothing in the library bridges
+  the two, and the claim that would (demonstrated preference) is
+  parked, carried by no theorem.
 
   It ranges over SETS of ends rather than single ends. The tradition
   draws no line between an end and a composite of ends — "atomic"
@@ -51,7 +54,7 @@ structure ActionFrame where
   an end in the ordinary sense is a bundle with one member
   (`PrefersEnd`). Ranging over bundles is what lets independence of
   uses — bundle preference breaking down into preference between
-  ends — can be a named hypothesis, instead of something the
+  ends — be a named hypothesis, instead of something the
   vocabulary quietly enforces.
 
   Shape claim (audit): a bundle is a `Set`, so it carries no
@@ -74,7 +77,7 @@ need it carry it as a hypothesis, and so a reader can point at it
 where it does not hold.
 
 This is NOT a premise Rothbard spends. He ranks wants against each
-other directly, off a scale that is already ranked (*MES* p. 26,
+other directly, off a scale that is already ranked (*MES* pp. 25–26,
 Figure 3), and never argues from bundles at all. It is what OUR decomposition costs. Where he
 makes one fused claim, we make a claim about bundles plus this
 condition — and complementarity, which his wording never has to face,

@@ -63,7 +63,7 @@ statement lists. One question is left, and it is a narrow one — may
 praxeology use that premise at all?
 
 The argument follows Rothbard's own worked case — the six horses of
-*Man, Economy, and State* — from beginning to end, and the Lean at the
-close is about those same six horses.
+*Man, Economy, and State* — from beginning to end, and the Lean is
+about those same six horses.
 
 {include 1 ApodicticDoc.Result}

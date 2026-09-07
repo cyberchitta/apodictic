@@ -109,8 +109,8 @@ this law from the restriction, in a subordinate clause and without
 argument: choices cannot be predicted "except that they will follow
 the law of marginal utility, which was deduced from the axiom of
 action". The deduction he points to is the one at pp. 23–25, and it
-runs on scales for stocks the actor does not hold (see `Does not say`
-#4). So the exemption's warrant is the argument that needs the
+runs on scales for stocks the actor does not hold (see *Anything
+about units not on hand*, below). So the exemption's warrant is the argument that needs the
 exemption. That is the tension this claim carries: what the agent
 WOULD serve is not shown by any act of his, and Rothbard's licence
 for reasoning about it rests on itself.

@@ -1,5 +1,8 @@
-<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/find/?domain=Verso.Genre.Manual.section&amp;name=Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Each line is a binder in the
-theorem's signature, and nothing that is not here is assumed.</p><ul><li><p><strong>The premise.</strong> <code>SwapDominant plan</code> — the one praxeological claim.</p></li><li><p><strong>The conditions on the situation.</strong> <code>stock.OneMore</code>,
+<section><h1>1.6. The manifest<span class="permalink-widget inline"><a href="/find/?domain=Verso.Genre.Manual.section&amp;name=Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest" title="Permalink">🔗</a></span></h1><p>Everything the law carries, in one place. Each line but the last is a
+binder in the theorem's signature; the last is what Lean itself
+supplies. Nothing outside this list and the structures its binders
+name is assumed — and those structures carry three claims of their
+own, set out at the end of the vocabulary.</p><ul><li><p><strong>The premise.</strong> <code>SwapDominant plan</code> — the one praxeological claim.</p></li><li><p><strong>The conditions on the situation.</strong> <code>stock.OneMore</code>,
   <code>IndependentUses</code>, and <code>plan.Homogeneous</code> for the size-based form
   only. These are the three above: they are what an Austrian points at
   to say the law did not apply here.</p></li><li><p><strong>A condition on the data.</strong> <code>[DecidableEq praxis.End]</code> — two wants
@@ -14,6 +17,14 @@ theorem's signature, and nothing that is not here is assumed.</p><ul><li><p><str
 without <code>Homogeneous</code>.</p><p>This list is kept by hand, so a reader is trusting that it matches the
 signature it describes. What keeps it honest is <code>#lint only
 unusedArguments</code>, which fails the build on any hypothesis that did no
-work: nothing on the list is idle. Deriving the list from the theorem
-itself, rather than checking it after the fact, is a command we have
-not written.</p></section>
+work. It has two limits, and both are load-bearing. It can be silenced
+by prefixing a hypothesis with <code>_</code>, and doing so is how we record that
+the hypothesis does nothing: <code>marginal_utility_chain</code> carries one such
+binder, <code>_firstStep</code>, and that it does nothing is itself a finding.
+And it works one whole binder at a time, so it cannot see a hypothesis
+half of which is used — which happens in both marginal-utility
+theorems. So the guarantee is narrower than "nothing here is idle":
+nothing here is idle except where the statement says so in the only
+way Lean has for saying it. Deriving the list from the theorem itself,
+rather than checking it after the fact, is a command we have not
+written.</p></section>

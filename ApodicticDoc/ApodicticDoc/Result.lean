@@ -17,14 +17,16 @@ How to read this page. A proof assistant will not let you skip a
 step, and it makes you write the missing premise into the theorem's
 own statement. So there is one fixed place to look. Read the
 statement, then read the definitions it names, and you have seen
-everything the result depends on. A few claims sit one level down,
-inside a structure the theorem takes as an argument, but nothing is
-off the page.
+everything the result depends on. Three claims sit one level down,
+inside the structures the theorem takes as arguments, and they are
+named where those structures are defined; nothing is off the page,
+but this is the one place you have to look past the statement itself.
 
 The list is not padded, either. `#lint only unusedArguments` breaks
 the build if an assumption is listed but the proof never uses it. That
 is the whole reason to do this on a machine: it will not let the list
-grow, and it will not let it shrink.
+grow, and it will not let it shrink. Its two limits are stated where
+the manifest is, and one of them turns up a finding.
 
 Every docstring below is pulled out of the library when this page is
 built. What you read is what was checked.
@@ -34,7 +36,7 @@ built. What you read is what was checked.
 The law of marginal utility is derived over three pages of *Man,
 Economy, and State*, and Rothbard derives it on a worked case: a man
 who owns six horses. This page follows that case throughout, and the
-Lean at the end is about the same six horses. The point of working
+Lean returns to the same six horses once the theorems are stated. The point of working
 that way is that you can hold his paragraph beside the formal
 statement and judge for yourself whether they say the same thing.
 
@@ -219,6 +221,13 @@ stronger statement comes first and the principle follows from it.
 
 {docstring Apodictic.urgency_principle}
 
+The premise is asserted of one plan, not of every plan of its shape.
+What that gives up — that the man's scale is the only one of its kind
+— comes back as a theorem, and it is shown here because the rest of
+the document leans on it.
+
+{docstring Apodictic.no_rival_swap_dominant}
+
 The law is stated using Rothbard's own definition of the marginal
 utility of a supply: the ends you would give up on losing one unit. It
 comes in two forms. Follow a chain of named units, and no
@@ -234,8 +243,11 @@ the supply, and it is.
 # The manifest
 
 
-Everything the law carries, in one place. Each line is a binder in the
-theorem's signature, and nothing that is not here is assumed.
+Everything the law carries, in one place. Each line but the last is a
+binder in the theorem's signature; the last is what Lean itself
+supplies. Nothing outside this list and the structures its binders
+name is assumed — and those structures carry three claims of their
+own, set out at the end of the vocabulary.
 
 - *The premise.* `SwapDominant plan` — the one praxeological claim.
 - *The conditions on the situation.* `stock.OneMore`,
@@ -259,9 +271,17 @@ without `Homogeneous`.
 This list is kept by hand, so a reader is trusting that it matches the
 signature it describes. What keeps it honest is `#lint only
 unusedArguments`, which fails the build on any hypothesis that did no
-work: nothing on the list is idle. Deriving the list from the theorem
-itself, rather than checking it after the fact, is a command we have
-not written.
+work. It has two limits, and both are load-bearing. It can be silenced
+by prefixing a hypothesis with `_`, and doing so is how we record that
+the hypothesis does nothing: `marginal_utility_chain` carries one such
+binder, `_firstStep`, and that it does nothing is itself a finding.
+And it works one whole binder at a time, so it cannot see a hypothesis
+half of which is used — which happens in both marginal-utility
+theorems. So the guarantee is narrower than "nothing here is idle":
+nothing here is idle except where the statement says so in the only
+way Lean has for saying it. Deriving the list from the theorem itself,
+rather than checking it after the fact, is a command we have not
+written.
 
 # The horses in Lean
 
@@ -298,8 +318,16 @@ And the last step is the point:
 {docstring Apodictic.Model.horses_law_applies}
 
 That is the law itself, applied to the horses, with every assumption
-met. Nothing was copied across by hand: `horses_swapDominant` proves
+met — every assumption, that is, of the chain form. The size-based
+form asks for one thing more, interchangeability, and the horses meet
+that too:
+
+{docstring Apodictic.Model.horses_homogeneous}
+
+Nothing was copied across by hand: `horses_swapDominant` proves
 exactly the statement the theorem asks for.
+
+{docstring Apodictic.Model.horses_swapDominant}
 
 Two places where this departs from Rothbard, both said out loud rather
 than papered over. His ten ends are "for simplicity", to fit a
@@ -394,13 +422,18 @@ more or fewer of them.
 
 {docstring Apodictic.AllocationPlan}
 
-One claim sits a level down. `oneUnitOneEnd` — one unit serves one end, with
-no unit left idle — is Rothbard's "we assume for simplicity" (p. 26).
-It is a field of the plan rather than a listed assumption. Every
-theorem above takes a plan `plan : AllocationPlan stock`, so the claim
-is still on the page — you read it off the type of an argument instead
-of the list of assumptions. That is the one place an audit has to look
-past the statement itself.
+Three claims sit a level down, as fields of the two structures every
+theorem above takes as arguments. `oneUnitOneEnd` — one unit serves
+one end, with no unit left idle — is Rothbard's "we assume for
+simplicity" (p. 26). `servesOnlyWhatItCan` says a unit is only ever
+put to an end the good is believed able to serve. `unitsAlike`, a
+field of the stock, says every unit is believed to serve exactly the
+same ends. None is a listed assumption. Every theorem above takes a
+plan `plan : AllocationPlan stock`, over a stock, so all three are
+still on the page — you read them off the types of the arguments
+instead of the list of assumptions. That is the one place an audit has
+to look past the statement itself, and it is why the manifest says
+"this list and the structures its binders name".
 
 Interchangeability of units is *not* hidden down there. The plan is
 indexed by which exact units the man holds; that it depends only on how

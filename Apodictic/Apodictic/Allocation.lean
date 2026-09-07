@@ -54,8 +54,9 @@ units, at the stock's single time.
 
 This is something new, over and above `Action`, and it has to be. A
 single act of allocating cannot tell the served ends apart from one
-another — they all sit inside the one package chosen. So whatever the
-law of marginal utility rests on, it is not action alone.
+another — they all sit inside the one package chosen. So what the law
+of marginal utility rests on is not action at all: the plan is a
+separate thing, and no act of the agent's exhibits it.
 
 The plan is indexed by WHICH units, not by how many. To say it depends
 only on the number of them is to say the units are interchangeable,

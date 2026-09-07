@@ -101,9 +101,17 @@ one unit more than the last. Every end the first step adds is
 preferred to every end the second step adds.
 
 No interchangeability of units is needed, because the chain names
-which units are involved. One application of `urgency_principle`; the
-fact that the first step's end is marginal there goes unused
-(`_notNeeded`). -/
+which units are involved. One application of `urgency_principle`.
+
+Two things go unused, and the statement records both. `_firstStep` is
+listed and does no work at all: the underscore is how that is written
+down, and it is a finding — the chain form does not need the first
+step to be a step. And within the hypothesis that an end is marginal
+at the first step, only half is used; the unused half is destructured
+as `_notNeeded` inside the proof, which is a name in the proof and not
+a binder in the statement. The linter that keeps this list honest sees
+neither case: it is silenced by the underscore, and it works a whole
+binder at a time. -/
 theorem marginal_utility_chain
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -134,8 +142,12 @@ reaching those sizes, which need not have a single unit in common.
 `plan.Homogeneous` is needed exactly once: to say that the plan at the
 `n` units below the second step is the same as the plan at the `n`
 units of the first. Without it the two steps could not be compared at
-all. The fact that the end at `n` is marginal there goes unused
-(`_notNeeded`). -/
+all.
+
+Here too only half of the marginality hypothesis is used — the unused
+half is destructured as `_notNeeded` in the proof, a proof-local name
+and not a binder in the statement. Every binder this theorem lists is
+used. -/
 theorem marginal_utility
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
