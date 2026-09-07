@@ -168,9 +168,22 @@ indifference by acting. Here it does not founder. Indifference is
 assumed nowhere, and the law survives without it. What the size-based
 wording needs is weaker — only that the plan not care *which* units,
 just how many. But that is one more thing the standing plan must
-already have settled, and Rothbard grounds it in his definition of a
-supply rather than deducing it from the axiom of action, so the
-exemption's stated warrant does not obviously extend to it.
+already have settled, and Rothbard does not deduce it from the axiom
+of action. He grounds it in his definition of a supply: units
+"equally capable of rendering the same service to the actor" (p. 23).
+
+That definition does not reach it, and this is checked rather than
+argued. Equal serviceability is a fact about the horses; what the
+wording needs is a fact about the man's plan for them. One stable of
+two horses, each able to serve any want, carries both a plan that
+treats them alike and a plan that does not. The stock cannot settle
+it, because the plan is a separate thing. Rothbard's other half —
+that the man "must have valued each horse or each cow identically"
+(p. 23) — would settle it, but he withdraws that on the next page,
+where interchangeability "does not mean that the concrete units are
+actually valued equally" (p. 24). Taking it back is what keeps
+indifference out of the law; the cost is that the definition no
+longer carries the condition the law's wording needs.
 
 Two demands, then, and the encoding keeps them apart:
 
@@ -234,7 +247,12 @@ What the law does not need, which is most of what it usually gets.
   derivation —
   which is why it is a hypothesis and not a praxeological claim. Rothbard makes
   it part of what a supply *is* (p. 23), and where it fails the units
-  are not one good.
+  are not one good. But his definition does not deliver it. It speaks
+  of units "equally capable of rendering the same service" — a fact
+  about the units, where the wording needs a fact about the man's plan
+  over them. One stock carries plans of both kinds
+  (`unitsAlike_not_entail_homogeneous`), so no condition on the units
+  can decide it.
 - Indifference between units is needed nowhere. Rothbard defines a
   supply with the words "valued equally" and "regards ...
   indifferently" (p. 23), then takes them back on the next page:

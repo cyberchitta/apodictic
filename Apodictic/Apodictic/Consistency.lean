@@ -296,9 +296,85 @@ theorem horses_law_applies (k n : ℕ) (h : n < k) (h' : n + 1 < k) :
     (horses_independent () ()) _ _ _
     (horses_one_more k n h) (horses_one_more k (n + 1) h')
 
+/-! ## Serviceability does not deliver interchangeability
+
+A counter-model, and it settles a question the document had to leave
+open. Rothbard grounds interchangeability in his DEFINITION of a
+supply: units "equally capable of rendering the same service to the
+actor" (*MES* p. 23). That is `Stock.unitsAlike`. What the
+supply-size form of the law needs is `AllocationPlan.Homogeneous` —
+that two stables of the same size would be put to the same uses. The
+two are not the same claim, and the first does not give the second.
+
+The reason is structural, and the counter-model only makes it
+concrete: `unitsAlike` is a field of `Stock`, so EVERY stock in this
+library already satisfies it. `Homogeneous` is a condition on the
+PLAN, a separate structure. No condition on the stock can constrain
+the plan, because the plan is not determined by the stock — the same
+six horses admit many plans, and `horsePlan` and `pickyPlan` below
+are two of them over one stock.
+
+That the proof is easy is not a warning sign here; the ease IS the
+finding. Nothing was smuggled in to make it go through. What Rothbard
+folds into one word, "supply", comes apart into a fact about horses
+and a fact about the man's plan for them, and only the first is
+carried by his definition. -/
+
+/-- A plan for two horses that DOES depend on which horse it has. With
+horse 0 in the stable the man serves the most urgent wants; without it
+he serves different ones. Every horse can still serve every want —
+`horseStock` proves `unitsAlike` for any size — so nothing about the
+horses distinguishes this man from Rothbard's. What differs is his
+plan. -/
+def pickyPlan : AllocationPlan (horseStock 2) where
+  wouldServe := fun sub =>
+    if 0 ∈ sub then Finset.Icc 1 sub.card else Finset.Icc 2 (sub.card + 1)
+  servesOnlyWhatItCan := by
+    intro sub want hwant
+    by_cases h : 0 ∈ sub
+    · rw [if_pos h] at hwant
+      exact (Finset.mem_Icc.mp hwant).1
+    · rw [if_neg h] at hwant
+      exact le_trans (by norm_num) (Finset.mem_Icc.mp hwant).1
+
+/-- **Interchangeability fails for this plan.** One horse alone serves
+want 1; the other alone serves want 2. Same size, different uses. -/
+theorem picky_not_homogeneous : ¬ pickyPlan.Homogeneous := by
+  intro h
+  have h0 : ({0} : Finset Horse) ⊆ (horseStock 2).units :=
+    Finset.singleton_subset_iff.mpr (Finset.mem_range.mpr (by norm_num))
+  have h1 : ({1} : Finset Horse) ⊆ (horseStock 2).units :=
+    Finset.singleton_subset_iff.mpr (Finset.mem_range.mpr (by norm_num))
+  have heq := h {0} h0 {1} h1 rfl
+  rw [show pickyPlan.wouldServe {0} = Finset.Icc 1 1 from rfl,
+    show pickyPlan.wouldServe {1} = Finset.Icc 2 2 from rfl] at heq
+  have : (1 : ℕ) ∈ Finset.Icc 2 2 := heq ▸ Finset.mem_Icc.mpr ⟨le_refl 1, le_refl 1⟩
+  exact absurd (Finset.mem_Icc.mp this).1 (by norm_num)
+
+/-- **The non-entailment, stated.** ONE stock — and since `unitsAlike`
+is one of its fields, a stock whose every unit is equally serviceable
+— carries a homogeneous plan AND a plan that is not. Two horses,
+each able to serve any want, and two men who might own them.
+
+So `unitsAlike` does not entail `Homogeneous`. Nothing about the
+horses settles it, because the plan is a separate structure and the
+stock does not determine it. Rothbard's definition of a supply
+(*MES* p. 23) reaches the horses; the supply-size form of the law
+needs something about the man, and his definition does not supply it
+once p. 24 withdraws the equal-valuation half. That is why
+interchangeability is a hypothesis to assume here and not a fact to
+derive. -/
+theorem unitsAlike_not_entail_homogeneous :
+    ∃ stock : Stock Horses () (),
+      (∃ plan : AllocationPlan stock, plan.Homogeneous) ∧
+      (∃ plan : AllocationPlan stock, ¬ plan.Homogeneous) :=
+  ⟨horseStock 2, ⟨horsePlan 2, horses_homogeneous 2⟩,
+    ⟨pickyPlan, picky_not_homogeneous⟩⟩
+
 #print axioms horses_law_applies
 #print axioms loss_of_a_horse_ends_pleasure_riding
 #print axioms which_horse_does_not_matter
+#print axioms unitsAlike_not_entail_homogeneous
 
 end Model
 end Apodictic
