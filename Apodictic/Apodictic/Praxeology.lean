@@ -104,12 +104,16 @@ deal with utilities only as deduced from the concrete actions of human
 beings" (*MES* p. 882 n. 8), and inside this very chapter he writes,
 in words he introduces with "It must be reiterated", that "value
 scales do not exist in a void apart from the concrete choices of
-action" (*MES* p. 33). How far that passage reaches is not settled
-here: what it refuses by name is a scale for a larger stock, and it
-places "adding and subtracting from stock" in the region where the
-actor's choices occur (see `Does not say` #4). The tension this claim
-does carry is with p. 882 n. 8 and with the first clause above: it
-speaks of what the agent WOULD serve, and no act of his shows that.
+action" (*MES* p. 33). Yet it is on that same page that he exempts
+this law from the restriction, in a subordinate clause and without
+argument: choices cannot be predicted "except that they will follow
+the law of marginal utility, which was deduced from the axiom of
+action". The deduction he points to is the one at pp. 23–25, and it
+runs on scales for stocks the actor does not hold (see `Does not say`
+#4). So the exemption's warrant is the argument that needs the
+exemption. That is the tension this claim carries: what the agent
+WOULD serve is not shown by any act of his, and Rothbard's licence
+for reasoning about it rests on itself.
 
 Asserted of ONE plan, not of every plan of that shape — and that is
 not a hedge. Given one plan, a rival can always be defined, so a claim
@@ -127,15 +131,24 @@ Does not say:
 3. Anything about independence of uses — that is the theorems'
    hypothesis `IndependentUses`.
 4. Anything about units not on hand (`subStock ⊆ stock.units`), which
-   is all the plan speaks about. Rothbard draws that line himself.
-   The hypothetical scales he refuses at *MES* p. 33 are scales for a
-   stock larger in every good than the one held, and the same
-   sentence puts the other direction inside the region where he says
-   the actor's choices occur: "his choices for adding and subtracting
-   from stock take place in this region". His own derivation
-   subtracts — six horses down to five (p. 25). What this claim does
-   that his text does not is range over EVERY sub-stock, where he
-   licenses choices "in this region" and exhibits one unit down.
+   is all the plan speaks about. The reach over stocks the agent does
+   not hold is Rothbard's own, in both directions. He builds the law
+   upward over stocks the actor lacks — the second unit, then the
+   third "added to a stock of two units" (*MES* pp. 23–24) — and
+   downward, six horses to five (p. 25). Holding none of a good is no
+   obstacle either: "If the actor has no units of some goods in his
+   possession, this does not affect the principle" (p. 32). The
+   hypothetical scales he refuses on the next page are a different
+   thing — scales for a wholly different multi-good endowment, used
+   to predict what he would choose there — and he exempts this law
+   from the refusal by name: "No one can predict with certainty the
+   course of his choices except that they will follow the law of
+   marginal utility" (p. 33). What this claim does that his text does
+   not is range over arbitrary SUB-STOCKS where he ranges over sizes.
+   The gap between the two is interchangeability, which he assumes
+   throughout and this claim does not: it is the hypothesis
+   `Homogeneous`. Stated without that assumption, the claim reaches
+   into a case he never worked in.
 5. Anything about interchangeability of units. That two sub-stocks
    of the same size would serve the same ends is the hypothesis
    `Homogeneous`, and no part of this claim.
