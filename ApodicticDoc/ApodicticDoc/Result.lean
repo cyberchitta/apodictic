@@ -104,8 +104,8 @@ six horses.
 
 # The finding
 
-The law of marginal utility needs exactly one premise from praxeology,
-and that premise is not about action.
+The law of marginal utility needs exactly one praxeological claim,
+and that claim is not about action.
 
 It is about what the man *would* do. For each smaller or larger string
 of horses he might have, which wants would he serve? That is a plan
@@ -123,11 +123,22 @@ have to ask what would have happened.
 Rothbard also sets a rule for what praxeology may use. It "may deal
 with utilities only as deduced from the concrete actions of human
 beings" (*MES* p. 882 n. 8) — only what a man's actual choices show.
-His own law breaks that rule. The man owns six horses; what he would
-have done with five is not something any action of his shows.
+The man owns six horses; what he would have done with five is not
+something any action of his shows.
+
+He saw the difficulty, and exempted this law from the rule by name.
+Inside this same chapter he reiterates the rule — "value scales do not
+exist in a void apart from the concrete choices of action" (p. 33) —
+and on that same page grants the exemption in a subordinate clause,
+with no argument attached: no one can predict the course of a man's
+choices "except that they will follow the law of marginal utility,
+which was deduced from the axiom of action". The deduction he points
+to is the one at pp. 23–25, and it is the one that runs on stocks the
+man does not hold. So the warrant for the exemption is the argument
+that needs it.
 
 This is not an objection from outside. The rule is Rothbard's, the
-premise is Rothbard's, and the two do not fit.
+claim is Rothbard's, and so is the exemption.
 
 The same trouble turns up a second time, in a place usually discussed
 on its own. The law is expected to founder on units: to state it by
@@ -137,16 +148,17 @@ acting. Here it does not founder. Indifference is assumed nowhere, and
 the law survives without it. What the size-based wording needs is
 weaker — only that the plan not care *which* units, just how many. But
 that condition also ranges over piles the agent does not hold. So
-Rothbard's restriction rules out both the premise the law is derived
+Rothbard's restriction rules out both the claim the law is derived
 from and the condition that makes its usual wording well-formed.
 
 Twice, though, and not once. These are two different claims, and the
 encoding keeps them apart:
 
-- The premise is a *praxeological claim*. It rides on the signature of every
-  theorem that uses it. If it is false, the law is false.
-- The condition is a *hypothesis* of one theorem. Where it fails the
-  law says nothing — it is silent, not wrong.
+- The one the law is derived from is a *praxeological claim*. It rides
+  on the signature of every theorem that uses it. If it is false, the
+  law is false.
+- The one its wording needs is a *hypothesis* of one theorem. Where it
+  fails the law says nothing — it is silent, not wrong.
 
 Telling which of the two gave way in a particular case is exactly what
 an audit like this is for.
@@ -189,7 +201,7 @@ There is exactly one.
 # The conditions
 
 
-The theorems take three assumptions besides the premise. Each says
+The theorems take three assumptions besides the claim. Each says
 something about the situation rather than about action as such, and
 each is written into the statement, so a reader can point at it and
 say: that is the one that did not hold. Where one fails, the law says
@@ -214,14 +226,14 @@ anyone could build to refute it.
 
 Rothbard's urgency principle says that losing a unit costs you the
 least urgent want. Here that is proved rather than assumed. The
-premise turns out to give more than the principle needs, so the
+claim turns out to give more than the principle needs, so the
 stronger statement comes first and the principle follows from it.
 
 {docstring Apodictic.served_over_unserved}
 
 {docstring Apodictic.urgency_principle}
 
-The premise is asserted of one plan, not of every plan of its shape.
+The claim is asserted of one plan, not of every plan of its shape.
 What that gives up — that the man's scale is the only one of its kind
 — comes back as a theorem, and it is shown here because the rest of
 the document leans on it.
@@ -249,7 +261,7 @@ supplies. Nothing outside this list and the structures its binders
 name is assumed — and those structures carry three claims of their
 own, set out at the end of the vocabulary.
 
-- *The premise.* `SwapDominant plan` — the one praxeological claim.
+- *The claim.* `SwapDominant plan` — the one praxeological claim.
 - *The conditions on the situation.* `stock.OneMore`,
   `IndependentUses`, and `plan.Homogeneous` for the size-based form
   only. These are the three above: they are what an Austrian points at
@@ -286,7 +298,7 @@ written.
 # The horses in Lean
 
 The case from the opening, built. It does a second job at the same
-time. If Rothbard's own six horses satisfy the premise and every
+time. If Rothbard's own six horses satisfy the claim and every
 condition at once, then those assumptions can all hold together, and
 the theorems are not empty.
 
@@ -296,10 +308,10 @@ more urgent want:
 {docstring Apodictic.Model.rankPrefers}
 
 The man's plan is the obvious one — with any `n` horses he serves the
-`n` most urgent wants — and it satisfies the premise. Wants can be told
+`n` most urgent wants — and it satisfies the claim. Wants can be told
 apart, uses are independent, one-horse steps exist inside the stable,
 each step has a marginal end, and preference is asymmetric. That last
-one matters: it means the premise holds somewhere preference is
+one matters: it means the claim holds somewhere preference is
 strict, which is how it was meant all along and what
 `no_rival_swap_dominant` needs.
 
@@ -398,7 +410,7 @@ Findings about the formalizing rather than the doctrine.
   construction. Assert it of the single plan a theorem is handed
   instead, and that same construction becomes harmless. Better: it
   turns into a result. `no_rival_swap_dominant` proves that two plans
-  satisfying the premise cannot differ by a single swap — so "the"
+  satisfying the claim cannot differ by a single swap — so "the"
   value scale is something proved here, not something assumed.
 
 # The vocabulary

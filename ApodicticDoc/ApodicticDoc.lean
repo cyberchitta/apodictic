@@ -42,25 +42,32 @@ assistant supplies nothing. Anything the argument passes over in
 silence has to be written down before the proof will go through, and
 written somewhere a reader can find it.
 
-**The finding.** The law needs exactly one premise from praxeology,
-and that premise is not about action. It is about what a man *would*
-have done with a stock he never had. Rothbard's own derivation runs
-that way: he sets six horses beside five and asks which want "the
-larger stock would have satisfied".
+**The finding.** The law needs exactly one praxeological claim, and
+that claim is not about action. It is about what a man *would* have
+done with a stock he never had. Rothbard's own derivation runs that
+way: he sets six horses beside five and asks which want "the larger
+stock would have satisfied".
 
 Rothbard also sets a rule for what praxeology may use. It "may deal
 with utilities only as deduced from the concrete actions of human
-beings" — only what a man's actual choices show. His own law breaks
-that rule. The man owns six horses; what he would have done with five
-is not something any action of his shows.
+beings" — only what a man's actual choices show. The man owns six
+horses; what he would have done with five is not something any action
+of his shows.
+
+He saw the difficulty and exempted this law from the rule by name. No
+one can predict a man's choices, he writes, "except that they will
+follow the law of marginal utility, which was deduced from the axiom
+of action" — a subordinate clause, on the same page where he
+reiterates the rule, with no argument attached. The deduction he
+points to is the one that needs the exemption.
 
 This is not an objection from outside. The rule is Rothbard's, the
-premise is Rothbard's, and the two do not fit.
+claim is Rothbard's, and so is the exemption.
 
 It does not make the law wrong, either. The machine checked the
 reasoning: the conclusion follows, and the proof uses only what the
 statement lists. One question is left, and it is a narrow one — may
-praxeology use that premise at all?
+praxeology use that claim at all?
 
 The argument follows Rothbard's own worked case — the six horses of
 *Man, Economy, and State* — from beginning to end, and the Lean is
