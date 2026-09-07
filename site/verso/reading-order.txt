@@ -2,11 +2,11 @@ pages/index.html
 pages/The-Result.html
 pages/The-Result/The-horses.html
 pages/The-Result/The-finding.html
+pages/The-Result/The-other-findings.html
 pages/The-Result/The-one-claim.html
 pages/The-Result/The-conditions.html
 pages/The-Result/The-theorems.html
 pages/The-Result/The-manifest.html
 pages/The-Result/The-horses-in-Lean.html
-pages/The-Result/The-other-findings.html
 pages/The-Result/The-vocabulary.html
 pages/The-Result/Claims-no-theorem-uses.html

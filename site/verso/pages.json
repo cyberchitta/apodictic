@@ -66,17 +66,17 @@
   "path": ["The-Result", "The-finding"],
   "next":
   {"url":
-   "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
-   "titleText": "The one claim",
-   "title": "The one claim",
+   "/The-Result/The-other-findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
+   "titleText": "The other findings",
+   "title": "The other findings",
    "sectionNum": "1.3."},
   "localToc": [],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-finding",
   "fragment": "pages/The-Result/The-finding.html",
   "depth": 2},
- {"url": "/The-Result/The-one-claim/",
-  "titleText": "The one claim",
-  "title": "1.3. The one claim",
+ {"url": "/The-Result/The-other-findings/",
+  "titleText": "The other findings",
+  "title": "1.3. The other findings",
   "sectionNum": "1.3.",
   "prev":
   {"url":
@@ -84,13 +84,35 @@
    "titleText": "The finding",
    "title": "The finding",
    "sectionNum": "1.2."},
+  "path": ["The-Result", "The-other-findings"],
+  "next":
+  {"url":
+   "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
+   "titleText": "The one claim",
+   "title": "The one claim",
+   "sectionNum": "1.4."},
+  "localToc": [],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
+  "fragment": "pages/The-Result/The-other-findings.html",
+  "depth": 2},
+ {"url": "/The-Result/The-one-claim/",
+  "titleText": "The one claim",
+  "title": "1.4. The one claim",
+  "sectionNum": "1.4.",
+  "prev":
+  {"url":
+   "/The-Result/The-other-findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
+   "titleText": "The other findings",
+   "title": "The other findings",
+   "sectionNum": "1.3."},
   "path": ["The-Result", "The-one-claim"],
   "next":
   {"url":
    "/The-Result/The-conditions/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
    "titleText": "The conditions",
    "title": "The conditions",
-   "sectionNum": "1.4."},
+   "sectionNum": "1.5."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -101,21 +123,21 @@
   "depth": 2},
  {"url": "/The-Result/The-conditions/",
   "titleText": "The conditions",
-  "title": "1.4. The conditions",
-  "sectionNum": "1.4.",
+  "title": "1.5. The conditions",
+  "sectionNum": "1.5.",
   "prev":
   {"url":
    "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
    "titleText": "The one claim",
    "title": "The one claim",
-   "sectionNum": "1.3."},
+   "sectionNum": "1.4."},
   "path": ["The-Result", "The-conditions"],
   "next":
   {"url":
    "/The-Result/The-theorems/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-theorems",
    "titleText": "The theorems",
    "title": "The theorems",
-   "sectionNum": "1.5."},
+   "sectionNum": "1.6."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -136,21 +158,21 @@
   "depth": 2},
  {"url": "/The-Result/The-theorems/",
   "titleText": "The theorems",
-  "title": "1.5. The theorems",
-  "sectionNum": "1.5.",
+  "title": "1.6. The theorems",
+  "sectionNum": "1.6.",
   "prev":
   {"url":
    "/The-Result/The-conditions/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
    "titleText": "The conditions",
    "title": "The conditions",
-   "sectionNum": "1.4."},
+   "sectionNum": "1.5."},
   "path": ["The-Result", "The-theorems"],
   "next":
   {"url":
    "/The-Result/The-manifest/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
    "titleText": "The manifest",
    "title": "The manifest",
-   "sectionNum": "1.6."},
+   "sectionNum": "1.7."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -181,42 +203,42 @@
   "depth": 2},
  {"url": "/The-Result/The-manifest/",
   "titleText": "The manifest",
-  "title": "1.6. The manifest",
-  "sectionNum": "1.6.",
+  "title": "1.7. The manifest",
+  "sectionNum": "1.7.",
   "prev":
   {"url":
    "/The-Result/The-theorems/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-theorems",
    "titleText": "The theorems",
    "title": "The theorems",
-   "sectionNum": "1.5."},
+   "sectionNum": "1.6."},
   "path": ["The-Result", "The-manifest"],
   "next":
   {"url":
    "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
-   "sectionNum": "1.7."},
+   "sectionNum": "1.8."},
   "localToc": [],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
   "fragment": "pages/The-Result/The-manifest.html",
   "depth": 2},
  {"url": "/The-Result/The-horses-in-Lean/",
   "titleText": "The horses in Lean",
-  "title": "1.7. The horses in Lean",
-  "sectionNum": "1.7.",
+  "title": "1.8. The horses in Lean",
+  "sectionNum": "1.8.",
   "prev":
   {"url":
    "/The-Result/The-manifest/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
    "titleText": "The manifest",
    "title": "The manifest",
-   "sectionNum": "1.6."},
+   "sectionNum": "1.7."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":
   {"url":
-   "/The-Result/The-other-findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
-   "titleText": "The other findings",
-   "title": "The other findings",
-   "sectionNum": "1.8."},
+   "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
+   "titleText": "The vocabulary",
+   "title": "The vocabulary",
+   "sectionNum": "1.9."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -251,37 +273,15 @@
   "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
   "fragment": "pages/The-Result/The-horses-in-Lean.html",
   "depth": 2},
- {"url": "/The-Result/The-other-findings/",
-  "titleText": "The other findings",
-  "title": "1.8. The other findings",
-  "sectionNum": "1.8.",
-  "prev":
-  {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
-   "titleText": "The horses in Lean",
-   "title": "The horses in Lean",
-   "sectionNum": "1.7."},
-  "path": ["The-Result", "The-other-findings"],
-  "next":
-  {"url":
-   "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
-   "titleText": "The vocabulary",
-   "title": "The vocabulary",
-   "sectionNum": "1.9."},
-  "localToc": [],
-  "id":
-  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
-  "fragment": "pages/The-Result/The-other-findings.html",
-  "depth": 2},
  {"url": "/The-Result/The-vocabulary/",
   "titleText": "The vocabulary",
   "title": "1.9. The vocabulary",
   "sectionNum": "1.9.",
   "prev":
   {"url":
-   "/The-Result/The-other-findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
-   "titleText": "The other findings",
-   "title": "The other findings",
+   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+   "titleText": "The horses in Lean",
+   "title": "The horses in Lean",
    "sectionNum": "1.8."},
   "path": ["The-Result", "The-vocabulary"],
   "next":

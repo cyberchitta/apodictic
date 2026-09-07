@@ -168,6 +168,80 @@ the conclusion follows, and the proof uses only what the statement
 lists. One question is left, and it is a narrow one — may praxeology
 use that claim at all?
 
+# The other findings
+
+
+What else the audit turned up, beyond the one claim.
+
+- Rothbard's derivation is one step from an asserted premise (p. 24).
+  The one-step proof is faithful to him; the audit point is that
+  "derived from the fundamental axiom of human action" (p. 27) rests
+  on an assertion.
+- The law is strict, as Rothbard's is. Non-increasing marginal utility
+  is the neoclassical form, not his.
+- Nothing assumes that exactly one want is given up. Rothbard's phrase
+  "the marginal unit" takes that for granted; the law here holds for
+  every want that goes.
+- One unit to one end is not needed at all. Rothbard assumes it and
+  says he is assuming it — "each unit of means is capable of serving
+  one of the ends", introduced with "We assume for simplicity"
+  (p. 26) — and it reads like a premise of the derivation. It is not a
+  premise of anything here. It was built into what a plan *is*, where
+  no statement showed it; taken out, no theorem asked for it back.
+  Where an extra unit adds no new end the law is simply silent, and
+  the six horses supply a case where it is not silent, so nothing is
+  lost. A simplification its own author flagged, and the ordering does
+  not want it.
+- The proof never uses the fact that the end at the smaller supply is
+  the marginal one. The law holds for every end served there against
+  every end the next unit would add — and stronger still, a served end
+  beats *any* unserved end that could be served, not only the one the
+  next unit reaches. Rothbard's statement claims less than his premise
+  delivers.
+
+What the law does not need, which is most of what it usually gets.
+
+- No property of preference is forced: not transitivity, not
+  completeness. Rothbard assumes a single ranked value scale (Figure 3,
+  pp. 25–26). None of it is needed, because the plan already carries
+  the ordering.
+- Interchangeability of units is not needed for the ordering. With the
+  plan indexed by which units, both the urgency principle and the law
+  along a chain of named units go through without it. It is needed
+  exactly once, to state the law by size of supply: the phrase "the
+  plan at `n` units" only picks out one thing if two piles of the same
+  size serve the same ends. So it bears on the wording, not on the
+  derivation —
+  which is why it is a hypothesis and not a praxeological claim. Rothbard makes
+  it part of what a supply *is* (p. 23), and where it fails the units
+  are not one good.
+- Indifference between units is needed nowhere. Rothbard defines a
+  supply with the words "valued equally" and "regards ...
+  indifferently" (p. 23), then takes them back on the next page:
+  interchangeability "does not mean that the concrete units are
+  actually valued equally" (p. 24). The formalization follows p. 24.
+- Independence of uses is a condition on the situation, and it can only
+  be stated at all once preference ranges over bundles of ends rather
+  than single ends. Where uses are complementary the law says nothing,
+  and the statement admits as much.
+
+Findings about the formalizing rather than the doctrine.
+
+- Being able to tell two ends apart is a suppressed premise of the
+  phrase "this bundle, minus this end". It only came to light because
+  the proofs refuse classical logic.
+- The claim that people act splits into three: a definition, a bridge,
+  and an existence claim. Only the bridge could do deductive work, and
+  nothing has needed it.
+- Never assert a claim about *every* structure of a given shape — say,
+  every plan the man might have. Given one plan, a rival can always be
+  built that breaks such a claim, so the claim is refutable by
+  construction. Assert it of the single plan a theorem is handed
+  instead, and that same construction becomes harmless. Better: it
+  turns into a result. One of the theorems below proves that two plans
+  satisfying the claim cannot differ by a single swap — so "the"
+  value scale is something proved here, not something assumed.
+
 # The one claim
 
 
@@ -468,80 +542,6 @@ through every theorem and buy nothing, so here the horses can serve
 any rank. And which of the earlier horses is Man o' War is arbitrary —
 Rothbard says only that he arrived before Seabiscuit, and nothing
 about a horse except its identity enters any claim.
-
-# The other findings
-
-
-What else the audit turned up, beyond the one claim.
-
-- Rothbard's derivation is one step from an asserted premise (p. 24).
-  The one-step proof is faithful to him; the audit point is that
-  "derived from the fundamental axiom of human action" (p. 27) rests
-  on an assertion.
-- The law is strict, as Rothbard's is. Non-increasing marginal utility
-  is the neoclassical form, not his.
-- Nothing assumes that exactly one want is given up. Rothbard's phrase
-  "the marginal unit" takes that for granted; the law here holds for
-  every want that goes.
-- One unit to one end is not needed at all. Rothbard assumes it and
-  says he is assuming it — "each unit of means is capable of serving
-  one of the ends", introduced with "We assume for simplicity"
-  (p. 26) — and it reads like a premise of the derivation. It is not a
-  premise of anything here. It was built into what a plan *is*, where
-  no statement showed it; taken out, no theorem asked for it back.
-  Where an extra unit adds no new end the law is simply silent, and
-  the six horses supply a case where it is not silent, so nothing is
-  lost. A simplification its own author flagged, and the ordering does
-  not want it.
-- The proof never uses the fact that the end at the smaller supply is
-  the marginal one. The law holds for every end served there against
-  every end the next unit would add — and stronger still, a served end
-  beats *any* unserved end that could be served, not only the one the
-  next unit reaches. Rothbard's statement claims less than his premise
-  delivers.
-
-What the law does not need, which is most of what it usually gets.
-
-- No property of preference is forced: not transitivity, not
-  completeness. Rothbard assumes a single ranked value scale (Figure 3,
-  pp. 25–26). None of it is needed, because the plan already carries
-  the ordering.
-- Interchangeability of units is not needed for the ordering. With the
-  plan indexed by which units, both the urgency principle and the law
-  along a chain of named units go through without it. It is needed
-  exactly once, to state the law by size of supply: the phrase "the
-  plan at `n` units" only picks out one thing if two piles of the same
-  size serve the same ends. So it bears on the wording, not on the
-  derivation —
-  which is why it is a hypothesis and not a praxeological claim. Rothbard makes
-  it part of what a supply *is* (p. 23), and where it fails the units
-  are not one good.
-- Indifference between units is needed nowhere. Rothbard defines a
-  supply with the words "valued equally" and "regards ...
-  indifferently" (p. 23), then takes them back on the next page:
-  interchangeability "does not mean that the concrete units are
-  actually valued equally" (p. 24). The formalization follows p. 24.
-- Independence of uses is a condition on the situation, and it can only
-  be stated at all once preference ranges over bundles of ends rather
-  than single ends. Where uses are complementary the law says nothing,
-  and the statement admits as much.
-
-Findings about the formalizing rather than the doctrine.
-
-- Being able to tell two ends apart is a suppressed premise of the
-  phrase "this bundle, minus this end". It only came to light because
-  the proofs refuse classical logic.
-- The claim that people act splits into three: a definition, a bridge,
-  and an existence claim. Only the bridge could do deductive work, and
-  nothing has needed it.
-- Never assert a claim about *every* structure of a given shape — say,
-  every plan the man might have. Given one plan, a rival can always be
-  built that breaks such a claim, so the claim is refutable by
-  construction. Assert it of the single plan a theorem is handed
-  instead, and that same construction becomes harmless. Better: it
-  turns into a result. `no_rival_swap_dominant` proves that two plans
-  satisfying the claim cannot differ by a single swap — so "the"
-  value scale is something proved here, not something assumed.
 
 # The vocabulary
 
