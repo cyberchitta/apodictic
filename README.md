@@ -14,6 +14,8 @@
 
 Mathematical theorems can be machine-checked. So let's check.
 
+The document is at <https://apodictic.cyberchitta.cc/>.
+
 ## What this is
 
 An attempt to formalize the deductive core of Austrian praxeology
@@ -49,29 +51,30 @@ itself a finding. That is the whole point.
 
 ## Structure
 
-Two lake packages:
+Two lake packages, plus the site that publishes the document:
 
 ```
-Apodictic/             -- the library. Depends on mathlib only; always
-                       -- builds standalone. The trusted artifact.
+Apodictic/               -- the library. Depends on mathlib only; always
+                         -- builds standalone. The trusted artifact.
   Apodictic/
-    Praxeology.lean    -- every praxeological claim, nothing else
-    Action.lean        -- agents, ends, means, the action framework
+    Action.lean          -- agents, ends, means, the action framework
+    Allocation.lean      -- stocks of units, and the agent's plan over them
+    Praxeology.lean      -- every praxeological claim, nothing else
+    Urgency.lean         -- the urgency principle, derived not asserted
     MarginalUtility.lean -- first theorem target
-ApodicticDoc/          -- Verso document package, depends on the library.
-                       -- The result: vocabulary, the claim, the
-                       -- hypotheses, the theorems, and the manifest.
+    Consistency.lean     -- Rothbard's six horses, as a satisfying instance
+    Manifest.lean        -- `#manifest`: derives a theorem's premise list
+                         -- from its own signature, sorted by kind
+ApodicticDoc/            -- Verso document package, depends on the library.
+                         -- The result: vocabulary, the claim, the
+                         -- hypotheses, the theorems, and the manifest.
+                         -- Emits an Eleventy input tree into site/verso/.
+site/                    -- the doc site (Eleventy), deployed to
+                         -- apodictic.cyberchitta.cc by GitHub Pages.
 ```
 
 If Verso lags a Lean toolchain bump, the document waits; the library's
 toolchain is never downgraded to accommodate it. Proofs over prose.
-
-## Status
-
-Early. Current milestone: formalize the action framework and
-machine-check the law of marginal utility (Rothbard's allocation
-version), with an honest treatment of the homogeneous-units /
-indifference problem.
 
 ## Reading
 
