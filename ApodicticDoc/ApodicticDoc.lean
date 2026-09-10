@@ -47,9 +47,9 @@ praxeological claim to do it. That claim is not about anything the man
 does. It credits him with a settled answer, held in advance, to what
 he would do with every stock of horses smaller than the one he has —
 and Rothbard's own restriction is that a man needs no such scale in
-advance, because it shows up only in his concrete choices. He exempted
-this law from the restriction by name, and the warrant he gave for the
-exemption is the derivation that needs it. A second demand, weaker,
+advance, because it shows up only in his concrete choices. He named
+this law as the one exception to that rule, and what he offered to
+warrant the exception is the derivation that needs it. A second demand, weaker,
 is what the law's usual wording needs, and he grounds that one
 elsewhere. Nothing here shows the law false, and nothing in the proof
 runs in a circle. What is left is a question about the warrant.
