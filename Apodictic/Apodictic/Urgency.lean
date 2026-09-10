@@ -61,8 +61,9 @@ end the good could serve but he would leave unserved.
 This is everything `SwapDominant` gives, and it is more than Rothbard
 claims: it sets a served end against ANY unserved end the good could
 serve, not only against the one the next unit would reach. It needs
-the hypothesis that uses are independent (see the module docstring
-above).
+the hypothesis that uses are independent, which is what carries a
+preference between two bundles down to a preference between two
+ends.
 
 How the proof goes: swap the `served` want for the `unserved` one, and
 the plan beats the result. The served bundle is that one want together

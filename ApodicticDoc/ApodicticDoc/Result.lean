@@ -346,33 +346,74 @@ because these are the assumptions a reader has to judge.
 # The theorems
 
 
-Rothbard's urgency principle says that losing a unit costs you the
-least urgent want. Here that is proved rather than assumed. The
-claim turns out to give more than the principle needs, so the
-stronger statement comes first and the principle follows from it.
+The derivation is three steps, and only the first does any work.
+
+Start with the six horses. The man serves ends 1–6; ends 7–10 remain
+unsatisfied. The claim says: take that bundle, swap any served end for
+any unserved end a horse could have served, and he prefers what he
+would have had to what the swap leaves him. So `{1,2,3,4,5,6}` beats
+`{1,2,3,4,5,7}`. It also beats `{1,2,3,4,5,8}`, and it beats
+`{2,3,4,5,6,7}` if end 1 is the one swapped out. Any single swap
+loses.
+
+That is a claim about bundles. The law is a claim about single ends:
+that pleasure riding is less urgent than leading a wagon. To pass from
+one to the other you need that a preference between two bundles
+differing in exactly one place is a preference between those two ends.
+That step is independence of uses, and it is ours rather than
+Rothbard's: he ranks ends against each other directly, off a scale
+already ranked (Figure 3, pp. 25–26), and the passages quoted above
+never compare bundles at all. We need the step because we make a claim
+about bundles where he makes one fused claim — and where uses are
+complementary the step fails, and the law is silent.
+
+Take it, and every end he would serve with a given string of horses is
+preferred to every end he would leave unserved. That is already more
+than Rothbard claims. It does not care whether the unserved end is the
+one the next horse would have reached: end 6 beats end 7, and it beats
+end 10 just as squarely.
 
 {docstring Apodictic.served_over_unserved}
 
+Urgency is that ranking, restricted to the end he loses. Take a horse
+away, and the end he gives up is one he would have served with six and
+does not serve with five — an unserved end at the smaller stock.
+Served-over-unserved has already ranked it below everything still
+served. "He gives up the least urgent of the wants which the larger
+stock would have satisfied" (p. 25) is that restriction. That the
+larger stock is exactly one horse larger does no work beyond naming
+which end is the lost one.
+
 {docstring Apodictic.urgency_principle}
 
-The claim is asserted of one plan, not of every plan of its shape.
-What that gives up — that the man's scale is the only one of its kind
-— comes back as a theorem, and it is shown here because the rest of
-the document leans on it.
-
-{docstring Apodictic.no_rival_swap_dominant}
-
-The law is stated using Rothbard's own definition of the marginal
-utility of a supply: the ends you would give up on losing one unit. It
-comes in two forms. Follow a chain of named units, and no
-interchangeability is needed. State it Rothbard's way, by the size of
-the supply, and it is.
+The law is urgency again, said of the ends a unit adds — the ends
+served with the larger stock and not with the smaller, which is
+Rothbard's own definition of the marginal utility of a supply.
 
 {docstring Apodictic.marginalEnds}
 
+Along a chain of named horses, apply it at the second step: what the
+sixth horse adds is less urgent than what the fifth added, because
+what the fifth added is still being served when he has five, and what
+the sixth adds is not. That the first step is a one-horse step is not
+used. Interchangeability is not used either, because the chain names
+which horses.
+
 {docstring Apodictic.marginal_utility_chain}
 
+Said by the size of the supply, the two steps need not share a horse.
+"The plan at five" and "the plan at six" are one thing each only if
+any five horses get the same ends. Interchangeability is used exactly
+once, to say that. After it the argument is urgency over again.
+
 {docstring Apodictic.marginal_utility}
+
+One result here is not a step in the derivation. The claim is asserted
+of one plan, not of every plan of its shape. What that gives up — that
+the man's scale is the only one of its kind — comes back as a theorem,
+and it is shown here because the rest of the document leans on it.
+
+{docstring Apodictic.no_rival_swap_dominant}
 
 # The manifest
 

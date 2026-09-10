@@ -53,7 +53,8 @@ least urgent of the wants which the larger stock would have
 satisfied" (p. 25).
 
 A set of ends rather than a single end, because nothing here assumes
-that exactly one end drops (see the module docstring). It is a `Set`
+that exactly one end drops: determinacy of the drop is not among the
+law's premises. It is a `Set`
 rather than a `Finset` for a mechanical reason: subtracting one
 `Finset` from another requires being able to decide when two ends are
 the same end, which an arbitrary frame does not give us — and reaching
