@@ -841,8 +841,7 @@ most of the work is already done.
 **Both deny needing what both use.** Rothbard's man has "no need for
 him to formulate hypothetical value scales" (p. 33); Mises's scales
 have "no independent existence apart from the actual behavior of
-individuals" (ch. IV, §2). Two sentences, three chapters apart in one
-book and a hundred pages into the other, and they are the same rule:
+individuals" (ch. IV, §2). Two sentences, and they are the same rule:
 a man's ranking shows up in what he does, and nowhere else.
 
 Then each derives the law from a premise that rule forbids. Rothbard's
