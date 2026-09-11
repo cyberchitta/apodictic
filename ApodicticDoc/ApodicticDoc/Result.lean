@@ -277,6 +277,25 @@ What the law does not need, which is most of what it usually gets.
   indifferently" (p. 23), then takes them back on the next page:
   interchangeability "does not mean that the concrete units are
   actually valued equally" (p. 24). The formalization follows p. 24.
+- Rothbard does say which unit goes, three times, and each time he
+  gets the answer from interchangeability instead of stating a
+  condition on the plan. With six horses, "As a result of the
+  interchangeability of units, it does not matter to him which of the
+  six units he must lose" (pp. 26–27). In the recapitulation of
+  fundamentals: "The definition of a good is that it consists of an
+  interchangeable supply of one or more units. Therefore, every unit
+  will always be valued equally with every other" (p. 320). And a
+  lost unit costs the lowest-ranked use "regardless of which end the
+  unit is supplying at present" (p. 458). That "Therefore" is the
+  step the counter-model refutes: units alike in what they can do
+  does not make a plan blind to which of them it has. The charge
+  does not need him to have shifted the word's meaning, either. Grant
+  the usual reconciliation — p. 24 about units taken on one after
+  another, p. 320 about units in a stock each valued at the margin —
+  and both readings are still facts about the units or their
+  valuation, where the size-based wording needs a fact about the plan
+  over sub-stocks. It is a distinction prose has no way to mark, and
+  one the machine would not leave unmarked.
 - Independence of uses is a condition on the situation, and it can only
   be stated at all once preference ranges over bundles of ends rather
   than single ends. Where uses are complementary the law says nothing,
@@ -807,6 +826,79 @@ announces that the counterfactual costs nothing: "We do not
 transcend the sphere of praxeological reasoning in establishing the
 following definition". Neither warrants the premise. That is as far as
 this part goes.
+
+# The circle
+%%%
+file := "The-circle"
+%%%
+
+Two derivations of one law have now been rebuilt, and they give way
+at the same place. The pieces are under *The finding* and *Mises's
+route*; this part sets them side by side and says plainly what the
+audit does and does not establish about them. It is short because
+most of the work is already done.
+
+**Both deny needing what both use.** Rothbard's man has "no need for
+him to formulate hypothetical value scales" (p. 33); Mises's scales
+have "no independent existence apart from the actual behavior of
+individuals" (ch. IV, §2). Two sentences, three chapters apart in one
+book and a hundred pages into the other, and they are the same rule:
+a man's ranking shows up in what he does, and nowhere else.
+
+Then each derives the law from a premise that rule forbids. Rothbard's
+premise ranks the wants the man would serve with every stable he could
+cut from his own. Mises's asks less of that plan and more of the
+ranking, and it is written over exactly the same stables — the two
+claims quantify over the same region, every subset of the stock in
+hand, and neither reaches an inch past it. Reach was never the
+trouble, on either route. What both premises are is a settled answer,
+held in advance, for every one of those stables at once — and that is
+the scale in advance both authors say a man does not need.
+
+**What each then helps himself to.** Rothbard sees the difficulty and
+exempts the law from the rule by name, in a subordinate clause, with
+the derivation as the exemption's only warrant. Mises does not see it,
+or does not say so: he sets down his counterfactual definition and
+announces that in doing so "We do not transcend the sphere of
+praxeological reasoning" (ch. VII, §1). One reasons in a circle; the
+other declares. Neither gives the premise a warrant that stands apart
+from the law it is used to prove.
+
+**The weaker premise does not help.** Mises's premise is strictly the
+weaker on the allocation, and a reader might hope that weakening
+further reaches something about actual choices alone. Here is the
+reason to expect not. The law compares two supplies, and the man
+holds one of them. Whatever premise delivers the law has to say
+something about the supply he does not hold, and the only thing that
+can be said about it is what he would do with it. Weakening the
+premise changes how much it says in that tense; it cannot change the
+tense. That is a reason, not a result: nothing here proves that no
+premise about actual choices can reach the law, and no one has tried
+to prove it. What the audit has is two routes, each resting on a
+standing counterfactual its author disowns, and no third found.
+
+**One shape, if you like.** This last is a reading and not a
+finding, and it is offered as one. The two defects the audit turned
+up in Rothbard — the circle here, and the inference about units set
+out under *The other findings* — have a common form. Each time, what
+is offered as a warrant does not reach what it is offered for. The
+exemption is offered for the plan and reaches only the law; the
+definition of a supply is offered for the plan's indifference to
+which units and reaches only the units. Mises's declaration fits the
+same form trivially, since it reaches nothing. Whether that is one
+habit or two coincidences is not something a proof assistant can
+say.
+
+**What is and is not established.** Established: that each derivation
+follows from its stated premise, that each premise is a claim about
+what the man would do, that each author restricts value scales to
+what he does do, and that neither warrants the exception. Not
+established: that the law is false, that praxeology cannot have it,
+or that no route from actual action exists. The question the audit
+began with — whether the certainty Mises claimed for this law is the
+certainty of a theorem — has an answer of the same width. The
+derivation is as certain as its premise. The premise is the part
+nobody has derived.
 
 # The horses in Lean
 

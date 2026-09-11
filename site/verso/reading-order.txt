@@ -8,6 +8,7 @@ pages/The-Result/The-conditions.html
 pages/The-Result/The-theorems.html
 pages/The-Result/The-manifest.html
 pages/The-Result/Mises-route.html
+pages/The-Result/The-circle.html
 pages/The-Result/The-horses-in-Lean.html
 pages/The-Result/The-vocabulary.html
 pages/The-Result/Claims-no-theorem-uses.html

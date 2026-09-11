@@ -248,9 +248,9 @@
   "path": ["The-Result", "Mises-route"],
   "next":
   {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
-   "titleText": "The horses in Lean",
-   "title": "The horses in Lean",
+   "/The-Result/The-circle/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+   "titleText": "The circle",
+   "title": "The circle",
    "sectionNum": "1.9."},
   "localToc":
   [{"numbering": null,
@@ -311,9 +311,9 @@
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
   "fragment": "pages/The-Result/Mises-route.html",
   "depth": 2},
- {"url": "/The-Result/The-horses-in-Lean/",
-  "titleText": "The horses in Lean",
-  "title": "1.9. The horses in Lean",
+ {"url": "/The-Result/The-circle/",
+  "titleText": "The circle",
+  "title": "1.9. The circle",
   "sectionNum": "1.9.",
   "prev":
   {"url":
@@ -321,13 +321,34 @@
    "titleText": "Mises's route",
    "title": "Mises's route",
    "sectionNum": "1.8."},
+  "path": ["The-Result", "The-circle"],
+  "next":
+  {"url":
+   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+   "titleText": "The horses in Lean",
+   "title": "The horses in Lean",
+   "sectionNum": "1.10."},
+  "localToc": [],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+  "fragment": "pages/The-Result/The-circle.html",
+  "depth": 2},
+ {"url": "/The-Result/The-horses-in-Lean/",
+  "titleText": "The horses in Lean",
+  "title": "1.10. The horses in Lean",
+  "sectionNum": "1.10.",
+  "prev":
+  {"url":
+   "/The-Result/The-circle/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+   "titleText": "The circle",
+   "title": "The circle",
+   "sectionNum": "1.9."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.10."},
+   "sectionNum": "1.11."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -364,21 +385,21 @@
   "depth": 2},
  {"url": "/The-Result/The-vocabulary/",
   "titleText": "The vocabulary",
-  "title": "1.10. The vocabulary",
-  "sectionNum": "1.10.",
+  "title": "1.11. The vocabulary",
+  "sectionNum": "1.11.",
   "prev":
   {"url":
    "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
-   "sectionNum": "1.9."},
+   "sectionNum": "1.10."},
   "path": ["The-Result", "The-vocabulary"],
   "next":
   {"url":
    "/The-Result/Claims-no-theorem-uses/#Apodictic___-Machine-Checked-Praxeology--The-Result--Claims-no-theorem-uses",
    "titleText": "Claims no theorem uses",
    "title": "Claims no theorem uses",
-   "sectionNum": "1.11."},
+   "sectionNum": "1.12."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -401,14 +422,14 @@
   "depth": 2},
  {"url": "/The-Result/Claims-no-theorem-uses/",
   "titleText": "Claims no theorem uses",
-  "title": "1.11. Claims no theorem uses",
-  "sectionNum": "1.11.",
+  "title": "1.12. Claims no theorem uses",
+  "sectionNum": "1.12.",
   "prev":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.10."},
+   "sectionNum": "1.11."},
   "path": ["The-Result", "Claims-no-theorem-uses"],
   "next": null,
   "localToc":

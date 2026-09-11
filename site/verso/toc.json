@@ -76,11 +76,19 @@
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
      "children": []},
+    {"url": "/The-Result/The-circle/",
+     "titleText": "The circle",
+     "title": "The circle",
+     "shortTitle": null,
+     "sectionNum": "1.9.",
+     "path": ["The-Result", "The-circle"],
+     "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+     "children": []},
     {"url": "/The-Result/The-horses-in-Lean/",
      "titleText": "The horses in Lean",
      "title": "The horses in Lean",
      "shortTitle": null,
-     "sectionNum": "1.9.",
+     "sectionNum": "1.10.",
      "path": ["The-Result", "The-horses-in-Lean"],
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
@@ -89,7 +97,7 @@
      "titleText": "The vocabulary",
      "title": "The vocabulary",
      "shortTitle": null,
-     "sectionNum": "1.10.",
+     "sectionNum": "1.11.",
      "path": ["The-Result", "The-vocabulary"],
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
@@ -98,7 +106,7 @@
      "titleText": "Claims no theorem uses",
      "title": "Claims no theorem uses",
      "shortTitle": null,
-     "sectionNum": "1.11.",
+     "sectionNum": "1.12.",
      "path": ["The-Result", "Claims-no-theorem-uses"],
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--Claims-no-theorem-uses",
