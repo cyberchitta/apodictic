@@ -147,15 +147,27 @@ He saw a difficulty here, and exempted this law from the restriction
 by name. On that same page, in a subordinate clause with no argument
 attached: no one can predict the course of a man's choices "except
 that they will follow the law of marginal utility, which was deduced
-from the axiom of action". So the one thing that may be said about the
-choices in advance is that they conform to the law — and that is what
-licenses attributing the standing plan. The plan is the premise the
-law is derived from. The warrant for the premise is the conclusion.
+from the axiom of action".
 
-The circle is in the warrant, not in the proof. The Lean derives the
-law from the claim; the claim is asserted, never proved, and nothing
-in the derivation reaches back. What runs in a circle is Rothbard's
-licence for asserting it.
+Read the clause slowly, because everything turns on it. The only thing
+Rothbard will say about a man's choices before he makes them is that
+they will obey the law of marginal utility. And saying it is exactly
+what lets him hand the man a plan that already answers for every
+smaller string of horses as well as the one in hand. But the law gets
+proved from that very plan. The warrant for the premise is the
+conclusion.
+
+Notice where that leaves the machine. Nothing in the Lean runs
+backwards: the derivation goes one way, from the claim to the law, and
+the claim is never proved anywhere — it is handed in. The build passes,
+and would pass however the claim had been arrived at. What a proof
+assistant enforces is narrower and stranger than it first looks: that
+the assumption be stated, stated in full, and spent in the open where a
+reader can see what it cost. It cannot ask whether Rothbard was
+entitled to assume it. Nothing can. That question took a reader holding
+the stated claim in one hand and his own rule about value scales in the
+other — and it could be asked at all only because the encoding refused
+to let the claim stay unsaid.
 
 This is not an objection from outside. The rule is Rothbard's, the
 claim is Rothbard's, and so is the exemption.
