@@ -76,6 +76,15 @@ site/                    -- the doc site (Eleventy), deployed to
 If Verso lags a Lean toolchain bump, the document waits; the library's
 toolchain is never downgraded to accommodate it. Proofs over prose.
 
+## Written about this
+
+Short accounts for a general reader. Each summarizes what the document
+here sets out in full.
+
+- [Six Horses, Zero Action: Rothbard's Proof,
+  Machine-Checked](https://www.cyberchitta.cc/articles/apodictic.html)
+  (2026-09-07)
+
 ## Reading
 
 - Mises, *Human Action*, chs. 1–7
