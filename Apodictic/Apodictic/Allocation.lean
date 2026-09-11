@@ -142,4 +142,49 @@ def Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent}
     (fewer more : Finset praxis.Means) : Prop :=
   fewer ⊆ more ∧ more ⊆ stock.units ∧ more.card = fewer.card + 1
 
+/-- **An actual allocation** — what the agent does with the stock he
+holds at its time: the ends he serves with it, and nothing else.
+
+This is the object of the TEMPORAL reading of the law
+(`Apodictic.Temporal`). Where `AllocationPlan` assigns served ends to
+every sub-stock at once — the standing disposition the counterfactual
+reading needs — this records one allocation of one stock at one
+time. It is indexed by nothing: not by sub-stock, not by size. What
+the agent would have done with fewer units is not in it and cannot be
+asked of it. Mises's history — "if the supply available increases
+from n–1 units to n units" — is then two of these at two times, not
+one plan read at two sizes.
+
+Field-shape claim (audit): `servesOnlyWhatItCan`, as for the plan, is
+definitional — putting a unit to an end the good is not believed able
+to serve is not an allocation of that good.
+
+Like the plan, it is a thing over and above `Action`. An `Action` has
+one chosen end; a stock of several units serving several ends is
+several actions, or one action whose end is a bundle. Which of those
+it is the library does not say, and no theorem asks. -/
+structure Allocation {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} (stock : Stock praxis agent time) where
+  /-- The ends the agent serves with the units he holds. -/
+  served : Finset praxis.End
+  /-- A unit is only ever put to an end the good is believed able to
+  serve. -/
+  servesOnlyWhatItCan : ∀ want ∈ served, want ∈ stock.serves
+
+/-- **The supply grows by one** — Mises's "the supply available
+increases from n–1 units to n units", read as a history: the stock at
+the later time holds every unit of the stock at the earlier time and
+one more.
+
+Says nothing about the order of the two times. `Time` carries no
+order, and this definition does not ask for one: "earlier" and
+"later" are the names of the two arguments, not a relation between
+their indices. Whether any theorem needs the order is exactly what
+leaving it out will show. -/
+def Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent}
+    {earlierTime laterTime : praxis.Time}
+    (earlier : Stock praxis agent earlierTime)
+    (later : Stock praxis agent laterTime) : Prop :=
+  earlier.units ⊆ later.units ∧ later.units.card = earlier.units.card + 1
+
 end Apodictic

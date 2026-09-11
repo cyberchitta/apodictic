@@ -2,6 +2,7 @@ import Mathlib.Order.Interval.Finset.Nat
 import Mathlib.Tactic.NormNum
 import Apodictic.MarginalUtility
 import Apodictic.Mises
+import Apodictic.Temporal
 
 /-!
 # Consistency — Rothbard's horses, machine-checked
@@ -849,6 +850,160 @@ theorem rothbard_applies_where_mises_is_silent :
   ⟨margin_swapDominant, margin_not_comparable⟩
 
 #print axioms rothbard_applies_where_mises_is_silent
+
+/-! ## The temporal reading: a scale that reverses between two times
+
+`Apodictic.Temporal` reads Mises's ladder as a history and proves it on
+the earlier scale. The frame below is where the later-scale version
+fails. Two times, two ends, a stock that grows from one unit to two.
+At the earlier time the urgent end is `true` and the one unit serves
+it; at the later time the urgent end is `false`, and both are served.
+Every one-time premise holds at both times. The ladder judged on the
+later scale asks that `true` — served first — still outrank `false`,
+the increment's want. It does not.
+
+Nothing here is exotic. The scale changed between the two times, which
+is the case both authors say a value scale cannot be assumed not to
+be (*Human Action*, ch. IV, §2; *MES* p. 24). -/
+
+/-- The end that is urgent at a time: `true` at the earlier time
+(`false`), `false` at the later (`true`). -/
+def urgentAt (time : Bool) : Bool := !time
+
+/-- Two times, two ends, two possible units. A bundle is preferred
+exactly when it secures the end urgent at that time and the rival
+does not. Belief is unrestricted. -/
+def Reversal : ActionFrame where
+  Agent := Unit
+  End := Bool
+  Means := Bool
+  Time := Bool
+  Believes := fun _ _ _ _ => True
+  Prefers := fun _ time X Y => urgentAt time ∈ X ∧ urgentAt time ∉ Y
+
+instance : DecidableEq Reversal.End := inferInstanceAs (DecidableEq Bool)
+instance : DecidableEq Reversal.Means := inferInstanceAs (DecidableEq Bool)
+
+/-- Preference is asymmetric at both times. -/
+theorem reversal_asymmetric (agent : Reversal.Agent) (time : Reversal.Time) :
+    AsymmetricPreference Reversal agent time := by
+  refine ⟨?_⟩
+  intro X Y hXY hYX
+  exact hXY.2 hYX.1
+
+/-- And it reverses: `true` outranks `false` at the earlier time, and
+`false` outranks `true` at the later. -/
+theorem reversal_reverses :
+    Reversal.PrefersEnd () false true false ∧
+      Reversal.PrefersEnd () true false true := by
+  constructor
+  · exact ⟨rfl, fun h => Bool.noConfusion h⟩
+  · exact ⟨rfl, fun h => Bool.noConfusion h⟩
+
+/-- The stock at the earlier time: one unit. -/
+def earlierStock : Stock Reversal () false where
+  units := {false}
+  serves := Set.univ
+  unitsAlike := fun _ _ _ => ⟨fun _ => Set.mem_univ _, fun _ => trivial⟩
+
+/-- The stock at the later time: the same unit and one more. -/
+def laterStock : Stock Reversal () true where
+  units := {false, true}
+  serves := Set.univ
+  unitsAlike := fun _ _ _ => ⟨fun _ => Set.mem_univ _, fun _ => trivial⟩
+
+/-- The supply grew by one. -/
+theorem reversal_grows : earlierStock.Grows laterStock := by
+  refine ⟨?_, ?_⟩
+  · intro u hu
+    exact Finset.mem_insert.mpr (Or.inl (Finset.mem_singleton.mp hu))
+  · decide
+
+/-- What the one unit served at the earlier time: the end urgent
+then. -/
+def beforeAllocation : Allocation earlierStock where
+  served := {true}
+  servesOnlyWhatItCan := fun _ _ => Set.mem_univ _
+
+/-- What the two units serve at the later time: both ends. -/
+def afterAllocation : Allocation laterStock where
+  served := {true, false}
+  servesOnlyWhatItCan := fun _ _ => Set.mem_univ _
+
+/-- The earlier allocation acts in order: nothing more urgent than
+`true` at the earlier time was passed over, because nothing is. -/
+theorem before_actsInOrder : ActsInOrder beforeAllocation := by
+  refine ⟨?_⟩
+  intro served hserved better _ hbetter
+  have hservedTrue : served = true := Finset.mem_singleton.mp hserved
+  subst hservedTrue
+  obtain ⟨hmem, _⟩ := hbetter
+  -- `hmem : urgentAt false ∈ {better}`, i.e. `true = better`
+  exact Finset.mem_singleton.mpr hmem.symm
+
+/-- The later allocation acts in order: everything is served. -/
+theorem after_actsInOrder : ActsInOrder afterAllocation := by
+  refine ⟨?_⟩
+  intro _ _ better _ _
+  cases better with
+  | true => exact Finset.mem_insert.mpr (Or.inl rfl)
+  | false => exact Finset.mem_insert.mpr (Or.inr (Finset.mem_singleton.mpr rfl))
+
+/-- The good's ends are comparable at both times. -/
+theorem reversal_comparable_earlier : earlierStock.ComparableServiceable := by
+  intro one _ other _ hne
+  cases one <;> cases other
+  · exact absurd rfl hne
+  · exact Or.inr ⟨rfl, fun h => Bool.noConfusion h⟩
+  · exact Or.inl ⟨rfl, fun h => Bool.noConfusion h⟩
+  · exact absurd rfl hne
+
+theorem reversal_comparable_later : laterStock.ComparableServiceable := by
+  intro one _ other _ hne
+  cases one <;> cases other
+  · exact absurd rfl hne
+  · exact Or.inl ⟨rfl, fun h => Bool.noConfusion h⟩
+  · exact Or.inr ⟨rfl, fun h => Bool.noConfusion h⟩
+  · exact absurd rfl hne
+
+/-- On the earlier scale the ladder holds here — the library's theorem
+applied, not re-proved. -/
+theorem reversal_ladder_judged_earlier :
+    Temporal.Ladder beforeAllocation afterAllocation false :=
+  Temporal.ladder_judged_earlier beforeAllocation afterAllocation
+    before_actsInOrder reversal_comparable_earlier (fun _ h => h)
+
+/-- On the later scale it fails: `true` was the least urgent (the only)
+want served before, `false` is what the increment serves, and at the
+later time `false` outranks `true`. -/
+theorem reversal_ladder_judged_later_fails :
+    ¬ Temporal.Ladder beforeAllocation afterAllocation true := by
+  intro ladder
+  have hleast : Temporal.LeastUrgentServed beforeAllocation true := by
+    refine ⟨Finset.mem_singleton.mpr rfl, ?_⟩
+    intro other hother hne
+    exact absurd (Finset.mem_singleton.mp hother) hne
+  have h := ladder true hleast false
+    (Finset.mem_insert.mpr (Or.inr (Finset.mem_singleton.mpr rfl)))
+    (fun hmem => Bool.noConfusion (Finset.mem_singleton.mp hmem))
+  -- `h.1 : urgentAt true ∈ {true}`, i.e. `false = true`
+  exact Bool.noConfusion h.1
+
+/-- **The later-judged ladder does not follow from one-time premises.**
+Every hypothesis of `Temporal.LadderJudgedLaterFromOrder` holds in
+this frame, and its conclusion does not. What is missing is a relation
+between the two scales, and the frame is exactly a case where there
+is none. -/
+theorem later_judged_ladder_fails : ¬ Temporal.LadderJudgedLaterFromOrder := by
+  intro h
+  exact reversal_ladder_judged_later_fails
+    (h Reversal () false true earlierStock laterStock beforeAllocation
+      afterAllocation reversal_grows rfl before_actsInOrder after_actsInOrder
+      reversal_comparable_earlier reversal_comparable_later
+      (reversal_asymmetric () false) (reversal_asymmetric () true))
+
+#print axioms reversal_ladder_judged_earlier
+#print axioms later_judged_ladder_fails
 
 end Model
 end Apodictic

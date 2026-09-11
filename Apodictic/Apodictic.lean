@@ -4,6 +4,7 @@ import Apodictic.Praxeology
 import Apodictic.Urgency
 import Apodictic.MarginalUtility
 import Apodictic.Mises
+import Apodictic.Temporal
 import Apodictic.Contrast
 import Apodictic.Consistency
 import Apodictic.Manifest

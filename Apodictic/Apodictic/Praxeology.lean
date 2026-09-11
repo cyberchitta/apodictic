@@ -280,4 +280,53 @@ structure AsymmetricPreference (praxis : ActionFrame) (agent : praxis.Agent)
   asym : ∀ X Y : Set praxis.End,
     praxis.Prefers agent time X Y → ¬ praxis.Prefers agent time Y X
 
+/-- **Acts in order of urgency** — nothing serviceable and more
+urgent is passed over for something less urgent, in what the agent
+ACTUALLY does with the stock he holds.
+
+The actual-action twin of `ServedInOrder`. That claim is subjunctive,
+asserted of a plan over sub-stocks the agent may not hold; this one is
+asserted of one allocation of one stock at one time, and speaks of
+no other stock and no other time. It is the first claim about actual
+action to appear on any signature in the library, and it is what the
+TEMPORAL reading of the law (`Apodictic.Temporal`) spends in place of
+a standing plan.
+
+Source: Rothbard, *MES*, ch. 1, §5.B, p. 24, in the passage that
+narrates the acquisition of horses one by one: "The first horse will
+fulfill the most urgent wants that a horse can serve; this follows
+from the universal fact that action uses scarce means to satisfy the
+most urgent of the not yet satisfied wants". Mises, *Human Action*,
+ch. IV, §2: "Every action is always in perfect agreement with the
+scale of values or wants".
+
+Status: explicit-in-tradition. Both authors state it of action itself,
+not of a disposition; the reconstruction here is only the ordering
+half, stated for one allocation.
+
+Does not say:
+
+1. Anything about sub-stocks the agent does not hold, or about any
+   other time. In particular nothing about how this allocation
+   relates to one made at another time with a different stock — that
+   relation, if any, is a theorem's to state and pay for.
+2. That action reveals preference. This claim runs the other way — the
+   scale constrains what is served — and no bridge from an act to a
+   preference (demonstrated preference, parked) appears here or
+   anywhere in the library.
+3. That the ends a good can serve are comparable
+   (`Stock.ComparableServiceable`), nor anything about the order
+   between two ends both served.
+4. That the scale at this time bears on the scale at any other
+   (constancy). Refused as a claim and as a hypothesis (owner ruling
+   2026-09-11); where the temporal reading needs it, the library
+   exhibits the failure instead (`Apodictic.Model`). -/
+structure ActsInOrder {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} {stock : Stock praxis agent time}
+    (allocation : Allocation stock) : Prop where
+  /-- The ordering itself. -/
+  inOrder : ∀ served ∈ allocation.served, ∀ better ∈ stock.serves,
+    praxis.PrefersEnd agent time better served →
+      better ∈ allocation.served
+
 end Apodictic
