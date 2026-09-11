@@ -1,4 +1,5 @@
 import Apodictic.Urgency
+import Apodictic.MarginalUtility
 import Apodictic.Mises
 
 /-!
@@ -56,6 +57,24 @@ theorem rothbard_entails_servedInOrder
           served hserved better hbetterServes hmem))
 
 #print axioms rothbard_entails_servedInOrder
+
+/-- **The two definitions of the marginal ends coincide.** Mises's
+"marginal employment" (`Mises.marginalEmployment`, the employment a
+man makes at `n` units and would not make at `n–1`) and Rothbard's
+marginal utility of a supply (`marginalEnds`, the ends the larger
+stock serves and the smaller does not) are the same set, definitionally.
+Each module states its own because `Apodictic.Mises` is isolated; that
+they agree is proved here, where both are in scope, and it is what
+licenses saying the two routes reach the same law. -/
+theorem marginalEmployment_eq_marginalEnds
+    {praxis : ActionFrame}
+    {agent : praxis.Agent} {time : praxis.Time}
+    {stock : Stock praxis agent time}
+    (plan : AllocationPlan stock) (fewer more : Finset praxis.Means) :
+    Mises.marginalEmployment plan fewer more = marginalEnds plan fewer more :=
+  rfl
+
+#print axioms marginalEmployment_eq_marginalEnds
 
 end Contrast
 end Apodictic

@@ -102,8 +102,8 @@ def LeastUrgentServed {praxis : ActionFrame} {agent : praxis.Agent}
     ∀ other ∈ plan.wouldServe subStock, other ≠ want →
       praxis.PrefersEnd agent time other want
 
-/-- **Mises's ladder, as a target** — the statement to be derived,
-written out so that what is and is not yet proved is legible.
+/-- **Mises's ladder** — his statement of the law, written out as a
+target so that what proves it, and from what, is legible.
 
 "If the supply available increases from n–1 units to n units, the
 increment can be employed only for the removal of a want which is
@@ -111,10 +111,10 @@ less urgent or less painful than the least urgent or least painful
 among all those wants which could be removed by means of the supply
 n–1" (*Human Action*, ch. VII, §1).
 
-This is a `def` of a Prop, not a theorem. NOTHING IN THIS MODULE
-PROVES IT YET: the premise Mises's route spends has not been settled,
-and choosing one is a decision about philosophical commitment, not
-about proof convenience. -/
+A `def` of a Prop, not a theorem, and deliberately so: it is reached
+twice below from two different premise sets. `ladder_holds` derives
+it from Rothbard's premise, and `ladder_from_order` from Mises's own
+bridge. Which premises each spends is on each theorem's signature. -/
 def LadderHolds {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=

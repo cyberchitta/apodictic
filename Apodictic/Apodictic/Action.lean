@@ -97,8 +97,11 @@ in doing so.
 
 The fields hold together as a package — nothing with fewer parts
 counts as an action — but this is a definition, so it asserts
-nothing. Shape: our-reconstruction. No theorem uses it yet; the law
-of marginal utility rests on the counterfactual plan alone. -/
+nothing. Shape: our-reconstruction. No derivation of the law uses it;
+on both routes the law rests on the counterfactual plan alone. Where
+it does appear is in Mises's dilemma (`Apodictic.Mises.ActionOccurs`,
+`Apodictic.Mises.ActionRecurs`), which is machine-checked not to
+deliver the law. -/
 structure Action (praxis : ActionFrame) where
   /-- The acting person. -/
   agent : praxis.Agent
