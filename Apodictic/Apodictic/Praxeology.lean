@@ -183,4 +183,101 @@ structure SwapDominant {praxis : ActionFrame} {agent : praxis.Agent}
         (insert unserved
           ((↑(plan.wouldServe subStock) : Set praxis.End) \ {served}))
 
+/-- **Served in order of urgency** — nothing serviceable and more
+urgent is passed over for something less urgent.
+
+If the good can serve an end, and that end is more urgent than
+something the agent WOULD serve, then he would serve it too. Like
+`SwapDominant` it is subjunctive throughout, and asserted of one given
+plan.
+
+This is the premise of MISES's route to the law
+(`Apodictic.Mises.ladder_from_order`), where `SwapDominant` is the
+premise of Rothbard's. The two are not equivalent: Rothbard's
+premises entail this one given asymmetry
+(`Apodictic.Contrast.rothbard_entails_servedInOrder`), and this one
+does not entail his
+(`Apodictic.Model.servedInOrder_not_entail_swapDominant`). Mises asks
+less of the agent's allocation and more of his value scale.
+
+Source: Mises, *Human Action*, ch. VII, §1: "If the supply available
+increases from n–1 units to n units, the increment can be employed
+only for the removal of a want which is less urgent or less painful
+than the least urgent or least painful among all those wants which
+could be removed by means of the supply n–1"; and the bridge sentence
+the derivation turns on, "It is nothing else than the reverse of the
+statement that what satisfies more is preferred to what gives smaller
+satisfaction." Compare Mises ch. IV, §2: "Every action is always in
+perfect agreement with the scale of values or wants". Rothbard states
+the doctrine in the same family: "action uses scarce means to satisfy
+the most urgent of the not yet satisfied wants" (*MES* p. 24).
+
+Status: our-reconstruction. Mises argues for the law by a dilemma
+about whether action terminates, not from a stated ordering premise;
+this claim is what that argument needs and does not supply. The
+dilemma is machine-checked NOT to deliver it
+(`Apodictic.Model.recurs_does_not_deliver_ladder`), and his refutation
+of his own second horn does not go through on the action axiom he
+names (`Apodictic.Model.existence_does_not_refute_second_horn`).
+
+The warrant problem is Mises's too, and not Rothbard's bookkeeping.
+Mises restricts value scales exactly as Rothbard does — "These scales
+have no independent existence apart from the actual behavior of
+individuals" (ch. IV, §2) — and then, in ch. VII, §1, declares the
+openly counterfactual definition licit without argument: "We do not
+transcend the sphere of praxeological reasoning in establishing the
+following definition". Rothbard exempts the law circularly; Mises
+asserts the exemption. Neither warrants it.
+
+Does not say:
+
+1. Anything about bundles. That the served bundle beats each one-swap
+   rival is `SwapDominant`, a different claim of a different shape.
+2. That the ends a good can serve are comparable. That is the
+   situational condition `Stock.ComparableServiceable`, and the route
+   that uses this claim needs it separately.
+3. Anything about actual action; no bridge from an act to a
+   preference appears here or anywhere in the library.
+4. Anything about units not on hand: `subStock ⊆ stock.units`, the
+   same region `SwapDominant` speaks of. -/
+structure ServedInOrder {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} {stock : Stock praxis agent time}
+    (plan : AllocationPlan stock) : Prop where
+  /-- The ordering itself. -/
+  inOrder : ∀ subStock ⊆ stock.units, ∀ served ∈ plan.wouldServe subStock,
+    ∀ better ∈ stock.serves,
+      praxis.PrefersEnd agent time better served →
+        better ∈ plan.wouldServe subStock
+
+/-- **Asymmetry of preference** — if one bundle is preferred to
+another, the other is not preferred to the first.
+
+The "strict" reading of `Prefers` that the library has intended from
+the start and never asserted, because no theorem needed it. One does
+now: `Apodictic.Contrast.rothbard_entails_servedInOrder` argues by
+contradiction from a preference running both ways, and without
+asymmetry there is no contradiction to draw.
+
+Source: tacit. No sentence in Mises or Rothbard asserts it. Rothbard's
+value scales are built from acts of choice, and one act cannot
+demonstrate a preference in both directions — but that is an argument
+from the bridge we do not have (demonstrated preference, parked), not
+a statement of his. The nearest explicit treatment is Nozick's
+reconstruction (1977), which is a critic's formalization and not the
+tradition's own words.
+
+Status: our-reconstruction (human ruling 2026-09-10). Recorded as
+ours rather than attributed, precisely because the search for a source
+came back empty.
+
+Does not say: not transitivity, not totality, not comparability of any
+particular pair. It is asserted of one agent at one time, and of the
+bundle-level relation, from which the end-level case follows since
+`PrefersEnd` is `Prefers` on singletons. -/
+structure AsymmetricPreference (praxis : ActionFrame) (agent : praxis.Agent)
+    (time : praxis.Time) : Prop where
+  /-- The asymmetry itself. -/
+  asym : ∀ X Y : Set praxis.End,
+    praxis.Prefers agent time X Y → ¬ praxis.Prefers agent time Y X
+
 end Apodictic

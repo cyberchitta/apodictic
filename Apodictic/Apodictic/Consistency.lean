@@ -1,6 +1,7 @@
 import Mathlib.Order.Interval.Finset.Nat
 import Mathlib.Tactic.NormNum
 import Apodictic.MarginalUtility
+import Apodictic.Mises
 
 /-!
 # Consistency — Rothbard's horses, machine-checked
@@ -56,14 +57,6 @@ recorded rather than papered over:
 
 namespace Apodictic
 namespace Model
-
-/-- Asymmetry of preference: if `X` is preferred to `Y` then `Y` is
-not preferred to `X`. This is the "strict" reading intended all
-along, and it is not yet a praxeological claim (OPEN.md). The model has to
-survive it. -/
-def Asymmetric (praxis : ActionFrame) : Prop :=
-  ∀ (agent : praxis.Agent) (time : praxis.Time) (X Y : Set praxis.End),
-    praxis.Prefers agent time X Y → ¬ praxis.Prefers agent time Y X
 
 /-- A want the horses can serve, named by its place on the man's value
 scale: rank 1 is the most urgent, and the lower the number the more
@@ -141,8 +134,10 @@ theorem horses_homogeneous (k : ℕ) : (horsePlan k).Homogeneous := by
 lets the claim hold somewhere preference is strict, which is the
 reading intended throughout and what `no_rival_swap_dominant`
 needs. -/
-theorem horses_asymmetric : Asymmetric Horses := by
-  intro _ _ X Y h1 h2
+theorem horses_asymmetric (agent : Horses.Agent) (time : Horses.Time) :
+    AsymmetricPreference Horses agent time := by
+  refine ⟨?_⟩
+  intro X Y h1 h2
   obtain ⟨w, w', hwX, hw'Y, hwY, hw'X, hlt, heq⟩ := h1
   obtain ⟨v, v', hvY, hv'X, hvX, hv'Y, hlt', heq'⟩ := h2
   -- `v` must be `w'`: it is in `Y`, not in `X`, so not in `Y \ {w'}`
@@ -375,6 +370,485 @@ theorem unitsAlike_not_entail_homogeneous :
 #print axioms loss_of_a_horse_ends_pleasure_riding
 #print axioms which_horse_does_not_matter
 #print axioms unitsAlike_not_entail_homogeneous
+
+/-! ## Mises's dilemma: two frames
+
+Mises derives the law from a dilemma (*Human Action*, ch. VII, §1).
+Two frames here bracket it. The first shows his refutation of the
+second horn does not go through on the premise he names. The second
+shows that even granting him the horn, the law does not follow.
+
+Evidence, not theory, like everything in this module. Both frames are
+built as small as `Action` permits; neither models anything. -/
+
+/-! ### The second horn is compatible with "there is action" -/
+
+/-- A frame admitting exactly one action. Two ends so that something
+can be given up (action is choice, so `forgone` must be nonempty and
+must exclude the chosen end); everything else a single point, and
+belief satisfied only by the chosen end, so that no second action can
+be assembled. `Prefers` is empty: nothing here is about preference. -/
+def Solitary : ActionFrame where
+  Agent := Unit
+  End := Bool
+  Means := Unit
+  Time := Unit
+  Believes := fun _ _ _ want => want = true
+  Prefers := fun _ _ _ _ => False
+
+/-- The one action the frame admits: aim at `true`, give up `false`. -/
+def solitaryAction : Action Solitary where
+  agent := ()
+  time := ()
+  chosen := true
+  means := ()
+  forgone := {false}
+  forgone_nonempty := ⟨false, rfl⟩
+  chosen_not_forgone := by intro h; exact Bool.noConfusion h
+  belief := rfl
+
+/-- Every action of the frame IS that one. The chosen end is forced
+by belief; the forgone set is forced by being nonempty and excluding
+the chosen end; every other component lives in a one-point type. -/
+theorem solitary_action_unique (act : Action Solitary) :
+    act = solitaryAction := by
+  obtain ⟨agent, time, chosen, means, forgone, hne, hnf, hb⟩ := act
+  have hchosen : chosen = true := hb
+  subst hchosen
+  have hforgone : forgone = {false} := by
+    apply Set.ext
+    intro x
+    constructor
+    · intro hx
+      cases x
+      · rfl
+      · exact absurd hx hnf
+    · intro hx
+      obtain ⟨y, hy⟩ := hne
+      cases y
+      · cases hx; exact hy
+      · exact absurd hy hnf
+  subst hforgone
+  cases agent
+  cases time
+  cases means
+  rfl
+
+/-- Bare existence holds. -/
+theorem solitary_actionOccurs : Mises.ActionOccurs Solitary :=
+  ⟨solitaryAction⟩
+
+/-- And so does Mises's second horn. -/
+theorem solitary_atMostOneAction : Mises.AtMostOneAction Solitary := by
+  intro first second
+  rw [solitary_action_unique first, solitary_action_unique second]
+
+/-- **Existence does not refute the second horn.** Mises calls one
+action followed by a terminal state "manifestly incompatible with our
+assumption that there is action". The frame above satisfies both
+halves he calls incompatible, so the step is not valid as stated.
+
+What his argument needs is `Mises.ActionRecurs` — that two distinct
+actions occur — and nothing in "there is action" delivers it. His own
+wording gestures past bare existence ("this case no longer implies the
+general conditions presupposed in the category of action") without
+saying what those conditions are. Naming them is the suppressed
+premise of his derivation. -/
+theorem existence_does_not_refute_second_horn :
+    ¬ Mises.ExistenceRefutesSecondHorn := by
+  intro claim
+  exact claim Solitary solitary_actionOccurs solitary_atMostOneAction
+
+/-! ### And winning the dilemma does not deliver the law
+
+Grant Mises the first horn. Action is plural; there are intermediate
+stages. Does the ladder follow? Not by itself: the frame below has
+action plural — so the second horn is refuted and the dilemma is won
+— and `LadderHolds` is false in it.
+
+The gap is the one his next sentence papers over: "It is nothing else
+than the reverse of the statement that what satisfies more is
+preferred to what gives smaller satisfaction." Degrees of satisfaction
+are one thing; an ORDERING OVER THE EMPLOYMENTS OF UNITS is another,
+and nothing carries the first to the second. -/
+
+/-- Action is plural here — belief is unrestricted, so either end may
+be chosen.
+
+Preference is NOT empty, and that is the point of this frame. `true`
+is the urgent end and `false` the less urgent one: a bundle is
+preferred exactly when it secures `true` and the rival does not. So
+`PrefersEnd true false` holds, `PrefersEnd false true` does not, and
+the relation is asymmetric (`plural_asymmetric`). The ladder will
+fail here for a reason about the ORDERING, not because nothing is
+preferred to anything. -/
+def Plural : ActionFrame where
+  Agent := Unit
+  End := Bool
+  Means := Unit
+  Time := Unit
+  Believes := fun _ _ _ _ => True
+  Prefers := fun _ _ X Y => true ∈ X ∧ true ∉ Y
+
+/-- Aim at `true`, give up `false`. -/
+def pluralActionTrue : Action Plural where
+  agent := (); time := (); chosen := true; means := ()
+  forgone := {false}
+  forgone_nonempty := ⟨false, rfl⟩
+  chosen_not_forgone := by intro h; exact Bool.noConfusion h
+  belief := trivial
+
+/-- Aim at `false`, give up `true` — the second action the frame
+admits, and the one `Solitary` was built to exclude. -/
+def pluralActionFalse : Action Plural where
+  agent := (); time := (); chosen := false; means := ()
+  forgone := {true}
+  forgone_nonempty := ⟨true, rfl⟩
+  chosen_not_forgone := by intro h; exact Bool.noConfusion h
+  belief := trivial
+
+/-- Mises wins his dilemma in this frame: action is plural, so the
+second horn is refuted. -/
+theorem plural_actionRecurs : Mises.ActionRecurs Plural :=
+  ⟨pluralActionTrue, pluralActionFalse,
+    fun h => Bool.noConfusion (congrArg Action.chosen h)⟩
+
+/-- Preference here is asymmetric — the frame survives the property
+the library intends but does not yet assume. -/
+theorem plural_asymmetric (agent : Plural.Agent) (time : Plural.Time) :
+    AsymmetricPreference Plural agent time := by
+  refine ⟨?_⟩
+  intro X Y hXY hYX
+  exact hXY.2 hYX.1
+
+/-- And it is not empty: the urgent end really is preferred to the
+less urgent one. Without this the counter-model below would prove
+nothing, since a vacuous `Prefers` falsifies every ordering claim. -/
+theorem plural_prefers_nontrivial :
+    Plural.PrefersEnd () () true false :=
+  ⟨rfl, fun h => Bool.noConfusion h⟩
+
+/-- Decidable identity of ends, so that a two-element `Finset` of them
+can be written down at all. -/
+instance : DecidableEq Plural.End := inferInstanceAs (DecidableEq Bool)
+
+/-- One unit; the good is believed to serve everything. -/
+def pluralStock : Stock Plural () () where
+  units := {()}
+  serves := Set.univ
+  unitsAlike := by
+    intro _ _ want
+    exact ⟨fun _ => Set.mem_univ want, fun _ => trivial⟩
+
+/-- **A badly ordered plan.** With no units the agent would serve
+`false`, the LESS urgent end; the extra unit is what brings in `true`,
+the more urgent one.
+
+Nothing in the vocabulary forbids this. `AllocationPlan` requires only
+that a unit be put to an end the good can serve — it does not require
+the agent to serve his most urgent wants first. That requirement is
+exactly what `SwapDominant` supplies, and this plan is what its
+absence looks like. -/
+def pluralPlan : AllocationPlan pluralStock where
+  wouldServe := fun subStock => if subStock.card = 0 then {false} else {false, true}
+  servesOnlyWhatItCan := by
+    intro _ want _
+    exact Set.mem_univ want
+
+theorem pluralPlan_empty : pluralPlan.wouldServe ∅ = {false} := by
+  simp [pluralPlan]
+
+theorem pluralPlan_full : pluralPlan.wouldServe {()} = {false, true} := by
+  simp only [pluralPlan]
+  rw [if_neg (by exact fun h => Finset.singleton_ne_empty () (Finset.card_eq_zero.mp h))]
+
+/-- **Refuting the second horn does not deliver the ladder.** In a
+frame where action is plural — Mises's dilemma won outright — the
+ladder fails.
+
+And it fails for a substantive reason, not a degenerate one.
+Preference here is asymmetric (`plural_asymmetric`) and non-empty
+(`plural_prefers_nontrivial`); what goes wrong is that the agent's
+plan serves the less urgent end first, so the unit he adds brings in
+something MORE urgent than what he was already serving. Mises's
+sentence is false of this agent, and everything the dilemma
+establishes is true of him.
+
+So the step from "there are intermediate stages" to the law is not
+valid on its own. What has to be added is that the plan respects the
+ordering — which is `SwapDominant`, Rothbard's premise, arriving with
+Rothbard's circular warrant. In Mises's own text the addition is a
+single unargued sentence: "It is nothing else than the reverse of the
+statement that what satisfies more is preferred to what gives smaller
+satisfaction."
+
+This does not show Mises's derivation is unsalvageable. It shows the
+dilemma is not the premise, and that whatever is has not been stated
+by him or by anyone since. -/
+theorem recurs_does_not_deliver_ladder :
+    Mises.ActionRecurs Plural ∧ ¬ Mises.LadderHolds pluralPlan := by
+  refine ⟨plural_actionRecurs, ?_⟩
+  intro ladder
+  have step : pluralStock.OneMore ∅ {()} :=
+    ⟨Finset.empty_subset _, Finset.Subset.refl _, rfl⟩
+  have hleast : Mises.LeastUrgentServed pluralPlan ∅ false := by
+    rw [Mises.LeastUrgentServed, pluralPlan_empty]
+    refine ⟨Finset.mem_singleton_self false, ?_⟩
+    intro other hother hne
+    exact absurd (Finset.mem_singleton.mp hother) hne
+  have hadded : true ∈ Mises.marginalEmployment pluralPlan ∅ {()} := by
+    constructor
+    · rw [pluralPlan_full]; decide
+    · rw [pluralPlan_empty]; decide
+  have hbad := ladder ∅ {()} step false hleast true hadded
+  exact Bool.noConfusion hbad.1
+
+#print axioms existence_does_not_refute_second_horn
+#print axioms recurs_does_not_deliver_ladder
+
+/-! ## The converse fails: serving in order does not deliver swap dominance
+
+`Contrast.rothbard_entails_servedInOrder` shows Rothbard's premises
+entail Mises's bridge. This frame shows the entailment does not run
+back, so Rothbard's premise set is STRICTLY stronger.
+
+The separating feature is the one the two premises actually differ
+over. `ServedInOrder` is a claim about ENDS — which of them the plan
+admits. `SwapDominant` is a claim about BUNDLES — that the served
+bundle beats each one-swap rival. A frame can rank ends perfectly
+well and still be too coarse to rank the bundles, and then the second
+claim fails while the first holds.
+
+Preference here is asymmetric and non-trivial; nothing is vacuous. -/
+
+/-- Ends are numbered by urgency, lower being more urgent, and the
+good can serve the first three. A bundle is preferred when it has a
+member beating EVERY member of the rival — a coarse but perfectly
+ordinal relation, and one the library permits, since it imposes no
+property on `Prefers`. -/
+abbrev Coarse : ActionFrame where
+  Agent := Unit
+  End := ℕ
+  Means := Unit
+  Time := Unit
+  Believes := fun _ _ _ want => want ≤ 2
+  Prefers := fun _ _ X Y => ∃ x ∈ X, ∀ y ∈ Y, x < y
+
+/-- Asymmetric: two bundles cannot each have a member beating all of
+the other's. -/
+theorem coarse_asymmetric (agent : Coarse.Agent) (time : Coarse.Time) :
+    AsymmetricPreference Coarse agent time := by
+  refine ⟨?_⟩
+  intro X Y hXY hYX
+  obtain ⟨x, hx, hxall⟩ := hXY
+  obtain ⟨y, hy, hyall⟩ := hYX
+  exact absurd (hxall y hy) (Nat.not_lt.mpr (Nat.le_of_lt (hyall x hx)))
+
+/-- And non-trivial: the more urgent end really is preferred. -/
+theorem coarse_prefers_nontrivial : Coarse.PrefersEnd () () 0 1 :=
+  ⟨0, rfl, by intro y hy; cases hy; norm_num⟩
+
+/-- Decidable identity of ends, so the `Finset` literals below can be
+written at all. -/
+instance : DecidableEq Coarse.End := inferInstanceAs (DecidableEq ℕ)
+
+/-- One unit; the good serves ends 0, 1 and 2. -/
+def coarseStock : Stock Coarse () () where
+  units := {()}
+  serves := {want | want ≤ 2}
+  unitsAlike := by intro _ _ _; exact Iff.rfl
+
+/-- The agent serves ends 0 and 1, leaving 2 unserved. -/
+def coarsePlan : AllocationPlan coarseStock where
+  wouldServe := fun _ => {0, 1}
+  servesOnlyWhatItCan := by
+    intro _ want hwant
+    have hcase : want = 0 ∨ want = 1 := by simpa using hwant
+    rcases hcase with rfl | rfl
+    · show (0 : ℕ) ≤ 2
+      norm_num
+    · show (1 : ℕ) ≤ 2
+      norm_num
+
+/-- **Serving in order holds — and not vacuously.** End 1 is served,
+end 0 is more urgent, and end 0 is served too. -/
+theorem coarse_servedInOrder : ServedInOrder coarsePlan := by
+  refine ⟨?_⟩
+  intro _ _ served hserved better _ hbetter
+  obtain ⟨x, hx, hall⟩ := hbetter
+  cases hx
+  have hlt : better < served := hall served rfl
+  have hcase : served = 0 ∨ served = 1 := by
+    simpa [coarsePlan] using hserved
+  show better ∈ ({0, 1} : Finset ℕ)
+  rcases hcase with rfl | rfl
+  · exact absurd hlt (Nat.not_lt_zero better)
+  · have hb : better = 0 := Nat.lt_one_iff.mp hlt
+    subst hb
+    simp
+
+/-- **Swap dominance fails.** Swap the served end 1 for the unserved
+end 2: the rival bundle is `{0, 2}`, and this frame cannot rank
+`{0, 1}` above it, because neither bundle has a member beating every
+member of the other — both contain 0.
+
+Nothing is wrong with the agent here. He serves his most urgent
+wants, in order, leaving the least urgent unserved. It is the
+BUNDLE-level comparison that fails, and that is precisely the extra
+thing swap dominance demands. -/
+theorem coarse_not_swapDominant : ¬ SwapDominant coarsePlan := by
+  intro dominance
+  have hswap := dominance.swap ∅ (Finset.empty_subset _) 1 (by simp [coarsePlan])
+    2 (by norm_num [coarseStock]) (by simp [coarsePlan])
+  obtain ⟨x, _, hall⟩ := hswap
+  have hzero : (0 : ℕ) ∈ insert 2 ((↑(coarsePlan.wouldServe ∅) : Set Coarse.End) \ {1}) := by
+    refine Or.inr ⟨?_, ?_⟩
+    · simp [coarsePlan]
+    · norm_num
+  exact absurd (hall 0 hzero) (Nat.not_lt_zero x)
+
+/-- **The two premise sets are not equivalent.** Rothbard's entails
+Mises's bridge (`Contrast.rothbard_entails_servedInOrder`); this frame
+shows the converse fails. So the Mises route, reconstructed as
+generously as the vocabulary allows, rests on a STRICTLY WEAKER
+allocation premise than Rothbard's — while paying for it with
+comparability of ends, which Rothbard's route never needs. -/
+theorem servedInOrder_not_entail_swapDominant :
+    ServedInOrder coarsePlan ∧ ¬ SwapDominant coarsePlan :=
+  ⟨coarse_servedInOrder, coarse_not_swapDominant⟩
+
+#print axioms servedInOrder_not_entail_swapDominant
+
+/-! ## Where Mises's law is silent and Rothbard's is not
+
+If `ComparableServiceable` is a situational CONDITION rather than a
+claim, then the Mises route applies to fewer situations than the
+Rothbard route. This frame is one of them: swap dominance holds, the
+law goes through Rothbard's way, and Mises's condition fails.
+
+The frame is not arbitrary, and the constraint on building it is
+itself the finding. Swap dominance compares the served bundle with
+each ONE-SWAP rival, so it forces a comparison between every served
+end and every unserved serviceable one. Comparability can therefore
+only fail for a pair of ends that NEVER straddles the margin — two
+ends that are both always unserved, or both always served, at every
+sub-stock. Here that pair is ends 3 and 4: the stock is two units, so
+only ends 1 and 2 are ever served, and 3 and 4 sit permanently
+outside.
+
+So the gap between the two conditions is exactly the pairs of ends
+that never sit on either side of a margin — which is a narrow gap,
+and worth knowing it is narrow. -/
+
+/-- Urgency as a PARTIAL order: lower rank is more urgent, except
+that ends 3 and 4 are left incomparable. Nothing in the library
+requires `Prefers` to rank every pair, and this is what declining to
+looks like. -/
+def urgent (want other : ℕ) : Prop :=
+  want < other ∧ ¬(want = 3 ∧ other = 4)
+
+/-- The horses' one-swap preference, over `urgent` instead of `<`. -/
+def marginPrefers (X Y : Set ℕ) : Prop :=
+  ∃ w w', w ∈ X ∧ w' ∈ Y ∧ w ∉ Y ∧ w' ∉ X ∧ urgent w w' ∧ X \ {w} = Y \ {w'}
+
+/-- Four serviceable ends, of which two are never reached. -/
+abbrev Margin : ActionFrame where
+  Agent := Unit
+  End := ℕ
+  Means := ℕ
+  Time := Unit
+  Believes := fun _ _ _ want => 1 ≤ want ∧ want ≤ 4
+  Prefers := fun _ _ X Y => marginPrefers X Y
+
+instance : DecidableEq Margin.End := inferInstanceAs (DecidableEq ℕ)
+
+/-- Two units, four serviceable ends. -/
+def marginStock : Stock Margin () () where
+  units := {1, 2}
+  serves := {want | 1 ≤ want ∧ want ≤ 4}
+  unitsAlike := by intro _ _ _; exact Iff.rfl
+
+/-- Serve the most urgent ends first, as many as there are units —
+capped at two, so ends 3 and 4 are never served. -/
+def marginPlan : AllocationPlan marginStock where
+  wouldServe := fun subStock => Finset.Icc 1 (min subStock.card 2)
+  servesOnlyWhatItCan := by
+    intro subStock want hwant
+    rw [Finset.mem_Icc] at hwant
+    exact ⟨hwant.1, le_trans hwant.2 (le_trans (min_le_right _ _) (by norm_num))⟩
+
+/-- **Swap dominance holds.** Every served end has rank at most two,
+every unserved serviceable end has a strictly greater rank, and the
+excluded pair (3, 4) never arises because 3 is never served. -/
+theorem margin_swapDominant : SwapDominant marginPlan where
+  swap := by
+    intro subStock _ served hserved unserved hcanServe hnotServed
+    have hserved : 1 ≤ served ∧ served ≤ min subStock.card 2 :=
+      Finset.mem_Icc.mp hserved
+    have hcap : min subStock.card 2 ≤ 2 := min_le_right _ _
+    have hservedLe : served ≤ 2 := le_trans hserved.2 hcap
+    have hgt : min subStock.card 2 < unserved := by
+      by_contra hle
+      exact hnotServed (Finset.mem_Icc.mpr ⟨hcanServe.1, Nat.le_of_not_lt hle⟩)
+    have hlt : served < unserved := lt_of_le_of_lt hserved.2 hgt
+    have hne : served ≠ unserved := Nat.ne_of_lt hlt
+    have hservedMem : served ∈ (↑(marginPlan.wouldServe subStock) : Set ℕ) :=
+      Finset.mem_coe.mpr (Finset.mem_Icc.mpr hserved)
+    have hunservedNot : unserved ∉ (↑(marginPlan.wouldServe subStock) : Set ℕ) :=
+      fun h => hnotServed (Finset.mem_coe.mp h)
+    refine ⟨served, unserved, hservedMem, Or.inl rfl, ?_, hunservedNot,
+      ⟨hlt, ?_⟩, ?_⟩
+    · rintro (heq | ⟨_, hne'⟩)
+      · exact hne heq
+      · exact hne' rfl
+    · rintro ⟨h3, _⟩
+      rw [h3] at hservedLe
+      exact absurd hservedLe (by norm_num)
+    · apply Set.ext
+      intro x
+      constructor
+      · rintro ⟨hx, hxne⟩
+        refine ⟨Or.inr ⟨hx, hxne⟩, ?_⟩
+        intro hxu
+        exact hunservedNot (hxu ▸ hx)
+      · rintro ⟨hx | ⟨hx, hxne⟩, hxu⟩
+        · exact absurd hx hxu
+        · exact ⟨hx, hxne⟩
+
+/-- **Mises's condition fails.** Ends 3 and 4 are both serviceable and
+neither is preferred to the other, because `urgent` declines to rank
+them. -/
+theorem margin_not_comparable :
+    ¬ marginStock.ComparableServiceable := by
+  intro comparable
+  rcases comparable 3 (by norm_num [marginStock]) 4 (by norm_num [marginStock])
+      (by norm_num) with h | h
+  · obtain ⟨w, w', hw, hw', _, _, hurgent, _⟩ := h
+    cases hw; cases hw'
+    exact hurgent.2 ⟨rfl, rfl⟩
+  · obtain ⟨w, w', hw, hw', _, _, hurgent, _⟩ := h
+    cases hw; cases hw'
+    exact absurd hurgent.1 (by norm_num)
+
+/-- **A situation where Rothbard's law applies and Mises's does not.**
+
+Swap dominance holds, so `marginal_utility_chain` and the Rothbard
+route apply to this agent in full. `ComparableServiceable` fails, so
+`Mises.ladder_from_order` does not apply at all — its premise is
+unavailable.
+
+If comparability is ruled a CONDITION, this is what "Mises's law
+covers fewer situations" means concretely: an agent with two ends he
+has never had occasion to rank against each other. If it is ruled a
+CLAIM, then praxeology asserts no such agent exists, and this frame
+is a counter-example to the claim rather than a gap in the theorem's
+reach. The Lean is the same either way; the ruling decides what it
+means. -/
+theorem rothbard_applies_where_mises_is_silent :
+    SwapDominant marginPlan ∧ ¬ marginStock.ComparableServiceable :=
+  ⟨margin_swapDominant, margin_not_comparable⟩
+
+#print axioms rothbard_applies_where_mises_is_silent
 
 end Model
 end Apodictic

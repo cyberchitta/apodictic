@@ -104,6 +104,34 @@ def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
   ∀ fewer ⊆ stock.units, ∀ more ⊆ stock.units, fewer.card = more.card →
     plan.wouldServe fewer = plan.wouldServe more
 
+/-- **Comparability of the ends a good can serve** — a condition on
+the situation, NOT a praxeological claim (human ruling 2026-09-10).
+
+Any two ends the good can serve are ranked one way or the other. It
+is confined to one stock's serviceable ends, not asserted of every
+pair of ends in the frame, because that is all any theorem needs.
+
+Where it fails, a theorem carrying it is SILENT rather than false: an
+agent may simply never have had occasion to rank two ends against each
+other, and Rothbard's own doctrine — that scales are revealed in
+action and nowhere else — makes such agents the normal case rather
+than the exotic one. Mises says the same thing in almost the same
+words: "the scale of values or wants manifests itself only in the
+reality of action. These scales have no independent existence apart
+from the actual behavior of individuals" (*Human Action*, ch. IV, §2).
+
+Carried by the Mises route (`Apodictic.Mises.ladder_from_order`) and
+by no theorem on the Rothbard route. That asymmetry is a finding:
+swap dominance forces a comparison between every served end and every
+unserved serviceable one, so this condition can only fail for a pair
+that never straddles a margin — see
+`Apodictic.Model.rothbard_applies_where_mises_is_silent`. -/
+def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
+    {time : praxis.Time} (stock : Stock praxis agent time) : Prop :=
+  ∀ one ∈ stock.serves, ∀ other ∈ stock.serves, one ≠ other →
+    praxis.PrefersEnd agent time one other ∨
+      praxis.PrefersEnd agent time other one
+
 /-- `more` is `fewer` plus one unit, both inside the stock. It is said
 with an inclusion and a count rather than by naming the extra unit, so
 that sub-stocks are only ever supposed and never constructed — which
