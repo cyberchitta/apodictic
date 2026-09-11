@@ -67,6 +67,21 @@ AUTHORED = [
     "Apodictic/Apodictic/Action.lean",
 ]
 
+# Runs the human has ruled may stand in more than one place.  Each entry is a
+# phrase plus the reason it is exempt; keep the reason, because an exemption
+# list with no reasons becomes a place to hide duplication.  Matching is on
+# words, so punctuation and case here do not matter.
+ALLOWED = [
+    (
+        "the warrant for the premise is the conclusion",
+        "Human ruling, 2026-09-11.  The sharpest statement of the central "
+        "finding, and both surfaces need it: SwapDominant's docstring must "
+        "stand alone for a reader who opens the library and never the essay, "
+        "and The finding must land its own hinge.  Revisit if an equally "
+        "good alternative phrasing turns up.",
+    ),
+]
+
 # A run with none of these is identifiers, not English.
 STOP = set(
     "the of a an is are was to that he his it in and not for by with which "
@@ -138,9 +153,22 @@ def quoted_grams():
     return out
 
 
-def classify(run, quoted):
+def allowed_grams():
+    """Exact word-strings of the ruled-exempt phrases.
+
+    Matching is STRICT -- a run is exempt only when it sits entirely inside an
+    allowed phrase.  A looser test (any five words in common) would excuse
+    runs that merely brush the phrase and carry our own words on either side,
+    which is how an exemption list quietly becomes a loophole.
+    """
+    return [" ".join(words(phrase)) for phrase, _reason in ALLOWED]
+
+
+def classify(run, quoted, allowed):
     if not any(x in STOP for x in run):
         return "signatures"
+    if any(" ".join(run) in phrase for phrase in allowed):
+        return "allowed"
     if any(tuple(run[i:i + 5]) in quoted for i in range(len(run) - 4)):
         return "quotations"
     return "ours"
@@ -178,24 +206,25 @@ def main():
         return 0
 
     quoted = quoted_grams()
+    allowed = allowed_grams()
     prose, docs = {}, {}
     for f in files:
         p, d = split_page(f)
         prose[f], docs[f] = grams(p), grams(d)
 
-    buckets = {"signatures": {}, "quotations": {}, "ours": {}}
+    buckets = {"signatures": {}, "quotations": {}, "allowed": {}, "ours": {}}
     for a in files:
         for b in files:
             if a == b:
                 continue
             for run in prose[a] & docs[b]:
-                buckets[classify(run, quoted)].setdefault(
+                buckets[classify(run, quoted, allowed)].setdefault(
                     (os.path.basename(a) + " prose", os.path.basename(b) + " docstring"), set()
                 ).add(run)
     for i, a in enumerate(files):
         for b in files[i + 1:]:
             for run in prose[a] & prose[b]:
-                buckets[classify(run, quoted)].setdefault(
+                buckets[classify(run, quoted, allowed)].setdefault(
                     (os.path.basename(a) + " prose", os.path.basename(b) + " prose"), set()
                 ).add(run)
 
@@ -203,9 +232,10 @@ def main():
     print(f"repeated {N}-word runs across pages:")
     print(f"  signatures  {total['signatures']:4}   emitted identifiers; not text")
     print(f"  quotations  {total['quotations']:4}   Mises or Rothbard; both pages must cite him")
+    print(f"  allowed     {total['allowed']:4}   ruled to stand twice; see ALLOWED in this file")
     print(f"  OURS        {total['ours']:4}   written twice -- the only defect")
 
-    for name in ("ours", "quotations", "signatures"):
+    for name in ("ours", "allowed", "quotations", "signatures"):
         if show and show != name:
             continue
         if not show and name != "ours":
