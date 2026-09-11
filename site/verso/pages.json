@@ -87,18 +87,18 @@
   "path": ["The-Result", "The-other-findings"],
   "next":
   {"url":
-   "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
-   "titleText": "The one claim",
-   "title": "The one claim",
+   "/The-Result/The-claims/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
+   "titleText": "The claims",
+   "title": "The claims",
    "sectionNum": "1.4."},
   "localToc": [],
   "id":
   "Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
   "fragment": "pages/The-Result/The-other-findings.html",
   "depth": 2},
- {"url": "/The-Result/The-one-claim/",
-  "titleText": "The one claim",
-  "title": "1.4. The one claim",
+ {"url": "/The-Result/The-claims/",
+  "titleText": "The claims",
+  "title": "1.4. The claims",
   "sectionNum": "1.4.",
   "prev":
   {"url":
@@ -106,7 +106,7 @@
    "titleText": "The other findings",
    "title": "The other findings",
    "sectionNum": "1.3."},
-  "path": ["The-Result", "The-one-claim"],
+  "path": ["The-Result", "The-claims"],
   "next":
   {"url":
    "/The-Result/The-conditions/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
@@ -117,9 +117,17 @@
   [{"numbering": null,
     "level": null,
     "html": "<code>SwapDominant</code>",
-    "dest": "/The-Result/The-one-claim/#Apodictic___SwapDominant___mk"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
-  "fragment": "pages/The-Result/The-one-claim.html",
+    "dest": "/The-Result/The-claims/#Apodictic___SwapDominant___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ServedInOrder</code>",
+    "dest": "/The-Result/The-claims/#Apodictic___ServedInOrder___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AsymmetricPreference</code>",
+    "dest": "/The-Result/The-claims/#Apodictic___AsymmetricPreference___mk"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
+  "fragment": "pages/The-Result/The-claims.html",
   "depth": 2},
  {"url": "/The-Result/The-conditions/",
   "titleText": "The conditions",
@@ -127,9 +135,9 @@
   "sectionNum": "1.5.",
   "prev":
   {"url":
-   "/The-Result/The-one-claim/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-one-claim",
-   "titleText": "The one claim",
-   "title": "The one claim",
+   "/The-Result/The-claims/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
+   "titleText": "The claims",
+   "title": "The claims",
    "sectionNum": "1.4."},
   "path": ["The-Result", "The-conditions"],
   "next":
@@ -152,7 +160,12 @@
     "level": null,
     "html": "<code>Homogeneous</code>",
     "dest":
-    "/The-Result/The-conditions/#Apodictic___AllocationPlan___Homogeneous"}],
+    "/The-Result/The-conditions/#Apodictic___AllocationPlan___Homogeneous"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ComparableServiceable</code>",
+    "dest":
+    "/The-Result/The-conditions/#Apodictic___Stock___ComparableServiceable"}],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
   "fragment": "pages/The-Result/The-conditions.html",
   "depth": 2},
@@ -214,17 +227,17 @@
   "path": ["The-Result", "The-manifest"],
   "next":
   {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
-   "titleText": "The horses in Lean",
-   "title": "The horses in Lean",
+   "/The-Result/Mises-route/#Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
+   "titleText": "Mises's route",
+   "title": "Mises's route",
    "sectionNum": "1.8."},
   "localToc": [],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
   "fragment": "pages/The-Result/The-manifest.html",
   "depth": 2},
- {"url": "/The-Result/The-horses-in-Lean/",
-  "titleText": "The horses in Lean",
-  "title": "1.8. The horses in Lean",
+ {"url": "/The-Result/Mises-route/",
+  "titleText": "Mises's route",
+  "title": "1.8. Mises's route",
   "sectionNum": "1.8.",
   "prev":
   {"url":
@@ -232,13 +245,89 @@
    "titleText": "The manifest",
    "title": "The manifest",
    "sectionNum": "1.7."},
+  "path": ["The-Result", "Mises-route"],
+  "next":
+  {"url":
+   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+   "titleText": "The horses in Lean",
+   "title": "The horses in Lean",
+   "sectionNum": "1.9."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>marginalEmployment</code>",
+    "dest": "/The-Result/Mises-route/#Apodictic___Mises___marginalEmployment"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>LeastUrgentServed</code>",
+    "dest": "/The-Result/Mises-route/#Apodictic___Mises___LeastUrgentServed"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>LadderHolds</code>",
+    "dest": "/The-Result/Mises-route/#Apodictic___Mises___LadderHolds"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ladder_for_every_served</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Mises___ladder_for_every_served"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ladder_holds</code>",
+    "dest": "/The-Result/Mises-route/#Apodictic___Mises___ladder_holds"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>marginalEmployment_eq_marginalEnds</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Contrast___marginalEmployment_eq_marginalEnds"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>existence_does_not_refute_second_horn</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Model___existence_does_not_refute_second_horn"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>recurs_does_not_deliver_ladder</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Model___recurs_does_not_deliver_ladder"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ladder_from_order</code>",
+    "dest": "/The-Result/Mises-route/#Apodictic___Mises___ladder_from_order"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>rothbard_entails_servedInOrder</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Contrast___rothbard_entails_servedInOrder"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>servedInOrder_not_entail_swapDominant</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Model___servedInOrder_not_entail_swapDominant"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>rothbard_applies_where_mises_is_silent</code>",
+    "dest":
+    "/The-Result/Mises-route/#Apodictic___Model___rothbard_applies_where_mises_is_silent"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
+  "fragment": "pages/The-Result/Mises-route.html",
+  "depth": 2},
+ {"url": "/The-Result/The-horses-in-Lean/",
+  "titleText": "The horses in Lean",
+  "title": "1.9. The horses in Lean",
+  "sectionNum": "1.9.",
+  "prev":
+  {"url":
+   "/The-Result/Mises-route/#Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
+   "titleText": "Mises's route",
+   "title": "Mises's route",
+   "sectionNum": "1.8."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.9."},
+   "sectionNum": "1.10."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -275,21 +364,21 @@
   "depth": 2},
  {"url": "/The-Result/The-vocabulary/",
   "titleText": "The vocabulary",
-  "title": "1.9. The vocabulary",
-  "sectionNum": "1.9.",
+  "title": "1.10. The vocabulary",
+  "sectionNum": "1.10.",
   "prev":
   {"url":
    "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
-   "sectionNum": "1.8."},
+   "sectionNum": "1.9."},
   "path": ["The-Result", "The-vocabulary"],
   "next":
   {"url":
    "/The-Result/Claims-no-theorem-uses/#Apodictic___-Machine-Checked-Praxeology--The-Result--Claims-no-theorem-uses",
    "titleText": "Claims no theorem uses",
    "title": "Claims no theorem uses",
-   "sectionNum": "1.10."},
+   "sectionNum": "1.11."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -312,14 +401,14 @@
   "depth": 2},
  {"url": "/The-Result/Claims-no-theorem-uses/",
   "titleText": "Claims no theorem uses",
-  "title": "1.10. Claims no theorem uses",
-  "sectionNum": "1.10.",
+  "title": "1.11. Claims no theorem uses",
+  "sectionNum": "1.11.",
   "prev":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.9."},
+   "sectionNum": "1.10."},
   "path": ["The-Result", "Claims-no-theorem-uses"],
   "next": null,
   "localToc":

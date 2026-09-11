@@ -215,6 +215,11 @@ the conclusion follows, and the proof uses only what the statement
 lists. One question is left, and it is a narrow one — may praxeology
 help itself to that standing plan?
 
+Rothbard's is not the only derivation. Mises reaches the same law by
+a different argument, and that argument, rebuilt the same way, turns
+out to rest on a claim of the same kind, which he does not warrant
+either. It is set out under *Mises's route*.
+
 # The other findings
 
 
@@ -294,7 +299,7 @@ Findings about the formalizing rather than the doctrine.
   satisfying the claim cannot differ by a single swap — so "the"
   value scale is something proved here, not something assumed.
 
-# The one claim
+# The claims
 
 
 The library contains no `axiom`. Every praxeological claim is written
@@ -323,14 +328,23 @@ uses. And only claims meant to hold always belong here; a
 condition that says when a law applies is a hypothesis instead, and
 those have a part of their own below.
 
-There is exactly one.
+There are three. The first is the premise of Rothbard's derivation,
+and on his route it is the only claim the law needs. The second is the
+premise of Mises's, reconstructed in the same vocabulary; the third is
+asymmetry of preference, which neither derivation spends and one
+comparison between them does. Each docstring names the theorems that
+carry it.
 
 {docstring Apodictic.SwapDominant}
+
+{docstring Apodictic.ServedInOrder}
+
+{docstring Apodictic.AsymmetricPreference}
 
 # The conditions
 
 
-The theorems take three assumptions besides the claim. Each says
+The theorems take four assumptions besides the claims. Each says
 something about the situation rather than about action as such, and
 each is written into the statement, so a reader can point at it and
 say: that is the one that did not hold. Where one fails, the law says
@@ -343,12 +357,15 @@ nothing — it is silent, not wrong.
   on which other wants are being served.
 - `plan.Homogeneous`: the plan depends only on how many units there
   are, not on which ones. Only the size-based form of the law needs it.
+- `stock.ComparableServiceable`: any two wants the good can serve are
+  ranked one way or the other. Only Mises's route needs it; Rothbard's
+  never does.
 
 Nothing here has to say which plan is the man's. A theorem is handed a
 plan and makes its claim about that one, so there is no rival plan
 anyone could build to refute it.
 
-All three are given in full here, in the order they are listed above,
+All four are given in full here, in the order they are listed above,
 because these are the assumptions a reader has to judge.
 
 {docstring Apodictic.Stock.OneMore}
@@ -356,6 +373,8 @@ because these are the assumptions a reader has to judge.
 {docstring Apodictic.ActionFrame.IndependentUses}
 
 {docstring Apodictic.AllocationPlan.Homogeneous}
+
+{docstring Apodictic.Stock.ComparableServiceable}
 
 # The theorems
 
@@ -582,6 +601,213 @@ So the guarantee is narrower than "nothing here is idle": nothing here
 is idle except where the statement says so, in the only way Lean has
 for saying it.
 
+# Mises's route
+%%%
+file := "Mises-route"
+%%%
+
+Rothbard's is not the only derivation the tradition offers. Mises
+reaches the same law in *Human Action* (ch. VII, §1) by an argument of
+a wholly different shape, and the library carries his route as a
+second target. It is built in a module that cannot see Rothbard's
+theorems at all, so that whatever his argument spends has to be stated
+there, and shows on the signature. A proof that could reach for
+Rothbard's lemmas would have assumed the answer to the question this
+part exists to ask.
+
+His statement of the law:
+
+> If the supply available increases from n–1 units to n units, the
+> increment can be employed only for the removal of a want which is
+> less urgent or less painful than the least urgent or least painful
+> among all those wants which could be removed by means of the supply
+> n–1.
+
+Two things differ from Rothbard's wording. The ladder runs upward, from
+n–1 to n, where Rothbard takes a horse away; and it singles out a least
+urgent want, where Rothbard compares two named steps. It is read here
+as Rothbard's is read — two supplies held up against each other at one
+time — because Mises's own definition has that shape: the marginal
+employment is the one a man makes at n units "but would not make if,
+other things being equal, his supply were only n–1 units". A reading
+on which the ladder is a history of acquisitions is a separate target,
+and untouched.
+
+{docstring Apodictic.Mises.marginalEmployment}
+
+{docstring Apodictic.Mises.LeastUrgentServed}
+
+{docstring Apodictic.Mises.LadderHolds}
+
+**His conclusion is Rothbard's.** Before asking what Mises's argument
+spends, ask whether it has to spend anything. Does the ladder follow
+from Rothbard's premise outright? It does, and the proof is a few
+lines. Two things fall out of it. The upward direction is narration.
+And the least-urgent qualifier does no work at all: the proof consumes
+only that the want was served at the smaller supply, and the machine
+can show as much, because the same conclusion goes through for every
+want served there, not only the least urgent.
+
+{docstring Apodictic.Mises.ladder_for_every_served}
+
+{docstring Apodictic.Mises.ladder_holds}
+
+The marginal employment, meanwhile, is Rothbard's marginal ends under
+another name — the same set, by definition. So there is one law on the
+table, not two, and what differs between the authors is only the
+argument for it.
+
+{docstring Apodictic.Contrast.marginalEmployment_eq_marginalEnds}
+
+**His argument is a dilemma.** Mises does not assert an ordering
+premise the way Rothbard does. He holds that the law "is already
+implied in the category of action", and argues it so:
+
+> There are only two alternatives. Either there are or there are not
+> intermediate stages between the felt uneasiness which impels a man
+> to act and the state in which there can no longer be any action …
+> In the second case there could be only one action; as soon as this
+> action is consummated, a state would be reached in which no further
+> action is possible. This is manifestly incompatible with our
+> assumption that there is action; this case no longer implies the
+> general conditions presupposed in the category of action. Only the
+> first case remains.
+
+The dilemma is encoded as it stands, with the second horn read through
+its stated consequence — there could be only one action — rather than
+through an invented measure of how much uneasiness remains. That keeps
+the vocabulary as it was. Two small frames then check the two steps of
+the argument, one each.
+
+First, the refutation of the second horn. Mises says one action
+followed by a terminal state is incompatible with "our assumption that
+there is action". It is not. A frame admitting exactly one action
+satisfies both halves he calls incompatible. What his step needs is
+that action is plural — that two distinct actions occur — and the bare
+claim that there is action does not deliver it. This is the first time
+the library has put that claim to any work, and it was too weak for
+the job.
+
+{docstring Apodictic.Model.existence_does_not_refute_second_horn}
+
+Second, grant him the horn. Let action be plural, so the dilemma is
+won. The ladder still does not follow. A frame with two actions, a
+preference that is asymmetric and not empty, and a plan that serves
+the less urgent want first meets everything the dilemma establishes
+and breaks the law.
+
+{docstring Apodictic.Model.recurs_does_not_deliver_ladder}
+
+So the dilemma is not the premise. What carries Mises from it to the
+law is a single sentence, offered as though it added nothing: "It is
+nothing else than the reverse of the statement that what satisfies
+more is preferred to what gives smaller satisfaction." That sentence
+is where his premise lives, and it is unargued.
+
+**His premise, reconstructed.** The tempting reading of that sentence
+adds a scale of satisfaction to the vocabulary — a second ordering, on
+states, by how much uneasiness each removes. That was refused. It
+would enlarge the ontology on one sentence's authority, it invites
+cardinal degrees through the back door, and a satisfaction scale would
+still have to be connected to which want a unit serves, which is the
+premise all over again. The reading used instead is the most generous
+one the existing vocabulary allows: the agent serves in order of
+urgency. If the good can serve a want, and that want is more urgent
+than one on his plan, the plan has it too. That is a
+praxeological claim, subjunctive throughout like Rothbard's, and it is
+the second of the three under *The claims*.
+
+One thing more is needed, and it is a condition, not a claim: that
+every pair of wants the good can serve is ranked, one way or the
+other. Where a pair is not, the theorem is silent. It is the fourth under *The
+conditions*, and the one Rothbard's route never asks for.
+
+{docstring Apodictic.Mises.ladder_from_order}
+
+Its manifest, printed by the same command as Rothbard's:
+
+```lean (name := manifestLadder)
+#manifest Mises.ladder_from_order
+```
+```leanOutput manifestLadder
+manifest of Apodictic.Mises.ladder_from_order
+
+  praxeological claims:
+    order : ServedInOrder plan
+
+  situational conditions:
+    comparable : stock.ComparableServiceable
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    time : praxis.Time
+    stock : Stock praxis agent time
+    plan : AllocationPlan stock
+    fewer : Finset praxis.Means
+    more : Finset praxis.Means
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    stock.unitsAlike : ∀ unit ∈ stock.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ stock.serves
+    plan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ plan.wouldServe subStock, want ∈ stock.serves
+
+  logical background: [propext, Quot.sound]
+
+  (5 trailing binders belong to the conclusion, not the signature)
+```
+
+Hold it against the manifest of `marginal_utility`. Swap dominance is
+gone, and so is independence of uses; in their place, one claim and
+one condition, neither of which the Rothbard route carries. The two
+carried conditions and the logical background are the same. This is
+what the second target was for: not a verdict on one reconstruction
+but a trade between two, computed from the signatures rather than
+argued.
+
+**The two premise sets, related.** Are the routes independent, then?
+Not quite, and the relation runs one way. Given Rothbard's premise,
+independence of uses, and asymmetry of preference, the agent serves
+in order of urgency. Rothbard's premises entail Mises's bridge. The
+asymmetry is the third claim under *The claims*, and this is the
+theorem that spends it — the first in the library to force any
+property on preference at all; it is recorded as ours, because no
+sentence of either author states it.
+
+{docstring Apodictic.Contrast.rothbard_entails_servedInOrder}
+
+The converse fails. A frame can rank wants and serve them in order and
+still be too coarse to rank bundles, and then serving in order holds
+where swap dominance does not.
+
+{docstring Apodictic.Model.servedInOrder_not_entail_swapDominant}
+
+So on the allocation Mises's premise is strictly the weaker. The
+premise sets are still incomparable, because his route pays for the
+weaker premise with comparability of wants, which Rothbard's never
+needs. Mises asks less of the agent's plan and more of his value
+scale. And the price is paid in situations: there are agents to whom
+Rothbard's law applies and Mises's does not. The gap is narrow, and
+the reason it is narrow is itself a small finding — swap dominance
+already ranks each served want against each unserved one the good
+could reach, so the only pairs left unranked are those that never sit
+on opposite sides of a margin.
+
+{docstring Apodictic.Model.rothbard_applies_where_mises_is_silent}
+
+**Where this leaves the question.** *The finding* ended on whether
+praxeology may help itself to a standing plan. Mises's route does not
+escape that question; it meets it in another form. His premise is as
+counterfactual as Rothbard's — it says what the agent would serve at
+every smaller supply — and he restricts value scales exactly as
+Rothbard does, three chapters earlier: "These scales have no
+independent existence apart from the actual behavior of individuals"
+(ch. IV, §2). Where Rothbard exempts the law by name, Mises simply
+announces that the counterfactual costs nothing: "We do not
+transcend the sphere of praxeological reasoning in establishing the
+following definition". Neither warrants the premise. That is as far as
+this part goes.
+
 # The horses in Lean
 
 The case from the opening, built. It does a second job at the same
@@ -705,7 +931,10 @@ structure DemonstratedPreference (praxis : ActionFrame) : Prop where
 ```
 
 The second is the claim that there is any action at all. Action itself
-is a definition here, and no theorem uses it yet.
+is a definition here, and no derivation of the law uses it. It has
+been tried once. Mises appeals to it to close his dilemma, and a frame
+with exactly one action shows the appeal falls short of what he needs;
+the details are under *Mises's route*.
 
 {docstring Apodictic.Action}
 

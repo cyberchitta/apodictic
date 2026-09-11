@@ -48,7 +48,7 @@ const RULES = [
   { pattern: /Commitments\.lean/,
     why: "Commitments.lean was renamed to Praxeology.lean" },
   // --- part slugs dropped by the restructure (2026-09-06) ---
-  { pattern: /href="\/The-Result\/(Axioms|Commitments|Hypotheses|Theorems|Vocabulary|Findings|Not-in-the-base|Consistency|The-receipt|The-one-premise)\//,
+  { pattern: /href="\/The-Result\/(Axioms|Commitments|Hypotheses|Theorems|Vocabulary|Findings|Not-in-the-base|Consistency|The-receipt|The-one-premise|The-one-claim)\//,
     why: "part renamed by the restructure; this link 404s" },
 ];
 

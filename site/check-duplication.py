@@ -11,7 +11,10 @@ So this script sorts every repeat into three buckets and reports them apart:
 
   SIGNATURES   emitted Lean identifiers -- "praxis actionframe agent praxis
                agent time praxis time stock" and the like.  Repeats wherever
-               the same {docstring} renders.  Not text.  Not fixable.
+               the same {docstring} renders.  Not text.  Not fixable.  The
+               printed output of a command (`#manifest`, rendered as a
+               `lean-output` block) is filed the same way: the compiler
+               wrote it, and two theorems' manifests share their furniture.
 
   QUOTATIONS   words of Mises or Rothbard.  A summary page and a claim's
                pedigree BOTH have to cite the sentence they are about; a rule
@@ -65,6 +68,8 @@ AUTHORED = [
     "Apodictic/Apodictic/Allocation.lean",
     "Apodictic/Apodictic/Mises.lean",
     "Apodictic/Apodictic/Action.lean",
+    "Apodictic/Apodictic/Contrast.lean",
+    "Apodictic/Apodictic/Consistency.lean",
 ]
 
 # Runs the human has ruled may stand in more than one place.  Each entry is a
@@ -91,7 +96,7 @@ STOP = set(
 TAG = re.compile(r"<(/?)(\w+)[^>]*?(/?)>")
 WORD = re.compile(r"[A-Za-z0-9’']+")
 OPENS_DOCSTRING = re.compile(
-    r'class="namedocs"|hl lean block|class="signature'
+    r'class="namedocs"|hl lean block|hl lean lean-output|class="signature'
 )
 
 
