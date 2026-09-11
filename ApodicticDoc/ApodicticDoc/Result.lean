@@ -379,10 +379,9 @@ Urgency is that ranking, restricted to the end he loses. Take a horse
 away, and the end he gives up is one he would have served with six and
 does not serve with five — an unserved end at the smaller stock.
 Served-over-unserved has already ranked it below everything still
-served. "He gives up the least urgent of the wants which the larger
-stock would have satisfied" (p. 25) is that restriction. That the
-larger stock is exactly one horse larger does no work beyond naming
-which end is the lost one.
+served. Rothbard's horse sentence, quoted at the start, says exactly
+that and nothing more. That the larger stock is exactly one horse
+larger does no work beyond naming which end is the lost one.
 
 {docstring Apodictic.urgency_principle}
 
