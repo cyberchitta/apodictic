@@ -213,3 +213,9 @@ session to session.
 Mises, *Human Action* (esp. chs. 1–7); Rothbard, *Man, Economy, and
 State* (esp. ch. 1). When citing, verify wording against the Mises
 Institute editions — do not quote from memory.
+
+The extraction in `_notes/sources/*.txt` wraps mid-word with hyphens,
+so a plain `rg` MISSES any phrase spanning a line break and reports a
+quotation that is present as absent. Rejoin `-\s*\n\s*` and collapse
+whitespace before searching; treat a miss on a long phrase as a reason
+to retry with a shorter one, never as a verdict.
