@@ -1,13 +1,13 @@
 <section><h1>1.4. The one claim<span class="permalink-widget inline"><a href="/The-Result/The-one-claim/" title="Permalink">🔗</a></span></h1><p>The library contains no <code>axiom</code>. Every praxeological claim is written
 as a structure, and a theorem that needs one takes it as a named
-assumption. So to see what a theorem rests on, you read its statement.</p><p>A linter keeps that list honest. <code>#lint only unusedArguments</code> breaks
-the build if an assumption is listed but the proof never uses it, so
-little can be listed for show. Little, and not nothing: the linter can
-be switched off, which makes keeping it on a promise rather than
-something the machine guarantees, and it has two further limits that
-let an idle hypothesis through. All three are set out with the
-manifest below, and one of them turns up a finding. It is never
-switched off here.</p><p>Each claim records three things. <strong>Source</strong> is a citation, or
+assumption. So to see what a theorem rests on, you read its statement.</p><p>A linter keeps that list honest. <code>#lint only unusedArguments</code> refuses
+the build when a listed assumption turns out to be idle, so little
+survives that is there for show. Little, and not nothing: the linter
+is something we choose to leave running rather than something imposed
+on us, and two further gaps let an unused hypothesis slip past even
+while it runs. All three are set out with the manifest below, where
+one of them becomes a finding in its own right. It is never switched
+off here.</p><p>Each claim records three things. <strong>Source</strong> is a citation, or
 "tacit". <strong>Status</strong> is one of three verdicts: explicit-in-tradition
 (Rothbard or Mises say it), suppressed-premise (they use it without
 saying it), or our-reconstruction (a decision the tradition never

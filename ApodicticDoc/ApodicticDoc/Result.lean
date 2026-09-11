@@ -22,11 +22,12 @@ inside the structures the theorem takes as arguments — and they are on
 the manifest too, because the command that derives it reads one level
 in. There is no longer anywhere for an assumption to sit unlisted.
 
-The list is not padded, either. `#lint only unusedArguments` breaks
-the build if an assumption is listed but the proof never uses it. That
-is the whole reason to do this on a machine: it will not let the list
-grow, and it will not let it shrink. Its three limits are stated where
-the manifest is, and one of them turns up a finding.
+The list is not padded, either. A linter refuses to let a hypothesis
+stand unless the proof actually spends it, so nothing can be carried
+for appearance. That is the whole reason to do this on a machine: it
+will not let the list grow, and it will not let it shrink. The limits
+of that guarantee are set out where the manifest is, and one of them
+is itself a finding.
 
 Every docstring below is pulled out of the library when this page is
 built. What you read is what was checked.
@@ -115,9 +116,9 @@ Rothbard's own premise packs two claims into one sentence: that a man
 acts with the means he has, and that the wants he serves are "the most
 urgent of the not yet satisfied wants" (*MES* p. 24). Only the second
 does any work here. And it does that work in the subjunctive — exactly
-as his own argument does, when it sets six horses beside five and asks
-which want "the larger stock would have satisfied" (p. 25). No single
-real act can answer that.
+as his own argument does, when it holds six horses up against five to
+ask which want "the larger stock would have satisfied" (p. 25). No
+single real act can answer that.
 
 The subjunctive by itself is not the trouble, and it is worth saying
 why, because it is the obvious complaint and it fails. Reasoning about
@@ -203,7 +204,8 @@ Two demands, then, and the encoding keeps them apart:
   on the signature of every theorem that uses it. If it is false, the
   law is false.
 - The one its wording needs is a *hypothesis* of one theorem. Where it
-  fails the law says nothing — it is silent, not wrong.
+  does not hold, the law simply does not speak. It makes no false
+  claim; it makes none at all.
 
 Telling which of the two gave way in a particular case is exactly what
 an audit like this is for.
@@ -228,14 +230,14 @@ What else the audit turned up, beyond the one claim.
   "the marginal unit" takes that for granted; the law here holds for
   every want that goes.
 - One unit to one end is not needed at all. Rothbard assumes it and
-  says he is assuming it — "each unit of means is capable of serving
-  one of the ends", introduced with "We assume for simplicity"
-  (p. 26) — and it reads like a premise of the derivation. It is not a
-  premise of anything here. It was built into what a plan *is*, where
-  no statement showed it; taken out, no theorem asked for it back.
-  Where an extra unit adds no new end the law is simply silent, and
-  the six horses supply a case where it is not silent, so nothing is
-  lost. A simplification its own author flagged, and the ordering does
+  flags the assumption — "each unit of means is capable of serving one
+  of the ends", which he prefaces "We assume for simplicity" (p. 26) —
+  and it reads like a premise of the derivation. It is not a premise of
+  anything here. It was built into what a plan *is*, where no statement
+  showed it; taken out, no theorem asked for it back. A stock whose
+  next unit opens no further want is a case the law passes over in
+  silence, and the six horses are a case where it does not, so nothing
+  is lost. A simplification its own author flagged, and the ordering does
   not want it.
 - The proof never uses the fact that the end at the smaller supply is
   the marginal one. The law holds for every end served there against
@@ -258,8 +260,8 @@ What the law does not need, which is most of what it usually gets.
   size serve the same ends. So it bears on the wording, not on the
   derivation —
   which is why it is a hypothesis and not a praxeological claim. Rothbard makes
-  it part of what a supply *is* (p. 23), and where it fails the units
-  are not one good. But his definition does not deliver it. It speaks
+  it part of what a supply *is* (p. 23), and a stock where it fails is
+  not one good but several. But his definition does not deliver it. It speaks
   of units "equally capable of rendering the same service" — a fact
   about the units, where the wording needs a fact about the man's plan
   over them. One stock carries plans of both kinds
@@ -277,17 +279,17 @@ What the law does not need, which is most of what it usually gets.
 
 Findings about the formalizing rather than the doctrine.
 
-- Being able to tell two ends apart is a suppressed premise of the
-  phrase "this bundle, minus this end". It only came to light because
-  the proofs refuse classical logic.
+- The phrase "this bundle, minus this end" hides a premise: that the
+  two can be told apart in the first place. It only came to light
+  because the proofs refuse classical logic.
 - The claim that people act splits into three: a definition, a bridge,
   and an existence claim. Only the bridge could do deductive work, and
   nothing has needed it.
 - Never assert a claim about *every* structure of a given shape — say,
-  every plan the man might have. Given one plan, a rival can always be
-  built that breaks such a claim, so the claim is refutable by
-  construction. Assert it of the single plan a theorem is handed
-  instead, and that same construction becomes harmless. Better: it
+  every plan the man might have. Hand someone one plan and they can
+  cook up a neighbour of it that breaks the claim, so a claim of that
+  form is refutable by construction. Make it about the one plan the
+  theorem actually receives, and the same construction is harmless. Better: it
   turns into a result. One of the theorems below proves that two plans
   satisfying the claim cannot differ by a single swap — so "the"
   value scale is something proved here, not something assumed.
@@ -299,14 +301,14 @@ The library contains no `axiom`. Every praxeological claim is written
 as a structure, and a theorem that needs one takes it as a named
 assumption. So to see what a theorem rests on, you read its statement.
 
-A linter keeps that list honest. `#lint only unusedArguments` breaks
-the build if an assumption is listed but the proof never uses it, so
-little can be listed for show. Little, and not nothing: the linter can
-be switched off, which makes keeping it on a promise rather than
-something the machine guarantees, and it has two further limits that
-let an idle hypothesis through. All three are set out with the
-manifest below, and one of them turns up a finding. It is never
-switched off here.
+A linter keeps that list honest. `#lint only unusedArguments` refuses
+the build when a listed assumption turns out to be idle, so little
+survives that is there for show. Little, and not nothing: the linter
+is something we choose to leave running rather than something imposed
+on us, and two further gaps let an unused hypothesis slip past even
+while it runs. All three are set out with the manifest below, where
+one of them becomes a finding in its own right. It is never switched
+off here.
 
 Each claim records three things. *Source* is a citation, or
 "tacit". *Status* is one of three verdicts: explicit-in-tradition
@@ -419,8 +421,9 @@ once, to say that. After it the argument is urgency over again.
 
 {docstring Apodictic.marginal_utility}
 
-One result here is not a step in the derivation. The claim is asserted
-of one plan, not of every plan of its shape. What that gives up — that
+One result here is not a step in the derivation. The claim is made
+about a single plan rather than about every plan shaped like it. What
+that gives up — that
 the man's scale is the only one of its kind — comes back as a theorem,
 and it is shown here because the rest of the document leans on it.
 
@@ -563,8 +566,8 @@ machine guarantees. It can also be silenced one binder at a time, by
 prefixing a hypothesis with `_`, and doing that is how we record that
 the hypothesis does nothing: `marginal_utility_chain` carries one such
 binder, `_firstStep`, and that it does nothing is itself a finding.
-And it works a whole binder at a time, so it cannot see a hypothesis
-half of which is used — which happens in both marginal-utility
+And it judges each binder whole, so it cannot see a hypothesis half of
+which is used — which happens in both marginal-utility
 theorems.
 
 `#manifest` closes the second of those, and the output above is the

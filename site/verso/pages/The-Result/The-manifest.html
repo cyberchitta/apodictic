@@ -38,7 +38,7 @@ follows is what it printed.</p><code class="hl lean block" data-lean-context="ex
   logical background: [propext, Quot.sound]
 
   (3 trailing binders belong to the conclusion, not the signature)
-</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-21288" data-verso-hover="67">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">marginal_utility</span></span><span class="inter-text">
+</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-21434" data-verso-hover="67">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">marginal_utility</span></span><span class="inter-text">
 </span><span class="unknown token" data-binding=""></span></code><pre class="hl lean lean-output information"><span class="verso-message"><span class="text"></span><span class="text"></span><span class="text">manifest of Apodictic.marginal_utility
 
   praxeological claims:
@@ -127,7 +127,7 @@ form too, because of one line in it:</p><code class="hl lean block" data-lean-co
   logical background: [propext, Quot.sound]
 
   (3 trailing binders belong to the conclusion, not the signature)
-</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-24163" data-verso-hover="67">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">marginal_utility_chain</span></span><span class="inter-text">
+</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-24309" data-verso-hover="67">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">marginal_utility_chain</span></span><span class="inter-text">
 </span><span class="unknown token" data-binding=""></span></code><pre class="hl lean lean-output information"><span class="verso-message"><span class="text"></span><span class="text"></span><span class="text">manifest of Apodictic.marginal_utility_chain
 
   praxeological claims:
@@ -181,8 +181,8 @@ machine guarantees. It can also be silenced one binder at a time, by
 prefixing a hypothesis with <code>_</code>, and doing that is how we record that
 the hypothesis does nothing: <code>marginal_utility_chain</code> carries one such
 binder, <code>_firstStep</code>, and that it does nothing is itself a finding.
-And it works a whole binder at a time, so it cannot see a hypothesis
-half of which is used — which happens in both marginal-utility
+And it judges each binder whole, so it cannot see a hypothesis half of
+which is used — which happens in both marginal-utility
 theorems.</p><p><code>#manifest</code> closes the second of those, and the output above is the
 proof of it: <code>_firstStep</code> is listed, and marked <strong>listed, does no work</strong>,
 exactly where the linter has gone quiet. That is the line the chain
