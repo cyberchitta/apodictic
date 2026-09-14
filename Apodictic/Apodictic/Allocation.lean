@@ -105,7 +105,7 @@ def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
     plan.wouldServe fewer = plan.wouldServe more
 
 /-- **Comparability of the ends a good can serve** — a condition on
-the situation, NOT a praxeological claim (human ruling 2026-09-10).
+the situation, NOT a praxeological claim.
 
 Any two ends the good can serve are ranked one way or the other. It
 is confined to one stock's serviceable ends, not asserted of every

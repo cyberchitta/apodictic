@@ -277,8 +277,7 @@ def AtMostOneAction (praxis : ActionFrame) : Prop :=
 /-- **"Our assumption that there is action"** — bare existence.
 
 This is the parked action axiom, in the only form the tradition
-states it: there is action. See
-`_notes/2026-09-04-parked-axioms.md`. -/
+states it: there is action. -/
 def ActionOccurs (praxis : ActionFrame) : Prop :=
   Nonempty (Action praxis)
 
@@ -340,12 +339,11 @@ So the reading below uses only what the frame already has. It is the
 most generous reconstruction the existing vocabulary allows, and
 whatever it costs lands on the signature where it can be read. -/
 
-/-! Mises's bridge is now the praxeological claim
-`Apodictic.ServedInOrder` (human ruling 2026-09-10), and comparability
-of a good's serviceable ends is the situational condition
-`Stock.ComparableServiceable` (same ruling). Both were drafted here and
-have moved: claims live in `Praxeology.lean` and conditions beside the
-vocabulary they constrain. -/
+/-! Mises's bridge is the praxeological claim
+`Apodictic.ServedInOrder`, and comparability of a good's serviceable
+ends is the situational condition `Stock.ComparableServiceable`:
+claims live in `Praxeology.lean` and conditions beside the vocabulary
+they constrain. -/
 
 /-- **The ladder, derived the Misesian way.**
 

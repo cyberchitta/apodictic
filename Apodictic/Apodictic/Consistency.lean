@@ -838,13 +838,12 @@ route apply to this agent in full. `ComparableServiceable` fails, so
 `Mises.ladder_from_order` does not apply at all — its premise is
 unavailable.
 
-If comparability is ruled a CONDITION, this is what "Mises's law
-covers fewer situations" means concretely: an agent with two ends he
-has never had occasion to rank against each other. If it is ruled a
-CLAIM, then praxeology asserts no such agent exists, and this frame
-is a counter-example to the claim rather than a gap in the theorem's
-reach. The Lean is the same either way; the ruling decides what it
-means. -/
+Comparability is a condition, so this is what "Mises's law covers
+fewer situations" means concretely: an agent with two ends he has
+never had occasion to rank against each other. Were comparability a
+claim, praxeology would assert that no such agent exists, and this
+frame would be a counter-example to the claim rather than a gap in the
+theorem's reach. -/
 theorem rothbard_applies_where_mises_is_silent :
     SwapDominant marginPlan ∧ ¬ marginStock.ComparableServiceable :=
   ⟨margin_swapDominant, margin_not_comparable⟩

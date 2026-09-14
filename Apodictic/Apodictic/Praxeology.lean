@@ -252,9 +252,8 @@ structure ServedInOrder {praxis : ActionFrame} {agent : praxis.Agent}
 /-- **Asymmetry of preference** — if one bundle is preferred to
 another, the other is not preferred to the first.
 
-The "strict" reading of `Prefers` that the library has intended from
-the start and never asserted, because no theorem needed it. One does
-now: `Apodictic.Contrast.rothbard_entails_servedInOrder` argues by
+The "strict" reading of `Prefers`.
+`Apodictic.Contrast.rothbard_entails_servedInOrder` argues by
 contradiction from a preference running both ways, and without
 asymmetry there is no contradiction to draw.
 
@@ -266,7 +265,7 @@ a statement of his. The nearest explicit treatment is Nozick's
 reconstruction (1977), which is a critic's formalization and not the
 tradition's own words.
 
-Status: our-reconstruction (human ruling 2026-09-10). Recorded as
+Status: our-reconstruction. Recorded as
 ours rather than attributed, precisely because the search for a source
 came back empty.
 
@@ -287,9 +286,7 @@ ACTUALLY does with the stock he holds.
 The actual-action twin of `ServedInOrder`. That claim is subjunctive,
 asserted of a plan over sub-stocks the agent may not hold; this one is
 asserted of one allocation of one stock at one time, and speaks of
-no other stock and no other time. It is the first claim about actual
-action to appear on any signature in the library, and it is what the
-TEMPORAL reading of the law (`Apodictic.Temporal`) spends in place of
+no other stock and no other time. It is what the TEMPORAL reading of the law (`Apodictic.Temporal`) spends in place of
 a standing plan.
 
 Source: Rothbard, *MES*, ch. 1, §5.B, p. 24, in the passage that
@@ -318,8 +315,8 @@ Does not say:
    (`Stock.ComparableServiceable`), nor anything about the order
    between two ends both served.
 4. That the scale at this time bears on the scale at any other
-   (constancy). Refused as a claim and as a hypothesis (owner ruling
-   2026-09-11); where the temporal reading needs it, the library
+   (constancy). The library asserts it neither as a claim nor as a
+   condition; where the temporal reading would need it, the library
    exhibits the failure instead (`Apodictic.Model`). -/
 structure ActsInOrder {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}

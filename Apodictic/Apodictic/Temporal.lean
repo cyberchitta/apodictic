@@ -36,7 +36,7 @@ and the two cases come apart:
   (`LadderJudgedLaterFromOrder`, refuted in `Apodictic.Model`).
 
 What separates the two is constancy of the scale across the two times,
-and that is refused (owner ruling 2026-09-11): Mises holds that scales
+and the library does not assume it: Mises holds that scales
 "have no independent existence apart from the actual behavior of
 individuals" (ch. IV, §2), and Rothbard, in the sentence after his
 horse-by-horse history, that units "may and will be valued differently
