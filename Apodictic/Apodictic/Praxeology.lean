@@ -314,8 +314,8 @@ utilities only as deduced from the concrete actions of human beings"
 (p. 882). On their account the sentence holds of every act by
 interpretation, and no act could contradict it. Here `PrefersEnd` is a
 ranking kept distinct from the allocation, so the claim constrains the
-act: an act that passes over a preferred end the good is believed able
-to serve, while serving a lesser one, refutes it. Only the ordering
+act: an act that passes over a preferred end he believes the good can
+serve, while serving a lesser one, refutes it. Only the ordering
 half of Rothbard's sentence is taken, not its "scarce means" half.
 
 Does not say:

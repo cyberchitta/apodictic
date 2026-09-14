@@ -347,18 +347,22 @@ uses. And only claims meant to hold always belong here; a
 condition that says when a law applies is a hypothesis instead, and
 those have a part of their own below.
 
-There are three. The first is the premise of Rothbard's derivation,
+There are four. The first is the premise of Rothbard's derivation,
 and on his route it is the only claim the law needs. The second is the
 premise of Mises's, reconstructed in the same vocabulary; the third is
 asymmetry of preference, which neither derivation spends and one
-comparison between them does. Each docstring names the theorems that
-carry it.
+comparison between them does. The fourth is the only one about what a
+man actually does, rather than what he would do: the premise of the
+ladder read as a history. Each docstring names the theorems that carry
+it.
 
 {docstring Apodictic.SwapDominant}
 
 {docstring Apodictic.ServedInOrder}
 
 {docstring Apodictic.AsymmetricPreference}
+
+{docstring Apodictic.ActsInOrder}
 
 # The conditions
 
@@ -650,7 +654,7 @@ time — because Mises's own definition has that shape: the marginal
 employment is the one a man makes at n units "but would not make if,
 other things being equal, his supply were only n–1 units". A reading
 on which the ladder is a history of acquisitions is a separate target,
-and untouched.
+set out under *The ladder as a history*.
 
 {docstring Apodictic.Mises.marginalEmployment}
 
@@ -867,14 +871,17 @@ from the law it is used to prove.
 weaker on the allocation, and a reader might hope that weakening
 further reaches something about actual choices alone. Here is the
 reason to expect not. The law compares two supplies, and the man
-holds one of them. Whatever premise delivers the law has to say
-something about the supply he does not hold, and the only thing that
-can be said about it is what he would do with it. Weakening the
+holds one of them. Whatever premise delivers the law at one moment has
+to say something about the supply he does not hold, and the only thing
+that can be said about it is what he would do with it. Weakening the
 premise changes how much it says in that tense; it cannot change the
 tense. That is a reason, not a result: nothing here proves that no
 premise about actual choices can reach the law, and no one has tried
 to prove it. What the audit has is two routes, each resting on a
-standing counterfactual its author disowns, and no third found.
+standing counterfactual its author disowns. A third reading, where the
+man held the smaller supply at an earlier moment, speaks only of what
+he did; it is set out under *The ladder as a history*, and it pays in a
+different coin.
 
 **One shape, if you like.** This last is a reading and not a
 finding, and it is offered as one. The two defects the audit turned
@@ -898,6 +905,144 @@ began with — whether the certainty Mises claimed for this law is the
 certainty of a theorem — has an answer of the same width. The
 derivation is as certain as its premise. The premise is the part
 nobody has derived.
+
+# The ladder as a history
+%%%
+file := "The-ladder-as-a-history"
+%%%
+
+Both routes read the ladder at one moment. The man holds six horses,
+and the law holds them up against the five he might have held. There
+is another way to read it, and Rothbard tells it that way himself:
+"suppose that the isolated individual successively finds one horse,
+then a second, then a third" (p. 24). Mises's ladder runs in the same
+direction, from n–1 units to n. Read like that, the law is not about a
+plan at all. It is about two things the man actually did: what he
+served when he held n–1 units, and what he serves once he holds n. No
+stock he does not hold comes into it, and nothing answers in advance
+for every stable he might cut from his own.
+
+The library carries this reading in a module of its own, which can see
+neither route's premise. Its objects are two actual allocations, the
+wants he served with the stock he held at each moment, and a supply
+that grew from one moment to the other by one unit. Both definitions
+are under *The vocabulary*.
+
+What it spends in place of a plan is the fourth claim under *The
+claims*, `ActsInOrder`, and the only claim in the library about what a
+man actually does: in what he serves with the stock he holds, he never
+passes over a want he prefers, and believes the good can serve, for
+one he ranks lower.
+
+**The question the reading forces.** Rothbard goes on: "When the second
+horse is found, he will be put to work satisfying the most urgent of
+the wants remaining. These wants, however, must be ranked lower than
+the wants that the previous horse has satisfied." Ranked lower on
+which scale? The man ranks at every moment he acts. He ranked when he
+held one horse, and he ranks again when he holds two. The sentence does
+not say which ranking it means, and neither does Mises's. A proof
+assistant will not let that go unsaid, so the ladder takes the moment
+whose scale does the ranking as an argument:
+
+{docstring Apodictic.Temporal.Ladder}
+
+The two answers come apart.
+
+**Judged on the earlier scale, the ladder is a theorem.**
+
+{docstring Apodictic.Temporal.ladder_judged_earlier}
+
+```lean (name := manifestTemporal)
+#manifest Temporal.ladder_judged_earlier
+```
+```leanOutput manifestTemporal
+manifest of Apodictic.Temporal.ladder_judged_earlier
+
+  praxeological claims:
+    order : ActsInOrder before
+
+  situational conditions:
+    comparable : earlier.ComparableServiceable
+    sameJobs : later.serves ⊆ earlier.serves
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    agent : praxis.Agent
+    earlierTime : praxis.Time
+    laterTime : praxis.Time
+    earlier : Stock praxis agent earlierTime
+    later : Stock praxis agent laterTime
+    before : Allocation earlier
+    after : Allocation later
+    least : praxis.End
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    earlier.unitsAlike : ∀ unit ∈ earlier.units, ∀ (want : praxis.End), praxis.Believes agent earlierTime unit want ↔ want ∈ earlier.serves
+    later.unitsAlike : ∀ unit ∈ later.units, ∀ (want : praxis.End), praxis.Believes agent laterTime unit want ↔ want ∈ later.serves
+    before.servesOnlyWhatItCan : ∀ want ∈ before.served, want ∈ earlier.serves
+    after.servesOnlyWhatItCan : ∀ want ∈ after.served, want ∈ later.serves
+
+  logical background: [propext, Quot.sound]
+
+  (4 trailing binders belong to the conclusion, not the signature)
+```
+
+Read what is not on it. The supply growing is not a hypothesis: added
+as one, the linter refuses it as unused. Nothing about the later scale
+appears, nothing about how the later allocation was chosen, and
+nothing about which moment came first. The one condition across the
+two moments, `sameJobs`, is about belief: whatever the good is believed
+to serve later it was believed to serve earlier, so that the want the
+new horse goes to was on the earlier scale at all.
+
+That makes it a short theorem, and it should be read as one. What it
+says is about the earlier act: whatever he passed over then ranked
+below whatever he served then. The want the second horse later goes to
+is simply one of the wants he passed over. The increment is narration.
+On this reading the ladder is acting in order, restated about a want
+the next horse happens to serve.
+
+**Judged on the later scale, it does not follow.** Grant everything a
+premise about one moment can give, at both moments: he acts in order,
+the good's wants are comparable, preference is asymmetric. Grant across
+them that the supply grew by one and that the good is believed to serve
+the same wants. Then ask for the ladder on the later scale:
+
+{docstring Apodictic.Temporal.LadderJudgedLaterFromOrder}
+
+{docstring Apodictic.Model.later_judged_ladder_fails}
+
+The frame that refutes it is small. Two moments, two wants, one horse
+and then two. With one horse he serves the want most urgent then. With
+two he serves both, and by then the other want has become the more
+urgent. Each act is in order on its own scale. But on the later scale
+the want the second horse went to outranks the want the first horse
+served, and the ladder, judged there, fails.
+
+**What would close the gap, and why it is not assumed.** A relation
+between the man's scales at the two moments: that the later ranks what
+the earlier ranked, the same way. Both authors deny it. Mises: "value
+judgments are not immutable" (*Human Action*, ch. V, §4). Rothbard's
+own actor, a few pages before the horses, changes his mind between
+moments, and "the ranking on his preference scale shifts to this
+order" (p. 18). So the library does not assume constancy, as a claim or
+as a condition. Where the reading would need it, the frame above shows
+what goes missing.
+
+They deny more than that, and it bears on the claim this reading does
+spend. Both hold that a scale of value exists only as it is read off
+what a man does, so a scale and the act it was read from cannot
+disagree. The passages are quoted in `ActsInOrder`'s docstring under
+*The claims*. The library keeps the ranking apart from the act, so
+that the claim can say something an act could contradict, and that is
+why its status is our reconstruction and not theirs.
+
+**The trade.** The counterfactual routes need a plan that no act
+exhibits. The history needs a scale that no act can show to have stayed
+put. Either way the law rests on something the authors' own account of
+value scales rules out. Reading the ladder as a history moves the cost;
+it does not remove it.
 
 # The horses in Lean
 
@@ -975,8 +1120,8 @@ more or fewer of them.
 {docstring Apodictic.AllocationPlan}
 
 Two conditions sit a level down, as fields of the two structures every
-theorem above takes as arguments. `servesOnlyWhatItCan` says a unit is
-only ever put to an end the good is believed able to serve.
+theorem above takes as arguments. `servesOnlyWhatItCan` says no unit
+is put to a job the man does not believe the good can do.
 `unitsAlike`, a field of the stock, says every unit is believed to
 serve exactly the same ends — and that is what fixes the range of
 `stock.serves`, which is in turn what the one claim quantifies over.
@@ -1003,6 +1148,14 @@ indexed by which exact units the man holds; that it depends only on how
 many of them there are is a separate named condition,
 `AllocationPlan.Homogeneous`, given in full under *The conditions*
 along with the other two.
+
+The history reading, under *The ladder as a history*, puts an actual
+allocation where the plan was, and reads the supply growing as
+something that happened.
+
+{docstring Apodictic.Allocation}
+
+{docstring Apodictic.Stock.Grows}
 
 # Claims no theorem uses
 
