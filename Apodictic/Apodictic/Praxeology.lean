@@ -207,8 +207,11 @@ than the least urgent or least painful among all those wants which
 could be removed by means of the supply n–1"; and the bridge sentence
 the derivation turns on, "It is nothing else than the reverse of the
 statement that what satisfies more is preferred to what gives smaller
-satisfaction." Compare Mises ch. IV, §2: "Every action is always in
-perfect agreement with the scale of values or wants". Rothbard states
+satisfaction." Compare Mises ch. IV, §2, where the agreement is
+interpretive rather than a constraint: "Every action is always in
+perfect agreement with the scale of values or wants because these
+scales are nothing but an instrument for the interpretation of a man's
+acting." Rothbard states
 the doctrine in the same family: "action uses scarce means to satisfy
 the most urgent of the not yet satisfied wants" (*MES* p. 24).
 
@@ -283,23 +286,37 @@ structure AsymmetricPreference (praxis : ActionFrame) (agent : praxis.Agent)
 urgent is passed over for something less urgent, in what the agent
 ACTUALLY does with the stock he holds.
 
-The actual-action twin of `ServedInOrder`. That claim is subjunctive,
-asserted of a plan over sub-stocks the agent may not hold; this one is
-asserted of one allocation of one stock at one time, and speaks of
-no other stock and no other time. It is what the TEMPORAL reading of the law (`Apodictic.Temporal`) spends in place of
-a standing plan.
+If the agent serves an end, and prefers to it another end he believes
+the good can serve, he serves that end too. The actual-action twin of
+`ServedInOrder`: that claim is subjunctive, asserted of a plan over
+sub-stocks the agent may not hold; this one is asserted of one
+allocation of one stock at one time. It is what the TEMPORAL reading
+of the law (`Apodictic.Temporal`) spends in place of a standing plan.
 
 Source: Rothbard, *MES*, ch. 1, §5.B, p. 24, in the passage that
 narrates the acquisition of horses one by one: "The first horse will
 fulfill the most urgent wants that a horse can serve; this follows
 from the universal fact that action uses scarce means to satisfy the
 most urgent of the not yet satisfied wants". Mises, *Human Action*,
-ch. IV, §2: "Every action is always in perfect agreement with the
-scale of values or wants".
+ch. IV, §2, states the same agreement and gives its ground: "Every
+action is always in perfect agreement with the scale of values or
+wants because these scales are nothing but an instrument for the
+interpretation of a man's acting."
 
-Status: explicit-in-tradition. Both authors state it of action itself,
-not of a disposition; the reconstruction here is only the ordering
-half, stated for one allocation.
+Status: our-reconstruction. The words are Rothbard's; the claim is
+not quite his. Both authors deny that a value scale exists apart from
+the action it is read from. Mises: "The scale of value manifests
+itself only in real acting; it can be discerned only from the
+observation of real acting. It is therefore impermissible to contrast
+it with real acting and to use it as a yardstick for the appraisal of
+real actions" (ch. V, §4). Rothbard: "praxeology may deal with
+utilities only as deduced from the concrete actions of human beings"
+(p. 882). On their account the sentence holds of every act by
+interpretation, and no act could contradict it. Here `PrefersEnd` is a
+ranking kept distinct from the allocation, so the claim constrains the
+act: an act that passes over a preferred end the good is believed able
+to serve, while serving a lesser one, refutes it. Only the ordering
+half of Rothbard's sentence is taken, not its "scarce means" half.
 
 Does not say:
 
@@ -307,17 +324,24 @@ Does not say:
    other time. In particular nothing about how this allocation
    relates to one made at another time with a different stock — that
    relation, if any, is a theorem's to state and pay for.
-2. That action reveals preference. This claim runs the other way — the
-   scale constrains what is served — and no bridge from an act to a
-   preference (demonstrated preference, parked) appears here or
-   anywhere in the library.
+2. That action reveals preference. This claim runs from the ranking to
+   the act. The bridge from an act to a preference (demonstrated
+   preference) is parked; a bridge that read the ranking off the act
+   would make this claim hold by construction, which is the authors'
+   reading above.
 3. That the ends a good can serve are comparable
    (`Stock.ComparableServiceable`), nor anything about the order
    between two ends both served.
 4. That the scale at this time bears on the scale at any other
-   (constancy). The library asserts it neither as a claim nor as a
+   (constancy). Mises denies it: "value judgments are not immutable"
+   (ch. V, §4). The library asserts it neither as a claim nor as a
    condition; where the temporal reading would need it, the library
-   exhibits the failure instead (`Apodictic.Model`). -/
+   exhibits the failure instead (`Apodictic.Model`).
+5. How much is served: not that every unit is used, nor that as many
+   ends are served as the stock allows. An agent who serves nothing
+   satisfies it.
+6. Anything about ends the agent does not believe the good can serve.
+   Passing those over is a matter of belief, not of this claim. -/
 structure ActsInOrder {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (allocation : Allocation stock) : Prop where
