@@ -19,12 +19,15 @@ switch to structures made both crashes unreachable. History lives in
 authors := ["restlessronin"]
 %%%
 
-Mises claimed that the theorems of praxeology carry the same certainty
-as the theorems of mathematics. They follow from the plain fact that
-people act, he thought, as strictly as a theorem follows from its
-axioms — and, being got that way, they are not the sort of claim
-evidence can settle. No observation could confirm one, and none could
-refute one. That is the claim being tested here.
+Mises claimed that the theorems of praxeology are "perfectly certain
+and incontestable, like the correct mathematical theorems" (*Human
+Action*, ch. II, §3). They follow, he held, from the plain fact that
+people act, as strictly as a theorem follows from its axioms, and from
+that he drew a consequence: they are "not subject to verification or
+falsification on the ground of experience and facts" (ch. II, §1). The
+consequence holds only if the deduction does. That is what is tested
+here — whether the deduction runs from the fact of action alone, and
+if not, what else it needs.
 
 The test is run on one law, the law of marginal utility, and on both
 derivations the tradition gives it: Rothbard's in full, and Mises's

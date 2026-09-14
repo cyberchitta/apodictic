@@ -84,7 +84,10 @@ before the formal statement makes it look inevitable. Rothbard's
 argument compares six horses with five. But the man has six. What he
 would do with five is not anything he does — it is a plan covering
 stocks he does not own. His own words give it away: "which the larger
-stock *would have* satisfied".
+stock *would have* satisfied". (His first passage, the one about finding
+horses one after another, can be read with no plan at all — as a
+history of what he did with each. That reading returns under *The
+ladder as a history*.)
 
 There is a second horse passage, and it is the one that decides how
 the plan has to be written down (p. 27):
@@ -105,8 +108,8 @@ six horses.
 
 # The finding
 
-The law of marginal utility needs exactly one praxeological claim,
-and that claim is not about action.
+On Rothbard's route the law of marginal utility needs exactly one
+praxeological claim, and that claim is not about action.
 
 It is about what the man *would* do. For each string of horses he
 might have, which wants would he serve? That is a plan, not a choice
@@ -218,7 +221,12 @@ help itself to that standing plan?
 Rothbard's is not the only derivation. Mises reaches the same law by
 a different argument, and that argument, rebuilt the same way, turns
 out to rest on a claim of the same kind, which he does not warrant
-either. It is set out under *Mises's route*.
+either. It is set out under *Mises's route*. And there is a third way
+to read the ladder — as a history of what the man served as his stock
+grew — which spends a claim about what he actually does and no plan at
+all. It reaches the law only on the scale he ranked by before the
+stock grew, and pays for that in a different coin. The part called
+*The ladder as a history* sets it out.
 
 # The other findings
 
@@ -308,7 +316,9 @@ Findings about the formalizing rather than the doctrine.
   because the proofs refuse classical logic.
 - The claim that people act splits into three: a definition, a bridge,
   and an existence claim. Only the bridge could do deductive work, and
-  nothing has needed it.
+  nothing has needed it. The one claim about what a man actually does
+  that a theorem spends, under *The ladder as a history*, is not the
+  bridge: it says nothing about what an act shows he prefers.
 - Never assert a claim about *every* structure of a given shape — say,
   every plan the man might have. Hand someone one plan and they can
   cook up a neighbour of it that breaks the claim, so a claim of that
@@ -367,7 +377,7 @@ it.
 # The conditions
 
 
-The theorems take four assumptions besides the claims. Each says
+The theorems take five assumptions besides the claims. Each says
 something about the situation rather than about action as such, and
 each is written into the statement, so a reader can point at it and
 say: that is the one that did not hold. Where one fails, the law says
@@ -381,14 +391,19 @@ nothing — it is silent, not wrong.
 - `plan.Homogeneous`: the plan depends only on how many units there
   are, not on which ones. Only the size-based form of the law needs it.
 - `stock.ComparableServiceable`: any two wants the good can serve are
-  ranked one way or the other. Only Mises's route needs it; Rothbard's
-  never does.
+  ranked one way or the other. Mises's route and the ladder read as a
+  history need it; Rothbard's never does.
+- `earlier.SameJobs later`: the good is believed to do no job at the
+  later moment that it was not believed to do at the earlier one. Only
+  the ladder read as a history needs it, and it is the one condition
+  there that spans two moments — a constancy, of belief about the good
+  rather than of the scale.
 
 Nothing here has to say which plan is the man's. A theorem is handed a
 plan and makes its claim about that one, so there is no rival plan
 anyone could build to refute it.
 
-All four are given in full here, in the order they are listed above,
+All five are given in full here, in the order they are listed above,
 because these are the assumptions a reader has to judge.
 
 {docstring Apodictic.Stock.OneMore}
@@ -398,6 +413,8 @@ because these are the assumptions a reader has to judge.
 {docstring Apodictic.AllocationPlan.Homogeneous}
 
 {docstring Apodictic.Stock.ComparableServiceable}
+
+{docstring Apodictic.Stock.SameJobs}
 
 # The theorems
 
@@ -618,7 +635,10 @@ exactly where the linter has gone quiet. That is the line the chain
 form was printed for. It does not close the third: a half-used
 hypothesis looks whole to both. And it brings a limit of its own — Lean draws no line between a
 signature and a conclusion, so the command cuts at the first anonymous
-binder and reports how many it dropped.
+binder and reports how many it dropped. A conclusion binder the author
+named, before that cut, is still listed under vocabulary: `fewer` and
+`more` above are bound in the conclusion, and so is `least` under *The
+ladder as a history*. No claim is about them; read the count.
 
 So the guarantee is narrower than "nothing here is idle": nothing here
 is idle except where the statement says so, in the only way Lean has
@@ -738,7 +758,7 @@ one the existing vocabulary allows: the agent serves in order of
 urgency. If the good can serve a want, and that want is more urgent
 than one on his plan, the plan has it too. That is a
 praxeological claim, subjunctive throughout like Rothbard's, and it is
-the second of the three under *The claims*.
+the second of the four under *The claims*.
 
 One thing more is needed, and it is a condition, not a claim: that
 every pair of wants the good can serve is ranked, one way or the
@@ -899,8 +919,9 @@ say.
 follows from its stated premise, that each premise is a claim about
 what the man would do, that each author restricts value scales to
 what he does do, and that neither warrants the exception. Not
-established: that the law is false, that praxeology cannot have it,
-or that no route from actual action exists. The question the audit
+established: that the law is false, or that praxeology cannot have
+it. A route from actual action does exist, and is a theorem; what it
+reaches and what it costs is under *The ladder as a history*. The question the audit
 began with — whether the certainty Mises claimed for this law is the
 certainty of a theorem — has an answer of the same width. The
 derivation is as certain as its premise. The premise is the part
@@ -922,8 +943,8 @@ served when he held n–1 units, and what he serves once he holds n. No
 stock he does not hold comes into it, and nothing answers in advance
 for every stable he might cut from his own.
 
-The library carries this reading in a module of its own, which can see
-neither route's premise. Its objects are two actual allocations, the
+The library carries this reading in a module of its own, which
+imports the claims and neither route's theorems. Its objects are two actual allocations, the
 wants he served with the stock he held at each moment, and a supply
 that grew from one moment to the other by one unit. Both definitions
 are under *The vocabulary*.
@@ -948,7 +969,10 @@ whose scale does the ranking as an argument:
 
 The two answers come apart.
 
-**Judged on the earlier scale, the ladder is a theorem.**
+**Judged on the earlier scale, the ladder is a theorem** — and a
+short one. Read it as acting in order restated about a want the next
+horse happens to serve, not as a route to the law; the manifest below
+is where that shows.
 
 {docstring Apodictic.Temporal.ladder_judged_earlier}
 
@@ -963,7 +987,7 @@ manifest of Apodictic.Temporal.ladder_judged_earlier
 
   situational conditions:
     comparable : earlier.ComparableServiceable
-    sameJobs : later.serves ⊆ earlier.serves
+    sameJobs : earlier.SameJobs later
 
   vocabulary (what the claims are about):
     praxis : ActionFrame
@@ -991,10 +1015,13 @@ manifest of Apodictic.Temporal.ladder_judged_earlier
 Read what is not on it. The supply growing is not a hypothesis: added
 as one, the linter refuses it as unused. Nothing about the later scale
 appears, nothing about how the later allocation was chosen, and
-nothing about which moment came first. The one condition across the
-two moments, `sameJobs`, is about belief: whatever the good is believed
-to serve later it was believed to serve earlier, so that the want the
-new horse goes to was on the earlier scale at all.
+nothing about which moment came first. One condition does span the
+two moments, and it is a constancy. `SameJobs` says that whatever the
+good is believed to serve later, it was believed to serve earlier — the
+plan's fixity moved from the scale to belief about the good. Without
+it the new horse's want need not have been on the earlier scale, and
+nothing could be said of it there. It is under *The conditions* with
+the rest.
 
 That makes it a short theorem, and it should be read as one. What it
 says is about the earlier act: whatever he passed over then ranked
@@ -1028,7 +1055,11 @@ own actor, a few pages before the horses, changes his mind between
 moments, and "the ranking on his preference scale shifts to this
 order" (p. 18). So the library does not assume constancy, as a claim or
 as a condition. Where the reading would need it, the frame above shows
-what goes missing.
+what goes missing. Rothbard, for his part, would not judge on the
+earlier scale at all: his man with two horses ranks the whole stock
+afresh, in "disregard of past events" (p. 27). Judged that way, the
+ladder is the one-moment law at the later time — which is the plan
+again, and the circle with it.
 
 They deny more than that, and it bears on the claim this reading does
 spend. Both hold that a scale of value exists only as it is read off
@@ -1040,9 +1071,20 @@ why its status is our reconstruction and not theirs.
 
 **The trade.** The counterfactual routes need a plan that no act
 exhibits. The history needs a scale that no act can show to have stayed
-put. Either way the law rests on something the authors' own account of
-value scales rules out. Reading the ladder as a history moves the cost;
-it does not remove it.
+put — or, on the reading that is a theorem, a belief that stayed put,
+which the same authors do not grant either. Either way the law rests on
+something the authors' own account of value scales rules out. Reading
+the ladder as a history moves the cost; it does not remove it.
+
+**What a failure would point at.** Where the ladder read as a history
+fails of a real case, its manifest says where to look, and it names
+three places: the man did not act in order (`ActsInOrder`); what he
+believed the good could do changed between the moments (`SameJobs`);
+or two of the good's wants were never ranked against each other
+(comparability). A scale that moved is not on the list, because no
+theorem here assumes it stayed put. That is what the reading pays in.
+A claim about actual action can be caught out by an act; the plan
+cannot be.
 
 # The horses in Lean
 
@@ -1106,7 +1148,8 @@ in; nothing earlier depends on having read them.
 The basic vocabulary is deliberately bare. Preference is just a
 relation: not assumed transitive, not assumed to rank every pair, and
 time is not assumed ordered. Properties get added when a theorem
-forces them, and so far none has.
+forces them, and so far one has: asymmetry, spent under *Mises's route*
+and by the rival-plan theorem under *The theorems*.
 
 {docstring Apodictic.ActionFrame}
 
@@ -1119,12 +1162,13 @@ more or fewer of them.
 
 {docstring Apodictic.AllocationPlan}
 
-Two conditions sit a level down, as fields of the two structures every
-theorem above takes as arguments. `servesOnlyWhatItCan` says no unit
+Two conditions sit a level down, as fields of the structures the
+theorems take as arguments — the stock, the plan, and on the history
+reading an allocation. `servesOnlyWhatItCan` says no unit
 is put to a job the man does not believe the good can do.
 `unitsAlike`, a field of the stock, says every unit is believed to
 serve exactly the same ends — and that is what fixes the range of
-`stock.serves`, which is in turn what the one claim quantifies over.
+`stock.serves`, which is in turn what the claims quantify over.
 Neither is a binder in any statement, and both are on the manifest
 regardless: `#manifest` reads one level in and reports them, because
 whoever supplies the argument has already discharged them.
@@ -1132,7 +1176,8 @@ whoever supplies the argument has already discharged them.
 The two are not alike, and the manifest does not pretend otherwise. A
 plan that puts a horse to a job the man does not believe a horse can
 do is not a situation that might obtain — it is an incoherent plan, so
-`servesOnlyWhatItCan` assumes nothing about the world. A lame horse is
+`servesOnlyWhatItCan` assumes nothing about the world, and the same
+field on an allocation, said of what he did, assumes nothing either. A lame horse is
 a situation that might obtain, so `unitsAlike` does. Which of the two
 a carried condition is cannot be read off the term; it is ruled by
 hand, and this is the ruling.
@@ -1147,11 +1192,13 @@ Interchangeability of units is *not* hidden down there. The plan is
 indexed by which exact units the man holds; that it depends only on how
 many of them there are is a separate named condition,
 `AllocationPlan.Homogeneous`, given in full under *The conditions*
-along with the other two.
+along with the others.
 
 The history reading, under *The ladder as a history*, puts an actual
 allocation where the plan was, and reads the supply growing as
-something that happened.
+something that happened. The second is carried by no theorem: added as
+a hypothesis of the earlier-judged ladder, the linter throws it out,
+and it appears only in the statement the counter-model refutes.
 
 {docstring Apodictic.Allocation}
 

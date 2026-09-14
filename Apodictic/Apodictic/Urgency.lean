@@ -126,13 +126,14 @@ This is what Rothbard means by "the" value scale, and here it is
 derived rather than presupposed. He writes as though the actor's
 ranking were simply given — "the" marginal unit, "the" least urgent
 want (*MES* pp. 24–27) — and never argues that there is only one.
-Swap dominance plus asymmetry delivers it. Asymmetry rides along as a
-hypothesis because `Prefers` has no properties assumed of it. -/
+Swap dominance plus asymmetry delivers it. Asymmetry is the
+praxeological claim `AsymmetricPreference`, spent here and by
+`Apodictic.Contrast.rothbard_entails_servedInOrder`; `Prefers` has no
+properties assumed of it otherwise. -/
 theorem no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
     {stock : Stock praxis agent time}
-    (asymmetry : ∀ X Y : Set praxis.End,
-      praxis.Prefers agent time X Y → ¬ praxis.Prefers agent time Y X)
+    (asymmetry : AsymmetricPreference praxis agent time)
     (plan rival : AllocationPlan stock)
     (dominance : SwapDominant plan) (rivalDominance : SwapDominant rival)
     (subStock : Finset praxis.Means) (onHand : subStock ⊆ stock.units)
@@ -182,7 +183,7 @@ theorem no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End]
         rintro rfl
         exact hunserved (Finset.mem_coe.mp hx)
   rw [hback] at hrivalBeats
-  exact asymmetry _ _ hplanBeats hrivalBeats
+  exact asymmetry.asym _ _ hplanBeats hrivalBeats
 
 #print axioms served_over_unserved
 #print axioms urgency_principle

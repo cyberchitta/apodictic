@@ -38,9 +38,9 @@ and the two cases come apart:
 What separates the two is constancy of the scale across the two times,
 and the library does not assume it: Mises holds that scales
 "have no independent existence apart from the actual behavior of
-individuals" (ch. IV, §2), and Rothbard, in the sentence after his
-horse-by-horse history, that units "may and will be valued differently
-whenever their position in the supply is different" (p. 24).
+individuals" (ch. IV, §2), and Rothbard's own actor, a few pages
+before the horses, changes his mind between moments: "the ranking on
+his preference scale shifts to this order" (p. 18).
 
 ## Isolation
 
@@ -122,7 +122,7 @@ theorem ladder_judged_earlier
     (before : Allocation earlier) (after : Allocation later)
     (order : ActsInOrder before)
     (comparable : earlier.ComparableServiceable)
-    (sameJobs : later.serves ⊆ earlier.serves) :
+    (sameJobs : earlier.SameJobs later) :
     Ladder before after earlierTime := by
   intro least hleast added haddedAfter haddedNotBefore
   obtain ⟨hleastServed, _minimality⟩ := hleast

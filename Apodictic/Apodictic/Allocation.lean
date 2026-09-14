@@ -120,8 +120,9 @@ words: "the scale of values or wants manifests itself only in the
 reality of action. These scales have no independent existence apart
 from the actual behavior of individuals" (*Human Action*, ch. IV, §2).
 
-Carried by the Mises route (`Apodictic.Mises.ladder_from_order`) and
-by no theorem on the Rothbard route. That asymmetry is a finding:
+Carried by the Mises route (`Apodictic.Mises.ladder_from_order`), by
+the ladder read as a history (`Apodictic.Temporal.ladder_judged_earlier`),
+and by no theorem on the Rothbard route. That asymmetry is a finding:
 swap dominance forces a comparison between every served end and every
 unserved serviceable one, so this condition can only fail for a pair
 that never straddles a margin — see
@@ -186,5 +187,26 @@ def Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent}
     (earlier : Stock praxis agent earlierTime)
     (later : Stock praxis agent laterTime) : Prop :=
   earlier.units ⊆ later.units ∧ later.units.card = earlier.units.card + 1
+
+/-- **The good is believed to do the same jobs** — whatever the good
+is believed to serve at the later moment, it was believed to serve at
+the earlier one: the later stock's serviceable ends are among the
+earlier stock's.
+
+A situational condition, and the one condition on the history reading
+that spans two moments. It is a constancy — of BELIEF about the good,
+not of the scale of values — and it is there so that the want the
+added unit goes to was on the earlier scale at all. Where a man learns
+a new use for the good between the two moments, the earlier-judged
+ladder is silent.
+
+Says nothing about the scale at either moment, about which units are
+held, or about the order of the two times. Carried by
+`Apodictic.Temporal.ladder_judged_earlier` and by nothing else. -/
+def Stock.SameJobs {praxis : ActionFrame} {agent : praxis.Agent}
+    {earlierTime laterTime : praxis.Time}
+    (earlier : Stock praxis agent earlierTime)
+    (later : Stock praxis agent laterTime) : Prop :=
+  later.serves ⊆ earlier.serves
 
 end Apodictic

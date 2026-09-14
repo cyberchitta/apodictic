@@ -258,7 +258,8 @@ another, the other is not preferred to the first.
 The "strict" reading of `Prefers`.
 `Apodictic.Contrast.rothbard_entails_servedInOrder` argues by
 contradiction from a preference running both ways, and without
-asymmetry there is no contradiction to draw.
+asymmetry there is no contradiction to draw; `Apodictic.no_rival_swap_dominant`
+spends it the same way.
 
 Source: tacit. No sentence in Mises or Rothbard asserts it. Rothbard's
 value scales are built from acts of choice, and one act cannot

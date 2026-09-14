@@ -863,7 +863,8 @@ the increment's want. It does not.
 
 Nothing here is exotic. The scale changed between the two times, which
 is the case both authors say a value scale cannot be assumed not to
-be (*Human Action*, ch. IV, §2; *MES* p. 24). -/
+be: "value judgments are not immutable" (*Human Action*, ch. V, §4);
+"the ranking on his preference scale shifts" (*MES* p. 18). -/
 
 /-- The end that is urgent at a time: `true` at the earlier time
 (`false`), `false` at the later (`true`). -/
