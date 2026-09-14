@@ -44,27 +44,27 @@ statement and judge for yourself whether they say the same thing.
 He sets it up twice. First by acquisition (*MES* p. 24):
 
 > The first horse will fulfill the most urgent wants that a horse can
-> serve; this follows from the universal fact that action uses scarce
-> means to satisfy the most urgent of the not yet satisfied wants.
+  serve; this follows from the universal fact that action uses scarce
+  means to satisfy the most urgent of the not yet satisfied wants.
 
 Then, for the diagram, by counting the ends (pp. 25–26):
 
 > We assume for simplicity that there are 10 ends which the means
-> could fulfill, and that each unit of means is capable of serving one
-> of the ends. If the supply of the good is 6 units, then the first
-> six ends, ranked in order of importance by the valuing individual,
-> are the ones that are being satisfied. Ends ranked 7–10 remain
-> unsatisfied.
+  could fulfill, and that each unit of means is capable of serving one
+  of the ends. If the supply of the good is 6 units, then the first
+  six ends, ranked in order of importance by the valuing individual,
+  are the ones that are being satisfied. Ends ranked 7–10 remain
+  unsatisfied.
 
 And then he takes a horse away (p. 25):
 
 > Assume that a man has a supply of six (interchangeable) horses. …
-> Suppose that he is now faced with the necessity of giving up one
-> horse. … Obviously, he gives up the least urgent of the wants which
-> the larger stock would have satisfied. Thus, if the individual was
-> using one horse for pleasure riding, and he considers this the least
-> important of his wants that were fulfilled by the six horses, the
-> loss of a horse will cause him to give up pleasure riding.
+  Suppose that he is now faced with the necessity of giving up one
+  horse. … Obviously, he gives up the least urgent of the wants which
+  the larger stock would have satisfied. Thus, if the individual was
+  using one horse for pleasure riding, and he considers this the least
+  important of his wants that were fulfilled by the six horses, the
+  loss of a horse will cause him to give up pleasure riding.
 
 That is the whole derivation. Everything below is an attempt to say it
 in a form a machine will check.
@@ -90,11 +90,11 @@ There is a second horse passage, and it is the one that decides how
 the plan has to be written down (p. 27):
 
 > suppose that the sixth horse that he had previously acquired (named
-> "Seabiscuit") he had placed in the service of pleasure riding.
-> Suppose that he now must lose another horse ("Man o' War") which had
-> arrived earlier, and which was engaged in the more important duty
-> (to him) of leading a wagon. He will still give up end 6 by simply
-> transferring Seabiscuit from this function to the wagon-leading end.
+  "Seabiscuit") he had placed in the service of pleasure riding.
+  Suppose that he now must lose another horse ("Man o' War") which had
+  arrived earlier, and which was engaged in the more important duty
+  (to him) of leading a wagon. He will still give up end 6 by simply
+  transferring Seabiscuit from this function to the wagon-leading end.
 
 Rothbard names two horses in order to insist that *which* horse goes
 makes no difference. That is only worth saying if the plan could have
@@ -637,10 +637,10 @@ part exists to ask.
 His statement of the law:
 
 > If the supply available increases from n–1 units to n units, the
-> increment can be employed only for the removal of a want which is
-> less urgent or less painful than the least urgent or least painful
-> among all those wants which could be removed by means of the supply
-> n–1.
+  increment can be employed only for the removal of a want which is
+  less urgent or less painful than the least urgent or least painful
+  among all those wants which could be removed by means of the supply
+  n–1.
 
 Two things differ from Rothbard's wording. The ladder runs upward, from
 n–1 to n, where Rothbard takes a horse away; and it singles out a least
@@ -683,14 +683,14 @@ premise the way Rothbard does. He holds that the law "is already
 implied in the category of action", and argues it so:
 
 > There are only two alternatives. Either there are or there are not
-> intermediate stages between the felt uneasiness which impels a man
-> to act and the state in which there can no longer be any action …
-> In the second case there could be only one action; as soon as this
-> action is consummated, a state would be reached in which no further
-> action is possible. This is manifestly incompatible with our
-> assumption that there is action; this case no longer implies the
-> general conditions presupposed in the category of action. Only the
-> first case remains.
+  intermediate stages between the felt uneasiness which impels a man
+  to act and the state in which there can no longer be any action …
+  In the second case there could be only one action; as soon as this
+  action is consummated, a state would be reached in which no further
+  action is possible. This is manifestly incompatible with our
+  assumption that there is action; this case no longer implies the
+  general conditions presupposed in the category of action. Only the
+  first case remains.
 
 The dilemma is encoded as it stands, with the second horn read through
 its stated consequence — there could be only one action — rather than
