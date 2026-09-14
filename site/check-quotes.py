@@ -94,8 +94,10 @@ def load_sources():
 
 def quotations(text):
     """Yield (quote, has_citation) for every double-quoted run of >=4 words."""
-    for m in re.finditer(r'"([^"\n]{16,400})"', text):
+    for m in re.finditer(r'"([^"\n]*)"', text):
         body = m.group(1)
+        if not 16 <= len(body) <= 400:
+            continue
         if len(body.split()) < 4:
             continue
         if body.lstrip().startswith(("lean", "http", "--")):
