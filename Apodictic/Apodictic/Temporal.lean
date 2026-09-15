@@ -98,7 +98,7 @@ What it spends: that the earlier allocation acts in order
 (`ActsInOrder before`); that the good's serviceable ends are
 comparable at the earlier time; and that whatever the good is
 believed to serve at the later time it was believed to serve at the
-earlier one (`sameJobs`) — the increment's want has to be on the
+earlier one (`noNewJobs`) — the increment's want has to be on the
 earlier scale at all before that scale can rank it.
 
 What it does NOT spend, and the signature shows: nothing about the
@@ -122,12 +122,12 @@ theorem ladder_judged_earlier
     (before : Allocation earlier) (after : Allocation later)
     (order : ActsInOrder before)
     (comparable : earlier.ComparableServiceable)
-    (sameJobs : earlier.SameJobs later) :
+    (noNewJobs : earlier.NoNewJobs later) :
     Ladder before after earlierTime := by
   intro least hleast added haddedAfter haddedNotBefore
   obtain ⟨hleastServed, _minimality⟩ := hleast
   have haddedServes : added ∈ earlier.serves :=
-    sameJobs (after.servesOnlyWhatItCan added haddedAfter)
+    noNewJobs (after.servesOnlyWhatItCan added haddedAfter)
   have hne : least ≠ added := by
     intro heq
     exact haddedNotBefore (heq ▸ hleastServed)

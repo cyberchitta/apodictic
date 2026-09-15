@@ -13,7 +13,7 @@ set_option verso.code.warnLineLength 0
 tag := "result"
 %%%
 
-How to read this page. A proof assistant will not let you skip a
+How to read this document. A proof assistant will not let you skip a
 step, and it makes you write the missing premise into the theorem's
 own statement. So there is one fixed place to look. Read the
 statement, then read the definitions it names, and you have seen
@@ -22,21 +22,14 @@ inside the structures the theorem takes as arguments — and they are on
 the manifest too, because the command that derives it reads one level
 in. There is no longer anywhere for an assumption to sit unlisted.
 
-The list is not padded, either. A linter refuses to let a hypothesis
-stand unless the proof actually spends it, so nothing can be carried
-for appearance. That is the whole reason to do this on a machine: it
-will not let the list grow, and it will not let it shrink. The limits
-of that guarantee are set out where the manifest is, and one of them
-is itself a finding.
-
-Every docstring below is pulled out of the library when this page is
+Every docstring below is pulled out of the library when this document is
 built. What you read is what was checked.
 
 # The horses
 
 The law of marginal utility is derived over three pages of *Man,
 Economy, and State*, and Rothbard derives it on a worked case: a man
-who owns six horses. This page follows that case throughout, and the
+who owns six horses. This document follows that case throughout, and the
 Lean returns to the same six horses once the theorems are stated. The point of working
 that way is that you can hold his paragraph beside the formal
 statement and judge for yourself whether they say the same thing.
@@ -108,10 +101,12 @@ six horses.
 
 # The finding
 
-On Rothbard's route the law of marginal utility needs exactly one
-praxeological claim, and that claim is not about action.
+The law of marginal utility needs exactly one praxeological claim,
+and that claim is not about action. That holds on both routes the
+authors wrote; a third reading, taken up at the end of this part,
+trades it for a claim about action.
 
-It is about what the man *would* do. For each string of horses he
+On Rothbard's route the claim is about what the man *would* do. For each string of horses he
 might have, which wants would he serve? That is a plan, not a choice
 he makes.
 
@@ -335,14 +330,14 @@ The library contains no `axiom`. Every praxeological claim is written
 as a structure, and a theorem that needs one takes it as a named
 assumption. So to see what a theorem rests on, you read its statement.
 
-A linter keeps that list honest. `#lint only unusedArguments` refuses
-the build when a listed assumption turns out to be idle, so little
-survives that is there for show. Little, and not nothing: the linter
-is something we choose to leave running rather than something imposed
-on us, and two further gaps let an unused hypothesis slip past even
-while it runs. All three are set out with the manifest below, where
-one of them becomes a finding in its own right. It is never switched
-off here.
+Nor can that list be padded. A theorem could carry a claim only to
+look better grounded — a claim about action, say, that the proof never
+touches. `#lint only unusedArguments` runs on every build and fails it
+when a listed assumption does no work. So the list is held from both
+sides: Lean rejects a theorem that leaves a premise off, and the linter
+rejects one that lists a premise it never uses. That is the reason to
+do this on a machine. The hold is not perfect; where it gives is set
+out under *The manifest*.
 
 Each claim records three things. *Source* is a citation, or
 "tacit". *Status* is one of three verdicts: explicit-in-tradition
@@ -393,11 +388,12 @@ nothing — it is silent, not wrong.
 - `stock.ComparableServiceable`: any two wants the good can serve are
   ranked one way or the other. Mises's route and the ladder read as a
   history need it; Rothbard's never does.
-- `earlier.SameJobs later`: the good is believed to do no job at the
+- `earlier.NoNewJobs later`: the good is believed to do no job at the
   later moment that it was not believed to do at the earlier one. Only
   the ladder read as a history needs it, and it is the one condition
-  there that spans two moments — a constancy, of belief about the good
-  rather than of the scale.
+  there that spans two moments. It is about belief in what the good can
+  do, not about the scale, and it runs one way: the man learns no new
+  use, though he may drop an old one.
 
 Nothing here has to say which plan is the man's. A theorem is handed a
 plan and makes its claim about that one, so there is no rival plan
@@ -414,7 +410,7 @@ because these are the assumptions a reader has to judge.
 
 {docstring Apodictic.Stock.ComparableServiceable}
 
-{docstring Apodictic.Stock.SameJobs}
+{docstring Apodictic.Stock.NoNewJobs}
 
 # The theorems
 
@@ -614,13 +610,12 @@ sort what it finds one level down: whether a carried condition could
 fail of a real situation is a judgement about the world, not about the
 term, and the two are sorted by hand in the prose above. That sorting
 is the only thing here a reader is asked to take on anyone's word. The
-lists themselves are printed by the compiler when this page is built,
+lists themselves are printed by the compiler when this document is built,
 and a page that showed anything else would not build.
 
 Three things limit how much that settles, and each is load-bearing.
-`#lint only unusedArguments` fails the build on any hypothesis that
-did no work, and it is never switched off here — but switching it off
-is possible, so keeping it on is a promise rather than something the
+The linter set out under *The claims* is never switched off here — but
+switching it off is possible, so keeping it on is a promise rather than something the
 machine guarantees. It can also be silenced one binder at a time, by
 prefixing a hypothesis with `_`, and doing that is how we record that
 the hypothesis does nothing: `marginal_utility_chain` carries one such
@@ -987,7 +982,7 @@ manifest of Apodictic.Temporal.ladder_judged_earlier
 
   situational conditions:
     comparable : earlier.ComparableServiceable
-    sameJobs : earlier.SameJobs later
+    noNewJobs : earlier.NoNewJobs later
 
   vocabulary (what the claims are about):
     praxis : ActionFrame
@@ -1016,9 +1011,10 @@ Read what is not on it. The supply growing is not a hypothesis: added
 as one, the linter refuses it as unused. Nothing about the later scale
 appears, nothing about how the later allocation was chosen, and
 nothing about which moment came first. One condition does span the
-two moments, and it is a constancy. `SameJobs` says that whatever the
-good is believed to serve later, it was believed to serve earlier — the
-plan's fixity moved from the scale to belief about the good. Without
+two moments. `NoNewJobs` says that whatever the good is believed to
+serve later, it was believed to serve earlier. He may stop believing in
+a use; he may not start. What the plan held fixed has moved from
+the scale to belief about the good. Without
 it the new horse's want need not have been on the earlier scale, and
 nothing could be said of it there. It is under *The conditions* with
 the rest.
@@ -1071,15 +1067,17 @@ why its status is our reconstruction and not theirs.
 
 **The trade.** The counterfactual routes need a plan that no act
 exhibits. The history needs a scale that no act can show to have stayed
-put — or, on the reading that is a theorem, a belief that stayed put,
-which the same authors do not grant either. Either way the law rests on
-something the authors' own account of value scales rules out. Reading
-the ladder as a history moves the cost; it does not remove it.
+put — or, on the reading that is a theorem, a man who learned no new
+use for the good between the two acts. Rothbard does not grant that as
+a rule either: writing on production, he says technological knowledge
+"is not given in the dynamic world" (p. 540). Either way the law rests
+on something its author does not grant. Reading the ladder as a
+history moves the cost; it does not remove it.
 
 **What a failure would point at.** Where the ladder read as a history
 fails of a real case, its manifest says where to look, and it names
 three places: the man did not act in order (`ActsInOrder`); what he
-believed the good could do changed between the moments (`SameJobs`);
+learned a new use for the good between the moments (`NoNewJobs`);
 or two of the good's wants were never ranked against each other
 (comparability). A scale that moved is not on the list, because no
 theorem here assumes it stayed put. That is what the reading pays in.
