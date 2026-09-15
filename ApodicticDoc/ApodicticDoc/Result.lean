@@ -22,7 +22,7 @@ inside the structures the theorem takes as arguments — and they are on
 the manifest too, because the command that derives it reads one level
 in. There is no longer anywhere for an assumption to sit unlisted.
 
-Every docstring below is pulled out of the library when this document is
+Every docstring in this document is pulled out of the library when it is
 built. What you read is what was checked.
 
 # The horses
@@ -1052,9 +1052,9 @@ moments, and "the ranking on his preference scale shifts to this
 order" (p. 18). So the library does not assume constancy, as a claim or
 as a condition. Where the reading would need it, the frame above shows
 what goes missing. Rothbard, for his part, would not judge on the
-earlier scale at all: his man with two horses ranks the whole stock
-afresh, in "disregard of past events" (p. 27). Judged that way, the
-ladder is the one-moment law at the later time — which is the plan
+earlier scale at all: when his man must give up one of six horses,
+"he deals only with his presently available stock", in "disregard of
+past events" (p. 27). Judged that way, the ladder is the one-moment law at the later time — which is the plan
 again, and the circle with it.
 
 They deny more than that, and it bears on the claim this reading does
