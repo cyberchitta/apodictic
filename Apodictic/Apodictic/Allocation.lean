@@ -188,7 +188,7 @@ def Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent}
     (later : Stock praxis agent laterTime) : Prop :=
   earlier.units ⊆ later.units ∧ later.units.card = earlier.units.card + 1
 
-/-- **The good is believed to do no new job** — whatever the good is
+/-- **The good is believed to serve no new use** — whatever the good is
 believed to serve at the later moment, it was believed to serve at
 the earlier one: the later stock's serviceable ends are among the
 earlier stock's.
@@ -205,7 +205,7 @@ earlier may be dropped later. Says nothing about the scale at either
 moment, about which units are held, or about the order of the two
 times. Carried by `Apodictic.Temporal.ladder_judged_earlier` and by
 nothing else. -/
-def Stock.NoNewJobs {praxis : ActionFrame} {agent : praxis.Agent}
+def Stock.NoNewUses {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
     (earlier : Stock praxis agent earlierTime)
     (later : Stock praxis agent laterTime) : Prop :=

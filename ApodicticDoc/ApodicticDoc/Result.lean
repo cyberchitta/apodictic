@@ -388,10 +388,10 @@ nothing — it is silent, not wrong.
 - `stock.ComparableServiceable`: any two wants the good can serve are
   ranked one way or the other. Mises's route and the ladder read as a
   history need it; Rothbard's never does.
-- `earlier.NoNewJobs later`: the good is believed to do no job at the
-  later moment that it was not believed to do at the earlier one. Only
-  the ladder read as a history needs it, and it is the one condition
-  there that spans two moments. It is about belief in what the good can
+- `earlier.NoNewUses later`: the good is believed to serve no use at
+  the later moment that it was not believed to serve at the earlier
+  one. Only the ladder read as a history needs it, and it is the one
+  condition there that spans two moments. It is about belief in what the good can
   do, not about the scale, and it runs one way: the man learns no new
   use, though he may drop an old one.
 
@@ -410,7 +410,7 @@ because these are the assumptions a reader has to judge.
 
 {docstring Apodictic.Stock.ComparableServiceable}
 
-{docstring Apodictic.Stock.NoNewJobs}
+{docstring Apodictic.Stock.NoNewUses}
 
 # The theorems
 
@@ -982,7 +982,7 @@ manifest of Apodictic.Temporal.ladder_judged_earlier
 
   situational conditions:
     comparable : earlier.ComparableServiceable
-    noNewJobs : earlier.NoNewJobs later
+    noNewUses : earlier.NoNewUses later
 
   vocabulary (what the claims are about):
     praxis : ActionFrame
@@ -1011,7 +1011,7 @@ Read what is not on it. The supply growing is not a hypothesis: added
 as one, the linter refuses it as unused. Nothing about the later scale
 appears, nothing about how the later allocation was chosen, and
 nothing about which moment came first. One condition does span the
-two moments. `NoNewJobs` says that whatever the good is believed to
+two moments. `NoNewUses` says that whatever the good is believed to
 serve later, it was believed to serve earlier. He may stop believing in
 a use; he may not start. What the plan held fixed has moved from
 the scale to belief about the good. Without
@@ -1068,21 +1068,20 @@ why its status is our reconstruction and not theirs.
 **The trade.** The counterfactual routes need a plan that no act
 exhibits. The history needs a scale that no act can show to have stayed
 put — or, on the reading that is a theorem, a man who learned no new
-use for the good between the two acts. Rothbard does not grant that as
-a rule either: writing on production, he says technological knowledge
-"is not given in the dynamic world" (p. 540). Either way the law rests
-on something its author does not grant. Reading the ladder as a
-history moves the cost; it does not remove it.
+use for the good between the two acts. Neither author addresses that
+condition: nothing in the texts grants it, and nothing refuses it. So
+the two routes pay in different coin. The counterfactual routes rest on
+something their authors refuse; the history route rests on something
+they never examined. Reading the ladder as a history moves the cost; it
+does not remove it.
 
 **What a failure would point at.** Where the ladder read as a history
 fails of a real case, its manifest says where to look, and it names
-three places: the man did not act in order (`ActsInOrder`); what he
-learned a new use for the good between the moments (`NoNewJobs`);
+three places: the man did not act in order (`ActsInOrder`); he
+learned a new use for the good between the moments (`NoNewUses`);
 or two of the good's wants were never ranked against each other
 (comparability). A scale that moved is not on the list, because no
 theorem here assumes it stayed put. That is what the reading pays in.
-A claim about actual action can be caught out by an act; the plan
-cannot be.
 
 # The horses in Lean
 
