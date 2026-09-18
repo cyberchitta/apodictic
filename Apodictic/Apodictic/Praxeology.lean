@@ -433,7 +433,16 @@ Does not say:
    perishable good, two enjoyments that cannot be had together
    (Mises's Carmen and Hamlet), unequal certainty of getting it — each
    is a pair that is not the same satisfaction, and the claim is silent
-   there.
+   there. So is anticipation. A pleasure put off brings the looking
+   forward with it, from now until it comes; a pain got over with
+   spares the waiting for it. Either way the later option holds a
+   satisfaction that begins now and the earlier does not. That is the
+   literature's own account: savouring is "positive utility derived
+   from anticipation of future consumption", dread "negative utility
+   resulting from contemplation of the future" (Loewenstein, *Economic
+   Journal* 1987, p. 667). It counts as a diagnosis only where the
+   anticipation is shown apart from the choice it explains; inferred
+   from the choice to wait, it is the valuation reading again.
 2. Anything about bundles. Preferring a sooner bundle needs
    `DatedFrame.LiftsOverRest`.
 3. Anything about ends already past at `now`.

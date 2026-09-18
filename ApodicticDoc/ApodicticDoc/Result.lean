@@ -1601,15 +1601,32 @@ expected to force an order on time here, and it did not.
 **What a failure would point at.** Where a man prefers a satisfaction
 later: the two dated ends were not the same satisfaction for him (the
 good perishes, the enjoyments cannot be had together, the later is
-surer); the sooner one was already past; or the claim itself failed.
+surer, or the wait itself is worth something to him); the sooner one was already past; or the claim itself failed.
 Where a man prefers the less durable good less: the same, or the
 sooner service clashed with the rest of the stream. Where the regress
 does not bite: the offer was not the same from day to day, his lack of
 preference did not carry, or consuming did not reveal what Mises says
-it does. One way the claim is said to miss reality — preferring to
-wait for a pleasure, or to hurry through a pain — is not yet on the
-list; it enters as a condition of its own once the literature on it
-has been checked.
+it does.
+
+The textbook case against the claim is on that list. People will pay
+more for a pleasure a few days off than for the same pleasure now, and
+more to avoid a pain that is put off: "Subjects on average were
+willing to pay more to experience a kiss delayed by 3 days than an
+immediate kiss or one delayed by three hours or one day" (Loewenstein,
+*Economic Journal* 1987, p. 668). Waiting for a pleasure is itself a
+pleasure, and waiting for a pain is itself a pain, so the later option
+carries a satisfaction that begins now. The pair falls outside the
+claim, which says nothing about it. The move has the shape of
+Rothbard's ice, and one test separates a diagnosis from an escape:
+whether the difference can be shown without looking at the choice.
+Summer heat can be; "greater satisfactions", read off the preference,
+cannot. For dread it has been shown. People waiting for an electric
+shock were scanned, and "Even when no decision was required, these
+extreme dreaders were distinguishable from those who dreaded mildly"
+— and the extreme dreaders were the ones who, given the choice, "preferred to
+receive more voltage rather than wait" (Berns et al., *Science* 2006).
+Anticipation that is only inferred from the waiting brings back the
+reading on which the claim cannot fail.
 
 # The horses in Lean
 
