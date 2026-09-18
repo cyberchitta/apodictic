@@ -407,6 +407,8 @@ anyone could build to refute it.
 
 All five are given in full here, in the order they are listed above,
 because these are the assumptions a reader has to judge.
+Exchange takes conditions of its own, about trades rather than stocks;
+they are given in full under *Exchange*.
 
 {docstring Apodictic.Stock.OneMore}
 
@@ -1056,8 +1058,8 @@ the earlier ranked, the same way. Both authors deny it. Mises: "value
 judgments are not immutable" (*Human Action*, ch. V, §4). Rothbard's
 own actor, a few pages before the horses, changes his mind between
 moments, and "the ranking on his preference scale shifts to this
-order" (p. 18). So the library does not assume constancy, as a claim or
-as a condition. Where the reading would need it, the frame above shows
+order" (p. 18). So the history reading does not assume constancy, as a
+claim or as a condition. Where the reading would need it, the frame above shows
 what goes missing. Rothbard, for his part, would not judge on the
 earlier scale at all: when his man must give up one of six horses,
 "he deals only with his presently available stock", in "disregard of
@@ -1088,7 +1090,260 @@ three places: the man did not act in order (`ActsInOrder`); he
 learned a new use for the good between the moments (`NoNewUses`);
 or two of the good's wants were never ranked against each other
 (comparability). A scale that moved is not on the list, because no
-theorem here assumes it stayed put. That is what the reading pays in.
+theorem on this reading assumes it stayed put. That is what the reading pays in.
+
+# Exchange
+%%%
+file := "Exchange"
+%%%
+
+The law of marginal utility is one target. Exchange is the second, and
+it was chosen for what it can diagnose. That both parties to a
+voluntary exchange benefit is among the conclusions the tradition leans
+on most. Read as a claim about what each party expects when he trades,
+it is hard to fault. Read as a claim about how the trade turns out, it
+plainly misses some real trades: the buyer who was mistaken about what
+he bought, the buyer who regrets. The questions are which reading
+Rothbard's words commit him to, and which assumption fails where the
+second reading misses.
+
+Rothbard states the doctrine in one paragraph (*MES*, p. 85), and the
+paragraph makes four claims. Why people trade: "both people make it
+because they expect that it will benefit them; otherwise they would not
+have agreed to the exchange." When they can: the two goods must "have
+reverse valuations on the respective value scales of the two parties" —
+each ranks the other's good above his own — "before making the
+exchange". What they must know: "each of the parties knows of the
+existence of the other and the goods that he possesses." And the
+result: "After the exchange is made, both A and B have shifted to a
+higher position on their respective value scales." The paragraph also
+confines itself to "actions that are purely voluntary".
+
+**The bridge.** "Otherwise they would not have agreed" is an inference
+from what a man does to what he prefers. That is demonstrated
+preference; its docstring is given in full under *The claims*. The law of
+marginal utility never needed it; exchange cannot do without it. It is
+stated of one trade, not of action in general. It ranks whole holdings,
+everything the man owns with one good against everything he owns with
+the other, since that is what a trade chooses between. And it counts
+each holding by what the man believes, at the moment of trading, its
+goods can do.
+
+That last point is how goods enter at all. Rothbard sets the value
+scales out as a table of two columns, one per party, and they rank
+goods: A's column puts "(Good Y)" first and "Good X" second. The
+library ranks ends, not goods, so a good counts here for the ends the
+man believes it can serve. "A values the typewriter above the vase" is
+read as "A prefers what he believes the typewriter can do to what he
+believes the vase can do". No doctrine of how goods take their value
+from ends is assumed. But counting a good this way is a choice, and it
+shows: a good counts for every end it could serve, not only the one it
+would be put to, and two goods that serve the same end count for it
+once. For single goods with separate uses, which is Rothbard's case,
+the two ways of counting agree; where they part, the substitutes
+condition below is the one that fails. The definitions:
+
+{docstring Apodictic.ActionFrame.ServedBy}
+
+{docstring Apodictic.Trade}
+
+{docstring Apodictic.Exchange}
+
+**Reverse valuations follow — at a price.** From the bridge, each party
+ranks the good he got above the good he gave:
+
+{docstring Apodictic.MutualBenefit.reverse_valuations}
+
+```lean (name := manifestExchange)
+#manifest MutualBenefit.reverse_valuations
+```
+```leanOutput manifestExchange
+manifest of Apodictic.MutualBenefit.reverse_valuations
+
+  praxeological claims:
+    demonstratedA : DemonstratedPreference exchange.first
+    demonstratedB : DemonstratedPreference exchange.second
+
+  situational conditions:
+    voluntaryA : exchange.first.Voluntary
+    voluntaryB : exchange.second.Voluntary
+    separableA : exchange.first.SeparableFromRest
+    separableB : exchange.second.SeparableFromRest
+    uniqueA : exchange.first.KeptServesOtherEnds
+    uniqueB : exchange.second.KeptServesOtherEnds
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    exchange : Exchange praxis
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    exchange.two_people : exchange.first.agent ≠ exchange.second.agent
+    exchange.same_time : exchange.first.time = exchange.second.time
+    exchange.swap_gives : exchange.second.gets = exchange.first.gives
+    exchange.swap_gets : exchange.second.gives = exchange.first.gets
+
+  logical background: [propext, Quot.sound]
+```
+
+The last group on the manifest, the conditions carried by the
+vocabulary, is taken up below. Three conditions per party are
+hypotheses, and Rothbard's table shows none of them.
+
+The first is that the trade was voluntary. The bridge holds of a
+robbery too: the victim prefers handing over his wallet to what
+refusing would cost him. What it then shows is a ranking of his wallet
+against the threat, not of his wallet against anything he got. So a
+trade records, alongside the goods, what refusing would have left the
+man with, and a trade is voluntary when that is simply what he had.
+Rothbard rests the inference on exactly this: "The only reason we know
+that A and B benefit from an exchange is that they voluntarily make the
+exchange" (p. 1239).
+
+{docstring Apodictic.Trade.Voluntary}
+
+The other two are what it costs to talk about two goods at all. The
+trade ranks whole holdings; the table ranks two goods. Getting from the one to the other
+needs the rest of what the man owns to stay out of it, and it can fail
+to in two opposite ways. It fails for complements, goods that are worth
+more together — a left shoe is worth little without the right one. And
+it fails for substitutes, goods that do the same job — a man with two
+umbrellas who trades one away gives up nothing the other cannot do, so
+the trade shows no ranking of the umbrella at all. Rothbard's case is
+"unique goods with a supply of one unit" (p. 86), and the substitutes
+condition is what that phrase assumes. Complements it does not touch:
+a unique left shoe is still half a pair.
+
+{docstring Apodictic.Trade.SeparableFromRest}
+
+{docstring Apodictic.Trade.KeptServesOtherEnds}
+
+**What does no work.** Knowledge of the other party is a condition for
+a trade to happen. Every theorem here starts from a trade that did
+happen, so knowledge has nothing to do, and it is not a hypothesis. The
+linter would refuse it if it were.
+
+**"Shifted to a higher position" — on which scale?** The same question
+the ladder read as a history forced. It splits the same way, and
+settles differently. The history reading refused a constant scale
+outright. Here constancy enters as a condition, for one pair of
+holdings only, because it buys something: without it nothing can be
+said about how a trade turns out.
+
+Judged on the scale and the beliefs of the moment of trading, it is a
+theorem, and a short one: the bridge plus voluntariness. On that
+reading, "benefit" is demonstrated preference in a voluntary trade,
+and nothing more.
+
+{docstring Apodictic.MutualBenefit.better_off_judged_at_trade}
+
+Judged afterwards, on the scale he holds later and by what he then
+believes, it needs two things more, one for each way it fails:
+
+{docstring Apodictic.MutualBenefit.better_off_judged_later}
+
+```lean (name := manifestBenefit)
+#manifest MutualBenefit.better_off_judged_later
+```
+```leanOutput manifestBenefit
+manifest of Apodictic.MutualBenefit.better_off_judged_later
+
+  praxeological claims:
+    demonstrated : DemonstratedPreference trade
+
+  situational conditions:
+    voluntary : trade.Voluntary
+    beliefsHold : trade.BeliefsHold later
+    rankingHolds : trade.RankingHolds later
+
+  vocabulary (what the claims are about):
+    praxis : ActionFrame
+    trade : Trade praxis
+    later : praxis.Time
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    trade.gives_ne_gets : trade.gives ≠ trade.gets
+    trade.gives_not_kept : trade.gives ∉ trade.kept
+    trade.gets_not_kept : trade.gets ∉ trade.kept
+
+  logical background: [propext, Quot.sound]
+```
+
+{docstring Apodictic.Trade.BeliefsHold}
+
+{docstring Apodictic.Trade.RankingHolds}
+
+Both are needed, and a small made-up model — a frame, in the library's
+word — shows it for each. It is Rothbard's own
+case: "If A has a vase and B a typewriter, if each knows of the other's
+asset, and if A values the typewriter more highly, and B values the
+vase more highly, there will be an exchange" (p. 86). In one variant
+the typewriter turns out to do nothing — A's beliefs about it change,
+his ranking does not. In the other A comes to want the vase back — his
+beliefs stay, his ranking turns. Each trade is voluntary and
+demonstrates what the bridge says; in neither is A better off by his
+later lights.
+
+{docstring Apodictic.Model.later_without_beliefs_fails}
+
+{docstring Apodictic.Model.later_without_ranking_fails}
+
+In the variant where nothing changes, both parties' trades are handed
+to both theorems, so their conditions can all hold at once:
+
+{docstring Apodictic.Model.barter_reverse_valuations_applies}
+
+{docstring Apodictic.Model.barter_better_off_later_applies}
+
+**Fraud.** Rothbard would not count the defrauded buyer against him.
+For him a deceived party has not traded voluntarily: "Since the
+exchange has been made falsely, the actual form of which might not have
+been contracted had the other party not been deceived, this is not an
+example of voluntary exchange, but of one-sided theft" (p. 184). His
+"voluntary" therefore does part of the work that `BeliefsHold` does
+here: the part where someone else changed what the buyer believed.
+`Trade.Voluntary` asks only what refusing would have cost, and cannot
+see deception. The cut here is finer. A buyer who was deceived and a
+buyer who was simply mistaken both fail `BeliefsHold`; only the first
+is outside Rothbard's "voluntary", so only the second is a case his
+paragraph covers.
+
+**The carried conditions.** Both manifests list fields of the exchange
+and the trade: two people, one moment, each gets what the other gives,
+two different goods, a good given is not also kept, a good received was
+not already held. Each is of the kind that assumes nothing about the
+world. An "exchange" in which a man trades a good for itself, or with
+himself, is not a situation that might obtain, and Rothbard makes the
+point about two different goods explicit: "we implicitly assumed that
+it must be two different goods that are being exchanged" (p. 95).
+Which kind a carried condition is cannot be read off the Lean. It is a
+judgement, made here as it is for the fields of a stock and a plan
+under *The vocabulary*, later in the document.
+
+**Where the tradition stands.** For Rothbard the bridge cannot fail.
+The scale is read off the act: "We deduce the existence of a specific
+value scale on the basis of the real act" (p. 260). On that reading an
+act against one's own ranking is not a possibility. Here the ranking
+exists apart from the act, so the bridge constrains it, and its status
+is our reconstruction and not his. Nor does the library assume,
+anywhere, that a man's scale stays put; the reasons are under *The
+ladder as a history*. What the later-judged benefit carries is
+narrower: a condition that his ranking of these two holdings did not
+turn. Where it fails, the theorem is silent.
+
+**What a failure would point at.** The two conclusions name different
+places to look. Where a man did not rank the good he got above the
+good he gave: the trade was not voluntary; the goods were complements
+of something he kept, or substitutes for it; or he traded against his
+own ranking at the time, and the bridge itself failed. Where he is not
+better off afterwards: the trade was not voluntary; his beliefs about
+a good changed (error, or deception, which Rothbard already counts as
+not voluntary); his ranking of the two holdings turned (regret); or
+the bridge failed. On each list only the bridge is a claim. The rest
+are conditions, and where they fail the theorems are silent, not
+wrong. The defence "the conditions did not hold" now has a list to
+check against.
 
 # The horses in Lean
 
@@ -1207,6 +1462,9 @@ and it appears only in the statement the counter-model refutes.
 {docstring Apodictic.Allocation}
 
 {docstring Apodictic.Stock.Grows}
+
+The words of exchange — a trade, an exchange, and what a holding
+counts for — are defined under *Exchange*, where they are used.
 
 # Claims no theorem uses
 
