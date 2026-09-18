@@ -264,8 +264,9 @@ spends it the same way.
 Source: tacit. No sentence in Mises or Rothbard asserts it. Rothbard's
 value scales are built from acts of choice, and one act cannot
 demonstrate a preference in both directions — but that is an argument
-from the bridge we do not have (demonstrated preference, parked), not
-a statement of his. The nearest explicit treatment is Nozick's
+from the bridge (demonstrated preference), not a statement of his; and
+the bridge as stated here (`DemonstratedPreference`, of one trade)
+yields a preference in one direction only. The nearest explicit treatment is Nozick's
 reconstruction (1977), which is a critic's formalization and not the
 tradition's own words.
 
@@ -326,10 +327,11 @@ Does not say:
    relates to one made at another time with a different stock — that
    relation, if any, is a theorem's to state and pay for.
 2. That action reveals preference. This claim runs from the ranking to
-   the act. The bridge from an act to a preference (demonstrated
-   preference) is parked; a bridge that read the ranking off the act
-   would make this claim hold by construction, which is the authors'
-   reading above.
+   the act. The bridge from an act to a preference
+   (`DemonstratedPreference`) is stated of trades only, and allocations
+   are not trades; a bridge that read the ranking off the act would
+   make this claim hold by construction, which is the authors' reading
+   above.
 3. That the ends a good can serve are comparable
    (`Stock.ComparableServiceable`), nor anything about the order
    between two ends both served.

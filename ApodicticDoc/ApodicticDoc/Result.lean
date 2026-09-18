@@ -310,10 +310,12 @@ Findings about the formalizing rather than the doctrine.
   two can be told apart in the first place. It only came to light
   because the proofs refuse classical logic.
 - The claim that people act splits into three: a definition, a bridge,
-  and an existence claim. Only the bridge could do deductive work, and
-  nothing has needed it. The one claim about what a man actually does
-  that a theorem spends, under *The ladder as a history*, is not the
-  bridge: it says nothing about what an act shows he prefers.
+  and an existence claim. Only the bridge could do deductive work. The
+  law of marginal utility never needs it; exchange does, and there it
+  enters stated of one trade (*The claims*). The claim about what a man
+  actually does under *The ladder as a history* is not the bridge: it
+  runs from his ranking to his act, and says nothing about what an act
+  shows he prefers.
 - Never assert a claim about *every* structure of a given shape — say,
   every plan the man might have. Hand someone one plan and they can
   cook up a neighbour of it that breaks the claim, so a claim of that
@@ -352,14 +354,16 @@ uses. And only claims meant to hold always belong here; a
 condition that says when a law applies is a hypothesis instead, and
 those have a part of their own below.
 
-There are four. The first is the premise of Rothbard's derivation,
+There are five. The first is the premise of Rothbard's derivation,
 and on his route it is the only claim the law needs. The second is the
 premise of Mises's, reconstructed in the same vocabulary; the third is
 asymmetry of preference, which neither derivation spends and one
-comparison between them does. The fourth is the only one about what a
-man actually does, rather than what he would do: the premise of the
-ladder read as a history. Each docstring names the theorems that carry
-it.
+comparison between them does. The last two are about what a man
+actually does, rather than what he would do. The fourth is the premise
+of the ladder read as a history, and runs from his ranking to his act.
+The fifth runs the other way, from an act to his ranking: demonstrated
+preference, the premise of exchange, stated of one trade. Each
+docstring names the theorems that carry it.
 
 {docstring Apodictic.SwapDominant}
 
@@ -368,6 +372,8 @@ it.
 {docstring Apodictic.AsymmetricPreference}
 
 {docstring Apodictic.ActsInOrder}
+
+{docstring Apodictic.DemonstratedPreference}
 
 # The conditions
 
@@ -945,7 +951,8 @@ that grew from one moment to the other by one unit. Both definitions
 are under *The vocabulary*.
 
 What it spends in place of a plan is the fourth claim under *The
-claims*, `ActsInOrder`, and the only claim in the library about what a
+claims*, `ActsInOrder`, and the only claim in the library that runs from
+what a man ranks to what a
 man actually does: in what he serves with the stock he holds, he never
 passes over a want he prefers, and believes the good can serve, for
 one he ranks lower.
@@ -1204,25 +1211,17 @@ and it appears only in the statement the counter-model refutes.
 # Claims no theorem uses
 
 
-Two claims at the centre of the doctrine are used by no theorem here,
-and so are not on the list. The first is the bridge from what a man
-actually does to what he prefers — demonstrated preference, in
-Rothbard's sense. It is written out below in the form it would take,
-and then set aside:
+One claim at the centre of the doctrine is used by no theorem here,
+and so is not on the list: the claim that there is any action at all.
+The bridge from what a man actually does to what he prefers —
+demonstrated preference, in Rothbard's sense — is not among the
+unused: exchange spends it, and it is the fifth claim under *The
+claims*.
 
-```lean
-/-- PARKED: the bridge from actual action to preference. Carried by
-no theorem; lives in the document, not the library. -/
-structure DemonstratedPreference (praxis : ActionFrame) : Prop where
-  bridge : ∀ act : Action praxis, ∀ givenUp ∈ act.forgone,
-    praxis.Prefers act.agent act.time {act.chosen} {givenUp}
-```
-
-The second is the claim that there is any action at all. Action itself
-is a definition here, and no derivation of the law uses it. It has
-been tried once. Mises appeals to it to close his dilemma, and a frame
-with exactly one action shows the appeal falls short of what he needs;
-the details are under *Mises's route*.
+Action itself is a definition here, and no derivation of the law uses
+it. The existence claim has been tried once. Mises appeals to it to
+close his dilemma, and a frame with exactly one action shows the appeal
+falls short of what he needs; the details are under *Mises's route*.
 
 {docstring Apodictic.Action}
 

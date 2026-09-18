@@ -42,9 +42,9 @@ structure ActionFrame where
   the agent's choices, read as strict — but that reading is not
   assumed anywhere: NO properties are imposed on this relation, strict
   or otherwise, and a theorem that needs one says so. It is kept apart
-  from what the agent actually does; nothing in the library bridges
-  the two, and the claim that would (demonstrated preference) is
-  parked, carried by no theorem.
+  from what the agent actually does. The one claim that bridges the
+  two (`DemonstratedPreference`) is stated of a trade, not of action in
+  general, and only the exchange theorems carry it.
 
   It ranges over SETS of ends rather than single ends. The tradition
   draws no line between an end and a composite of ends — "atomic"
