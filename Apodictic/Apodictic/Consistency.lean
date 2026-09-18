@@ -1083,9 +1083,9 @@ theorem barter_asymmetric (believes : Bool → Bool → Bool → Bool → Prop)
   ⟨fun _ _ hXY hYX => hYX.2 hXY.1⟩
 
 theorem barter_separable (believes : Bool → Bool → Bool → Bool → Prop)
-    (wanted : Bool → Bool → Bool) (agent : Bool) (time : Bool) :
-    (barterFrame believes wanted).SeparableFromRest agent time := by
-  intro rest X Y _ _ h
+    (wanted : Bool → Bool → Bool) (agent : Bool) :
+    (barterTrade believes wanted agent).SeparableFromRest := by
+  intro X Y _ _ h
   refine ⟨?_, fun hY => h.2 (Or.inl hY)⟩
   rcases h.1 with hX | hrest
   · exact hX
@@ -1131,7 +1131,7 @@ theorem barter_reverse_valuations_applies :
   MutualBenefit.reverse_valuations barterExchange
     (barterOk_demonstrated false) (barterOk_demonstrated true)
     (barter_voluntary _ _ false) (barter_voluntary _ _ true)
-    (barter_separable _ _ false false) (barter_separable _ _ true false)
+    (barter_separable _ _ false) (barter_separable _ _ true)
     (barter_kept_other _ _ false) (barter_kept_other _ _ true)
 
 /-- **Non-vacuity: the later-judged theorem applies** where beliefs and

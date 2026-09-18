@@ -337,9 +337,10 @@ Does not say:
    between two ends both served.
 4. That the scale at this time bears on the scale at any other
    (constancy). Mises denies it: "value judgments are not immutable"
-   (ch. V, §4). The library asserts it neither as a claim nor as a
-   condition; where the temporal reading would need it, the library
-   exhibits the failure instead (`Apodictic.Model`).
+   (ch. V, §4). The library does not assert it as a claim. As a
+   condition it appears once, for one pair of holdings in one trade
+   (`Trade.RankingHolds`); where the temporal reading would need it,
+   the library exhibits the failure instead (`Apodictic.Model`).
 5. How much is served: not that every unit is used, nor that as many
    ends are served as the stock allows. An agent who serves nothing
    satisfies it.
@@ -386,7 +387,7 @@ Does not say:
    (`Trade.BeliefsHold`, `Trade.RankingHolds`).
 2. Anything about the two goods alone. It ranks whole holdings; the
    descent to "Y over X" is a theorem's to pay for
-   (`SeparableFromRest`, `Trade.KeptServesOtherEnds`).
+   (`Trade.SeparableFromRest`, `Trade.KeptServesOtherEnds`).
 3. That the trade was voluntary. Under a threat the claim still holds
    — the victim prefers handing over to what refusing would cost — and
    demonstrates nothing about the goods. `Trade.Voluntary` is what

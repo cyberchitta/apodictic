@@ -10,14 +10,14 @@ definitions a theorem takes as named hypotheses.
 
 ## Goods count for the ends they are believed to serve
 
-Rothbard's value scales at *MES* p. 85 list goods ("1—(Good Y)
-2—Good X"). The library has no ranking of goods: `Prefers` ranks
+Rothbard's value scales at *MES* p. 85 rank goods: A's column puts
+"(Good Y)" first and "Good X" second. The library has no ranking of goods: `Prefers` ranks
 bundles of ENDS. A good enters only through `Believes` — it counts for
 the ends the agent believes it can serve (`ServedBy`). So "A values Y
 above X" is read as "A prefers the ends he believes Y serves to the
-ends he believes X serves". No imputation claim is made; the reading
-is a translation, and it keeps the means–ends link inside the agent's
-beliefs.
+ends he believes X serves". No imputation claim is made, and the
+means–ends link stays inside the agent's beliefs; but how a holding is
+counted is a choice, recorded next.
 
 Shape claim (audit): a holding counts for the UNION of what its goods
 are believed able to serve. Two goods serving the same end count
@@ -41,25 +41,6 @@ can serve. The bundle a holding counts for. -/
 def ActionFrame.ServedBy (praxis : ActionFrame) (agent : praxis.Agent)
     (time : praxis.Time) (goods : Set praxis.Means) : Set praxis.End :=
   {want | ∃ good ∈ goods, praxis.Believes agent time good want}
-
-/-- **Separable from the rest of the holding** — a condition on the
-situation, NOT a universal claim. Preferring one holding to another
-that differs only in one part carries down to preferring the one part
-to the other, provided neither part serves an end the rest already
-serves.
-
-The bundle-level cousin of `IndependentUses`. It fails for
-complements: a left shoe is worth little without the right one kept
-beside it, so preferring (right shoe + a hat) to (right shoe + a left
-shoe) need not mean preferring a hat to a left shoe — or the reverse
-need not carry. Rothbard's p. 85 scales list the two goods alone and
-never mention the rest of what the traders own; this is what that
-omission costs. -/
-def ActionFrame.SeparableFromRest (praxis : ActionFrame)
-    (agent : praxis.Agent) (time : praxis.Time) : Prop :=
-  ∀ (rest X Y : Set praxis.End), Disjoint X rest → Disjoint Y rest →
-    praxis.Prefers agent time (X ∪ rest) (Y ∪ rest) →
-      praxis.Prefers agent time X Y
 
 /-- One party's side of a trade: at `time`, `agent` gives up the good
 `gives` and receives `gets`, keeping `kept`.
@@ -127,11 +108,37 @@ def Trade.KeptServesOtherEnds {praxis : ActionFrame} (trade : Trade praxis) :
     Disjoint (praxis.ServedBy trade.agent trade.time {trade.gets})
       (praxis.ServedBy trade.agent trade.time trade.kept)
 
+/-- **Separable from what is kept** — a condition on the situation, NOT
+a universal claim. Preferring one holding to another that differs from
+it in one part carries down to preferring the one part to the other —
+where the rest is what this agent keeps in this trade, and neither part
+serves an end the kept goods already serve.
+
+The bundle-level cousin of `IndependentUses`, fixed to one trade's
+holding: nothing is said about any other holding the agent might rank.
+It fails for complements. A man who keeps a right shoe may rank (right
+shoe + left shoe) above (right shoe + hat) and still rank a hat above a
+left shoe on its own: the left shoe's worth is in the pair. Rothbard's
+p. 85 scales list the two goods alone and never mention the rest of
+what the traders own; this is what that omission costs. -/
+def Trade.SeparableFromRest {praxis : ActionFrame} (trade : Trade praxis) :
+    Prop :=
+  ∀ (X Y : Set praxis.End),
+    Disjoint X (praxis.ServedBy trade.agent trade.time trade.kept) →
+    Disjoint Y (praxis.ServedBy trade.agent trade.time trade.kept) →
+    praxis.Prefers trade.agent trade.time
+        (X ∪ praxis.ServedBy trade.agent trade.time trade.kept)
+        (Y ∪ praxis.ServedBy trade.agent trade.time trade.kept) →
+      praxis.Prefers trade.agent trade.time X Y
+
 /-- **Beliefs about the goods hold** at `later` — a condition on the
 situation. Every good in the trade is believed at `later` to serve
 exactly what it was believed to serve when the trade was made. It
 fails when the agent learns the good he got does less than he thought
-— error, or fraud. -/
+— through his own error, or through deception. Rothbard counts a
+deceived party's trade as not voluntary at all ("this is not an example
+of voluntary exchange, but of one-sided theft", *MES* p. 184); the
+condition here does not ask who changed the belief. -/
 def Trade.BeliefsHold {praxis : ActionFrame} (trade : Trade praxis)
     (later : praxis.Time) : Prop :=
   ∀ good, (good = trade.gives ∨ good = trade.gets ∨ good ∈ trade.kept) →

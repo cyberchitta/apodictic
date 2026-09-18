@@ -75,7 +75,7 @@ theorem ranks_received_above_given
     {praxis : ActionFrame} (trade : Trade praxis)
     (demonstrated : DemonstratedPreference trade)
     (voluntary : trade.Voluntary)
-    (separable : praxis.SeparableFromRest trade.agent trade.time)
+    (separable : trade.SeparableFromRest)
     (unique : trade.KeptServesOtherEnds) :
     praxis.Prefers trade.agent trade.time
       (praxis.ServedBy trade.agent trade.time {trade.gets})
@@ -84,7 +84,7 @@ theorem ranks_received_above_given
   rw [voluntary] at chosen
   unfold Trade.after Trade.before at chosen
   rw [servedBy_insert, servedBy_insert] at chosen
-  exact separable _ _ _ unique.2 unique.1 chosen
+  exact separable _ _ unique.2 unique.1 chosen
 
 /-- **Reverse valuations** (*MES* p. 85): in an exchange, A ranks B's
 good above his own and B ranks A's good above his own, each on his own
@@ -95,8 +95,8 @@ theorem reverse_valuations
     (demonstratedB : DemonstratedPreference exchange.second)
     (voluntaryA : exchange.first.Voluntary)
     (voluntaryB : exchange.second.Voluntary)
-    (separableA : praxis.SeparableFromRest exchange.first.agent exchange.first.time)
-    (separableB : praxis.SeparableFromRest exchange.second.agent exchange.second.time)
+    (separableA : exchange.first.SeparableFromRest)
+    (separableB : exchange.second.SeparableFromRest)
     (uniqueA : exchange.first.KeptServesOtherEnds)
     (uniqueB : exchange.second.KeptServesOtherEnds) :
     praxis.Prefers exchange.first.agent exchange.first.time
