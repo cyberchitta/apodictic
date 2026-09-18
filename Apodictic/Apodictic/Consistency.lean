@@ -3,6 +3,7 @@ import Mathlib.Tactic.NormNum
 import Apodictic.MarginalUtility
 import Apodictic.Mises
 import Apodictic.Temporal
+import Apodictic.MutualBenefit
 
 /-!
 # Consistency — Rothbard's horses, machine-checked
@@ -1004,6 +1005,175 @@ theorem later_judged_ladder_fails : ¬ Temporal.LadderJudgedLaterFromOrder := by
 
 #print axioms reversal_ladder_judged_earlier
 #print axioms later_judged_ladder_fails
+
+/-! ## Exchange: the vase and the typewriter
+
+Rothbard's own unique-goods case (*MES* p. 86): "If A has a vase and B
+a typewriter, if each knows of the other's asset, and if A values the
+typewriter more highly, and B values the vase more highly, there will
+be an exchange."
+
+One frame, three variants. Agents, times, goods and ends are all
+`Bool`: agent `false` is A, `true` is B; good `false` is the vase,
+`true` the typewriter; end `false` is decoration, `true` is typing;
+time `false` is the trade, `true` is afterwards. Each agent cares for
+one end at a time (`wanted`), and prefers any bundle with it to any
+without.
+
+- `barterOk` — both parties trade, and nothing changes afterwards.
+  Every claim and every condition of `Apodictic.MutualBenefit` holds;
+  both parties' trades are handed to the theorems.
+- `barterFraud` — afterwards the typewriter is believed to serve
+  nothing. The ranking holds; A is not better off by his later lights.
+- `barterRegret` — afterwards each wants what he gave away. The beliefs
+  hold; A is not better off by his later lights. -/
+
+/-- The barter frame, given who believes what and who wants what. -/
+abbrev barterFrame (believes : Bool → Bool → Bool → Bool → Prop)
+    (wanted : Bool → Bool → Bool) : ActionFrame where
+  Agent := Bool
+  End := Bool
+  Means := Bool
+  Time := Bool
+  Believes := believes
+  Prefers := fun agent time X Y => wanted agent time ∈ X ∧ wanted agent time ∉ Y
+
+/-- Each good serves the end that shares its name: the vase decoration,
+the typewriter typing. -/
+def honestBeliefs : Bool → Bool → Bool → Bool → Prop :=
+  fun _ _ good want => good = want
+
+/-- A wants typing and B wants decoration, at every time. -/
+def steadyWants : Bool → Bool → Bool := fun agent _ => !agent
+
+/-- Everything holds. -/
+abbrev barterOk : ActionFrame := barterFrame honestBeliefs steadyWants
+
+/-- Afterwards the typewriter is believed to serve nothing. -/
+abbrev barterFraud : ActionFrame :=
+  barterFrame (fun _ time good want => good = want ∧ (time = false ∨ good = false))
+    steadyWants
+
+/-- Afterwards each wants what he gave away. -/
+abbrev barterRegret : ActionFrame :=
+  barterFrame honestBeliefs (fun agent time => if time then agent else !agent)
+
+/-- Agent `agent`'s side: he gives the good named like himself and gets
+the other, keeping nothing else. Refusing leaves him his own good. -/
+def barterTrade (believes : Bool → Bool → Bool → Bool → Prop)
+    (wanted : Bool → Bool → Bool) (agent : Bool) :
+    Trade (barterFrame believes wanted) where
+  agent := agent
+  time := false
+  gives := agent
+  gets := !agent
+  kept := ∅
+  refusal := (barterFrame believes wanted).ServedBy agent false (insert agent ∅)
+  gives_ne_gets := by cases agent <;> simp
+  gives_not_kept := fun h => h
+  gets_not_kept := fun h => h
+
+theorem barter_voluntary (believes : Bool → Bool → Bool → Bool → Prop)
+    (wanted : Bool → Bool → Bool) (agent : Bool) :
+    (barterTrade believes wanted agent).Voluntary := rfl
+
+theorem barter_asymmetric (believes : Bool → Bool → Bool → Bool → Prop)
+    (wanted : Bool → Bool → Bool) (agent : Bool) (time : Bool) :
+    AsymmetricPreference (barterFrame believes wanted) agent time :=
+  ⟨fun _ _ hXY hYX => hYX.2 hXY.1⟩
+
+theorem barter_separable (believes : Bool → Bool → Bool → Bool → Prop)
+    (wanted : Bool → Bool → Bool) (agent : Bool) (time : Bool) :
+    (barterFrame believes wanted).SeparableFromRest agent time := by
+  intro rest X Y _ _ h
+  refine ⟨?_, fun hY => h.2 (Or.inl hY)⟩
+  rcases h.1 with hX | hrest
+  · exact hX
+  · exact absurd (Or.inr hrest) h.2
+
+theorem barter_kept_other (believes : Bool → Bool → Bool → Bool → Prop)
+    (wanted : Bool → Bool → Bool) (agent : Bool) :
+    (barterTrade believes wanted agent).KeptServesOtherEnds := by
+  have hempty : (barterFrame believes wanted).ServedBy agent false ∅ = ∅ := by
+    ext want
+    simp [ActionFrame.ServedBy]
+  constructor
+  · show Disjoint _ ((barterFrame believes wanted).ServedBy agent false ∅)
+    rw [hempty]
+    exact Set.disjoint_empty _
+  · show Disjoint _ ((barterFrame believes wanted).ServedBy agent false ∅)
+    rw [hempty]
+    exact Set.disjoint_empty _
+
+/-- **Demonstrated preference holds of both trades** in the honest,
+steady frame: each wants the end the good he gets serves. -/
+theorem barterOk_demonstrated (agent : Bool) :
+    DemonstratedPreference (barterTrade honestBeliefs steadyWants agent) := by
+  refine ⟨?_⟩
+  cases agent <;>
+    simp [barterTrade, Trade.after, ActionFrame.ServedBy, honestBeliefs, steadyWants]
+
+/-- The exchange: A's vase for B's typewriter. -/
+def barterExchange : Exchange barterOk where
+  first := barterTrade honestBeliefs steadyWants false
+  second := barterTrade honestBeliefs steadyWants true
+  two_people := Bool.false_ne_true
+  same_time := rfl
+  swap_gives := rfl
+  swap_gets := rfl
+
+/-- **Non-vacuity: the exchange is handed to `reverse_valuations`.** -/
+theorem barter_reverse_valuations_applies :
+    barterOk.Prefers false false (barterOk.ServedBy false false {true})
+        (barterOk.ServedBy false false {false}) ∧
+      barterOk.Prefers true false (barterOk.ServedBy true false {false})
+        (barterOk.ServedBy true false {true}) :=
+  MutualBenefit.reverse_valuations barterExchange
+    (barterOk_demonstrated false) (barterOk_demonstrated true)
+    (barter_voluntary _ _ false) (barter_voluntary _ _ true)
+    (barter_separable _ _ false false) (barter_separable _ _ true false)
+    (barter_kept_other _ _ false) (barter_kept_other _ _ true)
+
+/-- **Non-vacuity: the later-judged theorem applies** where beliefs and
+ranking both hold. -/
+theorem barter_better_off_later_applies (agent : Bool) :
+    barterOk.Prefers agent true
+      ((barterTrade honestBeliefs steadyWants agent).after true)
+      ((barterTrade honestBeliefs steadyWants agent).before true) :=
+  MutualBenefit.better_off_judged_later
+    (barterTrade honestBeliefs steadyWants agent) true
+    (barterOk_demonstrated agent) (barter_voluntary _ _ agent)
+    (fun _ _ _ => Iff.rfl) (fun h => h)
+
+/-- **Without the beliefs condition, the later-judged claim fails.** A
+trades freely, ranks as before, and — having learned the typewriter
+serves nothing — is not better off by his later lights. -/
+theorem later_without_beliefs_fails : ¬ MutualBenefit.BetterOffLaterWithoutBeliefs := by
+  intro claim
+  have demonstrated :
+      DemonstratedPreference (barterTrade (barterFraud.Believes) steadyWants false) := by
+    refine ⟨?_⟩
+    simp [barterTrade, Trade.after, ActionFrame.ServedBy, steadyWants]
+  have h := claim barterFraud (barterTrade (barterFraud.Believes) steadyWants false) true
+    demonstrated (barter_voluntary _ _ false) (fun h => h)
+  simp [barterTrade, Trade.after, Trade.before, ActionFrame.ServedBy, steadyWants] at h
+
+/-- **Without the ranking condition, the later-judged claim fails.** A
+trades freely, believes as before, and — now wanting decoration — is
+not better off by his later lights. -/
+theorem later_without_ranking_fails : ¬ MutualBenefit.BetterOffLaterWithoutRanking := by
+  intro claim
+  have h := claim barterRegret (barterTrade honestBeliefs _ false) true
+    (by
+      refine ⟨?_⟩
+      simp [barterTrade, Trade.after, ActionFrame.ServedBy, honestBeliefs])
+    (barter_voluntary _ _ false) (fun _ _ _ => Iff.rfl)
+  simp [barterTrade, Trade.after, Trade.before, ActionFrame.ServedBy, honestBeliefs] at h
+
+#print axioms barter_reverse_valuations_applies
+#print axioms barter_better_off_later_applies
+#print axioms later_without_beliefs_fails
+#print axioms later_without_ranking_fails
 
 end Model
 end Apodictic

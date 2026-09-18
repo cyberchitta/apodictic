@@ -1,4 +1,5 @@
 import Apodictic.Allocation
+import Apodictic.Exchange
 
 /-!
 # Praxeology — the COMPLETE set of praxeological claims
@@ -44,9 +45,8 @@ building an instance (`Apodictic.Consistency`).
 ## Policy: claims enter at point of first use
 
 No claim lives here unless some theorem's signature carries it.
-Doctrinally central claims that no theorem yet needs — the bridge
-from actual action to preference (demonstrated preference), the
-existence claim (humans act) — are parked with their pedigree in
+Doctrinally central claims that no theorem yet needs — the
+existence claim (humans act) among them — are parked with their pedigree in
 `_notes/2026-09-04-parked-axioms.md` and re-enter with the theorem
 that forces them.
 
@@ -350,5 +350,51 @@ structure ActsInOrder {praxis : ActionFrame} {agent : praxis.Agent}
   inOrder : ∀ served ∈ allocation.served, ∀ better ∈ stock.serves,
     praxis.PrefersEnd agent time better served →
       better ∈ allocation.served
+
+
+/-- **Demonstrated preference, in exchange** — the agent of a trade
+prefers, at the time of trading, the holding he chose to what refusing
+would have left him with, both counted by his beliefs at that time.
+
+The bridge from what an agent DOES to the ranking `Prefers`, which the
+vocabulary otherwise keeps apart. Asserted of the trade handed to a
+theorem, not of every trade.
+
+Source: Rothbard, *MES*, p. 307: "Any action demonstrates choice based
+on preference: preference for one alternative over others." p. 85, of
+exchange: "both people make it because they expect that it will
+benefit them; otherwise they would not have agreed to the exchange."
+p. 260: "We deduce the existence of a specific value scale on the
+basis of the real act". The doctrine is named "demonstrated
+preference" at p. 882, n. 8, citing Rothbard, *Toward a Reconstruction
+of Utility and Welfare Economics* (1956), pp. 224 ff.
+
+Status: explicit-in-tradition as doctrine; our-reconstruction as a
+claim. For Rothbard the scale is DEDUCED from the act (p. 260), so the
+sentence cannot fail — it defines what the scale says. Here `Prefers`
+exists apart from the act, so the claim constrains it: a trade made
+against the agent's own ranking at that moment — a slip, a compulsion
+he would disown — refutes it.
+
+Does not say:
+
+1. That the agent is better off afterwards. The comparison is made
+   with his beliefs and his scale AT THE TRADE; what the holding does
+   for him later, and how he ranks it later, are not touched
+   (`Trade.BeliefsHold`, `Trade.RankingHolds`).
+2. Anything about the two goods alone. It ranks whole holdings; the
+   descent to "Y over X" is a theorem's to pay for
+   (`SeparableFromRest`, `Trade.KeptServesOtherEnds`).
+3. That the trade was voluntary. Under a threat the claim still holds
+   — the victim prefers handing over to what refusing would cost — and
+   demonstrates nothing about the goods. `Trade.Voluntary` is what
+   makes `refusal` the old holding.
+4. Anything about other acts, other agents, or other times: not that
+   every act demonstrates preference. -/
+structure DemonstratedPreference {praxis : ActionFrame}
+    (trade : Trade praxis) : Prop where
+  /-- The chosen holding over the refused alternative, at the trade. -/
+  demonstrates : praxis.Prefers trade.agent trade.time
+    (trade.after trade.time) trade.refusal
 
 end Apodictic
