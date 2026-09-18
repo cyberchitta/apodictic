@@ -4,6 +4,7 @@ import Apodictic.MarginalUtility
 import Apodictic.Mises
 import Apodictic.Temporal
 import Apodictic.MutualBenefit
+import Apodictic.TimePreference
 
 /-!
 # Consistency — Rothbard's horses, machine-checked
@@ -1174,6 +1175,122 @@ theorem later_without_ranking_fails : ¬ MutualBenefit.BetterOffLaterWithoutRank
 #print axioms barter_better_off_later_applies
 #print axioms later_without_beliefs_fails
 #print axioms later_without_ranking_fails
+
+/-! ## Time preference — a frame where it holds, and one where nobody prefers
+
+`Waiting`: ends are a kind of satisfaction together with a date;
+same kind, same satisfaction; of two ends of one kind, the earlier is
+preferred, and nothing else is. `Patient`: the same dated ends, and no
+preference at all. -/
+
+/-- One man; ends are (kind, date); times are dates. The earlier of
+two same-kind single ends is preferred; no other bundle is ranked. -/
+abbrev Waiting : DatedFrame where
+  Agent := Unit
+  End := ℕ × ℕ
+  Means := Unit
+  Time := ℕ
+  Believes := fun _ _ _ _ => True
+  Prefers := fun _ _ X Y =>
+    ∃ a b, X = {a} ∧ Y = {b} ∧ a.1 = b.1 ∧ a.2 < b.2
+  Before := fun t t' => t < t'
+  attained := Prod.snd
+  SameSatisfaction := fun _ a b => a.1 = b.1
+
+theorem waiting_asymmetric (agent : Waiting.Agent) (time : Waiting.Time) :
+    AsymmetricPreference Waiting.toActionFrame agent time := by
+  refine ⟨?_⟩
+  rintro X Y ⟨a, b, rfl, rfl, _, hab⟩ ⟨c, d, hc, hd, _, hcd⟩
+  rw [Set.singleton_eq_singleton_iff] at hc hd
+  subst hc hd
+  exact absurd (lt_trans hab hcd) (lt_irrefl _)
+
+theorem waiting_timePreference (now : ℕ) : TimePreference Waiting () now :=
+  ⟨fun soon late same sooner _ => ⟨soon, late, rfl, rfl, same, sooner⟩⟩
+
+/-- **Non-vacuity: the durability corollary applies.** -/
+theorem waiting_less_durable_applies :
+    Waiting.Prefers () 0 (insert ((0 : ℕ), (1 : ℕ)) ∅) (insert (0, 2) ∅) :=
+  TimePreference.less_durable_preferred ∅ (0, 1) (0, 2)
+    (waiting_timePreference 0) rfl (by decide) (by decide)
+    (fun h => by
+      have e : ∀ a : ℕ × ℕ, insert a (∅ : Set (ℕ × ℕ)) = {a} := fun a => by
+        ext; simp
+      rw [e, e]
+      exact h)
+
+/-- One satisfaction on offer at every date. -/
+def waitingMorrows : Morrows Waiting () where
+  date := fun n => n
+  offer := fun n => (0, n)
+  dated := fun _ => rfl
+  successive := fun n => Nat.lt_succ_self n
+  same := fun _ => rfl
+
+/-- Consuming at date `n`, forgoing the morrow. -/
+def waitingConsume (n : ℕ) : Action Waiting.toActionFrame where
+  agent := ()
+  time := n
+  chosen := (0, n)
+  means := ()
+  forgone := {(0, n + 1)}
+  forgone_nonempty := Set.singleton_nonempty _
+  chosen_not_forgone := by simp
+  belief := trivial
+
+theorem waiting_demonstrated (n : ℕ) :
+    DemonstratedTimePreference (waitingConsume n) :=
+  ⟨fun _ _ same sooner => ⟨_, _, rfl, rfl, same, sooner⟩⟩
+
+/-- **Non-vacuity: consuming reveals, in `Waiting`.** -/
+theorem waiting_consumption_reveals_applies (n : ℕ) :
+    Waiting.PrefersEnd () n (0, n) (0, n + 1) :=
+  TimePreference.consumption_reveals waitingMorrows n (waitingConsume n)
+    ⟨rfl, rfl, rfl, rfl⟩ (waiting_demonstrated n)
+
+/-- The same dated ends, and no preference at all. -/
+abbrev Patient : DatedFrame where
+  Agent := Unit
+  End := ℕ × ℕ
+  Means := Unit
+  Time := ℕ
+  Believes := fun _ _ _ _ => True
+  Prefers := fun _ _ _ _ => False
+  Before := fun t t' => t < t'
+  attained := Prod.snd
+  SameSatisfaction := fun _ a b => a.1 = b.1
+
+def patientMorrows : Morrows Patient () where
+  date := fun n => n
+  offer := fun n => (0, n)
+  dated := fun _ => rfl
+  successive := fun n => Nat.lt_succ_self n
+  same := fun _ => rfl
+
+/-- **Non-vacuity: the regress's hypotheses hold together**, in a
+frame with no preference that carries from date to date. -/
+theorem patient_never_consumes_applies :
+    ∀ n (act : Action Patient.toActionFrame), patientMorrows.ConsumesAt n act →
+      ¬ DemonstratedTimePreference act :=
+  TimePreference.never_consumes patientMorrows id (fun _ h => h)
+
+/-- **On the valuation reading, the strict half of time preference is
+not free** — it fails where nothing is ranked: every pair counts as the
+same satisfaction by valuation, and the sooner is not preferred. -/
+theorem valuation_reading_strict_half_fails :
+    ¬ ∀ (praxis : DatedFrame) (agent : praxis.Agent) (now : praxis.Time)
+        (soon late : praxis.End),
+      TimePreference.SameByValuation praxis agent now soon late →
+      praxis.Before (praxis.attained soon) (praxis.attained late) →
+      ¬ praxis.Before (praxis.attained soon) now →
+      praxis.PrefersEnd agent now soon late := by
+  intro claim
+  exact claim Patient () 0 (0, 1) (0, 2) id (by decide) (by decide)
+
+#print axioms waiting_less_durable_applies
+#print axioms waiting_consumption_reveals_applies
+#print axioms patient_never_consumes_applies
+#print axioms valuation_reading_strict_half_fails
 
 end Model
 end Apodictic

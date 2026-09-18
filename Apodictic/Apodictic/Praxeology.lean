@@ -1,5 +1,6 @@
 import Apodictic.Allocation
 import Apodictic.Exchange
+import Apodictic.Dated
 
 /-!
 # Praxeology — the COMPLETE set of praxeological claims
@@ -138,8 +139,8 @@ premise.
 
 Does not say:
 
-1. Anything about actual action. The bridge from action to
-   preference appears nowhere in the library.
+1. Anything about actual action. No bridge from action to
+   preference is part of this claim.
 2. Anything about alternatives that differ by more than one swap.
 3. Anything about independence of uses — that is the theorems'
    hypothesis `IndependentUses`.
@@ -399,5 +400,91 @@ structure DemonstratedPreference {praxis : ActionFrame}
   /-- The chosen holding over the refused alternative, at the trade. -/
   demonstrates : praxis.Prefers trade.agent trade.time
     (trade.after trade.time) trade.refusal
+
+/-- **Time preference** — of two ends that are the same satisfaction,
+the agent at `now` prefers the one attained sooner, provided the
+sooner one is not already past.
+
+Source: Rothbard, *MES*, ch. 1, p. 15: "A fundamental and constant
+truth about human action is that man prefers his end to be achieved in
+the shortest possible time. Given the specific satisfaction, the
+sooner it arrives, the better." / "This is the universal fact of time
+preference." Mises, *Human Action*, ch. XVIII, §2: "Satisfaction of a
+want in the nearer future is, other things being equal, preferred to
+that in the farther distant future." / "Time preference is a
+categorial requisite of human action."
+
+Status: explicit-in-tradition as doctrine; our-reconstruction as a
+claim. The authors fix "the same satisfaction" by the satisfaction it
+gives: ice in summer and ice in winter "are not the same, but
+different goods" (*MES* p. 16, n. 15), and Mises's ice is "for all
+practical purposes different commodities". Read that way the sentence
+cannot fail — whatever is preferred later was a different good. Here
+`SameSatisfaction` is supplied apart from `Prefers`, so the claim
+constrains the ranking: an agent who prefers the same satisfaction
+later refutes it. The reading on which it cannot fail is built as the
+rejected encoding (`Apodictic.TimePreference.valuation_reading_is_free`).
+Carried by `Apodictic.TimePreference.less_durable_preferred`.
+
+Does not say:
+
+1. Anything about ends that are not the same satisfaction. "Other
+   things being equal" is carried whole by `SameSatisfaction`: a
+   perishable good, two enjoyments that cannot be had together
+   (Mises's Carmen and Hamlet), unequal certainty of getting it — each
+   is a pair that is not the same satisfaction, and the claim is silent
+   there.
+2. Anything about bundles. Preferring a sooner bundle needs
+   `DatedFrame.LiftsOverRest`.
+3. Anything about ends already past at `now`.
+4. That `Before` is transitive, irreflexive or total. The claim uses
+   "sooner" only as a label on the pair.
+5. How MUCH sooner is better — no rate, no discounting.
+6. That the preference shows in any act. That bridge is
+   `DemonstratedTimePreference`, of one act. -/
+structure TimePreference (praxis : DatedFrame) (agent : praxis.Agent)
+    (now : praxis.Time) : Prop where
+  /-- The sooner of two same satisfactions is preferred. -/
+  sooner : ∀ soon late : praxis.End,
+    praxis.SameSatisfaction agent soon late →
+    praxis.Before (praxis.attained soon) (praxis.attained late) →
+    ¬ praxis.Before (praxis.attained soon) now →
+    praxis.PrefersEnd agent now soon late
+
+/-- **Demonstrated time preference** — an act that takes a
+satisfaction and forgoes the same satisfaction later shows that the
+agent, at the time of acting, prefers the sooner.
+
+The bridge from an act to the ranking, for acts across dates, as
+`DemonstratedPreference` is for trades. Asserted of the act handed to a
+theorem, not of every act.
+
+Source: Mises, *Human Action*, ch. XVIII, §2: "He who consumes a
+nonperishable good instead of postponing consumption for an indefinite
+later moment thereby reveals a higher valuation of present
+satisfaction". Rothbard, *MES*, p. 307: "Any action demonstrates choice
+based on preference: preference for one alternative over others."
+
+Status: explicit-in-tradition. It is also the premise Mises's regress
+runs on without stating it — that an agent with no preference for the
+sooner postpones — read the other way round
+(`Apodictic.TimePreference.consumption_reveals`). Carried by that
+theorem, and denied of every consuming act by Mises's regress
+(`Apodictic.TimePreference.never_consumes`).
+
+Does not say:
+
+1. Anything about acts that forgo something other than the same
+   satisfaction later. "Nonperishable" is carried by
+   `SameSatisfaction`.
+2. That the chosen satisfaction is present, rather than merely sooner.
+3. Anything about other acts or other times. -/
+structure DemonstratedTimePreference {praxis : DatedFrame}
+    (act : Action praxis.toActionFrame) : Prop where
+  /-- The act ranks what it took above the same satisfaction later. -/
+  demonstrates : ∀ later ∈ act.forgone,
+    praxis.SameSatisfaction act.agent act.chosen later →
+    praxis.Before (praxis.attained act.chosen) (praxis.attained later) →
+    praxis.PrefersEnd act.agent act.time act.chosen later
 
 end Apodictic

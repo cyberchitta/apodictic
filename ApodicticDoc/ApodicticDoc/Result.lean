@@ -354,7 +354,7 @@ uses. And only claims meant to hold always belong here; a
 condition that says when a law applies is a hypothesis instead, and
 those have a part of their own below.
 
-There are five. The first is the premise of Rothbard's derivation,
+There are seven. The first is the premise of Rothbard's derivation,
 and on his route it is the only claim the law needs. The second is the
 premise of Mises's, reconstructed in the same vocabulary; the third is
 asymmetry of preference, which neither derivation spends and one
@@ -362,7 +362,11 @@ comparison between them does. The last two are about what a man
 actually does, rather than what he would do. The fourth is the premise
 of the ladder read as a history, and runs from his ranking to his act.
 The fifth runs the other way, from an act to his ranking: demonstrated
-preference, the premise of exchange, stated of one trade. Each
+preference, the premise of exchange, stated of one trade. The last
+two are about time. The sixth is time preference: of two ends that are
+the same satisfaction, the sooner is preferred. The seventh is its
+demonstration, stated of one act: taking a satisfaction and forgoing
+the same satisfaction later shows a preference for the sooner. Each
 docstring names the theorems that carry it.
 
 {docstring Apodictic.SwapDominant}
@@ -374,6 +378,10 @@ docstring names the theorems that carry it.
 {docstring Apodictic.ActsInOrder}
 
 {docstring Apodictic.DemonstratedPreference}
+
+{docstring Apodictic.TimePreference}
+
+{docstring Apodictic.DemonstratedTimePreference}
 
 # The conditions
 
@@ -408,7 +416,9 @@ anyone could build to refute it.
 All five are given in full here, in the order they are listed above,
 because these are the assumptions a reader has to judge.
 Exchange takes conditions of its own, about trades rather than stocks;
-they are given in full under *Exchange*.
+they are given in full under *Exchange*. Time preference takes its
+own too, about dated ends; the document does not cover it yet, and they
+are in the library (`Apodictic.Dated`).
 
 {docstring Apodictic.Stock.OneMore}
 

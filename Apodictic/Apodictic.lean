@@ -7,6 +7,7 @@ import Apodictic.Mises
 import Apodictic.Temporal
 import Apodictic.Exchange
 import Apodictic.MutualBenefit
+import Apodictic.TimePreference
 import Apodictic.Contrast
 import Apodictic.Consistency
 import Apodictic.Manifest
