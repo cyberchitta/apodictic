@@ -123,7 +123,12 @@ Two lake packages in this repo:
   emitted to the site. It is written from `_notes/` at editorial
   cadence
   (human decision 2026-09-04) and may lag the Lean, never
-  contradict it. `generate-doc` does NOT produce Verso's own HTML:
+  contradict it. The human reviews it in large chunks, not part by
+  part (human decision 2026-09-18). A part is pushed once the
+  checkers are green and a fresh-agent cold read has been applied; the
+  claims, conditions, encodings and readings of the sources in it are
+  ruled beforehand, in discussion. Any library change is followed by
+  a sweep for document text it made false. `generate-doc` does NOT produce Verso's own HTML:
   `ApodicticDoc/Emit/Eleventy.lean` replaces Verso's page layer and
   writes an Eleventy input tree (`lake exe generate-doc --output
   ../site/verso`, run after any document change; the tree is
