@@ -408,9 +408,9 @@
   "path": ["The-Result", "Exchange"],
   "next":
   {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
-   "titleText": "The horses in Lean",
-   "title": "The horses in Lean",
+   "/The-Result/Time-preference/#Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+   "titleText": "Time preference",
+   "title": "Time preference",
    "sectionNum": "1.12."},
   "localToc":
   [{"numbering": null,
@@ -483,9 +483,9 @@
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Exchange",
   "fragment": "pages/The-Result/Exchange.html",
   "depth": 2},
- {"url": "/The-Result/The-horses-in-Lean/",
-  "titleText": "The horses in Lean",
-  "title": "1.12. The horses in Lean",
+ {"url": "/The-Result/Time-preference/",
+  "titleText": "Time preference",
+  "title": "1.12. Time preference",
   "sectionNum": "1.12.",
   "prev":
   {"url":
@@ -493,13 +493,107 @@
    "titleText": "Exchange",
    "title": "Exchange",
    "sectionNum": "1.11."},
+  "path": ["The-Result", "Time-preference"],
+  "next":
+  {"url":
+   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+   "titleText": "The horses in Lean",
+   "title": "The horses in Lean",
+   "sectionNum": "1.13."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>DatedFrame</code>",
+    "dest": "/The-Result/Time-preference/#Apodictic___DatedFrame___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>SameByValuation</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___TimePreference___SameByValuation"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>valuation_reading_is_free</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___TimePreference___valuation_reading_is_free"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>valuation_reading_strict_half_fails</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___Model___valuation_reading_strict_half_fails"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>TimePreference</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___TimePreference___mk-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>less_durable_preferred</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___TimePreference___less_durable_preferred"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>LiftsOverRest</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___DatedFrame___LiftsOverRest"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>DemonstratedTimePreference</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___DemonstratedTimePreference___mk-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>Morrows</code>",
+    "dest": "/The-Result/Time-preference/#Apodictic___Morrows___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>SameAlternative</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___Morrows___SameAlternative"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>NoPreferenceCarries</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___Morrows___NoPreferenceCarries"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>consumption_reveals</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___TimePreference___consumption_reveals"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>regress</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___TimePreference___regress"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>waiting_less_durable_applies</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___Model___waiting_less_durable_applies"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>waiting_regress_applies</code>",
+    "dest":
+    "/The-Result/Time-preference/#Apodictic___Model___waiting_regress_applies"}],
+  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+  "fragment": "pages/The-Result/Time-preference.html",
+  "depth": 2},
+ {"url": "/The-Result/The-horses-in-Lean/",
+  "titleText": "The horses in Lean",
+  "title": "1.13. The horses in Lean",
+  "sectionNum": "1.13.",
+  "prev":
+  {"url":
+   "/The-Result/Time-preference/#Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+   "titleText": "Time preference",
+   "title": "Time preference",
+   "sectionNum": "1.12."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.13."},
+   "sectionNum": "1.14."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -536,21 +630,21 @@
   "depth": 2},
  {"url": "/The-Result/The-vocabulary/",
   "titleText": "The vocabulary",
-  "title": "1.13. The vocabulary",
-  "sectionNum": "1.13.",
+  "title": "1.14. The vocabulary",
+  "sectionNum": "1.14.",
   "prev":
   {"url":
    "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
-   "sectionNum": "1.12."},
+   "sectionNum": "1.13."},
   "path": ["The-Result", "The-vocabulary"],
   "next":
   {"url":
    "/The-Result/Claims-no-theorem-uses/#Apodictic___-Machine-Checked-Praxeology--The-Result--Claims-no-theorem-uses",
    "titleText": "Claims no theorem uses",
    "title": "Claims no theorem uses",
-   "sectionNum": "1.14."},
+   "sectionNum": "1.15."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -581,14 +675,14 @@
   "depth": 2},
  {"url": "/The-Result/Claims-no-theorem-uses/",
   "titleText": "Claims no theorem uses",
-  "title": "1.14. Claims no theorem uses",
-  "sectionNum": "1.14.",
+  "title": "1.15. Claims no theorem uses",
+  "sectionNum": "1.15.",
   "prev":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.13."},
+   "sectionNum": "1.14."},
   "path": ["The-Result", "Claims-no-theorem-uses"],
   "next": null,
   "localToc":
