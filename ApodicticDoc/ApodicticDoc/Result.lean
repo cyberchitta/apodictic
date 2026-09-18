@@ -363,8 +363,8 @@ actually does, rather than what he would do. The fourth is the premise
 of the ladder read as a history, and runs from his ranking to his act.
 The fifth runs the other way, from an act to his ranking: demonstrated
 preference, the premise of exchange, stated of one trade. The last
-two are about time. The sixth is time preference: of two ends that are
-the same satisfaction, the sooner is preferred. The seventh is its
+two are about time. The sixth is time preference: a satisfaction is
+preferred sooner rather than later. The seventh is its
 demonstration, stated of one act: taking a satisfaction and forgoing
 the same satisfaction later shows a preference for the sooner. Each
 docstring names the theorems that carry it.
@@ -417,8 +417,7 @@ All five are given in full here, in the order they are listed above,
 because these are the assumptions a reader has to judge.
 Exchange takes conditions of its own, about trades rather than stocks;
 they are given in full under *Exchange*. Time preference takes its
-own too, about dated ends; the document does not cover it yet, and they
-are in the library (`Apodictic.Dated`).
+own too, about dated ends, given in full under *Time preference*.
 
 {docstring Apodictic.Stock.OneMore}
 
@@ -1355,6 +1354,263 @@ are conditions, and where they fail the theorems are silent, not
 wrong. The defence "the conditions did not hold" now has a list to
 check against.
 
+# Time preference
+%%%
+file := "Time-preference"
+%%%
+
+Time preference is the third target, chosen, like exchange, for what
+it can diagnose. That a man prefers a satisfaction sooner to the same
+satisfaction later is the foundation Rothbard builds interest on, and
+both authors state it as universal. Rothbard: "A fundamental and
+constant truth about human action is that man prefers his end to be
+achieved in the shortest possible time. Given the specific
+satisfaction, the sooner it arrives, the better" (*MES*, p. 15).
+Mises: "Satisfaction of a want in the nearer future is, other things
+being equal, preferred to that in the farther distant future", and
+"Time preference is a categorial requisite of human action" (*Human
+Action*, ch. XVIII, §2). Everything turns on the qualifier each of
+them attaches — "given the specific satisfaction", "other things being
+equal" — and on who decides when it is met.
+
+**Dates.** Until now the vocabulary had no "sooner": time was not
+ordered and an end had no date, because no theorem asked for either.
+Time preference cannot be stated without them, so the vocabulary grows
+here, and only here. Times get a bare relation, "before", with no
+properties at all. Each end gets the time it is attained at. And a
+third relation says which pairs of ends are, for a given man, the same
+satisfaction at two dates.
+
+{docstring Apodictic.DatedFrame}
+
+**Who decides "the same satisfaction".** Rothbard's footnote defines
+time preference as "the preference for present satisfaction over
+future satisfaction or present good over future good, provided it is
+remembered that it is the same satisfaction (or “good”) that is being
+compared", and then meets the obvious objection: "Since
+ice-in-the-summer provides different (and greater) satisfactions than
+ice-in-the-winter, they are not the same, but different goods"
+(pp. 15–16, n. 15). Mises sets the same case aside — perishable goods
+are "for all practical purposes different commodities". On that
+reading, whether two dated ends are the same satisfaction is settled
+by how the man values them. Then whenever he prefers the later one,
+it was a different good, and the claim is never tested.
+
+Lean shows exactly what that reading buys. Define "the same
+satisfaction" as "the later is not preferred to the sooner", and one
+half of time preference — that the later is never preferred — holds in
+every frame, carrying no claim at all:
+
+{docstring Apodictic.TimePreference.SameByValuation}
+
+{docstring Apodictic.TimePreference.valuation_reading_is_free}
+
+The other half — that the sooner is preferred — is not free. A frame
+in which nothing is ranked
+satisfies the valuation reading for every pair, and there the sooner
+is not preferred:
+
+{docstring Apodictic.Model.valuation_reading_strict_half_fails}
+
+So on this reading of the authors, what time preference asserts is
+that of any two ends at different dates, one is ranked above the
+other — none is ever left unranked. That is not what either of them
+argues for. And it sits badly with a doctrine of Rothbard's own, that
+indifference cannot be demonstrated in action: the claim now rules out
+exactly the case — two dated ends neither preferred to the other — that
+no act of his could ever show.
+
+The library therefore takes the other road. Sameness is supplied
+separately from the ranking — it is a man's, since satisfactions are
+his, but it is not read off his preferences — and so the claim can
+fail: a man who ranks the same satisfaction higher later would be a
+counterexample to it, not a different good.
+
+{docstring Apodictic.TimePreference}
+
+**Durability.** Rothbard draws one consequence at once: "if the actor
+values the total service rendered by two consumers' goods equally, he
+will, because of time preference, choose the less durable good"
+(p. 17). In its smallest case — two goods whose services differ only
+in the date of one of them — it follows, at a price:
+
+{docstring Apodictic.TimePreference.less_durable_preferred}
+
+```lean (name := manifestDurable)
+#manifest TimePreference.less_durable_preferred
+```
+```leanOutput manifestDurable
+manifest of Apodictic.TimePreference.less_durable_preferred
+
+  praxeological claims:
+    timePreference : TimePreference praxis agent now
+
+  situational conditions:
+    same : praxis.SameSatisfaction agent soon late
+    sooner : praxis.Before (praxis.attained soon) (praxis.attained late)
+    notPast : ¬praxis.Before (praxis.attained soon) now
+    lifts : praxis.LiftsOverRest agent now rest soon late
+
+  vocabulary (what the claims are about):
+    praxis : DatedFrame
+    agent : praxis.Agent
+    now : praxis.Time
+    rest : Set praxis.End
+    soon : praxis.End
+    late : praxis.End
+
+  logical background: []
+```
+
+The price is the last condition. Time preference ranks single
+satisfactions; the goods deliver streams of them. Getting from
+preferring the sooner service to preferring the stream it belongs to
+needs the rest of the stream to stay out of it, which fails where the
+sooner delivery clashes with something else in the stream. It is the
+condition Rothbard's sentence does not show, and it runs the opposite
+way to independence of uses, under *The conditions*:
+
+{docstring Apodictic.DatedFrame.LiftsOverRest}
+
+Two things are not reached. With more than one service at a different
+date, the preferences would have to be chained, and that needs
+transitivity of preference, which nothing here asserts. And the
+conclusion is a preference, not Rothbard's "will choose": no claim
+here runs from what a man ranks to which of two goods he picks. (The
+one claim in the library that runs from ranking to act,
+`ActsInOrder`, is about how a stock is allocated, not about this.)
+
+**Mises's regress.** Mises does not only assert time preference; he
+argues that action is impossible without it: "If he were not to prefer
+satisfaction in a nearer period of the future to that in a remoter
+period, he would never consume and so satisfy wants. ... He would not
+consume today, but he would not consume tomorrow either, as the morrow
+would confront him with the same alternative." The argument runs from
+what a man prefers to what he does, so it cannot be stated without a
+bridge between the two. Mises supplies one in the same section, and
+it runs the other way round — from the act to the preference — which
+is the same link read backwards: if consuming shows a preference for
+the sooner, then without that preference there is no consuming that
+shows one. "He
+who consumes a nonperishable good instead of postponing consumption
+for an indefinite later moment thereby reveals a higher valuation of
+present satisfaction". That sentence is the second new claim, stated
+of one act:
+
+{docstring Apodictic.DemonstratedTimePreference}
+
+The sequence the regress runs along — a satisfaction on offer each
+day, and the same one tomorrow — and the conditions it spends. The
+third, `ConsumesAt`, only says that the act in question takes the
+day's offer and forgoes the next day's.
+
+{docstring Apodictic.Morrows}
+
+{docstring Apodictic.Morrows.SameAlternative}
+
+{docstring Apodictic.Morrows.NoPreferenceCarries}
+
+With the bridge in place, the step from "he consumed" to "he preferred
+the sooner" is one application of the bridge, plus the sameness
+condition:
+
+{docstring Apodictic.TimePreference.consumption_reveals}
+
+and the regress adds only one thing to it: carried back through the
+days, the preference shown by consuming on one day refutes having had
+none on the first.
+
+{docstring Apodictic.TimePreference.regress}
+
+```lean (name := manifestRegress)
+#manifest TimePreference.regress
+```
+```leanOutput manifestRegress
+manifest of Apodictic.TimePreference.regress
+
+  praxeological claims:
+    demonstrated : DemonstratedTimePreference act
+
+  situational conditions:
+    consumes : morrows.ConsumesAt n act
+    sameAlternative : morrows.SameAlternative
+    carries : morrows.NoPreferenceCarries
+
+  vocabulary (what the claims are about):
+    praxis : DatedFrame
+    agent : praxis.Agent
+    morrows : Morrows praxis agent
+    n : ℕ
+    act : Action praxis.toActionFrame
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    morrows.dated : ∀ (n : ℕ), praxis.attained (morrows.offer n) = morrows.date n
+    morrows.successive : ∀ (n : ℕ), praxis.Before (morrows.date n) (morrows.date (n + 1))
+    act.forgone_nonempty : act.forgone.Nonempty
+    act.chosen_not_forgone : act.chosen ∉ act.forgone
+    act.belief : praxis.Believes act.agent act.time act.means act.chosen
+
+  logical background: []
+
+  (1 trailing binders belong to the conclusion, not the signature)
+```
+
+Three findings are in this. First, the regress and the "reveals"
+sentence are one premise, used twice: that consuming the sooner shows
+a preference for it. The regress passage leaves that premise
+unstated; the "reveals" sentence states it, and once it is stated it
+does all the work — the regress contributes only the carrying from
+day to day. Second, what comes out is far short of
+the universal: a preference, at one date, for one sequence of offers
+— not "the sooner is better" for every end at every date. Third, it
+comes out only as a double negation, because Mises carries the
+*absence* of a preference forward: the argument refutes his having no
+preference on the first day, and this argument yields the preference
+itself only with excluded middle, which the library does not
+assume.
+
+In `Waiting`, a frame where a man prefers each satisfaction sooner,
+both claims and every condition of both theorems hold together. The
+test is weak in two places, and they are worth saying: the durability
+case is handed an empty rest of the stream, so the lifting condition
+is never tried on a real one; and there is no absence of preference
+for the regress's carrying condition to carry, so it holds with
+nothing to do.
+
+{docstring Apodictic.Model.waiting_less_durable_applies}
+
+{docstring Apodictic.Model.waiting_regress_applies}
+
+**The carried conditions.** The regress's manifest lists two fields
+of the sequence — that each day's offer is attained on that day, and
+that each day comes before the next — and three of the act. Each is
+of the kind that assumes nothing about the world: a sequence whose
+"offer on the third day" arrives on some other day, or an act that
+gives nothing up, is not a situation that might obtain. That each
+day's offer is the same satisfaction as the next is not of that kind
+— the good may perish — and so it is not a field but the named
+condition above.
+
+**What "before" was asked for.** Nothing. No proof here uses any
+property of "before" — not that it is transitive, not even that no
+time comes before itself. "Sooner" enters every statement as a label
+on a pair of dates and is never a step in an argument. Lean was
+expected to force an order on time here, and it did not.
+
+**What a failure would point at.** Where a man prefers a satisfaction
+later: the two dated ends were not the same satisfaction for him (the
+good perishes, the enjoyments cannot be had together, the later is
+surer); the sooner one was already past; or the claim itself failed.
+Where a man prefers the less durable good less: the same, or the
+sooner service clashed with the rest of the stream. Where the regress
+does not bite: the offer was not the same from day to day, his lack of
+preference did not carry, or consuming did not reveal what Mises says
+it does. One way the claim is said to miss reality — preferring to
+wait for a pleasure, or to hurry through a pain — is not yet on the
+list; it enters as a condition of its own once the literature on it
+has been checked.
+
 # The horses in Lean
 
 The case from the opening, built. It does a second job at the same
@@ -1474,7 +1730,10 @@ and it appears only in the statement the counter-model refutes.
 {docstring Apodictic.Stock.Grows}
 
 The words of exchange — a trade, an exchange, and what a holding
-counts for — are defined under *Exchange*, where they are used.
+counts for — are defined under *Exchange*, where they are used. The
+dates time preference needs — a bare "before", the time an end is
+attained, and which ends are the same satisfaction — are defined under
+*Time preference*; the frame above has none of them.
 
 # Claims no theorem uses
 

@@ -25,7 +25,7 @@ earlier theorem acquires vocabulary it does not use.
 - `SameSatisfaction`: which pairs of ends are the same satisfaction at
   two dates. A bare relation, per agent, with no properties and NO
   link to `Prefers`. Who fixes it is the question time preference turns
-  on (MES p. 16, n. 15; `Apodictic.TimePreference`), so it is
+  on (MES pp. 15–16, n. 15; `Apodictic.TimePreference`), so it is
   supplied, never defined from the ranking.
 -/
 
@@ -63,8 +63,11 @@ date in a sequence the agent can have a satisfaction now, or the same
 satisfaction at the next date: "the morrow would confront him with the
 same alternative" (*Human Action*, ch. XVIII, §2).
 
-A structure because the regress is about one such sequence; its
-`Prop` fields are what makes it the SAME alternative each time. -/
+A structure because the regress is about one such sequence. Its
+`Prop` fields only fix which offer belongs to which date; that each
+offer is the same satisfaction as the next — what makes it the SAME
+alternative — can fail (the good perishes), so it is not a field but
+the named condition `Morrows.SameAlternative`. -/
 structure Morrows (praxis : DatedFrame) (agent : praxis.Agent) where
   /-- The successive dates. -/
   date : ℕ → praxis.Time
@@ -74,8 +77,15 @@ structure Morrows (praxis : DatedFrame) (agent : praxis.Agent) where
   dated : ∀ n, praxis.attained (offer n) = date n
   /-- Each date comes before the next. -/
   successive : ∀ n, praxis.Before (date n) (date (n + 1))
-  /-- Each offer is the same satisfaction as the next. -/
-  same : ∀ n, praxis.SameSatisfaction agent (offer n) (offer (n + 1))
+
+/-- **The same alternative each day** — a condition on the situation.
+Each day's offer is, for this agent, the same satisfaction as the
+next day's. Mises's "the morrow would confront him with the same
+alternative"; it fails where the good perishes or its use depends on
+the date — his own ice. -/
+def Morrows.SameAlternative {praxis : DatedFrame} {agent : praxis.Agent}
+    (morrows : Morrows praxis agent) : Prop :=
+  ∀ n, praxis.SameSatisfaction agent (morrows.offer n) (morrows.offer (n + 1))
 
 /-- The agent consumes at date `n`: the act, at that date, takes the
 offer now and forgoes the offer on the morrow. -/

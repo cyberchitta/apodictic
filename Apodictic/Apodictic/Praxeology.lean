@@ -417,7 +417,7 @@ categorial requisite of human action."
 Status: explicit-in-tradition as doctrine; our-reconstruction as a
 claim. The authors fix "the same satisfaction" by the satisfaction it
 gives: ice in summer and ice in winter "are not the same, but
-different goods" (*MES* p. 16, n. 15), and Mises's ice is "for all
+different goods" (*MES* pp. 15–16, n. 15), and Mises's ice is "for all
 practical purposes different commodities". Read that way the sentence
 cannot fail — whatever is preferred later was a different good. Here
 `SameSatisfaction` is supplied apart from `Prefers`, so the claim
@@ -469,8 +469,7 @@ Status: explicit-in-tradition. It is also the premise Mises's regress
 runs on without stating it — that an agent with no preference for the
 sooner postpones — read the other way round
 (`Apodictic.TimePreference.consumption_reveals`). Carried by that
-theorem, and denied of every consuming act by Mises's regress
-(`Apodictic.TimePreference.never_consumes`).
+theorem and by Mises's regress (`Apodictic.TimePreference.regress`).
 
 Does not say:
 

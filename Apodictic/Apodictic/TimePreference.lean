@@ -16,12 +16,13 @@ and Mises's regress
 - `consumption_reveals`: an act of consuming now what could have been
   had on the morrow shows a preference for now, at that date. It is
   `DemonstratedTimePreference`, applied.
-- `never_consumes`: Mises's regress. With no preference for the sooner
-  at the first date, and no preference carrying from each date to the
-  next, no act of consuming demonstrates. The regress adds exactly one
-  thing to `consumption_reveals`: it carries the conclusion BACK to the
-  first date. Neither delivers the universal — a preference at one
-  date, for one sequence, is all either reaches.
+- `regress`: Mises's regress. An act of consuming that demonstrates,
+  with no preference carrying from each date to the next, refutes "no
+  preference for the sooner at the first date". The regress adds
+  exactly one thing to `consumption_reveals`: it carries the conclusion
+  BACK to the first date — and only as a double negation. Neither
+  delivers the universal — a preference at one date, for one sequence,
+  is all either reaches.
 - `valuation_reading_is_free`: the rejected encoding. Define "the same
   satisfaction" from the ranking, as n. 15 does, and the
   never-prefers-later half of time preference holds in every frame,
@@ -67,6 +68,7 @@ theorem consumption_reveals
     (morrows : Morrows praxis agent) (n : ℕ)
     (act : Action praxis.toActionFrame)
     (consumes : morrows.ConsumesAt n act)
+    (sameAlternative : morrows.SameAlternative)
     (demonstrated : DemonstratedTimePreference act) :
     praxis.PrefersEnd agent (morrows.date n)
       (morrows.offer n) (morrows.offer (n + 1)) := by
@@ -74,7 +76,7 @@ theorem consumption_reveals
   subst hagent
   have hsame : praxis.SameSatisfaction act.agent act.chosen (morrows.offer (n + 1)) := by
     rw [hchosen]
-    exact morrows.same n
+    exact sameAlternative n
   have hbefore : praxis.Before (praxis.attained act.chosen)
       (praxis.attained (morrows.offer (n + 1))) := by
     rw [hchosen, morrows.dated n, morrows.dated (n + 1)]
@@ -104,25 +106,38 @@ a remoter period, he would never consume and so satisfy wants. ... He
 would not consume today, but he would not consume tomorrow either, as
 the morrow would confront him with the same alternative."
 
-Read with the act of consuming as one that demonstrates: no such act,
-at any date of the sequence. What the argument spends is in the
-signature — the demonstration (Mises's "reveals", in the same
-section), and the absence of preference carrying from date to date (his
-"the same alternative"). -/
-theorem never_consumes
+Stated from the act: an act of consuming at any date of the sequence,
+if it demonstrates, refutes "no preference for the sooner at the first
+date". What the argument spends is in the signature — the
+demonstration (Mises's "reveals", in the same section); that each
+day's offer is the same satisfaction as the next (his "the same
+alternative"); and the absence of preference carrying from date to
+date.
+
+The conclusion is a double negation. The argument refutes the absence
+of a preference at the first date; it does not produce the preference.
+That follows from how Mises words the step — he carries the ABSENCE
+of a preference forward ("he would not consume tomorrow either"), and
+so does `NoPreferenceCarries`. Getting the preference itself back from
+that needs excluded middle (at the first date he either prefers the
+sooner or does not), which the library does not assume; carried the
+other way, as a preference passed back from each date to the one
+before, the condition would give it directly. -/
+theorem regress
     {praxis : DatedFrame} {agent : praxis.Agent}
-    (morrows : Morrows praxis agent)
-    (none : ¬ praxis.PrefersEnd agent (morrows.date 0)
-      (morrows.offer 0) (morrows.offer 1))
+    (morrows : Morrows praxis agent) (n : ℕ)
+    (act : Action praxis.toActionFrame)
+    (consumes : morrows.ConsumesAt n act)
+    (sameAlternative : morrows.SameAlternative)
+    (demonstrated : DemonstratedTimePreference act)
     (carries : morrows.NoPreferenceCarries) :
-    ∀ n (act : Action praxis.toActionFrame), morrows.ConsumesAt n act →
-      ¬ DemonstratedTimePreference act := by
-  intro n act consumes demonstrated
-  exact no_preference_at_every_date morrows none carries n
-    (consumption_reveals morrows n act consumes demonstrated)
+    ¬ ¬ praxis.PrefersEnd agent (morrows.date 0)
+      (morrows.offer 0) (morrows.offer 1) :=
+  fun none => no_preference_at_every_date morrows none carries n
+    (consumption_reveals morrows n act consumes sameAlternative demonstrated)
 
 /-- "The same satisfaction", fixed by the ranking: the later is not
-preferred to the sooner. The reading of *MES* p. 16, n. 15 — ice in
+preferred to the sooner. The reading of *MES* pp. 15–16, n. 15 — ice in
 summer "provides different (and greater) satisfactions" than ice in
 winter, so the two are different goods. REJECTED as the library's
 encoding; stated so the rejection is checked. -/
@@ -151,7 +166,7 @@ theorem valuation_reading_is_free (praxis : DatedFrame)
 
 #print axioms less_durable_preferred
 #print axioms consumption_reveals
-#print axioms never_consumes
+#print axioms regress
 #print axioms valuation_reading_is_free
 
 end TimePreference

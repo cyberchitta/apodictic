@@ -1225,7 +1225,6 @@ def waitingMorrows : Morrows Waiting () where
   offer := fun n => (0, n)
   dated := fun _ => rfl
   successive := fun n => Nat.lt_succ_self n
-  same := fun _ => rfl
 
 /-- Consuming at date `n`, forgoing the morrow. -/
 def waitingConsume (n : ℕ) : Action Waiting.toActionFrame where
@@ -1246,7 +1245,7 @@ theorem waiting_demonstrated (n : ℕ) :
 theorem waiting_consumption_reveals_applies (n : ℕ) :
     Waiting.PrefersEnd () n (0, n) (0, n + 1) :=
   TimePreference.consumption_reveals waitingMorrows n (waitingConsume n)
-    ⟨rfl, rfl, rfl, rfl⟩ (waiting_demonstrated n)
+    ⟨rfl, rfl, rfl, rfl⟩ (fun _ => rfl) (waiting_demonstrated n)
 
 /-- The same dated ends, and no preference at all. -/
 abbrev Patient : DatedFrame where
@@ -1260,19 +1259,14 @@ abbrev Patient : DatedFrame where
   attained := Prod.snd
   SameSatisfaction := fun _ a b => a.1 = b.1
 
-def patientMorrows : Morrows Patient () where
-  date := fun n => n
-  offer := fun n => (0, n)
-  dated := fun _ => rfl
-  successive := fun n => Nat.lt_succ_self n
-  same := fun _ => rfl
-
-/-- **Non-vacuity: the regress's hypotheses hold together**, in a
-frame with no preference that carries from date to date. -/
-theorem patient_never_consumes_applies :
-    ∀ n (act : Action Patient.toActionFrame), patientMorrows.ConsumesAt n act →
-      ¬ DemonstratedTimePreference act :=
-  TimePreference.never_consumes patientMorrows id (fun _ h => h)
+/-- **Non-vacuity: the regress applies in `Waiting`**, where the agent
+prefers the sooner at every date and so no absence of preference has
+anything to carry. -/
+theorem waiting_regress_applies (n : ℕ) :
+    ¬ ¬ Waiting.PrefersEnd () 0 (0, 0) (0, 1) :=
+  TimePreference.regress waitingMorrows n (waitingConsume n)
+    ⟨rfl, rfl, rfl, rfl⟩ (fun _ => rfl) (waiting_demonstrated n)
+    (fun k h => absurd ⟨_, _, rfl, rfl, rfl, Nat.lt_succ_self k⟩ h)
 
 /-- **On the valuation reading, the strict half of time preference is
 not free** — it fails where nothing is ranked: every pair counts as the
@@ -1289,7 +1283,7 @@ theorem valuation_reading_strict_half_fails :
 
 #print axioms waiting_less_durable_applies
 #print axioms waiting_consumption_reveals_applies
-#print axioms patient_never_consumes_applies
+#print axioms waiting_regress_applies
 #print axioms valuation_reading_strict_half_fails
 
 end Model
