@@ -1187,8 +1187,6 @@ manifest of Apodictic.MutualBenefit.reverse_valuations
 
   conditions carried by the vocabulary (not binders: discharged by
   whoever supplies the argument):
-    exchange.two_people : exchange.first.agent ≠ exchange.second.agent
-    exchange.same_time : exchange.first.time = exchange.second.time
     exchange.swap_gives : exchange.second.gets = exchange.first.gives
     exchange.swap_gets : exchange.second.gives = exchange.first.gets
 
@@ -1270,12 +1268,6 @@ manifest of Apodictic.MutualBenefit.better_off_judged_later
     trade : Trade praxis
     later : praxis.Time
 
-  conditions carried by the vocabulary (not binders: discharged by
-  whoever supplies the argument):
-    trade.gives_ne_gets : trade.gives ≠ trade.gets
-    trade.gives_not_kept : trade.gives ∉ trade.kept
-    trade.gets_not_kept : trade.gets ∉ trade.kept
-
   logical background: [propext, Quot.sound]
 ```
 
@@ -1318,17 +1310,38 @@ buyer who was simply mistaken both fail `BeliefsHold`; only the first
 is outside Rothbard's "voluntary", so only the second is a case his
 paragraph covers.
 
-**The carried conditions.** Both manifests list fields of the exchange
-and the trade: two people, one moment, each gets what the other gives,
-two different goods, a good given is not also kept, a good received was
-not already held. Each is of the kind that assumes nothing about the
-world. An "exchange" in which a man trades a good for itself, or with
-himself, is not a situation that might obtain, and Rothbard makes the
-point about two different goods explicit: "we implicitly assumed that
-it must be two different goods that are being exchanged" (p. 95).
-Which kind a carried condition is cannot be read off the Lean. It is a
-judgement, made here as it is for the fields of a stock and a plan
-under *The vocabulary*, later in the document.
+**The carried conditions.** The first manifest lists two fields of the
+exchange: what A gives, B gets, and what B gives, A gets. Neither
+says anything about the world: if the good A hands over were not the
+good B receives, there would be no exchange to speak of. Whether a
+field is of that kind is a judgement, and the Lean cannot make it. It is made here as it is for the fields of a stock and
+a plan under *The vocabulary*, later in the document. The second
+manifest has no such group: nothing is built into a trade as defined,
+and the conditions its theorem needs are the named ones above it.
+
+Five conditions a reader might expect are on neither list: that A and
+B are two people, that the two trades are made at one moment, that two
+different goods change hands, that the good given is not also kept,
+and that the good received was not already held. Each was a field of
+`Trade` or of `Exchange`; no proof used it, and it was removed. Two
+people and one moment have nothing to do, because the theorem about an
+exchange is the theorem about one trade said twice, and the two swap
+fields do the matching. The two about what is kept are what make
+`kept` the rest of a man's holding. Where they fail the definitions
+describe no trade, and nothing rules that out, since no proof needs
+to.
+
+Two different goods is Rothbard's own: "In describing the conditions
+that must obtain for interpersonal exchange to take place (such as
+reverse valuations), we implicitly assumed that it must be two
+different goods that are being exchanged" (p. 95). For him it is a
+condition for an exchange to take place, like knowledge of the other
+party above, and every theorem here starts from a trade that did
+happen. Nor does dropping it let in the man who trades a good for
+itself. Of him the bridge would say that he prefers his holding to
+itself; `Prefers` is read as strict, so the bridge is false of him
+and the theorems are silent. He is kept out by the claim, not by a
+field.
 
 **Where the tradition stands.** For Rothbard the bridge cannot fail.
 The scale is read off the act: "We deduce the existence of a specific

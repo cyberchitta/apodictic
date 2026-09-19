@@ -51,9 +51,14 @@ before the trade (`Trade.Voluntary`); under a threat it is worse. It is
 a field because the act alone does not fix it: the same handing-over
 is a trade or a robbery according to what refusing would have cost.
 
-Shape: our-reconstruction. That the two goods differ is Rothbard's own
-("we implicitly assumed that it must be two different goods that are
-being exchanged", *MES* p. 95). -/
+Shape: our-reconstruction. `kept` is read as the rest of the holding:
+a `Trade` whose given or received good is also among the kept
+describes no trade. Nothing rules that out, because no theorem in the
+library needs to. Rothbard assumes the two goods differ ("we
+implicitly assumed that it must be two different goods that are being
+exchanged", *MES* p. 95), as a condition for an exchange to take
+place; no theorem in the library uses that either, so a `Trade` does
+not require it. -/
 structure Trade (praxis : ActionFrame) where
   /-- The trading party. -/
   agent : praxis.Agent
@@ -67,12 +72,6 @@ structure Trade (praxis : ActionFrame) where
   kept : Set praxis.Means
   /-- What refusing would have left him with, as ends. -/
   refusal : Set praxis.End
-  /-- Two different goods change hands. -/
-  gives_ne_gets : gives ≠ gets
-  /-- The good given up is not also kept. -/
-  gives_not_kept : gives ∉ kept
-  /-- The good received was not already held. -/
-  gets_not_kept : gets ∉ kept
 
 /-- The holding before the trade, counted by the agent's beliefs at
 `judged`. -/
@@ -157,18 +156,16 @@ def Trade.RankingHolds {praxis : ActionFrame} (trade : Trade praxis)
     praxis.Prefers trade.agent later
       (trade.after trade.time) (trade.before trade.time)
 
-/-- A two-party exchange: two trades at one time, each party giving
-what the other gets. "A gives up a good to B in exchange for a good
-that B gives up to A" (*MES* p. 85). -/
+/-- A two-party exchange: two trades, each party giving what the other
+gets. "A gives up a good to B in exchange for a good that B gives up
+to A" (*MES* p. 85). That A and B are two people, and that the two
+trades are made at one moment, no theorem in the library uses; an
+`Exchange` does not require either. -/
 structure Exchange (praxis : ActionFrame) where
   /-- A's side. -/
   first : Trade praxis
   /-- B's side. -/
   second : Trade praxis
-  /-- Two people. -/
-  two_people : first.agent ≠ second.agent
-  /-- One exchange, one time. -/
-  same_time : first.time = second.time
   /-- What A gives, B gets. -/
   swap_gives : second.gets = first.gives
   /-- What B gives, A gets. -/

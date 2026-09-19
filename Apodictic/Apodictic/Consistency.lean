@@ -1070,9 +1070,6 @@ def barterTrade (believes : Bool → Bool → Bool → Bool → Prop)
   gets := !agent
   kept := ∅
   refusal := (barterFrame believes wanted).ServedBy agent false (insert agent ∅)
-  gives_ne_gets := by cases agent <;> simp
-  gives_not_kept := fun h => h
-  gets_not_kept := fun h => h
 
 theorem barter_voluntary (believes : Bool → Bool → Bool → Bool → Prop)
     (wanted : Bool → Bool → Bool) (agent : Bool) :
@@ -1118,8 +1115,6 @@ theorem barterOk_demonstrated (agent : Bool) :
 def barterExchange : Exchange barterOk where
   first := barterTrade honestBeliefs steadyWants false
   second := barterTrade honestBeliefs steadyWants true
-  two_people := Bool.false_ne_true
-  same_time := rfl
   swap_gives := rfl
   swap_gets := rfl
 
