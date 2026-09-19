@@ -106,16 +106,13 @@ Two lake packages in this repo:
     action. Nothing assertion-like anywhere else. Auditable at a
     glance. The library declares NO `axiom` (2026-09-06): a claim is
     a structure, carried by a theorem as a named hypothesis.
-  - Apodictic/Action.lean — agents, ends, means, the action framework.
-  - Apodictic/Urgency.lean — the urgency principle as a theorem
-    (derived 2026-09-04 from `swap_dominance`; independence of uses
-    is a hypothesis).
-  - Apodictic/MarginalUtility.lean — first theorem target: Rothbard's
-    allocation version of marginal utility.
   - Apodictic/Consistency.lean — the consistency ledger, in Lean: a
     toy frame satisfying every axiom's statement plus asymmetry and
     the theorems' hypotheses. Evidence, not theory; nothing depends
     on it; its proofs may be classical.
+  - The other modules — the vocabulary and one file per theorem
+    target — are not listed here: the directory is the inventory.
+    Only a file that carries a rule gets an entry.
 - **ApodicticDoc/** — a Verso document package, depending on the
   Apodictic library. The connected essay lives here: the vocabulary,
   the claim, the hypotheses, the theorems and the manifest — the
