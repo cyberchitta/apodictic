@@ -47,8 +47,8 @@ approve every axiom and every design decision. Therefore:
   separate hand-authored catalog — the axiom-by-axiom catalog is the
   source itself plus the Verso document. Docstrings are PEDIGREE
   ONLY (human decision 2026-09-04): no dates, no note paths, no
-  "was tried before", no commit hashes. History lives in `_notes/`
-  and `_notes/`; the result part quotes
+  "was tried before", no commit hashes. History lives in `_notes/`;
+  the result part quotes
   docstrings live and must read as verdicts.
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
