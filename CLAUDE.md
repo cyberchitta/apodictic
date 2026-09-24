@@ -34,8 +34,16 @@ drafts encodings, axioms, and proofs. The human must understand and
 approve every axiom and every design decision. Therefore:
 
 - NEVER silently choose an encoding that makes a proof easier. If two
-  encodings differ in philosophical commitment, STOP and present the
-  choice with trade-offs.
+  encodings differ in philosophical commitment, present the choice
+  with trade-offs: in a build sprint, as an entry in
+  `_notes/PENDING-RULINGS.md`, continuing on the recommended branch
+  in the draft library if the choice is local; otherwise, STOP.
+- Work alternates between sprints Claude runs alone and chunks worked
+  together (human decision 2026-09-24). The charter — targets, what
+  is delegated, the hard stops — is `_notes/SPRINT.md`; the agenda
+  for the next chunk is `_notes/PENDING-RULINGS.md`. Outside a
+  chartered sprint, every escalation trigger in `_notes/intent.md`
+  is stop-and-ask.
 - An easy proof is a warning sign, not a success. If a theorem goes
   through suspiciously fast, check whether an axiom is stronger than
   its praxeological pedigree justifies, and raise it.
@@ -103,7 +111,8 @@ Two lake packages in this repo:
   with `lake build`. It is the trusted artifact; nothing may ever
   block it.
   - Apodictic/Praxeology.lean — the COMPLETE set of claims about
-    action. Nothing assertion-like anywhere else. Auditable at a
+    action. Nothing assertion-like anywhere else, except unruled
+    claims in the draft library (below). Auditable at a
     glance. The library declares NO `axiom` (2026-09-06): a claim is
     a structure, carried by a theorem as a named hypothesis.
   - Apodictic/Consistency.lean — the consistency ledger, in Lean: a
@@ -113,6 +122,16 @@ Two lake packages in this repo:
   - The other modules — the vocabulary and one file per theorem
     target — are not listed here: the directory is the inventory.
     Only a file that carries a rule gets an entry.
+  - ApodicticDraft — the draft library, a second `lean_lib` in the
+    same lake package, created at first use and NOT a default
+    target: `lake build` builds the trusted library alone, and
+    `lake build ApodicticDraft` builds the draft. It imports the
+    library and nothing imports it — not the library, not the
+    document. Unruled claims and provisional encodings live here
+    during a sprint, under the same rules as the library (constructive,
+    linted, docstrings in the three fields). A ruling promotes a claim
+    into `Praxeology.lean` and its theorems into the library; a claim
+    ruled out stays as a rejected encoding or is deleted, as ruled.
 - **ApodicticDoc/** — a Verso document package, depending on the
   Apodictic library. The connected essay lives here: the vocabulary,
   the claim, the hypotheses, the theorems and the manifest — the
