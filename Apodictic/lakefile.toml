@@ -8,3 +8,11 @@ rev = "v4.32.2"
 
 [[lean_lib]]
 name = "Apodictic"
+
+# The draft library (CLAUDE.md, "ApodicticDraft"): unruled claims and
+# provisional encodings during a sprint. NOT a default target — plain
+# `lake build` builds the trusted library alone; build the draft with
+# `lake build ApodicticDraft`. Nothing imports it. `check-draft-isolation.sh`
+# checks both.
+[[lean_lib]]
+name = "ApodicticDraft"
