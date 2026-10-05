@@ -21,8 +21,9 @@ again in ch. XXI, §6).
 - `direct_acquisition_before`: the positive form — some acquisition
   before `n` WAS for an end other than passing it on, and the proof
   finds it. It costs one thing more:
-  `[DecidablePred (praxis.Onward m)]`, the sort of an end decided. Not
-  classical: what is classical is the LAST day of barter (S5, parked),
+  the claim `TwoPartialDemands`, that every end is onward for `m` or
+  not — Mises's "composite of two partial demands", ruled a claim
+  (M-16). Not classical: what is classical is the LAST day of barter (S5, parked),
   which needs "medium on day `k`" decided, and that quantifies over
   agents.
 - `no_medium_without_narrow_acquisition`,
@@ -76,11 +77,11 @@ theorem no_medium_without_direct_acquisition {praxis : MediumFrame}
 
 /-- **A direct acquisition before** — the positive form: if anyone
 appraises `m` as a medium on day `n`, someone acquired `m` on an earlier
-day for an end other than passing it on. Given that the sort of an end
-can be decided. -/
+day for an end other than passing it on. Given that every end is
+onward for `m` or not (`TwoPartialDemands`). -/
 theorem direct_acquisition_before {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
-    [DecidablePred (praxis.Onward m)]
+    (twoDemands : TwoPartialDemands praxis m)
     (appraisal : AppraisalFromPast history m)
     (begins : history.BeginsBeforeMedium m)
     (purposive : history.AcquisitionsPurposive m n)
@@ -101,7 +102,7 @@ theorem direct_acquisition_before {praxis : MediumFrame}
         have hkj : k < i + 1 := Nat.lt_succ_of_le hk
         have hkn : k < n := Nat.lt_of_lt_of_le hkj hj
         obtain ⟨e, hbelief⟩ := purposive k hkn buyer g hacquired
-        rcases Decidable.em (praxis.Onward m e) with honward | hdirect
+        rcases twoDemands.sorted e with honward | hdirect
         · obtain ⟨k', hk', hfound⟩ :=
             ih k hkj (Nat.le_of_lt hkn) ⟨buyer, e, honward, hbelief⟩
           exact ⟨k', Nat.lt_trans hk' hkj, hfound⟩
@@ -133,7 +134,7 @@ reading. -/
 theorem narrow_acquisition_before {praxis : MediumFrame}
     (history : History praxis) (narrow : praxis.End → Prop)
     (m : praxis.Means) (n : ℕ)
-    [DecidablePred (praxis.Onward m)]
+    (twoDemands : TwoPartialDemands praxis m)
     (appraisal : AppraisalFromPast history m)
     (begins : history.BeginsBeforeMedium m)
     (purposive : history.AcquisitionsPurposive m n)
@@ -141,7 +142,7 @@ theorem narrow_acquisition_before {praxis : MediumFrame}
     (medium : history.MediumAt n m) :
     ∃ k < n, history.NarrowAcquisitionAt narrow k m := by
   obtain ⟨k, hk, agent, g, hacquired, e, hdirect, hbelief⟩ :=
-    direct_acquisition_before history m n appraisal begins purposive medium
+    direct_acquisition_before history m n twoDemands appraisal begins purposive medium
   exact ⟨k, hk, agent, g, hacquired, e, hdirect, hbelief,
     narrowReading k hk agent g hacquired e hdirect hbelief⟩
 

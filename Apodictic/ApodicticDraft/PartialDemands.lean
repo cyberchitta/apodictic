@@ -1,4 +1,5 @@
 import ApodicticDraft.Indirect
+import ApodicticDraft.Claims
 
 /-!
 # The two partial demands (T2, S2)
@@ -21,9 +22,10 @@ the narrow reading is a condition, in `ApodicticDraft.Regress`.
 - `partial_demands_not_not_exhaust`: every end the good serves is,
   not-not, in one part or the other. Free, and that is all that is free.
 - `partial_demands_exhaust`: every end the good serves IS in one part
-  or the other. It costs `[DecidablePred (praxis.Onward m)]`: that
-  whether an end is onward for `m` can be decided. Mises's "composite"
-  is exhaustive only by excluded middle on the sort of an end.
+  or the other. It costs the claim `TwoPartialDemands`: every end is
+  onward for `m` or not. Mises's "composite" is exhaustive only by
+  excluded middle on the sort of an end, so the composite IS that
+  excluded middle, carried as his claim (M-16).
 - `only_onward_without_direct`: a good with no direct ends counts
   only for its onward ends. Same cost.
 -/
@@ -57,15 +59,15 @@ theorem partial_demands_not_not_exhaust {praxis : MediumFrame}
   exact hout (Or.inr ⟨honward, hbelief⟩)
 
 /-- **The two partial demands exhaust what the good serves** — given
-that the sort of an end, onward for `m` or not, can be decided. -/
+that every end is onward for `m` or not (`TwoPartialDemands`). -/
 theorem partial_demands_exhaust {praxis : MediumFrame} (agent : praxis.Agent)
-    (time : praxis.Time) (m : praxis.Means) [DecidablePred (praxis.Onward m)] :
+    (time : praxis.Time) (m : praxis.Means) (twoDemands : TwoPartialDemands praxis m) :
     praxis.ServedBy agent time {m} =
       praxis.DirectEnds agent time m ∪ praxis.OnwardEnds agent time m := by
   apply Set.Subset.antisymm
   · rw [servedBy_singleton]
     intro e hbelief
-    rcases Decidable.em (praxis.Onward m e) with honward | hdirect
+    rcases twoDemands.sorted e with honward | hdirect
     · exact Or.inr ⟨honward, hbelief⟩
     · exact Or.inl ⟨hdirect, hbelief⟩
   · exact partial_demands_within agent time m
@@ -75,10 +77,10 @@ believes serves no end other than passing it on counts, in his holding,
 only for its onward ends. -/
 theorem only_onward_without_direct {praxis : MediumFrame}
     (agent : praxis.Agent) (time : praxis.Time) (m : praxis.Means)
-    [DecidablePred (praxis.Onward m)]
+    (twoDemands : TwoPartialDemands praxis m)
     (noDirect : praxis.DirectEnds agent time m = ∅) :
     praxis.ServedBy agent time {m} = praxis.OnwardEnds agent time m := by
-  rw [partial_demands_exhaust agent time m, noDirect, Set.empty_union]
+  rw [partial_demands_exhaust agent time m twoDemands, noDirect, Set.empty_union]
 
 #print axioms partial_demands_within
 #print axioms partial_demands_not_not_exhaust

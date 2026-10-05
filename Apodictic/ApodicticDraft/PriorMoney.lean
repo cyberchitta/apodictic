@@ -56,7 +56,7 @@ day for an end other than passing it on, giving for it a good that was
 not then a medium. -/
 theorem barter_origin {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
-    [DecidablePred (praxis.Onward m)]
+    (twoDemands : TwoPartialDemands praxis m)
     (appraisal : AppraisalFromPast history m)
     (begins : history.BeginsBeforeMedium m)
     (purposive : history.AcquisitionsPurposive m n)
@@ -65,7 +65,7 @@ theorem barter_origin {praxis : MediumFrame}
     ∃ k < n, ∃ agent g, history.AcquiredAgainst k m agent g ∧
       praxis.ValuesDirectly agent (history.date k) m ∧ ¬ history.MediumAt k g := by
   obtain ⟨k, hk, agent, g, hacquired, hdirect⟩ :=
-    direct_acquisition_before history m n appraisal begins purposive medium
+    direct_acquisition_before history m n twoDemands appraisal begins purposive medium
   exact ⟨k, hk, agent, g, hacquired, hdirect, barter k hk agent g hacquired⟩
 
 /-- **No medium without a barter acquisition** — Rothbard's p. 275
@@ -98,7 +98,7 @@ good was paid is found, not given: the record must begin before any
 medium at all. -/
 theorem prior_money_relates_back {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
-    [∀ g, DecidablePred (praxis.Onward g)]
+    (twoDemands : ∀ g, TwoPartialDemands praxis g)
     (appraisal : ∀ g, AppraisalFromPast history g)
     (begins : ∀ g, history.BeginsBeforeMedium g)
     (purposive : ∀ g, history.AcquisitionsPurposive g n)
@@ -109,7 +109,7 @@ theorem prior_money_relates_back {praxis : MediumFrame}
     exchanged_before history m n (appraisal m) (begins m) medium
   refine ⟨k, hk, agent, g, hacquired, ?_⟩
   intro hmoney
-  exact direct_acquisition_before history g k (appraisal g) (begins g)
+  exact direct_acquisition_before history g k (twoDemands g) (appraisal g) (begins g)
     (purposive_mono (Nat.le_of_lt hk) (purposive g)) hmoney
 
 #print axioms purposive_mono

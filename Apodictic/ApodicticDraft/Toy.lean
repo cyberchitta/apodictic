@@ -29,8 +29,11 @@ def frame : MediumFrame where
   Prefers := fun _ _ _ _ => False
   Onward := fun _ e => e = true
 
-instance : DecidablePred (frame.Onward ()) :=
-  fun e => instDecidableEqBool e true
+theorem twoDemands : TwoPartialDemands frame () :=
+  ⟨fun e => by
+    cases e with
+    | false => exact Or.inr Bool.false_ne_true
+    | true => exact Or.inl rfl⟩
 
 /-- The day's exchange. -/
 def dayExchange (k : ℕ) : Exchange frame.toActionFrame where
@@ -79,10 +82,10 @@ theorem finds the direct acquisition. -/
 theorem toy_nonvacuous :
     ∃ k < 1, ∃ agent g, history.AcquiredAgainst k () agent g ∧
       frame.ValuesDirectly agent (history.date k) () ∧ ¬ history.MediumAt k g :=
-  barter_origin history () 1 appraisal begins (purposive 1) barter medium
+  barter_origin history () 1 twoDemands appraisal begins (purposive 1) barter medium
 
 theorem toy_narrow : ∃ k < 1, history.NarrowAcquisitionAt (fun e => e = false) k () :=
-  narrow_acquisition_before history (fun e => e = false) () 1 appraisal begins
+  narrow_acquisition_before history (fun e => e = false) () 1 twoDemands appraisal begins
     (purposive 1) narrowReading medium
 
 #print axioms toy_nonvacuous

@@ -62,4 +62,35 @@ structure AppraisalFromPast {praxis : MediumFrame} (history : History praxis)
     praxis.AppraisesAsMedium agent (history.date (n + 1)) m →
       ∃ k ≤ n, history.ExchangedOn k m
 
+/-- **Two partial demands** — every end a good can serve is either one
+reached by passing the good on, or not: the demand for a medium of
+exchange divides without remainder into the two demands Mises names.
+
+Asserted of one frame and one good. Its content is excluded middle for
+the one predicate `Onward m`: the vocabulary cannot decide it, and
+nothing in logic supplies it constructively, so where a theorem needs
+the split, the split is this claim.
+
+Source: Mises, *Human Action*, ch. XVII, §4: "Thus the demand for a
+medium of exchange is the composite of two partial demands: the demand
+displayed by the intention to use it in consumption and production and
+that displayed by the intention to use it as a medium of exchange."
+
+Status: explicit-in-tradition as doctrine; the reading of "composite"
+as an exhaustive sort of ends is our-reconstruction.
+
+Does not say:
+
+1. That the non-onward part is consumption or production. Mises names
+   them; this claim leaves the sort "not onward", and the narrow
+   reading is the separate condition `History.OtherEmploymentsNarrow`.
+2. That the two demands add up, or have sizes at all. No quantities.
+3. That an agent can tell which kind an end is, or that the sort can
+   be computed. It says each end IS one or the other.
+4. That excluded middle holds for any other predicate. -/
+structure TwoPartialDemands (praxis : MediumFrame) (m : praxis.Means) :
+    Prop where
+  /-- Each end is onward for `m`, or it is not. -/
+  sorted : ∀ e, praxis.Onward m e ∨ ¬ praxis.Onward m e
+
 end ApodicticDraft
