@@ -1,6 +1,7 @@
 import Apodictic.Action
 import Apodictic.Allocation
 import Apodictic.Region
+import Apodictic.Medium
 import Apodictic.Praxeology
 import Apodictic.Urgency
 import Apodictic.MarginalUtility
@@ -9,6 +10,7 @@ import Apodictic.Temporal
 import Apodictic.Exchange
 import Apodictic.MutualBenefit
 import Apodictic.TimePreference
+import Apodictic.Regression
 import Apodictic.Contrast
 import Apodictic.Consistency
 import Apodictic.Manifest

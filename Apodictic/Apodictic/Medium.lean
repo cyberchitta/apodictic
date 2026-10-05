@@ -1,10 +1,11 @@
-import Apodictic
+import Apodictic.Exchange
 
 /-!
-# Medium — the vocabulary of indirect exchange (draft, T2)
+# Medium — the vocabulary of indirect exchange
 
-Definitions ONLY: this file asserts nothing. The one claim T2 spends,
-appraisal from the past, is in `ApodicticDraft.Claims`. The situational
+Definitions ONLY: this file asserts nothing. The claims about it,
+`AppraisalFromPast` and `TwoPartialDemands`, are in
+`Apodictic.Praxeology`. The situational
 conditions are here, as definitions a theorem takes as named hypotheses.
 
 ## What is added
@@ -19,12 +20,12 @@ conditions are here, as definitions a theorem takes as named hypotheses.
 - `History`: the record of exchanges that happened, day by day, with
   days indexed by ℕ. No `Prop` field.
 
-## What "a medium" is (M-4, M-10, both PROVISIONAL)
+## What "a medium" is
 
 Defined by BELIEF: someone appraises `m` as a medium at a time when he
 believes `m` serves an onward end (`AppraisesAsMedium`). Not by the
-presence of an appraisal of its price (that is GUARD-2 of the scoping
-note, refused), and not by an actual later trade: anticipatory demand
+presence of an appraisal of its price (which would make the regress true by
+definition), and not by an actual later trade: anticipatory demand
 counts as monetary demand.
 
 ## Shape claims (audit)
@@ -33,7 +34,7 @@ counts as monetary demand.
   not as a unit. The regress is about the kind: a coin minted today was
   never traded before, and the theorem is not about that coin. Nothing
   in `Trade` fixes either reading; `Stock` reads `Means` as units, and
-  no `Stock` appears in T2.
+  no `Stock` appears in the regression theorem.
 - An end is onward FOR A GOOD: `Onward m e` ties the end to giving `m`
   itself away. A baker's flour serves the end of selling bread, but
   the bread is what is given away, so that end is not onward for flour.
@@ -42,9 +43,8 @@ counts as monetary demand.
   regress's termination is supplied by the type, not argued.
 -/
 
-namespace ApodicticDraft
+namespace Apodictic
 
-open Apodictic
 
 /-- An action frame with onward ends. -/
 structure MediumFrame extends ActionFrame where
@@ -60,7 +60,7 @@ def MediumFrame.AppraisesAsMedium (praxis : MediumFrame) (agent : praxis.Agent)
 
 /-- The agent, at that time, believes `m` serves some end other than an
 onward one: he values `m` for an "other employment" in the broad
-reading (M-2 (a)). -/
+reading. -/
 def MediumFrame.ValuesDirectly (praxis : MediumFrame) (agent : praxis.Agent)
     (time : praxis.Time) (m : praxis.Means) : Prop :=
   ∃ e, ¬ praxis.Onward m e ∧ praxis.Believes agent time m e
@@ -164,7 +164,7 @@ can state without quantities: whoever appraises `m` as a medium on a
 day before `n` does so after an exchange of `m` on an earlier day.
 "The appraisal RESTS ON that exchange" cannot be said here; what can
 be said coincides with the claim `AppraisalFromPast`, restricted to the
-days before `n` (`ApodicticDraft.Appraisal.ownPastPrice_of_claim`). -/
+days before `n` (`Apodictic.Regression.ownPastPrice_of_claim`). -/
 def History.OwnPastPrice {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) (n : ℕ) : Prop :=
   ∀ j, j + 1 < n → ∀ agent,
@@ -182,7 +182,7 @@ def History.FormedInBarter {praxis : MediumFrame} (history : History praxis)
     ¬ history.MediumAt k g
 
 /-- **Other employments are consumption or production** — the narrow
-reading of M-2 (b), as a condition on ends. Every end other than an
+reading, as a condition on ends. Every end other than an
 onward one for which `m` was acquired before day `n` is in `narrow`.
 `narrow` is supplied by whoever applies the theorem, the ends Mises
 means by "the services it can render directly to consumption or
@@ -195,4 +195,4 @@ def History.OtherEmploymentsNarrow {praxis : MediumFrame}
     ∀ e, ¬ praxis.Onward m e → praxis.Believes agent (history.date k) m e →
       narrow e
 
-end ApodicticDraft
+end Apodictic
