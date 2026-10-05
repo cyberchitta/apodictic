@@ -53,7 +53,10 @@ Does not say:
    derives that, from further conditions.
 5. Anything about day 0. That nobody appraises the good as a medium on
    the first day of the record is the separate condition
-   `History.BeginsBeforeMedium`, the termination Mises asserts. -/
+   `History.BeginsBeforeMedium`, the termination Mises asserts.
+6. That the record is complete. The claim is asserted of the record it
+   is handed: an earlier exchange that happened but is missing from
+   that record does not satisfy it. -/
 structure AppraisalFromPast {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) : Prop where
   /-- An appraisal as a medium on day `n + 1` has an exchange of the
