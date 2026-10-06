@@ -1,4 +1,6 @@
-import ApodicticDraft.Placeholder
+import ApodicticDraft.Money
+import ApodicticDraft.Claims
+import ApodicticDraft.Interest
 
 /-!
 # ApodicticDraft
@@ -10,5 +12,7 @@ nothing imports it — not the library, not the document — and it is not
 a default target of the lake package. A ruling promotes a claim into
 `Apodictic.Praxeology` and its theorems into the library.
 
-Current content: none.
+Current content: T1, the pure time-preference theory of interest
+(sprint 3). The unruled claim is in `ApodicticDraft.Claims`; the
+vocabulary in `ApodicticDraft.Money`.
 -/
