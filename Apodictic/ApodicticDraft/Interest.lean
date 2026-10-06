@@ -27,6 +27,9 @@ never disappear."
   (n. 11) gives no strict preference. Where the agent would hoard the
   present sum for the use the claim serves, asymmetry forbids
   preferring the one to the other.
+- `availability_reading`: the rival encoding of the footnote, built so
+  the choice is checked — n. 11's "availability for use" as a bundle of
+  both uses, paid for by a lift over the later one.
 - `present_sum_preferred_to_less` (S3): "one ounce or less". Adds the
   unruled claim `MoreMoneyPreferred`, interchangeability of the future
   units (`Homogeneous`), free holding within the claim, and
