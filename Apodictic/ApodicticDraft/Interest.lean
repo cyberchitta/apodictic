@@ -173,6 +173,44 @@ theorem hoarding_gives_no_strict_preference
   intro h
   exact asymmetric.asym _ _ h h
 
+/-- **The availability reading of the footnote — the rival encoding.**
+Rothbard's n. 11 ranks money by "availability for use", not by the use
+it would be put to. Read so, a present sum held free counts for both
+its sooner use and the later one, and the claim for the later one only;
+the preference then follows from `TimePreference` and a lift over
+`{late}`.
+
+Not the encoding the chain uses (`ApodicticDraft.Money`, shape claims):
+`Prefers` ranks bundles of ends had TOGETHER, and a sum cannot be spent
+both now and later, so `{soon, late}` here is a set of options read as
+a bundle. The lift (`DatedFrame.LiftsOverRest` with rest `{late}`) is
+where that misreading is paid for. Built so the choice is checked. -/
+theorem availability_reading
+    {praxis : DatedFrame} {agent : praxis.Agent} {now : praxis.Time}
+    (presentSum claim : praxis.Means) (soon late : praxis.End)
+    (timePreference : TimePreference praxis agent now)
+    (available : praxis.ServedBy agent now {presentSum} = insert soon {late})
+    (claimServes : praxis.ServesOnly agent now claim late)
+    (same : praxis.SameSatisfaction agent soon late)
+    (sooner : praxis.Before (praxis.attained soon) (praxis.attained late))
+    (notPast : ¬ praxis.Before (praxis.attained soon) now)
+    (lifts : praxis.LiftsOverRest agent now {late} soon late) :
+    praxis.Prefers agent now (praxis.ServedBy agent now {presentSum})
+      (praxis.ServedBy agent now {claim}) := by
+  have h := lifts (timePreference.sooner soon late same sooner notPast)
+  have once : (insert late {late} : Set praxis.End) = {late} :=
+    Set.ext fun _ => ⟨fun h => h.elim id id, Or.inr⟩
+  rw [once] at h
+  rw [available, claimServes]
+  exact h
+
+end Sums
+
+section Sums'
+
+variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
+  {present future : Stock praxis.toActionFrame agent now}
+
 /-- **One ounce of present money is preferred to one ounce or less of
 future money** (S3; *MES* p. 382: "one ounce of present money will
 always be preferred to one ounce or less of future money").
@@ -217,7 +255,7 @@ theorem present_sum_preferred_to_less
     rw [alike] at overLess
     exact chain overSame overLess
 
-end Sums
+end Sums'
 
 section Loans
 
@@ -314,6 +352,7 @@ end Loans
 #print axioms never_vanishes
 #print axioms present_sum_preferred
 #print axioms hoarding_gives_no_strict_preference
+#print axioms availability_reading
 #print axioms present_sum_preferred_to_less
 #print axioms no_loan_at_nonpositive_rate
 #print axioms struck_rate_positive

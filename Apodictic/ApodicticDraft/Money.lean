@@ -119,9 +119,10 @@ def HeldToTheSameUse (presentPlan : AllocationPlan present)
     Prop :=
   presentPlan.wouldServe sum = futurePlan.wouldServe claim
 
-/-- **Free to hold, within the claim** — a condition on the situation
-(I-6). Every part of the claim, the whole included, costs the agent
-nothing to hold. Rothbard abstracts from it in so many words: "We have
+/-- **Free to hold, within the claim** — a condition on the situation:
+the restriction the monotonicity claim carries (I-4, "both amounts free
+to hold"), on the future side. Every part of the claim, the whole
+included, costs the agent nothing to hold. Rothbard abstracts from it in so many words: "We have
 abstracted from hoarding, which will be dealt with in the chapter on
 money" (*MES* p. 386 n. 11); his own banking pages price it — a
 depositor "pays the owner of the warehouse a certain sum for the
