@@ -12,6 +12,7 @@ pages/The-Result/The-circle.html
 pages/The-Result/The-ladder-as-a-history.html
 pages/The-Result/Exchange.html
 pages/The-Result/Time-preference.html
+pages/The-Result/Regression-theorem.html
 pages/The-Result/The-horses-in-Lean.html
 pages/The-Result/The-vocabulary.html
 pages/The-Result/Claims-no-theorem-uses.html

@@ -142,7 +142,15 @@
     "level": null,
     "html": "<code>DemonstratedTimePreference</code>",
     "dest":
-    "/The-Result/The-claims/#Apodictic___DemonstratedTimePreference___mk"}],
+    "/The-Result/The-claims/#Apodictic___DemonstratedTimePreference___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AppraisalFromPast</code>",
+    "dest": "/The-Result/The-claims/#Apodictic___AppraisalFromPast___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>TwoPartialDemands</code>",
+    "dest": "/The-Result/The-claims/#Apodictic___TwoPartialDemands___mk"}],
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
   "fragment": "pages/The-Result/The-claims.html",
   "depth": 2},
@@ -496,9 +504,9 @@
   "path": ["The-Result", "Time-preference"],
   "next":
   {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
-   "titleText": "The horses in Lean",
-   "title": "The horses in Lean",
+   "/The-Result/Regression-theorem/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+   "titleText": "The regression theorem",
+   "title": "The regression theorem",
    "sectionNum": "1.13."},
   "localToc":
   [{"numbering": null,
@@ -577,9 +585,9 @@
   "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
   "fragment": "pages/The-Result/Time-preference.html",
   "depth": 2},
- {"url": "/The-Result/The-horses-in-Lean/",
-  "titleText": "The horses in Lean",
-  "title": "1.13. The horses in Lean",
+ {"url": "/The-Result/Regression-theorem/",
+  "titleText": "The regression theorem",
+  "title": "1.13. The regression theorem",
   "sectionNum": "1.13.",
   "prev":
   {"url":
@@ -587,13 +595,147 @@
    "titleText": "Time preference",
    "title": "Time preference",
    "sectionNum": "1.12."},
+  "path": ["The-Result", "Regression-theorem"],
+  "next":
+  {"url":
+   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+   "titleText": "The horses in Lean",
+   "title": "The horses in Lean",
+   "sectionNum": "1.14."},
+  "localToc":
+  [{"numbering": null,
+    "level": null,
+    "html": "<code>MediumFrame</code>",
+    "dest": "/The-Result/Regression-theorem/#Apodictic___MediumFrame___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AppraisesAsMedium</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___MediumFrame___AppraisesAsMedium"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>History</code>",
+    "dest": "/The-Result/Regression-theorem/#Apodictic___History___mk"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AcquiredAgainst</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___AcquiredAgainst"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>DirectAcquisitionAt</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___DirectAcquisitionAt"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>MediumAt</code>",
+    "dest": "/The-Result/Regression-theorem/#Apodictic___History___MediumAt"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>PurelyIndirect</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Trade___PurelyIndirect"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>indirect_ranks_onward_ends</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___indirect_ranks_onward_ends"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AppraisalFromPast</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___AppraisalFromPast___mk-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>no_medium_without_direct_acquisition</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___no_medium_without_direct_acquisition"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>BeginsBeforeMedium</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___BeginsBeforeMedium"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>AcquisitionsPurposive</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___AcquisitionsPurposive"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>direct_acquisition_before</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___direct_acquisition_before"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>TwoPartialDemands</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___TwoPartialDemands___mk-next"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>partial_demands_not_not_exhaust</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___partial_demands_not_not_exhaust"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>partial_demands_exhaust</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___partial_demands_exhaust"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>OtherEmploymentsNarrow</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___OtherEmploymentsNarrow"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>narrow_acquisition_before</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___narrow_acquisition_before"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>FormedInBarter</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___FormedInBarter"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>barter_origin</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___barter_origin"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>prior_money_relates_back</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___prior_money_relates_back"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>OwnPastPrice</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___History___OwnPastPrice"},
+   {"numbering": null,
+    "level": null,
+    "html": "<code>ownPastPrice_of_claim</code>",
+    "dest":
+    "/The-Result/Regression-theorem/#Apodictic___Regression___ownPastPrice_of_claim"}],
+  "id":
+  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+  "fragment": "pages/The-Result/Regression-theorem.html",
+  "depth": 2},
+ {"url": "/The-Result/The-horses-in-Lean/",
+  "titleText": "The horses in Lean",
+  "title": "1.14. The horses in Lean",
+  "sectionNum": "1.14.",
+  "prev":
+  {"url":
+   "/The-Result/Regression-theorem/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+   "titleText": "The regression theorem",
+   "title": "The regression theorem",
+   "sectionNum": "1.13."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.14."},
+   "sectionNum": "1.15."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -630,21 +772,21 @@
   "depth": 2},
  {"url": "/The-Result/The-vocabulary/",
   "titleText": "The vocabulary",
-  "title": "1.14. The vocabulary",
-  "sectionNum": "1.14.",
+  "title": "1.15. The vocabulary",
+  "sectionNum": "1.15.",
   "prev":
   {"url":
    "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
-   "sectionNum": "1.13."},
+   "sectionNum": "1.14."},
   "path": ["The-Result", "The-vocabulary"],
   "next":
   {"url":
    "/The-Result/Claims-no-theorem-uses/#Apodictic___-Machine-Checked-Praxeology--The-Result--Claims-no-theorem-uses",
    "titleText": "Claims no theorem uses",
    "title": "Claims no theorem uses",
-   "sectionNum": "1.15."},
+   "sectionNum": "1.16."},
   "localToc":
   [{"numbering": null,
     "level": null,
@@ -675,14 +817,14 @@
   "depth": 2},
  {"url": "/The-Result/Claims-no-theorem-uses/",
   "titleText": "Claims no theorem uses",
-  "title": "1.15. Claims no theorem uses",
-  "sectionNum": "1.15.",
+  "title": "1.16. Claims no theorem uses",
+  "sectionNum": "1.16.",
   "prev":
   {"url":
    "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
-   "sectionNum": "1.14."},
+   "sectionNum": "1.15."},
   "path": ["The-Result", "Claims-no-theorem-uses"],
   "next": null,
   "localToc":
