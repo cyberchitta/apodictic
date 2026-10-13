@@ -221,6 +221,23 @@ Plus the lab notebook, outside both packages:
   readable enough to audit which axioms did the work.
 - Each commit message notes any change to Praxeology.lean.
 
+## Night runs
+
+The `night-session` skill has the ritual; this is what is specific
+here (human decision 2026-10-13).
+
+- A night run is a sprint: `_notes/SPRINT.md`'s delegation and hard
+  stops apply to every brief.
+- It works on a `night/<UTC date>` branch in the main checkout, not a
+  worktree — a worktree has a cold mathlib build and may fetch no
+  cache. So no other session runs in this repo while one is going.
+- The gate for each brief that touches Lean, run from `Apodictic/`:
+  `lake build`, `lake build ApodicticDraft`, and
+  `check-draft-isolation.sh` (which leaves the draft unbuilt — build
+  it again after). There is no slower full check to hold for the end.
+- Nothing under `Apodictic/Apodictic/`, `ApodicticDoc/` or `site/`
+  changes unattended. New Lean goes in `Apodictic/ApodicticDraft/`.
+
 ## Current state
 
 Not here. `_notes/WORKLIST.md` is the worklist — what is done and
