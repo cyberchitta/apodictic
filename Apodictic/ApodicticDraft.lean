@@ -2,7 +2,7 @@ import ApodicticDraft.Money
 import ApodicticDraft.Claims
 import ApodicticDraft.Interest
 import ApodicticDraft.Toy
-import ApodicticDraft.Stablecoin
+import ApodicticDraft.NoPastMedium
 
 /-!
 # ApodicticDraft

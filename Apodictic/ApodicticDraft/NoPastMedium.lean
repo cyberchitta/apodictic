@@ -1,7 +1,7 @@
 import Apodictic.Regression
 
 /-!
-# Stablecoin — a medium with no past in the record (evidence, not theory)
+# NoPastMedium — a medium with no past in the record (evidence, not theory)
 
 One frame and one record in which a good is appraised as a medium of
 exchange on a day with no earlier exchange of it in the record, and of
@@ -45,7 +45,7 @@ issuer for a dollar.
 -/
 
 namespace ApodicticDraft
-namespace Stablecoin
+namespace NoPastMedium
 
 open Apodictic
 
@@ -182,7 +182,7 @@ theorem not_ownPastPrice (n : ℕ) (hn : 1 < n) : ¬ history.OwnPastPrice Good.c
 #print axioms not_appraisalFromPast_by_regress
 #print axioms not_ownPastPrice
 
-end Stablecoin
+end NoPastMedium
 end ApodicticDraft
 
 #lint only unusedArguments
