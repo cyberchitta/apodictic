@@ -35,13 +35,15 @@ approve every axiom and every design decision. Therefore:
 
 - NEVER silently choose an encoding that makes a proof easier. If two
   encodings differ in philosophical commitment, present the choice
-  with trade-offs: in a build sprint, as an entry in
-  `_notes/PENDING-RULINGS.md`, continuing on the recommended branch
-  in the draft library if the choice is local; otherwise, STOP.
+  with trade-offs: in a build sprint, as an ask in `_notes/asks/` — a
+  `taken` ask when the choice is local and the sprint continues on the
+  recommended branch in the draft library; otherwise an `open` ask whose
+  Blocks names the dependent chain, and STOP.
 - Work alternates between sprints Claude runs alone and chunks worked
   together (human decision 2026-09-24). The charter — targets, what
   is delegated, the hard stops — is `_notes/SPRINT.md`; the agenda
-  for the next chunk is `_notes/PENDING-RULINGS.md`. Outside a
+  for the next chunk is the open and taken asks in `_notes/asks/`, plus
+  what is still unruled in `_notes/PENDING-RULINGS.md`. Outside a
   chartered sprint, every escalation trigger in `_notes/intent.md`
   is stop-and-ask.
 - An easy proof is a warning sign, not a success. If a theorem goes
@@ -83,6 +85,11 @@ approve every axiom and every design decision. Therefore:
   session that has gone cold with `/sakshi:session-open`.
 - Prefer ugly proofs that compile over elegant proofs. Probative
   value is identical; refactoring is a later luxury.
+
+**Asks:** on. Questions for the human live in `_notes/asks/`, one file
+each, per sakshi's `schemas/ask.md`; they replaced `PENDING-RULINGS.md`
+for new questions on 2026-10-18 (human decision). Its remaining entries
+stay until ruled.
 
 ## Philosophical constraints (non-negotiable)
 
