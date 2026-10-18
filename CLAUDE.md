@@ -42,8 +42,7 @@ approve every axiom and every design decision. Therefore:
 - Work alternates between sprints Claude runs alone and chunks worked
   together (human decision 2026-09-24). The charter — targets, what
   is delegated, the hard stops — is `_notes/SPRINT.md`; the agenda
-  for the next chunk is the open and taken asks in `_notes/asks/`, plus
-  what is still unruled in `_notes/PENDING-RULINGS.md`. Outside a
+  for the next chunk is the open and taken asks in `_notes/asks/`. Outside a
   chartered sprint, every escalation trigger in `_notes/intent.md`
   is stop-and-ask.
 - An easy proof is a warning sign, not a success. If a theorem goes
@@ -87,9 +86,11 @@ approve every axiom and every design decision. Therefore:
   value is identical; refactoring is a later luxury.
 
 **Asks:** on. Questions for the human live in `_notes/asks/`, one file
-each, per sakshi's `schemas/ask.md`; they replaced `PENDING-RULINGS.md`
-for new questions on 2026-10-18 (human decision). Its remaining entries
-stay until ruled.
+each, per sakshi's `schemas/ask.md`. They replaced `PENDING-RULINGS.md`
+on 2026-10-18 (human decision), and its entries were converted the same
+day. A question that only matters once a gate question is answered
+(what to build, whether a target is taken) is not an ask: it waits in
+its scoping note, and the gate's ask lists it by code.
 
 ## Philosophical constraints (non-negotiable)
 
