@@ -223,7 +223,7 @@ Plus the lab notebook, outside both packages:
 
 ## Night runs
 
-The `night-session` skill has the ritual; this is what is specific
+The `unattended-run` skill has the ritual; this is what is specific
 here (human decision 2026-10-13).
 
 - A night run is a sprint: `_notes/SPRINT.md`'s delegation and hard
