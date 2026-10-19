@@ -85,10 +85,8 @@ approve every axiom and every design decision. Therefore:
 - Prefer ugly proofs that compile over elegant proofs. Probative
   value is identical; refactoring is a later luxury.
 
-**Asks:** on. Questions for the human live in `_notes/asks/`, one file
-each, per sakshi's `schemas/ask.md`. They replaced `PENDING-RULINGS.md`
-on 2026-10-18 (human decision), and its entries were converted the same
-day. A question that only matters once a gate question is answered
+Asks in `_notes/asks/` replaced `PENDING-RULINGS.md` on 2026-10-18
+(human decision), and its entries were converted the same day. A question that only matters once a gate question is answered
 (what to build, whether a target is taken) is not an ask: it waits in
 its scoping note, and the gate's ask lists it by code.
 
