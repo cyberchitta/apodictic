@@ -3,6 +3,8 @@ import ApodicticDraft.Claims
 import ApodicticDraft.Interest
 import ApodicticDraft.Toy
 import ApodicticDraft.NoPastMedium
+import ApodicticDraft.Market
+import ApodicticDraft.PriceControl
 
 /-!
 # ApodicticDraft
