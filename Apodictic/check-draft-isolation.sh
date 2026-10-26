@@ -16,7 +16,10 @@ PKG="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(dirname "$PKG")"
 DOC="$REPO/ApodicticDoc"
 fail=0
-bad() { echo "FAIL: $*" >&2; fail=1; }
+bad() {
+  echo "FAIL: $*" >&2
+  fail=1
+}
 
 # 1. imports
 hits="$(rg -n --glob '*.lean' --glob '!.lake/**' --glob '!_out/**' \
