@@ -13,6 +13,7 @@ import ApodicticDraft.KeptGiven
 import ApodicticDraft.Satiation
 import ApodicticDraft.NoMoneyLabel
 import ApodicticDraft.ChristmasClubToy
+import ApodicticDraft.ValuedAlike
 
 /-!
 # ApodicticDraft
@@ -53,4 +54,8 @@ Current content:
 - A Christmas Club saver lending at a zero rate with every claim
   holding (`ApodicticDraft.ChristmasClubToy`): what fails is
   `SamePurchasingPower`. No claim.
+- The "more money" claim dated at the spending
+  (`ApodicticDraft.ValuedAlike`), with the step back to `now` the
+  condition `RankedAlikeNow`, S3–S5 on it, and a toy whose valuations
+  change. The unruled claim is in `ApodicticDraft.Claims`.
 -/
