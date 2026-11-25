@@ -1350,11 +1350,15 @@ reverse valuations), we implicitly assumed that it must be two
 different goods that are being exchanged" (p. 95). For him it is a
 condition for an exchange to take place, like knowledge of the other
 party above, and every theorem here starts from a trade that did
-happen. Nor does dropping it let in the man who trades a good for
-itself. Of him the bridge would say that he prefers his holding to
-itself; `Prefers` is read as strict, so the bridge is false of him
-and the theorems are silent. He is kept out by the claim, not by a
-field.
+happen. Dropping the condition does let in the man who trades a good
+for itself. Of him the bridge says that he prefers his holding to
+itself. `Prefers` is meant as strict, but the library assumes
+strictness nowhere. That nothing is preferred to itself follows only
+from a claim of its own, `AsymmetricPreference` (under *The claims*),
+and the exchange theorems do not carry it. So as encoded nothing keeps
+him out. Grant the bridge of him and the theorems hold, and say only
+that he ranks a good, or a holding, above itself. Add
+`AsymmetricPreference` and the bridge is false of him.
 
 **Where the tradition stands.** For Rothbard the bridge cannot fail.
 The scale is read off the act: "We deduce the existence of a specific
