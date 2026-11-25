@@ -12,6 +12,7 @@ import ApodicticDraft.CertaintySplitToy
 import ApodicticDraft.KeptGiven
 import ApodicticDraft.Satiation
 import ApodicticDraft.NoMoneyLabel
+import ApodicticDraft.ChristmasClubToy
 
 /-!
 # ApodicticDraft
@@ -49,4 +50,7 @@ Current content:
 - S3–S5 without the restriction to money
   (`ApodicticDraft.NoMoneyLabel`), on the rival claim
   `MorePreferredWhereDiffers`, in `ApodicticDraft.Claims`.
+- A Christmas Club saver lending at a zero rate with every claim
+  holding (`ApodicticDraft.ChristmasClubToy`): what fails is
+  `SamePurchasingPower`. No claim.
 -/
