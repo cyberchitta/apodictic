@@ -1240,8 +1240,9 @@ a unique left shoe is still half a pair.
 
 **What does no work.** Knowledge of the other party is a condition for
 a trade to happen. Every theorem here starts from a trade that did
-happen, so knowledge has nothing to do, and it is not a hypothesis. The
-linter would refuse it if it were.
+happen, so knowledge does no work, and it is not a hypothesis. The
+unused-argument linter, which rejects any hypothesis no proof uses,
+would refuse it if it were.
 
 **"Shifted to a higher position" — on which scale?** The same question
 the ladder read as a history forced. It splits the same way, and
@@ -1330,35 +1331,46 @@ good B receives, there would be no exchange to speak of. Whether a
 field is of that kind is a judgement, and the Lean cannot make it. It is made here as it is for the fields of a stock and
 a plan under *The vocabulary*, later in the document. The second
 manifest has no such group: nothing is built into a trade as defined,
-and the conditions its theorem needs are the named ones above it.
+and the conditions its theorem needs are the named ones it lists.
 
-Five conditions a reader might expect are on neither list: that A and
+Five conditions a reader might expect are in neither manifest: that A and
 B are two people, that the two trades are made at one moment, that two
 different goods change hands, that the good given is not also kept,
-and that the good received was not already held. Each was a field of
-`Trade` or of `Exchange`; no proof used it, and it was removed. Two
-people and one moment have nothing to do, because the theorem about an
-exchange is the theorem about one trade said twice, and the two swap
-fields do the matching. The two about what is kept are what make
-`kept` the rest of a man's holding. Where they fail the definitions
-describe no trade, and nothing rules that out, since no proof needs
-to.
+and that the good received is not among the kept. None is a field of
+`Trade` or of `Exchange`, because no proof uses it. Two people and
+one moment do no work, because `reverse_valuations` is a one-trade
+result (each party ranks what he got above what he gave) applied to
+each side, and the two fields of an exchange — what A gives, B gets,
+and the reverse — are all that ties the sides together. The two about
+what is kept are what make `kept` the rest of a man's holding; where
+they fail, the definitions describe no trade. A `Trade` does not
+exclude such a case, but the substitutes condition nearly does. It
+forbids a kept good to share any end with a traded good. A traded good
+that is also kept shares every end it serves with a kept good, itself,
+so the condition holds only if it is believed to serve nothing at all.
+`reverse_valuations` carries the condition. The two `better_off`
+theorems do not, and nothing in them excludes the case. Of such a
+trade they say only that he prefers his holding with the received
+good to his holding without it. The fifth condition, two different
+goods, is next.
 
-Two different goods is Rothbard's own: "In describing the conditions
+Rothbard states the two-different-goods condition himself: "In describing the conditions
 that must obtain for interpersonal exchange to take place (such as
 reverse valuations), we implicitly assumed that it must be two
 different goods that are being exchanged" (p. 95). For him it is a
 condition for an exchange to take place, like knowledge of the other
 party above, and every theorem here starts from a trade that did
 happen. Dropping the condition does let in the man who trades a good
-for itself. Of him the bridge says that he prefers his holding to
-itself. `Prefers` is meant as strict, but the library assumes
-strictness nowhere. That nothing is preferred to itself follows only
-from a claim of its own, `AsymmetricPreference` (under *The claims*),
-and the exchange theorems do not carry it. So as encoded nothing keeps
-him out. Grant the bridge of him and the theorems hold, and say only
-that he ranks a good, or a holding, above itself. Add
-`AsymmetricPreference` and the bridge is false of him.
+for itself. Of him the bridge, with voluntariness, says that he
+prefers his holding to itself. `Prefers` is meant as strict, but the
+library nowhere assumes that nothing is preferred to itself. That
+follows only from a claim of its own, `AsymmetricPreference` (under
+*The claims*), and the exchange theorems do not carry it. So as
+encoded nothing keeps him out. Grant the bridge of him and the
+theorems still hold; they say only that he ranks a good, or a
+holding, above itself. Add `AsymmetricPreference` and the bridge is
+false of his voluntary trade. Every exchange theorem asks for both, so
+none applies to him.
 
 **Where the tradition stands.** For Rothbard the bridge cannot fail.
 The scale is read off the act: "We deduce the existence of a specific

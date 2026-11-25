@@ -29,7 +29,8 @@ it were it in hand at the later date.
 - Certainty is read as how the agent counts the claim at `now`, not as
   what later happens. A claim he believes may not pay is one whose plan
   differs from the plan for the money it promises.
-- Not built: toy cases in which each condition fails alone.
+- Each condition failing alone, with the merged one failing in both:
+  `ApodicticDraft.CertaintySplitToy` (default risk; inflation).
 -/
 
 namespace ApodicticDraft

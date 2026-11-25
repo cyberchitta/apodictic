@@ -8,6 +8,8 @@ import ApodicticDraft.PriceControl
 import ApodicticDraft.PriceControlToy
 import ApodicticDraft.WeakRegress
 import ApodicticDraft.CertaintySplit
+import ApodicticDraft.CertaintySplitToy
+import ApodicticDraft.KeptGiven
 
 /-!
 # ApodicticDraft
@@ -34,6 +36,8 @@ Current content:
   a rival to the library's `regress`. The unruled claim is in
   `ApodicticDraft.Claims`.
 - Certainty named apart from purchasing power
-  (`ApodicticDraft.CertaintySplit`), a rival to T1's merged condition.
-  No claim.
+  (`ApodicticDraft.CertaintySplit`), a rival to T1's merged condition;
+  the toy in `ApodicticDraft.CertaintySplitToy`. No claim.
+- What `KeptServesOtherEnds` leaves of a good both traded and kept
+  (`ApodicticDraft.KeptGiven`): it serves nothing. No claim.
 -/
