@@ -1241,8 +1241,9 @@ a unique left shoe is still half a pair.
 **What does no work.** Knowledge of the other party is a condition for
 a trade to happen. Every theorem here starts from a trade that did
 happen, so knowledge does no work, and it is not a hypothesis. The
-unused-argument linter, which rejects any hypothesis no proof uses,
-would refuse it if it were.
+unused-argument linter reports any hypothesis no proof uses, and here
+a reported hypothesis may not stand; it would report knowledge if it
+were added as one.
 
 **"Shifted to a higher position" — on which scale?** The same question
 the ladder read as a history forced. It splits the same way, and
@@ -1341,18 +1342,20 @@ and that the good received is not among the kept. None is a field of
 one moment do no work, because `reverse_valuations` is a one-trade
 result (each party ranks what he got above what he gave) applied to
 each side, and the two fields of an exchange — what A gives, B gets,
-and the reverse — are all that ties the sides together. The two about
-what is kept are what make `kept` the rest of a man's holding; where
-they fail, the definitions describe no trade. A `Trade` does not
-exclude such a case, but the substitutes condition nearly does. It
-forbids a kept good to share any end with a traded good. A traded good
-that is also kept shares every end it serves with a kept good, itself,
-so the condition holds only if it is believed to serve nothing at all.
-`reverse_valuations` carries the condition. The two `better_off`
-theorems do not, and nothing in them excludes the case. Of such a
-trade they say only that he prefers his holding with the received
-good to his holding without it. The fifth condition, two different
-goods, is next.
+and what B gives, A gets — are all that ties the sides together. That
+neither the good given nor the good received is among the kept is what
+makes `kept` the rest of a man's holding. A good both traded and kept
+is no trade in the ordinary sense, but a `Trade` does not exclude it.
+The substitutes condition, which forbids a kept good to share any end
+with a traded good, excludes it unless the good counted twice is
+believed to serve no end at all. `reverse_valuations` carries the
+condition. The two `better_off` theorems do not, and nothing in them
+excludes the case. Where the good given is also kept, they say only
+that he prefers his holding with the received good to his holding
+without it; the given good is in both holdings, so they show no
+ranking of it. Where the good received was already kept, they say only
+that he prefers his holding without the given good to his holding
+with it. The fifth condition takes the next paragraph.
 
 Rothbard states the two-different-goods condition himself: "In describing the conditions
 that must obtain for interpersonal exchange to take place (such as
@@ -1367,10 +1370,11 @@ library nowhere assumes that nothing is preferred to itself. That
 follows only from a claim of its own, `AsymmetricPreference` (under
 *The claims*), and the exchange theorems do not carry it. So as
 encoded nothing keeps him out. Grant the bridge of him and the
-theorems still hold; they say only that he ranks a good, or a
+theorems still apply; they say only that he ranks a good, or a
 holding, above itself. Add `AsymmetricPreference` and the bridge is
-false of his voluntary trade. Every exchange theorem asks for both, so
-none applies to him.
+false of his voluntary trade. Every theorem here about what a trader
+prefers asks for the bridge and for voluntariness, so with
+`AsymmetricPreference` added none of them applies to him.
 
 **Where the tradition stands.** For Rothbard the bridge cannot fail.
 The scale is read off the act: "We deduce the existence of a specific
