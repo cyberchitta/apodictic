@@ -45,6 +45,12 @@ approve every axiom and every design decision. Therefore:
   for the next chunk is the open and taken asks in `_notes/asks/`. Outside a
   chartered sprint, every escalation trigger in `_notes/intent.md`
   is stop-and-ask.
+- Standing rules (human decision 2026-11-25). `_notes/intent.md`
+  carries numbered standing rules. A design decision one of them
+  reaches is settled by the rule: cite its number, mark the decision
+  as made by standing rule and not by the human, and add a line to
+  `_notes/standing-rule-decisions.md`. The same section lists what a
+  rule never settles; those still go to the human.
 - An easy proof is a warning sign, not a success. If a theorem goes
   through suspiciously fast, check whether an axiom is stronger than
   its praxeological pedigree justifies, and raise it.
