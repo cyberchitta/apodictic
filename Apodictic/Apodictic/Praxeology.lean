@@ -2,6 +2,7 @@ import Apodictic.Allocation
 import Apodictic.Exchange
 import Apodictic.Dated
 import Apodictic.Medium
+import Apodictic.Money
 
 /-!
 # Praxeology — the COMPLETE set of praxeological claims
@@ -578,5 +579,66 @@ structure TwoPartialDemands (praxis : MediumFrame) (m : praxis.Means) :
     Prop where
   /-- Each end is onward for `m`, or it is not. -/
   sorted : ∀ e, praxis.Onward m e ∨ ¬ praxis.Onward m e
+
+/-- **More money is preferred when it is spent** — of two sums of
+money, the one part of the other, both free to hold and buying
+different ends, the agent, at the date `spend` he would spend them,
+prefers what the larger would buy to what the smaller would buy.
+
+Asserted of one plan for one stock, and only of sums whose every unit
+is money and which cost nothing to hold. Subjunctive, like the plans it
+is asserted of: it speaks of sums the agent may not hold. The plan says
+what he WOULD buy with a sum, and he would buy it at `spend`, by his
+valuations then; the claim ranks the purchase there. That he ranks it
+so at `now` too is the condition `RankedAlikeNowOf`, and that the
+larger sum buys something else is the condition `BuysMoreThanItsParts`,
+each on the theorem that needs it.
+
+Source: Rothbard, *MES* p. 379: "[T]o both present money and future
+money there applies the general rule that more of a good will have
+greater utility than less of it." Mises, *Human Action*, ch. VII, §1:
+"what satisfies more is preferred to what gives smaller satisfaction".
+
+Status: explicit-in-tradition as doctrine; the narrow form is
+our-reconstruction. Rothbard states a general rule, of every good.
+Known cases refute it as stated: a holding taxed at more than its whole
+value, and at small scale any storage or custody cost, makes more of a
+good worse than less; a sum beyond anything the agent would spend or
+hold it on buys nothing more; and a man whose valuations change between
+now and the spending — the Christmas Club saver — now prefers less cash
+at hand because of what he would buy with it later. So the claim is cut
+to money, to sums free to hold, to purchases that differ, and to the
+date of spending, and each failure is a named condition. Carried by
+`Apodictic.PureInterest.present_sum_preferred_to_less` and the loan
+theorems built on it.
+
+Does not say:
+
+1. Anything about his valuations at any date but `spend`: that they
+   agree with his valuations now is a condition, not the claim.
+2. That every sum in the plan is spent at the one date `spend`, or
+   which date that is: `spend` is supplied with the plan.
+3. That an extra unit always buys something else.
+4. Anything of goods that are not money, or of sums that cost
+   something to hold.
+5. How much more is preferred: no rate.
+6. Anything of two sums neither of which is part of the other. That two
+   sums of the same size would buy the same is the condition
+   `AllocationPlan.Homogeneous`.
+7. That the agent's preferences chain: transitivity is the condition
+   `ActionFrame.TransitiveOn`, on one chain.
+8. Anything about acts. It ranks what sums would buy; the bridge to a
+   trade is `DemonstratedPreference`. -/
+structure MoreMoneyPreferredWhenSpent {praxis : MoneyFrame}
+    {agent : praxis.Agent} {now : praxis.Time}
+    {stock : Stock praxis.toActionFrame agent now}
+    (plan : AllocationPlan stock) (spend : praxis.Time) : Prop where
+  /-- The larger of two sums, one part of the other, where they would
+  buy different ends, ranked at the date of spending. -/
+  more : ∀ fewer more : Finset praxis.Means, fewer ⊂ more →
+    more ⊆ stock.units → (∀ unit ∈ more, praxis.Money unit) →
+    praxis.FreeToHold agent now fewer → praxis.FreeToHold agent now more →
+    plan.wouldServe more ≠ plan.wouldServe fewer →
+      praxis.Prefers agent spend ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
 
 end Apodictic

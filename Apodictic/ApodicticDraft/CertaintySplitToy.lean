@@ -1,10 +1,10 @@
-import ApodicticDraft.CertaintySplit
+import Apodictic
 
 /-!
 # Toy — each half of the certainty split failing alone (evidence, not theory)
 
-The toy counterpart of `ApodicticDraft.CertaintySplit`. Nothing depends
-on it.
+The toy counterpart of the certainty split in `Apodictic.Money`
+(`ClaimPays` apart from `SamePurchasingPower`). Nothing depends on it.
 
 One agent, at date 0, holds three one-unit stocks: an ounce of cash, a
 claim to an ounce at date 1, and the ounce that claim promises, as he
@@ -19,13 +19,13 @@ would spend it were it in hand at date 1. Two sets of beliefs:
   will buy less than an ounce buys now: `SamePurchasingPower` between
   the present sum and the promised money fails, alone.
 
-In both, the merged condition of `ApodicticDraft.Money`, asserted
+In both, the merged condition, `SamePurchasingPower` asserted
 between the present sum and the claim, fails — and the claim's plan is
 the same function in both. The merged condition cannot tell the two
 apart; the split can.
 
-Not built: a case in which both halves hold and `present_sum_preferred_split`
-applies. The merged condition's non-vacuity is `ApodicticDraft.Toy`'s.
+A case in which both halves hold and S5 applies is the library's
+(`Apodictic.Model.Loan.struck_rate_positive_applies`).
 
 Ends are (kind, date); kind 1 is an ounce's worth, kind 2 is less.
 Two ends are the same satisfaction when their kinds agree.
@@ -34,7 +34,7 @@ Two ends are the same satisfaction when their kinds agree.
 namespace ApodicticDraft
 namespace CertaintySplitToy
 
-open Apodictic CertaintySplit
+open Apodictic
 
 /-- The goods: an ounce now, a claim to an ounce at date 1, and the
 ounce the claim promises. -/

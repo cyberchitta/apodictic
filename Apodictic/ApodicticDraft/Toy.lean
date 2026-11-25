@@ -257,14 +257,14 @@ theorem lend_before_planned :
       (presentPlan lenderBeliefs {.ounce} soon lender_present_alike) {.ounce} := by
   show lend.before 0 = _
   rw [lend_before]
-  exact (Interest.coe_single _).symm
+  exact (coe_single _).symm
 
 theorem lend_after_planned :
     lend.AfterCountsAsPlanned
       (futurePlan lenderBeliefs lender_future_alike) {.claimA, .claimB} := by
   show lend.after 0 = _
   rw [lend_after]
-  exact (Interest.coe_single _).symm
+  exact (coe_single _).symm
 
 /-- **Non-vacuity: every rate struck is positive, applied.** The lender
 lends one ounce and is repaid two; every claim and condition of S5

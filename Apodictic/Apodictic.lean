@@ -10,6 +10,8 @@ import Apodictic.Temporal
 import Apodictic.Exchange
 import Apodictic.MutualBenefit
 import Apodictic.TimePreference
+import Apodictic.Money
+import Apodictic.PureInterest
 import Apodictic.Regression
 import Apodictic.Contrast
 import Apodictic.Consistency

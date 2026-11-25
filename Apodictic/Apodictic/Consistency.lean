@@ -6,6 +6,7 @@ import Apodictic.Temporal
 import Apodictic.MutualBenefit
 import Apodictic.TimePreference
 import Apodictic.Regression
+import Apodictic.PureInterest
 
 /-!
 # Consistency — Rothbard's horses, machine-checked
@@ -1375,6 +1376,249 @@ theorem toy_narrow : ∃ k < 1, history.NarrowAcquisitionAt (fun e => e = false)
 #print axioms toy_narrow
 
 end Barter
+
+/-!
+## Pure interest: a lender at a positive rate
+
+One frame in which the claim `MoreMoneyPreferredWhenSpent`, asymmetry,
+time preference, and every condition `PureInterest.struck_rate_positive`
+carries hold together, and the theorem is handed the toy loan — so the
+interest theorems are not true for want of a case. Nothing depends on
+it.
+
+A lender has a use for an ounce now. He lends one ounce for a claim to
+two, repaid at date 1. Ends are (kind, date); one end is preferred to
+another by a score that ranks kind first and date second, so same-kind
+ends are the same satisfaction and the sooner is preferred. The ranking
+does not change with the date, so he ranks at the spending as he ranks
+now. The claims pay in full: the promised money is the claims' own
+stock, counted alike.
+-/
+
+namespace Loan
+
+/-- The goods: a present ounce, two claims to an ounce at date 1, and
+two goods standing for whole holdings in the loan — the purse (one
+ounce) and the bond (a claim to two). -/
+inductive Good
+  | ounce | claimA | claimB | purse | bond
+  deriving DecidableEq
+
+/-- Kind first, date second: lower is better. -/
+def score (e : ℕ × ℕ) : ℕ := e.1 * 10 + e.2
+
+/-- An ounce's worth now. -/
+def soon : ℕ × ℕ := (1, 0)
+/-- An ounce's worth at date 1: the same satisfaction, later. -/
+def late : ℕ × ℕ := (1, 1)
+/-- Two ounces' worth at date 1. -/
+def plenty : ℕ × ℕ := (0, 1)
+
+/-- What the lender believes each good serves. -/
+def beliefs : Good → ℕ × ℕ → Prop
+  | .ounce, e => e = soon
+  | .claimA, e => e = late ∨ e = plenty
+  | .claimB, e => e = late ∨ e = plenty
+  | .purse, e => e = soon
+  | .bond, e => e = plenty
+
+/-- The toy frame. -/
+abbrev frame : MoneyFrame where
+  Agent := Unit
+  End := ℕ × ℕ
+  Means := Good
+  Time := ℕ
+  Believes := fun _ _ g e => beliefs g e
+  Prefers := fun _ _ X Y => ∃ x ∈ X, ∀ y ∈ Y, score x < score y
+  Before := fun t t' => t < t'
+  attained := Prod.snd
+  SameSatisfaction := fun _ a b => a.1 = b.1
+  Money := fun _ => True
+  FreeToHold := fun _ _ _ => True
+
+theorem timePreference (now : ℕ) : TimePreference frame.toDatedFrame () now :=
+  ⟨fun soon late same sooner _ => ⟨soon, rfl, fun y hy => by
+    have hy : y = late := hy
+    subst hy
+    show soon.1 * 10 + soon.2 < y.1 * 10 + y.2
+    have same : soon.1 = y.1 := same
+    have sooner : soon.2 < y.2 := sooner
+    rw [same]
+    exact Nat.add_lt_add_left sooner _⟩⟩
+
+theorem asymmetric (now : ℕ) : AsymmetricPreference frame.toActionFrame () now :=
+  ⟨fun _ _ ⟨x, hx, hxY⟩ ⟨y, hy, hyX⟩ => Nat.lt_asymm (hxY y hy) (hyX x hx)⟩
+
+theorem transitive (now : ℕ) (X Y Z : Set (ℕ × ℕ)) :
+    frame.TransitiveOn () now X Y Z :=
+  fun ⟨x, hx, hxY⟩ ⟨y, hy, hyZ⟩ =>
+    ⟨x, hx, fun z hz => Nat.lt_trans (hxY y hy) (hyZ z hz)⟩
+
+/-- What a claim to `n` ounces at date 1 buys. -/
+def futureBuys : ℕ → Finset (ℕ × ℕ)
+  | 0 => ∅
+  | 1 => {late}
+  | _ => {plenty}
+
+/-- Claims to an ounce at date 1, weighed at date 0. -/
+def futureStock : Stock frame.toActionFrame () 0 where
+  units := {.claimA, .claimB}
+  serves := {late, plenty}
+  unitsAlike := fun unit h e => by
+    rcases Finset.mem_insert.1 h with rfl | h
+    · exact Iff.rfl
+    · rw [Finset.mem_singleton.1 h]; exact Iff.rfl
+
+/-- What he would buy with claims: by count only. -/
+def futurePlan : AllocationPlan futureStock where
+  wouldServe s := futureBuys s.card
+  servesOnlyWhatItCan s want h := by
+    show want ∈ ({late, plenty} : Set (ℕ × ℕ))
+    unfold futureBuys at h
+    split at h
+    · exact absurd h (Finset.notMem_empty _)
+    · exact Or.inl (Finset.mem_singleton.1 h)
+    · exact Or.inr (Finset.mem_singleton.1 h)
+
+theorem homogeneous : futurePlan.Homogeneous :=
+  fun fewer _ more _ same => by
+    show futureBuys fewer.card = futureBuys more.card
+    rw [same]
+
+theorem futureBuys_more (a b : ℕ) (h : a < b) (h2 : b ≤ 2) :
+    ∃ x ∈ (↑(futureBuys b) : Set (ℕ × ℕ)),
+      ∀ y ∈ (↑(futureBuys a) : Set (ℕ × ℕ)), score x < score y := by
+  match a, b, h, h2 with
+  | 0, 1, _, _ => exact ⟨late, Finset.mem_singleton_self _, fun _ hy =>
+      absurd hy (Finset.notMem_empty _)⟩
+  | 0, 2, _, _ => exact ⟨plenty, Finset.mem_singleton_self _, fun _ hy =>
+      absurd hy (Finset.notMem_empty _)⟩
+  | 1, 2, _, _ => exact ⟨plenty, Finset.mem_singleton_self _, fun y hy => by
+      have hy : y = late := Finset.mem_singleton.1 hy
+      subst hy
+      exact Nat.lt_of_sub_eq_succ rfl⟩
+  | 0, 0, h, _ => exact absurd h (Nat.lt_irrefl _)
+  | 1, 0, h, _ => exact absurd h (Nat.not_lt_zero _)
+  | 1, 1, h, _ => exact absurd h (Nat.lt_irrefl _)
+  | a + 2, _, h, h2 => exact absurd (Nat.lt_of_lt_of_le h h2) (by omega)
+  | _, b + 3, _, h2 => exact absurd h2 (by omega)
+
+/-- **The claim holds**, at the spending date 1. -/
+theorem moreMoney : MoreMoneyPreferredWhenSpent (praxis := frame) futurePlan 1 :=
+  ⟨fun fewer more proper inStock _ _ _ _ =>
+    futureBuys_more fewer.card more.card (Finset.card_lt_card proper)
+      (Finset.card_le_card inStock)⟩
+
+/-- One claim buys more than no claims. -/
+theorem buysMore :
+    BuysMoreThanItsParts (praxis := frame) futurePlan {Good.claimA} := by
+  intro part proper same
+  have small : part.card = 0 := by
+    have := Finset.card_lt_card proper
+    simp at this
+    simpa using this
+  change futureBuys ({Good.claimA} : Finset Good).card = futureBuys part.card at same
+  rw [small] at same
+  exact Finset.singleton_ne_empty _ same
+
+/-- The present ounce, at date 0. -/
+def presentStock : Stock frame.toActionFrame () 0 where
+  units := {.ounce}
+  serves := {soon}
+  unitsAlike := fun unit h e => by
+    rw [Finset.mem_singleton.1 h]
+    exact Iff.rfl
+
+/-- What he would buy with present ounces. -/
+def presentPlan : AllocationPlan presentStock where
+  wouldServe s := if s.card = 0 then ∅ else {soon}
+  servesOnlyWhatItCan s want h := by
+    show want ∈ ({soon} : Set (ℕ × ℕ))
+    split at h
+    · exact absurd h (Finset.notMem_empty _)
+    · exact Finset.mem_singleton.1 h
+
+/-- The lender's side: he gives the purse (one ounce), gets the bond
+(a claim to two ounces), keeps nothing else. -/
+def lend : Trade frame.toActionFrame :=
+  ⟨(), 0, .purse, .bond, ∅, {soon}⟩
+
+/-- The borrower's side; one person plays both (`Exchange` does not
+ask for two). -/
+def borrow : Trade frame.toActionFrame :=
+  ⟨(), 0, .bond, .purse, ∅, ∅⟩
+
+def loan : Exchange frame.toActionFrame :=
+  ⟨lend, borrow, rfl, rfl⟩
+
+theorem servedBy_one (g : Good) :
+    frame.ServedBy () 0 (insert g ∅) = {e | beliefs g e} := by
+  ext e
+  constructor
+  · rintro ⟨g', hg', he⟩
+    rcases hg' with rfl | hg'
+    · exact he
+    · exact absurd hg' (Set.notMem_empty _)
+  · intro he
+    exact ⟨g, Set.mem_insert _ _, he⟩
+
+theorem lend_before : lend.before 0 = {soon} := by
+  rw [Trade.before, show lend.kept = ∅ from rfl, servedBy_one]
+  ext e; exact Iff.rfl
+
+theorem lend_after : lend.after 0 = {plenty} := by
+  rw [Trade.after, show lend.kept = ∅ from rfl, servedBy_one]
+  ext e; exact Iff.rfl
+
+theorem lend_voluntary : lend.Voluntary := lend_before.symm
+
+theorem lend_before_planned : lend.BeforeCountsAsPlanned presentPlan {.ounce} := by
+  show lend.before 0 = _
+  rw [lend_before]
+  exact (coe_single _).symm
+
+theorem lend_after_planned :
+    lend.AfterCountsAsPlanned futurePlan {.claimA, .claimB} := by
+  show lend.after 0 = _
+  rw [lend_after]
+  exact (coe_single _).symm
+
+/-- **Non-vacuity: every rate struck is positive, applied.** The lender
+lends one ounce and is repaid two; the claim and every condition of S5
+hold, with the claim's promised money its own stock. -/
+theorem struck_rate_positive_applies :
+    ({.ounce} : Finset Good).card < ({.claimA, .claimB} : Finset Good).card :=
+  PureInterest.struck_rate_positive loan presentPlan futurePlan futurePlan
+    {Good.ounce} {Good.claimA} {Good.claimA} {Good.claimA, Good.claimB}
+    soon late 1
+    (timePreference 0)
+    ⟨rfl, rfl, rfl, rfl⟩
+    ⟨rfl, rfl⟩
+    ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
+    (fun _ h => by rw [Finset.mem_singleton.1 h]; exact Finset.mem_insert_self _ _)
+    (fun _ h => h)
+    homogeneous
+    moreMoney
+    (fun h => h)
+    buysMore
+    (fun _ _ => trivial)
+    (fun _ _ => trivial)
+    (transitive 0 _ _ _)
+    (asymmetric 0)
+    lend_voluntary
+    lend_before_planned
+    lend_after_planned
+    ⟨by
+      show frame.Prefers () 0 (lend.after 0) {soon}
+      rw [lend_after]
+      exact ⟨plenty, rfl, fun y hy => by
+        have hy : y = soon := hy
+        subst hy
+        exact Nat.lt_of_sub_eq_succ rfl⟩⟩
+
+#print axioms struck_rate_positive_applies
+
+end Loan
 
 end Model
 end Apodictic

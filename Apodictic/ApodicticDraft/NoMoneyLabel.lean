@@ -5,7 +5,7 @@ import ApodicticDraft.Satiation
 
 The owner's I-4 ruling cut Rothbard's general rule to money, because
 satiation and the cost of holding refute it for other goods. Both are
-now named conditions (`Satiation.BuysMoreThanItsParts`,
+now named conditions (`BuysMoreThanItsParts`,
 `MoneyFrame.FreeToHold`). This module rebuilds S3–S5 on
 `MorePreferredWhereDiffers`, the weak claim without "money", to test
 whether the restriction still does any work.

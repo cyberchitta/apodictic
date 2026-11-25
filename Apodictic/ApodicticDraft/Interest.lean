@@ -51,28 +51,6 @@ namespace Interest
 
 open Apodictic
 
-/-- A part of a finite set, of any size up to its own, taken without
-choice: the first `n` elements of the list behind it. -/
-theorem exists_part_of_card {α : Type*} (s : Finset α) (n : ℕ)
-    (h : n ≤ s.card) : ∃ part ⊆ s, part.card = n := by
-  rcases s with ⟨m, nd⟩
-  revert nd h
-  refine Quotient.inductionOn m ?_
-  intro l nd h
-  have nd' : (l.take n).Nodup := (Multiset.coe_nodup.1 nd).sublist (List.take_sublist _ _)
-  refine ⟨⟨↑(l.take n), Multiset.coe_nodup.2 nd'⟩, ?_, ?_⟩
-  · intro x hx
-    exact Multiset.mem_coe.2 (List.mem_of_mem_take (Multiset.mem_coe.1 hx))
-  · have hl : n ≤ l.length := h
-    show (l.take n).length = n
-    rw [List.length_take]
-    exact Nat.min_eq_left hl
-
-/-- A one-element finite set, read as a set, is the one-element set.
-`Finset.coe_singleton` says the same with a classical proof. -/
-theorem coe_single {α : Type*} (a : α) : ((({a} : Finset α)) : Set α) = {a} :=
-  Set.ext fun _ => Finset.mem_coe.trans Finset.mem_singleton
-
 /-- **A present good is preferred to the same good later** (S1; *MES*
 pp. 375–76: "a particular good is worth more at present than is the
 present prospect of its becoming available as a present good at some
@@ -349,8 +327,6 @@ theorem struck_rate_positive
 
 end Loans
 
-#print axioms exists_part_of_card
-#print axioms coe_single
 #print axioms present_good_preferred
 #print axioms never_vanishes
 #print axioms present_sum_preferred

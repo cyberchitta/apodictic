@@ -11,7 +11,7 @@ change between the two dates, that fails: the Christmas Club saver now
 prefers less cash at hand, because of what he would buy with more.
 
 This module dates the claim at the spending
-(`MoreMoneyPreferredWhenSpent`, in `ApodicticDraft.Claims`) and names
+(`MoreMoneyPreferredWhenSpent`, in `Apodictic.Praxeology`) and names
 the step back to `now` as a condition, `RankedAlikeNow`.
 
 ## What is proved

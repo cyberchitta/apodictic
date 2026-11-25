@@ -12,7 +12,7 @@ money buys something else: non-satiation, carried by no signature.
 
 This module cuts it out. `MoreMoneyPreferredWhereDiffers` (in
 `ApodicticDraft.Claims`) ranks only purchases that differ, and that
-they differ is the named condition `BuysMoreThanItsParts`, on the
+they differ is the library's condition `BuysMoreThanItsParts`, on the
 theorems that need it.
 
 ## What is proved
@@ -44,14 +44,6 @@ section Plans
 
 variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
   {stock : Stock praxis.toActionFrame agent now}
-
-/-- **Buys more than its parts** — a condition on the situation, NOT a
-claim. Every strict part of `claim` would buy other ends than the whole
-of it: no unit of the sum is one the plan has no use for. It fails for
-a sum larger than anything the agent would spend or hold it on. -/
-def BuysMoreThanItsParts (plan : AllocationPlan stock)
-    (claim : Finset praxis.Means) : Prop :=
-  ∀ part ⊂ claim, plan.wouldServe claim ≠ plan.wouldServe part
 
 /-- The old claim gives the weak one. -/
 theorem weak_of_strong (plan : AllocationPlan stock)
