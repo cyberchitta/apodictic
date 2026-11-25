@@ -1,14 +1,18 @@
 import ApodicticDraft.Money
 
 /-!
-# Claims — the draft library's unruled claims about action (T1)
+# Claims — the draft library's unruled claims about action
 
-The draft counterpart of `Apodictic.Praxeology`: every claim the T1
-theorems carry that is not in the trusted library is here, and nowhere
-else. Unruled as worded: the owner ruled the claim's scope (I-4, money
-only, both amounts free to hold); the Lean wording below waits for
-approval. A ruling moves it into `Apodictic.Praxeology`, or leaves it
+The draft counterpart of `Apodictic.Praxeology`: every claim a draft
+theorem carries that is not in the trusted library is here, and nowhere
+else. A ruling moves a claim into `Apodictic.Praxeology`, or leaves it
 here as a rejected encoding.
+
+- `MoreMoneyPreferred` (T1). Unruled as worded: the owner ruled the
+  claim's scope (money only, both amounts free to hold); the Lean
+  wording waits for approval.
+- `NoConsumingWithoutPreference` (the regress). Unruled: a weaker
+  rival to the library's `DemonstratedTimePreference`.
 -/
 
 namespace ApodicticDraft
@@ -57,5 +61,44 @@ structure MoreMoneyPreferred {praxis : MoneyFrame} {agent : praxis.Agent}
     more ⊆ stock.units → (∀ unit ∈ more, praxis.Money unit) →
     praxis.FreeToHold agent now fewer → praxis.FreeToHold agent now more →
       praxis.Prefers agent now ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
+
+/-- **No consuming without a preference** — an act that takes a
+satisfaction and forgoes the same satisfaction later is not the act of
+an agent who, at the time of acting, lacks a preference for the sooner.
+
+The weak form of `DemonstratedTimePreference`: that claim says the act
+shows the preference; this one says only that the act refutes its
+absence. Asserted of the act handed to a theorem, not of every act.
+
+Source: Mises, *Human Action*, ch. XVIII, §2: "If he were not to prefer
+satisfaction in a nearer period of the future to that in a remoter
+period, he would never consume and so satisfy wants." Rothbard, *MES*,
+p. 51: "If man, other things being equal, did not prefer satisfaction
+in the present to satisfaction in the future, he would never consume".
+
+Status: explicit-in-tradition. Both authors word the regress's first
+step this way round, from the absence of the preference to not
+consuming. Stated of one act at its own date is our-reconstruction:
+both sentences say "never", of a whole course of conduct.
+
+Does not say:
+
+1. That the agent prefers the sooner. Getting the preference from the
+   refutation of its absence needs excluded middle for that preference,
+   which the library does not assume.
+2. Anything about acts that forgo something other than the same
+   satisfaction later.
+3. That the chosen satisfaction is present, rather than merely sooner.
+4. Anything about other acts or other times. "Never" is not in it: that
+   a man without the preference would consume at no date is what the
+   regress is for. -/
+structure NoConsumingWithoutPreference {praxis : DatedFrame}
+    (act : Action praxis.toActionFrame) : Prop where
+  /-- The act refutes "no preference for what it took over the same
+  satisfaction later". -/
+  refutes : ∀ later ∈ act.forgone,
+    praxis.SameSatisfaction act.agent act.chosen later →
+    praxis.Before (praxis.attained act.chosen) (praxis.attained later) →
+    ¬ ¬ praxis.PrefersEnd act.agent act.time act.chosen later
 
 end ApodicticDraft

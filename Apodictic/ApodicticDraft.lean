@@ -6,6 +6,8 @@ import ApodicticDraft.NoPastMedium
 import ApodicticDraft.Market
 import ApodicticDraft.PriceControl
 import ApodicticDraft.PriceControlToy
+import ApodicticDraft.WeakRegress
+import ApodicticDraft.CertaintySplit
 
 /-!
 # ApodicticDraft
@@ -28,4 +30,10 @@ Current content:
   agents in `ApodicticDraft.Market`, the static inequality in
   `ApodicticDraft.PriceControl`, the toy in
   `ApodicticDraft.PriceControlToy`. No claim.
+- The regress from the weak first step (`ApodicticDraft.WeakRegress`),
+  a rival to the library's `regress`. The unruled claim is in
+  `ApodicticDraft.Claims`.
+- Certainty named apart from purchasing power
+  (`ApodicticDraft.CertaintySplit`), a rival to T1's merged condition.
+  No claim.
 -/
