@@ -145,10 +145,10 @@ O5 <- (AND: GAP-1 contrapositive, GAP-3i)
 | `Morrows.dated` — an offer is attained at its date | none | the encoding forced it: the prose never gives a satisfaction a date of its own |
 | conclusion at `date 0` of one sequence | `GAP-3ii`, `AMB-4`, "what the argument reaches" | no hypothesis, and rightly: the theorem claims only what the route reaches |
 | `Before`, not "present" | `GAP-3i` | sidestepped: the claim speaks of sooner only (`DemonstratedTimePreference`, *Does not say* 2) |
-| `SameSatisfaction` | `AMB-3` | ruled, `_notes/2026-09-18-time-preference-rulings.md` |
-| the regress as a theorem, `SRC-1`/`SRC-2` as the claim | `AMB-5`, the circle | reading B taken; "one premise used twice" is in `_notes/OPEN.md` |
+| `SameSatisfaction` | `AMB-3` | ruled 2026-09-18 (lab notebook) |
+| the regress as a theorem, `SRC-1`/`SRC-2` as the claim | `AMB-5`, the circle | reading B taken; "one premise used twice" is an open question in the lab notebook |
 | conclusion `¬ ¬ PrefersEnd …`; `#print axioms`: none | A6.1 | matched — the theorem is the ¬¬ form, as its docstring says |
-| — | `AMB-1`, `AMB-2` | no ruling found in `_notes/` |
+| — | `AMB-1`, `AMB-2` | no ruling found in the lab notebook |
 | — | `GAP-5` | idle in the prose, absent from the Lean |
 
 Every hypothesis the Lean forced is in the blind register, and one

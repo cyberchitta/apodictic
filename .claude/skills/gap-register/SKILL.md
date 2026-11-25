@@ -13,15 +13,20 @@ before the vocabulary is chosen. The two are then compared.
 Everything it produces is **Claude's reading** — the claimed tier.
 It goes in a dated note, labelled so. It never enters a docstring or
 the Verso document as a verdict, and a tidy ID does not make an
-entry true. Friction with this skill: `_notes/field-notes.md`.
+entry true. Friction with this skill goes to the lab notebook's field
+notes, not to the foot of the scoping note, where no triage finds it.
 
 ## When
 
 - The source ARGUES: Mises's regress, his ladder, Rothbard's exchange
-  argument. If the source only ASSERTS ("a fundamental and constant
-  truth…"), write that one line in the scoping note and stop: an
-  assertion has no route to audit, and a one-step Lean proof from it
-  is faithful, not suspicious.
+  argument. If the source only ASSERTS, write that one line in the
+  scoping note and stop: an assertion has no route to audit, and a
+  one-step Lean proof from it is faithful, not suspicious.
+- Judge by the paragraph, not the sentence. "A fundamental and
+  constant truth about human action is that…" (*MES* p. 15) reads as
+  an assertion, and the next sentence argues for it: "This results
+  from the fact that time is always scarce". Look for "results from",
+  "because", "thus" before calling a sentence bare.
 - Before the encoding decisions, as a section of the scoping note.
   After the Lean is green, Part C.
 
@@ -35,6 +40,25 @@ already verified under `CLAUDE.md`'s Sources rule); any other
 passage the owner has placed in scope. Forbid it the repo, the
 notes and the web. It writes the full register to a file and
 returns the register as a flat list.
+
+What to supply, and what to withhold:
+
+- **Supply everything the argument rests on**, including earlier
+  pages it leans on: its definitions, its stipulations ("assume the
+  units are homogeneous"), its worked example. What the launching
+  session leaves out, the reader cannot find, and a different choice
+  gives a different register. List what was supplied in the note.
+- **Withhold what answers the question**: counterexamples, critics,
+  the reality cases, the main session's candidate readings. Readers
+  without them have found the hinge unaided in every run so far.
+- **Figures and tables.** The extraction does not carry them. Where
+  the argument runs through one, the blind register will miss what it
+  carries. Say so in the note, and add a sighted pass over the figure
+  in the main session, its entries marked `(sighted)`.
+- **No conclusion sentence.** Where the passage states none for the
+  argument under audit, give the candidates and say "do not choose".
+  Record that the launching session named them: the reader did not
+  find them.
 
 ### A1. Boundaries
 
@@ -51,8 +75,12 @@ overstated step is preserved and marked.
 
 - The conclusion, verbatim, and its literal logical shape. Keep a
   negative-existential negative; do not normalise ¬∃¬ to ∀.
-- The argument, split into `SRC-1`, `SRC-2`, … in source order. Split
-  a sentence only where it carries two steps.
+- The argument, split into source IDs tagged by page: `SRC-15.1`,
+  `SRC-15.2`, … in source order within each page (`SRC-HA18.2.1` for
+  *Human Action*, which is cited by chapter and section). A premise
+  spread over several pages keeps its own page's ID. One ID per
+  premise and one per inference: a sentence with two premises and a
+  "so" is three IDs.
 - Accepted primitives: **elementary logic only**, classical or
   constructive left open. Nothing about action, preference, time or
   goods is background unless a supplied sentence states it.
@@ -64,12 +92,12 @@ overstated step is preserved and marked.
 ### A3. Render
 
 A Lamport hierarchy in source order, each step tagged with its
-`SRC-n`, each missing support marked AT the step:
+source ID, each missing support marked AT the step:
 
 ```text
-⟨1⟩3. ASSUME: he does not prefer the nearer.   [SRC-3]
+⟨1⟩3. ASSUME: he does not prefer the nearer.   [SRC-51.3]
       PROVE:  he never consumes.
-  ⟨2⟩1. He does not consume today.             [SRC-5]
+  ⟨2⟩1. He does not consume today.             [SRC-51.5]
           Proof: OPEN — GAP-1.
   ⟨2⟩4. Q.E.D.
 ⟨1⟩4. Q.E.D.
@@ -87,6 +115,15 @@ The constructs do the finding, so keep their rules:
   which of its claims closes the conclusion, that is an `AMB`, and
   each candidate route is carried through A5 separately.
 
+**Render the hinges only.** Render in full the steps some route to
+the conclusion passes through. List the rest by source ID on one
+line, as "not rendered". On a one-hinge passage the full rendering
+cost more than it found; the hinge-only rendering, with the cap
+below, halved the cost and lost nothing in two runs.
+
+**Cap.** Rendering and register together stay under about 200 lines.
+Past that, entries that bear no load shrink to one line each.
+
 ### A4. The register
 
 One entry per underlying defect, reused wherever it propagates:
@@ -96,11 +133,20 @@ One entry per underlying defect, reused wherever it propagates:
   in the CONCLUSION sentence counts, and usually dominates.
 - `EXT-n` — the source points outside the supplied text.
 - `ADM-n` — the source says it is assuming or postponing.
+- `GUARD-n` — a defence that saves the conclusion from a
+  counterexample by reclassifying it ("then they are different
+  goods"). Record what the guard reclassifies, and whether telling
+  which side of the line a case falls on needs the conclusion itself.
+  If it does, the guard is circular: mark it so in A5. In every run so
+  far the guards carried the best yield.
+- `RESTATE-n` — a "thus" or "hence" that repeats a premise, or an
+  earlier step, as if it were a new conclusion, with no step between.
 
 Each entry: the exact proposition (or the competing readings); the
 step where it bites; what depends on it; what supplied text would
-close it; and `load-bearing: yes/no` — whether any route to the
-conclusion passes through it. An idle assertion is still recorded.
+close it; and `load-bearing:` one of `yes`, `no`, or `under AMB-n(x)`
+— it bears load only on reading x of that ambiguity. Most entries are
+the last kind. An idle assertion is still recorded.
 
 ### A5. From the conclusion backward
 
@@ -144,6 +190,11 @@ reason each, and rule on none:
 
 Each `AMB` and each transcription assumption becomes an item in the
 note's "decisions the owner must make".
+
+Per entry, one **convergence** line: `matches <the earlier note's
+reading>`, or `new`. A blind reader that reproduces a reading the
+main session already had is a second witness to it; a `new` entry
+is what the pass found. Say how many of each.
 
 ## Part C — reconciliation (after the Lean is green)
 
