@@ -10,6 +10,7 @@ import ApodicticDraft.WeakRegress
 import ApodicticDraft.CertaintySplit
 import ApodicticDraft.CertaintySplitToy
 import ApodicticDraft.KeptGiven
+import ApodicticDraft.Satiation
 
 /-!
 # ApodicticDraft
@@ -40,4 +41,8 @@ Current content:
   the toy in `ApodicticDraft.CertaintySplitToy`. No claim.
 - What `KeptServesOtherEnds` leaves of a good both traded and kept
   (`ApodicticDraft.KeptGiven`): it serves nothing. No claim.
+- Non-satiation cut out of `MoreMoneyPreferred`
+  (`ApodicticDraft.Satiation`): S3–S5 rebuilt on a weaker rival claim
+  with the condition `BuysMoreThanItsParts`. The unruled claim is in
+  `ApodicticDraft.Claims`.
 -/

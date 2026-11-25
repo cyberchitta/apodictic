@@ -13,6 +13,8 @@ here as a rejected encoding.
   wording waits for approval.
 - `NoConsumingWithoutPreference` (the regress). Unruled: a weaker
   rival to the library's `DemonstratedTimePreference`.
+- `MoreMoneyPreferredWhereDiffers` (T1). Unruled: a weaker rival to
+  `MoreMoneyPreferred` that ranks only purchases that differ.
 -/
 
 namespace ApodicticDraft
@@ -100,5 +102,49 @@ structure NoConsumingWithoutPreference {praxis : DatedFrame}
     praxis.SameSatisfaction act.agent act.chosen later →
     praxis.Before (praxis.attained act.chosen) (praxis.attained later) →
     ¬ ¬ praxis.PrefersEnd act.agent act.time act.chosen later
+
+/-- **More money is preferred, where it would buy something else** —
+of two sums of money, the one part of the other and both free to hold,
+and the larger buying other ends than the smaller, the agent prefers
+what the larger would buy to what the smaller would buy.
+
+The weak form of `MoreMoneyPreferred`: that claim ranks the two
+purchases even where they are the same, and so, with
+`AsymmetricPreference`, asserts that every extra unit of free money
+buys something else. This one ranks only purchases that differ; that
+they differ is the condition `Satiation.BuysMoreThanItsParts`, on the
+theorem that needs it. Asserted of one plan for one stock.
+
+Source: Rothbard, *MES* p. 379: "[T]o both present money and future
+money there applies the general rule that more of a good will have
+greater utility than less of it." Mises, *Human Action*, ch. VII, §1:
+"what satisfies more is preferred to what gives smaller satisfaction".
+
+Status: explicit-in-tradition as doctrine; the narrow form is
+our-reconstruction, as for `MoreMoneyPreferred`, and so is the cut
+between this claim and the condition of differing purchases.
+
+Does not say:
+
+1. That an extra unit of money always buys something else: that is the
+   condition, not the claim.
+2. That a larger purchase is a superset of the smaller: only that the
+   two differ.
+3. Anything of goods that are not money, or of sums that cost
+   something to hold.
+4. How much more is preferred: no rate.
+5. Anything of two sums neither of which is part of the other.
+6. Anything about acts. -/
+structure MoreMoneyPreferredWhereDiffers {praxis : MoneyFrame}
+    {agent : praxis.Agent} {now : praxis.Time}
+    {stock : Stock praxis.toActionFrame agent now}
+    (plan : AllocationPlan stock) : Prop where
+  /-- The larger of two sums, one part of the other, where they would
+  buy different ends. -/
+  more : ∀ fewer more : Finset praxis.Means, fewer ⊂ more →
+    more ⊆ stock.units → (∀ unit ∈ more, praxis.Money unit) →
+    praxis.FreeToHold agent now fewer → praxis.FreeToHold agent now more →
+    plan.wouldServe more ≠ plan.wouldServe fewer →
+      praxis.Prefers agent now ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
 
 end ApodicticDraft
