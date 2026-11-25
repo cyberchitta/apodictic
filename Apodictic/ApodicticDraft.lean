@@ -11,6 +11,7 @@ import ApodicticDraft.CertaintySplit
 import ApodicticDraft.CertaintySplitToy
 import ApodicticDraft.KeptGiven
 import ApodicticDraft.Satiation
+import ApodicticDraft.NoMoneyLabel
 
 /-!
 # ApodicticDraft
@@ -45,4 +46,7 @@ Current content:
   (`ApodicticDraft.Satiation`): S3–S5 rebuilt on a weaker rival claim
   with the condition `BuysMoreThanItsParts`. The unruled claim is in
   `ApodicticDraft.Claims`.
+- S3–S5 without the restriction to money
+  (`ApodicticDraft.NoMoneyLabel`), on the rival claim
+  `MorePreferredWhereDiffers`, in `ApodicticDraft.Claims`.
 -/
