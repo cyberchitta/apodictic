@@ -50,7 +50,12 @@ open Apodictic
 /-- A dated frame with money and the cost of holding it. -/
 structure MoneyFrame extends DatedFrame where
   /-- `Money m`: the unit `m` is an amount of money, or a claim to an
-  amount of money at a later date. Supplied; no properties. -/
+  amount of money at a later date. Money is Mises's: "the thing which
+  serves as the generally accepted and commonly used medium of
+  exchange" (*Human Action*, ch. XVII, §3). Supplied; no properties:
+  whether a unit is money is a fact about the situation, checked by
+  whoever applies a theorem, and each theorem that needs it names it as
+  a hypothesis. -/
   Money : Means → Prop
   /-- `FreeToHold agent t sum`: at `t`, holding exactly the units in
   `sum` costs the agent nothing — no storage, custody, tax or risk of
