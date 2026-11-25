@@ -24,8 +24,7 @@ And sort by kind of claim: claimed-universal facts about action are
 situational applicability conditions are named, documented
 hypotheses in the theorem statement (the theorem does not apply
 where they fail). The Austrian defence "the conditions didn't
-hold" then becomes checkable rather than unfalsifiable. Notes:
-`_notes/2026-09-04-diagnostic-aim.md`.
+hold" then becomes checkable rather than unfalsifiable.
 
 ## Division of labor — read this first
 
@@ -35,22 +34,19 @@ approve every axiom and every design decision. Therefore:
 
 - NEVER silently choose an encoding that makes a proof easier. If two
   encodings differ in philosophical commitment, present the choice
-  with trade-offs: in a build sprint, as an ask in `_notes/asks/` — a
-  `taken` ask when the choice is local and the sprint continues on the
-  recommended branch in the draft library; otherwise an `open` ask whose
-  Blocks names the dependent chain, and STOP.
+  with trade-offs and STOP, unless a chartered sprint delegates it:
+  then the sprint continues on the recommended branch in the draft
+  library where the choice is local, and stops the dependent chain
+  where it is not.
 - Work alternates between sprints Claude runs alone and chunks worked
-  together (human decision 2026-09-24). The charter — targets, what
-  is delegated, the hard stops — is `_notes/SPRINT.md`; the agenda
-  for the next chunk is the open and taken asks in `_notes/asks/`. Outside a
-  chartered sprint, every escalation trigger in `_notes/intent.md`
-  is stop-and-ask.
-- Standing rules (human decision 2026-11-25). `_notes/intent.md`
-  carries numbered standing rules. A design decision one of them
-  reaches is settled by the rule: cite its number, mark the decision
-  as made by standing rule and not by the human, and add a line to
-  `_notes/standing-rule-decisions.md`. The same section lists what a
-  rule never settles; those still go to the human.
+  together (human decision 2026-09-24), under a sprint charter: the
+  targets, what is delegated, the hard stops. Outside a chartered
+  sprint, every escalation trigger is stop-and-ask.
+- Standing rules (human decision 2026-11-25). The human keeps a short
+  numbered list of standing rules. A design decision one of them
+  reaches is settled by the rule and recorded as made by standing
+  rule, not by the human. A claim about action is never settled that
+  way.
 - An easy proof is a warning sign, not a success. If a theorem goes
   through suspiciously fast, check whether an axiom is stronger than
   its praxeological pedigree justifies, and raise it.
@@ -62,39 +58,28 @@ approve every axiom and every design decision. Therefore:
   separate hand-authored catalog — the axiom-by-axiom catalog is the
   source itself plus the Verso document. Docstrings are PEDIGREE
   ONLY (human decision 2026-09-04): no dates, no note paths, no
-  "was tried before", no commit hashes. History lives in `_notes/`;
+  "was tried before", no commit hashes. History lives in the lab notebook;
   the result part quotes
   docstrings live and must read as verdicts.
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
-  FINDING. Log it in `_notes/` in the session it happens; it is
+  FINDING. Log it in the lab notebook in the session it happens; it is
   promoted to the findings chapter of the Verso document at editorial
   cadence.
-- Three-tier record. `_notes/` is the contemporaneous lab notebook:
-  every design decision, rejected alternative, dead end, and open
-  question gets a dated entry in `_notes/` IN THE SESSION IT HAPPENS
-  — low ceremony, no quality bar, never refactored for elegance.
-  Only those four kinds (human decision 2026-09-05): an explainer
-  or an assessment that changes no decision and answers no OPEN.md
-  item stays in chat. Docstrings carry
+- Three-tier record. The lab notebook is the contemporaneous record,
+  kept outside this repository: every design decision, rejected
+  alternative, dead end, and open question gets a dated entry there
+  IN THE SESSION IT HAPPENS — low ceremony, no quality bar, never
+  refactored for elegance. Only those four kinds (human decision
+  2026-09-05): an explainer or an assessment that changes no decision
+  and answers no open question stays in chat. Docstrings carry
   per-declaration pedigree (above). The Verso document is the curated
   argument, written FROM the notes at editorial cadence — it may lag
-  `_notes/`, never contradict them. Rejected encodings enter the
+  the notebook, never contradict it. Rejected encodings enter the
   document as type-checked Lean code with the argument for their
   rejection.
-- End-of-session habit: `/sakshi:session-close`, which writes the
-  handoff to `_notes/debriefs/<YYYY-MM-DD>-close.md` with verified and
-  claimed findings kept apart. That report IS the session summary;
-  do not also write a dated summary note. Dated `_notes/` files are
-  for decisions and findings AS THEY HAPPEN, per topic. Start a
-  session that has gone cold with `/sakshi:session-open`.
 - Prefer ugly proofs that compile over elegant proofs. Probative
   value is identical; refactoring is a later luxury.
-
-Asks in `_notes/asks/` replaced `PENDING-RULINGS.md` on 2026-10-18
-(human decision), and its entries were converted the same day. A question that only matters once a gate question is answered
-(what to build, whether a target is taken) is not an ask: it waits in
-its scoping note, and the gate's ask lists it by code.
 
 ## Philosophical constraints (non-negotiable)
 
@@ -148,7 +133,7 @@ Two lake packages in this repo:
   Apodictic library. The connected essay lives here: the vocabulary,
   the claim, the hypotheses, the theorems and the manifest — the
   human's review surface, and the only part
-  emitted to the site. It is written from `_notes/` at editorial
+  emitted to the site. It is written from the lab notebook at editorial
   cadence
   (human decision 2026-09-04) and may lag the Lean, never
   contradict it. The human reviews it in large chunks, not part by
@@ -173,19 +158,10 @@ Invariant: if Verso lags a Lean toolchain bump, the document waits;
 never downgrade the library's toolchain to accommodate the document.
 Proofs over prose, always.
 
-Plus the lab notebook, outside both packages:
-
-- **`_notes/`** — the contemporaneous record (the machine-standard
-  `_notes` mechanism; see the `working-notes` skill). This project's
-  conventions: Claude edits it as part of the work; dated files per
-  topic (`_notes/YYYY-MM-DD-<topic>.md`); `_notes/OPEN.md` — a living
-  list of unresolved questions kept as current state rather than
-  archaeology; `_notes/debriefs/` — session-close reports, the only
-  handoff surface; `_notes/sources/` — the Mises Institute editions
-  (gitignored binaries + text extraction); `_notes/field-notes.md` —
-  the declared destination for friction with this repo's own
-  conventions (format in the file header; friction with a
-  portfolio-wide ritual goes to that project's file instead).
+Plus the lab notebook, outside both packages and outside this
+repository: the contemporaneous record, private, with the worklist, the
+open questions and the source editions. Claude edits it as part of the
+work.
 
 ## Conventions
 
@@ -206,7 +182,7 @@ Plus the lab notebook, outside both packages:
 - Praxeological claims enter at point of first use. Nothing lives in
   Praxeology.lean unless some theorem's signature carries it; doctrinally
   central axioms no theorem yet needs are parked with their
-  pedigree in `_notes/2026-09-04-parked-axioms.md`. (Human
+  pedigree in the lab notebook. (Human
   decision 2026-09-04: no reviewing axioms that do no work.)
 - Constructive by default (human decision 2026-09-04). No
   `Classical.choice` on a theorem's manifest. When a proof stalls
@@ -238,7 +214,7 @@ Plus the lab notebook, outside both packages:
 The `unattended-run` skill has the ritual; this is what is specific
 here (human decision 2026-10-13).
 
-- A night run is a sprint: `_notes/SPRINT.md`'s delegation and hard
+- A night run is a sprint: the sprint charter's delegation and hard
   stops apply to every brief.
 - It works on a `run/<UTC date>-<brief>` branch in the main checkout, not a
   worktree — a worktree has a cold mathlib build and may fetch no
@@ -252,20 +228,13 @@ here (human decision 2026-10-13).
 
 ## Current state
 
-Not here. `_notes/WORKLIST.md` is the worklist — what is done and
-what is next. `_notes/OPEN.md` is the list of unresolved questions.
-`_notes/debriefs/` is the session-close handoff. This file is
-instructions only: it should change when a RULE changes, not from
-session to session.
+Not here. The worklist, the open questions and the session handoff
+are in the lab notebook. This file is instructions only: it should
+change when a RULE changes, not from session to session.
 
 ## Sources of record
 
 Mises, *Human Action* (esp. chs. 1–7); Rothbard, *Man, Economy, and
 State* (esp. ch. 1). When citing, verify wording against the Mises
-Institute editions — do not quote from memory.
-
-The extraction in `_notes/sources/*.txt` wraps mid-word with hyphens,
-so a plain `rg` MISSES any phrase spanning a line break and reports a
-quotation that is present as absent. Rejoin `-\s*\n\s*` and collapse
-whitespace before searching; treat a miss on a long phrase as a reason
-to retry with a shorter one, never as a verdict.
+Institute editions — do not quote from memory. The editions are
+copyrighted and are not in this repository.
