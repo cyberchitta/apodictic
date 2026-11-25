@@ -14,6 +14,7 @@ import ApodicticDraft.Satiation
 import ApodicticDraft.NoMoneyLabel
 import ApodicticDraft.ChristmasClubToy
 import ApodicticDraft.ValuedAlike
+import ApodicticDraft.RankedAlikeScoped
 
 /-!
 # ApodicticDraft
@@ -58,4 +59,7 @@ Current content:
   (`ApodicticDraft.ValuedAlike`), with the step back to `now` the
   condition `RankedAlikeNow`, S3–S5 on it, and a toy whose valuations
   change. The unruled claim is in `ApodicticDraft.Claims`.
+- `RankedAlikeNow` scoped to the one comparison S3–S5 make, the claim
+  against the lesser sum (`ApodicticDraft.RankedAlikeScoped`), a rival
+  condition, with S3–S5 on it. No claim.
 -/
