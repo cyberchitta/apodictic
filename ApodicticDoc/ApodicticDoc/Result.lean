@@ -354,7 +354,7 @@ uses. And only claims meant to hold always belong here; a
 condition that says when a law applies is a hypothesis instead, and
 those have a part of their own below.
 
-There are nine. The first is the premise of Rothbard's derivation,
+There are ten. The first is the premise of Rothbard's derivation,
 and on his route it is the only claim the law needs. The second is the
 premise of Mises's, reconstructed in the same vocabulary; the third is
 asymmetry of preference, which neither derivation spends and one
@@ -367,14 +367,18 @@ two are about time. The sixth is time preference: a satisfaction is
 preferred sooner rather than later. The seventh is its
 demonstration, stated of one act: taking a satisfaction and forgoing
 the same satisfaction later shows a preference for the sooner. The
-last two are about a medium of exchange, and are premises of the
+next two are about a medium of exchange, and are premises of the
 regression theorem, the ninth only of its positive form. The eighth is appraisal from the past: nobody
 appraises a good as a medium unless it changed hands on some earlier
 day. The ninth is Mises's division of the demand for a medium into
 two: sorting ends into those reached by passing a good on and the
-rest leaves none over. Each of the first
-seven docstrings names the theorems that carry it; the last two are
-carried by the theorems under *The regression theorem*.
+rest leaves none over. The tenth is the interest theorems' own claim,
+beside time preference: of two sums of money, one part of the other,
+both free to hold and buying different things, the larger is preferred
+at the date it would be spent. The eighth and ninth are carried by the
+theorems under *The regression theorem*, the tenth by those under
+*Interest*; the manifests in each part list exactly which claims each
+theorem carries.
 
 {docstring Apodictic.SwapDominant}
 
@@ -394,10 +398,13 @@ carried by the theorems under *The regression theorem*.
 
 {docstring Apodictic.TwoPartialDemands}
 
+{docstring Apodictic.MoreMoneyPreferredWhenSpent}
+
 # The conditions
 
 
-The theorems take five assumptions besides the claims. Each says
+The law of marginal utility, on every route here, takes five
+assumptions besides the claims. Each says
 something about the situation rather than about action as such, and
 each is written into the statement, so a reader can point at it and
 say: that is the one that did not hold. Where one fails, the law says
@@ -409,7 +416,8 @@ nothing — it is silent, not wrong.
 - `IndependentUses agent time`: what one want is worth does not depend
   on which other wants are being served.
 - `plan.Homogeneous`: the plan depends only on how many units there
-  are, not on which ones. Only the size-based form of the law needs it.
+  are, not on which ones. Of the law's forms, only the size-based one
+  needs it.
 - `stock.ComparableServiceable`: any two wants the good can serve are
   ranked one way or the other. Mises's route and the ladder read as a
   history need it; Rothbard's never does.
@@ -430,7 +438,9 @@ Exchange takes conditions of its own, about trades rather than stocks;
 they are given in full under *Exchange*. Time preference takes its
 own too, about dated ends, given in full under *Time preference*. The
 regression theorem's are about a record of exchanges, given in full
-under *The regression theorem*.
+under *The regression theorem*. The interest theorems' are about sums
+of money and a loan, given in full under *Interest*; they take
+`plan.Homogeneous` too, for claims to future money.
 
 {docstring Apodictic.Stock.OneMore}
 
@@ -783,7 +793,7 @@ one the existing vocabulary allows: the agent serves in order of
 urgency. If the good can serve a want, and that want is more urgent
 than one on his plan, the plan has it too. That is a
 praxeological claim, subjunctive throughout like Rothbard's, and it is
-the second of the four under *The claims*.
+the second under *The claims*.
 
 One thing more is needed, and it is a condition, not a claim: that
 every pair of wants the good can serve is ranked, one way or the
@@ -1997,6 +2007,337 @@ acquirer wanted the good for an end other than passing it on, which is
 a question about those acquirers. The narrow theorem asks more — that what they wanted
 it for was consumption or production — and is silent where the good was
 first wanted for a game, a cause, or a test.
+
+# Interest
+%%%
+file := "Interest"
+%%%
+
+Interest is the fifth target, and it is the one time preference was
+built for. Rothbard's conclusion is categorical: "every man’s time
+preference is positive, i.e., one ounce of present money will always
+be preferred to one ounce or less of future money. Therefore, there
+will never be any question of a zero or negative pure interest rate"
+(*MES*, p. 382). It was chosen because the world seems to have
+answered it. For some years bonds paid a negative nominal yield, and
+people bought them and held them to maturity: they lent a sum to be
+repaid less. The question is which step of the argument such a lender
+falls outside.
+
+Rothbard's argument runs in four steps, and they are rebuilt here in
+order. Present money is preferred to the same amount of future money.
+So it is preferred to that amount or less. So a man does not lend at a
+rate of zero or below. So every rate actually struck is positive. The
+docstrings below label them S2 to S5.
+The rate as a number set in a market is not reached: nothing here adds up
+lenders or finds an equilibrium.
+
+**Money.** The vocabulary gets two more relations, which units are
+money and whether holding a sum costs anything, and nothing else.
+
+{docstring Apodictic.MoneyFrame}
+
+A sum of money counts for what the man's plan says he would buy with
+exactly those units. That is not how goods in a trade are counted
+under *Exchange*, where a holding counts for every end any of its goods
+could serve. For money the two part at once: an ounce can be spent now or kept for later,
+not both. Three stocks are weighed at the one date of the loan: the
+present money, the claims to future money, and the money the claims
+promise, as he would spend it were it in hand. A theorem takes a sum
+from each.
+
+**Present money over future money.** "It follows from the law of time
+preference that present money is worth more than present expectations
+of the same amount of future money" (*MES*, p. 376). It follows, but
+not from the amount.
+
+{docstring Apodictic.PureInterest.present_sum_preferred}
+
+The three conditions:
+
+{docstring Apodictic.SamePurchasingPower}
+
+{docstring Apodictic.ClaimPays}
+
+{docstring Apodictic.SpentSooner}
+
+Three findings are in this step. First, the number of ounces does no
+work in it. The first two conditions above each contain an equality
+of counts, and the proof never uses either; the linter, which checks whole assumptions
+and not their parts, cannot see that. Equal counts are the same good at two dates only if they
+buy the same thing, and that is what the proof uses; the count enters
+later, where "repaid no more than lent" has to be compared with a
+claim. Second, two things a reader might fold together are kept
+apart: that the money will buy as much later, which fails with rising
+prices, and that the claim will pay, which fails with a risk of
+default. Each has its own name, so a failure points at one of them.
+A frame of one agent with an ounce and a claim to one shows each
+failing while the other holds, and shows that a single condition
+asserted between the cash and the claim fails alike in both cases,
+so it cannot say which happened:
+
+{docstring Apodictic.Model.CertaintySplit.doubt_power_but_not_pays}
+
+{docstring Apodictic.Model.CertaintySplit.inflation_pays_but_not_power}
+
+{docstring Apodictic.Model.CertaintySplit.merged_fails_in_both}
+
+Third, what the step needs about holding is that the present sum
+would be *spent* sooner. That holding the present sum costs nothing is
+in no signature: no step uses it, so a theorem that listed it would
+fail the linter. (A cost of holding cash does reach the loan theorems,
+by another road: the condition that refusing a loan leaves the sum at
+full value, below.) Rothbard's footnote dismisses the man who would
+keep the money for later, as "not the issue here, which is one of
+availability for use" (*MES*, p. 386 n. 11). If that man would spend
+the present sum on the same thing, at the same date, as the claim, the
+two buy the same bundle, and asymmetry then forbids a strict preference
+either way. The footnote answers him with an equality, not a
+preference.
+
+**A rate of exactly zero.** The order of the steps hides one thing. A
+loan that repays exactly the sum lent is refused on time preference
+and asymmetry, without "more money is preferred":
+
+{docstring Apodictic.PureInterest.no_loan_at_zero_rate}
+
+The two conditions on the trade say what refusing would have left the
+lender, and what lending left him:
+
+{docstring Apodictic.Trade.RefusalKeepsSum}
+
+{docstring Apodictic.Trade.AfterCountsAsPlanned}
+
+"More money is preferred", the claim the next step needs, is spent on
+one thing only: ruling out a *negative* rate.
+
+**One ounce or less.** "Or less" needs a second claim. Rothbard:
+"\[T\]o both present money and future money there applies the general rule that
+more of a good will have greater utility than less of it" (*MES*,
+p. 379). It is the tenth claim under *The claims*, where its docstring
+gives the reasons it is narrower than Rothbard's rule. Two of them are
+findings of the build.
+
+The first is satiation. Read as Rothbard states it, even cut to money
+free to hold and to sums one part of the other, the rule ranks the
+larger sum above the smaller whatever each would buy:
+
+{docstring Apodictic.PureInterest.MoreMoneyPreferredUnrestricted}
+
+Where the larger sum would buy exactly what the smaller buys, the rule
+then has the man prefer a bundle to itself, and asymmetry, which the
+loan theorems carry, forbids that. So the rule, with asymmetry, says
+that every extra unit of money changes what the sum would buy: money
+never satiates.
+
+{docstring Apodictic.PureInterest.buysMore_of_unrestricted}
+
+Mises denies non-satiation of the cash a man holds: "He who says that his thirst for more money can never be
+quenched, does not mean to say that his cash holding can never be too
+large. What he really means is that he can never be rich enough"
+(*Human Action*, ch. XVII, §3). Rothbard agrees that "effective demand
+for money is not and cannot be unlimited" (*MES*, p. 773). So the
+claim here ranks only sums that buy different things, and that every
+part of the larger sum buys something other than the whole is a
+condition:
+
+{docstring Apodictic.BuysMoreThanItsParts}
+
+The second is time. The plan says what the man would buy with a sum,
+and he would buy it when he spends it, by his valuations then. A man
+who knows what he does with money in hand may prefer now to have less
+of it, because of what he would buy with more when it came. Ranked
+now, Rothbard's rule says he cannot:
+
+{docstring Apodictic.PureInterest.MoreMoneyPreferredNow}
+
+The library builds the man. He has one ounce, which he would spend on
+an impulse tomorrow. Today he would rather not have the impulse;
+tomorrow he will want it. Asymmetry holds at both dates, and the claim
+dated at the spending holds of him, since tomorrow he prefers the
+ounce. The claim ranked now does not:
+
+{docstring Apodictic.Model.Impulse.now_reading_fails}
+
+So the claim here is dated at the spending, and the step from then to
+now is a condition. In the theorems it is asked of the one comparison
+the proof makes, the claim against the sum repaid. The impulse man is
+never put in a loan, but the same condition, asked of his ounce against
+no cash, is the one he fails:
+
+{docstring Apodictic.RankedAlikeNowOf}
+
+{docstring Apodictic.Model.Impulse.not_rankedAlikeNow}
+
+The frame's preferences are written by hand for the case, and the
+frame is built only to separate the two readings: asymmetry and the
+dated claim hold in it, and the undated reading fails. It is not a
+frame where every claim holds; time preference, for one, does not. Whether a given saver is such a man is a question about
+him. A saver who locks his money in a Christmas club, away until
+December, looks like one, though the club case below needs only the
+plainer failure.
+
+Mises's own account of action has room for this man. A valuation that
+changes is not a lapse from action: "If the valuations change, acting
+must change also" (*Human Action*, ch. V, §4). The condition is where
+his change of valuation lands.
+
+The rest of what "or less" takes: the claim's parts are free to hold,
+the preferences chain on the one chain used, the claim is money, and
+the future units are interchangeable (`plan.Homogeneous`, under *The
+conditions*).
+
+{docstring Apodictic.FreeToHoldWithin}
+
+{docstring Apodictic.ActionFrame.TransitiveOn}
+
+{docstring Apodictic.PureInterest.present_sum_preferred_to_less}
+
+**No loan at zero or below, and every rate struck positive.** The last
+theorem does not assume that refusing leaves the sum: it derives it,
+from the trade being voluntary and the lender's holding before it
+counting as planned, so it takes that second condition instead.
+
+{docstring Apodictic.PureInterest.no_loan_at_nonpositive_rate}
+
+{docstring Apodictic.Trade.BeforeCountsAsPlanned}
+
+{docstring Apodictic.PureInterest.struck_rate_positive}
+
+```lean (name := manifestStruck)
+#manifest PureInterest.struck_rate_positive
+```
+```leanOutput manifestStruck
+manifest of Apodictic.PureInterest.struck_rate_positive
+
+  praxeological claims:
+    timePreference : TimePreference praxis.toDatedFrame exchange.first.agent exchange.first.time
+    moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend
+    asymmetric : AsymmetricPreference praxis.toActionFrame exchange.first.agent exchange.first.time
+    demonstrated : DemonstratedPreference exchange.first
+
+  situational conditions:
+    power : SamePurchasingPower presentPlan promisedPlan sum money soon late
+    pays : ClaimPays futurePlan promisedPlan claim money
+    sooner : SpentSooner soon late
+    claimIn : claim ⊆ future.units
+    repaidIn : repaid ⊆ future.units
+    homogeneous : futurePlan.Homogeneous
+    alike : RankedAlikeNowOf futurePlan spend claim repaid
+    buysMore : BuysMoreThanItsParts futurePlan claim
+    isMoney : ∀ unit ∈ claim, praxis.Money unit
+    free : FreeToHoldWithin claim
+    chain : praxis.TransitiveOn exchange.first.agent exchange.first.time ↑(presentPlan.wouldServe sum)
+  ↑(futurePlan.wouldServe claim) ↑(futurePlan.wouldServe repaid)
+    voluntary : exchange.first.Voluntary
+    before : exchange.first.BeforeCountsAsPlanned presentPlan sum
+    after : exchange.first.AfterCountsAsPlanned futurePlan repaid
+
+  vocabulary (what the claims are about):
+    praxis : MoneyFrame
+    exchange : Exchange praxis.toActionFrame
+    present : Stock praxis.toActionFrame exchange.first.agent exchange.first.time
+    future : Stock praxis.toActionFrame exchange.first.agent exchange.first.time
+    promised : Stock praxis.toActionFrame exchange.first.agent exchange.first.time
+    presentPlan : AllocationPlan present
+    futurePlan : AllocationPlan future
+    promisedPlan : AllocationPlan promised
+    sum : Finset praxis.Means
+    claim : Finset praxis.Means
+    money : Finset praxis.Means
+    repaid : Finset praxis.Means
+    soon : praxis.End
+    late : praxis.End
+    spend : praxis.Time
+
+  conditions carried by the vocabulary (not binders: discharged by
+  whoever supplies the argument):
+    exchange.swap_gives : exchange.second.gets = exchange.first.gives
+    exchange.swap_gets : exchange.second.gives = exchange.first.gets
+    present.unitsAlike : ∀ unit ∈ present.units,
+  ∀ (want : praxis.End), praxis.Believes exchange.first.agent exchange.first.time unit want ↔ want ∈ present.serves
+    future.unitsAlike : ∀ unit ∈ future.units,
+  ∀ (want : praxis.End), praxis.Believes exchange.first.agent exchange.first.time unit want ↔ want ∈ future.serves
+    promised.unitsAlike : ∀ unit ∈ promised.units,
+  ∀ (want : praxis.End), praxis.Believes exchange.first.agent exchange.first.time unit want ↔ want ∈ promised.serves
+    presentPlan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ presentPlan.wouldServe subStock, want ∈ present.serves
+    futurePlan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ futurePlan.wouldServe subStock, want ∈ future.serves
+    promisedPlan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ promisedPlan.wouldServe subStock, want ∈ promised.serves
+
+  logical background: [propext, Quot.sound]
+```
+
+Four claims carry it: time preference, "more money is preferred",
+asymmetry, and demonstrated preference, stated of the lender's trade.
+The borrower contributes nothing. That every rate *struck* is
+positive is a fact about each lender, not about a market, and a
+borrower who would pay a positive rate is not shown to exist.
+
+**What the order of time was asked for.** Nothing, as under *Time
+preference*. No proof here uses a property of the relation "before",
+and none needs a classical step: the one case
+split is on the size of a sum.
+
+**The case.** The library builds one frame to test this on. A lender
+with a use for an ounce now lends it for a claim to two, repaid at the
+next date, and every claim and condition of the last theorem holds.
+
+{docstring Apodictic.Model.Loan.struck_rate_positive_applies}
+
+The test is thin, and it is worth saying where. The lender's ranking
+does not change with the date, so the condition on ranking now as at
+the spending holds with nothing to do. The money the claims promise is
+the claims themselves, so that the claim pays is never tried on a
+claim that might not. Every unit is money and every sum is free to
+hold, so neither condition is tried. Preference chains throughout the
+frame, not only on the one chain. The claim whose parts must each buy
+something different is a single unit, so it is tried only against
+nothing at all. And there is one agent, lender and
+borrower both.
+
+**What a failure would point at.** Where a man lends and is repaid
+less, the theorem for a rate not above zero says that his trade did
+not demonstrate a preference for the claim, or that one of its
+assumptions failed. The ones a case is likely to land on:
+The money would buy less at repayment, or he doubted the claim would
+pay, or he had no use for the sum before the claim paid. Or refusing
+would not have left him the sum at full value, because keeping cash
+cost him something. (In the last theorem that condition is not
+assumed but derived, from the trade being voluntary and his holding
+counting as planned, so there the failure lands on one of those.) Or
+an extra unit of the claim bought nothing more, or he ranked the claim
+against the repayment differently now than at the spending, or the
+claim was not money or not free to hold, or the one chain of
+preferences did not chain. Or one of the claims failed. (Its manifest
+has a few more, of bookkeeping: that the claim and the repayment come
+from the stock of claims, that its units are interchangeable, and that
+what he holds after counts as planned.)
+
+The bondholder at a negative yield points first at his use for the
+money: he had none sooner than the bond paid. Held to that date
+instead, the cash would have bought at least what the smaller
+repayment buys. So lending at a loss makes sense only if holding the
+cash would have cost him something, and that points next at refusal:
+refusing would not have left him the sum at full value. This is a
+reading of the case, not a frame built for it. Where a man lends at exactly zero, the list is shorter:
+it drops the claim that more money is preferred and the five
+conditions that come with it.
+
+The Christmas club saver lends at zero, and on this reading of a sum
+he is outside the theorem at once. The cash in his hand would buy what
+he would do with it on impulse, the club pays for what he saves it
+for, and those are not the same satisfaction. So whatever money the
+club's claim pays in, if it pays, the condition that his cash and that
+money have the same purchasing power fails. The library builds him
+too, with every claim holding:
+
+{docstring Apodictic.Model.ChristmasClub.zero_rate_with_every_claim}
+
+{docstring Apodictic.Model.ChristmasClub.outside_zero_rate}
+
+In this frame a sum of cash buys one end however large, so his
+preferring less cash to more is not modelled here; that is the impulse
+man above.
 
 # The horses in Lean
 

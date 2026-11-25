@@ -1584,8 +1584,8 @@ theorem lend_after_planned :
   exact (coe_single _).symm
 
 /-- **Non-vacuity: every rate struck is positive, applied.** The lender
-lends one ounce and is repaid two; the claim and every condition of S5
-hold, with the claim's promised money its own stock. -/
+lends one ounce and is repaid two; every claim and every condition of
+S5 hold, with the claim's promised money its own stock. -/
 theorem struck_rate_positive_applies :
     ({.ounce} : Finset Good).card < ({.claimA, .claimB} : Finset Good).card :=
   PureInterest.struck_rate_positive loan presentPlan futurePlan futurePlan
@@ -1619,6 +1619,520 @@ theorem struck_rate_positive_applies :
 #print axioms struck_rate_positive_applies
 
 end Loan
+
+/-!
+## Pure interest: each half of the certainty split failing alone
+
+The claim pays (`ClaimPays`) and the money buys as much later
+(`SamePurchasingPower`, between the present sum and the promised
+money) are separate conditions. Here each fails while the other holds.
+In both cases the claim's plan is the same, so a single condition
+asserted between the present sum and the claim cannot tell them apart.
+
+One agent, at date 0, holds three one-unit stocks: an ounce of cash, a
+claim to an ounce at date 1, and the ounce the claim promises, as he
+would spend it were it in hand at date 1. Ends are (kind, date); kind 1
+is an ounce's worth, kind 2 is less. Same kind, same satisfaction.
+-/
+
+namespace CertaintySplit
+
+/-- The goods: an ounce now, a claim to an ounce at date 1, and the
+ounce the claim promises. -/
+inductive Good
+  | cash | claim | promised
+  deriving DecidableEq
+
+/-- Kind first, date second: lower is better. -/
+def score (e : ℕ × ℕ) : ℕ := e.1 * 10 + e.2
+
+/-- An ounce's worth now. -/
+def soon : ℕ × ℕ := (1, 0)
+/-- An ounce's worth at date 1: the same satisfaction, later. -/
+def late : ℕ × ℕ := (1, 1)
+/-- Less than an ounce's worth, at date 1. -/
+def worse : ℕ × ℕ := (2, 1)
+
+/-- The frame, given what the agent believes each good serves. -/
+abbrev frame (believes : Good → ℕ × ℕ → Prop) : MoneyFrame where
+  Agent := Unit
+  End := ℕ × ℕ
+  Means := Good
+  Time := ℕ
+  Believes := fun _ _ g e => believes g e
+  Prefers := fun _ _ X Y => ∃ x ∈ X, ∀ y ∈ Y, score x < score y
+  Before := fun t t' => t < t'
+  attained := Prod.snd
+  SameSatisfaction := fun _ a b => a.1 = b.1
+  Money := fun _ => True
+  FreeToHold := fun _ _ _ => True
+
+/-- Cash buys `soon`; the claim and the promised ounce buy what the
+agent believes they buy. -/
+def beliefs (claimBuys promisedBuys : ℕ × ℕ) : Good → ℕ × ℕ → Prop
+  | .cash, e => e = soon
+  | .claim, e => e = claimBuys
+  | .promised, e => e = promisedBuys
+
+/-- What some units of a one-unit stock buy. -/
+def buys (worth : ℕ × ℕ) (n : ℕ) : Finset (ℕ × ℕ) :=
+  if n = 0 then ∅ else {worth}
+
+/-- A one-unit stock of `g`, weighed at date 0. -/
+def stock (claimBuys promisedBuys : ℕ × ℕ) (g : Good) (worth : ℕ × ℕ)
+    (alike : ∀ e, beliefs claimBuys promisedBuys g e ↔ e ∈ ({worth} : Set (ℕ × ℕ))) :
+    Stock (frame (beliefs claimBuys promisedBuys)).toActionFrame () 0 where
+  units := {g}
+  serves := {worth}
+  unitsAlike unit h e := by
+    obtain rfl := Finset.mem_singleton.1 h
+    exact alike e
+
+/-- His plan for it: by count only. -/
+def plan (claimBuys promisedBuys : ℕ × ℕ) (g : Good) (worth : ℕ × ℕ) alike :
+    AllocationPlan (stock claimBuys promisedBuys g worth alike) where
+  wouldServe s := buys worth s.card
+  servesOnlyWhatItCan s want h := by
+    show want ∈ ({worth} : Set (ℕ × ℕ))
+    unfold buys at h
+    split at h
+    · exact absurd h (Finset.notMem_empty _)
+    · exact Finset.mem_singleton.1 h
+
+theorem plan_single (claimBuys promisedBuys : ℕ × ℕ) (g g' : Good)
+    (worth : ℕ × ℕ) alike :
+    (plan claimBuys promisedBuys g worth alike).wouldServe {g'} = {worth} := by
+  show buys worth ({g'} : Finset Good).card = {worth}
+  rw [Finset.card_singleton]
+  rfl
+
+theorem late_ne_worse : late ≠ worse := fun h => by
+  have : (1 : ℕ) = 2 := congrArg Prod.fst h
+  omega
+
+/-- Same purchasing power fails between cash buying `soon` and any
+good buying `worse`, whatever ends it is asked of. -/
+theorem not_same_of_worse (claimBuys promisedBuys : ℕ × ℕ) (g : Good)
+    cashAlike otherAlike (s l : ℕ × ℕ) :
+    ¬ SamePurchasingPower (praxis := frame (beliefs claimBuys promisedBuys))
+      (plan claimBuys promisedBuys Good.cash soon cashAlike)
+      (plan claimBuys promisedBuys g worse otherAlike)
+      {Good.cash} {g} s l := by
+  rintro ⟨_, buysSoon, buysLate, same⟩
+  rw [plan_single] at buysSoon buysLate
+  have hs : soon = s := Finset.singleton_injective buysSoon
+  have hl : worse = l := Finset.singleton_injective buysLate
+  have same : s.1 = l.1 := same
+  rw [← hs, ← hl] at same
+  have : (1 : ℕ) = 2 := same
+  omega
+
+/-- Default risk: he doubts the claim; the promised ounce buys an
+ounce's worth. -/
+abbrev doubt := beliefs worse late
+
+def doubtCash := plan worse late .cash soon (fun _ => Iff.rfl)
+def doubtClaim := plan worse late .claim worse (fun _ => Iff.rfl)
+def doubtPromised := plan worse late .promised late (fun _ => Iff.rfl)
+
+/-- **Default risk: purchasing power holds, the claim does not pay.** -/
+theorem doubt_power_but_not_pays :
+    SamePurchasingPower (praxis := frame doubt) doubtCash doubtPromised
+      {.cash} {.promised} soon late ∧
+    ¬ ClaimPays (praxis := frame doubt) doubtClaim doubtPromised
+      {.claim} {.promised} := by
+  refine ⟨⟨rfl, plan_single _ _ _ _ _ _, plan_single _ _ _ _ _ _, rfl⟩, ?_⟩
+  rintro ⟨_, counts⟩
+  have counts : ({worse} : Finset (ℕ × ℕ)) = {late} :=
+    (plan_single worse late .claim .claim worse _).symm.trans
+      (counts.trans (plan_single worse late .promised .promised late _))
+  exact late_ne_worse (Finset.singleton_injective counts).symm
+
+/-- Inflation: he is sure of the claim; the promised ounce buys less. -/
+abbrev inflation := beliefs worse worse
+
+def inflationCash := plan worse worse .cash soon (fun _ => Iff.rfl)
+def inflationClaim := plan worse worse .claim worse (fun _ => Iff.rfl)
+def inflationPromised := plan worse worse .promised worse (fun _ => Iff.rfl)
+
+/-- **Inflation: the claim pays, purchasing power does not hold.** -/
+theorem inflation_pays_but_not_power (s l : ℕ × ℕ) :
+    ClaimPays (praxis := frame inflation) inflationClaim inflationPromised
+      {.claim} {.promised} ∧
+    ¬ SamePurchasingPower (praxis := frame inflation) inflationCash
+      inflationPromised {.cash} {.promised} s l :=
+  ⟨⟨rfl, (plan_single _ _ _ _ _ _).trans (plan_single _ _ _ _ _ _).symm⟩,
+    not_same_of_worse worse worse .promised _ _ s l⟩
+
+/-- **The merged condition fails in both cases alike.** Same purchasing
+power asserted between the cash and the claim fails under default risk
+and under inflation, and the claim's plan is the same in both. -/
+theorem merged_fails_in_both (s l : ℕ × ℕ) :
+    ¬ SamePurchasingPower (praxis := frame doubt) doubtCash doubtClaim
+      {.cash} {.claim} s l ∧
+    ¬ SamePurchasingPower (praxis := frame inflation) inflationCash
+      inflationClaim {.cash} {.claim} s l :=
+  ⟨not_same_of_worse worse late .claim _ _ s l,
+    not_same_of_worse worse worse .claim _ _ s l⟩
+
+#print axioms doubt_power_but_not_pays
+#print axioms inflation_pays_but_not_power
+#print axioms merged_fails_in_both
+
+end CertaintySplit
+
+/-!
+## Pure interest: a man whose valuations change
+
+One ounce of cash, which he believes would buy an impulse at date 1. At
+date 0 he prefers not having the impulse to having it; at date 1, the
+impulse to nothing. Asymmetry holds at every date, the claim dated at
+the spending holds of him, and both the condition that he ranks the
+purchase now as he will then and the undated reading of the claim fail.
+The preference relation is written by hand for the case.
+-/
+
+namespace Impulse
+
+/-- The good: one ounce of cash. -/
+inductive Good
+  | ounce
+  deriving DecidableEq
+
+/-- What an ounce of cash at hand would buy, on impulse, at date 1. -/
+def impulse : ℕ × ℕ := (3, 1)
+
+/-- At date 0 he prefers not having the impulse to having it; at date
+1, the impulse to nothing. No other preference. -/
+def prefers (t : ℕ) (X Y : Set (ℕ × ℕ)) : Prop :=
+  (t = 0 ∧ X = ∅ ∧ Y = {impulse}) ∨ (t = 1 ∧ X = {impulse} ∧ Y = ∅)
+
+/-- The frame. -/
+abbrev frame : MoneyFrame where
+  Agent := Unit
+  End := ℕ × ℕ
+  Means := Good
+  Time := ℕ
+  Believes := fun _ _ _ e => e = impulse
+  Prefers := fun _ t X Y => prefers t X Y
+  Before := fun t t' => t < t'
+  attained := Prod.snd
+  SameSatisfaction := fun _ a b => a.1 = b.1
+  Money := fun _ => True
+  FreeToHold := fun _ _ _ => True
+
+/-- His cash at hand, at date 0. -/
+def cash : Stock frame.toActionFrame () 0 where
+  units := {.ounce}
+  serves := {impulse}
+  unitsAlike := fun _ _ _ => Iff.rfl
+
+/-- What he would buy with cash: the impulse, with any. -/
+def plan : AllocationPlan cash where
+  wouldServe s := if s.card = 0 then ∅ else {impulse}
+  servesOnlyWhatItCan s want h := by
+    show want ∈ ({impulse} : Set (ℕ × ℕ))
+    split at h
+    · exact absurd h (Finset.notMem_empty _)
+    · exact Finset.mem_singleton.1 h
+
+theorem impulse_ne_empty : ({impulse} : Set (ℕ × ℕ)) ≠ ∅ := fun h => by
+  have mem : impulse ∈ ({impulse} : Set (ℕ × ℕ)) := rfl
+  rw [h] at mem
+  exact mem
+
+theorem asymmetric (t : ℕ) : AsymmetricPreference frame.toActionFrame () t :=
+  ⟨fun X Y forward backward => by
+    rcases forward with ⟨t0, _, hY⟩ | ⟨t1, hX, _⟩ <;>
+      rcases backward with ⟨t0', hY', _⟩ | ⟨t1', _, hX'⟩
+    · rw [hY] at hY'
+      exact impulse_ne_empty hY'
+    · rw [t0] at t1'
+      exact Nat.zero_ne_one t1'
+    · rw [t1] at t0'
+      exact Nat.zero_ne_one t0'.symm
+    · rw [hX] at hX'
+      exact impulse_ne_empty hX'⟩
+
+/-- The only strict part of his cash is no cash. -/
+theorem part_of_cash (fewer more : Finset Good) (part : fewer ⊂ more)
+    (inStock : more ⊆ cash.units) : fewer = ∅ ∧ more = {.ounce} := by
+  have more_le : more.card ≤ 1 := Finset.card_le_card inStock
+  have fewer_lt : fewer.card < more.card := Finset.card_lt_card part
+  have fewer_zero : fewer.card = 0 := by omega
+  have more_one : more.card = 1 := by omega
+  refine ⟨Finset.card_eq_zero.1 fewer_zero, ?_⟩
+  exact Finset.eq_of_subset_of_card_le inStock (by rw [more_one]; rfl)
+
+theorem coe_none : ((∅ : Finset (ℕ × ℕ)) : Set (ℕ × ℕ)) = ∅ :=
+  Set.ext fun _ => ⟨fun h => absurd h (Finset.notMem_empty _), fun h => absurd h id⟩
+
+theorem buys_empty : plan.wouldServe ∅ = ∅ := rfl
+
+theorem buys_ounce : plan.wouldServe {.ounce} = {impulse} := rfl
+
+/-- At date 1 he ranks what an ounce buys above what no cash buys. -/
+theorem ranked_at_spending :
+    frame.Prefers () 1 ↑(plan.wouldServe {.ounce}) ↑(plan.wouldServe ∅) := by
+  rw [buys_empty, buys_ounce]
+  exact Or.inr ⟨rfl, coe_single impulse, coe_none⟩
+
+/-- At date 0 he does not. -/
+theorem not_ranked_now :
+    ¬ frame.Prefers () 0 ↑(plan.wouldServe {.ounce}) ↑(plan.wouldServe ∅) := by
+  rw [buys_empty, buys_ounce]
+  rintro (⟨_, hX, _⟩ | ⟨one, _, _⟩)
+  · exact impulse_ne_empty (by rw [← coe_single]; exact hX)
+  · exact Nat.zero_ne_one one
+
+/-- **The claim, dated at the spending, holds of him.** -/
+theorem whenSpent : MoreMoneyPreferredWhenSpent (praxis := frame) plan (1 : ℕ) :=
+  ⟨fun fewer more part inStock _ _ _ _ => by
+    obtain ⟨hf, hm⟩ := part_of_cash fewer more part inStock
+    subst hf hm
+    exact ranked_at_spending⟩
+
+/-- **He is not ranked alike now**, for his ounce against no cash. -/
+theorem not_rankedAlikeNow :
+    ¬ RankedAlikeNowOf (praxis := frame) plan (1 : ℕ) {.ounce} ∅ :=
+  fun alike => not_ranked_now (alike ranked_at_spending)
+
+/-- **The undated reading of the claim is false of him**, though the
+dated claim holds and asymmetry holds at every date. -/
+theorem now_reading_fails :
+    ¬ PureInterest.MoreMoneyPreferredNow (praxis := frame) plan := fun rule =>
+  not_ranked_now (rule ∅ {.ounce}
+    (Finset.ssubset_iff_subset_ne.2
+      ⟨Finset.empty_subset _, (Finset.singleton_ne_empty _).symm⟩)
+    (fun _ h => h) (fun _ _ => trivial) trivial trivial
+    (by rw [buys_empty, buys_ounce]; exact Finset.singleton_ne_empty impulse))
+
+#print axioms asymmetric
+#print axioms whenSpent
+#print axioms not_rankedAlikeNow
+#print axioms now_reading_fails
+
+end Impulse
+
+/-!
+## Pure interest: a saver who lends at a zero rate
+
+A Christmas club saver. Two ounces of cash at hand he would spend now
+on an impulse. The club takes the two ounces and pays two back at date
+1, which buy what he saves for. He lends at a zero rate, voluntarily,
+and time preference, asymmetry, the claim that more money is preferred
+and demonstrated preference of the deposit all hold of him. Spent
+sooner holds too. What fails is same purchasing power: his cash would
+not buy the same satisfaction as the club's payment, so the zero-rate
+theorem does not reach him. What the frame does not model is his
+preferring less cash at hand to more: a sum of cash here buys one end
+however large (for that, `Impulse` above).
+-/
+
+namespace ChristmasClub
+
+/-- Two ounces now, two claims to an ounce at date 1, and two goods
+standing for whole holdings in the deposit: the hoard (two ounces) and
+the bond (the club's claim to two). -/
+inductive Good
+  | ounce | ounce' | claimA | claimB | hoard | bond
+  deriving DecidableEq
+
+/-- Kind first, date second: lower is better. -/
+def score (e : ℕ × ℕ) : ℕ := e.1 * 10 + e.2
+
+/-- An ounce's worth at date 1. -/
+def late : ℕ × ℕ := (1, 1)
+/-- Two ounces' worth at date 1: what he saves for. -/
+def plenty : ℕ × ℕ := (0, 1)
+/-- What cash at hand would buy now: an impulse, ranked below both. -/
+def impulse : ℕ × ℕ := (3, 0)
+
+/-- What he believes each good serves. -/
+def beliefs : Good → ℕ × ℕ → Prop
+  | .ounce, e => e = impulse
+  | .ounce', e => e = impulse
+  | .claimA, e => e = late ∨ e = plenty
+  | .claimB, e => e = late ∨ e = plenty
+  | .hoard, e => e = impulse
+  | .bond, e => e = plenty
+
+/-- The frame. -/
+abbrev frame : MoneyFrame where
+  Agent := Unit
+  End := ℕ × ℕ
+  Means := Good
+  Time := ℕ
+  Believes := fun _ _ g e => beliefs g e
+  Prefers := fun _ _ X Y => ∃ x ∈ X, ∀ y ∈ Y, score x < score y
+  Before := fun t t' => t < t'
+  attained := Prod.snd
+  SameSatisfaction := fun _ a b => a.1 = b.1
+  Money := fun _ => True
+  FreeToHold := fun _ _ _ => True
+
+theorem timePreference (now : ℕ) : TimePreference frame.toDatedFrame () now :=
+  ⟨fun soon late same sooner _ => ⟨soon, rfl, fun y hy => by
+    have hy : y = late := hy
+    subst hy
+    show soon.1 * 10 + soon.2 < y.1 * 10 + y.2
+    have same : soon.1 = y.1 := same
+    have sooner : soon.2 < y.2 := sooner
+    rw [same]
+    exact Nat.add_lt_add_left sooner _⟩⟩
+
+theorem asymmetric (now : ℕ) : AsymmetricPreference frame.toActionFrame () now :=
+  ⟨fun _ _ ⟨x, hx, hxY⟩ ⟨y, hy, hyX⟩ => Nat.lt_asymm (hxY y hy) (hyX x hx)⟩
+
+/-- What a claim to `n` ounces at date 1 buys. -/
+def futureBuys : ℕ → Finset (ℕ × ℕ)
+  | 0 => ∅
+  | 1 => {late}
+  | _ => {plenty}
+
+/-- The club's claims, weighed at date 0. -/
+def futureStock : Stock frame.toActionFrame () 0 where
+  units := {.claimA, .claimB}
+  serves := {late, plenty}
+  unitsAlike := fun unit h e => by
+    rcases Finset.mem_insert.1 h with rfl | h
+    · exact Iff.rfl
+    · rw [Finset.mem_singleton.1 h]; exact Iff.rfl
+
+/-- What he would buy with claims: by count only. -/
+def futurePlan : AllocationPlan futureStock where
+  wouldServe s := futureBuys s.card
+  servesOnlyWhatItCan s want h := by
+    show want ∈ ({late, plenty} : Set (ℕ × ℕ))
+    unfold futureBuys at h
+    split at h
+    · exact absurd h (Finset.notMem_empty _)
+    · exact Or.inl (Finset.mem_singleton.1 h)
+    · exact Or.inr (Finset.mem_singleton.1 h)
+
+theorem futureBuys_more (a b : ℕ) (h : a < b) (h2 : b ≤ 2) :
+    ∃ x ∈ (↑(futureBuys b) : Set (ℕ × ℕ)),
+      ∀ y ∈ (↑(futureBuys a) : Set (ℕ × ℕ)), score x < score y := by
+  match a, b, h, h2 with
+  | 0, 1, _, _ => exact ⟨late, Finset.mem_singleton_self _, fun _ hy =>
+      absurd hy (Finset.notMem_empty _)⟩
+  | 0, 2, _, _ => exact ⟨plenty, Finset.mem_singleton_self _, fun _ hy =>
+      absurd hy (Finset.notMem_empty _)⟩
+  | 1, 2, _, _ => exact ⟨plenty, Finset.mem_singleton_self _, fun y hy => by
+      have hy : y = late := Finset.mem_singleton.1 hy
+      subst hy
+      exact Nat.lt_of_sub_eq_succ rfl⟩
+  | 0, 0, h, _ => exact absurd h (Nat.lt_irrefl _)
+  | 1, 0, h, _ => exact absurd h (Nat.not_lt_zero _)
+  | 1, 1, h, _ => exact absurd h (Nat.lt_irrefl _)
+  | a + 2, _, h, h2 => exact absurd (Nat.lt_of_lt_of_le h h2) (by omega)
+  | _, b + 3, _, h2 => exact absurd h2 (by omega)
+
+theorem moreMoney : MoreMoneyPreferredWhenSpent (praxis := frame) futurePlan 1 :=
+  ⟨fun fewer more proper inStock _ _ _ _ =>
+    futureBuys_more fewer.card more.card (Finset.card_lt_card proper)
+      (Finset.card_le_card inStock)⟩
+
+/-- His two ounces at hand, at date 0. -/
+def presentStock : Stock frame.toActionFrame () 0 where
+  units := {.ounce, .ounce'}
+  serves := {impulse}
+  unitsAlike := fun unit h e => by
+    rcases Finset.mem_insert.1 h with rfl | h
+    · exact Iff.rfl
+    · rw [Finset.mem_singleton.1 h]; exact Iff.rfl
+
+/-- What he would buy with cash at hand: the impulse, with any. -/
+def presentPlan : AllocationPlan presentStock where
+  wouldServe s := if s.card = 0 then ∅ else {impulse}
+  servesOnlyWhatItCan s want h := by
+    show want ∈ ({impulse} : Set (ℕ × ℕ))
+    split at h
+    · exact absurd h (Finset.notMem_empty _)
+    · exact Finset.mem_singleton.1 h
+
+/-- The deposit: he gives the hoard, gets the bond, keeps nothing else;
+refusing would have left him the cash, spent on the impulse. -/
+def deposit : Trade frame.toActionFrame :=
+  ⟨(), 0, .hoard, .bond, ∅, {impulse}⟩
+
+theorem servedBy_one (g : Good) :
+    frame.ServedBy () 0 (insert g ∅) = {e | beliefs g e} := by
+  ext e
+  constructor
+  · rintro ⟨g', hg', he⟩
+    rcases hg' with rfl | hg'
+    · exact he
+    · exact absurd hg' (Set.notMem_empty _)
+  · intro he
+    exact ⟨g, Set.mem_insert _ _, he⟩
+
+theorem deposit_before : deposit.before 0 = {impulse} := by
+  rw [Trade.before, show deposit.kept = ∅ from rfl, servedBy_one]
+  ext e; exact Iff.rfl
+
+theorem deposit_after : deposit.after 0 = {plenty} := by
+  rw [Trade.after, show deposit.kept = ∅ from rfl, servedBy_one]
+  ext e; exact Iff.rfl
+
+/-- **A zero rate, struck voluntarily, with every claim holding.** Two
+ounces lent, a claim to two got. -/
+theorem zero_rate_with_every_claim :
+    TimePreference frame.toDatedFrame () 0 ∧
+    AsymmetricPreference frame.toActionFrame () 0 ∧
+    MoreMoneyPreferredWhenSpent (praxis := frame) futurePlan 1 ∧
+    DemonstratedPreference deposit ∧ deposit.Voluntary ∧
+    ({.claimA, .claimB} : Finset Good).card = ({.ounce, .ounce'} : Finset Good).card :=
+  ⟨timePreference 0, asymmetric 0, moreMoney,
+    ⟨by
+      show frame.Prefers () 0 (deposit.after 0) {impulse}
+      rw [deposit_after]
+      exact ⟨plenty, rfl, fun y hy => by
+        have hy : y = impulse := hy
+        subst hy
+        exact Nat.lt_of_sub_eq_succ rfl⟩⟩,
+    deposit_before.symm, rfl⟩
+
+/-- **Spent sooner holds for him**: the cash would be spent now,
+before the club pays. -/
+theorem spent_sooner :
+    SpentSooner (praxis := frame) (now := (0 : ℕ)) impulse plenty :=
+  ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
+
+/-- **Same purchasing power fails** between his cash and the club's
+claim, whatever ends it is asked of. -/
+theorem not_same_purchasing_power (s l : ℕ × ℕ) :
+    ¬ SamePurchasingPower (praxis := frame) (now := (0 : ℕ)) presentPlan futurePlan
+      {.ounce, .ounce'} {.claimA, .claimB} s l := by
+  rintro ⟨_, buysSoon, buysLate, same⟩
+  have hs : ({impulse} : Finset (ℕ × ℕ)) = {s} := buysSoon
+  have hl : ({plenty} : Finset (ℕ × ℕ)) = {l} := buysLate
+  rw [Finset.singleton_inj] at hs hl
+  subst hs hl
+  have : (3 : ℕ) = 0 := same
+  exact Nat.succ_ne_zero 2 this
+
+/-- **So the zero-rate theorem does not reach him**: for any money the
+club's claim pays in, same purchasing power between his cash and that
+money fails. -/
+theorem outside_zero_rate {promised : Stock frame.toActionFrame () 0}
+    (promisedPlan : AllocationPlan promised) (money : Finset Good) (s l : ℕ × ℕ)
+    (pays : ClaimPays (praxis := frame) futurePlan promisedPlan
+      ({Good.claimA, Good.claimB} : Finset Good) money) :
+    ¬ SamePurchasingPower (praxis := frame) presentPlan promisedPlan
+      ({Good.ounce, Good.ounce'} : Finset Good) money s l :=
+  fun power => by
+    have merged := PureInterest.samePurchasingPower_of_claimPays
+      (praxis := frame) (agent := ()) (now := (0 : ℕ))
+      presentPlan futurePlan promisedPlan ({Good.ounce, Good.ounce'} : Finset Good)
+      ({Good.claimA, Good.claimB} : Finset Good) money s l power pays
+    exact not_same_purchasing_power s l merged
+
+#print axioms zero_rate_with_every_claim
+#print axioms spent_sooner
+#print axioms outside_zero_rate
+
+end ChristmasClub
 
 end Model
 end Apodictic

@@ -7,7 +7,6 @@ import ApodicticDraft.Market
 import ApodicticDraft.PriceControl
 import ApodicticDraft.PriceControlToy
 import ApodicticDraft.WeakRegress
-import ApodicticDraft.CertaintySplitToy
 import ApodicticDraft.KeptGiven
 import ApodicticDraft.Satiation
 import ApodicticDraft.NoMoneyLabel
@@ -45,8 +44,8 @@ Current content:
   a rival to the library's `regress`. The unruled claim is in
   `ApodicticDraft.Claims`.
 - Certainty named apart from purchasing power: promoted
-  (`ClaimPays`, in `Apodictic.Money`). Each half failing alone, in
-  `ApodicticDraft.CertaintySplitToy`. No claim.
+  (`ClaimPays`, in `Apodictic.Money`); each half failing alone,
+  promoted too (`Apodictic.Model.CertaintySplit`). No claim.
 - What `KeptServesOtherEnds` leaves of a good both traded and kept
   (`ApodicticDraft.KeptGiven`): it serves nothing. No claim.
 - Non-satiation cut out of `MoreMoneyPreferred`

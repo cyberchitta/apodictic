@@ -119,11 +119,19 @@
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
      "children": []},
+    {"url": "/The-Result/Interest/",
+     "titleText": "Interest",
+     "title": "Interest",
+     "shortTitle": null,
+     "sectionNum": "1.14.",
+     "path": ["The-Result", "Interest"],
+     "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Interest",
+     "children": []},
     {"url": "/The-Result/The-horses-in-Lean/",
      "titleText": "The horses in Lean",
      "title": "The horses in Lean",
      "shortTitle": null,
-     "sectionNum": "1.14.",
+     "sectionNum": "1.15.",
      "path": ["The-Result", "The-horses-in-Lean"],
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
@@ -132,7 +140,7 @@
      "titleText": "The vocabulary",
      "title": "The vocabulary",
      "shortTitle": null,
-     "sectionNum": "1.15.",
+     "sectionNum": "1.16.",
      "path": ["The-Result", "The-vocabulary"],
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
@@ -141,7 +149,7 @@
      "titleText": "Claims no theorem uses",
      "title": "Claims no theorem uses",
      "shortTitle": null,
-     "sectionNum": "1.16.",
+     "sectionNum": "1.17.",
      "path": ["The-Result", "Claims-no-theorem-uses"],
      "id":
      "Apodictic___-Machine-Checked-Praxeology--The-Result--Claims-no-theorem-uses",

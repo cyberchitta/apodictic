@@ -426,7 +426,8 @@ cannot fail — whatever is preferred later was a different good. Here
 constrains the ranking: an agent who prefers the same satisfaction
 later refutes it. The reading on which it cannot fail is built as the
 rejected encoding (`Apodictic.TimePreference.valuation_reading_is_free`).
-Carried by `Apodictic.TimePreference.less_durable_preferred`.
+Carried by `Apodictic.TimePreference.less_durable_preferred` and by
+the interest theorems in `Apodictic.PureInterest`.
 
 Does not say:
 
@@ -605,8 +606,8 @@ Known cases refute it as stated: a holding taxed at more than its whole
 value, and at small scale any storage or custody cost, makes more of a
 good worse than less; a sum beyond anything the agent would spend or
 hold it on buys nothing more; and a man whose valuations change between
-now and the spending — the Christmas Club saver — now prefers less cash
-at hand because of what he would buy with it later. So the claim is cut
+now and the spending now prefers less cash at hand because of what he
+would buy with it later (`Apodictic.Model.Impulse`). So the claim is cut
 to money, to sums free to hold, to purchases that differ, and to the
 date of spending, and each failure is a named condition. Carried by
 `Apodictic.PureInterest.present_sum_preferred_to_less` and the loan

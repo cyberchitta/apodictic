@@ -33,6 +33,12 @@ question of a zero or negative pure interest rate."
   demonstrates a preference in, the repaid sum is larger than the sum
   lent. Only the lender's side is used.
 
+- Rejected readings of "more money is preferred":
+  `MoreMoneyPreferredUnrestricted`, which with asymmetry asserts that
+  money never satiates (`buysMore_of_unrestricted`), and
+  `MoreMoneyPreferredNow`, refuted by a man whose valuations change
+  (`Apodictic.Model.Impulse`).
+
 Only a negative rate needs "more money is preferred". Nothing here
 needs a property of `Before`, and no classical step: the one case
 split is `≤` on ℕ.
@@ -145,8 +151,9 @@ variable {praxis : MoneyFrame}
 /-- **At a rate of exactly zero, he does not lend** — a loan repaying
 exactly the sum lent demonstrates no preference. Neither "more money is
 preferred" nor any condition on satiation or on valuations at the
-spending is used: time preference, purchasing power, a claim that pays
-and interchangeable units carry it alone. -/
+spending is used: time preference and asymmetry carry it, with
+purchasing power, a claim that pays, interchangeable units and the two
+conditions on the trade. -/
 theorem no_loan_at_zero_rate
     (trade : Trade praxis.toActionFrame)
     {present future promised : Stock praxis.toActionFrame trade.agent trade.time}
@@ -274,6 +281,65 @@ theorem struck_rate_positive
 
 end Loans
 
+section Rejected
+
+variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
+  {stock : Stock praxis.toActionFrame agent now}
+
+/-- "More money is preferred", as Rothbard's general rule states it
+(*MES* p. 379: "more of a good will have greater utility than less of
+it"), cut to money free to hold: of two sums of money, one part of the
+other, the larger is preferred at `now`, whatever each would buy.
+REJECTED as the library's claim; stated so the rejection is checked
+(`buysMore_of_unrestricted`). -/
+def MoreMoneyPreferredUnrestricted (plan : AllocationPlan stock) : Prop :=
+  ∀ fewer more : Finset praxis.Means, fewer ⊂ more → more ⊆ stock.units →
+    (∀ unit ∈ more, praxis.Money unit) →
+    praxis.FreeToHold agent now fewer → praxis.FreeToHold agent now more →
+      praxis.Prefers agent now ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
+
+/-- "More money is preferred", restricted to sums whose purchases
+differ, but ranked at `now` rather than at the date the sums would be
+spent. REJECTED as the library's claim: a man whose valuations change
+between now and the spending refutes it while the dated claim holds of
+him (`Apodictic.Model.Impulse.now_reading_fails`). -/
+def MoreMoneyPreferredNow (plan : AllocationPlan stock) : Prop :=
+  ∀ fewer more : Finset praxis.Means, fewer ⊂ more → more ⊆ stock.units →
+    (∀ unit ∈ more, praxis.Money unit) →
+    praxis.FreeToHold agent now fewer → praxis.FreeToHold agent now more →
+    plan.wouldServe more ≠ plan.wouldServe fewer →
+      praxis.Prefers agent now ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
+
+/-- **The unrestricted rule says money never satiates.** With
+asymmetry, it gives `BuysMoreThanItsParts` of every free sum of money:
+were a strict part to buy what the whole buys, the rule would have the
+agent prefer one bundle to itself, which asymmetry forbids. So the rule
+as stated asserts, unseen, that every extra unit of free money buys
+something more. The library's claim ranks only purchases that differ,
+and the theorems that need non-satiation carry it as a condition. -/
+theorem buysMore_of_unrestricted (plan : AllocationPlan stock)
+    (rule : MoreMoneyPreferredUnrestricted plan)
+    (asymmetric : AsymmetricPreference praxis.toActionFrame agent now)
+    (claim : Finset praxis.Means) (claimIn : claim ⊆ stock.units)
+    (isMoney : ∀ unit ∈ claim, praxis.Money unit)
+    (free : FreeToHoldWithin (agent := agent) (now := now) claim) :
+    BuysMoreThanItsParts plan claim := by
+  intro part proper same
+  have overPart := rule part claim proper claimIn isMoney
+    (free part proper.1) (free claim (fun _ h => h))
+  rw [same] at overPart
+  exact asymmetric.asym _ _ overPart overPart
+
+/-- Where the sums would be spent at `now`, the undated reading gives
+the dated claim: dating the claim at the spending asserts no more where
+nothing is deferred. -/
+theorem whenSpent_of_now (plan : AllocationPlan stock)
+    (rule : MoreMoneyPreferredNow plan) :
+    MoreMoneyPreferredWhenSpent plan now :=
+  ⟨rule⟩
+
+end Rejected
+
 #print axioms exists_part_of_card
 #print axioms coe_single
 #print axioms samePurchasingPower_of_claimPays
@@ -282,6 +348,8 @@ end Loans
 #print axioms no_loan_at_zero_rate
 #print axioms no_loan_at_nonpositive_rate
 #print axioms struck_rate_positive
+#print axioms buysMore_of_unrestricted
+#print axioms whenSpent_of_now
 
 end PureInterest
 end Apodictic
