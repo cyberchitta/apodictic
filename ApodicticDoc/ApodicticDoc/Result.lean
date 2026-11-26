@@ -3048,31 +3048,38 @@ man above.
 
 # The horses in Lean
 
-The case from the opening, built. It does a second job at the same
-time. If Rothbard's own six horses satisfy the claim and every
-condition at once, then those assumptions can all hold together, and
-the theorems are not empty.
+This is the case from the opening, built in Lean. It does a second job
+at the same time. Suppose Rothbard's own six horses satisfy swap
+dominance (`SwapDominant`) and every condition of the law's chain form
+(`marginal_utility_chain`) at once. Then those assumptions can all hold
+together. So the law, in its chain form, is not empty.
 
-Wants are ranks on the man's value scale, and the lower rank is the
-more urgent want:
+Wants are ranks on the man's value scale. The smaller rank number is
+the more urgent want:
 
 {docstring Apodictic.Model.rankPrefers}
 
-The man's plan is the obvious one — with any `n` horses he serves the
-`n` most urgent wants — and it satisfies the claim. Wants can be told
-apart, uses are independent, one-horse steps exist inside the stable,
-each step has a marginal end, and preference is asymmetric. That last
-one matters: it means the claim holds somewhere preference is
-strict, which is how it was meant all along and what
-`no_rival_swap_dominant` needs.
+The man's plan is the obvious one. With any `n` horses he would serve
+the `n` most urgent wants. This plan satisfies swap dominance
+(`SwapDominant`). Five more things hold here:
 
-Two of the theorems here are conclusions Rothbard reached himself, not
-bookkeeping. The first is his result at p. 25:
+- Wants can be told apart (`DecidableEq praxis.End`).
+- Uses are independent (`IndependentUses agent time`).
+- One-horse steps exist inside the stable (`stock.OneMore`).
+- Each step has a marginal end.
+- Preference is asymmetric (`AsymmetricPreference`).
+
+The last one matters. With it, swap dominance (`SwapDominant`) holds
+somewhere preference is strict. That is how swap dominance was meant
+all along. `no_rival_swap_dominant` needs asymmetry too.
+
+Two of the theorems here are not bookkeeping. They are conclusions
+Rothbard reached himself. The first is his result at p. 25:
 
 {docstring Apodictic.Model.loss_of_a_horse_ends_pleasure_riding}
 
-The second is the point he names two horses in order to make, and it
-is the reason the plan is encoded the way it is:
+The second is the point he names two horses to make. It is also the
+reason the plan is encoded the way it is:
 
 {docstring Apodictic.Model.which_horse_does_not_matter}
 
@@ -3080,25 +3087,33 @@ And the last step is the point:
 
 {docstring Apodictic.Model.horses_law_applies}
 
-That is the law itself, applied to the horses, with every assumption
-met — every assumption, that is, of the chain form. The size-based
-form asks for one thing more, interchangeability, and the horses meet
-that too:
+That is the law itself, applied to the horses. Every assumption of the
+chain form is met. The size-based form (`marginal_utility`) asks for
+one thing more: interchangeability (`plan.Homogeneous`). The horses
+meet that too:
 
 {docstring Apodictic.Model.horses_homogeneous}
 
-Nothing was copied across by hand: `horses_swapDominant` proves
-exactly the statement the theorem asks for.
+No theorem here applies the size-based form to them.
+
+Nothing was copied across by hand. `horses_swapDominant` proves
+`SwapDominant (horsePlan k)`, exactly the hypothesis
+`marginal_utility_chain` takes (`dominance`).
 
 {docstring Apodictic.Model.horses_swapDominant}
 
-Two places where this departs from Rothbard, both said out loud rather
-than papered over. His ten ends are "for simplicity", to fit a
-diagram; putting a ceiling on the scale would drag an extra condition
-through every theorem and buy nothing, so here the horses can serve
-any rank. And which of the earlier horses is Man o' War is arbitrary —
-Rothbard says only that he arrived before Seabiscuit, and nothing
-about a horse except its identity enters any claim.
+The model departs from Rothbard in two places. Both are said out loud
+rather than papered over.
+
+- *No ceiling on the scale.* His ten ends are "for simplicity", to fit
+  a diagram. A ceiling would drag an extra condition through every
+  theorem, and it would gain nothing. So here the horses can serve any
+  rank.
+- *Which earlier horse is Man o' War is arbitrary.* Rothbard says only
+  that he arrived before Seabiscuit. So any earlier horse will do. The
+  plan depends only on how many horses there are
+  (`horses_homogeneous`), and nothing about a horse but its identity
+  enters any claim.
 
 # The vocabulary
 

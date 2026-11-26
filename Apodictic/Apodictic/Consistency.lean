@@ -90,9 +90,9 @@ to anything claimed here. -/
 def manOWar : Horse := 1
 
 /-- Preference between bundles of wants. `X` is preferred to `Y`
-exactly when the two differ by a single swap, and the want `X` has in
-place of `Y`'s is the more urgent of the two — which here just means
-the lower rank. -/
+exactly when two things hold. The two bundles differ by a single swap.
+And the want `X` has in place of `Y`'s is the more urgent of the two.
+Here more urgent just means a smaller rank number. -/
 def rankPrefers (X Y : Set Want) : Prop :=
   ∃ w w', w ∈ X ∧ w' ∈ Y ∧ w ∉ Y ∧ w' ∉ X ∧ w < w' ∧ X \ {w} = Y \ {w'}
 
@@ -127,8 +127,8 @@ def horsePlan (k : ℕ) : AllocationPlan (horseStock k) where
 take as `[DecidableEq praxis.End]`. -/
 instance : DecidableEq Horses.End := inferInstanceAs (DecidableEq ℕ)
 
-/-- **Interchangeability holds of the plan**: it depends on how many
-horses there are, never on which. -/
+/-- **Interchangeability holds of the plan.** The plan depends on how
+many horses there are. It never depends on which. -/
 theorem horses_homogeneous (k : ℕ) : (horsePlan k).Homogeneous := by
   intro fewer _ more _ hcard
   show Finset.Icc 1 fewer.card = Finset.Icc 1 more.card
@@ -158,10 +158,11 @@ theorem horses_asymmetric (agent : Horses.Agent) (time : Horses.Time) :
   subst hv hv'
   exact Nat.lt_asymm hlt hlt'
 
-/-- **The man's plan is swap-dominant** — the claim itself, proved
-of this frame and this plan. Serving the `n` most urgent wants beats
-any one-swap alternative, because any want swapped in ranks below
-every want swapped out. -/
+/-- **The man's plan is swap-dominant.** This is the claim itself,
+proved of this frame and this plan. Serving the `n` most urgent wants
+beats any one-swap alternative. That is because a want a horse can
+serve, but the plan would leave out, is less urgent than every want the
+plan would serve. It has a larger rank number. -/
 theorem horses_swapDominant (k : ℕ) : SwapDominant (horsePlan k) where
   swap := by
     intro sub _ served hserved unserved hpossible hnot
@@ -239,8 +240,9 @@ theorem horses_marginal_nonempty (k n : ℕ) :
     exact Nat.not_succ_le_self n (Finset.mem_Icc.mp h).2
 
 /-- **Rothbard's own conclusion, p. 25.** With six horses the man
-serves the six most urgent wants. Lose one, and what he gives up is
-the sixth-ranked want — pleasure riding, in Rothbard's telling: "the
+would serve the six most urgent wants. With five he would not serve
+the sixth-ranked want. So the sixth-ranked want is one he gives up
+when a horse goes. In Rothbard's telling it is pleasure riding: "the
 loss of a horse will cause him to give up pleasure riding".
 
 Here it is a calculation about the plan, not a further assumption. -/
@@ -258,16 +260,17 @@ theorem loss_of_a_horse_ends_pleasure_riding :
     have := (Finset.mem_Icc.mp h).2
     norm_num [pleasureRiding] at this
 
-/-- **Rothbard's own conclusion, p. 27** — the one he names two
-horses to make. Losing Man o' War, who was leading a wagon, leaves
-the man serving exactly the ends he would serve after losing
-Seabiscuit, who was out for pleasure riding: he simply moves
-Seabiscuit to the wagon. Which horse goes makes no difference to
-which end is surrendered.
+/-- **Rothbard's own conclusion, p. 27.** It is the one he names two
+horses to make. Man o' War was leading a wagon. Seabiscuit was out for
+pleasure riding. After losing Man o' War, the man would serve exactly
+the ends he would serve after losing Seabiscuit. In Rothbard's
+telling, he simply moves Seabiscuit to the wagon. Which of the two
+goes makes no difference to which end is given up.
 
-This is what interchangeability amounts to, and it is why the plan is
-indexed by WHICH horses while `Homogeneous` is a separate named
-condition: the claim has to be statable before it can be true. -/
+This is what interchangeability amounts to. It is why the plan is
+indexed by *which* horses, while `Homogeneous` is a separate named
+condition. Rothbard's point has to be statable before it can be
+true. -/
 theorem which_horse_does_not_matter :
     (horsePlan 6).wouldServe ((Finset.range 6).erase manOWar)
       = (horsePlan 6).wouldServe ((Finset.range 6).erase seabiscuit) := by
@@ -282,10 +285,10 @@ theorem which_horse_does_not_matter :
     (Finset.erase_subset _ _) hcard
 
 /-- **The law itself, applied to the horses.** Every hypothesis of
-`marginal_utility_chain` is met at this frame. So the claim and
-the conditions on the situation can all hold at once, and the law is
-not empty. That is the whole consistency argument: this type-checks,
-therefore they fit together. -/
+`marginal_utility_chain` is met at this frame. So the claim and the
+conditions on the situation can all hold at once, and the law is not
+empty. That is the whole consistency argument. This type-checks, so
+they fit together. -/
 theorem horses_law_applies (k n : ℕ) (h : n < k) (h' : n + 1 < k) :
     ∀ addedFirst ∈ marginalEnds (horsePlan k)
         (Finset.range n) (Finset.range (n + 1)),
