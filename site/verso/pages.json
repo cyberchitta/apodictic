@@ -793,6 +793,10 @@
     "dest": "/The-Result/Interest/#Apodictic___Trade___AfterCountsAsPlanned"},
    {"numbering": null,
     "level": null,
+    "html": "<code>SameCount</code>",
+    "dest": "/The-Result/Interest/#Apodictic___SameCount"},
+   {"numbering": null,
+    "level": null,
     "html": "<code>MoreMoneyPreferredUnrestricted</code>",
     "dest":
     "/The-Result/Interest/#Apodictic___PureInterest___MoreMoneyPreferredUnrestricted"},

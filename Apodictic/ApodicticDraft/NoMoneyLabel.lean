@@ -102,6 +102,7 @@ theorem no_loan_at_nonpositive_rate_unlabelled
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
     (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (nonPositive : repaid.card ≤ sum.card)
     (homogeneous : futurePlan.Homogeneous)
@@ -118,7 +119,7 @@ theorem no_loan_at_nonpositive_rate_unlabelled
   intro demonstrated
   have chose := demonstrated.demonstrates
   rw [after, refusal] at chose
-  have notMore : repaid.card ≤ claim.card := power.1 ▸ nonPositive
+  have notMore : repaid.card ≤ claim.card := count ▸ nonPositive
   have kept := present_sum_preferred_to_less_unlabelled presentPlan
     futurePlan sum claim repaid soon late timePreference power sooner claimIn
     repaidIn notMore homogeneous moreMoney buysMore free chain
@@ -137,6 +138,7 @@ theorem struck_rate_positive_unlabelled
     (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MorePreferredWhereDiffers futurePlan)
@@ -155,7 +157,7 @@ theorem struck_rate_positive_unlabelled
     sum.card < repaid.card :=
   Nat.lt_of_not_le fun nonPositive =>
     no_loan_at_nonpositive_rate_unlabelled exchange.first presentPlan
-      futurePlan sum claim repaid soon late timePreference power sooner claimIn
+      futurePlan sum claim repaid soon late timePreference power sooner count claimIn
       repaidIn nonPositive homogeneous moreMoney buysMore free chain
       asymmetric (voluntary.trans before) after demonstrated
 

@@ -2034,9 +2034,10 @@ The argument runs in four steps, S2 to S5, and each adds what it needs:
   units are interchangeable; and his preferences chain where the step
   uses them.
 - *So no one lends at zero or below* (S4). It needs a third claim,
-  asymmetry, and two conditions on the trade: refusing the loan would
-  have left him the sum at full value (`RefusalKeepsSum`), and what he
-  holds after counts as planned. What it concludes is that such a loan
+  asymmetry, and three conditions: refusing the loan would have left
+  him the sum at full value (`RefusalKeepsSum`), what he holds after
+  counts as planned, and the claim is as many units as the sum lent
+  (`SameCount`). What it concludes is that such a loan
   does not demonstrate a preference for the claim.
 - *So every rate struck is positive* (S5). It adds the fourth claim,
   demonstrated preference. Refusing at full value is then not assumed
@@ -2049,9 +2050,12 @@ it:
 - At a rate of exactly zero, the second claim and five of its six
   conditions: only a negative rate needs them, and the theorem for a
   zero rate carries only interchangeable units.
-- In S2, the number of ounces. The two conditions that state an equal
-  count are carried there, but only S4 and S5 use the count, to
-  compare the repayment with what was lent.
+- "The same amount", in S2 and S3: neither ties the number of ounces
+  in the claim to the present sum. S2 counts nothing; S3 counts only
+  the smaller sum against the claim, so its "or less" is measured
+  against what buys the same satisfaction, not against the present
+  sum. The count between the claim and the sum lent is a condition of
+  its own, `SameCount`, and only the loan theorems carry it.
 - That holding the present sum costs nothing. No step assumes it; a
   cost of holding it reaches the loan only through refusal. (That the
   claim is free to hold is one of S3's conditions.)
@@ -2130,12 +2134,14 @@ The three conditions:
 {docstring Apodictic.SpentSooner}
 
 Three findings are in this step. First, the number of ounces does no
-work in it. The first two conditions above each contain an equality
-of counts, and the proof never uses either; the linter, which checks whole assumptions
-and not their parts, cannot see that. Equal counts are the same good at two dates only if they
-buy the same thing, and that is what the proof uses; the count enters
+work in it. Equal counts are the same good at two dates only if they
+buy the same thing, and that is what the proof uses, so none of the
+conditions above says the sums are the same amount. The count enters
 later, where "repaid no more than lent" has to be compared with a
-claim. Second, two things a reader might fold together are kept
+claim, and it is a condition of its own there. (The two conditions
+once each held an equality of counts that this step never used. The
+linter checks whole assumptions and not their parts, so it could not
+see that; the counts were moved out by hand.) Second, two things a reader might fold together are kept
 apart: that the money will buy as much later, which fails with rising
 prices, and that the claim will pay, which fails with a risk of
 default. Each has its own name, so a failure points at one of them.
@@ -2170,11 +2176,14 @@ and asymmetry, without "more money is preferred":
 {docstring Apodictic.PureInterest.no_loan_at_zero_rate}
 
 The two conditions on the trade say what refusing would have left the
-lender, and what lending left him:
+lender, and what lending left him, and the count compares the claim
+with the sum lent:
 
 {docstring Apodictic.Trade.RefusalKeepsSum}
 
 {docstring Apodictic.Trade.AfterCountsAsPlanned}
+
+{docstring Apodictic.SameCount}
 
 "More money is preferred", the claim the next step needs, is spent on
 one thing only: ruling out a *negative* rate.
@@ -2288,6 +2297,7 @@ manifest of Apodictic.PureInterest.struck_rate_positive
     power : SamePurchasingPower presentPlan promisedPlan sum money soon late
     pays : ClaimPays futurePlan promisedPlan claim money
     sooner : SpentSooner soon late
+    count : SameCount sum claim
     claimIn : claim ⊆ future.units
     repaidIn : repaid ⊆ future.units
     homogeneous : futurePlan.Homogeneous
@@ -2378,8 +2388,9 @@ against the repayment differently now than at the spending, or the
 claim was not money or not free to hold, or the one chain of
 preferences did not chain. Or one of the claims failed. (Its manifest
 has a few more, of bookkeeping: that the claim and the repayment come
-from the stock of claims, that its units are interchangeable, and that
-what he holds after counts as planned.)
+from the stock of claims, that the claim is as many units as the sum
+lent, that its units are interchangeable, and that what he holds after
+counts as planned.)
 
 The bank that lends overnight at a negative rate is likely to land on
 two of these. One is its use for the money: it may have had none
@@ -2394,9 +2405,10 @@ Rothbard's own terms give an Austrian a reply for one part of this,
 though he never made it about negative rates. A claim to present money
 is like a claim on goods left in a warehouse, and redeeming it "is not the completion
 of a transaction or equivalent to a creditor’s calling his loan; it is
-a simple repossessing of a man’s own good" (*MES*, p. 800). In his
-example, the man who stores wheat pays for "this service as a
-guardian" of it (*MES*, p. 165). On that reading, a negative rate on a deposit is a fee for
+a simple repossessing of a man’s own good" (*MES*, p. 800). The man who
+deposits goods "pays the owner of the warehouse a certain sum for the
+service of storage. He still retains ownership of the property; the
+owner of the warehouse is simply guarding it" (*MES*, p. 801). On that reading, a negative rate on a deposit is a fee for
 safekeeping and not interest at all, and the theorems never applied to
 it. The reply does not reach the loan between two banks, which is a
 claim to money tomorrow, a credit transaction on Rothbard's own terms.

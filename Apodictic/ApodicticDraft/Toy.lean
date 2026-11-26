@@ -276,8 +276,9 @@ theorem struck_rate_positive_applies :
     (futurePlan lenderBeliefs lender_future_alike)
     {Good.ounce} {Good.claimA} {Good.claimA, Good.claimB} soon late
     (timePreference lenderBeliefs 0)
-    ⟨rfl, rfl, rfl, rfl⟩
+    ⟨rfl, rfl, rfl⟩
     ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
+    rfl
     (fun _ h => by rw [Finset.mem_singleton.1 h]; exact Finset.mem_insert_self _ _)
     (fun _ h => h)
     (future_homogeneous lenderBeliefs lender_future_alike)

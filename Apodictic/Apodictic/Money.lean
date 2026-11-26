@@ -94,30 +94,31 @@ section Sums
 variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
   {present future promised stock : Stock praxis.toActionFrame agent now}
 
-/-- **Same purchasing power** — a condition on the situation. Two sums
-are the same amount, and each would buy one satisfaction, the same
-satisfaction, each at its own date. Asserted in the theorems between
+/-- **Same purchasing power** — a condition on the situation. Each of
+two sums would buy one satisfaction, the same satisfaction, each at its
+own date. Asserted in the theorems between
 the present sum and the money a claim promises.
 
 Mises: "present goods are valued higher than future goods of the same
 kind and quantity" (*Human Action*, ch. XIX, §1). Rothbard's "the same
-amount of future money" (*MES* p. 376) does no work by itself: equal
-counts of ounces are the same good at two dates only if they buy the
-same thing. It fails where the money buys less at the later date
+amount of future money" (*MES* p. 376) is not part of it: equal counts
+of ounces are the same good at two dates only if they buy the same
+thing, and that is what this says. The count is the separate condition
+`SameCount`, carried only where it is used. It fails where the money
+buys less at the later date
 (Rothbard's purchasing-power component, *MES* p. 797; Mises's price
 premium). Whether the claim pays is the separate condition
 `ClaimPays`. -/
 def SamePurchasingPower (presentPlan : AllocationPlan present)
     (futurePlan : AllocationPlan future) (sum claim : Finset praxis.Means)
     (soon late : praxis.End) : Prop :=
-  sum.card = claim.card ∧ presentPlan.wouldServe sum = {soon} ∧
+  presentPlan.wouldServe sum = {soon} ∧
     futurePlan.wouldServe claim = {late} ∧
     praxis.SameSatisfaction agent soon late
 
 /-- **The claim pays** — a condition on the situation: Rothbard's world
-of certainty, for one claim. The claim is for as many units as the
-money it promises, and the agent's plan counts the claim for exactly
-what it counts that money for.
+of certainty, for one claim. The agent's plan counts the claim for
+exactly what it counts the money it promises for.
 
 It fails where he believes the claim may not pay, or may pay in part:
 the claim then counts for something other than the promised money
@@ -125,8 +126,14 @@ would buy. The credit premium lands here, and only here. -/
 def ClaimPays (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
     (claim money : Finset praxis.Means) : Prop :=
-  claim.card = money.card ∧
-    futurePlan.wouldServe claim = promisedPlan.wouldServe money
+  futurePlan.wouldServe claim = promisedPlan.wouldServe money
+
+/-- **The same count** — a condition on the situation, of bookkeeping:
+the claim is as many units as the present sum. Rothbard's "the same
+amount of future money" (*MES* p. 376), where it does work: only the
+loan theorems use it, to compare the repaid sum with the claim. -/
+def SameCount (sum claim : Finset praxis.Means) : Prop :=
+  sum.card = claim.card
 
 /-- **Spent sooner** — a condition on the situation. The present sum
 would be spent before the claim pays, and not on something already

@@ -27,8 +27,11 @@ question of a zero or negative pure interest rate."
   any condition on satiation or on valuations at the spending is used.
 - `no_loan_at_nonpositive_rate` (S4): a loan at a rate not above zero
   demonstrates no preference — under `DemonstratedPreference`, it is
-  not made. Adds `AsymmetricPreference` and two conditions tying the
-  trade's holdings to the sums.
+  not made. Adds `AsymmetricPreference`, two conditions tying the
+  trade's holdings to the sums, and `SameCount`: the claim is as many
+  units as the sum lent. S2 and S3 carry no count between the present
+  sum and the claim; S3's only count is the lesser sum against the
+  claim.
 - `struck_rate_positive` (S5): in a voluntary exchange the lender
   demonstrates a preference in, the repaid sum is larger than the sum
   lent. Only the lender's side is used.
@@ -61,18 +64,17 @@ theorem samePurchasingPower_of_claimPays
     (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
     (pays : ClaimPays futurePlan promisedPlan claim money) :
     SamePurchasingPower presentPlan futurePlan sum claim soon late := by
-  obtain ⟨sameCount, buysSoon, buysLate, same⟩ := power
-  obtain ⟨paidInFull, countsAsMoney⟩ := pays
-  exact ⟨sameCount.trans paidInFull.symm, buysSoon,
-    countsAsMoney.trans buysLate, same⟩
+  obtain ⟨buysSoon, buysLate, same⟩ := power
+  exact ⟨buysSoon, pays.trans buysLate, same⟩
 
 /-- **Present money is preferred to the same amount of future money**
 (S2; *MES* p. 376: "It follows from the law of time preference that
 present money is worth more than present expectations of the same
 amount of future money").
 
-"The same amount" does no work here: what the sums would buy does
-(`SamePurchasingPower`), and that the claim pays (`ClaimPays`). And the
+"The same amount" does no work here, and no count is carried: what
+the sums would buy does (`SamePurchasingPower`), and that the claim
+pays (`ClaimPays`). The count enters with the loans (`SameCount`). And the
 conclusion needs the present sum to be spent sooner — the case
 Rothbard's n. 11 sets aside. -/
 theorem present_sum_preferred
@@ -85,7 +87,7 @@ theorem present_sum_preferred
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late) :
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
       ↑(futurePlan.wouldServe claim) := by
-  obtain ⟨_, buysSoon, buysLate, same⟩ :=
+  obtain ⟨buysSoon, buysLate, same⟩ :=
     samePurchasingPower_of_claimPays presentPlan futurePlan promisedPlan sum
       claim money soon late power pays
   obtain ⟨before, notPast⟩ := sooner
@@ -96,8 +98,10 @@ theorem present_sum_preferred
 future money** (S3; *MES* p. 382: "one ounce of present money will
 always be preferred to one ounce or less of future money").
 
-`claim` is a future sum of the same amount as `sum`; `lesser` is any
-future sum no larger. "Or less" chains S2 with
+`claim` is a future sum that buys what `sum` buys, of any size: no
+count ties the two. `lesser` is any future sum no larger than `claim`,
+so "or less" is measured against the claim, and against the present
+sum only where `SameCount` is added, as in the loans. "Or less" chains S2 with
 `MoreMoneyPreferredWhenSpent` on the future sums, and that chain is the
 one place transitivity is needed. Interchangeability of the future
 units carries a sum of any units to a part of `claim` of the same
@@ -152,8 +156,9 @@ variable {praxis : MoneyFrame}
 exactly the sum lent demonstrates no preference. Neither "more money is
 preferred" nor any condition on satiation or on valuations at the
 spending is used: time preference and asymmetry carry it, with
-purchasing power, a claim that pays, interchangeable units and the two
-conditions on the trade. -/
+purchasing power, a claim that pays, the present sum spent sooner, the
+claim's count, interchangeable units and the two conditions on the
+trade. -/
 theorem no_loan_at_zero_rate
     (trade : Trade praxis.toActionFrame)
     {present future promised : Stock praxis.toActionFrame trade.agent trade.time}
@@ -164,6 +169,7 @@ theorem no_loan_at_zero_rate
     (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
     (pays : ClaimPays futurePlan promisedPlan claim money)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (zero : repaid.card = sum.card)
     (homogeneous : futurePlan.Homogeneous)
@@ -174,9 +180,7 @@ theorem no_loan_at_zero_rate
   intro demonstrated
   have chose := demonstrated.demonstrates
   rw [after, refusal] at chose
-  have merged := samePurchasingPower_of_claimPays presentPlan futurePlan
-    promisedPlan sum claim money soon late power pays
-  have equal : repaid.card = claim.card := merged.1 ▸ zero
+  have equal : repaid.card = claim.card := zero.trans count
   have kept := present_sum_preferred presentPlan futurePlan promisedPlan
     sum claim money soon late timePreference power pays sooner
   rw [← homogeneous repaid repaidIn claim claimIn equal] at kept
@@ -204,6 +208,7 @@ theorem no_loan_at_nonpositive_rate
     (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
     (pays : ClaimPays futurePlan promisedPlan claim money)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (nonPositive : repaid.card ≤ sum.card)
     (homogeneous : futurePlan.Homogeneous)
@@ -222,9 +227,7 @@ theorem no_loan_at_nonpositive_rate
   intro demonstrated
   have chose := demonstrated.demonstrates
   rw [after, refusal] at chose
-  have merged := samePurchasingPower_of_claimPays presentPlan futurePlan
-    promisedPlan sum claim money soon late power pays
-  have notMore : repaid.card ≤ claim.card := merged.1 ▸ nonPositive
+  have notMore : repaid.card ≤ claim.card := count ▸ nonPositive
   have kept := present_sum_preferred_to_less presentPlan futurePlan
     promisedPlan sum claim money repaid soon late spend timePreference power
     pays sooner claimIn repaidIn notMore homogeneous moreMoney alike buysMore
@@ -254,6 +257,7 @@ theorem struck_rate_positive
     (pays : ClaimPays futurePlan promisedPlan claim money)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)
@@ -275,9 +279,9 @@ theorem struck_rate_positive
   Nat.lt_of_not_le fun nonPositive =>
     no_loan_at_nonpositive_rate exchange.first presentPlan futurePlan
       promisedPlan sum claim money repaid soon late spend timePreference power
-      pays sooner claimIn repaidIn nonPositive homogeneous moreMoney alike
-      buysMore isMoney free chain asymmetric (voluntary.trans before) after
-      demonstrated
+      pays sooner count claimIn repaidIn nonPositive homogeneous moreMoney
+      alike buysMore isMoney free chain asymmetric (voluntary.trans before)
+      after demonstrated
 
 end Loans
 

@@ -13,7 +13,6 @@ import ApodicticDraft.NoMoneyLabel
 import ApodicticDraft.ChristmasClubToy
 import ApodicticDraft.ValuedAlike
 import ApodicticDraft.RankedAlikeScoped
-import ApodicticDraft.CountApart
 
 /-!
 # ApodicticDraft
@@ -64,7 +63,4 @@ Current content:
   whose valuations change, which refutes the undated claim.
 - The library's scoped `RankedAlikeNowOf` against the stock-wide rival
   (`ApodicticDraft.RankedAlikeScoped`). No claim.
-- S2–S5 with the equal count taken out of `SamePurchasingPower` and
-  `ClaimPays` and carried as its own condition, `SameCount`, by the
-  loan theorems only (`ApodicticDraft.CountApart`). No claim.
 -/

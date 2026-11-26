@@ -1592,9 +1592,10 @@ theorem struck_rate_positive_applies :
     {Good.ounce} {Good.claimA} {Good.claimA} {Good.claimA, Good.claimB}
     soon late 1
     (timePreference 0)
-    ⟨rfl, rfl, rfl, rfl⟩
-    ⟨rfl, rfl⟩
+    ⟨rfl, rfl, rfl⟩
+    rfl
     ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
+    rfl
     (fun _ h => by rw [Finset.mem_singleton.1 h]; exact Finset.mem_insert_self _ _)
     (fun _ h => h)
     homogeneous
@@ -1718,7 +1719,7 @@ theorem not_same_of_worse (claimBuys promisedBuys : ℕ × ℕ) (g : Good)
       (plan claimBuys promisedBuys Good.cash soon cashAlike)
       (plan claimBuys promisedBuys g worse otherAlike)
       {Good.cash} {g} s l := by
-  rintro ⟨_, buysSoon, buysLate, same⟩
+  rintro ⟨buysSoon, buysLate, same⟩
   rw [plan_single] at buysSoon buysLate
   have hs : soon = s := Finset.singleton_injective buysSoon
   have hl : worse = l := Finset.singleton_injective buysLate
@@ -1741,8 +1742,8 @@ theorem doubt_power_but_not_pays :
       {.cash} {.promised} soon late ∧
     ¬ ClaimPays (praxis := frame doubt) doubtClaim doubtPromised
       {.claim} {.promised} := by
-  refine ⟨⟨rfl, plan_single _ _ _ _ _ _, plan_single _ _ _ _ _ _, rfl⟩, ?_⟩
-  rintro ⟨_, counts⟩
+  refine ⟨⟨plan_single _ _ _ _ _ _, plan_single _ _ _ _ _ _, rfl⟩, ?_⟩
+  intro counts
   have counts : ({worse} : Finset (ℕ × ℕ)) = {late} :=
     (plan_single worse late .claim .claim worse _).symm.trans
       (counts.trans (plan_single worse late .promised .promised late _))
@@ -1761,7 +1762,7 @@ theorem inflation_pays_but_not_power (s l : ℕ × ℕ) :
       {.claim} {.promised} ∧
     ¬ SamePurchasingPower (praxis := frame inflation) inflationCash
       inflationPromised {.cash} {.promised} s l :=
-  ⟨⟨rfl, (plan_single _ _ _ _ _ _).trans (plan_single _ _ _ _ _ _).symm⟩,
+  ⟨(plan_single _ _ _ _ _ _).trans (plan_single _ _ _ _ _ _).symm,
     not_same_of_worse worse worse .promised _ _ s l⟩
 
 /-- **The merged condition fails in both cases alike.** Same purchasing
@@ -2104,7 +2105,7 @@ claim, whatever ends it is asked of. -/
 theorem not_same_purchasing_power (s l : ℕ × ℕ) :
     ¬ SamePurchasingPower (praxis := frame) (now := (0 : ℕ)) presentPlan futurePlan
       {.ounce, .ounce'} {.claimA, .claimB} s l := by
-  rintro ⟨_, buysSoon, buysLate, same⟩
+  rintro ⟨buysSoon, buysLate, same⟩
   have hs : ({impulse} : Finset (ℕ × ℕ)) = {s} := buysSoon
   have hl : ({plenty} : Finset (ℕ × ℕ)) = {l} := buysLate
   rw [Finset.singleton_inj] at hs hl

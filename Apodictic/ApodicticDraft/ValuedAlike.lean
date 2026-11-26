@@ -123,6 +123,7 @@ theorem no_loan_at_nonpositive_rate_when_spent
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
     (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (nonPositive : repaid.card ≤ sum.card)
     (homogeneous : futurePlan.Homogeneous)
@@ -139,7 +140,7 @@ theorem no_loan_at_nonpositive_rate_when_spent
     (after : trade.AfterCountsAsPlanned futurePlan repaid) :
     ¬ DemonstratedPreference trade :=
   no_loan_at_nonpositive_rate_where_differs trade presentPlan futurePlan sum
-    claim repaid soon late timePreference power sooner claimIn repaidIn
+    claim repaid soon late timePreference power sooner count claimIn repaidIn
     nonPositive homogeneous
     (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
     money free chain asymmetric refusal after
@@ -157,6 +158,7 @@ theorem struck_rate_positive_when_spent
     (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
+    (count : SameCount sum claim)
     (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)
@@ -176,8 +178,8 @@ theorem struck_rate_positive_when_spent
     (demonstrated : DemonstratedPreference exchange.first) :
     sum.card < repaid.card :=
   struck_rate_positive_where_differs exchange presentPlan futurePlan sum claim
-    repaid soon late timePreference power sooner claimIn repaidIn homogeneous
-    (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
+    repaid soon late timePreference power sooner count claimIn repaidIn
+    homogeneous (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
     money free chain asymmetric voluntary before after demonstrated
 
 end Loans

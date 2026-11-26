@@ -109,7 +109,7 @@ theorem club_not_same_purchasing_power (soonEnd lateEnd : ℕ × ℕ) :
       (presentPlan clubBeliefs {.ounce, .ounce'} impulse club_present_alike)
       (futurePlan clubBeliefs club_future_alike)
       {.ounce, .ounce'} {.claimA, .claimB} soonEnd lateEnd := by
-  rintro ⟨_, buysSoon, buysLate, same⟩
+  rintro ⟨buysSoon, buysLate, same⟩
   have hs : ({impulse} : Finset (ℕ × ℕ)) = {soonEnd} := buysSoon
   have hl : ({plenty} : Finset (ℕ × ℕ)) = {lateEnd} := buysLate
   rw [Finset.singleton_inj] at hs hl
