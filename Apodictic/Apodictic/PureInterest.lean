@@ -72,11 +72,13 @@ theorem samePurchasingPower_of_promisePays
 present money is worth more than present expectations of the same
 amount of future money").
 
-"The same amount" does no work here, and no count is carried: what
-the sums would buy does (`SamePurchasingPower`), and that the promise
-pays (`PromisePays`). The count enters with the loans (`SameCount`). And the
-conclusion needs the present sum to be spent sooner — the case
-Rothbard's n. 11 sets aside. -/
+"The same amount" does no work here. No count is carried. The claim used is
+time preference (`TimePreference`). Two conditions do the work. One is
+what the sums would buy (`SamePurchasingPower`). The other is that the
+promise pays (`PromisePays`). The count enters with the loans
+(`SameCount`). The conclusion also needs the present sum to be spent
+sooner (`SpentSooner`). That is the case Rothbard's n. 11 sets
+aside. -/
 theorem present_sum_preferred
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
@@ -98,14 +100,16 @@ theorem present_sum_preferred
 future money** (S3; *MES* p. 382: "one ounce of present money will
 always be preferred to one ounce or less of future money").
 
-`promise` is a future sum that buys what `sum` buys, of any size: no
-count ties the two. `lesser` is any future sum no larger than `promise`,
-so "or less" is measured against the promise, and against the present
-sum only where `SameCount` is added, as in the loans. "Or less" chains S2 with
-`MoreMoneyPreferredWhenSpent` on the future sums, and that chain is the
-one place transitivity is needed. Interchangeability of the future
-units carries a sum of any units to a part of `promise` of the same
-size. -/
+`promise` is a future sum that buys what `sum` buys. It can be of any
+size. No count ties the two. `lesser` is any future sum no larger than
+`promise`. So "or less" is measured against the promise. It is measured
+against the present sum only where `SameCount` is added, as in the
+loans.
+
+"Or less" chains S2 with `MoreMoneyPreferredWhenSpent` on the future
+sums. That chain is the one place transitivity is needed. The future
+units are interchangeable. So a sum of any units can stand in for a
+part of `promise` of the same size. -/
 theorem present_sum_preferred_to_less
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
@@ -152,13 +156,21 @@ section Loans
 
 variable {praxis : MoneyFrame}
 
-/-- **At a rate of exactly zero, he does not lend** — a loan repaying
-exactly the sum lent demonstrates no preference. Neither "more money is
-preferred" nor any condition on satiation or on valuations at the
-spending is used: time preference and asymmetry carry it, with
-purchasing power, a promise that pays, the present sum spent sooner, the
-promise's count, interchangeable units and the two conditions on the
-trade. -/
+/-- **At a rate of exactly zero, he does not lend** — a loan that repays
+exactly the sum lent demonstrates no preference. It does not use "more
+money is preferred" (`MoreMoneyPreferredWhenSpent`). It uses no
+condition on satiation (`BuysMoreThanItsParts`). It uses none on
+valuations at the spending (`RankedAlikeNowOf`). Two claims carry it:
+time preference (`TimePreference`) and asymmetry
+(`AsymmetricPreference`). The conditions are:
+
+- purchasing power (`SamePurchasingPower`);
+- a promise that pays (`PromisePays`);
+- the present sum spent sooner (`SpentSooner`);
+- the promise's count (`SameCount`);
+- interchangeable units (`AllocationPlan.Homogeneous`);
+- the two conditions on the trade (`Trade.RefusalKeepsSum`,
+  `Trade.AfterCountsAsPlanned`). -/
 theorem no_loan_at_zero_rate
     (trade : Trade praxis.toActionFrame)
     {present future promised : Stock praxis.toActionFrame trade.agent trade.time}
@@ -191,12 +203,13 @@ theorem no_loan_at_zero_rate
 could not prefer 10 ounces or even less of future money to 10 ounces of
 present money").
 
-A loan — present `sum` given, a promise of `repaid` got — whose repaid
-sum is no larger than the sum lent demonstrates no preference: if
-`DemonstratedPreference` held of it, the lender would prefer the repayment
-to the kept sum, and S3 with asymmetry forbids that. Stated as the
-negation of the bridge, since nothing in the library says a trade was
-made except that the bridge is asserted of it. -/
+A lender gives `sum` now. He gets a promise of `repaid`. Suppose `repaid` is no larger than the sum lent. Then the
+loan demonstrates no preference. If `DemonstratedPreference` held of
+it, the lender would prefer the repayment to the kept sum. S3 with
+asymmetry forbids that.
+
+It is stated as the negation of the bridge. Nothing in the library
+says a trade was made, except that the bridge is asserted of it. -/
 theorem no_loan_at_nonpositive_rate
     (trade : Trade praxis.toActionFrame)
     {present future promised : Stock praxis.toActionFrame trade.agent trade.time}
@@ -234,15 +247,17 @@ theorem no_loan_at_nonpositive_rate
     isMoney free chain
   exact asymmetric.asym _ _ kept chose
 
-/-- **Every rate struck is positive** (S5) — in an exchange of present
-money for a promise of future money, voluntary on the lender's side and
-demonstrating his preference, the repaid sum is larger than the sum
-lent.
+/-- **Every rate struck is positive** (S5). Take an exchange of present
+money for a promise of future money. It is voluntary on the lender's
+side (`Trade.Voluntary`). It demonstrates his preference
+(`DemonstratedPreference`). Then the repaid sum is larger
+than the sum lent.
 
-Bilateral in form, one-sided in content: only the lender's trade
-(`exchange.first`) is used, and nothing about the borrower. No market,
-no aggregation, no equilibrium. `Voluntary` is what makes the lender's
-alternative the sum he held; whatever set the price does not enter. -/
+It is bilateral in form and one-sided in content. Only the lender's
+trade (`exchange.first`) is used. Nothing about the borrower is used.
+There is no market, no aggregation, no equilibrium. `Voluntary` makes
+the lender's alternative the holding he had. Whatever set the price
+does not enter. -/
 theorem struck_rate_positive
     (exchange : Exchange praxis.toActionFrame)
     {present future promised : Stock praxis.toActionFrame exchange.first.agent
@@ -292,10 +307,10 @@ variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
 
 /-- "More money is preferred", as Rothbard's general rule states it
 (*MES* p. 379: "more of a good will have greater utility than less of
-it"), cut to money free to hold: of two sums of money, one part of the
-other, the larger is preferred at `now`, whatever each would buy.
-REJECTED as the library's claim; stated so the rejection is checked
-(`buysMore_of_unrestricted`). -/
+it"). It is cut to money free to hold. Take two sums of money, one part
+of the other. The larger is preferred at `now`, whatever each would
+buy. REJECTED as the library's claim. It is stated so the rejection is
+checked (`buysMore_of_unrestricted`). -/
 def MoreMoneyPreferredUnrestricted (plan : AllocationPlan stock) : Prop :=
   ∀ fewer more : Finset praxis.Means, fewer ⊂ more → more ⊆ stock.units →
     (∀ unit ∈ more, praxis.Money unit) →
@@ -303,10 +318,10 @@ def MoreMoneyPreferredUnrestricted (plan : AllocationPlan stock) : Prop :=
       praxis.Prefers agent now ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
 
 /-- "More money is preferred", restricted to sums whose purchases
-differ, but ranked at `now` rather than at the date the sums would be
-spent. REJECTED as the library's claim: a man whose valuations change
-between now and the spending refutes it while the dated claim holds of
-him (`Apodictic.Model.Impulse.now_reading_fails`). -/
+differ. It is ranked at `now`, not at the date the sums would be spent.
+REJECTED as the library's claim. A man whose valuations change between
+now and the spending refutes it. The dated claim still holds of him
+(`Apodictic.Model.Impulse.now_reading_fails`). -/
 def MoreMoneyPreferredNow (plan : AllocationPlan stock) : Prop :=
   ∀ fewer more : Finset praxis.Means, fewer ⊂ more → more ⊆ stock.units →
     (∀ unit ∈ more, praxis.Money unit) →
@@ -315,12 +330,13 @@ def MoreMoneyPreferredNow (plan : AllocationPlan stock) : Prop :=
       praxis.Prefers agent now ↑(plan.wouldServe more) ↑(plan.wouldServe fewer)
 
 /-- **The unrestricted rule says money never satiates.** With
-asymmetry, it gives `BuysMoreThanItsParts` of every free sum of money:
-were a strict part to buy what the whole buys, the rule would have the
-agent prefer one bundle to itself, which asymmetry forbids. So the rule
-as stated asserts, unseen, that every extra unit of free money buys
-something more. The library's claim ranks only purchases that differ,
-and the theorems that need non-satiation carry it as a condition. -/
+asymmetry, it gives `BuysMoreThanItsParts` of every free sum of money.
+Suppose a strict part bought what the whole buys. Then the rule would
+have the agent prefer one bundle to itself. Asymmetry forbids that. So
+the rule as stated asserts, unseen, that every extra unit of free money
+buys something more. The library's claim ranks only purchases that
+differ. The theorems that need non-satiation carry it as a
+condition. -/
 theorem buysMore_of_unrestricted (plan : AllocationPlan stock)
     (rule : MoreMoneyPreferredUnrestricted plan)
     (asymmetric : AsymmetricPreference praxis.toActionFrame agent now)

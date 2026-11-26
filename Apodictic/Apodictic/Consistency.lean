@@ -1584,8 +1584,8 @@ theorem lend_after_planned :
   exact (coe_single _).symm
 
 /-- **Non-vacuity: every rate struck is positive, applied.** The lender
-lends one ounce and is repaid two; every claim and every condition of
-S5 hold, with the promised money its own stock. -/
+lends one ounce and is repaid two. Every claim of S5 holds. So does
+every condition. The promised money is its own stock. -/
 theorem struck_rate_positive_applies :
     ({.ounce} : Finset Good).card < ({.promiseA, .promiseB} : Finset Good).card :=
   PureInterest.struck_rate_positive loan presentPlan futurePlan futurePlan
@@ -1765,9 +1765,11 @@ theorem inflation_pays_but_not_power (s l : ℕ × ℕ) :
   ⟨(plan_single _ _ _ _ _ _).trans (plan_single _ _ _ _ _ _).symm,
     not_same_of_worse worse worse .promised _ _ s l⟩
 
-/-- **The merged condition fails in both cases alike.** Same purchasing
-power asserted between the cash and the promise fails under default risk
-and under inflation, and the promise's plan is the same in both. -/
+/-- **The merged condition fails in both cases alike.** Same
+purchasing power (`SamePurchasingPower`) is asserted between the cash
+and the promise. It fails under
+default risk. It fails under inflation. The promise's plan is the same
+in both. -/
 theorem merged_fails_in_both (s l : ℕ × ℕ) :
     ¬ SamePurchasingPower (praxis := frame doubt) doubtCash doubtPromise
       {.cash} {.promise} s l ∧
@@ -2113,9 +2115,9 @@ theorem not_same_purchasing_power (s l : ℕ × ℕ) :
   have : (3 : ℕ) = 0 := same
   exact Nat.succ_ne_zero 2 this
 
-/-- **So the zero-rate theorem does not reach him**: for any money the
-club's promise pays in, same purchasing power between his cash and that
-money fails. -/
+/-- **So the zero-rate theorem does not reach him.** Take any money the
+club's promise pays in. Same purchasing power (`SamePurchasingPower`)
+between his cash and that money fails. -/
 theorem outside_zero_rate {promised : Stock frame.toActionFrame () 0}
     (promisedPlan : AllocationPlan promised) (money : Finset Good) (s l : ℕ × ℕ)
     (pays : PromisePays (praxis := frame) futurePlan promisedPlan

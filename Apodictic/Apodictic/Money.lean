@@ -94,21 +94,22 @@ section Sums
 variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
   {present future promised stock : Stock praxis.toActionFrame agent now}
 
-/-- **Same purchasing power** — a condition on the situation. Each of
-two sums would buy one satisfaction, the same satisfaction, each at its
-own date. Asserted in the theorems between
-the present sum and the money promised.
+/-- **Same purchasing power** — a condition on the situation. Each of two
+sums would buy one satisfaction. Each would buy it at its own date. The
+two satisfactions are the same. The theorems assert this between the present sum and the
+money promised.
 
 Mises: "present goods are valued higher than future goods of the same
 kind and quantity" (*Human Action*, ch. XIX, §1). Rothbard's "the same
-amount of future money" (*MES* p. 376) is not part of it: equal counts
+amount of future money" (*MES* p. 376) is not part of it. Equal counts
 of ounces are the same good at two dates only if they buy the same
-thing, and that is what this says. The count is the separate condition
-`SameCount`, carried only where it is used. It fails where the money
-buys less at the later date
-(Rothbard's purchasing-power component, *MES* p. 797; Mises's price
-premium). Whether the promise pays is the separate condition
-`PromisePays`. -/
+thing. That is what this condition says. The count is a separate
+condition (`SameCount`), carried only where it is used.
+
+It fails where the money buys less at the later date. That is
+Rothbard's purchasing-power component (*MES* p. 797) and Mises's price
+premium. Whether the promise pays is a separate condition
+(`PromisePays`). -/
 def SamePurchasingPower (presentPlan : AllocationPlan present)
     (futurePlan : AllocationPlan future) (sum promise : Finset praxis.Means)
     (soon late : praxis.End) : Prop :=
@@ -116,65 +117,70 @@ def SamePurchasingPower (presentPlan : AllocationPlan present)
     futurePlan.wouldServe promise = {late} ∧
     praxis.SameSatisfaction agent soon late
 
-/-- **The promise pays** — a condition on the situation: Rothbard's world
-of certainty, for one promise. The agent's plan counts the promise for
-exactly what it counts the money it promises for.
+/-- **The promise pays** — a condition on the situation. It is
+Rothbard's world of certainty, for one promise. The agent's plan counts
+the promise for exactly what it counts the promised money for.
 
-It fails where he believes the promise may not pay, or may pay in part:
-the promise then counts for something other than the promised money
-would buy. The credit premium lands here, and only here. -/
+It fails where he believes the promise may not pay, or may pay only in
+part. The promise then counts for something other than the promised
+money would buy. The credit premium lands here, and only here. -/
 def PromisePays (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
     (promise money : Finset praxis.Means) : Prop :=
   futurePlan.wouldServe promise = promisedPlan.wouldServe money
 
-/-- **The same count** — a condition on the situation, of bookkeeping:
-the promise is as many units as the present sum. Rothbard's "the same
-amount of future money" (*MES* p. 376), where it does work: only the
-loan theorems use it, to compare the repaid sum with the promise. -/
+/-- **The same count** — a condition on the situation, of bookkeeping.
+The promise is as many units as the present sum. This is Rothbard's
+"the same amount of future money" (*MES* p. 376), where it does work.
+Only the loan theorems use it. They use it to compare the repaid sum
+with the promise. -/
 def SameCount (sum promise : Finset praxis.Means) : Prop :=
   sum.card = promise.card
 
 /-- **Spent sooner** — a condition on the situation. The present sum
-would be spent before the promise pays, and not on something already
-past at `now`.
+would be spent before the promise pays. It would not be spent on
+something already past at `now`.
 
-It is what Rothbard's footnote answers rather than grants: "It is not
+Rothbard's footnote answers this rather than grants it: "It is not
 valid to object that some might prefer to use the money in the future
 rather than in the present. That is not the issue here, which is one of
 availability for use" (*MES* p. 386 n. 11). The objector is the man for
-whom this condition fails — he would hold the present sum until the
-date the promise pays. -/
+whom this condition fails. He would hold the present sum until the date
+the promise pays. -/
 def SpentSooner (soon late : praxis.End) : Prop :=
   praxis.Before (praxis.attained soon) (praxis.attained late) ∧
     ¬ praxis.Before (praxis.attained soon) now
 
-/-- **Free to hold, within the promise** — a condition on the situation:
-the restriction the "more money" claim carries, on the future side.
-Every part of the promise, the whole included, costs the agent nothing to
-hold. Rothbard abstracts from it in so many words: "We have abstracted
-from hoarding, which will be dealt with in the chapter on money" (*MES*
-p. 386 n. 11); his own banking pages price it — a depositor "pays the
-owner of the warehouse a certain sum for the service of storage"
-(p. 801). -/
+/-- **Free to hold, within the promise** — a condition on the
+situation. The "more money" claim (`MoreMoneyPreferredWhenSpent`)
+carries this restriction, on the future side. Every part of the promise, the whole included, costs the
+agent nothing to hold.
+
+Rothbard abstracts from it in so many words: "We have abstracted from
+hoarding, which will be dealt with in the chapter on money" (*MES*
+p. 386 n. 11). His own banking pages put a price on it. A depositor
+"pays the owner of the warehouse a certain sum for the service of
+storage" (p. 801). -/
 def FreeToHoldWithin (promise : Finset praxis.Means) : Prop :=
   ∀ part ⊆ promise, praxis.FreeToHold agent now part
 
 /-- **Buys more than its parts** — a condition on the situation, NOT a
 claim. Every strict part of `sum` would buy other ends than the whole
-of it: no unit of the sum is one the plan has no use for. It fails for
-a sum larger than anything the agent would spend or hold it on. -/
+does. So the plan has a use for every unit of the sum. It fails for a
+sum larger than anything the agent would spend or hold it on. -/
 def BuysMoreThanItsParts (plan : AllocationPlan stock)
     (sum : Finset praxis.Means) : Prop :=
   ∀ part ⊂ sum, plan.wouldServe sum ≠ plan.wouldServe part
 
 /-- **Ranked alike now, of one comparison** — a condition on the
-situation, NOT a claim. If at the date `spend` the agent would spend
-them he ranks what `promise` would buy above what `lesser` would buy, he
-ranks them so at `now` too. His valuation of these two purchases does
-not change in between. Mises: "If the valuations change, acting must
-change also" (*Human Action*, ch. V, §4). It fails for the man who now
-prefers to be repaid less because of what he would do with more. -/
+situation, NOT a claim. Take the date `spend`, when the agent would
+spend the two sums. Suppose he then ranks what `promise` would buy
+above what `lesser` would buy. Then he ranks them so at `now` too. His
+valuation of these two purchases does not change in between.
+
+Mises: "If the valuations change, acting must change also" (*Human
+Action*, ch. V, §4). It fails for the man who now prefers to be repaid
+less. He prefers it because of what he would do with more. -/
 def RankedAlikeNowOf (plan : AllocationPlan stock) (spend : praxis.Time)
     (promise lesser : Finset praxis.Means) : Prop :=
   praxis.Prefers agent spend ↑(plan.wouldServe promise) ↑(plan.wouldServe lesser) →
@@ -183,13 +189,13 @@ def RankedAlikeNowOf (plan : AllocationPlan stock) (spend : praxis.Time)
 end Sums
 
 /-- **Transitive on one chain** — a condition on the situation, NOT a
-claim. For these three bundles only: if the first is preferred to the
-second and the second to the third, the first is preferred to the
-third.
+claim. It covers these three bundles only. If the first is preferred
+to the second, and the second to the third, the first is preferred to
+the third.
 
-Neither author states transitivity; Rothbard's "one ounce or less"
-(*MES* p. 382) chains two preferences and needs it for the one chain
-it uses. -/
+Neither author states transitivity. Rothbard's "one ounce or less"
+(*MES* p. 382) chains two preferences. It needs transitivity for that
+one chain. -/
 def ActionFrame.TransitiveOn (praxis : ActionFrame)
     (agent : praxis.Agent) (time : praxis.Time)
     (X Y Z : Set praxis.End) : Prop :=
@@ -201,10 +207,13 @@ section Loans
 variable {praxis : MoneyFrame}
 
 /-- **The holding before counts as planned** — a condition on one
-trade. What the lender's holding before the loan counts for, on the
-library's count of goods, is what his plan says the present sum would
-buy. It fails where his other goods add ends of their own, and where
-the union count and the plan part (shape claims, above). -/
+trade. Before the loan, the lender holds some goods. The library counts
+a holding by every end its goods are believed able to serve
+(`ActionFrame.ServedBy`). Here that count must equal what his plan
+says the present sum would buy.
+
+It fails where his other goods add ends of their own. It also fails
+where the two ways of counting differ (shape claims, above). -/
 def Trade.BeforeCountsAsPlanned
     (trade : Trade praxis.toActionFrame)
     {present : Stock praxis.toActionFrame trade.agent trade.time}
@@ -213,8 +222,8 @@ def Trade.BeforeCountsAsPlanned
   trade.before trade.time = ↑(presentPlan.wouldServe sum)
 
 /-- **The holding after counts as planned** — a condition on one
-trade. What the lender's holding after the loan counts for is what his
-plan says the repaid sum would buy. -/
+trade. After the loan, the lender holds some goods. They count for what
+his plan says the repaid sum would buy, and nothing else. -/
 def Trade.AfterCountsAsPlanned
     (trade : Trade praxis.toActionFrame)
     {future : Stock praxis.toActionFrame trade.agent trade.time}
@@ -222,12 +231,13 @@ def Trade.AfterCountsAsPlanned
     Prop :=
   trade.after trade.time = ↑(futurePlan.wouldServe repaid)
 
-/-- **Refusing keeps the sum** — a condition on one trade, the refusal
-supplied per case. Had the lender refused, he would have been left with
-what the present sum would buy, at full value. Rothbard's reading of a
-loan's alternative; Hülsmann's and Deist's lenders are the cases where
-it fails — the kept sum would buy less than the plan for it, or
-something other. -/
+/-- **Refusing keeps the sum** — a condition on one trade. The refusal
+is supplied case by case. Had the lender refused, he would have been
+left with what the present sum would buy, at full value. This is
+Rothbard's reading of a loan's alternative.
+
+Hülsmann's and Deist's lenders are the cases where it fails. There the
+kept sum would buy less than the plan for it, or something else. -/
 def Trade.RefusalKeepsSum
     (trade : Trade praxis.toActionFrame)
     {present : Stock praxis.toActionFrame trade.agent trade.time}
