@@ -2018,32 +2018,49 @@ be zero or negative. From 2014, banks in the euro area lent to one
 another overnight at a negative rate. This part rebuilds his argument
 and asks which of its premises such a lender does not satisfy.
 
-The argument runs in four steps, S2 to S5, and each adds what it needs:
+The argument runs in four steps, S2 to S5. Follow one lender through
+them. He has ten ounces, which he would spend today on a coat, and a
+borrower offers him a promise of ounces tomorrow. Each step's list
+leaves out bookkeeping, such as which stock each sum comes from.
 
-- *Present money is preferred to the same amount of future money* (S2).
-  It needs one claim, time preference, and three conditions: the money
-  will buy the same satisfaction later (`SamePurchasingPower`), the
-  promise will pay (`PromisePays`), and the present sum would be spent
-  sooner (`SpentSooner`).
-- *…and to any smaller amount* (S3). It needs a second claim, that more
-  money is preferred where it is spent, and six conditions with it:
-  every part of the promise buys something other than the whole
-  (`BuysMoreThanItsParts`); he
-  ranks the two sums now as he will when he spends them
-  (`RankedAlikeNowOf`); the promise is money; it is free to hold; its
-  units are interchangeable; and his preferences chain where the step
-  uses them.
-- *So no one lends at zero or below* (S4). It needs a third claim,
-  asymmetry, and three conditions: refusing the loan would have left
-  him the sum at full value (`RefusalKeepsSum`), what he holds after
-  counts as planned, and the promise is as many units as the sum lent
-  (`SameCount`). What it concludes is that such a loan
-  does not demonstrate a preference for being repaid over keeping the
-  sum.
-- *So every rate struck is positive* (S5). It adds the fourth claim,
-  demonstrated preference. Refusing at full value is then not assumed
-  but derived, from the trade being voluntary and his holding before it
-  counting as planned.
+- *S2: present money is preferred to the same amount of future money.*
+  He prefers his ten ounces today to a promise of ten tomorrow. The
+  claim used is time preference: the same satisfaction sooner is
+  preferred to it later. Three conditions say it is the same
+  satisfaction, and sooner. The ten ounces tomorrow buy the same coat
+  (`SamePurchasingPower`; rising prices break it). The promise will be
+  paid (`PromisePays`; a doubt about the borrower breaks it). And he
+  would spend today's ounces first (`SpentSooner`; it breaks if he
+  would not spend them until tomorrow anyway).
+- *S3: …and to any smaller amount.* He also prefers his ten ounces
+  today to a promise of nine tomorrow. The second claim used is that
+  tomorrow, when he spends, more money is preferred to less. Its
+  conditions: every part of the ten ounces promised, nine among them,
+  buys something other than the whole ten do (`BuysMoreThanItsParts`);
+  he ranks tomorrow's ten against tomorrow's nine today as he will
+  tomorrow (`RankedAlikeNowOf`; the man who would rather not have,
+  today, the cash he will spend on an impulse tomorrow breaks it); the
+  promise is of money, not of other goods; holding it, or any part of
+  it, costs nothing; the promised ounces are interchangeable; and his
+  preferences are transitive across these three sums: ten today beats
+  ten tomorrow, ten tomorrow beats nine tomorrow, so ten today beats
+  nine tomorrow.
+- *S4: so no one lends at zero or below.* Had he lent his ten ounces
+  for a promise of ten, or of nine, the loan would not show that he
+  preferred being repaid to keeping his ten ounces. The third claim
+  used is asymmetry: he cannot prefer each of two things to the other.
+  Three conditions: had he said no, he would have kept his ten ounces
+  at full value (`RefusalKeepsSum`); after the loan, what he holds is
+  worth what the repayment would buy; and the promise S2 compares
+  against, the one that buys the same coat, is for as many ounces as
+  he lent: ten (`SameCount`).
+- *S5: so every rate struck is positive.* The fourth claim is
+  demonstrated preference: a trade a man makes shows that he preferred
+  it. So if he lends at all, he is repaid more than ten. Here, keeping
+  his ten ounces at full value is not assumed. It follows from two other
+  conditions: the loan was voluntary, so saying no would not have cost
+  him anything, and what he held before the loan was worth just the
+  coat.
 
 Some things the argument seems to need do no work, at least in part of
 it:
@@ -2076,12 +2093,12 @@ What each case breaks:
   `SamePurchasingPower`: his cash would buy an impulse, the club pays
   for what he saves for. Built in the library.
 - *The man who would rather not hold, today, the cash he knows he will
-  spend on an impulse tomorrow* breaks `RankedAlikeNowOf`, asked of
-  that cash against none. He is never put in a loan. Built in the
+  spend on an impulse tomorrow* breaks `RankedAlikeNowOf` (S3), asked
+  of that cash against none. He is never put in a loan. Built in the
   library.
 - *Rising prices* break `SamePurchasingPower`, and *a doubt that the
-  borrower will pay* breaks `PromisePays`, each without the other. Built
-  in the library.
+  borrower will pay* breaks `PromisePays` (both S2), each without the
+  other. Built in the library.
 
 The detail follows.
 
@@ -2261,7 +2278,8 @@ must change also" (*Human Action*, ch. V, §4). The condition is where
 his change of valuation lands.
 
 The rest of what "or less" takes: the promise's parts are free to hold,
-the preferences chain on the one chain used, the promise is money, and
+his preferences are transitive across the three sums compared, the
+promise is a promise of money, and
 the future units are interchangeable (`plan.Homogeneous`, under *The
 conditions*).
 
@@ -2367,9 +2385,9 @@ The test is thin, and it is worth saying where. The lender's ranking
 does not change with the date, so the condition on ranking now as at
 the spending holds with nothing to do. The money promised is
 the promises themselves, so that the promise pays is never tried on a
-promise that might not. Every unit is money and every sum is free to
-hold, so neither condition is tried. Preference chains throughout the
-frame, not only on the one chain. The promise whose parts must each buy
+promise that might not. Every unit counts as money and every sum is free to
+hold, so neither condition is tried. Preference is transitive throughout
+the frame, not only across the three sums. The promise whose parts must each buy
 something different is a single unit, so it is tried only against
 nothing at all. And there is one agent, lender and
 borrower both.
@@ -2387,12 +2405,12 @@ assumed but derived, from the trade being voluntary and his holding
 counting as planned, so there the failure lands on one of those.) Or
 an extra unit of the promise bought nothing more, or he ranked the promise
 against the repayment differently now than at the spending, or the
-promise was not money or not free to hold, or the one chain of
-preferences did not chain. Or one of the claims failed. (Its manifest
-has a few more, of bookkeeping: that the promise and the repayment come
-from the stock of promises, that the promise is as many units as the sum
-lent, that its units are interchangeable, and that what he holds after
-counts as planned.)
+promise was not of money or not free to hold, or his preferences were
+not transitive across the three sums. Or one of the claims failed. (Its manifest
+has a few more that a case is less likely to land on: that the promise
+and the repayment come from the stock of promises, that the promise is
+as many units as the sum lent, that the future units are
+interchangeable, and that what he holds after counts as planned.)
 
 The bank that lends overnight at a negative rate is likely to land on
 two of these. One is its use for the money: it may have had none
