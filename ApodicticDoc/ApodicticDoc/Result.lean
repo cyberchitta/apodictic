@@ -2108,52 +2108,60 @@ the function of a medium of exchange which at the very beginning of its
 use for this purpose did not have exchange value on account of other
 employments" (*Human Action*, ch. XVII, §4). It was chosen because a
 case is pressed against it. Some media came into use inside a monetary
-economy, Bitcoin among them, and their first buyers paid money for
+economy. Bitcoin is one of them. Their first buyers paid money for
 them. What the theorem requires of such a medium depends on how its
-terms are read, and with the readings written separately in Lean,
-moving from one to another is a change of hypothesis that shows in a
-signature.
+terms are read. Here each reading is written separately in Lean. So a
+move from one reading to another is a change of hypothesis, and the
+change shows in a signature.
 
-The theorem has two halves, and only one is here: the genetic half,
-about a medium's origin. The other, that today's purchasing power is
-formed from yesterday's, is about quantities, and nothing below has
-any. And the theorem is about any medium of exchange, not only money:
-"For all that is to be predicated of money is valid for every medium of
-exchange" (ch. XVII, §1).
+The theorem has two halves, and only one is here. It is the genetic
+half, about a medium's origin. The other half says that today's
+purchasing power is formed from yesterday's. That half is about
+quantities, and nothing below has any. And the theorem is about any
+medium of exchange, not only money: "For all that is to be predicated
+of money is valid for every medium of exchange" (ch. XVII, §1).
 
-**A medium, by belief.** Mises's medium of exchange is a good wanted "to
+*A medium, by belief.* Mises's medium of exchange is a good wanted "to
 keep it as a medium of exchange and to give it away at need in a later
-act of exchange" (ch. XVII, §4). The vocabulary grows by one bare relation to say so:
-an end is *onward* for a good when the man would reach it by giving that
-good itself away in a later trade.
+act of exchange" (ch. XVII, §4). To say so, the vocabulary grows by one
+bare relation (`Onward`). An end is *onward* for a good when the man
+would reach it by giving that good itself away in a later trade.
 
 {docstring Apodictic.MediumFrame}
 
 A man appraises a good as a medium when he believes it serves some
-onward end. Two other definitions were available and neither is used.
-One calls a good a medium when its price is being appraised; then a
-medium would have a price behind it by the meaning of the word, and the
-regress would be true by definition. The other waits for an actual
-later trade; but a man who holds a good meaning to pass it on already
-demands it as a medium, whether or not the trade comes. So demand in
-anticipation counts.
+onward end (`MediumFrame.AppraisesAsMedium`). Two other definitions
+were available. Neither is used:
+
+- One calls a good a medium when its price is being appraised. Then a
+  medium would have a price behind it by the meaning of the word. The
+  regress would be true by definition.
+- The other waits for an actual later trade. But take a man who holds
+  a good meaning to pass it on. He already demands it as a medium,
+  whether or not the trade comes.
+
+So demand in anticipation counts.
 
 {docstring Apodictic.MediumFrame.AppraisesAsMedium}
 
-A good, here, is a kind — gold, salt — and not a unit of one. The
-regress is about the kind: a coin minted today was never traded before,
-and the theorem is not about that coin.
+A good, here, is a kind, such as gold or salt. It is not a unit of a
+kind. The regress is about the kind. A coin minted today was never
+traded before, and the theorem is not about that coin.
 
-The regress runs back through what happened, so there is a record of
-it: the exchanges made on each day, with days counted from a first
-one.
+The regress runs back through what happened. So there is a record of
+it (`History`). The record holds the exchanges made on each day. Days
+are counted from a first one.
 
 {docstring Apodictic.History}
 
-Three things are read off the record: that a man acquired the good on
-a day, giving another for it; that he did so for an end other than
-passing it on; and that on a day someone appraises the good as a
-medium.
+Three things are read off the record:
+
+- A man acquired the good on a day, giving another good for it
+  (`History.AcquiredAgainst`).
+- Someone acquired the good on a day for an end other than passing it
+  on (`History.DirectAcquisitionAt`).
+- On a day, someone appraises the good as a medium
+  (`History.MediumAt`).
 
 {docstring Apodictic.History.AcquiredAgainst}
 
@@ -2161,32 +2169,46 @@ medium.
 
 {docstring Apodictic.History.MediumAt}
 
-**Indirect exchange needs no new claim.** A man who trades for a good
-only to pass it on ranks what he expects to reach by passing it on
-above what the good he gave could do. That is the exchange theorem
-again, with onward ends counted like any others, and it carries the
-same claim and conditions plus one: that he wants the good for nothing
-else.
+*Indirect exchange needs no new claim.* Take a man who trades for a
+good only to pass it on. He ranks what he expects to reach by passing
+it on above what the good he gave could do. That is the exchange
+theorem again, with onward ends counted like any others
+(`Regression.indirect_ranks_onward_ends`). It carries the same claim
+and conditions as the exchange theorem. It adds one condition: that he
+wants the good for nothing else (`Trade.PurelyIndirect`).
 
 {docstring Apodictic.Trade.PurelyIndirect}
 
 {docstring Apodictic.Regression.indirect_ranks_onward_ends}
 
-**The claim.** The hinge of the theorem is a sentence about judgment:
-the man considering money "cannot form a judgment about the future
+*The claim.* The hinge of the theorem is a sentence about judgment.
+The man considering money "cannot form a judgment about the future
 purchasing power of money otherwise than by looking at its
-configuration in the immediate past", and so "A medium of exchange
+configuration in the immediate past". And so "A medium of exchange
 without a past is unthinkable" (ch. XVII, §§4, 8). Mises's premise
-shuts every other ground of judgment out, and the library does not
-follow him that far. The docstring says what it asserts and, under
-*Does not say*, what it leaves out.
+shuts out every other ground of judgment. The library does not follow
+him that far. The claim is appraisal from the past
+(`AppraisalFromPast`). Its docstring says what the claim asserts.
+Under *Does not say*, it says what the claim leaves out.
 
 {docstring Apodictic.AppraisalFromPast}
 
-**The regress.** Mises states his conclusion in the negative, and the
-negative is what comes out at the lowest price. If nobody acquired the
-good, before a given day, for an end other than passing it on, then on
-that day nobody appraises it as a medium:
+*Rothbard's gold.* Rothbard tells the regress with gold (*MES*,
+pp. 272–74). It is the example used below. In his figure, "a system of
+barter prevails on days 1, 2, and 3, and gold is used as a medium of
+exchange on day 4 and thereafter" (p. 274). In the days of barter,
+"gold is used only for direct consumption or production purposes and
+not as a medium of exchange" (p. 274). His instance of a direct use is
+"the use of gold for ornaments" (p. 272). We read his story through
+the definitions above. On that reading, nobody appraises gold as a
+medium on days 1 to 3. Someone does on day 4.
+
+*The regress.* Mises states his conclusion in the negative. The
+negative form is what comes out at the lowest price. Say nobody
+acquired the good, before a given day, for an end other than passing
+it on. Then on that day nobody appraises it as a medium. In the
+example, say nobody acquired gold before day 4 for an end other than
+passing it on. Then on day 4 nobody appraises gold as a medium:
 
 {docstring Apodictic.Regression.no_medium_without_direct_acquisition}
 
@@ -2215,29 +2237,49 @@ manifest of Apodictic.Regression.no_medium_without_direct_acquisition
   (1 trailing binders belong to the conclusion, not the signature)
 ```
 
-One claim, and two conditions besides the hypothesis the sentence
-itself states. Neither condition is in Mises's sentence.
+The manifest holds one claim and three conditions. The third
+(`noDirect`) is the hypothesis Mises's sentence itself states. The
+other two conditions are not in his sentence.
 
-The first is that the regress ends. Counting days from a first one
-supplies half of that: from any day there are finitely many days back.
-The other half is that on the first day of the record the good is not
-yet a medium, and that is assumed. Both authors assert it; neither
-argues it.
+The claim (`AppraisalFromPast`) fails if someone appraises the good as
+a medium on a day after the first, and the good changed hands on no
+earlier day of the record. In the example it holds, on our reading.
+Gold changed hands in barter on days 1 to 3.
+
+The first condition is that the regress ends
+(`History.BeginsBeforeMedium`). Counting days from a first one
+supplies half of that. From any day there are finitely many days back.
+The other half is assumed: on the first day of the record, the good is
+not yet a medium. Both authors assert it. Neither argues it. In the
+example, the first day is Rothbard's day 1, a day of barter. The
+condition fails if someone appraises the good as a medium on the
+record's first day. A record of gold that began on day 4 would fail
+it.
 
 {docstring Apodictic.History.BeginsBeforeMedium}
 
-The second is that whoever acquired the good wanted it for something.
-The proof needs it at every step back: an acquirer who believed the
-good served no end at all, not even resale, is neither a holder of a
-medium nor a direct user, and the regress stops at him with nothing to
-show. We found no passage in either author that states it.
+The second condition is that whoever acquired the good wanted it for
+something (`History.AcquisitionsPurposive`). The proof needs it at
+every step back. Take an acquirer who believed the good served no end
+at all, not even resale. He neither holds a medium nor uses the good
+directly. So the regress stops at him with nothing to show. We found
+no passage in either author that states the condition. It fails if
+someone acquired the good before the day in question, believing it
+served no end at all. In the example, that is someone who took gold
+before day 4 believing it good for nothing. Rothbard's story leaves no
+room for him if "used only for direct consumption or production
+purposes" (p. 274) covers every acquisition. That reading is ours.
 
 {docstring Apodictic.History.AcquisitionsPurposive}
 
-**The positive form, and what it adds.** Turned round, the theorem says
-that if the good is a medium on some day, then on an earlier day
-someone acquired it for an end other than passing it on — and the proof
-finds that acquisition. This costs one claim more.
+*The positive form, and what it adds.* Turned round, the theorem says
+this. Say the good is a medium on some day. Then on an earlier day,
+someone acquired it for an end other than passing it on. And the proof
+finds that acquisition. In the example, gold is a medium on day 4. So
+someone acquired gold on day 1, 2 or 3 for an end other than passing
+it on. On our reading of Rothbard's story, that could be gold taken in
+barter for ornaments, say. The positive form costs one claim more
+(`TwoPartialDemands`).
 
 {docstring Apodictic.Regression.direct_acquisition_before}
 
@@ -2265,67 +2307,89 @@ manifest of Apodictic.Regression.direct_acquisition_before
   logical background: []
 ```
 
-At each step back the proof meets an acquirer and the end he wanted the
-good for, and has to know which kind of end it is: onward, in which
-case the regress goes on, or not, in which case it has arrived. The
-negative form never has to decide. The positive form does, and nothing
-in the vocabulary or in constructive logic decides it. What decides it
-is a sentence of Mises's own: "Thus the demand for a medium of exchange
-is the composite of two partial demands: the demand displayed by the
-intention to use it in consumption and production and that displayed by
-the intention to use it as a medium of exchange". Read as saying that
-the two parts leave nothing over, the composite is the statement that
-each end is onward or is not — a case of the law of excluded middle,
-and the library takes no such law for granted. So it enters as a named claim
-rather than as logic. The sentence is Mises's; reading "composite" as
-leaving nothing over is ours.
+At each step back, the proof meets an acquirer and the end he wanted
+the good for. It has to know which kind of end that is. If the end is
+onward, the regress goes on. If it is not, the regress has arrived.
+The negative form never has to decide. The positive form does. Nothing
+in the vocabulary or in constructive logic decides it. A sentence of
+Mises's own decides it: "Thus the demand for a medium of exchange is
+the composite of two partial demands: the demand displayed by the
+intention to use it in consumption and production and that displayed
+by the intention to use it as a medium of exchange". Read the two
+parts as leaving nothing over. Then the composite is the statement
+that each end is onward or is not. That statement is a case of the law
+of excluded middle. The library takes no such law for granted. So the
+statement enters as a named claim (`TwoPartialDemands`), not as logic.
+The sentence is Mises's. Reading "composite" as leaving nothing over
+is ours.
 
 {docstring Apodictic.TwoPartialDemands}
 
 Without the claim, the two parts are shown to exhaust a good's ends
-only up to a double negation; with it, outright:
+only up to a double negation
+(`Regression.partial_demands_not_not_exhaust`). With the claim, they
+are shown to exhaust them outright
+(`Regression.partial_demands_exhaust`):
 
 {docstring Apodictic.Regression.partial_demands_not_not_exhaust}
 
 {docstring Apodictic.Regression.partial_demands_exhaust}
 
 One thing is not proved in either form: that there was a *last* day of
-barter, a day before which the good was no medium and after which it
-was. That needs "is a medium on this day" decided for each day, which
-is a question about every agent at once, and no claim here settles it:
-it would take excluded middle outright.
+barter. That is a day before which the good was no medium, and after
+which it was. Rothbard's story has one. It is day 3 of his figure
+(p. 274): "the last day of barter, the day before gold began to be used
+as a medium of exchange" (p. 273). Proving a last day needs one thing
+decided for each day: whether the good is a medium on that day. That is
+a question about every agent at once. No claim here settles it. It
+would take excluded middle outright.
 
-**Two readings of "other employments".** In the theorems above, an end
-other than passing the good on is any such end: the direct part of the
-demand is whatever is not onward. Mises names something narrower, "the
-services it can render directly to consumption or production". He
-does not say which ends those are, and the library sorts no ends. So the narrow reading is a condition: whoever applies the theorem
-supplies the ends he counts as consumption or production, and the
-condition says that every other employment the good was acquired for
-was one of them.
+*Two readings of "other employments".* In the theorems above, an end
+other than passing the good on is any such end. The direct part of the
+demand is whatever is not onward. Mises names something narrower: "the
+services it can render directly to consumption or production". He does
+not say which ends those are. And the library sorts no ends. So the
+narrow reading is a condition (`History.OtherEmploymentsNarrow`).
+Whoever applies the theorem supplies the ends he counts as consumption
+or production. The condition says that every other employment the
+good was acquired for was one of them. It fails if someone acquired
+the good before the day in question for an end that is not onward and
+is outside them. In the example, that is someone who took gold before
+day 4 for a game, say. For day 4, in Rothbard's story it holds: in
+the days of barter gold is used "only for direct consumption or production
+purposes" (p. 274). Reading his "purposes" as the acquirers' ends is
+ours.
 
 {docstring Apodictic.History.OtherEmploymentsNarrow}
 
 {docstring Apodictic.Regression.narrow_acquisition_before}
 
-Nothing is derived beyond the condition. The narrow theorem, and the
-negative form that goes with it, are the broad ones with the narrow
-reading passed through to the conclusion.
+Nothing is derived beyond the condition. The narrow theorem is the
+broad one, with the narrow reading passed through to the conclusion.
+So is the negative form that goes with it.
 
-**Rothbard's two versions.** Rothbard states the origin twice, and
-differently. In *MES* a medium "can arise only out of a commodity
-previously used directly in a barter situation, and therefore having
-had an array of prices in terms of other goods" (p. 275). In *Power and
-Market*, "no money can be established on the market except as it can be
-exchanged for a previously existing money (which in turn must have
-ultimately related back to a commodity in barter)" (*MES* ed.,
-p. 1021).
+*Rothbard's two versions.* Rothbard states the origin twice, and
+differently:
 
-The first version adds, to the earlier acquisition for an end other
-than passing the good on, that it was made against a good not then a
-medium. That clause is not derived. It is a condition on every earlier
-acquisition of the good, and the conclusion's clause is that condition
-applied to the one acquisition the regress finds:
+- In *MES*, a medium "can arise only out of a commodity previously
+  used directly in a barter situation, and therefore having had an
+  array of prices in terms of other goods" (p. 275).
+- In *Power and Market*, "no money can be established on the market
+  except as it can be exchanged for a previously existing money (which
+  in turn must have ultimately related back to a commodity in barter)"
+  (*MES* ed., p. 1021).
+
+The first version adds a clause to the conclusion. The clause is that
+the earlier acquisition, for an end other than passing the good on, was
+made against a good not then a medium. That clause is not derived. It
+is a condition on every earlier acquisition of the good
+(`History.FormedInBarter`). The conclusion's clause is that condition,
+applied to the one acquisition the regress finds. In the example, we
+read Rothbard's days 1 to 3 as having no medium at all. Then nothing
+given for gold before day 4 was a medium, and the condition holds. It
+fails if, on some day before the day in question, the good was
+acquired against a good that someone then appraised as a medium. A
+good bought with money is one case:
 
 {docstring Apodictic.History.FormedInBarter}
 
@@ -2356,70 +2420,88 @@ manifest of Apodictic.Regression.barter_origin
   logical background: []
 ```
 
-The second version is a theorem about the prior money: the good the new
-medium was first acquired against, if it was then a medium itself, had
-an acquisition for an end other than passing it on before that. It
-delivers less than the parenthesis says: an earlier acquisition of
-that good for an end of its own, not that the acquisition was in
-barter. And it carries both claims, and the conditions, for every
-good.
+The second version is a theorem about the prior money
+(`Regression.prior_money_relates_back`). Rothbard's case is Germany
+after its inflation of 1923. It could found "a new currency based on
+exchanges with other pre-existing moneys (gold or foreign paper)"
+(p. 1021). The theorem runs as follows. Say the new medium is a
+medium on some day. Then it was acquired, on an earlier day, against
+some good. Say that good was then a medium itself. Then, before that
+day, someone acquired that good for an end other than passing it on.
+This delivers less than the parenthesis says. It gives an earlier
+acquisition of that good for an end of its own. It does not give that
+the acquisition was in barter. And the theorem carries both claims, and the two
+conditions on the record's start and on purposive acquisitions
+(`History.BeginsBeforeMedium`, `History.AcquisitionsPurposive`), for
+every good.
 
 {docstring Apodictic.Regression.prior_money_relates_back}
 
 The detour through the prior money is not needed for the new medium.
-Under the broad reading the positive form already concludes, for the
-new medium itself, an earlier acquisition for an end other than passing
-it on, whatever was paid for it. The regress follows the acquirers'
-ends, never what they gave. The prior money's history adds a conclusion
-about the prior money.
+Take the broad reading. The positive form already concludes, for the
+new medium itself, an earlier acquisition for an end other than
+passing it on. It concludes this whatever was paid for the new medium.
+The regress follows the acquirers' ends, never what they gave. The
+prior money's history adds a conclusion about the prior money.
 
-**"Its own past price."** Mises's exclusive premise — that the appraisal
-rests on the good's own past price — would best be a condition separate
-from the claim, so that a failure could be laid to one or the other.
-Without quantities it cannot be kept separate. "Rests on" has no
-statement here; what can be stated is that an exchange of the good came
-earlier, and that is the claim again.
+*"Its own past price."* Mises's exclusive premise is that the
+appraisal rests on the good's own past price. That premise would best
+be a condition separate from the claim. Then a failure could be laid
+to one or the other. Without quantities, it cannot be kept separate.
+"Rests on" has no statement here. What can be stated is that an
+exchange of the good came earlier (`History.OwnPastPrice`). And that
+is the claim again (`Regression.ownPastPrice_of_claim`).
 
 {docstring Apodictic.History.OwnPastPrice}
 
 {docstring Apodictic.Regression.ownPastPrice_of_claim}
 
-**The case.** The library builds one frame to test this on: a good
-first believed fit only for eating and, from the next day, also for
-passing on. In it both claims and every condition of the barter and
-narrow theorems hold together with a medium, so the theorems do not
-hold merely because nothing meets their hypotheses. The test is
-thin, and it is worth saying where: there is one agent, the good is
-exchanged against itself, and nothing in the frame is ranked.
+*The case.* The library builds one frame to test this on. In it, a
+good is first believed fit only for eating. From the next day, it is
+also believed fit for passing on. In this frame both claims hold, and
+so does every condition of the barter and narrow theorems, together
+with a medium. So the theorems do not hold merely because nothing
+meets their hypotheses. The test is thin, and it is worth saying
+where:
 
-**What a failure would point at.** Suppose a good is a medium, and no
-earlier acquisition of it for an end other than passing it on is to be
-found. Then the record began inside a monetary economy, with the good
-already a medium on its first day; or someone took the good believing
-it good for nothing; or the record is missing an exchange that
-happened; or the first claim failed, and someone appraised the good as
-a medium when it had never changed hands — on an issuer's pledge, say, or an
-edict.
+- There is one agent.
+- The good is exchanged against itself.
+- Nothing in the frame is ranked.
 
-The second claim is not on that list. No case can be brought against
-it: that no end falls outside both parts is proved above, with no
-claim at all. What it adds is the right to say which part.
-Without it the negative form still stands.
+*What a failure would point at.* Suppose a good is a medium. And no
+earlier acquisition of it, for an end other than passing it on, is to
+be found. Then one of these happened:
+
+- The record began inside a monetary economy, with the good already a
+  medium on its first day (`History.BeginsBeforeMedium`).
+- Someone took the good believing it good for nothing
+  (`History.AcquisitionsPurposive`).
+- The record is missing an exchange that happened.
+- The first claim failed (`AppraisalFromPast`). Someone appraised the
+  good as a medium when it had never changed hands. He might have done
+  so on an issuer's pledge, say, or an edict.
+
+The second claim (`TwoPartialDemands`) is not on that list. No case
+can be brought against it. That no end falls outside both parts is
+proved above, with no claim at all. What the claim adds is the right
+to say which part. Without it, the negative form still stands.
 
 Buying a good to resell it is not on that list as an escape. A man who
-holds a good in order to sell it believes it serves an onward end, so
-he already appraises it as a medium, and the regress asks for an
+holds a good in order to sell it believes it serves an onward end. So
+he already appraises it as a medium. And the regress asks for an
 acquisition earlier than his.
 
-For a medium whose first buyers paid money, the versions come apart.
-Rothbard's barter version is silent: its condition fails wherever the
-good was bought with money before the day in question. The broad
-theorem is not silent on that account, since it never asks what was
-paid. Given its own two conditions, it asks whether some early
-acquirer wanted the good for an end other than passing it on, which is
-a question about those acquirers. The narrow theorem asks more — that what they wanted
-it for was consumption or production — and is silent where the good was
-first wanted for a game, a cause, or a test.
+For a medium whose first buyers paid money, the versions come apart:
+
+- Rothbard's barter version is silent. Its condition fails wherever
+  the good was bought with money before the day in question.
+- The broad theorem is not silent on that account, since it never
+  asks what was paid. Given its own two conditions, it asks a question
+  about the early acquirers. Did some early acquirer want the good for
+  an end other than passing it on?
+- The narrow theorem asks more: that what they wanted it for was
+  consumption or production. It is silent where the good was first
+  wanted for a game, a cause, or a test.
 
 # Interest
 %%%

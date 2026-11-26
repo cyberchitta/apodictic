@@ -49,10 +49,10 @@ theorem servedBy_singleton {praxis : ActionFrame} (agent : praxis.Agent)
   · intro hbelief
     exact ⟨m, Set.mem_singleton m, hbelief⟩
 
-/-- **Indirect exchange ranks onward ends** — in a trade where the
-agent wants the received good only to pass it on, he ranks the ends he
-expects to reach by passing it on above the ends of the good he gave,
-on his scale at the time of trading. -/
+/-- **Indirect exchange ranks onward ends.** Take a trade in which the
+agent wants the received good only to pass it on. He ranks the ends he
+expects to reach by passing it on above the ends of the good he gave.
+He ranks them on his scale at the time of trading. -/
 theorem indirect_ranks_onward_ends {praxis : MediumFrame}
     (trade : Trade praxis.toActionFrame)
     (demonstrated : DemonstratedPreference trade)
@@ -116,8 +116,9 @@ theorem partial_demands_within {praxis : MediumFrame} (agent : praxis.Agent)
   · exact hbelief
   · exact hbelief
 
-/-- **Not-not exhaustive** — without deciding the sort of an end, every
-end the good serves is only not-not in one of the two parts. -/
+/-- **Not-not exhaustive.** No claim here decides the sort of an end.
+Without one, every end the good serves is only not-not in one of the
+two parts. -/
 theorem partial_demands_not_not_exhaust {praxis : MediumFrame}
     (agent : praxis.Agent) (time : praxis.Time) (m : praxis.Means) :
     ∀ e ∈ praxis.ServedBy agent time {m},
@@ -130,8 +131,8 @@ theorem partial_demands_not_not_exhaust {praxis : MediumFrame}
   intro honward
   exact hout (Or.inr ⟨honward, hbelief⟩)
 
-/-- **The two partial demands exhaust what the good serves** — given
-that every end is onward for `m` or not (`TwoPartialDemands`). -/
+/-- **The two partial demands exhaust what the good serves.** It holds
+given that every end is onward for `m` or not (`TwoPartialDemands`). -/
 theorem partial_demands_exhaust {praxis : MediumFrame} (agent : praxis.Agent)
     (time : praxis.Time) (m : praxis.Means) (twoDemands : TwoPartialDemands praxis m) :
     praxis.ServedBy agent time {m} =
@@ -199,9 +200,9 @@ theorem exchanged_before {praxis : MediumFrame} (history : History praxis)
     obtain ⟨k, hk, hexchanged⟩ := appraisal.fromPast j agent happraises
     exact ⟨k, Nat.lt_succ_of_le hk, acquired_of_exchanged hexchanged⟩
 
-/-- **Own past price follows from the claim** — stated, as it must be
-here, without quantities and without "rests on", the condition is the
-claim restricted to the days before `n`. -/
+/-- **Own past price follows from the claim.** Here the condition must
+be stated without quantities and without "rests on". So stated, it is
+the claim restricted to the days before `n`. -/
 theorem ownPastPrice_of_claim {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) (n : ℕ)
     (appraisal : AppraisalFromPast history m) :
@@ -249,7 +250,7 @@ is reached through exchanges against anything, money included: the
 regress follows the acquirers' ENDS, never what they paid.
 -/
 
-/-- **No medium without a direct acquisition before** — Mises's
+/-- **No medium without a direct acquisition before.** This is Mises's
 negative form of the genetic claim, in the broad reading. -/
 theorem no_medium_without_direct_acquisition {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
@@ -280,10 +281,11 @@ theorem no_medium_without_direct_acquisition {praxis : MediumFrame}
         exact ih k hkj (Nat.le_of_lt hkn) ⟨buyer, e, honward, hbelief⟩
   exact key n (Nat.le_refl n)
 
-/-- **A direct acquisition before** — the positive form: if anyone
-appraises `m` as a medium on day `n`, someone acquired `m` on an earlier
-day for an end other than passing it on. Given that every end is
-onward for `m` or not (`TwoPartialDemands`). -/
+/-- **A direct acquisition before** — the positive form. Say anyone
+appraises `m` as a medium on day `n`. Then someone acquired `m` on an
+earlier day for an end other than passing it on. Beyond what the
+negative form assumes, it assumes that every end is onward for `m` or
+not (`TwoPartialDemands`). -/
 theorem direct_acquisition_before {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
     (twoDemands : TwoPartialDemands praxis m)
@@ -334,8 +336,8 @@ theorem no_medium_without_narrow_acquisition {praxis : MediumFrame}
     ⟨agent, g, hacquired, e, hdirect, hbelief,
       narrowReading k hk agent g hacquired e hdirect hbelief⟩
 
-/-- **A narrow acquisition before** — the positive form, for the narrow
-reading. -/
+/-- **A narrow acquisition before.** This is the positive form, for
+the narrow reading. -/
 theorem narrow_acquisition_before {praxis : MediumFrame}
     (history : History praxis) (narrow : praxis.End → Prop)
     (m : praxis.Means) (n : ℕ)
@@ -397,10 +399,10 @@ theorem purposive_mono {praxis : MediumFrame} {history : History praxis}
   fun j hj agent g hacquired =>
     purposive j (Nat.lt_of_lt_of_le hj hkn) agent g hacquired
 
-/-- **Barter origin** — Rothbard's p. 275 version, positive: if anyone
-appraises `m` as a medium on day `n`, someone acquired `m` on an earlier
-day for an end other than passing it on, giving for it a good that was
-not then a medium. -/
+/-- **Barter origin** — Rothbard's p. 275 version, positive. Say anyone
+appraises `m` as a medium on day `n`. Then someone acquired `m` on an
+earlier day for an end other than passing it on. And he gave for it a
+good that was not then a medium. -/
 theorem barter_origin {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
     (twoDemands : TwoPartialDemands praxis m)
@@ -435,14 +437,14 @@ theorem no_medium_without_barter_acquisition {praxis : MediumFrame}
     ⟨agent, g, hacquired, hdirect, barter k hk agent g hacquired⟩
 
 /-- **The prior money relates back** — *Power and Market*'s
-parenthesis: if anyone appraises `m` as a medium on day `n`, someone
-acquired `m` on an earlier day `k` against some good `g`; and if `g`
-was then a medium, someone acquired `g` before `k` for an end other
-than passing it on.
+parenthesis. Say anyone appraises `m` as a medium on day `n`. Then
+someone acquired `m` on an earlier day `k`, against some good `g`. And
+say `g` was then a medium. Then someone acquired `g` before `k`, for
+an end other than passing it on.
 
-The claim and the conditions are carried for every good, since which
-good was paid is found, not given: the record must begin before any
-medium at all. -/
+Both claims, and the conditions `begins` and `purposive`, are carried
+for every good. That is because which good was paid is found, not given. So the record must
+begin before any medium at all. -/
 theorem prior_money_relates_back {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
     (twoDemands : ∀ g, TwoPartialDemands praxis g)

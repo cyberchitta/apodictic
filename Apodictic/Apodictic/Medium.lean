@@ -48,12 +48,12 @@ namespace Apodictic
 
 /-- An action frame with onward ends. -/
 structure MediumFrame extends ActionFrame where
-  /-- `Onward m e`: `e` is an end the agent would reach by giving `m`
-  itself away in a later trade. No properties. -/
+  /-- `Onward m e`: the agent would reach the end `e` by giving `m`
+  itself away in a later trade. The relation has no properties. -/
   Onward : Means → End → Prop
 
-/-- The agent, at that time, believes `m` serves some onward end: he
-appraises `m` as a medium of exchange. -/
+/-- At that time, the agent believes `m` serves some onward end. That
+is, he appraises `m` as a medium of exchange. -/
 def MediumFrame.AppraisesAsMedium (praxis : MediumFrame) (agent : praxis.Agent)
     (time : praxis.Time) (m : praxis.Means) : Prop :=
   ∃ e, praxis.Onward m e ∧ praxis.Believes agent time m e
@@ -84,21 +84,22 @@ def Trade.Indirect {praxis : MediumFrame} (trade : Trade praxis.toActionFrame) :
   praxis.AppraisesAsMedium trade.agent trade.time trade.gets
 
 /-- **Purely indirect** — a condition on one trade. Every end the agent
-believes the received good serves is an onward end: he wants it only to
-pass it on. Fails where the good is also wanted for itself. -/
+believes the received good serves is an onward end. He wants the good
+only to pass it on. It fails where he believes the good also serves an
+end that is not onward: he wants it for itself too. -/
 def Trade.PurelyIndirect {praxis : MediumFrame}
     (trade : Trade praxis.toActionFrame) : Prop :=
   ∀ e, praxis.Believes trade.agent trade.time trade.gets e →
     praxis.Onward trade.gets e
 
-/-- The record of exchanges that happened: on day `k`, at time
+/-- The record of exchanges that happened. On day `k`, at time
 `date k`, the exchanges in `exchanges k` were made.
 
-Shape (audit): the day of an exchange is its index here, and each
-party's beliefs about it are read at `date k`. The `time` fields of the
+Shape (audit): the day of an exchange is its index here. Each party's
+beliefs about it are read at `date k`. The `time` fields of the
 exchange's two trades are not consulted. Nothing says the record is
-complete; a claim asserted of an incomplete record asserts more than
-one asserted of the complete one. -/
+complete. A claim asserted of an incomplete record asserts more than
+one asserted of the complete record. -/
 structure History (praxis : MediumFrame) where
   /-- The time of each day. -/
   date : ℕ → praxis.Time
@@ -124,8 +125,8 @@ def History.MediumAt {praxis : MediumFrame} (history : History praxis)
   ∃ agent, praxis.AppraisesAsMedium agent (history.date n) m
 
 /-- On day `k`, someone acquired `m` for an end other than passing it
-on: `m` had "exchange value on account of other employments", in the
-broad reading. -/
+on. In the broad reading, this is `m` having "exchange value on account
+of other employments". -/
 def History.DirectAcquisitionAt {praxis : MediumFrame} (history : History praxis)
     (k : ℕ) (m : praxis.Means) : Prop :=
   ∃ agent g, history.AcquiredAgainst k m agent g ∧
@@ -140,29 +141,36 @@ def History.NarrowAcquisitionAt {praxis : MediumFrame} (history : History praxis
       narrow e
 
 /-- **The record begins before the medium** — a condition on the
-situation. On day 0 nobody appraises `m` as a medium. Mises: "the
-regression does not go back endlessly" (*Human Action*, ch. XVII, §4);
-Rothbard: "as we regress backwards in time, we must eventually arrive
-at the original point when people first began to use gold as a medium
-of exchange" (*MES* p. 272). Both assert it; neither argues it. Fails
-of a record that starts inside a monetary economy. -/
+situation. On day 0, nobody appraises `m` as a medium.
+
+Mises: "the regression does not go back endlessly" (*Human Action*,
+ch. XVII, §4). Rothbard: "as we regress backwards in time, we must
+eventually arrive at the original point when people first began to use
+gold as a medium of exchange" (*MES* p. 272). Both assert it. Neither
+argues it.
+
+It fails of a record that starts with `m` already a medium: someone
+appraises `m` as a medium on day 0. -/
 def History.BeginsBeforeMedium {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) : Prop :=
   ¬ history.MediumAt 0 m
 
 /-- **Acquisitions are purposive** — a condition on the situation.
-Whoever acquired `m` before day `n` believed, that day, that `m`
-serves some end. Fails where a good is taken only to be rid of the
-good given for it. -/
+Whoever acquired `m` on a day before `n` believed, that day, that `m`
+serves some end. It fails where someone acquired `m` before day `n`
+believing it served no end at all. Say he took it only to be rid of
+the good he gave for it. -/
 def History.AcquisitionsPurposive {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) (n : ℕ) : Prop :=
   ∀ k < n, ∀ agent g, history.AcquiredAgainst k m agent g →
     ∃ e, praxis.Believes agent (history.date k) m e
 
 /-- **Own past price** — a condition, in the only form the vocabulary
-can state without quantities: whoever appraises `m` as a medium on a
-day before `n` does so after an exchange of `m` on an earlier day.
-"The appraisal RESTS ON that exchange" cannot be said here; what can
+can state without quantities. Take anyone who appraises `m` as a medium
+on a day before `n`, other than day 0. He does so after an exchange of
+`m` on an earlier day.
+
+"The appraisal RESTS ON that exchange" cannot be said here. What can
 be said coincides with the claim `AppraisalFromPast`, restricted to the
 days before `n` (`Apodictic.Regression.ownPastPrice_of_claim`). -/
 def History.OwnPastPrice {praxis : MediumFrame} (history : History praxis)
@@ -174,20 +182,28 @@ def History.OwnPastPrice {praxis : MediumFrame} (history : History praxis)
 /-- **Formed in barter** — a condition on the situation. Whatever was
 given for `m` on a day before `n` was not, that day, appraised as a
 medium by anyone. Rothbard: "it can arise only out of a commodity
-previously used directly in a barter situation" (*MES* p. 275). Fails
-for every good first bought with money. -/
+previously used directly in a barter situation" (*MES* p. 275).
+
+It fails where `m` was acquired, on a day before `n`, against a good
+that someone appraised as a medium that day. So it fails wherever `m`
+was bought with money before day `n`. -/
 def History.FormedInBarter {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) (n : ℕ) : Prop :=
   ∀ k < n, ∀ agent g, history.AcquiredAgainst k m agent g →
     ¬ history.MediumAt k g
 
 /-- **Other employments are consumption or production** — the narrow
-reading, as a condition on ends. Every end other than an
-onward one for which `m` was acquired before day `n` is in `narrow`.
-`narrow` is supplied by whoever applies the theorem, the ends Mises
+reading, as a condition on ends. Take any acquisition of `m` before
+day `n`. Every end the acquirer then believed `m` served, other than
+an onward one, is in `narrow`.
+
+Whoever applies the theorem supplies `narrow`. It is the ends Mises
 means by "the services it can render directly to consumption or
-production" (*Human Action*, ch. XVII, §4); the library sorts no ends.
-Fails where a good was first wanted for a game, a cause, or a test. -/
+production" (*Human Action*, ch. XVII, §4). The library sorts no ends.
+
+It fails where someone acquired `m` before day `n` for an end, other
+than an onward one, outside `narrow`. Say the good was first wanted
+for a game, a cause, or a test. -/
 def History.OtherEmploymentsNarrow {praxis : MediumFrame}
     (history : History praxis) (narrow : praxis.End → Prop)
     (m : praxis.Means) (n : ℕ) : Prop :=
