@@ -73,13 +73,17 @@ time.
 increment can be employed only for the removal of a want which is
 less urgent or less painful than the least urgent or least painful
 among all those wants which could be removed by means of the supply
-n–1" (*Human Action*, ch. VII, §1) — with "could be removed by means
-of the supply n–1" read as WAS removed by it, at the earlier time, and
-"the increment can be employed" as what the later allocation serves
-that the earlier did not.
+n–1" (*Human Action*, ch. VII, §1).
+
+Two phrases are read as history:
+
+- "could be removed by means of the supply n–1" is read as WAS
+  removed by it, at the earlier time.
+- "the increment can be employed" is read as what the later
+  allocation serves that the earlier did not.
 
 `judged` is the time whose scale ranks the two wants. Mises's
-sentence does not say which; the module docstring says why it
+sentence does not say which. The module docstring says why it
 matters. -/
 def Ladder {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
@@ -94,26 +98,32 @@ def Ladder {praxis : ActionFrame} {agent : praxis.Agent}
 /-- **The ladder, judged on the earlier scale** — a theorem, from a
 claim about actual action and two situational conditions.
 
-What it spends: that the earlier allocation acts in order
-(`ActsInOrder before`); that the good's serviceable ends are
-comparable at the earlier time; and that whatever the good is
-believed to serve at the later time it was believed to serve at the
-earlier one (`noNewUses`) — the increment's want has to be on the
-earlier scale at all before that scale can rank it.
+What it spends:
 
-What it does NOT spend, and the signature shows: nothing about the
-later allocation beyond membership, nothing about the supply having
-grown (`Stock.Grows` is not a hypothesis — added as one, it fails the
-unused-argument linter), nothing about the order of the two times,
-and nothing about the later scale. The argument is Mises's: the added
-want was serviceable and unserved before; had it been more urgent than
-something served, acting in order would have served it. Mises's
-minimality qualifier is idle here as on both counterfactual routes:
-`least` need only have been served.
+- The earlier allocation acts in order (`ActsInOrder before`).
+- The good's serviceable ends are comparable at the earlier time
+  (`earlier.ComparableServiceable`).
+- Whatever the good is believed to serve at the later time, it was
+  believed to serve at the earlier one (`earlier.NoNewUses later`).
+  The increment's want has to be on the earlier scale at all. Only then
+  can that scale rank it.
 
-So this is the ladder as a statement about the EARLIER allocation:
-what was passed over ranked below what was served, then. It says of
-the increment only that it was passed over. -/
+What it does NOT spend, as the signature shows:
+
+- Nothing about the later allocation beyond membership.
+- Nothing about the supply having grown. `Stock.Grows` is not a
+  hypothesis. Added as one, it fails the unused-argument linter.
+- Nothing about the order of the two times.
+- Nothing about the later scale.
+
+The argument is Mises's. The added want was serviceable and unserved
+before. Had it been more urgent than something served, acting in order
+would have served it. Mises's minimality qualifier is idle here, as on
+both counterfactual routes. `least` need only have been served.
+
+So this is the ladder as a statement about the EARLIER allocation.
+What was passed over then ranked below what was served then. Of the
+increment it says only that it was passed over. -/
 theorem ladder_judged_earlier
     {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
@@ -139,15 +149,23 @@ theorem ladder_judged_earlier
       haddedNotBefore
 
 /-- **The ladder, judged on the later scale, from everything a
-one-time premise can give** — written out as a `Prop` so that it can
+one-time premise can give** — written out as a `Prop`, so that it can
 be refuted by construction (`Apodictic.Model.later_judged_ladder_fails`).
 
-Granted at BOTH times: acting in order, comparability of the good's
-ends, asymmetry of preference. Granted across them: that the supply
-grew by one and that the good is believed to serve the same ends. Not
-granted: any relation between the two scales. The statement is false
-in a frame where the scale reverses between the two times, which is
-the situation both authors say cannot be excluded. -/
+Granted at BOTH times:
+
+- Acting in order.
+- Comparability of the good's ends.
+- Asymmetry of preference.
+
+Granted across the two times:
+
+- The supply grew by one.
+- The good is believed to serve the same ends.
+
+Not granted: any relation between the two scales. The statement is
+false in a frame where the scale reverses between the two times. Both
+authors say that situation cannot be excluded. -/
 def LadderJudgedLaterFromOrder : Prop :=
   ∀ (praxis : ActionFrame) (agent : praxis.Agent)
     (earlierTime laterTime : praxis.Time)

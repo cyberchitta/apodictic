@@ -999,9 +999,9 @@ theorem reversal_ladder_judged_later_fails :
 
 /-- **The later-judged ladder does not follow from one-time premises.**
 Every hypothesis of `Temporal.LadderJudgedLaterFromOrder` holds in
-this frame, and its conclusion does not. What is missing is a relation
-between the two scales, and the frame is exactly a case where there
-is none. -/
+this frame. Its conclusion does not. What is missing is a relation
+between the two scales. This frame is exactly a case where there is
+none. -/
 theorem later_judged_ladder_fails : ¬ Temporal.LadderJudgedLaterFromOrder := by
   intro h
   exact reversal_ladder_judged_later_fails
