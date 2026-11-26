@@ -394,56 +394,91 @@ three groups.
 
 
 The library contains no `axiom`. Every praxeological claim is written
-as a structure, and a theorem that needs one takes it as a named
+as a structure. A theorem that needs a claim takes it as a named
 assumption. So to see what a theorem rests on, you read its statement.
 
-Nor can that list be padded. A theorem could carry a claim only to
-look better grounded — a claim about action, say, that the proof never
-touches. `#lint only unusedArguments` runs on every build and fails it
+Nor can that list be padded. Take, say, a claim about action that the
+proof never touches. A theorem could list it only to look better grounded.
+`#lint only unusedArguments` runs on every build. It fails the build
 when a listed assumption does no work. So the list is held from both
-sides: Lean rejects a theorem that leaves a premise off, and the linter
-rejects one that lists a premise it never uses. That is the reason to
-do this on a machine. The hold is not perfect; where it gives is set
-out under *The manifest*.
+sides:
 
-Each claim records three things. *Source* is a citation, or
-"tacit". *Status* is one of three verdicts: explicit-in-tradition
-(Rothbard or Mises say it), suppressed-premise (they use it without
-saying it), or our-reconstruction (a decision the tradition never
-faced). *Does not say* lists the stronger nearby claims it
-deliberately avoids.
+- Lean rejects a theorem that leaves a premise off.
+- The linter rejects a theorem that lists a premise it never uses.
 
-Two rules govern the list. A claim is added only when some theorem
-first needs it, so every claim here is one that some theorem actually
-uses. And only claims meant to hold always belong here; a
-condition that says when a law applies is a hypothesis instead, and
-those have a part of their own below.
+That is the reason to do this on a machine. The hold is not perfect.
+Where it gives is set out under *The manifest*.
 
-There are ten. The first is the premise of Rothbard's derivation,
-and on his route it is the only claim the law needs. The second is the
-premise of Mises's, reconstructed in the same vocabulary; the third is
-asymmetry of preference, which neither derivation spends and one
-comparison between them does. The next two are about what a man
-actually does, rather than what he would do. The fourth is the premise
-of the ladder read as a history, and runs from his ranking to his act.
-The fifth runs the other way, from an act to his ranking: demonstrated
-preference, the premise of exchange, stated of one trade. The next
-two are about time. The sixth is time preference: a satisfaction is
-preferred sooner rather than later. The seventh is its
-demonstration, stated of one act: taking a satisfaction and forgoing
-the same satisfaction later shows a preference for the sooner. The
-next two are about a medium of exchange, and are premises of the
-regression theorem, the ninth only of its positive form. The eighth is appraisal from the past: nobody
-appraises a good as a medium unless it changed hands on some earlier
-day. The ninth is Mises's division of the demand for a medium into
-two: sorting ends into those reached by passing a good on and the
-rest leaves none over. The tenth is the interest theorems' own claim,
-beside time preference: of two sums of money, one part of the other,
-both free to hold and buying different things, the larger is preferred
-at the date it would be spent. The eighth and ninth are carried by the
-theorems under *The regression theorem*, the tenth by those under
-*Interest*; the manifests in each part list exactly which claims each
-theorem carries.
+Each claim records three things:
+
+- *Source*: a citation, or "tacit".
+- *Status*: one of three verdicts, listed next.
+- *Does not say*: the stronger nearby claims it deliberately avoids.
+
+The three verdicts are these:
+
+- explicit-in-tradition: Rothbard or Mises say it.
+- suppressed-premise: they use it without saying it.
+- our-reconstruction: a decision the tradition never faced.
+
+Two rules govern the list:
+
+- A claim is added only when some theorem first needs it. So every
+  claim here is one that some theorem actually uses.
+- Only claims meant to hold always belong here. A condition that says
+  when a law applies is a hypothesis instead. The conditions have a
+  part of their own below.
+
+There are ten. The first three are these:
+
+- The first is the premise of Rothbard's derivation (`SwapDominant`).
+  On his route it is the only claim the law needs.
+- The second is the premise of Mises's derivation, reconstructed in the same
+  vocabulary (`ServedInOrder`).
+- The third is asymmetry of preference (`AsymmetricPreference`).
+  Neither derivation spends it. One comparison between them does.
+
+The next two are about what a man actually does, not what he would do:
+
+- The fourth is the premise of the ladder read as a history
+  (`ActsInOrder`). It runs from his ranking to his act.
+- The fifth runs the other way, from an act to his ranking. It is
+  demonstrated preference (`DemonstratedPreference`), the premise of
+  exchange. It is stated of one trade.
+
+The next two are about time:
+
+- The sixth is time preference (`TimePreference`). A satisfaction is
+  preferred sooner rather than later.
+- The seventh is its demonstration (`DemonstratedTimePreference`). It
+  is stated of one act. Taking a satisfaction and forgoing the same
+  satisfaction later shows a preference for the sooner.
+
+The next two are about a medium of exchange. Both are premises of the
+regression theorem:
+
+- The eighth is appraisal from the past (`AppraisalFromPast`). Nobody
+  appraises a good as a medium unless it changed hands on some earlier
+  day.
+- The ninth is Mises's division of the demand for a medium into two
+  (`TwoPartialDemands`). Sort the ends into those reached by passing
+  a good on, and the rest. The sort leaves none over. The ninth is a
+  premise only of the regression theorem's positive form.
+
+The tenth is the interest theorems' own claim. It is about sums of
+money (`MoreMoneyPreferredWhenSpent`). Take two sums, one part of the
+other. Both are free to hold. They would buy different things. Then
+the larger is preferred at the date it would be spent. The theorems
+that carry it also carry time preference (`TimePreference`).
+
+Where the last three are carried:
+
+- The eighth and ninth are carried by the theorems under *The
+  regression theorem*.
+- The tenth is carried by those under *Interest*.
+
+The manifests in each part list exactly which claims each theorem
+carries.
 
 {docstring Apodictic.SwapDominant}
 
