@@ -58,18 +58,18 @@ theorem insert_sdiff_self_of_mem {α : Type} [DecidableEq α]
 hand. Every end the agent would serve with it is preferred to every
 end the good could serve but he would leave unserved.
 
-This is everything `SwapDominant` gives, and it is more than Rothbard
-claims: it sets a served end against ANY unserved end the good could
+This is everything `SwapDominant` gives. It is more than Rothbard
+says. It sets a served end against ANY unserved end the good could
 serve, not only against the one the next unit would reach. It needs
-the hypothesis that uses are independent, which is what carries a
-preference between two bundles down to a preference between two
-ends.
+the hypothesis of independence of uses (`IndependentUses agent time`).
+That hypothesis is what carries a preference between two bundles down
+to a preference between two ends.
 
-How the proof goes: swap the `served` want for the `unserved` one, and
+How the proof goes. Swap the `served` want for the `unserved` one, and
 the plan beats the result. The served bundle is that one want together
-with the rest (`insert_sdiff_self_of_mem`), so the two bundles differ
-in exactly one place — and independence reads the preference between
-those two wants off that. -/
+with the rest (`insert_sdiff_self_of_mem`). So the two bundles differ
+in exactly one place. Independence of uses reads the preference
+between those two wants off that. -/
 theorem served_over_unserved {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
     {stock : Stock praxis agent time}
@@ -96,12 +96,13 @@ theorem served_over_unserved {praxis : ActionFrame} [DecidableEq praxis.End]
     exact hbeats
 
 /-- **The urgency principle** (Rothbard), stated as a loss. Suppose the
-agent had `more` units and drops to `fewer`, one unit fewer. Every end
-he would still serve at `fewer` is preferred to every end he has to
-abandon on the way down: the loss falls on the least urgent want.
+agent had `more` units and drops to `fewer`, one unit fewer
+(`stock.OneMore fewer more`). Every end he would still serve at
+`fewer` is preferred to every end he has to abandon on the way down.
+The loss falls on the least urgent want.
 
-One application of `served_over_unserved`. An abandoned end is one the
-good can serve and the plan does not serve at `fewer` — and beyond
+It is one application of `served_over_unserved`. An abandoned end is
+one the good can serve and the plan does not serve at `fewer`. Beyond
 supplying that much, the fact that `more` is exactly one unit larger
 does no work here. -/
 theorem urgency_principle {praxis : ActionFrame} [DecidableEq praxis.End]
@@ -118,18 +119,18 @@ theorem urgency_principle {praxis : ActionFrame} [DecidableEq praxis.End]
   exact served_over_unserved plan dominance independent fewer onHand
     kept hkept lost (plan.servesOnlyWhatItCan more lost hlost) hnotKept
 
-/-- **No rival plan, one swap away.** If preference is asymmetric,
-then two plans over the same stock cannot both be swap-dominant while
-differing by a single swap at some sub-stock.
+/-- **No rival plan, one swap away.** Suppose preference is
+asymmetric. Then two plans over the same stock cannot both be
+swap-dominant while differing by a single swap at some sub-stock.
 
-This is what Rothbard means by "the" value scale, and here it is
-derived rather than presupposed. He writes as though the actor's
-ranking were simply given — "the" marginal unit, "the" least urgent
-want (*MES* pp. 24–27) — and never argues that there is only one.
-Swap dominance plus asymmetry delivers it. Asymmetry is the
-praxeological claim `AsymmetricPreference`, spent here and by
-`Apodictic.Contrast.rothbard_entails_servedInOrder`; `Prefers` has no
-properties assumed of it otherwise. -/
+This is what Rothbard means by "the" value scale. Here it is derived
+rather than presupposed. He writes as though the actor's ranking were
+simply given — "the" marginal unit, "the" least urgent want (*MES*
+pp. 24–27). He never argues that there is only one. Swap dominance
+(`SwapDominant`) plus asymmetry delivers it. Asymmetry is the
+praxeological claim `AsymmetricPreference`. It is spent here and by
+`Apodictic.Contrast.rothbard_entails_servedInOrder`. Apart from
+asymmetry, `Prefers` has no properties assumed of it. -/
 theorem no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
     {stock : Stock praxis agent time}

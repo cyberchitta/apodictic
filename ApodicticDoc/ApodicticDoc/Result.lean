@@ -563,72 +563,75 @@ Other parts take conditions of their own:
 # The theorems
 
 
-The derivation is three steps, and only the first does any work.
+The derivation is three steps. Only the first does any work.
 
-Start with the six horses. The man serves ends 1–6; ends 7–10 remain
-unsatisfied. The claim says: take that bundle, swap any served end for
-any unserved end a horse could have served, and he prefers what he
-would have had to what the swap leaves him. So `{1,2,3,4,5,6}` beats
-`{1,2,3,4,5,7}`. It also beats `{1,2,3,4,5,8}`, and it beats
-`{2,3,4,5,6,7}` if end 1 is the one swapped out. Any single swap
-loses.
+Start with the six horses. The man serves ends 1–6. Ends 7–10 remain
+unsatisfied. Take that bundle. The claim (`SwapDominant`) says the
+following. Swap any served end for any unserved end a horse could have
+served. Then he prefers what he would have had to what the swap leaves
+him. So `{1,2,3,4,5,6}` beats `{1,2,3,4,5,7}`. It also beats
+`{1,2,3,4,5,8}`. And it beats `{2,3,4,5,6,7}` if end 1 is the one
+swapped out. Any single swap loses.
 
-That is a claim about bundles. The law is a claim about single ends:
+That claim is about bundles. The law is about single ends. It says
 that pleasure riding is less urgent than leading a wagon. To pass from
-one to the other you need that a preference between two bundles
-differing in exactly one place is a preference between those two ends.
-That step is independence of uses, and it is ours rather than
-Rothbard's: he ranks ends against each other directly, off a scale
-already ranked (Figure 3, pp. 25–26), and the passages quoted above
-never compare bundles at all. We need the step because we make a claim
-about bundles where he makes one fused claim — and where uses are
-complementary the step fails, and the law is silent.
+bundles to ends, you need one more step. A preference between two
+bundles differing in exactly one place is a preference between those
+two ends. That step is independence of uses (`IndependentUses agent
+time`). It is ours rather than Rothbard's. He ranks ends against each
+other directly, off a scale already ranked (Figure 3, pp. 25–26). The
+passages quoted above never compare bundles at all. We need the step
+because we make a claim about bundles where he makes one fused claim.
+Where uses are complementary, the step fails, and the law is silent.
 
-Take it, and every end he would serve with a given string of horses is
-preferred to every end he would leave unserved. That is already more
-than Rothbard claims. It does not care whether the unserved end is the
-one the next horse would have reached: end 6 beats end 7, and it beats
-end 10 just as squarely.
+Take that step, and the conclusion is this. Every end he would serve
+with a given string of horses is preferred to every end he would leave
+unserved. That is already more than Rothbard says. The conclusion does
+not care whether the unserved end is the one the next horse would have
+reached. End 6 beats end 7. It beats end 10 just as squarely.
 
 {docstring Apodictic.served_over_unserved}
 
 Urgency is that ranking, restricted to the end he loses. Take a horse
-away, and the end he gives up is one he would have served with six and
-does not serve with five — an unserved end at the smaller stock.
-Served-over-unserved has already ranked it below everything still
-served. Rothbard's horse sentence, quoted at the start, says exactly
-that and nothing more. That the larger stock is exactly one horse
-larger does no work beyond naming which end is the lost one.
+away. The end he gives up is one he would have served with six and
+does not serve with five. So it is an unserved end at the smaller
+stock. Served-over-unserved has already ranked it below everything
+still served. Rothbard's horse sentence, quoted at the start, says
+exactly that and nothing more. The larger stock is exactly one horse
+larger (`stock.OneMore fewer more`). That exactness does no work beyond naming which end is the lost one.
 
 {docstring Apodictic.urgency_principle}
 
-The law is urgency again, said of the ends a unit adds — the ends
-served with the larger stock and not with the smaller, which is
+The law is urgency again, said of the ends a unit adds. These are the
+ends served with the larger stock and not with the smaller. That is
 Rothbard's own definition of the marginal utility of a supply.
 
 {docstring Apodictic.marginalEnds}
 
-Along a chain of named horses, apply it at the second step: what the
-sixth horse adds is less urgent than what the fifth added, because
-what the fifth added is still being served when he has five, and what
-the sixth adds is not. That the first step is a one-horse step is not
-used. Interchangeability is not used either, because the chain names
+Along a chain of named horses, apply urgency at the second step. What
+the sixth horse adds is less urgent than what the fifth added. That is
+because what the fifth added is still being served when he has five,
+and what the sixth adds is not. That the first step is a one-horse
+step (`stock.OneMore small medium`) is not used. Interchangeability
+of units (`plan.Homogeneous`) is not needed either, because the chain names
 which horses.
 
 {docstring Apodictic.marginal_utility_chain}
 
 Said by the size of the supply, the two steps need not share a horse.
 "The plan at five" and "the plan at six" are one thing each only if
-any five horses get the same ends. Interchangeability is used exactly
-once, to say that. After it the argument is urgency over again.
+any five horses get the same ends. Interchangeability of units
+(`plan.Homogeneous`) is used exactly once, to say that. After it, the
+argument is urgency over again.
 
 {docstring Apodictic.marginal_utility}
 
-One result here is not a step in the derivation. The claim is made
-about a single plan rather than about every plan shaped like it. What
-that gives up — that
-the man's scale is the only one of its kind — comes back as a theorem,
-and it is shown here because the rest of the document leans on it.
+One result here is not a step in the derivation. The claim
+(`SwapDominant`) is made about a single plan. It is not made about
+every plan shaped like it. What that gives up is that the man's scale
+is the only one of its kind. That comes back as a theorem. The theorem
+also carries asymmetry of preference (`AsymmetricPreference`). The
+theorem is shown here because the rest of the document leans on it.
 
 {docstring Apodictic.no_rival_swap_dominant}
 

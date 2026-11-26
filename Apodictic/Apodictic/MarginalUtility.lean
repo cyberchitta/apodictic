@@ -45,31 +45,30 @@ marginality of the end at the smaller supply is unused by the proof
 namespace Apodictic
 
 /-- **Marginal utility of a one-unit step**, from `fewer` to `more`,
-in Rothbard's own sense: the ends the extra unit adds, which are the
-same ends that would be given up if it were lost.
+in Rothbard's own sense. It is the ends the extra unit adds. These are
+the same ends that would be given up if it were lost.
 "The marginal utility of the supply is the end that must be given up
 as the result of a loss of the unit" (*MES* p. 27); "he gives up the
 least urgent of the wants which the larger stock would have
 satisfied" (p. 25).
 
-A set of ends rather than a single end, because nothing here assumes
-that exactly one end drops: determinacy of the drop is not among the
-law's premises. It is a `Set`
-rather than a `Finset` for a mechanical reason: subtracting one
-`Finset` from another requires being able to decide when two ends are
-the same end, which an arbitrary frame does not give us — and reaching
-for `Classical` would put `Classical.choice` on the manifest for no
-praxeological reason at all.
+It is a set of ends rather than a single end, because nothing here
+assumes that exactly one end drops. Determinacy of the drop is not
+among the law's premises. It is a `Set` rather than a `Finset` for a
+mechanical reason. Subtracting one `Finset` from another requires
+being able to decide when two ends are the same end. An arbitrary
+frame does not give us that. Reaching for `Classical` would put
+`Classical.choice` on the manifest for no praxeological reason at all.
 
-A definition, not a claim — Rothbard introduces it as one ("is
-called", "is known as"). What licenses calling this the utility of
-the *unit* is imputation of value from ends back to means: "actors
-value means strictly in accordance with their valuation of the ends
-that they believe the means can serve" (p. 19).
+It is a definition, not a claim. Rothbard introduces it as a
+definition ("is called", "is known as"). What licenses calling this
+the utility of the *unit* is imputation of value from ends back to
+means: "actors value means strictly in accordance with their valuation
+of the ends that they believe the means can serve" (p. 19).
 
-Indexed by the step rather than by a size, because which ends a unit
-adds can depend on which units are already on hand — unless the plan
-is `Homogeneous`. -/
+It is indexed by the step rather than by a size. The reason is that
+which ends a unit adds can depend on which units are already on hand,
+unless interchangeability of units (`plan.Homogeneous`) holds. -/
 def marginalEnds {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock)
@@ -77,22 +76,24 @@ def marginalEnds {praxis : ActionFrame} {agent : praxis.Agent}
   {want | want ∈ plan.wouldServe more ∧ want ∉ plan.wouldServe fewer}
 
 /-- **The law of marginal utility, along a chain of named units.**
-Take three sub-stocks, `small` inside `medium` inside `large`, each
-one unit more than the last. Every end the first step adds is
-preferred to every end the second step adds.
+Take three sub-stocks, `small` inside `medium` inside `large`. Each is
+one unit more than the last (`stock.OneMore`). Every
+end the first step adds is preferred to every end the second step
+adds.
 
-No interchangeability of units is needed, because the chain names
-which units are involved. One application of `urgency_principle`.
+No interchangeability of units (`plan.Homogeneous`) is needed, because
+the chain names which units are involved. The theorem is one
+application of `urgency_principle`.
 
 Two things go unused, and the statement records both. `_firstStep` is
-listed and does no work at all: the underscore is how that is written
-down, and it is a finding — the chain form does not need the first
-step to be a step. And within the hypothesis that an end is marginal
-at the first step, only half is used; the unused half is destructured
-as `_notNeeded` inside the proof, which is a name in the proof and not
-a binder in the statement. The linter that keeps this list honest sees
-neither case: it is silenced by the underscore, and it works a whole
-binder at a time. -/
+listed and does no work at all. The underscore is how that is written
+down. That it does no work is a finding: the chain form does not need
+the first step to be a step. And within the hypothesis that an end is
+marginal at the first step, only half is used. The unused half is
+destructured as `_notNeeded` inside the proof. That is a name in the
+proof, not a binder in the statement. The linter that keeps this list
+honest sees neither case. It is silenced by the underscore. And it
+works a whole binder at a time. -/
 theorem marginal_utility_chain
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -117,18 +118,18 @@ the smaller the supply, the higher the marginal utility."
 
 This is the version stated by supply SIZE. Every end that is marginal
 at a supply of `n` units is preferred to every end marginal at a
-supply of `n + 1` — and that holds for ANY two one-unit steps
-reaching those sizes, which need not have a single unit in common.
+supply of `n + 1`. That holds for ANY two one-unit steps reaching
+those sizes. The two steps need not have a single unit in common.
 
-`plan.Homogeneous` is needed exactly once: to say that the plan at the
-`n` units below the second step is the same as the plan at the `n`
-units of the first. Without it the two steps could not be compared at
-all.
+Interchangeability of units (`plan.Homogeneous`) is needed exactly
+once. It is needed to say that the plan at the `n` units below the
+second step is the same as the plan at the `n` units of the first.
+Without it the two steps could not be compared at all.
 
-Here too only half of the marginality hypothesis is used — the unused
-half is destructured as `_notNeeded` in the proof, a proof-local name
-and not a binder in the statement. Every binder this theorem lists is
-used. -/
+Here too only half of the marginality hypothesis is used. The unused
+half is destructured as `_notNeeded` in the proof. That is a
+proof-local name, not a binder in the statement. Every binder this
+theorem lists is used. -/
 theorem marginal_utility
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
