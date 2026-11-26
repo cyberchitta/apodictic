@@ -1,10 +1,12 @@
 {
-  "title": "apodictic",
+  "title": "apodictic: Austrian Economics, Machine-Checked",
+  "shortTitle": "apodictic",
   "tagline": "machine-checked praxeology",
   "github": "cyberchitta/apodictic",
   "url": "https://apodictic.cyberchitta.cc",
   "mainSiteUrl": "https://www.cyberchitta.cc",
   "description": "Austrian economics machine-checked in Lean 4. Each theorem lists every assumption it rests on, and where each came from in Mises and Rothbard. When an Austrian conclusion misses reality, you can point at the assumption that failed.",
+  "ogDescription": "Mises claimed the theorems of Austrian economics are as certain as mathematics. This project tests that claim in Lean 4, a proof assistant. Each theorem lists every assumption it rests on, and where each came from in Mises and Rothbard. When an Austrian conclusion misses reality, you can point at the assumption that failed. So far: marginal utility, exchange, time preference and the regression theorem.",
   "publishedAt": "2026-09-05",
   "form": "living",
   "group": "reference",
@@ -18,10 +20,30 @@
     "@grok-4.6"
   ],
   "updates": [
-    { "date": "2026-09-05", "version": "0.1.0", "note": "The law of marginal utility." },
-    { "date": "2026-09-11", "version": "0.2.0", "note": "Mises's route to the law." },
-    { "date": "2026-09-14", "version": "0.3.0", "note": "The ladder as a history." },
-    { "date": "2026-09-18", "version": "0.4.0", "note": "Exchange and time preference." },
-    { "date": "2026-10-13", "version": "0.5.0", "note": "The regression theorem." }
+    {
+      "date": "2026-09-05",
+      "version": "0.1.0",
+      "note": "The law of marginal utility."
+    },
+    {
+      "date": "2026-09-11",
+      "version": "0.2.0",
+      "note": "Mises's route to the law."
+    },
+    {
+      "date": "2026-09-14",
+      "version": "0.3.0",
+      "note": "The ladder as a history."
+    },
+    {
+      "date": "2026-09-18",
+      "version": "0.4.0",
+      "note": "Exchange and time preference."
+    },
+    {
+      "date": "2026-10-13",
+      "version": "0.5.0",
+      "note": "The regression theorem."
+    }
   ]
 }

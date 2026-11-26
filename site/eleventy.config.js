@@ -22,6 +22,10 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addGlobalData('layout', 'layouts/base.ejs');
   eleventyConfig.addGlobalData('helpers', sgHelpers);
+  // `title` and `ogDescription` are the long forms www's index reads;
+  // the site's own chrome (tab titles, site bar) shows `shortTitle`.
+  const chromeSite = { ...site, title: site.shortTitle };
+  eleventyConfig.addGlobalData('site', chromeSite);
 
   // One page per Verso part: doc.md paginates over verso.pages and
   // declares `<showcase type="verso-page" url="..." />`; the element
@@ -29,7 +33,7 @@ export default function (eleventyConfig) {
   const renderCustomElements = createCustomElementRenderer(
     { showcase: { 'verso-page': 'showcase/verso-page.ejs' } },
     includesDir,
-    { data: { verso, site }, helpers: sgHelpers },
+    { data: { verso, site: chromeSite }, helpers: sgHelpers },
   );
   eleventyConfig.addTransform('renderCustomElements', async function (content) {
     if (!this.page.outputPath || !this.page.outputPath.endsWith('.html')) return content;
