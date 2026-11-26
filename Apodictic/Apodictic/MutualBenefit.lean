@@ -3,7 +3,7 @@ import Apodictic.Praxeology
 /-!
 # Mutual benefit — Rothbard's exchange paragraph, *MES* p. 85
 
-One paragraph, four claims: both parties trade "because they expect
+One paragraph, four statements: both parties trade "because they expect
 that it will benefit them"; the goods must have "reverse valuations"
 "before making the exchange"; each party must know of the other and
 his goods; and "After the exchange is made, both A and B have shifted
@@ -11,24 +11,24 @@ to a higher position on their respective value scales."
 
 ## What is proved, and what it costs
 
-- `ranks_received_above_given` / `reverse_valuations`: the second claim
+- `ranks_received_above_given` / `reverse_valuations`: the second statement
   from the first. The trade demonstrates a ranking of HOLDINGS; getting
   down to the two goods costs two conditions Rothbard's table never
   shows — that the rest of the holding does not interact with them
   (complements) and does not duplicate them (substitutes).
-- `better_off_judged_at_trade`: the fourth claim, judged on the scale
+- `better_off_judged_at_trade`: the fourth statement, judged on the scale
   and beliefs of the trade itself. It is the demonstrated preference,
   restated.
-- `better_off_judged_later`: the fourth claim, judged afterwards. It
+- `better_off_judged_later`: the fourth statement, judged afterwards. It
   needs two further conditions, one per way it fails: the beliefs about
   the goods held (no error, no fraud) and the ranking held (no regret).
   `BetterOffLaterWithoutBeliefs` and `BetterOffLaterWithoutRanking`
-  are the claim with each condition dropped, stated so they can be
+  are the statement with each condition dropped, stated so they can be
   refuted by construction.
 
 ## What is not used
 
-The third claim, knowledge of the other party, is a condition for a
+The third statement, knowledge of the other party, is a condition for a
 trade to HAPPEN. Every theorem here starts from a trade that happened,
 so it has no work to do and is not a hypothesis.
 -/
@@ -86,9 +86,9 @@ theorem ranks_received_above_given
   rw [servedBy_insert, servedBy_insert] at chosen
   exact separable _ _ unique.2 unique.1 chosen
 
-/-- **Reverse valuations** (*MES* p. 85): in an exchange, A ranks B's
-good above his own and B ranks A's good above his own, each on his own
-scale and by his own beliefs at the time of the exchange. -/
+/-- **Reverse valuations** (*MES* p. 85). In an exchange, A ranks B's
+good above his own. B ranks A's good above his own. Each ranks on his
+own scale, by his own beliefs, at the time of his trade. -/
 theorem reverse_valuations
     {praxis : ActionFrame} (exchange : Exchange praxis)
     (demonstratedA : DemonstratedPreference exchange.first)
@@ -114,9 +114,10 @@ theorem reverse_valuations
     exact hB
 
 /-- **Better off, judged at the trade** — the holding after ranks
-above the holding before, on the scale and beliefs of the moment of
-trading. Rothbard's "shifted to a higher position", read on the scale
-the traders had "before making the exchange". -/
+above the holding before. The ranking is on the scale and beliefs of
+the moment of trading. This is Rothbard's "shifted to a higher
+position", read on the scale the traders had "before making the
+exchange". -/
 theorem better_off_judged_at_trade
     {praxis : ActionFrame} (trade : Trade praxis)
     (demonstrated : DemonstratedPreference trade)
@@ -128,9 +129,10 @@ theorem better_off_judged_at_trade
   exact chosen
 
 /-- **Better off, judged later** — the holding after ranks above the
-holding before on the agent's scale at `later`, each counted by what
-he believes at `later`. It needs the beliefs about the goods and the
-ranking of the two holdings both to have held. -/
+holding before on the agent's scale at `later`. Each holding is
+counted by what he believes at `later`. It needs two things to have
+held: the beliefs about the goods, and the ranking of the two
+holdings. -/
 theorem better_off_judged_later
     {praxis : ActionFrame} (trade : Trade praxis) (later : praxis.Time)
     (demonstrated : DemonstratedPreference trade)
@@ -154,7 +156,7 @@ theorem better_off_judged_later
   rw [hafter, hbefore]
   exact rankingHolds (better_off_judged_at_trade trade demonstrated voluntary)
 
-/-- The later-judged claim with the beliefs condition dropped. False
+/-- The later-judged statement with the beliefs condition dropped. False
 where the agent learns the good he got does less than he thought —
 refuted by construction in `Apodictic.Model`. -/
 def BetterOffLaterWithoutBeliefs : Prop :=
@@ -163,7 +165,7 @@ def BetterOffLaterWithoutBeliefs : Prop :=
     trade.RankingHolds later →
     praxis.Prefers trade.agent later (trade.after later) (trade.before later)
 
-/-- The later-judged claim with the ranking condition dropped. False
+/-- The later-judged statement with the ranking condition dropped. False
 where the agent changes his mind — refuted by construction in
 `Apodictic.Model`. -/
 def BetterOffLaterWithoutRanking : Prop :=

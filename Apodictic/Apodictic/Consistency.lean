@@ -1147,9 +1147,9 @@ theorem barter_better_off_later_applies (agent : Bool) :
     (barterOk_demonstrated agent) (barter_voluntary _ _ agent)
     (fun _ _ _ => Iff.rfl) (fun h => h)
 
-/-- **Without the beliefs condition, the later-judged claim fails.** A
-trades freely, ranks as before, and — having learned the typewriter
-serves nothing — is not better off by his later lights. -/
+/-- **Without the beliefs condition, the later-judged statement fails.** A
+trades freely. He ranks as before. But he learns the typewriter serves
+nothing. So he is not better off by his later lights. -/
 theorem later_without_beliefs_fails : ¬ MutualBenefit.BetterOffLaterWithoutBeliefs := by
   intro promise
   have demonstrated :
@@ -1160,9 +1160,9 @@ theorem later_without_beliefs_fails : ¬ MutualBenefit.BetterOffLaterWithoutBeli
     demonstrated (barter_voluntary _ _ false) (fun h => h)
   simp [barterTrade, Trade.after, Trade.before, ActionFrame.ServedBy, steadyWants] at h
 
-/-- **Without the ranking condition, the later-judged claim fails.** A
-trades freely, believes as before, and — now wanting decoration — is
-not better off by his later lights. -/
+/-- **Without the ranking condition, the later-judged statement fails.** A
+trades freely. He believes as before. But he now wants decoration. So
+he is not better off by his later lights. -/
 theorem later_without_ranking_fails : ¬ MutualBenefit.BetterOffLaterWithoutRanking := by
   intro promise
   have h := promise barterRegret (barterTrade honestBeliefs _ false) true
