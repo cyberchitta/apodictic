@@ -2018,56 +2018,73 @@ be zero or negative. From 2014, banks in the euro area lent to one
 another overnight at a negative rate. This part rebuilds his argument
 and asks which of its premises such a lender does not satisfy.
 
-The argument runs in four steps, S2 to S5. Follow one lender through
-them. He has ten ounces, which he would spend today on a coat, and a
-borrower offers him a promise of ounces tomorrow. Each step's list
-leaves out bookkeeping, such as which stock each sum comes from.
+The argument runs in four steps, S2 to S5, and Rothbard's own example
+runs through them: John Smith, who ranks units of ten ounces of
+present money against ounces of future money ten years from now
+(*MES*, p. 380). On his scale ten future ounces rank below every unit
+of ten ounces he holds now. Rothbard does not say what Smith would buy
+with the money, and several conditions turn on that; where they do,
+we give him a coat to buy today, which is ours, not Rothbard's. Take
+one unit of his ten ounces, and three sums in ten years: the promise,
+which would buy then what his ten ounces buy now (with prices steady, a
+promise of ten; nothing in S2 or S3 counts its ounces), a smaller sum
+of nine, and what a loan repays. Each step's
+list leaves out bookkeeping, such as which stock each sum comes from.
 
 - *S2: present money is preferred to the same amount of future money.*
-  He prefers his ten ounces today to a promise of ten tomorrow. The
-  claim used is time preference: the same satisfaction sooner is
-  preferred to it later. Three conditions say it is the same
-  satisfaction, and sooner. The ten ounces tomorrow buy the same coat
-  (`SamePurchasingPower`; rising prices break it). The promise will be
-  paid (`PromisePays`; a doubt about the borrower breaks it). And he
-  would spend today's ounces first (`SpentSooner`; it breaks if he
-  would not spend them until tomorrow anyway).
+  He prefers his ten ounces today to the promise of ten. The claim used
+  is time preference: the same satisfaction sooner is preferred to it
+  later. Three conditions say it is the same satisfaction, and sooner.
+  The money the promise pays would buy, then, a coat as good as
+  today's ten buy now (`SamePurchasingPower`; rising prices break it). He
+  counts the promise as the money it promises (`PromisePays`; a doubt
+  about the borrower breaks it). And he would spend today's ounces
+  first (`SpentSooner`; it breaks if he would keep them unspent for the
+  ten years anyway).
 - *S3: …and to any smaller amount.* He also prefers his ten ounces
-  today to a promise of nine tomorrow. The second claim used is that
-  tomorrow, when he spends, more money is preferred to less. Its
-  conditions: every part of the ten ounces promised, nine among them,
-  buys something other than the whole ten do (`BuysMoreThanItsParts`);
-  he ranks tomorrow's ten against tomorrow's nine today as he will
-  tomorrow (`RankedAlikeNowOf`; the man who would rather not have,
-  today, the cash he will spend on an impulse tomorrow breaks it); the
-  promise is of money, not of other goods; holding it, or any part of
-  it, costs nothing; the promised ounces are interchangeable; and his
-  preferences are transitive across these three sums: ten today beats
-  ten tomorrow, ten tomorrow beats nine tomorrow, so ten today beats
-  nine tomorrow.
-- *S4: so no one lends at zero or below.* Had he lent his ten ounces
-  for a promise of ten, or of nine, the loan would not show that he
-  preferred being repaid to keeping his ten ounces. The third claim
+  today to nine in ten years. The second claim used is that more money
+  is preferred to less where the two would buy different things,
+  ranked at the date he would spend them. Its conditions: every
+  smaller part of the promise buys something other than the whole
+  promise does (`BuysMoreThanItsParts`); if, when he
+  spends them, he would rank the ten above the nine, he ranks them so
+  today (`RankedAlikeNowOf`; the man who would rather not have, today,
+  the cash he will spend on an impulse tomorrow breaks it); the promise
+  is of money, not of other goods; holding it, or any part of it, costs
+  nothing; the future ounces he is weighing are interchangeable, so any
+  nine of them are as good as any other nine; and his preferences are
+  transitive across these three sums: ten today beats the promise of
+  ten, the promise of ten beats nine in ten years, so ten today beats
+  nine in ten years.
+- *S4: so he does not lend at zero or below.* Had he lent his ten ounces
+  to be repaid ten, or nine, in ten years, the loan would not show that
+  he preferred being repaid to keeping his ten ounces. The third claim
   used is asymmetry: he cannot prefer each of two things to the other.
   Three conditions: had he said no, he would have kept his ten ounces
   at full value (`RefusalKeepsSum`); after the loan, what he holds is
-  worth what the repayment would buy; and the promise S2 compares
-  against, the one that buys the same coat, is for as many ounces as
-  he lent: ten (`SameCount`).
+  worth just what the repayment would buy; and the promise of ten that
+  S2 compares against is for as many ounces as he lent (`SameCount`).
 - *S5: so every rate struck is positive.* The fourth claim is
-  demonstrated preference: a trade a man makes shows that he preferred
-  it. So if he lends at all, he is repaid more than ten. Here, keeping
-  his ten ounces at full value is not assumed. It follows from two other
-  conditions: the loan was voluntary, so saying no would not have cost
-  him anything, and what he held before the loan was worth just the
-  coat.
+  demonstrated preference, asserted of this loan: in making it he
+  showed that he preferred what he held after it to what refusing would
+  have left him. So if he lends at all, he is repaid more than ten. Rothbard's
+  scale says more than the theorem: Smith's first unit ranks above
+  eleven future ounces and below twelve, so he would lend it for twelve
+  and not for eleven. Here, keeping his ten ounces at full value is not
+  assumed. It follows from two other conditions: the loan was
+  voluntary, so saying no would not have cost him anything, and what he
+  held before the loan was worth just what the ten ounces would buy,
+  the coat. That condition and its partner on S4's list, that what he
+  holds after is worth just what the repayment would buy, ask something
+  of Smith: he holds other units of ten ounces, and they, like anything
+  else he keeps, must add nothing of their own.
 
 Some things the argument seems to need do no work, at least in part of
 it:
 
 - At a rate of exactly zero, the second claim and five of its six
   conditions: only a negative rate needs them, and the theorem for a
-  zero rate carries only interchangeable units.
+  zero rate carries, of S3's conditions, only interchangeable units.
 - "The same amount", in S2 and S3: neither ties the number of ounces
   in the promise to the present sum. S2 counts nothing; S3 counts only
   the smaller sum against the promise, so its "or less" is measured
