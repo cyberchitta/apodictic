@@ -128,8 +128,9 @@ rather than presupposed. He writes as though the actor's ranking were
 simply given — "the" marginal unit, "the" least urgent want (*MES*
 pp. 24–27). He never argues that there is only one. Swap dominance
 (`SwapDominant`) plus asymmetry delivers it. Asymmetry is the
-praxeological claim `AsymmetricPreference`. It is spent here and by
-`Apodictic.Contrast.rothbard_entails_servedInOrder`. Apart from
+praxeological claim `AsymmetricPreference`. It is spent here, by
+`Apodictic.Contrast.rothbard_entails_servedInOrder`, and by the
+theorems its docstring lists. Apart from
 asymmetry, `Prefers` has no properties assumed of it. -/
 theorem no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}

@@ -436,7 +436,8 @@ There are ten. The first three are these:
 - The second is the premise of Mises's derivation, reconstructed in the same
   vocabulary (`ServedInOrder`).
 - The third is asymmetry of preference (`AsymmetricPreference`).
-  Neither derivation spends it. One comparison between them does.
+  Neither derivation spends it. A comparison between them does. So do
+  the rival-plan theorem and four theorems under *Interest*.
 
 The next two are about what a man actually does, not what he would do:
 
@@ -2745,8 +2746,10 @@ in; nothing earlier depends on having read them.
 The basic vocabulary is deliberately bare. Preference is just a
 relation: not assumed transitive, not assumed to rank every pair, and
 time is not assumed ordered. Properties get added when a theorem
-forces them, and so far one has: asymmetry, spent under *Mises's route*
-and by the rival-plan theorem under *The theorems*.
+forces them, and so far one has: asymmetry. It is spent under *Mises's
+route*, by the rival-plan theorem under *The theorems*, and by four
+theorems under *Interest*: the loan theorems and the check on the
+unrestricted rule (`buysMore_of_unrestricted`).
 
 {docstring Apodictic.ActionFrame}
 
