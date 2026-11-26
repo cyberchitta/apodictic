@@ -503,44 +503,52 @@ carries.
 # The conditions
 
 
-The law of marginal utility, on every route here, takes five
-assumptions besides the claims. Each says
-something about the situation rather than about action as such, and
-each is written into the statement, so a reader can point at it and
-say: that is the one that did not hold. Where one fails, the law says
-nothing — it is silent, not wrong.
+The law of marginal utility takes five conditions in all, across its
+routes here, besides the claims. Each says something about the
+situation, not about action as such. Each is written into the
+statement. So a reader can point at one and say: that is the one that
+did not hold. Where one fails, the law says nothing. It is silent, not
+wrong.
 
-- `stock.OneMore fewer more`: the two piles compared are both on hand
-  and differ by exactly one unit. The plan says nothing about piles the
-  man does not hold, and neither does the law.
-- `IndependentUses agent time`: what one want is worth does not depend
-  on which other wants are being served.
-- `plan.Homogeneous`: the plan depends only on how many units there
-  are, not on which ones. Of the law's forms, only the size-based one
-  needs it.
-- `stock.ComparableServiceable`: any two wants the good can serve are
-  ranked one way or the other. Mises's route and the ladder read as a
-  history need it; Rothbard's never does.
-- `earlier.NoNewUses later`: the good is believed to serve no use at
-  the later moment that it was not believed to serve at the earlier
-  one. Only the ladder read as a history needs it, and it is the one
-  condition there that spans two moments. It is about belief in what the good can
-  do, not about the scale, and it runs one way: the man learns no new
-  use, though he may drop an old one.
+- One more unit (`stock.OneMore fewer more`). The two piles compared
+  are both on hand. They differ by exactly one unit. The plan says
+  nothing about piles outside the man's stock. Neither does the law.
+- Independence of uses (`IndependentUses agent time`). What one want
+  is worth does not depend on which other wants are being served.
+- Interchangeability of units (`plan.Homogeneous`). The plan depends
+  only on how many units there are, not on which ones. Of the law's
+  forms, only the size-based one needs it.
+- Comparability (`stock.ComparableServiceable`). Any two wants the
+  good can serve are ranked one way or the other. Mises's route needs
+  it. So does the ladder read as a history. Rothbard's route never
+  does.
+- No new uses (`earlier.NoNewUses later`). At the later moment, the
+  good is believed to serve no use it was not believed to serve at the
+  earlier one. Only the ladder read as a history needs it. There it is
+  the one condition that spans two moments. It is about belief in what
+  the good can do, not about the scale. And it runs one way. The man
+  learns no new use, though he may drop an old one.
 
 Nothing here has to say which plan is the man's. A theorem is handed a
-plan and makes its claim about that one, so there is no rival plan
-anyone could build to refute it.
+plan. Its statement is about that plan. So there is no rival plan
+anyone could build to refute the theorem.
 
-All five are given in full here, in the order they are listed above,
-because these are the assumptions a reader has to judge.
-Exchange takes conditions of its own, about trades rather than stocks;
-they are given in full under *Exchange*. Time preference takes its
-own too, about dated ends, given in full under *Time preference*. The
-regression theorem's are about a record of exchanges, given in full
-under *The regression theorem*. The interest theorems' are about sums
-of money and a loan, given in full under *Interest*; they take
-`plan.Homogeneous` too, for promises of future money.
+All five are given in full here, in the order they are listed above.
+They are given in full because these are the conditions a reader has
+to judge.
+
+Other parts take conditions of their own:
+
+- Exchange takes conditions about trades rather than stocks. They are
+  given in full under *Exchange*.
+- Time preference takes its own too, about dated ends. They are given
+  in full under *Time preference*.
+- The regression theorem's are about a record of exchanges. They are
+  given in full under *The regression theorem*.
+- The interest theorems' are about sums of money and a loan. They are
+  given in full under *Interest*. Some of the interest theorems take
+  interchangeability of units (`plan.Homogeneous`) too, for promises of
+  future money.
 
 {docstring Apodictic.Stock.OneMore}
 

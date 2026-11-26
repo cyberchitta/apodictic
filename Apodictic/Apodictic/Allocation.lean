@@ -86,18 +86,18 @@ structure AllocationPlan {praxis : ActionFrame} {agent : praxis.Agent}
     want ∈ stock.serves
 
 /-- **Interchangeability of units** — a condition on the situation,
-NOT a praxeological claim. The plan depends only on how many units there are,
-not on which ones: any two sub-stocks of the same size would serve
-the same ends.
+NOT a praxeological claim. The plan depends only on how many units
+there are, not on which ones. Any two sub-stocks of the same size
+would serve the same ends.
 
-Without it, the phrase "the plan at `n` units" — and so the marginal
-utility of a supply of `n` — picks out nothing in particular. Rothbard
-makes interchangeability part of what a supply IS: "If a specific unit
-is differently evaluated from all other units, then the supply of that
-good is only one unit" (*MES* p. 23). Where it fails, the units are
-not one good, and the supply-size form of the law does not treat them
-as one. Like the plan it constrains, it speaks of sub-stocks the agent
-may not hold. -/
+Without it, the phrase "the plan at `n` units" picks out nothing in
+particular. So neither does the marginal utility of a supply of `n`.
+Rothbard makes interchangeability part of what a supply IS: "If a
+specific unit is differently evaluated from all other units, then the
+supply of that good is only one unit" (*MES* p. 23). Where it fails,
+the units are not one good. Then the supply-size form of the law does
+not treat them as one. Like the plan it constrains, this condition
+speaks of sub-stocks the agent may not hold. -/
 def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=
@@ -108,24 +108,25 @@ def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
 the situation, NOT a praxeological claim.
 
 Any two ends the good can serve are ranked one way or the other. It
-is confined to one stock's serviceable ends, not asserted of every
-pair of ends in the frame, because that is all any theorem needs.
+is confined to one stock's serviceable ends, because that is all any
+theorem needs. It is not asserted of every pair of ends in the frame.
 
-Where it fails, a theorem carrying it is SILENT rather than false: an
+Where it fails, a theorem carrying it is SILENT rather than false. An
 agent may simply never have had occasion to rank two ends against each
-other, and Rothbard's own doctrine — that scales are revealed in
-action and nowhere else — makes such agents the normal case rather
-than the exotic one. Mises says the same thing in almost the same
-words: "the scale of values or wants manifests itself only in the
+other. Rothbard's own doctrine is that scales are revealed in action
+and nowhere else. That doctrine makes such agents the normal case
+rather than the exotic one. Mises says the same thing in almost the
+same words: "the scale of values or wants manifests itself only in the
 reality of action. These scales have no independent existence apart
 from the actual behavior of individuals" (*Human Action*, ch. IV, §2).
 
-Carried by the Mises route (`Apodictic.Mises.ladder_from_order`), by
-the ladder read as a history (`Apodictic.Temporal.ladder_judged_earlier`),
-and by no theorem on the Rothbard route. That asymmetry is a finding:
-swap dominance forces a comparison between every served end and every
-unserved serviceable one, so this condition can only fail for a pair
-that never straddles a margin — see
+It is carried by the Mises route (`Apodictic.Mises.ladder_from_order`).
+It is carried by the ladder read as a history
+(`Apodictic.Temporal.ladder_judged_earlier`). It is carried by no
+theorem on the Rothbard route. That asymmetry is a finding. Swap
+dominance (`SwapDominant`) forces a comparison between every served
+end and every unserved serviceable one. So this condition can only
+fail for a pair that never straddles a margin. See
 `Apodictic.Model.rothbard_applies_where_mises_is_silent`. -/
 def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) : Prop :=
@@ -134,10 +135,9 @@ def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
       praxis.PrefersEnd agent time other one
 
 /-- `more` is `fewer` plus one unit, both inside the stock. It is said
-with an inclusion and a count rather than by naming the extra unit, so
-that sub-stocks are only ever supposed and never constructed — which
-is why nothing here needs to decide when two units are the same
-unit. -/
+with an inclusion and a count, not by naming the extra unit. That way
+sub-stocks are only ever supposed, never constructed. That is why
+nothing here needs to decide when two units are the same unit. -/
 def Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time)
     (fewer more : Finset praxis.Means) : Prop :=
@@ -190,21 +190,21 @@ def Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent}
 
 /-- **The good is believed to serve no new use** — whatever the good is
 believed to serve at the later moment, it was believed to serve at
-the earlier one: the later stock's serviceable ends are among the
+the earlier one. The later stock's serviceable ends are among the
 earlier stock's.
 
-A situational condition, and the one condition on the history reading
-that spans two moments. It runs one way, and it is about BELIEF about
-the good, not about the scale of values: between the two moments the
-man learns no new use for the good. It is there so that the want the
-added unit goes to was on the earlier scale at all. Where he does
-learn one, the earlier-judged ladder is silent.
+It is a situational condition. It is the one condition on the history
+reading that spans two moments. It runs one way. It is about BELIEF
+about the good, not about the scale of values. Between the two moments
+the man learns no new use for the good. The condition is there so that
+the want the added unit goes to was on the earlier scale at all. Where
+he does learn one, the earlier-judged ladder is silent.
 
-Does not say that the good's uses stay the same: a use believed in
-earlier may be dropped later. Says nothing about the scale at either
-moment, about which units are held, or about the order of the two
-times. Carried by `Apodictic.Temporal.ladder_judged_earlier` and by
-nothing else. -/
+Does not say that the good's uses stay the same. A use believed in
+earlier may be dropped later. It says nothing about the scale at
+either moment. It says nothing about which units are held, or about
+the order of the two times. It is carried by
+`Apodictic.Temporal.ladder_judged_earlier` and by nothing else. -/
 def Stock.NoNewUses {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
     (earlier : Stock praxis agent earlierTime)
