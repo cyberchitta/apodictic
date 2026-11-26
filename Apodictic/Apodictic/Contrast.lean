@@ -23,22 +23,25 @@ namespace Contrast
 
 /-- **Rothbard's premises entail Mises's bridge.**
 
-Given swap dominance, independence of uses and asymmetry, the agent
-serves in order of urgency — which is exactly `Mises.ServedInOrder`,
-the premise the Misesian route was built on.
+Grant swap dominance (`SwapDominant`), independence of uses
+(`IndependentUses agent time`) and asymmetry of preference
+(`AsymmetricPreference`). Then the agent serves in order of urgency.
+That is exactly `ServedInOrder`, the premise the Misesian route was
+built on.
 
 So the two routes are NOT independent. Whatever else is true of
 Mises's derivation, its premise is available to anyone who already
-has Rothbard's, and the second route buys no premise the first
-lacked.
+has Rothbard's. The second route's bridge (`ServedInOrder`)
+therefore adds no premise the first route lacked.
 
 The proof is the contrapositive of `served_over_unserved`. Suppose
-the more urgent end were left unserved. Then Rothbard's workhorse
-says the served end is preferred to it — and asymmetry contradicts
-the assumption that it was the more urgent of the two. The case split
-on whether the end is served is decidable, not classical:
-`plan.wouldServe subStock` is a `Finset`, so membership is decidable
-given `[DecidableEq praxis.End]`, which the route already carries. -/
+the more urgent end were left unserved. Then Rothbard's workhorse,
+`served_over_unserved`, says the served end is preferred to it. And
+asymmetry contradicts the assumption that it was the more urgent of
+the two. The case split on whether the end is served is decidable,
+not classical. `plan.wouldServe subStock` is a `Finset`. So membership
+is decidable given `[DecidableEq praxis.End]`, which the route already
+carries. -/
 theorem rothbard_entails_servedInOrder
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -58,14 +61,15 @@ theorem rothbard_entails_servedInOrder
 
 #print axioms rothbard_entails_servedInOrder
 
-/-- **The two definitions of the marginal ends coincide.** Mises's
-"marginal employment" (`Mises.marginalEmployment`, the employment a
-man makes at `n` units and would not make at `n–1`) and Rothbard's
-marginal utility of a supply (`marginalEnds`, the ends the larger
-stock serves and the smaller does not) are the same set, definitionally.
-Each module states its own because `Apodictic.Mises` is isolated; that
-they agree is proved here, where both are in scope, and it is what
-licenses saying the two routes reach the same law. -/
+/-- **The two definitions of the marginal ends coincide.** One is
+Mises's "marginal employment" (`Mises.marginalEmployment`). It is the
+employment a man makes at `n` units and would not make at `n–1`. The
+other is Rothbard's marginal utility of a supply (`marginalEnds`). It
+is the set of ends the larger stock serves and the smaller does not.
+The two are the same set, definitionally. Each module states its own, because
+`Apodictic.Mises` is isolated. That they agree is proved here, where
+both are in scope. The agreement is what licenses saying the two
+routes reach the same law. -/
 theorem marginalEmployment_eq_marginalEnds
     {praxis : ActionFrame}
     {agent : praxis.Agent} {time : praxis.Time}

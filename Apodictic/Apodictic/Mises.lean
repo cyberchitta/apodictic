@@ -64,16 +64,18 @@ being equal, his supply were only n–1 units, the least urgent
 employment or the marginal employment, and the utility derived from it
 marginal utility" (*Human Action*, ch. VII, §1).
 
-Stated as the DIFFERENCE of two counterfactual allocations at one
-time, which is what "other things being equal" asks for.
+It is stated as the DIFFERENCE of two counterfactual allocations at
+one time. That is what "other things being equal" asks for.
 
-Restates `MarginalUtility.marginalEnds` deliberately: see the module
-docstring on isolation. That the two coincide is a theorem for a
-module importing both, not an `import` here.
+It restates `marginalEnds` (in `Apodictic.MarginalUtility`)
+deliberately, because `Apodictic.Mises` does not import
+`Apodictic.MarginalUtility` or `Apodictic.Urgency`. That the two
+coincide is a theorem for a module importing both, not an `import`
+here.
 
-A definition, not a claim — Mises introduces it as one ("We call
-that employment ..."), and says in the next breath that establishing
-it costs nothing praxeological. -/
+It is a definition, not a claim. Mises introduces it as a definition
+("We call that employment ..."). He prefaces it with the remark that
+establishing it does not transcend praxeological reasoning. -/
 def marginalEmployment {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock)
@@ -84,16 +86,19 @@ def marginalEmployment {praxis : ActionFrame} {agent : praxis.Agent}
 or least painful among all those wants which could be removed by
 means of the supply n–1".
 
-A situational condition, NOT a claim about action: it says of a given
-end that nothing else served at that sub-stock ranks below it. It is
-stated of an end handed to a theorem, never asserted to exist —
-whether such an end exists at all is a separate question, and one
-that cannot be answered without saying more about `Prefers` than the
-library assumes.
+It is not a claim about action, and not a condition of any theorem.
+It is a definition used inside the law's statement. It says of a
+given end that nothing else served at that sub-stock ranks below it.
+It is stated of an end the law quantifies over. It is never asserted
+to exist. Whether such an end exists at all is a separate question. That
+question cannot be answered without saying more about `Prefers` than
+the library assumes.
 
-That this is a hypothesis rather than a derived object is the first
+Inside the law it enters as a hypothesis on that end, not as a
+derived object. That is the first
 place the two routes visibly differ. Rothbard's derivation never needs
-a minimum: it compares two named steps. Mises's sentence names one. -/
+a minimum. It compares two named steps. Mises's sentence names a
+minimum. -/
 def LeastUrgentServed {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock)
@@ -102,8 +107,8 @@ def LeastUrgentServed {praxis : ActionFrame} {agent : praxis.Agent}
     ∀ other ∈ plan.wouldServe subStock, other ≠ want →
       praxis.PrefersEnd agent time other want
 
-/-- **Mises's ladder** — his statement of the law, written out as a
-target so that what proves it, and from what, is legible.
+/-- **Mises's ladder** — his statement of the law. It is written out
+as a target, so that what proves it, and from what, is legible.
 
 "If the supply available increases from n–1 units to n units, the
 increment can be employed only for the removal of a want which is
@@ -111,10 +116,11 @@ less urgent or less painful than the least urgent or least painful
 among all those wants which could be removed by means of the supply
 n–1" (*Human Action*, ch. VII, §1).
 
-A `def` of a Prop, not a theorem, and deliberately so: it is reached
-twice below from two different premise sets. `ladder_holds` derives
-it from Rothbard's premise, and `ladder_from_order` from Mises's own
-bridge. Which premises each spends is on each theorem's signature. -/
+It is a `def` of a Prop, not a theorem, and deliberately so. It is
+reached twice below, from two different premise sets. `ladder_holds`
+derives it from Rothbard's premise. `ladder_from_order` derives it
+from Mises's own bridge. Which premises each spends is on each
+theorem's signature. -/
 def LadderHolds {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=
@@ -158,16 +164,17 @@ theorem insert_sdiff_self_of_mem' {α : Type} [DecidableEq α]
 /-- **The ladder holds for EVERY end served at the smaller supply** —
 not only for the least urgent one.
 
-This is the control, and it is deliberately stated in the strong form
+This is the control. It is deliberately stated in the strong form
 Mises does not state. His sentence singles out "the least urgent or
 least painful among all those wants which could be removed by means
-of the supply n–1"; this theorem drops the qualifier and keeps the
-conclusion. Whatever the extra unit adds is less urgent than
-ANYTHING the smaller supply serves.
+of the supply n–1". This theorem drops the qualifier and keeps the
+conclusion. Whatever the extra unit adds is less urgent than ANYTHING
+the smaller supply serves.
 
-What it spends: `SwapDominant plan` — Rothbard's premise, and the
-whole of the warrant problem — plus `IndependentUses` and decidable
-equality of ends. Nothing Misesian at all. -/
+What it spends is `SwapDominant plan` — Rothbard's premise, and the
+whole of the warrant problem. It also spends independence of uses
+(`IndependentUses agent time`) and decidable equality of ends
+(`DecidableEq praxis.End`). It spends nothing Misesian at all. -/
 theorem ladder_for_every_served
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -194,27 +201,27 @@ theorem ladder_for_every_served
   · rw [← insert_sdiff_self_of_mem' hkeptCoe]
     exact hswap
 
-/-- **Mises's ladder, derived from Rothbard's premise** — the control
-comes back positive.
+/-- **Mises's ladder, derived from Rothbard's premise and independence
+of uses** — the control comes back positive.
 
 `LadderHolds` follows outright from `SwapDominant` and
-`IndependentUses`. Mises's own derivation — the dilemma about
-intermediate stages, the appeal to the category of action — supplies
-nothing the conclusion needs, once the conclusion is read
-counterfactually.
+`IndependentUses`. Mises's own derivation is the dilemma about
+intermediate stages and the appeal to the category of action. Once
+the conclusion is read counterfactually, that derivation supplies
+nothing the conclusion needs.
 
 **And his minimality qualifier does no work.** The hypothesis
-`LeastUrgentServed plan fewer least` is a conjunction; only its first
-half (that `least` is served at the smaller supply) is consumed. The
-second half — that nothing served there ranks below it — is
-destructured as `_minimality` and never used. The linter cannot see
-this, because it works a whole binder at a time and both halves
-arrive in one binder; `ladder_for_every_served` above is what makes
-the idleness a machine fact instead of a comment.
+`LeastUrgentServed plan fewer least` is a conjunction. Only its first
+half is consumed: that `least` is served at the smaller supply. The
+second half says that nothing served there ranks below it. That half
+is destructured as `_minimality` and never used. The linter cannot see
+this, because it works a whole binder at a time. Both halves arrive in
+one binder. `ladder_for_every_served` above is what makes the idleness
+a machine fact instead of a comment.
 
-So of the two things Mises's sentence adds to Rothbard's — the
-upward direction and the "least urgent" restriction — the first is a
-narration and the second is idle. -/
+So Mises's sentence adds two things to Rothbard's. One is the upward
+direction. The other is the "least urgent" restriction. The first is a
+narration, and the second is idle. -/
 theorem ladder_holds
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -347,18 +354,21 @@ they constrain. -/
 
 /-- **The ladder, derived the Misesian way.**
 
-Neither `SwapDominant` nor `IndependentUses` appears. In their place:
-the agent serves in order of urgency, and the ends the good can serve
-are comparable. That is a genuinely different premise set for the same
-conclusion — which is what the second theorem target was for.
+Neither `SwapDominant` nor `IndependentUses` appears. Two things
+stand in their place. The agent serves in order of urgency
+(`ServedInOrder`). And the ends the good can serve are comparable
+(`ComparableServiceable`). That is a genuinely different premise set
+for the same conclusion. Such a set is what the second theorem target
+was for.
 
 The argument is Mises's own, made honest. The added end is
-serviceable and unserved at the smaller supply. Were it MORE urgent
-than something already served there, serving in order would have
-admitted it — so it is not more urgent. Comparability turns "not more
-urgent" into "less urgent", and that step is where the route pays.
+serviceable and unserved at the smaller supply. Suppose it were MORE
+urgent than something already served there. Then serving in order
+would have admitted it. So it is not more urgent. Comparability turns
+"not more urgent" into "less urgent". That step is where the route
+pays.
 
-Mises's minimality qualifier is idle here too: `least` need only be
+Mises's minimality qualifier is idle here too. `least` need only be
 served at the smaller supply, exactly as in `ladder_for_every_served`.
 Two different premise sets, the same idle qualifier. -/
 theorem ladder_from_order

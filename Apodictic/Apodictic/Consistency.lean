@@ -450,14 +450,15 @@ theorem solitary_atMostOneAction : Mises.AtMostOneAction Solitary := by
 
 /-- **Existence does not refute the second horn.** Mises calls one
 action followed by a terminal state "manifestly incompatible with our
-assumption that there is action". The frame above satisfies both
-halves he calls incompatible, so the step is not valid as stated.
+assumption that there is action". The frame `Solitary` admits exactly
+one action. It satisfies both halves he calls incompatible. So the
+step is not valid as stated.
 
-What his argument needs is `Mises.ActionRecurs` — that two distinct
-actions occur — and nothing in "there is action" delivers it. His own
+What his argument needs is `Mises.ActionRecurs`: that two distinct
+actions occur. Nothing in "there is action" delivers it. His own
 wording gestures past bare existence ("this case no longer implies the
-general conditions presupposed in the category of action") without
-saying what those conditions are. Naming them is the suppressed
+general conditions presupposed in the category of action"). It does
+not say what those conditions are. Naming them is the suppressed
 premise of his derivation. -/
 theorem existence_does_not_refute_second_horn :
     ¬ Mises.ExistenceRefutesSecondHorn := by
@@ -567,29 +568,29 @@ theorem pluralPlan_full : pluralPlan.wouldServe {()} = {false, true} := by
   simp only [pluralPlan]
   rw [if_neg (by exact fun h => Finset.singleton_ne_empty () (Finset.card_eq_zero.mp h))]
 
-/-- **Refuting the second horn does not deliver the ladder.** In a
-frame where action is plural — Mises's dilemma won outright — the
-ladder fails.
+/-- **Refuting the second horn does not deliver the ladder.** Take a
+frame where action is plural. Mises's dilemma is won outright there.
+In that frame the ladder fails.
 
 And it fails for a substantive reason, not a degenerate one.
 Preference here is asymmetric (`plural_asymmetric`) and non-empty
-(`plural_prefers_nontrivial`); what goes wrong is that the agent's
-plan serves the less urgent end first, so the unit he adds brings in
+(`plural_prefers_nontrivial`). What goes wrong is the agent's plan. It
+serves the less urgent end first. So the unit he adds brings in
 something MORE urgent than what he was already serving. Mises's
-sentence is false of this agent, and everything the dilemma
-establishes is true of him.
+sentence is false of this agent. Everything the dilemma establishes
+is true of him.
 
 So the step from "there are intermediate stages" to the law is not
 valid on its own. What has to be added is that the plan respects the
-ordering — which is `SwapDominant`, Rothbard's premise, arriving with
-Rothbard's circular warrant. In Mises's own text the addition is a
-single unargued sentence: "It is nothing else than the reverse of the
+ordering. The library reconstructs it as `ServedInOrder`. That is
+strictly weaker than Rothbard's premises (`SwapDominant`, with
+independence of uses and asymmetry). In Mises's own text the addition
+is a single unargued sentence: "It is nothing else than the reverse of the
 statement that what satisfies more is preferred to what gives smaller
 satisfaction."
 
 This does not show Mises's derivation is unsalvageable. It shows the
-dilemma is not the premise, and that whatever is has not been stated
-by him or by anyone since. -/
+dilemma is not the premise. -/
 theorem recurs_does_not_deliver_ladder :
     Mises.ActionRecurs Plural ∧ ¬ Mises.LadderHolds pluralPlan := by
   refine ⟨plural_actionRecurs, ?_⟩
@@ -712,24 +713,26 @@ theorem coarse_not_swapDominant : ¬ SwapDominant coarsePlan := by
     · norm_num
   exact absurd (hall 0 hzero) (Nat.not_lt_zero x)
 
-/-- **The two premise sets are not equivalent.** Rothbard's entails
-Mises's bridge (`Contrast.rothbard_entails_servedInOrder`); this frame
-shows the converse fails. So the Mises route, reconstructed as
-generously as the vocabulary allows, rests on a STRICTLY WEAKER
-allocation premise than Rothbard's — while paying for it with
-comparability of ends, which Rothbard's route never needs. -/
+/-- **The two premise sets are not equivalent.** Rothbard's set
+entails Mises's bridge, `ServedInOrder`
+(`Contrast.rothbard_entails_servedInOrder`). This frame shows the
+converse fails. Reconstruct the Mises route as generously as the
+vocabulary allows. It then rests on a STRICTLY WEAKER allocation
+premise than Rothbard's set. It pays for that with
+comparability of ends (`ComparableServiceable`), which Rothbard's
+route never needs. -/
 theorem servedInOrder_not_entail_swapDominant :
     ServedInOrder coarsePlan ∧ ¬ SwapDominant coarsePlan :=
   ⟨coarse_servedInOrder, coarse_not_swapDominant⟩
 
 #print axioms servedInOrder_not_entail_swapDominant
 
-/-! ## Where Mises's law is silent and Rothbard's is not
+/-! ## Where Mises's law is silent and Rothbard's premise holds
 
 If `ComparableServiceable` is a situational CONDITION rather than a
 claim, then the Mises route applies to fewer situations than the
-Rothbard route. This frame is one of them: swap dominance holds, the
-law goes through Rothbard's way, and Mises's condition fails.
+Rothbard route. This frame is one of them: Rothbard's premise, swap
+dominance, holds, and Mises's condition fails.
 
 The frame is not arbitrary, and the constraint on building it is
 itself the finding. Swap dominance compares the served bundle with
@@ -835,24 +838,24 @@ theorem margin_not_comparable :
     cases hw; cases hw'
     exact absurd hurgent.1 (by norm_num)
 
-/-- **A situation where Rothbard's law applies and Mises's does not.**
+/-- **A situation where Rothbard's premise holds and Mises's route
+does not apply.**
 
-Swap dominance holds, so `marginal_utility_chain` and the Rothbard
-route apply to this agent in full. `ComparableServiceable` fails, so
-`Mises.ladder_from_order` does not apply at all — its premise is
-unavailable.
+Swap dominance (`SwapDominant`) holds for this agent. Comparability
+(`ComparableServiceable`) fails. So `Mises.ladder_from_order` does not
+apply at all: its premise is unavailable.
 
-Comparability is a condition, so this is what "Mises's law covers
-fewer situations" means concretely: an agent with two ends he has
-never had occasion to rank against each other. Were comparability a
-claim, praxeology would assert that no such agent exists, and this
-frame would be a counter-example to the claim rather than a gap in the
-theorem's reach. -/
-theorem rothbard_applies_where_mises_is_silent :
+Comparability is a condition. So this is what "Mises's law covers
+fewer situations" means concretely. It means an agent with two ends he
+has never had occasion to rank against each other. Suppose
+comparability were a claim. Then praxeology would assert that no such
+agent exists. This frame would then be a counter-example to the claim,
+not a gap in the theorem's reach. -/
+theorem rothbard_premise_holds_where_mises_is_silent :
     SwapDominant marginPlan ∧ ¬ marginStock.ComparableServiceable :=
   ⟨margin_swapDominant, margin_not_comparable⟩
 
-#print axioms rothbard_applies_where_mises_is_silent
+#print axioms rothbard_premise_holds_where_mises_is_silent
 
 /-! ## The temporal reading: a scale that reverses between two times
 

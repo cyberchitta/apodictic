@@ -127,7 +127,7 @@ theorem on the Rothbard route. That asymmetry is a finding. Swap
 dominance (`SwapDominant`) forces a comparison between every served
 end and every unserved serviceable one. So this condition can only
 fail for a pair that never straddles a margin. See
-`Apodictic.Model.rothbard_applies_where_mises_is_silent`. -/
+`Apodictic.Model.rothbard_premise_holds_where_mises_is_silent`. -/
 def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) : Prop :=
   ∀ one ∈ stock.serves, ∀ other ∈ stock.serves, one ≠ other →
