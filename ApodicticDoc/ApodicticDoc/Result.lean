@@ -2013,6 +2013,73 @@ first wanted for a game, a cause, or a test.
 file := "Interest"
 %%%
 
+*In brief.* Rothbard concludes that a pure rate of interest can never
+be zero or negative. From 2014, banks in the euro area lent to one
+another overnight at a negative rate. This part rebuilds his argument
+and asks which of its premises such a lender does not satisfy.
+
+The argument runs in four steps, S2 to S5, and each adds what it needs:
+
+- *Present money is preferred to the same amount of future money* (S2).
+  It needs one claim, time preference, and three conditions: the money
+  will buy the same satisfaction later (`SamePurchasingPower`), the
+  claim will pay (`ClaimPays`), and the present sum would be spent
+  sooner (`SpentSooner`).
+- *…and to any smaller amount* (S3). It needs a second claim, that more
+  money is preferred where it is spent, and six conditions with it:
+  every part of the claim buys something other than the whole
+  (`BuysMoreThanItsParts`); he
+  ranks the two sums now as he will when he spends them
+  (`RankedAlikeNowOf`); the claim is money; it is free to hold; its
+  units are interchangeable; and his preferences chain where the step
+  uses them.
+- *So no one lends at zero or below* (S4). It needs a third claim,
+  asymmetry, and two conditions on the trade: refusing the loan would
+  have left him the sum at full value (`RefusalKeepsSum`), and what he
+  holds after counts as planned. What it concludes is that such a loan
+  does not demonstrate a preference for the claim.
+- *So every rate struck is positive* (S5). It adds the fourth claim,
+  demonstrated preference. Refusing at full value is then not assumed
+  but derived, from the trade being voluntary and his holding before it
+  counting as planned.
+
+Some things the argument seems to need do no work, at least in part of
+it:
+
+- At a rate of exactly zero, the second claim and five of its six
+  conditions: only a negative rate needs them, and the theorem for a
+  zero rate carries only interchangeable units.
+- In S2, the number of ounces. The two conditions that state an equal
+  count are carried there, but only S4 and S5 use the count, to
+  compare the repayment with what was lent.
+- That holding the present sum costs nothing. No step assumes it; a
+  cost of holding it reaches the loan only through refusal. (That the
+  claim is free to hold is one of S3's conditions.)
+- The borrower, and the market: every step is about one lender.
+- Any property of the order of time, and any classical step.
+
+What each case breaks:
+
+- *The bank lending overnight at a negative rate* breaks
+  `SpentSooner`, if it had no use for the money for that day, or
+  `RefusalKeepsSum`, because a bank that refused kept the sum at a
+  cost: reserves the central bank charged for, or banknotes that had to
+  be guarded. In S5, where refusal is derived, the same cost breaks the
+  trade being voluntary or the holding before it counting as planned.
+  This is a reading of the case, not a frame built for it.
+- *The Christmas club saver*, who lends at zero, breaks
+  `SamePurchasingPower`: his cash would buy an impulse, the club pays
+  for what he saves for. Built in the library.
+- *The man who would rather not hold, today, the cash he knows he will
+  spend on an impulse tomorrow* breaks `RankedAlikeNowOf`, asked of
+  that cash against none. He is never put in a loan. Built in the
+  library.
+- *Rising prices* break `SamePurchasingPower`, and *a doubt that the
+  borrower will pay* breaks `ClaimPays`, each without the other. Built
+  in the library.
+
+The detail follows.
+
 Interest is the fifth target, and it is the one time preference was
 built for. Rothbard's conclusion is categorical: "every man’s time
 preference is positive, i.e., one ounce of present money will always
