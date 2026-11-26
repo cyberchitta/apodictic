@@ -44,14 +44,14 @@ structure DatedFrame extends ActionFrame where
   SameSatisfaction : Agent → End → End → Prop
 
 /-- **Lifts over the rest** — a condition on the situation, NOT a
-universal claim. Preferring one end to another carries UP to
+universal claim. Preferring one end to another carries UP. It becomes
 preferring the bundle `rest` with the one to `rest` with the other.
 
-The converse direction of `IndependentUses`, fixed to one pair and
-one rest. It fails for complements and clashes: a sooner delivery that
-collides with something else in `rest` (two services due at one
-moment) can make the bundle with the later one better, though the
-sooner one alone is preferred. -/
+It is the converse direction of `IndependentUses`, fixed to one pair
+and one rest. It fails for complements and clashes. Say a sooner
+delivery collides with something else in `rest`: two services due at
+one moment. Then the bundle with the later one can be better, though
+the sooner one alone is preferred. -/
 def DatedFrame.LiftsOverRest (praxis : DatedFrame) (agent : praxis.Agent)
     (now : praxis.Time) (rest : Set praxis.End) (soon late : praxis.End) :
     Prop :=
@@ -59,15 +59,16 @@ def DatedFrame.LiftsOverRest (praxis : DatedFrame) (agent : praxis.Agent)
     praxis.Prefers agent now (insert soon rest) (insert late rest)
 
 /-- **The morrow's alternative** — Mises's regress, as data. At each
-date in a sequence the agent can have a satisfaction now, or the same
-satisfaction at the next date: "the morrow would confront him with the
-same alternative" (*Human Action*, ch. XVIII, §2).
+date in a sequence the agent can have a satisfaction now. Or he can
+have the same satisfaction at the next date: "the morrow would confront
+him with the same alternative" (*Human Action*, ch. XVIII, §2).
 
-A structure because the regress is about one such sequence. Its
-`Prop` fields only fix which offer belongs to which date; that each
-offer is the same satisfaction as the next — what makes it the SAME
-alternative — can fail (the good perishes), so it is not a field but
-the named condition `Morrows.SameAlternative`. -/
+It is a structure because the regress is about one such sequence. Its
+`Prop` fields fix only the dates: which offer belongs to which date,
+and that each date comes before the next. That each offer is the same
+satisfaction as the next is what makes it the SAME alternative. It can
+fail: the good perishes. So it is not a field. It is the named
+condition `Morrows.SameAlternative`. -/
 structure Morrows (praxis : DatedFrame) (agent : praxis.Agent) where
   /-- The successive dates. -/
   date : ℕ → praxis.Time
@@ -79,10 +80,10 @@ structure Morrows (praxis : DatedFrame) (agent : praxis.Agent) where
   successive : ∀ n, praxis.Before (date n) (date (n + 1))
 
 /-- **The same alternative each day** — a condition on the situation.
-Each day's offer is, for this agent, the same satisfaction as the
-next day's. Mises's "the morrow would confront him with the same
-alternative"; it fails where the good perishes or its use depends on
-the date — his own ice. -/
+For this agent, each day's offer is the same satisfaction as the next
+day's. It is Mises's "the morrow would confront him with the same
+alternative". It fails where the good perishes, or where its use
+depends on the date: his own ice. -/
 def Morrows.SameAlternative {praxis : DatedFrame} {agent : praxis.Agent}
     (morrows : Morrows praxis agent) : Prop :=
   ∀ n, praxis.SameSatisfaction agent (morrows.offer n) (morrows.offer (n + 1))
@@ -96,13 +97,13 @@ def Morrows.ConsumesAt {praxis : DatedFrame} {agent : praxis.Agent}
     act.chosen = morrows.offer n ∧ morrows.offer (n + 1) ∈ act.forgone
 
 /-- **No time preference carries to the morrow** — a condition on the
-situation. If on some date the agent does not prefer the offer now to
-the offer on the morrow, he does not on the next date either.
+situation. Say on some date the agent does not prefer the offer now to
+the offer on the morrow. Then he does not on the next date either.
 
-Constancy of the scale, cut to the one thing the regress spends: the
-ABSENCE of a preference, for this sequence, one date to the next. Both
-authors deny constancy in general (Rothbard: scales "differ for the
-same individual at different times", *MES* p. 17). -/
+This is constancy of the scale, cut to the one thing the regress
+spends: the ABSENCE of a preference, for this sequence, from one date
+to the next. Both authors deny constancy in general (Rothbard: scales
+"differ for the same individual at different times", *MES* p. 17). -/
 def Morrows.NoPreferenceCarries {praxis : DatedFrame} {agent : praxis.Agent}
     (morrows : Morrows praxis agent) : Prop :=
   ∀ n, ¬ praxis.PrefersEnd agent (morrows.date n)

@@ -1764,80 +1764,86 @@ conditions did not hold" now has a list to check against.
 file := "Time-preference"
 %%%
 
-Time preference is the third target, chosen, like exchange, for what
-it can diagnose. That a man prefers a satisfaction sooner to the same
-satisfaction later is the foundation Rothbard builds interest on, and
-both authors state it as universal. Rothbard: "A fundamental and
-constant truth about human action is that man prefers his end to be
-achieved in the shortest possible time. Given the specific
-satisfaction, the sooner it arrives, the better" (*MES*, p. 15).
-Mises: "Satisfaction of a want in the nearer future is, other things
-being equal, preferred to that in the farther distant future", and
-"Time preference is a categorial requisite of human action" (*Human
-Action*, ch. XVIII, §2). Everything turns on the qualifier each of
-them attaches — "given the specific satisfaction", "other things being
-equal" — and on who decides when it is met.
+Time preference is the third target. Like exchange, it was chosen for
+what it can diagnose. The claim (`TimePreference`) is this: a man
+prefers a satisfaction sooner to the same satisfaction later, if the
+sooner is not already past. Rothbard builds interest on it. Both
+authors state it as universal. Rothbard:
+"A fundamental and constant truth about human action is that man
+prefers his end to be achieved in the shortest possible time. Given
+the specific satisfaction, the sooner it arrives, the better" (*MES*,
+p. 15). Mises: "Satisfaction of a want in the nearer future is, other
+things being equal, preferred to that in the farther distant future",
+and "Time preference is a categorial requisite of human action"
+(*Human Action*, ch. XVIII, §2). Each of them attaches a qualifier.
+Rothbard's is "given the specific satisfaction". Mises's is "other
+things being equal". Everything turns on these qualifiers, and on who
+decides when they are met.
 
-**Dates.** Until now the vocabulary had no "sooner": time was not
-ordered and an end had no date, because no theorem asked for either.
-Time preference cannot be stated without them, so the vocabulary grows
-here, and only here. Times get a bare relation, "before", with no
-properties at all. Each end gets the time it is attained at. And a
-third relation says which pairs of ends are, for a given man, the same
-satisfaction at two dates.
+*Dates.* Until now the vocabulary had no "sooner". Time was not
+ordered, and an end had no date. That was because no theorem asked for
+either. Time
+preference cannot be stated without them. So the vocabulary grows
+here, and only here. Three things are added:
+
+- Times get a bare relation, "before" (`Before`). It has no
+  properties at all.
+- Each end gets the time it is attained at (`attained`).
+- A relation says which pairs of ends are the same satisfaction
+  at two dates, for a given man (`SameSatisfaction`).
 
 {docstring Apodictic.DatedFrame}
 
-**Who decides "the same satisfaction".** Rothbard's footnote defines
+*Who decides "the same satisfaction".* Rothbard's footnote defines
 time preference as "the preference for present satisfaction over
 future satisfaction or present good over future good, provided it is
 remembered that it is the same satisfaction (or “good”) that is being
-compared", and then meets the obvious objection: "Since
+compared". It then meets the obvious objection: "Since
 ice-in-the-summer provides different (and greater) satisfactions than
 ice-in-the-winter, they are not the same, but different goods"
-(pp. 15–16, n. 15). Mises sets the same case aside — perishable goods
-are "for all practical purposes different commodities". On that
-reading, whether two dated ends are the same satisfaction is settled
-by how the man values them. Then whenever he prefers the later one,
-it was a different good, and the claim is never tested.
+(pp. 15–16, n. 15). Mises sets the same case aside. Perishable goods,
+he says, are "for all practical purposes different commodities". On
+that reading, how the man values two dated ends settles whether they
+are the same satisfaction. Then whenever he prefers the later one, it
+was a different good. So the claim is never tested.
 
 Lean shows exactly what that reading buys. Define "the same
-satisfaction" as "the later is not preferred to the sooner", and one
-half of time preference — that the later is never preferred — holds in
-every frame, carrying no claim at all:
+satisfaction" as "the later is not preferred to the sooner"
+(`SameByValuation`). Then one half of time preference holds in every
+frame: the later is never preferred. That half carries no claim at
+all:
 
 {docstring Apodictic.TimePreference.SameByValuation}
 
 {docstring Apodictic.TimePreference.valuation_reading_is_free}
 
-The other half — that the sooner is preferred — is not free. A frame
-in which nothing is ranked
-satisfies the valuation reading for every pair, and there the sooner
-is not preferred:
+The other half is not free: that the sooner is preferred. Take a frame
+in which nothing is ranked. It satisfies the valuation reading for
+every pair. And there the sooner is not preferred:
 
 {docstring Apodictic.Model.valuation_reading_strict_half_fails}
 
-So on this reading of the authors, what time preference asserts is
-that of any two ends at different dates, one is ranked above the
-other — none is ever left unranked. That is not what either of them
-argues for. And it sits badly with a doctrine of Rothbard's own, that
-indifference cannot be demonstrated in action: the claim now rules out
-exactly the case — two dated ends neither preferred to the other — that
-no act of his could ever show.
+So, on this reading of the authors, time preference asserts one
+thing. Take two ends, one before the other, the sooner not yet past.
+One is ranked above the other. Neither author argues for that. And it
+sits badly with a doctrine of Rothbard's own: indifference cannot
+be demonstrated in action. On this reading the claim rules out one
+case: two dated ends, neither preferred to the other. That is exactly
+the case no act of the man's could ever show.
 
 The library therefore takes the other road. Sameness is supplied
-separately from the ranking — it is a man's, since satisfactions are
-his, but it is not read off his preferences — and so the claim can
-fail: a man who ranks the same satisfaction higher later would be a
-counterexample to it, not a different good.
+separately from the ranking. It is the man's, since satisfactions are
+his. But it is not read off his preferences. So the claim can fail.
+Say a man ranks the same satisfaction higher later. He is then a
+counterexample to the claim, not a case of a different good.
 
 {docstring Apodictic.TimePreference}
 
-**Durability.** Rothbard draws one consequence at once: "if the actor
+*Durability.* Rothbard draws one consequence at once: "if the actor
 values the total service rendered by two consumers' goods equally, he
 will, because of time preference, choose the less durable good"
-(p. 17). In its smallest case — two goods whose services differ only
-in the date of one of them — it follows, at a price:
+(pp. 16–17, n. 16). Its smallest case is two goods whose services
+differ only in the date of one service. There it follows, at a price:
 
 {docstring Apodictic.TimePreference.less_durable_preferred}
 
@@ -1867,47 +1873,74 @@ manifest of Apodictic.TimePreference.less_durable_preferred
   logical background: []
 ```
 
+Rothbard gives no example of this consequence. Here is one, and it is ours. Two
+season tickets cover the same nine concerts (`rest`). The first also
+covers a tenth concert on Friday (`soon`). The second covers the same
+concert, repeated on Sunday (`late`). The conclusion: the man now
+prefers the first ticket to the second. It costs one claim and four
+conditions:
+
+- Time preference (`TimePreference`), the claim. It fails if he does
+  not prefer the Friday concert to the Sunday one, though the next
+  three conditions hold.
+- The two concerts are the same satisfaction for him
+  (`SameSatisfaction`). It fails if Sunday's has another soloist, say.
+- Friday comes before Sunday (`sooner`). It fails if the repeat is on
+  Thursday.
+- Friday is not already past (`notPast`). It fails if it is Saturday
+  now.
+- Preferring Friday's concert carries up to preferring the whole first
+  ticket (`LiftsOverRest`). It can fail if Friday's concert clashes
+  with one of the nine. Say one of the nine is also on Friday evening.
+  Then the second ticket may be better, though Friday's concert alone
+  is preferred.
+
 The price is the last condition. Time preference ranks single
-satisfactions; the goods deliver streams of them. Getting from
-preferring the sooner service to preferring the stream it belongs to
-needs the rest of the stream to stay out of it, which fails where the
-sooner delivery clashes with something else in the stream. It is the
-condition Rothbard's sentence does not show, and it runs the opposite
-way to independence of uses, under *The conditions*:
+satisfactions. The goods deliver streams of them. Preferring the
+sooner service is one thing. Preferring the stream it belongs to is
+another. To get from the one to the other, the rest of the stream must
+stay out of it. That fails where the sooner delivery clashes with
+something else in the stream. Rothbard's sentence does not show this
+condition. Independence of uses (`IndependentUses agent time`, under
+*The conditions*) carries a preference down, from bundles to ends.
+This condition carries one up, from ends to bundles:
 
 {docstring Apodictic.DatedFrame.LiftsOverRest}
 
-Two things are not reached. With more than one service at a different
-date, the preferences would have to be chained, and that needs
-transitivity of preference, which nothing here asserts. And the
-conclusion is a preference, not Rothbard's "will choose": no claim
-here runs from what a man ranks to which of two goods he picks. (The
-one claim in the library that runs from ranking to act,
-`ActsInOrder`, is about how a stock is allocated, not about this.)
+Two things are not reached:
 
-**Mises's regress.** Mises does not only assert time preference; he
+- More than one service at a different date. The preferences would
+  then have to be chained. That needs transitivity of preference, which
+  nothing here asserts.
+- Rothbard's "will choose". The conclusion is a preference. No claim
+  here runs from what a man ranks to which of two goods he picks. Only
+  one claim in the library runs from ranking to act (`ActsInOrder`).
+  It is about how a stock is allocated, not about this.
+
+*Mises's regress.* Mises does not only assert time preference. He
 argues that action is impossible without it: "If he were not to prefer
 satisfaction in a nearer period of the future to that in a remoter
 period, he would never consume and so satisfy wants. ... He would not
 consume today, but he would not consume tomorrow either, as the morrow
 would confront him with the same alternative." The argument runs from
-what a man prefers to what he does, so it cannot be stated without a
-bridge between the two. Mises supplies one in the same section, and
-it runs the other way round — from the act to the preference — which
-is the same link read backwards: if consuming shows a preference for
-the sooner, then without that preference there is no consuming that
-shows one. "He
-who consumes a nonperishable good instead of postponing consumption
-for an indefinite later moment thereby reveals a higher valuation of
-present satisfaction". That sentence is the second new claim, stated
-of one act:
+what a man prefers to what he does. So it cannot be stated without a
+bridge between the two. Mises supplies one, in the same section. It
+runs the other way round, from the act to the preference. That is the
+same link read backwards. If consuming shows a preference for the
+sooner, then without that preference there is no consuming that shows
+one. Mises: "He who consumes a nonperishable good instead of
+postponing consumption for an indefinite later moment thereby reveals
+a higher valuation of present satisfaction". That sentence is the
+second new claim (`DemonstratedTimePreference`). It is stated of one
+act:
 
 {docstring Apodictic.DemonstratedTimePreference}
 
-The sequence the regress runs along — a satisfaction on offer each
-day, and the same one tomorrow — and the conditions it spends. The
-third, `ConsumesAt`, only says that the act in question takes the
-day's offer and forgoes the next day's.
+The regress runs along a sequence (`Morrows`). Each day a satisfaction
+is on offer, and another on the next day. The regress spends three
+conditions. Two are shown below, after the sequence. The third (`ConsumesAt`) only says
+that the act in question takes the day's offer and forgoes the next
+day's.
 
 {docstring Apodictic.Morrows}
 
@@ -1915,15 +1948,15 @@ day's offer and forgoes the next day's.
 
 {docstring Apodictic.Morrows.NoPreferenceCarries}
 
-With the bridge in place, the step from "he consumed" to "he preferred
-the sooner" is one application of the bridge, plus the sameness
-condition:
+With the bridge in place, one step goes from "he consumed" to "he
+preferred the sooner". It is one application of the bridge, plus the
+sameness condition (`SameAlternative`):
 
 {docstring Apodictic.TimePreference.consumption_reveals}
 
-and the regress adds only one thing to it: carried back through the
-days, the preference shown by consuming on one day refutes having had
-none on the first.
+The regress adds only one thing to it. It carries the conclusion back
+from the day he consumes to the first day. Only a weaker thing arrives
+there: not the preference, but a refutation of having had none.
 
 {docstring Apodictic.TimePreference.regress}
 
@@ -1961,77 +1994,108 @@ manifest of Apodictic.TimePreference.regress
   (1 trailing binders belong to the conclusion, not the signature)
 ```
 
-Three findings are in this. First, the regress and the "reveals"
-sentence are one premise, used twice: that consuming the sooner shows
-a preference for it. The regress passage leaves that premise
-unstated; the "reveals" sentence states it, and once it is stated it
-does all the work — the regress contributes only the carrying from
-day to day. Second, what comes out is far short of
-the universal: a preference, at one date, for one sequence of offers
-— not "the sooner is better" for every end at every date. Third, it
-comes out only as a double negation, because Mises carries the
-*absence* of a preference forward: the argument refutes his having no
-preference on the first day, and this argument yields the preference
-itself only with excluded middle, which the library does not
-assume.
+Mises's own case runs through the theorem. A man holds a nonperishable
+good. Today he can consume it, or keep it for tomorrow. Tomorrow
+offers him the same choice. Say that on some day he consumes it. The
+conclusion: it is not the case that, on the first day, he had no
+preference for the sooner. It costs one claim and three conditions:
 
-In `Waiting`, a frame where a man prefers each satisfaction sooner,
-both claims and every condition of both theorems hold together. The
-test is weak in two places, and they are worth saying: the durability
-case is handed an empty rest of the stream, so the lifting condition
-is never tried on a real one; and there is no absence of preference
-for the regress's carrying condition to carry, so it holds with
-nothing to do.
+- Consuming reveals a preference for the sooner
+  (`DemonstratedTimePreference`), the claim. It fails if he consumes
+  without preferring the sooner.
+- On that day he consumes: he takes the day's offer and forgoes the
+  next day's (`ConsumesAt`). It fails if he keeps the good that day.
+- Each day's offer is the same satisfaction as the next
+  (`SameAlternative`). This is Mises's "the same alternative", and his
+  "nonperishable". It fails if the good perishes, as ice does.
+- Having no preference for the sooner carries from each day to the
+  next (`NoPreferenceCarries`). It fails if, after a day on which he
+  does not prefer the sooner, he comes to prefer it the next day.
+
+Three findings are in this:
+
+- The regress and the "reveals" sentence are one premise, used twice.
+  The premise is that consuming the sooner shows a preference for it.
+  The regress passage leaves it unstated. The "reveals" sentence
+  states it. Once it is stated, it does all the work. The regress
+  contributes only the carrying from day to day.
+- What comes out is far short of the universal. It is a preference at
+  one date, for one sequence of offers. It is not "the sooner is
+  better" for every end at every date.
+- It comes out only as a double negation. Mises carries the *absence*
+  of a preference forward. So the argument refutes his having no
+  preference on the first day. This argument yields the preference
+  itself only with excluded middle. The library does not assume excluded middle.
+
+`Waiting` is a frame where a man prefers each satisfaction sooner. In
+it, both claims and every condition of both theorems hold together.
+The test is weak in two places, and they are worth saying:
+
+- The durability case is handed an empty rest of the stream. So the
+  lifting condition (`LiftsOverRest`) is never tried on a real one.
+- There is no absence of preference for the regress's carrying
+  condition (`NoPreferenceCarries`) to carry. So it holds with nothing
+  to do.
 
 {docstring Apodictic.Model.waiting_less_durable_applies}
 
 {docstring Apodictic.Model.waiting_regress_applies}
 
-**The carried conditions.** The regress's manifest lists two fields
-of the sequence — that each day's offer is attained on that day, and
-that each day comes before the next — and three of the act. Each is
-of the kind that assumes nothing about the world: a sequence whose
-"offer on the third day" arrives on some other day, or an act that
-gives nothing up, is not a situation that might obtain. That each
-day's offer is the same satisfaction as the next is not of that kind
-— the good may perish — and so it is not a field but the named
-condition above.
+*The carried conditions.* The regress's manifest lists two fields of
+the sequence. Each day's offer is attained on that day. Each day comes
+before the next. It also lists three fields of the act. Each of the five
+is of a kind that assumes nothing about the world. Take a sequence
+whose "offer on the third day" arrives on some other day. Or take an
+act that gives nothing up. Neither is a situation that might obtain.
+That each day's offer is the same satisfaction as the next is not of
+that kind. The good may perish. So it is not a field. It is the named
+condition above (`SameAlternative`).
 
-**What "before" was asked for.** Nothing. No proof here uses any
-property of "before" — not that it is transitive, not even that no
-time comes before itself. "Sooner" enters every statement as a label
-on a pair of dates and is never a step in an argument. Lean was
-expected to force an order on time here, and it did not.
+*What "before" was asked for.* Nothing. No proof here uses any
+property of "before". None uses that it is transitive. None uses even
+that no time comes before itself. "Sooner" enters every statement as a
+label on a pair of dates. It is never a step in an argument. Lean was
+expected to force an order on time here. It did not.
 
-**What a failure would point at.** Where a man prefers a satisfaction
-later: the two dated ends were not the same satisfaction for him (the
-good perishes, the enjoyments cannot be had together, the later is
-surer, or the wait itself is worth something to him); the sooner one was already past; or the claim itself failed.
-Where a man prefers the less durable good less: the same, or the
-sooner service clashed with the rest of the stream. Where the regress
-does not bite: the offer was not the same from day to day, his lack of
-preference did not carry, or consuming did not reveal what Mises says
-it does.
+*What a failure would point at.* Say a man prefers a satisfaction
+later. Then one of these failed:
+
+- The two dated ends were the same satisfaction for him
+  (`SameSatisfaction`). It fails where the good perishes, or the
+  enjoyments cannot be had together. It fails where the later is
+  surer, or the wait itself is worth something to him.
+- The sooner one was not already past (`notPast`).
+- The claim itself (`TimePreference`).
+
+Say he prefers the less durable good less. Then one of the same
+failed. Or the sooner service clashed with the rest of the stream
+(`LiftsOverRest`). Say the regress does not bite. Then one of these
+failed:
+
+- The offer was the same from day to day (`SameAlternative`).
+- His lack of preference carried (`NoPreferenceCarries`).
+- Consuming revealed what Mises says it does
+  (`DemonstratedTimePreference`).
 
 The textbook case against the claim is on that list. People will pay
-more for a pleasure a few days off than for the same pleasure now, and
-more to avoid a pain that is put off: "Subjects on average were
-willing to pay more to experience a kiss delayed by 3 days than an
-immediate kiss or one delayed by three hours or one day" (Loewenstein,
-*Economic Journal* 1987, p. 668). Waiting for a pleasure is itself a
-pleasure, and waiting for a pain is itself a pain, so the later option
-carries a satisfaction that begins now. The pair falls outside the
-claim, which says nothing about it. The move has the shape of
-Rothbard's ice, and one test separates a diagnosis from an escape:
-whether the difference can be shown without looking at the choice.
-Summer heat can be; "greater satisfactions", read off the preference,
-cannot. For dread it has been shown. People waiting for an electric
-shock were scanned, and "Even when no decision was required, these
-extreme dreaders were distinguishable from those who dreaded mildly"
-— and the extreme dreaders were the ones who, given the choice, "preferred to
-receive more voltage rather than wait" (Berns et al., *Science* 2006).
-Anticipation that is only inferred from the waiting brings back the
-reading on which the claim cannot fail.
+more for a pleasure a few days off than for the same pleasure now. And
+they will pay more to avoid a pain that is put off: "Subjects on
+average were willing to pay more to experience a kiss delayed by 3
+days than an immediate kiss or one delayed by three hours or one day"
+(Loewenstein, *Economic Journal* 1987, p. 668). Waiting for a pleasure
+is itself a pleasure. Waiting for a pain is itself a pain. So the
+later option carries a satisfaction that begins now. The pair falls
+outside the claim, which says nothing about it. The move has the shape
+of Rothbard's ice. One test separates a diagnosis from an escape. Can
+the difference be shown without looking at the choice? Summer heat
+can be. "Greater satisfactions", read off the preference, cannot. For
+dread it has been shown. People waiting for an electric shock were
+scanned. The scans told them apart: "Even when no decision was
+required, these extreme dreaders were distinguishable from those who
+dreaded mildly". And the extreme dreaders were the ones who, given the
+choice, "preferred to receive more voltage rather than wait" (Berns et
+al., *Science* 2006). Anticipation that is only inferred from the
+waiting brings back the reading on which the claim cannot fail.
 
 # The regression theorem
 %%%

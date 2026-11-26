@@ -1260,8 +1260,8 @@ abbrev Patient : DatedFrame where
   attained := Prod.snd
   SameSatisfaction := fun _ a b => a.1 = b.1
 
-/-- **Non-vacuity: the regress applies in `Waiting`**, where the agent
-prefers the sooner at every date and so no absence of preference has
+/-- **Non-vacuity: the regress applies in `Waiting`.** There the agent
+prefers the sooner at every date. So no absence of preference has
 anything to carry. -/
 theorem waiting_regress_applies (n : ℕ) :
     ¬ ¬ Waiting.PrefersEnd () 0 (0, 0) (0, 1) :=
@@ -1270,8 +1270,8 @@ theorem waiting_regress_applies (n : ℕ) :
     (fun k h => absurd ⟨_, _, rfl, rfl, rfl, Nat.lt_succ_self k⟩ h)
 
 /-- **On the valuation reading, the strict half of time preference is
-not free** — it fails where nothing is ranked: every pair counts as the
-same satisfaction by valuation, and the sooner is not preferred. -/
+not free.** It fails where nothing is ranked. There every pair counts as
+the same satisfaction by valuation. And the sooner is not preferred. -/
 theorem valuation_reading_strict_half_fails :
     ¬ ∀ (praxis : DatedFrame) (agent : praxis.Agent) (now : praxis.Time)
         (soon late : praxis.End),

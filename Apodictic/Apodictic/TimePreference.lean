@@ -7,9 +7,9 @@ and Mises's regress
 ## What is proved, and what it costs
 
 - `less_durable_preferred`: Rothbard's durability corollary (*MES*
-  p. 17), for two goods whose services differ in one date. It costs
-  `TimePreference` and one condition his sentence never shows — that
-  preferring the sooner service carries up to the whole stream
+  pp. 16–17, n. 16), for two goods whose services differ in one date.
+  It costs `TimePreference` and one condition his sentence never shows
+  — that preferring the sooner service carries up to the whole stream
   (`LiftsOverRest`). Only the one-slot case: more slots would chain
   preferences, and that needs transitivity of
   `Prefers`, which nothing here asserts.
@@ -38,19 +38,19 @@ argument turns on.
 namespace Apodictic
 namespace TimePreference
 
-/-- **The less durable good is preferred** (*MES* p. 17: "if the
+/-- **The less durable good is preferred** (*MES* pp. 16–17, n. 16: "if the
 actor values the total service rendered by two consumers' goods
 equally, he will, because of time preference, choose the less durable
 good"), in its smallest case.
 
-Two goods render the same services `rest`, plus one service more: the
-first renders it at the earlier date (`soon`), the second at the later
-(`late`). "Values the total service equally" is read as: the two
-services are the same satisfaction, and everything else is the same
-`rest`.
+Two goods render the same services `rest`, plus one service more. The
+first renders it at the earlier date (`soon`). The second renders it at
+the later date (`late`). "Values the total service equally" is read as
+two things. The two services are the same satisfaction. And everything
+else is the same `rest`.
 
-The conclusion is a preference, not a choice: nothing in the library
-runs from the ranking to what the agent does. -/
+The conclusion is a preference, not a choice. No claim in the library
+runs from the ranking to which good the agent picks. -/
 theorem less_durable_preferred
     {praxis : DatedFrame} {agent : praxis.Agent} {now : praxis.Time}
     (rest : Set praxis.End) (soon late : praxis.End)
@@ -106,23 +106,25 @@ a remoter period, he would never consume and so satisfy wants. ... He
 would not consume today, but he would not consume tomorrow either, as
 the morrow would confront him with the same alternative."
 
-Stated from the act: an act of consuming at any date of the sequence,
-if it demonstrates, refutes "no preference for the sooner at the first
-date". What the argument spends is in the signature — the
-demonstration (Mises's "reveals", in the same section); that each
-day's offer is the same satisfaction as the next (his "the same
-alternative"); and the absence of preference carrying from date to
-date.
+It is stated from the act. Take an act of consuming at any date of the
+sequence. If it demonstrates, it refutes "no preference for the sooner
+at the first date". What the argument spends is in the signature:
+
+- the demonstration (Mises's "reveals", in the same section);
+- that each day's offer is the same satisfaction as the next (his "the
+  same alternative");
+- that the absence of preference carries from date to date.
 
 The conclusion is a double negation. The argument refutes the absence
-of a preference at the first date; it does not produce the preference.
-That follows from how Mises words the step — he carries the ABSENCE
-of a preference forward ("he would not consume tomorrow either"), and
-so does `NoPreferenceCarries`. Getting the preference itself back from
-that needs excluded middle (at the first date he either prefers the
-sooner or does not), which the library does not assume; carried the
-other way, as a preference passed back from each date to the one
-before, the condition would give it directly. -/
+of a preference at the first date. It does not produce the preference.
+That follows from how Mises words the step. He carries the ABSENCE of a
+preference forward ("he would not consume tomorrow either"). So does
+`NoPreferenceCarries`. Getting the preference itself back from that
+needs excluded middle: at the first date he either prefers the sooner
+or does not. The library does not assume excluded middle. The condition
+could be carried the other way instead, as a preference passed back
+from each date to the one before. Then it would give the preference
+directly. -/
 theorem regress
     {praxis : DatedFrame} {agent : praxis.Agent}
     (morrows : Morrows praxis agent) (n : ℕ)
@@ -137,26 +139,27 @@ theorem regress
     (consumption_reveals morrows n act consumes sameAlternative demonstrated)
 
 /-- "The same satisfaction", fixed by the ranking: the later is not
-preferred to the sooner. The reading of *MES* pp. 15–16, n. 15 — ice in
-summer "provides different (and greater) satisfactions" than ice in
-winter, so the two are different goods. REJECTED as the library's
-encoding; stated so the rejection is checked. -/
+preferred to the sooner. This is the reading of *MES* pp. 15–16, n. 15.
+Ice in summer "provides different (and greater) satisfactions" than ice
+in winter. So the two are different goods. REJECTED as the library's
+encoding. It is stated so that the rejection is checked. -/
 def SameByValuation (praxis : DatedFrame) (agent : praxis.Agent)
     (now : praxis.Time) (soon late : praxis.End) : Prop :=
   ¬ praxis.PrefersEnd agent now late soon
 
 /-- **On the valuation reading, time preference's negative half is
-free.** For every frame, agent and date: of two ends the same
-satisfaction by valuation, the later is never preferred. No claim is
-carried — the signature is empty of them — because the sentence was
-made true by what "same" was allowed to mean.
+free.** Take any frame, agent and date. Take two ends that are the
+same satisfaction by valuation. Then the later is never preferred. No
+claim is carried: the signature has none. That is because the sentence
+was made true by what "same" was allowed to mean.
 
-What is NOT free on this reading is the strict half: that the sooner
-IS preferred. Between two ends neither of which is preferred, the
-valuation reading counts them the same satisfaction and time
-preference then asserts a preference that is not there. So on this
-reading the whole content of the claim is that no two dated ends are
-ever unranked — comparability, which neither author argues. -/
+The strict half is NOT free on this reading: that the sooner IS
+preferred. Take two ends, neither preferred to the other. The valuation
+reading counts them the same satisfaction. Time preference then asserts
+a preference that is not there. So on this reading the whole content of
+the claim is one thing: of two ends, one before the other and the
+sooner not yet past, the pair is never left unranked. That is
+comparability, and neither author argues for it. -/
 theorem valuation_reading_is_free (praxis : DatedFrame)
     (agent : praxis.Agent) (now : praxis.Time) :
     ∀ soon late : praxis.End,
