@@ -736,9 +736,10 @@ dominance, holds, and Mises's condition fails.
 
 The frame is not arbitrary, and the constraint on building it is
 itself the finding. Swap dominance compares the served bundle with
-each ONE-SWAP rival, so it forces a comparison between every served
-end and every unserved serviceable one. Comparability can therefore
-only fail for a pair of ends that NEVER straddles the margin — two
+each ONE-SWAP rival. With independence of uses (`IndependentUses`)
+that forces a comparison between every served end and every unserved
+serviceable one (`served_over_unserved`). Where both hold,
+comparability can therefore only fail for a pair of ends that NEVER straddles the margin — two
 ends that are both always unserved, or both always served, at every
 sub-stock. Here that pair is ends 3 and 4: the stock is two units, so
 only ends 1 and 2 are ever served, and 3 and 4 sit permanently

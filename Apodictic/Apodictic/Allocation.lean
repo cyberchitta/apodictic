@@ -124,9 +124,11 @@ It is carried by the Mises route (`Apodictic.Mises.ladder_from_order`).
 It is carried by the ladder read as a history
 (`Apodictic.Temporal.ladder_judged_earlier`). It is carried by no
 theorem on the Rothbard route. That asymmetry is a finding. Swap
-dominance (`SwapDominant`) forces a comparison between every served
-end and every unserved serviceable one. So this condition can only
-fail for a pair that never straddles a margin. See
+dominance (`SwapDominant`), with independence of uses
+(`IndependentUses`), forces a comparison between every served end and
+every unserved serviceable one (`Apodictic.served_over_unserved`). So
+where both hold, this condition can only fail for a pair that never
+straddles a margin. See
 `Apodictic.Model.rothbard_premise_holds_where_mises_is_silent`. -/
 def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) : Prop :=
