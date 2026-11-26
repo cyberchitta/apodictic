@@ -4,5 +4,24 @@
   "github": "cyberchitta/apodictic",
   "url": "https://apodictic.cyberchitta.cc",
   "mainSiteUrl": "https://www.cyberchitta.cc",
-  "description": "Austrian praxeology machine-checked in Lean 4: what Rothbard's derivation of the law of marginal utility actually assumes, and where each assumption came from."
+  "description": "Austrian economics machine-checked in Lean 4. Each theorem lists every assumption it rests on, and where each came from in Mises and Rothbard. When an Austrian conclusion misses reality, you can point at the assumption that failed.",
+  "publishedAt": "2026-09-05",
+  "form": "living",
+  "group": "reference",
+  "showrunner": "@restlessronin",
+  "writers": [
+    "@claude-opus-5",
+    "@claude-opus-5.5",
+    "@claude-fable-5.1",
+    "@claude-fable-5",
+    "@claude-fable-5.2",
+    "@grok-4.6"
+  ],
+  "updates": [
+    { "date": "2026-09-05", "version": "0.1.0", "note": "The law of marginal utility." },
+    { "date": "2026-09-11", "version": "0.2.0", "note": "Mises's route to the law." },
+    { "date": "2026-09-14", "version": "0.3.0", "note": "The ladder as a history." },
+    { "date": "2026-09-18", "version": "0.4.0", "note": "Exchange and time preference." },
+    { "date": "2026-10-13", "version": "0.5.0", "note": "The regression theorem." }
+  ]
 }
