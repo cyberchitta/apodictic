@@ -2015,148 +2015,183 @@ file := "Interest"
 
 *In brief.* Rothbard concludes that a pure rate of interest can never
 be zero or negative. From 2014, banks in the euro area lent to one
-another overnight at a negative rate. This part rebuilds his argument
-and asks which of its premises such a lender does not satisfy.
+another overnight at a negative rate. This part rebuilds his argument.
+It asks which premise such a lender fails.
 
-The argument runs in four steps, S2 to S5, and Rothbard's own example
-runs through them: John Smith, who ranks units of ten ounces of
-present money against ounces of future money ten years from now
-(*MES*, p. 380). On his scale ten future ounces rank below every unit
-of ten ounces he holds now. Rothbard does not say what Smith would buy
-with the money, and several conditions turn on that; where they do,
-we give him a coat to buy today, which is ours, not Rothbard's. Take
-one unit of his ten ounces, and three sums in ten years: the promise,
-which would buy then what his ten ounces buy now (with prices steady, a
-promise of ten; nothing in S2 or S3 counts its ounces), a smaller sum
-of nine, and what a loan repays. Each step's
-list leaves out bookkeeping, such as which stock each sum comes from.
+The argument has four steps, S2 to S5. Rothbard gives an example that
+fits them. John Smith holds money in units of ten ounces. He weighs
+each unit against money ten years from now (*MES*, p. 380). On his
+scale, ten ounces in ten years rank below every unit he holds now.
 
-- *S2: present money is preferred to the same amount of future money.*
-  He prefers his ten ounces today to the promise of ten. The claim used
-  is time preference: the same satisfaction sooner is preferred to it
-  later. Three conditions say it is the same satisfaction, and sooner.
-  The money the promise pays would buy, then, a coat as good as
-  today's ten buy now (`SamePurchasingPower`; rising prices break it). He
-  counts the promise as the money it promises (`PromisePays`; a doubt
-  about the borrower breaks it). And he would spend today's ounces
-  first (`SpentSooner`; it breaks if he would keep them unspent for the
-  ten years anyway).
-- *S3: …and to any smaller amount.* He also prefers his ten ounces
-  today to nine in ten years. The second claim used is that more money
-  is preferred to less where the two would buy different things,
-  ranked at the date he would spend them. Its conditions: every
-  smaller part of the promise buys something other than the whole
-  promise does (`BuysMoreThanItsParts`); if, when he
-  spends them, he would rank the ten above the nine, he ranks them so
-  today (`RankedAlikeNowOf`; the man who would rather not have, today,
-  the cash he will spend on an impulse tomorrow breaks it); the promise
-  is of money, not of other goods; holding it, or any part of it, costs
-  nothing; the future ounces he is weighing are interchangeable, so any
-  nine of them are as good as any other nine; and his preferences are
-  transitive across these three sums: ten today beats the promise of
-  ten, the promise of ten beats nine in ten years, so ten today beats
-  nine in ten years.
-- *S4: so he does not lend at zero or below.* Had he lent his ten ounces
-  to be repaid ten, or nine, in ten years, the loan would not show that
-  he preferred being repaid to keeping his ten ounces. The third claim
-  used is asymmetry: he cannot prefer each of two things to the other.
-  Three conditions: had he said no, he would have kept his ten ounces
-  at full value (`RefusalKeepsSum`); after the loan, what he holds is
-  worth just what the repayment would buy; and the promise of ten that
-  S2 compares against is for as many ounces as he lent (`SameCount`).
-- *S5: so every rate struck is positive.* The fourth claim is
-  demonstrated preference, asserted of this loan: in making it he
-  showed that he preferred what he held after it to what refusing would
-  have left him. So if he lends at all, he is repaid more than ten. Rothbard's
-  scale says more than the theorem: Smith's first unit ranks above
-  eleven future ounces and below twelve, so he would lend it for twelve
-  and not for eleven. Here, keeping his ten ounces at full value is not
-  assumed. It follows from two other conditions: the loan was
-  voluntary, so saying no would not have cost him anything, and what he
-  held before the loan was worth just what the ten ounces would buy,
-  the coat. That condition and its partner on S4's list, that what he
-  holds after is worth just what the repayment would buy, ask something
-  of Smith: he holds other units of ten ounces, and they, like anything
-  else he keeps, must add nothing of their own.
+Rothbard never says what Smith would buy. Some conditions depend on
+it. So we give him something to buy today: a coat. The coat is ours,
+not Rothbard's.
 
-Some things the argument seems to need do no work, at least in part of
-it:
+Take one unit of ten ounces. Three sums in ten years matter:
 
-- At a rate of exactly zero, the second claim and five of its six
-  conditions: only a negative rate needs them, and the theorem for a
-  zero rate carries, of S3's conditions, only interchangeable units.
-- "The same amount", in S2 and S3: neither ties the number of ounces
-  in the promise to the present sum. S2 counts nothing; S3 counts only
-  the smaller sum against the promise, so its "or less" is measured
-  against what buys the same satisfaction, not against the present
-  sum. The count between the promise and the sum lent is a condition of
-  its own, `SameCount`, and only the loan theorems carry it.
-- That holding the present sum costs nothing. No step assumes it; a
+- *The promise.* It would buy then what ten ounces buy now. If prices
+  stay the same, it is ten ounces.
+- *A smaller sum*, say nine ounces.
+- *The repayment.* This is what a loan actually pays back.
+
+The lists below leave out bookkeeping, such as which stock a sum comes
+from.
+
+*S2: present money beats the same amount of future money.* Smith
+prefers ten ounces today to the promise. This uses the claim of time
+preference (`TimePreference`): he prefers a satisfaction sooner to the
+same satisfaction later. Three conditions make it the same satisfaction, and sooner:
+
+- The promised money would buy a coat as good as today's.
+  (`SamePurchasingPower`. Rising prices break it.)
+- He counts the promise as the money it promises. (`PromisePays`.
+  Doubt about the borrower breaks it.)
+- He would spend today's ounces first. (`SpentSooner`. It breaks if he
+  would keep them unspent until the promise pays.)
+
+*S3: …and beats any smaller amount.* Smith also prefers ten ounces
+today to nine in ten years. This uses a second claim: more money is
+preferred to less (`MoreMoneyPreferredWhenSpent`). The ranking is made
+when he spends. It covers only sums that buy different things. Six
+conditions go with it:
+
+- Any smaller part of the promise buys something different from the
+  whole. (`BuysMoreThanItsParts`.)
+- If he will rank the promise above nine when he spends them, he
+  already ranks it so today. (`RankedAlikeNowOf`. The impulse man breaks it. Today
+  he would rather not have the cash he will spend on an impulse
+  tomorrow.)
+- The promise is of money, not of other goods. (`MoneyFrame.Money`.)
+- Holding the promise, or any part of it, costs him nothing.
+  (`FreeToHoldWithin`.)
+- Any nine future ounces are as good as any other nine.
+  (`Homogeneous`.)
+- His preferences are transitive across the three sums
+  (`TransitiveOn`). Ten today beats the promise. The promise beats
+  nine. So ten today beats nine.
+
+*S4: so he does not lend at zero or below.* Suppose he lent ten ounces
+and got back ten, or nine. The loan would not show that he preferred
+being repaid to keeping his ten ounces. This uses a third claim,
+asymmetry (`AsymmetricPreference`): he cannot prefer each of two
+things to the other. Three
+conditions:
+
+- Had he said no, he would have kept his ten ounces at full value.
+  (`RefusalKeepsSum`.)
+- After the loan, what he holds is worth what the repayment buys, and
+  no more. (`Trade.AfterCountsAsPlanned`.)
+- The promise is as many ounces as he lent. (`SameCount`.)
+
+*S5: so every rate struck is positive.* This uses the fourth claim,
+demonstrated preference (`DemonstratedPreference`). It is asserted of
+this one loan. Lending showed a preference. Smith preferred his holding
+after the loan to what refusing would have left him. Together with S4, this means a loan he
+makes repays more than ten.
+
+Rothbard's scale says more. Smith's first unit ranks above eleven
+future ounces and below twelve. So he would lend it for twelve, but
+not for eleven.
+
+S5 does not assume that saying no keeps his ten ounces at full value.
+It gets this from two conditions:
+
+- The loan was voluntary. Saying no would not have cost him anything.
+  (`Trade.Voluntary`.)
+- Before the loan, what he held was worth what ten ounces buy: the
+  coat. (`Trade.BeforeCountsAsPlanned`.)
+
+The condition on his holding before, and S4's second one, ask
+something of Smith. He holds other units of ten ounces. Those, and anything else he keeps,
+must add nothing of their own.
+
+Some apparent premises do no work, in some steps or in all:
+
+- *At a zero rate, the second claim.* Only a negative rate needs "more
+  money is preferred". The zero-rate theorem also drops five of that
+  claim's six conditions. Of S3's
+  conditions, the theorem for a zero rate keeps only interchangeable
+  units.
+- *"The same amount", in S2 and S3.* Neither step ties the promise's
+  ounces to the present sum. S2 counts nothing. S3 counts only the
+  smaller sum against the promise. So S3 compares nine with the promise,
+  not with today's ten. Only
+  the loan theorems tie the promise's ounces to the sum lent, with a
+  condition of its own (`SameCount`).
+- *That holding the present sum costs nothing.* No step assumes it. A
   cost of holding it reaches the loan only through refusal. (That the
   promise is free to hold is one of S3's conditions.)
-- The borrower, and the market: every step is about one lender.
-- Any property of the order of time, and any classical step.
+- *The borrower, and the market.* Every step is about one lender.
+- *Any property of the order of time, and any classical step.*
 
 What each case breaks:
 
-- *The bank lending overnight at a negative rate* breaks
-  `SpentSooner`, if it had no use for the money for that day, or
-  `RefusalKeepsSum`, because a bank that refused kept the sum at a
-  cost: reserves the central bank charged for, or banknotes that had to
-  be guarded. In S5, where refusal is derived, the same cost breaks the
-  trade being voluntary or the holding before it counting as planned.
-  This is a reading of the case, not a frame built for it.
-- *The Christmas club saver*, who lends at zero, breaks
-  `SamePurchasingPower`: his cash would buy an impulse, the club pays
+- *The bank that lent overnight at a negative rate.* It breaks one of
+  two conditions. If it had no use for the money that day, it breaks
+  `SpentSooner`. Or it breaks `RefusalKeepsSum`: a bank that refused
+  kept the sum at a cost. It held reserves the central bank charged
+  for, or banknotes that had to be guarded. In S5, refusal is derived
+  from two conditions. The same cost breaks one of them: the loan being
+  voluntary (`Trade.Voluntary`), or the holding before it counting as
+  planned (`Trade.BeforeCountsAsPlanned`). This is a reading of the case. No frame is built for it.
+- *The Christmas club saver.* He lends at zero, and he breaks
+  `SamePurchasingPower`. His cash would buy an impulse. The club pays
   for what he saves for. Built in the library.
-- *The man who would rather not hold, today, the cash he knows he will
-  spend on an impulse tomorrow* breaks `RankedAlikeNowOf` (S3), asked
-  of that cash against none. He is never put in a loan. Built in the
-  library.
-- *Rising prices* break `SamePurchasingPower`, and *a doubt that the
-  borrower will pay* breaks `PromisePays` (both S2), each without the
-  other. Built in the library.
+- *The impulse man.* Today he would rather not hold the cash he knows
+  he will spend on an impulse tomorrow. He breaks `RankedAlikeNowOf`
+  (S3), comparing his cash with no cash. He is never put in a loan.
+  Built in the library.
+- *Rising prices, and doubt about the borrower.* Rising prices break
+  `SamePurchasingPower`. Doubt breaks `PromisePays`. Both are S2's
+  conditions. Each can break while the other holds. Built in the library.
 
 The detail follows.
 
-Interest is the fifth target, and it is the one time preference was
-built for. Rothbard's conclusion is categorical: "every man’s time
+Interest is the fifth target. Time preference was built for it. Rothbard's conclusion is categorical: "every man’s time
 preference is positive, i.e., one ounce of present money will always
 be preferred to one ounce or less of future money. Therefore, there
 will never be any question of a zero or negative pure interest rate"
 (*MES*, p. 382). It was chosen because the world seems to have
-answered it. From 2014, banks in the euro area lent to one another
+refuted that conclusion. From 2014, banks in the euro area lent to one another
 overnight at a negative rate. An overnight loan is repaid the next
-day, and it cannot be sold on for a gain before then, so the lender
-knows when he lends that he will be repaid less. The question is which
-step of the argument such a lender falls outside.
+day. It cannot be sold on for a gain before then. So the lender knows,
+when he lends, that he will be repaid less. The question is which step
+of the argument such a lender falls outside.
 
-Rothbard's argument runs in four steps, and they are rebuilt here in
-order. Present money is preferred to the same amount of future money.
-So it is preferred to that amount or less. So a man does not lend at a
-rate of zero or below. So every rate actually struck is positive. The
-docstrings below label them S2 to S5.
-The rate as a number set in a market is not reached: nothing here adds up
-lenders or finds an equilibrium.
+Rothbard's argument has four steps, rebuilt here in order:
 
-**Money.** The vocabulary gets two more relations, which units are
-money and whether holding a sum costs anything, and nothing else.
+- Present money is preferred to the same amount of future money.
+- So it is preferred to that amount or less.
+- So a man does not lend at a rate of zero or below.
+- So every rate actually struck is positive.
+
+The docstrings below label them S2 to S5. The rate as a market number
+is not reached. Nothing here adds up lenders or finds an equilibrium.
+
+**Money.** The vocabulary gets two more relations. One says which
+units are money. The other says whether holding a sum costs anything.
+Nothing else is added.
 
 {docstring Apodictic.MoneyFrame}
 
-A sum of money counts for what the man's plan says he would buy with
-exactly those units. That is not how goods in a trade are counted
-under *Exchange*, where a holding counts for every end any of its goods
-could serve. For money the two part at once: an ounce can be spent now or kept for later,
-not both. Three stocks are weighed at the one date of the loan: the
-present money, the promises of future money, and the money promised,
-as he would spend it were it in hand. A theorem takes a sum
-from each.
+The man has a plan for his money. A sum counts for what the plan buys
+with exactly those units. Goods in a trade are counted differently, under
+*Exchange*. There a holding counts for every end any of its goods could
+serve. For money the two counts differ at once. An ounce can be spent
+now or kept for later, but not both.
 
-**Present money over future money.** "It follows from the law of time
-preference that present money is worth more than present expectations
-of the same amount of future money" (*MES*, p. 376). It follows, but
-not from the amount.
+Three stocks are weighed at the date of the loan:
+
+- the present money;
+- the promises of future money;
+- the money promised, as he would spend it if he had it in hand.
+
+A theorem takes a sum from each.
+
+**Present money over future money.** Rothbard: "It follows from the
+law of time preference that present money is worth more than present
+expectations of the same amount of future money" (*MES*, p. 376). It
+does follow, but not from the amount.
 
 {docstring Apodictic.PureInterest.present_sum_preferred}
 
@@ -2168,22 +2203,26 @@ The three conditions:
 
 {docstring Apodictic.SpentSooner}
 
-Three findings are in this step. First, the number of ounces does no
-work in it. Equal counts are the same good at two dates only if they
-buy the same thing, and that is what the proof uses, so none of the
-conditions above says the sums are the same amount. The count enters
-later, where "repaid no more than lent" has to be compared with a
-promise, and it is a condition of its own there. (The two conditions
-once each held an equality of counts that this step never used. The
-linter checks whole assumptions and not their parts, so it could not
-see that; the counts were moved out by hand.) Second, two things a reader might fold together are kept
-apart: that the money will buy as much later, which fails with rising
-prices, and that the promise will pay, which fails with a risk of
-default. Each has its own name, so a failure points at one of them.
-A frame of one agent with an ounce and a promise of one shows each
-failing while the other holds, and shows that a single condition
-asserted between the cash and the promise fails alike in both cases,
-so it cannot say which happened:
+This step has three findings.
+
+*The number of ounces does no work.* Equal counts are the same good at
+two dates only if they buy the same thing. That is what the proof
+uses. So none of the conditions above says the sums are the same
+amount. The count enters later. There "repaid no more than lent" has
+to be compared with a promise. The count is a condition of its own
+(`SameCount`). (`SamePurchasingPower` and `PromisePays` once each held
+an equality of counts that this step never used. The linter checks
+whole assumptions, not their parts. So it could not see that. The
+counts were moved out by hand.)
+
+*Two things a reader might merge are kept apart.* One is that the
+money will buy as much later. Rising prices break it. The other is
+that the promise will pay. A risk of default breaks it. Each has its
+own name, so a failure points at one of them. A frame shows this. It
+has one agent, with an ounce and a promise of one. Each condition
+fails while the other holds. A single condition, stated between the
+cash and the promise, fails the same way in both cases. So it cannot
+say which happened:
 
 {docstring Apodictic.Model.CertaintySplit.doubt_power_but_not_pays}
 
@@ -2191,28 +2230,31 @@ so it cannot say which happened:
 
 {docstring Apodictic.Model.CertaintySplit.merged_fails_in_both}
 
-Third, what the step needs about holding is that the present sum
-would be *spent* sooner. That holding the present sum costs nothing is
-in no signature: no step uses it, so a theorem that listed it would
-fail the linter. (A cost of holding cash does reach the loan theorems,
-by another road: the condition that refusing a loan leaves the sum at
-full value, below.) Rothbard's footnote dismisses the man who would
-keep the money for later, as "not the issue here, which is one of
-availability for use" (*MES*, p. 386 n. 11). If that man would spend
-the present sum on the same thing, at the same date, as the promise, the
-two buy the same bundle, and asymmetry then forbids a strict preference
-either way. The footnote answers him with an equality, not a
+*Holding.* What the step needs is that the present sum would be
+*spent* sooner. That holding it costs nothing is in no signature. No
+step uses it. A theorem that listed it would fail the linter. (A
+cost of holding cash does reach the loan theorems, by another road. It
+enters through the condition that refusing a loan leaves the sum at
+full value, below.)
+
+Rothbard's footnote dismisses the man who would keep the money for
+later, as "not the issue here, which is one of availability for use"
+(*MES*, p. 386 n. 11). Suppose that man would spend the present sum on
+the same thing, at the same date, as the promise. Then the two sums
+buy the same bundle. Asymmetry then forbids a strict preference either
+way. At best his two sums rank equal. The footnote gives him no strict
 preference.
 
 **A rate of exactly zero.** The order of the steps hides one thing. A
-loan that repays exactly the sum lent is refused on time preference
-and asymmetry, without "more money is preferred":
+loan that repays exactly the sum lent demonstrates no preference. Of
+the claims, it needs only time preference and asymmetry. It does not
+need "more money is preferred":
 
 {docstring Apodictic.PureInterest.no_loan_at_zero_rate}
 
-The two conditions on the trade say what refusing would have left the
-lender, and what lending left him, and the count compares the promise
-with the sum lent:
+Three conditions tie the trade to the sums. The first says what
+refusing would have left the lender. The second says what lending left
+him. The third compares the promise's count with the sum lent:
 
 {docstring Apodictic.Trade.RefusalKeepsSum}
 
@@ -2220,85 +2262,89 @@ with the sum lent:
 
 {docstring Apodictic.SameCount}
 
-"More money is preferred", the claim the next step needs, is spent on
-one thing only: ruling out a *negative* rate.
+"More money is preferred" is the claim the next step needs. It is
+spent on one thing only: ruling out a *negative* rate.
 
 **One ounce or less.** "Or less" needs a second claim. Rothbard:
 "\[T\]o both present money and future money there applies the general rule that
 more of a good will have greater utility than less of it" (*MES*,
-p. 379). It is the tenth claim under *The claims*, where its docstring
+p. 379). It is the tenth claim under *The claims*. Its docstring there
 gives the reasons it is narrower than Rothbard's rule. Two of them are
 findings of the build.
 
-The first is satiation. Read as Rothbard states it, even cut to money
-free to hold and to sums one part of the other, the rule ranks the
-larger sum above the smaller whatever each would buy:
+*The first is satiation.* Read as Rothbard states it, the rule ranks
+the larger sum above the smaller, whatever each would buy. That holds
+even when the rule is cut to money free to hold, and to sums one part
+of the other:
 
 {docstring Apodictic.PureInterest.MoreMoneyPreferredUnrestricted}
 
-Where the larger sum would buy exactly what the smaller buys, the rule
-then has the man prefer a bundle to itself, and asymmetry, which the
-loan theorems carry, forbids that. So the rule, with asymmetry, says
-that every extra unit of money changes what the sum would buy: money
-never satiates.
+Suppose the larger sum would buy exactly what the smaller buys. Then
+the rule has the man prefer a bundle to itself. Asymmetry forbids
+that, and the loan theorems carry asymmetry. So the rule, with
+asymmetry, says that every extra unit of free money changes what the
+sum would buy. Money never satiates.
 
 {docstring Apodictic.PureInterest.buysMore_of_unrestricted}
 
-Mises denies non-satiation of the cash a man holds: "He who says that his thirst for more money can never be
+Mises denies that money never satiates, for the cash a man holds: "He who says that his thirst for more money can never be
 quenched, does not mean to say that his cash holding can never be too
 large. What he really means is that he can never be rich enough"
 (*Human Action*, ch. XVII, §3). Rothbard agrees that "effective demand
 for money is not and cannot be unlimited" (*MES*, p. 773). So the
-claim here ranks only sums that buy different things, and that every
-part of the larger sum buys something other than the whole is a
-condition:
+claim here ranks only sums that buy different things. A condition says
+that every part of the larger sum buys something other than the whole
+(`BuysMoreThanItsParts`):
 
 {docstring Apodictic.BuysMoreThanItsParts}
 
-The second is time. The plan says what the man would buy with a sum,
-and he would buy it when he spends it, by his valuations then. A man
-who knows what he does with money in hand may prefer now to have less
-of it, because of what he would buy with more when it came. Ranked
-now, Rothbard's rule says he cannot:
+*The second is time.* The plan says what the man would buy with a sum.
+He would buy it when he spends it, by his valuations then. A man may
+know what he does with money in hand. Then, today, he may prefer to get
+less later. He knows what he would buy with more.
+Ranked now, Rothbard's rule says he cannot:
 
 {docstring Apodictic.PureInterest.MoreMoneyPreferredNow}
 
-The library builds the man. He has one ounce, which he would spend on
-an impulse tomorrow. Today he would rather not have the impulse;
-tomorrow he will want it. Asymmetry holds at both dates, and the claim
-dated at the spending holds of him, since tomorrow he prefers the
-ounce. The claim ranked now does not:
+The library builds this man. He has one ounce, which he would spend on
+an impulse tomorrow. Today he would rather not have the impulse.
+Tomorrow he will want it. Asymmetry holds at both dates. Tomorrow
+he prefers the ounce to nothing. So the claim ranked at the spending
+holds of him. The claim ranked now does not:
 
 {docstring Apodictic.Model.Impulse.now_reading_fails}
 
-So the claim here is dated at the spending, and the step from then to
-now is a condition. In the theorems it is asked of the one comparison
-the proof makes, the promise against the sum repaid. The impulse man is
-never put in a loan, but the same condition, asked of his ounce against
-no cash, is the one he fails:
+So the claim here is dated at the spending. The step from then to now
+is a condition. The theorems ask it of the one comparison the proof
+makes: the promise against the sum repaid. The impulse man is never
+put in a loan. But he fails the same condition, asked of his ounce
+against no cash:
 
 {docstring Apodictic.RankedAlikeNowOf}
 
 {docstring Apodictic.Model.Impulse.not_rankedAlikeNow}
 
-The frame's preferences are written by hand for the case, and the
-frame is built only to separate the two readings: asymmetry and the
-dated claim hold in it, and the undated reading fails. It is not a
-frame where every claim holds; time preference, for one, does not. Whether a given saver is such a man is a question about
-him. A saver who locks his money in a Christmas club, away until it
-is paid out before the holidays, looks like one, though the club case below needs only the
-plainer failure.
+The frame's preferences are written by hand for the case. The frame is
+built only to separate the two readings. Asymmetry and the dated claim
+hold in it, and the undated reading fails. Not every claim holds in
+it: time preference, for one, does not. Whether a given saver is such
+a man is a question about him. A saver who locks his money in a
+Christmas club looks like one. The club holds his money until just
+before the holidays. But the club case below needs only a failure of
+`SamePurchasingPower`.
 
 Mises's own account of action has room for this man. A valuation that
 changes is not a lapse from action: "If the valuations change, acting
-must change also" (*Human Action*, ch. V, §4). The condition is where
-his change of valuation lands.
+must change also" (*Human Action*, ch. V, §4). His change of valuation
+breaks this condition (`RankedAlikeNowOf`).
 
-The rest of what "or less" takes: the promise's parts are free to hold,
-his preferences are transitive across the three sums compared, the
-promise is a promise of money, and
-the future units are interchangeable (`plan.Homogeneous`, under *The
-conditions*).
+The rest of what "or less" takes:
+
+- the promise's parts are free to hold;
+- his preferences are transitive across the three sums compared;
+- the promise is a promise of money;
+- the future units are interchangeable (`plan.Homogeneous`, under *The
+  conditions*).
 
 {docstring Apodictic.FreeToHoldWithin}
 
@@ -2307,9 +2353,12 @@ conditions*).
 {docstring Apodictic.PureInterest.present_sum_preferred_to_less}
 
 **No loan at zero or below, and every rate struck positive.** The last
-theorem does not assume that refusing leaves the sum: it derives it,
-from the trade being voluntary and the lender's holding before it
-counting as planned, so it takes that second condition instead.
+theorem does not assume that refusing leaves the lender the sum. It
+derives this. In place of the refusal condition it takes two others:
+
+- The trade was voluntary (`Trade.Voluntary`).
+- His holding before the trade counts as planned
+  (`Trade.BeforeCountsAsPlanned`).
 
 {docstring Apodictic.PureInterest.no_loan_at_nonpositive_rate}
 
@@ -2382,105 +2431,124 @@ manifest of Apodictic.PureInterest.struck_rate_positive
 ```
 
 Four claims carry it: time preference, "more money is preferred",
-asymmetry, and demonstrated preference, stated of the lender's trade.
-The borrower contributes nothing. That every rate *struck* is
-positive is a fact about each lender, not about a market, and a
-borrower who would pay a positive rate is not shown to exist.
+asymmetry, and demonstrated preference. The last is stated of the
+lender's trade. The borrower contributes nothing. The result about
+rates *struck* is about each lender. It says nothing about a market.
+No borrower who would pay a positive rate is shown to exist.
 
 **What the order of time was asked for.** Nothing, as under *Time
-preference*. No proof here uses a property of the relation "before",
-and none needs a classical step: the one case
-split is on the size of a sum.
+preference*. No proof here uses a property of the relation "before".
+None needs a classical step. The one case split is on the size of a
+sum.
 
 **The case.** The library builds one frame to test this on. A lender
-with a use for an ounce now lends it for a promise of two, repaid at the
-next date, and every claim and condition of the last theorem holds.
+has a use for an ounce now. He lends it to be repaid two at the next
+date. Every claim and condition of the last theorem holds.
 
 {docstring Apodictic.Model.Loan.struck_rate_positive_applies}
 
-The test is thin, and it is worth saying where. The lender's ranking
-does not change with the date, so the condition on ranking now as at
-the spending holds with nothing to do. The money promised is
-the promises themselves, so that the promise pays is never tried on a
-promise that might not. Every unit counts as money and every sum is free to
-hold, so neither condition is tried. Preference is transitive throughout
-the frame, not only across the three sums. The promise whose parts must each buy
-something different is a single unit, so it is tried only against
-nothing at all. And there is one agent, lender and
-borrower both.
+The test is thin, and here is where:
 
-**What a failure would point at.** Where a man lends and is repaid
-less, the theorem for a rate not above zero says that his trade did
-not demonstrate a preference for being repaid over keeping the sum,
-or that one of its
-assumptions failed. The ones a case is likely to land on:
-The money would buy less at repayment, or he doubted the promise would
-pay, or he had no use for the sum before the promise paid. Or refusing
-would not have left him the sum at full value, because keeping cash
-cost him something. (In the last theorem that condition is not
-assumed but derived, from the trade being voluntary and his holding
-counting as planned, so there the failure lands on one of those.) Or
-an extra unit of the promise bought nothing more, or he ranked the promise
-against the repayment differently now than at the spending, or the
-promise was not of money or not free to hold, or his preferences were
-not transitive across the three sums. Or one of the claims failed. (Its manifest
-has a few more that a case is less likely to land on: that the promise
-and the repayment come from the stock of promises, that the promise is
-as many units as the sum lent, that the future units are
-interchangeable, and that what he holds after counts as planned.)
+- The lender's ranking does not change with the date. So `RankedAlikeNowOf`
+  holds trivially.
+- The money promised is the promises themselves. So `PromisePays` is
+  never tried on a promise that might not pay.
+- Every unit counts as money, and every sum is free to hold. So
+  neither of those conditions is tried (`MoneyFrame.Money`,
+  `FreeToHoldWithin`).
+- Preference is transitive throughout the frame, not only across the
+  three sums.
+- The promise is one unit. So `BuysMoreThanItsParts` compares it only
+  with no units.
+- There is one agent, lender and borrower both.
+
+**What a failure would point at.** Suppose a man lends and is repaid
+less. The theorem for a rate not above zero then says one of two
+things. Either his trade did not demonstrate a preference for being
+repaid over keeping the sum, or one of the theorem's assumptions
+failed. These
+are the ones a case is likely to land on:
+
+- The money would buy less at repayment (`SamePurchasingPower`).
+- He doubted the promise would pay (`PromisePays`).
+- He had no use for the sum before the promise paid (`SpentSooner`).
+- Refusing would not have left him the sum at full value, because
+  keeping cash cost him something (`RefusalKeepsSum`). (In the last theorem this condition
+  is derived, not assumed. It comes from the trade being voluntary and
+  his holding counting as planned. So there the failure lands on one of
+  those.)
+- An extra unit of the promise bought nothing more
+  (`BuysMoreThanItsParts`).
+- He ranked the promise against the repayment differently now than at
+  the spending (`RankedAlikeNowOf`).
+- The promise was not of money, or not free to hold (`MoneyFrame.Money`,
+  `FreeToHoldWithin`).
+- His preferences were not transitive across the three sums
+  (`TransitiveOn`).
+- One of the claims failed.
+
+That theorem's manifest has a few more that a case is less likely to
+land on. The
+promise and the repayment come from the stock of promises. The promise
+is as many units as the sum lent (`SameCount`). The future units are
+interchangeable (`Homogeneous`). What he holds after counts as planned
+(`Trade.AfterCountsAsPlanned`).
 
 The bank that lends overnight at a negative rate is likely to land on
-two of these. One is its use for the money: it may have had none
-before the loan was repaid, a day later, and where it had none the
-theorem says nothing more about it. The other is refusal: refusing
-would not have left it the sum at full value. A bank that refused kept
-the sum as reserves at the central bank, which charged for them, or as
-banknotes, which have to be guarded. Either failure takes the bank
-outside the theorem; neither is shown here to be the only way out.
+two of these. One is `SpentSooner`. The bank may have had no use for the money
+before repayment, a day later. Then the theorem says nothing more
+about the bank. The other is `RefusalKeepsSum`. Refusing would not
+have left the bank the sum at full value. A bank that refused kept
+the sum as reserves at the central bank, which charged for them. Or it
+kept banknotes, which have to be guarded. Either failure takes the
+bank outside the theorem. Neither is shown here to be the only way
+out.
 
-Rothbard's own terms give an Austrian a reply for one part of this,
-though he never made it about negative rates. A deposit of present money
-is like goods left in a warehouse, and redeeming it "is not the completion
+Rothbard's own terms give an Austrian a reply to part of this. He
+never applied it to negative rates. A deposit of present money is like
+goods left in a warehouse. Redeeming it "is not the completion
 of a transaction or equivalent to a creditor’s calling his loan; it is
 a simple repossessing of a man’s own good" (*MES*, p. 800). The man who
 deposits goods "pays the owner of the warehouse a certain sum for the
 service of storage. He still retains ownership of the property; the
-owner of the warehouse is simply guarding it" (*MES*, p. 801). On that reading, a negative rate on a deposit is a fee for
-safekeeping and not interest at all, and the theorems never applied to
-it. The reply does not reach the loan between two banks, which is a
-promise of money tomorrow, a credit transaction on Rothbard's own terms.
-But the fee does reach the lender's refusal: it is what keeping the
-sum would have cost. For banknotes the cost is plainly one of keeping
-the sum safe, a price for guarding and not for time. For reserves it
-turns on whether the central bank's own overnight deposit is a
-warehouse or a loan: a warehouse makes its charge a fee for
-safekeeping, and a loan makes it a negative rate in its own right.
-That is left open here, and nothing rests on it: from June 2014 the
-same charge also fell on the reserves a bank held above the required
-minimum in its ordinary account at the central bank. Those reserves
-do not stand for money stored elsewhere; they are the money itself,
-as banknotes are. So a bank that refused the overnight loan had
-nowhere to keep the sum for nothing. All of this is a reading of the
-case, not a frame built for it.
+owner of the warehouse is simply guarding it" (*MES*, p. 801). On that
+reading, a negative rate on a deposit is a fee for safekeeping. It is
+not interest at all. The theorems never applied to it.
 
-Where a man lends at exactly zero, the list is shorter:
-it drops the claim that more money is preferred and the five
-conditions that come with it.
+The reply does not reach the loan between two banks. That loan is a
+promise of money tomorrow: a credit transaction, on Rothbard's own
+terms. But the fee does reach the lender's refusal. It is what keeping
+the sum would have cost. For banknotes the cost is plainly one of
+keeping the sum safe. It is a price for guarding, not for time.
 
-The Christmas club saver lends at zero, and on this reading of a sum
-he is outside the theorem at once. The cash in his hand would buy what
-he would do with it on impulse, the club pays for what he saves it
-for, and those are not the same satisfaction. So whatever money the
-club's promise pays in, if it pays, the condition that his cash and that
-money have the same purchasing power fails. The library builds him
-too, with every claim holding:
+For reserves, it turns on what the central bank's overnight deposit
+is. If it is a warehouse, its charge is a fee for safekeeping. If it
+is a loan, its charge is a negative rate in its own right. That is
+left open here. Nothing rests on it, for this reason. From June 2014
+the same charge also fell on a bank's excess reserves. These are the
+reserves it held above the required minimum, in its ordinary account
+at the central bank. Those
+reserves do not stand for money stored elsewhere. They are the money
+itself, as banknotes are. So a bank that refused the overnight loan
+had nowhere to keep the sum for nothing. All of this is a reading of
+the case, not a frame built for it.
+
+Where a man lends at exactly zero, the list is shorter. It drops the
+claim that more money is preferred, and the five conditions that come
+with it.
+
+The Christmas club saver lends at zero. A sum counts for what he would
+buy with it. So he is outside the theorem at once. The cash in his hand would buy what he
+would do with it on impulse. The club pays for what he saves it for.
+Those are not the same satisfaction. So `SamePurchasingPower` fails.
+It fails between his cash and any money the club's promise pays in. The library builds him too, with every claim holding:
 
 {docstring Apodictic.Model.ChristmasClub.zero_rate_with_every_claim}
 
 {docstring Apodictic.Model.ChristmasClub.outside_zero_rate}
 
-In this frame a sum of cash buys one end however large, so his
-preferring less cash to more is not modelled here; that is the impulse
+In this frame a sum of cash buys one end, however large. So his
+preferring less cash to more is not modelled here. That is the impulse
 man above.
 
 # The horses in Lean
