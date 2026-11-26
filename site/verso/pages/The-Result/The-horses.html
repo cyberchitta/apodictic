@@ -1,11 +1,13 @@
-<section><h1>1.1. The horses<span class="permalink-widget inline"><a href="/The-Result/The-horses/" title="Permalink">🔗</a></span></h1><p>The law of marginal utility is derived over three pages of <strong>Man,
-Economy, and State</strong>, and Rothbard derives it on a worked case: a man
-who owns six horses. This document follows that case throughout, and the
-Lean returns to the same six horses once the theorems are stated. The point of working
-that way is that you can hold his paragraph beside the formal
-statement and judge for yourself whether they say the same thing.</p><p>He sets it up twice. First by acquisition (<strong>MES</strong> p. 24):</p><blockquote><p>The first horse will fulfill the most urgent wants that a horse can
+<section><h1>1.1. The horses<span class="permalink-widget inline"><a href="/The-Result/The-horses/" title="Permalink">🔗</a></span></h1><p>Rothbard derives the law of marginal utility over three pages of <strong>Man,
+Economy, and State</strong>. He works it on one case: a man who owns six
+horses. This document follows that case throughout. The Lean comes
+back to the same six horses once the theorems are stated. The point is
+that you can hold his paragraph beside the formal statement. Then you
+can judge for yourself whether they say the same thing.</p><p>He sets the case up twice. The first time is by acquisition (<strong>MES</strong>
+p. 24):</p><blockquote><p>The first horse will fulfill the most urgent wants that a horse can
   serve; this follows from the universal fact that action uses scarce
-  means to satisfy the most urgent of the not yet satisfied wants.</p></blockquote><p>Then, for the diagram, by counting the ends (pp. 25–26):</p><blockquote><p>We assume for simplicity that there are 10 ends which the means
+  means to satisfy the most urgent of the not yet satisfied wants.</p></blockquote><p>The second time is for his diagram. This time he counts the ends
+(pp. 25–26):</p><blockquote><p>We assume for simplicity that there are 10 ends which the means
   could fulfill, and that each unit of means is capable of serving one
   of the ends. If the supply of the good is 6 units, then the first
   six ends, ranked in order of importance by the valuing individual,
@@ -16,32 +18,30 @@ statement and judge for yourself whether they say the same thing.</p><p>He sets 
   the larger stock would have satisfied. Thus, if the individual was
   using one horse for pleasure riding, and he considers this the least
   important of his wants that were fulfilled by the six horses, the
-  loss of a horse will cause him to give up pleasure riding.</p></blockquote><p>That is the whole derivation. Everything below is an attempt to say it
-in a form a machine will check.</p><p>Three pieces of vocabulary carry it, and they are worth naming now
-because the shape of the argument turns on the third. There is a
-<strong>stock</strong> — the six horses, and the ends a horse can serve at all.
-There is a <strong>plan</strong> — for any number of horses he might have, which
-wants he would serve with them. And there is the <strong>preference</strong> the
-plan expresses, which ranks bundles of wants and is not assumed to do
-anything else: not transitive, not complete, no numbers attached. The
-full definitions are under <strong>The vocabulary</strong>; nothing before it
-depends on reading them.</p><p>The plan is where the trouble starts, and it is worth seeing why now,
-before the formal statement makes it look inevitable. Rothbard's
-argument compares six horses with five. But the man has six. What he
-would do with five is not anything he does — it is a plan covering
-stocks he does not own. His own words give it away: "which the larger
-stock <strong>would have</strong> satisfied". (His first passage, the one about finding
-horses one after another, can be read with no plan at all — as a
-history of what he did with each. That reading returns under <strong>The
-ladder as a history</strong>.)</p><p>There is a second horse passage, and it is the one that decides how
-the plan has to be written down (p. 27):</p><blockquote><p>suppose that the sixth horse that he had previously acquired (named
+  loss of a horse will cause him to give up pleasure riding.</p></blockquote><p>That is the whole derivation. Everything below tries to say it in a
+form a machine will check.</p><p>Three pieces of vocabulary carry the argument. They are worth naming
+now. The argument's shape turns on the third.</p><ul><li><p>The <strong>stock</strong> (<code>Stock</code>): the six horses, and the ends a horse can
+  serve at all.</p></li><li><p>The <strong>plan</strong> (<code>AllocationPlan</code>): for any set of horses he might
+  have, which wants he would serve with them.</p></li><li><p>The <strong>preference</strong> the plan expresses (<code>Prefers</code>). It ranks bundles of
+  wants, and nothing more is assumed of it. It is not assumed
+  transitive. It is not assumed complete. No numbers are attached.</p></li></ul><p>The full definitions are under <strong>The vocabulary</strong>. Nothing before that
+part depends on reading them.</p><p>The plan is where the trouble starts. It is worth seeing why now,
+before the formal statement makes it look inevitable.</p><p>Rothbard's argument compares six horses with five. But the man has
+six. What he would do with five is not anything he does. It is a plan,
+and it covers stocks he does not own. His own words give it away:
+"which the larger stock <strong>would have</strong> satisfied".</p><p>His first passage is about acquiring horses one after another. It can
+be read with no plan at all, as a history of what he did with each.
+That reading returns under <strong>The ladder as a history</strong>.</p><p>A second horse passage decides how the plan has to be written down
+(p. 27):</p><blockquote><p>suppose that the sixth horse that he had previously acquired (named
   "Seabiscuit") he had placed in the service of pleasure riding.
   Suppose that he now must lose another horse ("Man o' War") which had
   arrived earlier, and which was engaged in the more important duty
   (to him) of leading a wagon. He will still give up end 6 by simply
-  transferring Seabiscuit from this function to the wagon-leading end.</p></blockquote><p>Rothbard names two horses in order to insist that <strong>which</strong> horse goes
-makes no difference. That is only worth saying if the plan could have
-depended on which — so here the plan is indexed by which horses, and
-the claim that only the number matters is kept separate, as a named
-condition. Both of these conclusions of his are proved below, of the
-six horses.</p></section>
+  transferring Seabiscuit from this function to the wagon-leading end.</p></blockquote><p>Rothbard names two horses to insist that <strong>which</strong> horse goes makes no
+difference. That is only worth saying if the plan could have depended
+on which. So here the plan is indexed by which horses. That only the
+number matters is kept apart, as a named condition
+(<code>plan.Homogeneous</code>).</p><p>Both of his conclusions are proved of the six horses, under <strong>The
+horses in Lean</strong>:</p><ul><li><p>The loss of a horse ends pleasure riding
+  (<code>Model.loss_of_a_horse_ends_pleasure_riding</code>).</p></li><li><p>Which horse goes makes no difference
+  (<code>Model.which_horse_does_not_matter</code>).</p></li></ul></section>
