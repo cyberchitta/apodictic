@@ -32,15 +32,15 @@ variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
 
 /-- **Held to the same use** — a condition on the situation, the case
 Rothbard's footnote turns to: the agent would hold the present sum and
-spend it on just what the claim would buy. Rothbard: "If a man wants to
+spend it on just what the promise would buy. Rothbard: "If a man wants to
 “save” money for some future use, he may “hoard” it rather than spend
 it on a future good, and thus have it always available" (*MES* p. 386
 n. 11). It holds only where hoarding is free and the money keeps its
 purchasing power; where holding costs, the hoarded sum buys less. -/
 def HeldToTheSameUse (presentPlan : AllocationPlan present)
-    (futurePlan : AllocationPlan future) (sum claim : Finset praxis.Means) :
+    (futurePlan : AllocationPlan future) (sum promise : Finset praxis.Means) :
     Prop :=
-  presentPlan.wouldServe sum = futurePlan.wouldServe claim
+  presentPlan.wouldServe sum = futurePlan.wouldServe promise
 
 end Sums
 

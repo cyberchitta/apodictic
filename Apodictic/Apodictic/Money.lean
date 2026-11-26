@@ -13,15 +13,15 @@ definitions a theorem takes as named hypotheses.
 ## What is added
 
 - `MoneyFrame`: a dated frame with two supplied relations more.
-  `Money m` — the unit `m` is an amount of money, or a claim to an
+  `Money m` — the unit `m` is an amount of money, or a promise of an
   amount of money at a later date. `FreeToHold agent t sum` — holding
   that sum costs the agent nothing. Both bare, like `SameSatisfaction`:
   no properties, no link to `Believes` or `Prefers`.
 - Sums of money are sub-stocks of a `Stock` (`Apodictic.Allocation`),
   and what a sum is worth to the agent is what his `AllocationPlan`
   says he WOULD buy with exactly those units. Three stocks, all judged
-  at the one time `now`: present money, claims to future money, and the
-  money a claim promises, as he would spend it were it in hand at the
+  at the one time `now`: present money, promises of future money, and the
+  money promised, as he would spend it were it in hand at the
   later date. No stock is indexed by a later time.
 
 ## Shape claims (audit)
@@ -34,8 +34,8 @@ definitions a theorem takes as named hypotheses.
   so wherever a theorem passes from a trade's holdings to sums, it says
   so by a named condition (`Trade.BeforeCountsAsPlanned`,
   `Trade.AfterCountsAsPlanned`).
-- The stock of future money lists the claims the agent is weighing,
-  not claims he holds: a lender holds none before he lends. `Stock`'s
+- The stock of future money lists the promises the agent is weighing,
+  not promises he holds: a lender holds none before he lends. `Stock`'s
   own docstring reads its units as "on hand"; here they are on offer.
   Rothbard's reach over goods not held is his own ("If the actor has no
   units of some goods in his possession, this does not affect the
@@ -45,9 +45,9 @@ definitions a theorem takes as named hypotheses.
   it would buy. Dates therefore enter as the dates of ends picked out by
   the agent's plan and beliefs at `now` — expected dates, not dates of
   delivery.
-- Certainty is read as how the agent counts the claim at `now`, not as
-  what later happens: a claim he believes may not pay is one his plan
-  counts for something other than the money it promises (`ClaimPays`).
+- Certainty is read as how the agent counts the promise at `now`, not as
+  what later happens: a promise he believes may not pay is one his plan
+  counts for something other than the money it promises (`PromisePays`).
 -/
 
 namespace Apodictic
@@ -76,7 +76,7 @@ theorem coe_single {α : Type*} (a : α) : ((({a} : Finset α)) : Set α) = {a} 
 
 /-- A dated frame with money and the cost of holding it. -/
 structure MoneyFrame extends DatedFrame where
-  /-- `Money m`: the unit `m` is an amount of money, or a claim to an
+  /-- `Money m`: the unit `m` is an amount of money, or a promise of an
   amount of money at a later date. Money is Mises's: "the thing which
   serves as the generally accepted and commonly used medium of
   exchange" (*Human Action*, ch. XVII, §3). Supplied; no properties:
@@ -97,7 +97,7 @@ variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
 /-- **Same purchasing power** — a condition on the situation. Each of
 two sums would buy one satisfaction, the same satisfaction, each at its
 own date. Asserted in the theorems between
-the present sum and the money a claim promises.
+the present sum and the money promised.
 
 Mises: "present goods are valued higher than future goods of the same
 kind and quantity" (*Human Action*, ch. XIX, §1). Rothbard's "the same
@@ -107,36 +107,36 @@ thing, and that is what this says. The count is the separate condition
 `SameCount`, carried only where it is used. It fails where the money
 buys less at the later date
 (Rothbard's purchasing-power component, *MES* p. 797; Mises's price
-premium). Whether the claim pays is the separate condition
-`ClaimPays`. -/
+premium). Whether the promise pays is the separate condition
+`PromisePays`. -/
 def SamePurchasingPower (presentPlan : AllocationPlan present)
-    (futurePlan : AllocationPlan future) (sum claim : Finset praxis.Means)
+    (futurePlan : AllocationPlan future) (sum promise : Finset praxis.Means)
     (soon late : praxis.End) : Prop :=
   presentPlan.wouldServe sum = {soon} ∧
-    futurePlan.wouldServe claim = {late} ∧
+    futurePlan.wouldServe promise = {late} ∧
     praxis.SameSatisfaction agent soon late
 
-/-- **The claim pays** — a condition on the situation: Rothbard's world
-of certainty, for one claim. The agent's plan counts the claim for
+/-- **The promise pays** — a condition on the situation: Rothbard's world
+of certainty, for one promise. The agent's plan counts the promise for
 exactly what it counts the money it promises for.
 
-It fails where he believes the claim may not pay, or may pay in part:
-the claim then counts for something other than the promised money
+It fails where he believes the promise may not pay, or may pay in part:
+the promise then counts for something other than the promised money
 would buy. The credit premium lands here, and only here. -/
-def ClaimPays (futurePlan : AllocationPlan future)
+def PromisePays (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
-    (claim money : Finset praxis.Means) : Prop :=
-  futurePlan.wouldServe claim = promisedPlan.wouldServe money
+    (promise money : Finset praxis.Means) : Prop :=
+  futurePlan.wouldServe promise = promisedPlan.wouldServe money
 
 /-- **The same count** — a condition on the situation, of bookkeeping:
-the claim is as many units as the present sum. Rothbard's "the same
+the promise is as many units as the present sum. Rothbard's "the same
 amount of future money" (*MES* p. 376), where it does work: only the
-loan theorems use it, to compare the repaid sum with the claim. -/
-def SameCount (sum claim : Finset praxis.Means) : Prop :=
-  sum.card = claim.card
+loan theorems use it, to compare the repaid sum with the promise. -/
+def SameCount (sum promise : Finset praxis.Means) : Prop :=
+  sum.card = promise.card
 
 /-- **Spent sooner** — a condition on the situation. The present sum
-would be spent before the claim pays, and not on something already
+would be spent before the promise pays, and not on something already
 past at `now`.
 
 It is what Rothbard's footnote answers rather than grants: "It is not
@@ -144,41 +144,41 @@ valid to object that some might prefer to use the money in the future
 rather than in the present. That is not the issue here, which is one of
 availability for use" (*MES* p. 386 n. 11). The objector is the man for
 whom this condition fails — he would hold the present sum until the
-date the claim pays. -/
+date the promise pays. -/
 def SpentSooner (soon late : praxis.End) : Prop :=
   praxis.Before (praxis.attained soon) (praxis.attained late) ∧
     ¬ praxis.Before (praxis.attained soon) now
 
-/-- **Free to hold, within the claim** — a condition on the situation:
+/-- **Free to hold, within the promise** — a condition on the situation:
 the restriction the "more money" claim carries, on the future side.
-Every part of the claim, the whole included, costs the agent nothing to
+Every part of the promise, the whole included, costs the agent nothing to
 hold. Rothbard abstracts from it in so many words: "We have abstracted
 from hoarding, which will be dealt with in the chapter on money" (*MES*
 p. 386 n. 11); his own banking pages price it — a depositor "pays the
 owner of the warehouse a certain sum for the service of storage"
 (p. 801). -/
-def FreeToHoldWithin (claim : Finset praxis.Means) : Prop :=
-  ∀ part ⊆ claim, praxis.FreeToHold agent now part
+def FreeToHoldWithin (promise : Finset praxis.Means) : Prop :=
+  ∀ part ⊆ promise, praxis.FreeToHold agent now part
 
 /-- **Buys more than its parts** — a condition on the situation, NOT a
-claim. Every strict part of `claim` would buy other ends than the whole
+claim. Every strict part of `sum` would buy other ends than the whole
 of it: no unit of the sum is one the plan has no use for. It fails for
 a sum larger than anything the agent would spend or hold it on. -/
 def BuysMoreThanItsParts (plan : AllocationPlan stock)
-    (claim : Finset praxis.Means) : Prop :=
-  ∀ part ⊂ claim, plan.wouldServe claim ≠ plan.wouldServe part
+    (sum : Finset praxis.Means) : Prop :=
+  ∀ part ⊂ sum, plan.wouldServe sum ≠ plan.wouldServe part
 
 /-- **Ranked alike now, of one comparison** — a condition on the
 situation, NOT a claim. If at the date `spend` the agent would spend
-them he ranks what `claim` would buy above what `lesser` would buy, he
+them he ranks what `promise` would buy above what `lesser` would buy, he
 ranks them so at `now` too. His valuation of these two purchases does
 not change in between. Mises: "If the valuations change, acting must
 change also" (*Human Action*, ch. V, §4). It fails for the man who now
 prefers to be repaid less because of what he would do with more. -/
 def RankedAlikeNowOf (plan : AllocationPlan stock) (spend : praxis.Time)
-    (claim lesser : Finset praxis.Means) : Prop :=
-  praxis.Prefers agent spend ↑(plan.wouldServe claim) ↑(plan.wouldServe lesser) →
-    praxis.Prefers agent now ↑(plan.wouldServe claim) ↑(plan.wouldServe lesser)
+    (promise lesser : Finset praxis.Means) : Prop :=
+  praxis.Prefers agent spend ↑(plan.wouldServe promise) ↑(plan.wouldServe lesser) →
+    praxis.Prefers agent now ↑(plan.wouldServe promise) ↑(plan.wouldServe lesser)
 
 end Sums
 

@@ -32,7 +32,7 @@ issuer for a dollar.
 
 ## What the case does NOT model
 
-- The promise. Nothing here says why the coin is believed to serve
+- What backs the coin. Nothing here says why it is believed to serve
   spending: no redemption, no issuer's undertaking, no belief about
   one. The belief is supplied, as every belief in a frame is.
 - The peg. No quantities, so no price of the coin in dollars, at par

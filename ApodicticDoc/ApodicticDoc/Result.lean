@@ -440,7 +440,7 @@ own too, about dated ends, given in full under *Time preference*. The
 regression theorem's are about a record of exchanges, given in full
 under *The regression theorem*. The interest theorems' are about sums
 of money and a loan, given in full under *Interest*; they take
-`plan.Homogeneous` too, for claims to future money.
+`plan.Homogeneous` too, for promises of future money.
 
 {docstring Apodictic.Stock.OneMore}
 
@@ -655,7 +655,7 @@ and a page that showed anything else would not build.
 
 Three things limit how much that settles, and each is load-bearing.
 The linter set out under *The claims* is never switched off here — but
-switching it off is possible, so keeping it on is a promise rather than something the
+switching it off is possible, so keeping it on is our practice rather than something the
 machine guarantees. It can also be silenced one binder at a time, by
 prefixing a hypothesis with `_`, and doing that is how we record that
 the hypothesis does nothing: `marginal_utility_chain` carries one such
@@ -1985,7 +1985,7 @@ found. Then the record began inside a monetary economy, with the good
 already a medium on its first day; or someone took the good believing
 it good for nothing; or the record is missing an exchange that
 happened; or the first claim failed, and someone appraised the good as
-a medium when it had never changed hands — on a promise, say, or an
+a medium when it had never changed hands — on an issuer's pledge, say, or an
 edict.
 
 The second claim is not on that list. No case can be brought against
@@ -2023,22 +2023,23 @@ The argument runs in four steps, S2 to S5, and each adds what it needs:
 - *Present money is preferred to the same amount of future money* (S2).
   It needs one claim, time preference, and three conditions: the money
   will buy the same satisfaction later (`SamePurchasingPower`), the
-  claim will pay (`ClaimPays`), and the present sum would be spent
+  promise will pay (`PromisePays`), and the present sum would be spent
   sooner (`SpentSooner`).
 - *…and to any smaller amount* (S3). It needs a second claim, that more
   money is preferred where it is spent, and six conditions with it:
-  every part of the claim buys something other than the whole
+  every part of the promise buys something other than the whole
   (`BuysMoreThanItsParts`); he
   ranks the two sums now as he will when he spends them
-  (`RankedAlikeNowOf`); the claim is money; it is free to hold; its
+  (`RankedAlikeNowOf`); the promise is money; it is free to hold; its
   units are interchangeable; and his preferences chain where the step
   uses them.
 - *So no one lends at zero or below* (S4). It needs a third claim,
   asymmetry, and three conditions: refusing the loan would have left
   him the sum at full value (`RefusalKeepsSum`), what he holds after
-  counts as planned, and the claim is as many units as the sum lent
+  counts as planned, and the promise is as many units as the sum lent
   (`SameCount`). What it concludes is that such a loan
-  does not demonstrate a preference for the claim.
+  does not demonstrate a preference for being repaid over keeping the
+  sum.
 - *So every rate struck is positive* (S5). It adds the fourth claim,
   demonstrated preference. Refusing at full value is then not assumed
   but derived, from the trade being voluntary and his holding before it
@@ -2051,14 +2052,14 @@ it:
   conditions: only a negative rate needs them, and the theorem for a
   zero rate carries only interchangeable units.
 - "The same amount", in S2 and S3: neither ties the number of ounces
-  in the claim to the present sum. S2 counts nothing; S3 counts only
-  the smaller sum against the claim, so its "or less" is measured
+  in the promise to the present sum. S2 counts nothing; S3 counts only
+  the smaller sum against the promise, so its "or less" is measured
   against what buys the same satisfaction, not against the present
-  sum. The count between the claim and the sum lent is a condition of
+  sum. The count between the promise and the sum lent is a condition of
   its own, `SameCount`, and only the loan theorems carry it.
 - That holding the present sum costs nothing. No step assumes it; a
   cost of holding it reaches the loan only through refusal. (That the
-  claim is free to hold is one of S3's conditions.)
+  promise is free to hold is one of S3's conditions.)
 - The borrower, and the market: every step is about one lender.
 - Any property of the order of time, and any classical step.
 
@@ -2079,7 +2080,7 @@ What each case breaks:
   that cash against none. He is never put in a loan. Built in the
   library.
 - *Rising prices* break `SamePurchasingPower`, and *a doubt that the
-  borrower will pay* breaks `ClaimPays`, each without the other. Built
+  borrower will pay* breaks `PromisePays`, each without the other. Built
   in the library.
 
 The detail follows.
@@ -2114,8 +2115,8 @@ exactly those units. That is not how goods in a trade are counted
 under *Exchange*, where a holding counts for every end any of its goods
 could serve. For money the two part at once: an ounce can be spent now or kept for later,
 not both. Three stocks are weighed at the one date of the loan: the
-present money, the claims to future money, and the money the claims
-promise, as he would spend it were it in hand. A theorem takes a sum
+present money, the promises of future money, and the money promised,
+as he would spend it were it in hand. A theorem takes a sum
 from each.
 
 **Present money over future money.** "It follows from the law of time
@@ -2129,7 +2130,7 @@ The three conditions:
 
 {docstring Apodictic.SamePurchasingPower}
 
-{docstring Apodictic.ClaimPays}
+{docstring Apodictic.PromisePays}
 
 {docstring Apodictic.SpentSooner}
 
@@ -2138,16 +2139,16 @@ work in it. Equal counts are the same good at two dates only if they
 buy the same thing, and that is what the proof uses, so none of the
 conditions above says the sums are the same amount. The count enters
 later, where "repaid no more than lent" has to be compared with a
-claim, and it is a condition of its own there. (The two conditions
+promise, and it is a condition of its own there. (The two conditions
 once each held an equality of counts that this step never used. The
 linter checks whole assumptions and not their parts, so it could not
 see that; the counts were moved out by hand.) Second, two things a reader might fold together are kept
 apart: that the money will buy as much later, which fails with rising
-prices, and that the claim will pay, which fails with a risk of
+prices, and that the promise will pay, which fails with a risk of
 default. Each has its own name, so a failure points at one of them.
-A frame of one agent with an ounce and a claim to one shows each
+A frame of one agent with an ounce and a promise of one shows each
 failing while the other holds, and shows that a single condition
-asserted between the cash and the claim fails alike in both cases,
+asserted between the cash and the promise fails alike in both cases,
 so it cannot say which happened:
 
 {docstring Apodictic.Model.CertaintySplit.doubt_power_but_not_pays}
@@ -2164,7 +2165,7 @@ by another road: the condition that refusing a loan leaves the sum at
 full value, below.) Rothbard's footnote dismisses the man who would
 keep the money for later, as "not the issue here, which is one of
 availability for use" (*MES*, p. 386 n. 11). If that man would spend
-the present sum on the same thing, at the same date, as the claim, the
+the present sum on the same thing, at the same date, as the promise, the
 two buy the same bundle, and asymmetry then forbids a strict preference
 either way. The footnote answers him with an equality, not a
 preference.
@@ -2176,7 +2177,7 @@ and asymmetry, without "more money is preferred":
 {docstring Apodictic.PureInterest.no_loan_at_zero_rate}
 
 The two conditions on the trade say what refusing would have left the
-lender, and what lending left him, and the count compares the claim
+lender, and what lending left him, and the count compares the promise
 with the sum lent:
 
 {docstring Apodictic.Trade.RefusalKeepsSum}
@@ -2238,7 +2239,7 @@ ounce. The claim ranked now does not:
 
 So the claim here is dated at the spending, and the step from then to
 now is a condition. In the theorems it is asked of the one comparison
-the proof makes, the claim against the sum repaid. The impulse man is
+the proof makes, the promise against the sum repaid. The impulse man is
 never put in a loan, but the same condition, asked of his ounce against
 no cash, is the one he fails:
 
@@ -2259,8 +2260,8 @@ changes is not a lapse from action: "If the valuations change, acting
 must change also" (*Human Action*, ch. V, §4). The condition is where
 his change of valuation lands.
 
-The rest of what "or less" takes: the claim's parts are free to hold,
-the preferences chain on the one chain used, the claim is money, and
+The rest of what "or less" takes: the promise's parts are free to hold,
+the preferences chain on the one chain used, the promise is money, and
 the future units are interchangeable (`plan.Homogeneous`, under *The
 conditions*).
 
@@ -2295,18 +2296,18 @@ manifest of Apodictic.PureInterest.struck_rate_positive
 
   situational conditions:
     power : SamePurchasingPower presentPlan promisedPlan sum money soon late
-    pays : ClaimPays futurePlan promisedPlan claim money
+    pays : PromisePays futurePlan promisedPlan promise money
     sooner : SpentSooner soon late
-    count : SameCount sum claim
-    claimIn : claim ⊆ future.units
+    count : SameCount sum promise
+    promiseIn : promise ⊆ future.units
     repaidIn : repaid ⊆ future.units
     homogeneous : futurePlan.Homogeneous
-    alike : RankedAlikeNowOf futurePlan spend claim repaid
-    buysMore : BuysMoreThanItsParts futurePlan claim
-    isMoney : ∀ unit ∈ claim, praxis.Money unit
-    free : FreeToHoldWithin claim
+    alike : RankedAlikeNowOf futurePlan spend promise repaid
+    buysMore : BuysMoreThanItsParts futurePlan promise
+    isMoney : ∀ unit ∈ promise, praxis.Money unit
+    free : FreeToHoldWithin promise
     chain : praxis.TransitiveOn exchange.first.agent exchange.first.time ↑(presentPlan.wouldServe sum)
-  ↑(futurePlan.wouldServe claim) ↑(futurePlan.wouldServe repaid)
+  ↑(futurePlan.wouldServe promise) ↑(futurePlan.wouldServe repaid)
     voluntary : exchange.first.Voluntary
     before : exchange.first.BeforeCountsAsPlanned presentPlan sum
     after : exchange.first.AfterCountsAsPlanned futurePlan repaid
@@ -2321,7 +2322,7 @@ manifest of Apodictic.PureInterest.struck_rate_positive
     futurePlan : AllocationPlan future
     promisedPlan : AllocationPlan promised
     sum : Finset praxis.Means
-    claim : Finset praxis.Means
+    promise : Finset praxis.Means
     money : Finset praxis.Means
     repaid : Finset praxis.Means
     soon : praxis.End
@@ -2357,38 +2358,39 @@ and none needs a classical step: the one case
 split is on the size of a sum.
 
 **The case.** The library builds one frame to test this on. A lender
-with a use for an ounce now lends it for a claim to two, repaid at the
+with a use for an ounce now lends it for a promise of two, repaid at the
 next date, and every claim and condition of the last theorem holds.
 
 {docstring Apodictic.Model.Loan.struck_rate_positive_applies}
 
 The test is thin, and it is worth saying where. The lender's ranking
 does not change with the date, so the condition on ranking now as at
-the spending holds with nothing to do. The money the claims promise is
-the claims themselves, so that the claim pays is never tried on a
-claim that might not. Every unit is money and every sum is free to
+the spending holds with nothing to do. The money promised is
+the promises themselves, so that the promise pays is never tried on a
+promise that might not. Every unit is money and every sum is free to
 hold, so neither condition is tried. Preference chains throughout the
-frame, not only on the one chain. The claim whose parts must each buy
+frame, not only on the one chain. The promise whose parts must each buy
 something different is a single unit, so it is tried only against
 nothing at all. And there is one agent, lender and
 borrower both.
 
 **What a failure would point at.** Where a man lends and is repaid
 less, the theorem for a rate not above zero says that his trade did
-not demonstrate a preference for the claim, or that one of its
+not demonstrate a preference for being repaid over keeping the sum,
+or that one of its
 assumptions failed. The ones a case is likely to land on:
-The money would buy less at repayment, or he doubted the claim would
-pay, or he had no use for the sum before the claim paid. Or refusing
+The money would buy less at repayment, or he doubted the promise would
+pay, or he had no use for the sum before the promise paid. Or refusing
 would not have left him the sum at full value, because keeping cash
 cost him something. (In the last theorem that condition is not
 assumed but derived, from the trade being voluntary and his holding
 counting as planned, so there the failure lands on one of those.) Or
-an extra unit of the claim bought nothing more, or he ranked the claim
+an extra unit of the promise bought nothing more, or he ranked the promise
 against the repayment differently now than at the spending, or the
-claim was not money or not free to hold, or the one chain of
+promise was not money or not free to hold, or the one chain of
 preferences did not chain. Or one of the claims failed. (Its manifest
-has a few more, of bookkeeping: that the claim and the repayment come
-from the stock of claims, that the claim is as many units as the sum
+has a few more, of bookkeeping: that the promise and the repayment come
+from the stock of promises, that the promise is as many units as the sum
 lent, that its units are interchangeable, and that what he holds after
 counts as planned.)
 
@@ -2402,8 +2404,8 @@ banknotes, which have to be guarded. Either failure takes the bank
 outside the theorem; neither is shown here to be the only way out.
 
 Rothbard's own terms give an Austrian a reply for one part of this,
-though he never made it about negative rates. A claim to present money
-is like a claim on goods left in a warehouse, and redeeming it "is not the completion
+though he never made it about negative rates. A deposit of present money
+is like goods left in a warehouse, and redeeming it "is not the completion
 of a transaction or equivalent to a creditor’s calling his loan; it is
 a simple repossessing of a man’s own good" (*MES*, p. 800). The man who
 deposits goods "pays the owner of the warehouse a certain sum for the
@@ -2411,7 +2413,7 @@ service of storage. He still retains ownership of the property; the
 owner of the warehouse is simply guarding it" (*MES*, p. 801). On that reading, a negative rate on a deposit is a fee for
 safekeeping and not interest at all, and the theorems never applied to
 it. The reply does not reach the loan between two banks, which is a
-claim to money tomorrow, a credit transaction on Rothbard's own terms.
+promise of money tomorrow, a credit transaction on Rothbard's own terms.
 But the fee does reach the lender's refusal: it is what keeping the
 sum would have cost. For banknotes the cost is plainly one of keeping
 the sum safe, a price for guarding and not for time. For reserves it
@@ -2421,7 +2423,7 @@ safekeeping, and a loan makes it a negative rate in its own right.
 That is left open here, and nothing rests on it: from June 2014 the
 same charge also fell on the reserves a bank held above the required
 minimum in its ordinary account at the central bank. Those reserves
-are not a claim on money stored elsewhere; they are the money itself,
+do not stand for money stored elsewhere; they are the money itself,
 as banknotes are. So a bank that refused the overnight loan had
 nowhere to keep the sum for nothing. All of this is a reading of the
 case, not a frame built for it.
@@ -2434,7 +2436,7 @@ The Christmas club saver lends at zero, and on this reading of a sum
 he is outside the theorem at once. The cash in his hand would buy what
 he would do with it on impulse, the club pays for what he saves it
 for, and those are not the same satisfaction. So whatever money the
-club's claim pays in, if it pays, the condition that his cash and that
+club's promise pays in, if it pays, the condition that his cash and that
 money have the same purchasing power fails. The library builds him
 too, with every claim holding:
 

@@ -4,7 +4,7 @@ import ApodicticDraft.ValuedAlike
 # Ranked alike, scoped — the library's condition against the stock-wide rival
 
 The library's S3–S5 (`Apodictic.PureInterest`) carry
-`RankedAlikeNowOf`: the agent ranks the claim against the lesser sum
+`RankedAlikeNowOf`: the agent ranks the promise against the lesser sum
 now as he would at the spending, for that one comparison. The rival,
 `RankedAlikeNow` (in `ApodicticDraft.ValuedAlike`), asks it of every
 pair of sums in the stock, one part of the other.
@@ -34,28 +34,28 @@ variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
 
 /-- The stock-wide condition gives the scoped one. -/
 theorem rankedAlikeOf_of_rankedAlike (plan : AllocationPlan stock)
-    (spend : praxis.Time) (claim lesser : Finset praxis.Means)
-    (claimIn : claim ⊆ stock.units) (lesserIn : lesser ⊆ stock.units)
-    (notMore : lesser.card ≤ claim.card)
+    (spend : praxis.Time) (promise lesser : Finset praxis.Means)
+    (promiseIn : promise ⊆ stock.units) (lesserIn : lesser ⊆ stock.units)
+    (notMore : lesser.card ≤ promise.card)
     (homogeneous : plan.Homogeneous)
     (asymmetric : AsymmetricPreference praxis.toActionFrame agent spend)
     (alike : RankedAlikeNow plan spend) :
-    RankedAlikeNowOf plan spend claim lesser := by
+    RankedAlikeNowOf plan spend promise lesser := by
   intro atSpend
   rcases Nat.eq_or_lt_of_le notMore with equal | fewer
-  · rw [homogeneous lesser lesserIn claim claimIn equal] at atSpend
+  · rw [homogeneous lesser lesserIn promise promiseIn equal] at atSpend
     exact (asymmetric.asym _ _ atSpend atSpend).elim
   · obtain ⟨part, partIn, partCard⟩ :=
-      exists_part_of_card claim lesser.card (Nat.le_of_lt fewer)
+      exists_part_of_card promise lesser.card (Nat.le_of_lt fewer)
     have same : plan.wouldServe part = plan.wouldServe lesser :=
-      homogeneous part (fun _ h => claimIn (partIn h)) lesser lesserIn partCard
-    have proper : part ⊂ claim := by
+      homogeneous part (fun _ h => promiseIn (partIn h)) lesser lesserIn partCard
+    have proper : part ⊂ promise := by
       refine Finset.ssubset_iff_subset_ne.2 ⟨partIn, fun equal => ?_⟩
       rw [equal] at partCard
       rw [partCard] at fewer
       exact Nat.lt_irrefl _ fewer
     rw [← same] at atSpend ⊢
-    exact alike part claim proper claimIn atSpend
+    exact alike part promise proper promiseIn atSpend
 
 end Plans
 

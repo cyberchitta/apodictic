@@ -25,14 +25,14 @@ never disappear."
   would be spent sooner (`SpentSooner`).
 - `hoarding_gives_no_strict_preference`: Rothbard's footnote guard
   (n. 11) gives no strict preference. Where the agent would hoard the
-  present sum for the use the claim serves, asymmetry forbids
+  present sum for the use the promise serves, asymmetry forbids
   preferring the one to the other.
 - `availability_reading`: the rival encoding of the footnote, built so
   the choice is checked — n. 11's "availability for use" as a bundle of
   both uses, paid for by a lift over the later one.
 - `present_sum_preferred_to_less` (S3): "one ounce or less". Adds the
   unruled claim `MoreMoneyPreferred`, interchangeability of the future
-  units (`Homogeneous`), free holding within the claim, and
+  units (`Homogeneous`), free holding within the promise, and
   transitivity on the one chain.
 - `no_loan_at_nonpositive_rate` (S4): a loan at a rate not above zero
   demonstrates no preference — under `DemonstratedPreference`, it is
@@ -122,12 +122,12 @@ amount of future money").
 spent sooner — the case Rothbard's n. 11 sets aside. -/
 theorem present_sum_preferred
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise : Finset praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis.toDatedFrame agent now)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late) :
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
-      ↑(futurePlan.wouldServe claim) := by
+      ↑(futurePlan.wouldServe promise) := by
   obtain ⟨buysSoon, buysLate, same⟩ := power
   obtain ⟨before, notPast⟩ := sooner
   rw [buysSoon, buysLate, coe_single, coe_single]
@@ -139,17 +139,17 @@ future use, he may “hoard” it rather than spend it on a future good,
 and thus have it always available").
 
 Where the agent would hold the present sum and spend it on just what the
-claim would buy, the two sums are worth the same bundle, and asymmetry
+promise would buy, the two sums are worth the same bundle, and asymmetry
 forbids preferring it to itself. The guard answers the objector by
 equality, not by preference: the strict preference S2 concludes needs a
 sooner use (`SpentSooner`), which the guard does not supply. -/
 theorem hoarding_gives_no_strict_preference
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim : Finset praxis.Means)
+    (sum promise : Finset praxis.Means)
     (asymmetric : AsymmetricPreference praxis.toActionFrame agent now)
-    (held : HeldToTheSameUse presentPlan futurePlan sum claim) :
+    (held : HeldToTheSameUse presentPlan futurePlan sum promise) :
     ¬ praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
-      ↑(futurePlan.wouldServe claim) := by
+      ↑(futurePlan.wouldServe promise) := by
   rw [held]
   intro h
   exact asymmetric.asym _ _ h h
@@ -157,7 +157,7 @@ theorem hoarding_gives_no_strict_preference
 /-- **The availability reading of the footnote — the rival encoding.**
 Rothbard's n. 11 ranks money by "availability for use", not by the use
 it would be put to. Read so, a present sum held free counts for both
-its sooner use and the later one, and the claim for the later one only;
+its sooner use and the later one, and the promise for the later one only;
 the preference then follows from `TimePreference` and a lift over
 `{late}`.
 
@@ -168,21 +168,21 @@ a bundle. The lift (`DatedFrame.LiftsOverRest` with rest `{late}`) is
 where that misreading is paid for. Built so the choice is checked. -/
 theorem availability_reading
     {praxis : DatedFrame} {agent : praxis.Agent} {now : praxis.Time}
-    (presentSum claim : praxis.Means) (soon late : praxis.End)
+    (presentSum promise : praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis agent now)
     (available : praxis.ServedBy agent now {presentSum} = insert soon {late})
-    (claimServes : praxis.ServesOnly agent now claim late)
+    (promiseServes : praxis.ServesOnly agent now promise late)
     (same : praxis.SameSatisfaction agent soon late)
     (sooner : praxis.Before (praxis.attained soon) (praxis.attained late))
     (notPast : ¬ praxis.Before (praxis.attained soon) now)
     (lifts : praxis.LiftsOverRest agent now {late} soon late) :
     praxis.Prefers agent now (praxis.ServedBy agent now {presentSum})
-      (praxis.ServedBy agent now {claim}) := by
+      (praxis.ServedBy agent now {promise}) := by
   have h := lifts (timePreference.sooner soon late same sooner notPast)
   have once : (insert late {late} : Set praxis.End) = {late} :=
     Set.ext fun _ => ⟨fun h => h.elim id id, Or.inr⟩
   rw [once] at h
-  rw [available, claimServes]
+  rw [available, promiseServes]
   exact h
 
 end Sums
@@ -196,43 +196,43 @@ variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
 future money** (S3; *MES* p. 382: "one ounce of present money will
 always be preferred to one ounce or less of future money").
 
-`claim` is a future sum of the same amount as `sum`; `lesser` is any
+`promise` is a future sum of the same amount as `sum`; `lesser` is any
 future sum no larger. "Or less" chains S2 with `MoreMoneyPreferred` on
 the future sums, and that chain is the one place transitivity is
 needed. Interchangeability of the future units carries a sum of any
-units to a part of `claim` of the same size. -/
+units to a part of `promise` of the same size. -/
 theorem present_sum_preferred_to_less
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim lesser : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise lesser : Finset praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis.toDatedFrame agent now)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late)
-    (claimIn : claim ⊆ future.units) (lesserIn : lesser ⊆ future.units)
-    (notMore : lesser.card ≤ claim.card)
+    (promiseIn : promise ⊆ future.units) (lesserIn : lesser ⊆ future.units)
+    (notMore : lesser.card ≤ promise.card)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferred futurePlan)
-    (money : ∀ unit ∈ claim, praxis.Money unit)
-    (free : FreeToHoldWithin (agent := agent) (now := now) claim)
+    (money : ∀ unit ∈ promise, praxis.Money unit)
+    (free : FreeToHoldWithin (agent := agent) (now := now) promise)
     (chain : praxis.TransitiveOn agent now ↑(presentPlan.wouldServe sum)
-      ↑(futurePlan.wouldServe claim) ↑(futurePlan.wouldServe lesser)) :
+      ↑(futurePlan.wouldServe promise) ↑(futurePlan.wouldServe lesser)) :
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
       ↑(futurePlan.wouldServe lesser) := by
-  have overSame := present_sum_preferred presentPlan futurePlan sum claim
+  have overSame := present_sum_preferred presentPlan futurePlan sum promise
     soon late timePreference power sooner
   rcases Nat.eq_or_lt_of_le notMore with equal | fewer
-  · rw [homogeneous lesser lesserIn claim claimIn equal]
+  · rw [homogeneous lesser lesserIn promise promiseIn equal]
     exact overSame
   · obtain ⟨part, partIn, partCard⟩ :=
-      exists_part_of_card claim lesser.card (Nat.le_of_lt fewer)
+      exists_part_of_card promise lesser.card (Nat.le_of_lt fewer)
     have alike : futurePlan.wouldServe part = futurePlan.wouldServe lesser :=
-      homogeneous part (fun _ h => claimIn (partIn h)) lesser lesserIn partCard
-    have proper : part ⊂ claim := by
+      homogeneous part (fun _ h => promiseIn (partIn h)) lesser lesserIn partCard
+    have proper : part ⊂ promise := by
       refine Finset.ssubset_iff_subset_ne.2 ⟨partIn, fun same => ?_⟩
       rw [same] at partCard
       rw [partCard] at fewer
       exact Nat.lt_irrefl _ fewer
-    have overLess := moreMoney.more part claim proper claimIn money
-      (free part partIn) (free claim (fun _ h => h))
+    have overLess := moreMoney.more part promise proper promiseIn money
+      (free part partIn) (free promise (fun _ h => h))
     rw [alike] at overLess
     exact chain overSame overLess
 
@@ -247,9 +247,9 @@ variable {praxis : MoneyFrame}
 could not prefer 10 ounces or even less of future money to 10 ounces of
 present money").
 
-A loan — present `sum` given, a claim to `repaid` got — whose repaid
+A loan — present `sum` given, a promise of `repaid` got — whose repaid
 sum is no larger than the sum lent demonstrates no preference: if
-`DemonstratedPreference` held of it, the lender would prefer the claim
+`DemonstratedPreference` held of it, the lender would prefer the repayment
 to the kept sum, and S3 with asymmetry forbids that. Stated as the
 negation of the bridge, since nothing in the library says a trade was
 made except that the bridge is asserted of it. -/
@@ -257,19 +257,19 @@ theorem no_loan_at_nonpositive_rate
     (trade : Trade praxis.toActionFrame)
     {present future : Stock praxis.toActionFrame trade.agent trade.time}
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim repaid : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise repaid : Finset praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
-    (count : SameCount sum claim)
-    (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
+    (count : SameCount sum promise)
+    (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (nonPositive : repaid.card ≤ sum.card)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferred futurePlan)
-    (money : ∀ unit ∈ claim, praxis.Money unit)
-    (free : FreeToHoldWithin (agent := trade.agent) (now := trade.time) claim)
+    (money : ∀ unit ∈ promise, praxis.Money unit)
+    (free : FreeToHoldWithin (agent := trade.agent) (now := trade.time) promise)
     (chain : praxis.TransitiveOn trade.agent trade.time
-      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe claim)
+      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)
       ↑(futurePlan.wouldServe repaid))
     (asymmetric : AsymmetricPreference praxis.toActionFrame trade.agent trade.time)
     (refusal : trade.RefusalKeepsSum presentPlan sum)
@@ -278,14 +278,14 @@ theorem no_loan_at_nonpositive_rate
   intro demonstrated
   have chose := demonstrated.demonstrates
   rw [after, refusal] at chose
-  have notMore : repaid.card ≤ claim.card := count ▸ nonPositive
-  have kept := present_sum_preferred_to_less presentPlan futurePlan sum claim
-    repaid soon late timePreference power sooner claimIn repaidIn notMore
+  have notMore : repaid.card ≤ promise.card := count ▸ nonPositive
+  have kept := present_sum_preferred_to_less presentPlan futurePlan sum promise
+    repaid soon late timePreference power sooner promiseIn repaidIn notMore
     homogeneous moreMoney money free chain
   exact asymmetric.asym _ _ kept chose
 
 /-- **Every rate struck is positive** (S5) — in an exchange of present
-money for a claim to future money, voluntary on the lender's side and
+money for a promise of future money, voluntary on the lender's side and
 demonstrating his preference, the repaid sum is larger than the sum
 lent.
 
@@ -298,21 +298,21 @@ theorem struck_rate_positive
     {present future : Stock praxis.toActionFrame exchange.first.agent
       exchange.first.time}
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim repaid : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise repaid : Finset praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis.toDatedFrame exchange.first.agent
       exchange.first.time)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
-    (count : SameCount sum claim)
-    (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
+    (count : SameCount sum promise)
+    (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferred futurePlan)
-    (money : ∀ unit ∈ claim, praxis.Money unit)
+    (money : ∀ unit ∈ promise, praxis.Money unit)
     (free : FreeToHoldWithin (agent := exchange.first.agent)
-      (now := exchange.first.time) claim)
+      (now := exchange.first.time) promise)
     (chain : praxis.TransitiveOn exchange.first.agent exchange.first.time
-      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe claim)
+      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)
       ↑(futurePlan.wouldServe repaid))
     (asymmetric : AsymmetricPreference praxis.toActionFrame
       exchange.first.agent exchange.first.time)
@@ -323,7 +323,7 @@ theorem struck_rate_positive
     sum.card < repaid.card :=
   Nat.lt_of_not_le fun nonPositive =>
     no_loan_at_nonpositive_rate exchange.first presentPlan futurePlan sum
-      claim repaid soon late timePreference power sooner count claimIn repaidIn
+      promise repaid soon late timePreference power sooner count promiseIn repaidIn
       nonPositive homogeneous moreMoney money free chain asymmetric
       (voluntary.trans before) after demonstrated
 

@@ -11,10 +11,10 @@ Christmas he wants. He lends at a zero rate, voluntarily.
 
 Built on `ApodicticDraft.Toy`'s frame. Every claim holds of him:
 `TimePreference`, `AsymmetricPreference`, `DemonstratedPreference` of
-his trade, `MoreMoneyPreferred` on his plan for claims. Unlike the
+his trade, `MoreMoneyPreferred` on his plan for promises. Unlike the
 toy's saver, `SpentSooner` HOLDS: he would spend the cash before the
 club pays. What fails is `SamePurchasingPower`: what his cash would buy
-is not the same satisfaction as what the claim would buy. On the plan
+is not the same satisfaction as what the promise would buy. On the plan
 reading (I-16), the theorems are silent about him, and the signature
 says why.
 
@@ -34,13 +34,13 @@ both of an ounce's worth and two ounces' worth. -/
 def impulse : ℕ × ℕ := (3, 0)
 
 /-- The saver's beliefs: his ounces, spent now, buy `impulse`; the hoard
-is his two ounces at hand, the bond the club's claim to two at date 1. -/
+is his two ounces at hand, the bond the club's promise of two at date 1. -/
 def clubBeliefs : Good → ℕ × ℕ → Prop
   | .hoard, e => e = impulse
   | .bond, e => e = plenty
   | g, e => moneyBeliefs impulse g e
 
-theorem club_future_alike : ∀ unit ∈ ({.claimA, .claimB} : Finset Good), ∀ e,
+theorem club_future_alike : ∀ unit ∈ ({.promiseA, .promiseB} : Finset Good), ∀ e,
     clubBeliefs unit e ↔ e ∈ ({late, plenty} : Set (ℕ × ℕ)) := by
   intro unit h e
   rcases Finset.mem_insert.1 h with rfl | h
@@ -54,7 +54,7 @@ theorem club_present_alike : ∀ unit ∈ ({.ounce, .ounce'} : Finset Good), ∀
   · exact Iff.rfl
   · rw [Finset.mem_singleton.1 h]; exact Iff.rfl
 
-/-- The deposit: he gives the hoard (two ounces), gets the bond (a claim
+/-- The deposit: he gives the hoard (two ounces), gets the bond (a promise
 to two), keeps nothing else; refusing would have left him the cash,
 which he would spend on the impulse. -/
 def deposit : Trade (frame clubBeliefs).toActionFrame :=
@@ -70,7 +70,7 @@ theorem deposit_after : deposit.after 0 = {plenty} := by
 
 theorem deposit_voluntary : deposit.Voluntary := deposit_before.symm
 
-/-- He demonstrates his preference for the club's claim: Christmas at
+/-- He demonstrates his preference for the club's promise: Christmas at
 date 1 over the impulse now. -/
 theorem deposit_demonstrated : DemonstratedPreference deposit :=
   ⟨by
@@ -82,14 +82,14 @@ theorem deposit_demonstrated : DemonstratedPreference deposit :=
       exact Nat.lt_of_sub_eq_succ rfl⟩⟩
 
 /-- **A zero rate, struck voluntarily, with every claim holding.** Two
-ounces lent, a claim to two got. -/
+ounces lent, a promise of two got. -/
 theorem zero_rate_with_every_claim :
     TimePreference (frame clubBeliefs).toDatedFrame () 0 ∧
     AsymmetricPreference (frame clubBeliefs).toActionFrame () 0 ∧
     MoreMoneyPreferred (praxis := frame clubBeliefs)
       (futurePlan clubBeliefs club_future_alike) ∧
     DemonstratedPreference deposit ∧ deposit.Voluntary ∧
-    ({.claimA, .claimB} : Finset Good).card =
+    ({.promiseA, .promiseB} : Finset Good).card =
       ({.ounce, .ounce'} : Finset Good).card :=
   ⟨timePreference clubBeliefs 0, asymmetric clubBeliefs 0,
     future_moreMoney clubBeliefs club_future_alike, deposit_demonstrated,
@@ -102,13 +102,13 @@ theorem club_spent_sooner :
   ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
 
 /-- **What fails for him is `SamePurchasingPower`.** Whatever his two
-ounces at hand would buy and whatever the claim to two would buy, they
+ounces at hand would buy and whatever the promise of two would buy, they
 are not the same satisfaction. -/
 theorem club_not_same_purchasing_power (soonEnd lateEnd : ℕ × ℕ) :
     ¬ SamePurchasingPower (praxis := frame clubBeliefs) (now := (0 : ℕ))
       (presentPlan clubBeliefs {.ounce, .ounce'} impulse club_present_alike)
       (futurePlan clubBeliefs club_future_alike)
-      {.ounce, .ounce'} {.claimA, .claimB} soonEnd lateEnd := by
+      {.ounce, .ounce'} {.promiseA, .promiseB} soonEnd lateEnd := by
   rintro ⟨buysSoon, buysLate, same⟩
   have hs : ({impulse} : Finset (ℕ × ℕ)) = {soonEnd} := buysSoon
   have hl : ({plenty} : Finset (ℕ × ℕ)) = {lateEnd} := buysLate

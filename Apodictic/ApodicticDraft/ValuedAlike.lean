@@ -85,25 +85,25 @@ variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
 the future plan is ranked alike now. -/
 theorem present_sum_preferred_to_less_when_spent
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim lesser : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise lesser : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame agent now)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late)
-    (claimIn : claim ⊆ future.units) (lesserIn : lesser ⊆ future.units)
-    (notMore : lesser.card ≤ claim.card)
+    (promiseIn : promise ⊆ future.units) (lesserIn : lesser ⊆ future.units)
+    (notMore : lesser.card ≤ promise.card)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)
     (alike : RankedAlikeNow futurePlan spend)
-    (buysMore : BuysMoreThanItsParts futurePlan claim)
-    (money : ∀ unit ∈ claim, praxis.Money unit)
-    (free : FreeToHoldWithin (agent := agent) (now := now) claim)
+    (buysMore : BuysMoreThanItsParts futurePlan promise)
+    (money : ∀ unit ∈ promise, praxis.Money unit)
+    (free : FreeToHoldWithin (agent := agent) (now := now) promise)
     (chain : praxis.TransitiveOn agent now ↑(presentPlan.wouldServe sum)
-      ↑(futurePlan.wouldServe claim) ↑(futurePlan.wouldServe lesser)) :
+      ↑(futurePlan.wouldServe promise) ↑(futurePlan.wouldServe lesser)) :
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
       ↑(futurePlan.wouldServe lesser) :=
-  present_sum_preferred_to_less_where_differs presentPlan futurePlan sum claim
-    lesser soon late timePreference power sooner claimIn lesserIn notMore
+  present_sum_preferred_to_less_where_differs presentPlan futurePlan sum promise
+    lesser soon late timePreference power sooner promiseIn lesserIn notMore
     homogeneous (whereDiffers_of_whenSpent futurePlan spend moreMoney alike)
     buysMore money free chain
 
@@ -118,29 +118,29 @@ theorem no_loan_at_nonpositive_rate_when_spent
     (trade : Trade praxis.toActionFrame)
     {present future : Stock praxis.toActionFrame trade.agent trade.time}
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim repaid : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise repaid : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
-    (count : SameCount sum claim)
-    (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
+    (count : SameCount sum promise)
+    (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (nonPositive : repaid.card ≤ sum.card)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)
     (alike : RankedAlikeNow futurePlan spend)
-    (buysMore : BuysMoreThanItsParts futurePlan claim)
-    (money : ∀ unit ∈ claim, praxis.Money unit)
-    (free : FreeToHoldWithin (agent := trade.agent) (now := trade.time) claim)
+    (buysMore : BuysMoreThanItsParts futurePlan promise)
+    (money : ∀ unit ∈ promise, praxis.Money unit)
+    (free : FreeToHoldWithin (agent := trade.agent) (now := trade.time) promise)
     (chain : praxis.TransitiveOn trade.agent trade.time
-      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe claim)
+      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)
       ↑(futurePlan.wouldServe repaid))
     (asymmetric : AsymmetricPreference praxis.toActionFrame trade.agent trade.time)
     (refusal : trade.RefusalKeepsSum presentPlan sum)
     (after : trade.AfterCountsAsPlanned futurePlan repaid) :
     ¬ DemonstratedPreference trade :=
   no_loan_at_nonpositive_rate_where_differs trade presentPlan futurePlan sum
-    claim repaid soon late timePreference power sooner count claimIn repaidIn
+    promise repaid soon late timePreference power sooner count promiseIn repaidIn
     nonPositive homogeneous
     (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
     money free chain asymmetric refusal after
@@ -151,24 +151,24 @@ theorem struck_rate_positive_when_spent
     {present future : Stock praxis.toActionFrame exchange.first.agent
       exchange.first.time}
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
-    (sum claim repaid : Finset praxis.Means) (soon late : praxis.End)
+    (sum promise repaid : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame exchange.first.agent
       exchange.first.time)
-    (power : SamePurchasingPower presentPlan futurePlan sum claim soon late)
+    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
-    (count : SameCount sum claim)
-    (claimIn : claim ⊆ future.units) (repaidIn : repaid ⊆ future.units)
+    (count : SameCount sum promise)
+    (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)
     (homogeneous : futurePlan.Homogeneous)
     (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)
     (alike : RankedAlikeNow futurePlan spend)
-    (buysMore : BuysMoreThanItsParts futurePlan claim)
-    (money : ∀ unit ∈ claim, praxis.Money unit)
+    (buysMore : BuysMoreThanItsParts futurePlan promise)
+    (money : ∀ unit ∈ promise, praxis.Money unit)
     (free : FreeToHoldWithin (agent := exchange.first.agent)
-      (now := exchange.first.time) claim)
+      (now := exchange.first.time) promise)
     (chain : praxis.TransitiveOn exchange.first.agent exchange.first.time
-      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe claim)
+      ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)
       ↑(futurePlan.wouldServe repaid))
     (asymmetric : AsymmetricPreference praxis.toActionFrame
       exchange.first.agent exchange.first.time)
@@ -177,8 +177,8 @@ theorem struck_rate_positive_when_spent
     (after : exchange.first.AfterCountsAsPlanned futurePlan repaid)
     (demonstrated : DemonstratedPreference exchange.first) :
     sum.card < repaid.card :=
-  struck_rate_positive_where_differs exchange presentPlan futurePlan sum claim
-    repaid soon late timePreference power sooner count claimIn repaidIn
+  struck_rate_positive_where_differs exchange presentPlan futurePlan sum promise
+    repaid soon late timePreference power sooner count promiseIn repaidIn
     homogeneous (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
     money free chain asymmetric voluntary before after demonstrated
 
@@ -292,9 +292,9 @@ theorem not_rankedAlike : ¬ RankedAlikeNow (praxis := frame) plan (1 : ℕ) := 
 
 /-- **The approved claim is false of him at date 0**: he does not
 prefer what an ounce buys to what no cash buys. -/
-theorem not_whereDiffers : ¬ MoreMoneyPreferredWhereDiffers (praxis := frame) plan := fun claim =>
+theorem not_whereDiffers : ¬ MoreMoneyPreferredWhereDiffers (praxis := frame) plan := fun promise =>
   not_rankedAlike (fun fewer more part inStock _ =>
-    claim.more fewer more part inStock (fun _ _ => trivial) trivial trivial
+    promise.more fewer more part inStock (fun _ _ => trivial) trivial trivial
       (by
         obtain ⟨hf, hm⟩ := part_of_cash fewer more part inStock
         subst hf hm

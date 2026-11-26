@@ -9,12 +9,12 @@ depends on it.
 One frame builder, two agents' worth of beliefs:
 
 - **The lender** has a use for an ounce now. He lends one ounce for a
-  claim to two, and every claim and every condition of
+  promise of two, and every claim and every condition of
   `struck_rate_positive` holds: the theorems are not true for want of
   a case.
 - **The saver** has no use for money before the date the bond pays,
   and holding cash costs him: his two ounces, kept to that date, buy
-  less than one ounce claimed. He lends two ounces for a claim to one —
+  less than one ounce promised. He lends two ounces for a promise of one —
   a negative rate, struck voluntarily and held to maturity (I-12). Every
   CLAIM holds of him: `TimePreference`, `AsymmetricPreference`,
   `DemonstratedPreference`, `MoreMoneyPreferred`. What fails is a
@@ -31,12 +31,12 @@ namespace Toy
 
 open Apodictic
 
-/-- The goods: two present ounces, two claims to an ounce at date 1,
+/-- The goods: two present ounces, two promises of an ounce at date 1,
 and four goods standing for whole holdings in the two loans — the
-lender's purse (one ounce) and bond (a claim to two), the saver's hoard
-(two ounces) and note (a claim to one). -/
+lender's purse (one ounce) and bond (a promise of two), the saver's hoard
+(two ounces) and note (a promise of one). -/
 inductive Good
-  | ounce | ounce' | claimA | claimB | purse | bond | hoard | note
+  | ounce | ounce' | promiseA | promiseB | purse | bond | hoard | note
   deriving DecidableEq
 
 /-- Kind first, date second: lower is better. -/
@@ -65,7 +65,7 @@ abbrev frame (believes : Good → ℕ × ℕ → Prop) : MoneyFrame where
   Money := fun _ => True
   FreeToHold := fun _ _ _ => True
 
-section Claims
+section Promises
 
 variable (believes : Good → ℕ × ℕ → Prop)
 
@@ -90,9 +90,9 @@ theorem transitive (now : ℕ) (X Y Z : Set (ℕ × ℕ)) :
   fun ⟨x, hx, hxY⟩ ⟨y, hy, hyZ⟩ =>
     ⟨x, hx, fun z hz => Nat.lt_trans (hxY y hy) (hyZ z hz)⟩
 
-end Claims
+end Promises
 
-/-- What a claim to `n` ounces at date 1 buys. -/
+/-- What a promise of `n` ounces at date 1 buys. -/
 def futureBuys : ℕ → Finset (ℕ × ℕ)
   | 0 => ∅
   | 1 => {late}
@@ -102,23 +102,23 @@ def futureBuys : ℕ → Finset (ℕ × ℕ)
 def presentBuys (worth : ℕ × ℕ) (n : ℕ) : Finset (ℕ × ℕ) :=
   if n = 0 then ∅ else {worth}
 
-/-- Ounces now serve `worth`; claims serve `late` or `plenty`. -/
+/-- Ounces now serve `worth`; promises serve `late` or `plenty`. -/
 def moneyBeliefs (worth : ℕ × ℕ) : Good → ℕ × ℕ → Prop
   | .ounce, e => e = worth
   | .ounce', e => e = worth
-  | .claimA, e => e = late ∨ e = plenty
-  | .claimB, e => e = late ∨ e = plenty
+  | .promiseA, e => e = late ∨ e = plenty
+  | .promiseB, e => e = late ∨ e = plenty
   | _, _ => False
 
 /-- The lender's beliefs: an ounce now buys `soon`; the purse is one
-ounce, the bond a claim to two. -/
+ounce, the bond a promise of two. -/
 def lenderBeliefs : Good → ℕ × ℕ → Prop
   | .purse, e => e = soon
   | .bond, e => e = plenty
   | g, e => moneyBeliefs soon g e
 
 /-- The saver's beliefs: his ounces, held to date 1, buy `diminished`;
-the hoard is his two ounces, the note a claim to one. -/
+the hoard is his two ounces, the note a promise of one. -/
 def saverBeliefs : Good → ℕ × ℕ → Prop
   | .hoard, e => e = diminished
   | .note, e => e = late
@@ -128,16 +128,16 @@ section Stocks
 
 variable (believes : Good → ℕ × ℕ → Prop)
 
-/-- Claims to an ounce at date 1, weighed at date 0. -/
+/-- Promises of an ounce at date 1, weighed at date 0. -/
 def futureStock
-    (alike : ∀ unit ∈ ({.claimA, .claimB} : Finset Good), ∀ e,
+    (alike : ∀ unit ∈ ({.promiseA, .promiseB} : Finset Good), ∀ e,
       believes unit e ↔ e ∈ ({late, plenty} : Set (ℕ × ℕ))) :
     Stock (frame believes).toActionFrame () 0 where
-  units := {.claimA, .claimB}
+  units := {.promiseA, .promiseB}
   serves := {late, plenty}
   unitsAlike := alike
 
-/-- What he would buy with claims: by count only. -/
+/-- What he would buy with promises: by count only. -/
 def futurePlan alike : AllocationPlan (futureStock believes alike) where
   wouldServe s := futureBuys s.card
   servesOnlyWhatItCan s want h := by
@@ -204,7 +204,7 @@ end Stocks
 
 /-! ## The lender: a positive rate, every condition holding -/
 
-theorem lender_future_alike : ∀ unit ∈ ({.claimA, .claimB} : Finset Good), ∀ e,
+theorem lender_future_alike : ∀ unit ∈ ({.promiseA, .promiseB} : Finset Good), ∀ e,
     lenderBeliefs unit e ↔ e ∈ ({late, plenty} : Set (ℕ × ℕ)) := by
   intro unit h e
   rcases Finset.mem_insert.1 h with rfl | h
@@ -218,7 +218,7 @@ theorem lender_present_alike : ∀ unit ∈ ({.ounce} : Finset Good), ∀ e,
   exact Iff.rfl
 
 /-- The lender's side: he gives the purse (one ounce), gets the bond
-(a claim to two ounces), keeps nothing else; refusing would have left
+(a promise of two ounces), keeps nothing else; refusing would have left
 him an ounce's worth now. -/
 def lend : Trade (frame lenderBeliefs).toActionFrame :=
   ⟨(), 0, .purse, .bond, ∅, {soon}⟩
@@ -261,7 +261,7 @@ theorem lend_before_planned :
 
 theorem lend_after_planned :
     lend.AfterCountsAsPlanned
-      (futurePlan lenderBeliefs lender_future_alike) {.claimA, .claimB} := by
+      (futurePlan lenderBeliefs lender_future_alike) {.promiseA, .promiseB} := by
   show lend.after 0 = _
   rw [lend_after]
   exact (coe_single _).symm
@@ -270,11 +270,11 @@ theorem lend_after_planned :
 lends one ounce and is repaid two; every claim and condition of S5
 holds. -/
 theorem struck_rate_positive_applies :
-    ({.ounce} : Finset Good).card < ({.claimA, .claimB} : Finset Good).card :=
+    ({.ounce} : Finset Good).card < ({.promiseA, .promiseB} : Finset Good).card :=
   Interest.struck_rate_positive loan
     (presentPlan lenderBeliefs {Good.ounce} soon lender_present_alike)
     (futurePlan lenderBeliefs lender_future_alike)
-    {Good.ounce} {Good.claimA} {Good.claimA, Good.claimB} soon late
+    {Good.ounce} {Good.promiseA} {Good.promiseA, Good.promiseB} soon late
     (timePreference lenderBeliefs 0)
     ⟨rfl, rfl, rfl⟩
     ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
@@ -300,7 +300,7 @@ theorem struck_rate_positive_applies :
 
 /-! ## The saver: a negative rate, every claim holding -/
 
-theorem saver_future_alike : ∀ unit ∈ ({.claimA, .claimB} : Finset Good), ∀ e,
+theorem saver_future_alike : ∀ unit ∈ ({.promiseA, .promiseB} : Finset Good), ∀ e,
     saverBeliefs unit e ↔ e ∈ ({late, plenty} : Set (ℕ × ℕ)) := by
   intro unit h e
   rcases Finset.mem_insert.1 h with rfl | h
@@ -315,7 +315,7 @@ theorem saver_present_alike : ∀ unit ∈ ({.ounce, .ounce'} : Finset Good), �
   · rw [Finset.mem_singleton.1 h]; exact Iff.rfl
 
 /-- The saver's side: he gives the hoard (two ounces), gets the note (a
-claim to one), keeps nothing else; refusing would have left him the two
+promise of one), keeps nothing else; refusing would have left him the two
 ounces held to date 1, less what holding them cost. -/
 def save : Trade (frame saverBeliefs).toActionFrame :=
   ⟨(), 0, .hoard, .note, ∅, {diminished}⟩
@@ -344,7 +344,7 @@ theorem save_demonstrated : DemonstratedPreference save :=
 
 /-- **A negative rate, struck voluntarily, with every claim holding.**
 The saver's frame satisfies `TimePreference`, `AsymmetricPreference`,
-`MoreMoneyPreferred` (on his plan for claims) and
+`MoreMoneyPreferred` (on his plan for promises) and
 `DemonstratedPreference` (of his trade); the trade is voluntary; and he
 is repaid one ounce for two. -/
 theorem negative_rate_with_every_claim :
@@ -359,14 +359,14 @@ theorem negative_rate_with_every_claim :
     save_voluntary, Nat.lt_of_sub_eq_succ rfl⟩
 
 /-- **What fails for the saver is `SpentSooner`.** Whatever his two
-present ounces would buy, and whatever two claimed ounces would buy,
+present ounces would buy, and whatever two promised ounces would buy,
 the first is not sooner than the second: he has no use for the money
 before the bond pays. -/
 theorem saver_not_spent_sooner (soonEnd lateEnd : ℕ × ℕ)
     (buysSoon : (presentPlan saverBeliefs {.ounce, .ounce'} diminished
       saver_present_alike).wouldServe {.ounce, .ounce'} = {soonEnd})
     (buysLate : (futurePlan saverBeliefs saver_future_alike).wouldServe
-      {.claimA, .claimB} = {lateEnd}) :
+      {.promiseA, .promiseB} = {lateEnd}) :
     ¬ SpentSooner (praxis := frame saverBeliefs) (now := (0 : ℕ)) soonEnd lateEnd := by
   rintro ⟨sooner, _⟩
   have hs : ({diminished} : Finset (ℕ × ℕ)) = {soonEnd} := buysSoon
