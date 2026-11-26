@@ -22,8 +22,8 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addGlobalData('layout', 'layouts/base.ejs');
   eleventyConfig.addGlobalData('helpers', sgHelpers);
-  // `title` and `ogDescription` are the long forms www's index reads;
-  // the site's own chrome (tab titles, site bar) shows `shortTitle`.
+  // `title` is the long form www's index reads; this site's own chrome
+  // (the tab-title suffix, the site bar) shows `shortTitle`.
   const chromeSite = { ...site, title: site.shortTitle };
   eleventyConfig.addGlobalData('site', chromeSite);
 

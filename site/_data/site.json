@@ -6,7 +6,6 @@
   "url": "https://apodictic.cyberchitta.cc",
   "mainSiteUrl": "https://www.cyberchitta.cc",
   "description": "Austrian economics machine-checked in Lean 4. Each theorem lists every assumption it rests on, and where each came from in Mises and Rothbard. When an Austrian conclusion misses reality, you can point at the assumption that failed.",
-  "ogDescription": "Mises claimed the theorems of Austrian economics are as certain as mathematics. This project tests that claim in Lean 4, a proof assistant. Each theorem lists every assumption it rests on, and where each came from in Mises and Rothbard. When an Austrian conclusion misses reality, you can point at the assumption that failed. So far: marginal utility, exchange, time preference and the regression theorem.",
   "publishedAt": "2026-09-05",
   "form": "living",
   "group": "reference",
