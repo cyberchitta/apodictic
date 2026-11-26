@@ -2019,10 +2019,11 @@ preference is positive, i.e., one ounce of present money will always
 be preferred to one ounce or less of future money. Therefore, there
 will never be any question of a zero or negative pure interest rate"
 (*MES*, p. 382). It was chosen because the world seems to have
-answered it. For some years bonds paid a negative nominal yield, and
-people bought them and held them to maturity: they lent a sum to be
-repaid less. The question is which step of the argument such a lender
-falls outside.
+answered it. From 2014, banks in the euro area lent to one another
+overnight at a negative rate. An overnight loan is repaid the next
+day, and it cannot be sold on for a gain before then, so the lender
+knows when he lends that he will be repaid less. The question is which
+step of the argument such a lender falls outside.
 
 Rothbard's argument runs in four steps, and they are rebuilt here in
 order. Present money is preferred to the same amount of future money.
@@ -2173,8 +2174,8 @@ The frame's preferences are written by hand for the case, and the
 frame is built only to separate the two readings: asymmetry and the
 dated claim hold in it, and the undated reading fails. It is not a
 frame where every claim holds; time preference, for one, does not. Whether a given saver is such a man is a question about
-him. A saver who locks his money in a Christmas club, away until
-December, looks like one, though the club case below needs only the
+him. A saver who locks his money in a Christmas club, away until it
+is paid out before the holidays, looks like one, though the club case below needs only the
 plainer failure.
 
 Mises's own account of action has room for this man. A valuation that
@@ -2313,13 +2314,40 @@ has a few more, of bookkeeping: that the claim and the repayment come
 from the stock of claims, that its units are interchangeable, and that
 what he holds after counts as planned.)
 
-The bondholder at a negative yield points first at his use for the
-money: he had none sooner than the bond paid. Held to that date
-instead, the cash would have bought at least what the smaller
-repayment buys. So lending at a loss makes sense only if holding the
-cash would have cost him something, and that points next at refusal:
-refusing would not have left him the sum at full value. This is a
-reading of the case, not a frame built for it. Where a man lends at exactly zero, the list is shorter:
+The bank that lends overnight at a negative rate is likely to land on
+two of these. One is its use for the money: it may have had none
+before the loan was repaid, a day later, and where it had none the
+theorem says nothing more about it. The other is refusal: refusing
+would not have left it the sum at full value. A bank that refused kept
+the sum as reserves at the central bank, which charged for them, or as
+banknotes, which have to be guarded. Either failure takes the bank
+outside the theorem; neither is shown here to be the only way out.
+
+Rothbard's own terms give an Austrian a reply for one part of this,
+though he never made it about negative rates. A claim to present money
+is like a claim on goods left in a warehouse, and redeeming it "is not the completion
+of a transaction or equivalent to a creditor’s calling his loan; it is
+a simple repossessing of a man’s own good" (*MES*, p. 800). In his
+example, the man who stores wheat pays for "this service as a
+guardian" of it (*MES*, p. 165). On that reading, a negative rate on a deposit is a fee for
+safekeeping and not interest at all, and the theorems never applied to
+it. The reply does not reach the loan between two banks, which is a
+claim to money tomorrow, a credit transaction on Rothbard's own terms.
+But the fee does reach the lender's refusal: it is what keeping the
+sum would have cost. For banknotes the cost is plainly one of keeping
+the sum safe, a price for guarding and not for time. For reserves it
+turns on whether the central bank's own overnight deposit is a
+warehouse or a loan: a warehouse makes its charge a fee for
+safekeeping, and a loan makes it a negative rate in its own right.
+That is left open here, and nothing rests on it: from June 2014 the
+same charge also fell on the reserves a bank held above the required
+minimum in its ordinary account at the central bank. Those reserves
+are not a claim on money stored elsewhere; they are the money itself,
+as banknotes are. So a bank that refused the overnight loan had
+nowhere to keep the sum for nothing. All of this is a reading of the
+case, not a frame built for it.
+
+Where a man lends at exactly zero, the list is shorter:
 it drops the claim that more money is preferred and the five
 conditions that come with it.
 
