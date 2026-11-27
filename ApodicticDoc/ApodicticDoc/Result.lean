@@ -4337,49 +4337,79 @@ tag := "vocabulary"
 Reference. These are the definitions the statements above are written
 in. Nothing earlier depends on having read them.
 
+Terms such as library, claim, condition and frame are explained under
+{ref "result"}[The Result]. What the audit turned up, its findings, is
+under {ref "finding"}[The finding] and
+{ref "other-findings"}[The other findings].
+
 The basic vocabulary is deliberately bare. Preference is just a
 relation. It is not assumed transitive. It is not assumed to rank
 every pair. Time is not assumed ordered. Properties get added when a
 theorem forces them. So far one has been added as a claim: asymmetry
-(`AsymmetricPreference`). Others enter as conditions of particular
-theorems. Asymmetry is spent in three places:
+(`AsymmetricPreference`, under {ref "claims"}[The claims]). It says
+that if an agent prefers one bundle to another at a time, he does not
+also prefer the second to the first. Others enter as conditions of
+particular theorems. Six theorems in the library use asymmetry:
 
-- The theorem relating the two routes spends it
-  (`Contrast.rothbard_entails_servedInOrder`), under *Mises's route*.
-- The rival-plan theorem spends it (`no_rival_swap_dominant`), under
-  *The theorems*.
-- Four theorems under *Interest* spend it: the three loan theorems, and
-  the check on the unrestricted rule
+- The theorem relating the two routes uses it
+  (`Contrast.rothbard_entails_servedInOrder`), under
+  {ref "mises-route"}[Mises's route].
+- The rival-plan theorem uses it (`no_rival_swap_dominant`), under
+  {ref "theorems"}[The theorems].
+- Four theorems under {ref "interest"}[Interest] use it: the three
+  loan theorems, and the check on the unrestricted rule
   (`PureInterest.buysMore_of_unrestricted`).
 
 {docstring Apodictic.ActionFrame}
 
 {docstring Apodictic.ActionFrame.PrefersEnd}
 
-The law is about a stock of units and what the agent would do with
-more or fewer of them.
+The law of marginal utility is about a stock of units and what the
+agent would do with more or fewer of them.
+
+The plan below, and an allocation further down, are each set against
+an action (`Action`). An action is one agent, at one time, using means
+he believes will bring about one chosen end. By acting he gives up at
+least one other end. Its definition is shown under *Claims no theorem
+uses*.
 
 {docstring Apodictic.Stock}
 
 {docstring Apodictic.AllocationPlan}
 
-Two conditions sit a level down. They are fields of the structures the
-theorems take as arguments: the stock, the plan, and on the history
-reading an allocation.
+Two conditions sit a level down, inside the structures the theorems
+take as arguments. They are fields of the stock, of the plan, and, on
+the history reading, of an allocation. That reading is under
+{ref "ladder-history"}[The ladder as a history].
 
 - `servesOnlyWhatItCan` is a field of the plan and of an allocation.
   It says no unit is put to a job the man does not believe the good
   can do.
 - `unitsAlike` is a field of the stock. It says every unit is believed
-  to serve exactly the ends in `stock.serves`. So once a stock holds at
-  least one unit, `unitsAlike` fixes `stock.serves`: it is the set of
-  ends each unit is believed to serve. Three claims quantify
-  over those ends (`SwapDominant`, `ServedInOrder`, `ActsInOrder`).
+  to serve exactly the ends the good can serve, by his lights
+  (`stock.serves`). So once a stock holds at least one unit,
+  `unitsAlike` fixes `stock.serves`: it is the set of ends each unit
+  is believed to serve.
 
-Neither condition is a binder in any statement. Both are on the
-manifest regardless. `#manifest` reads one level in and reports them.
-It does so because whoever supplies the argument has already
-discharged them.
+Three claims quantify over those ends (see {ref "claims"}[The claims]).
+Two are the claims of the two routes: swap dominance (`SwapDominant`)
+and serving in order of urgency (`ServedInOrder`). The third is acting
+in order of urgency (`ActsInOrder`), the claim of the history reading.
+So, in a stock with at least one unit, `unitsAlike` fixes the ends
+these claims speak of. (With no units it says nothing, so it fixes
+nothing.) That is the work it does, though no proof uses it (see
+below).
+
+Neither condition is a binder in any statement: a binder is one thing
+a statement takes as an argument (see {ref "manifest"}[The manifest]).
+Each is a field inside such an argument: `unitsAlike` inside the
+stock, `servesOnlyWhatItCan` inside the plan or the allocation. So
+neither condition appears in the signature. Lean builds no stock
+without a proof of its `unitsAlike`, and no plan or allocation without
+a proof of its `servesOnlyWhatItCan`. So whoever supplies one has
+already discharged its condition, that is, proved it. Both conditions
+are still assumptions the theorems rest on. So `#manifest` reads one level in
+and reports them, and they are not hidden.
 
 The two are not alike, and the manifest does not pretend otherwise:
 
@@ -4388,11 +4418,15 @@ The two are not alike, and the manifest does not pretend otherwise:
   incoherent plan. So `servesOnlyWhatItCan` assumes nothing about the
   world. The same field on an allocation is said of what he did. It
   assumes nothing either.
-- A lame horse is a situation that might obtain. So `unitsAlike` does
-  assume something about the world.
+- A lame horse is a situation that might obtain. Say the man does not
+  believe it can do a job he believes his other horses can do. Then
+  his units are not believed to serve the same ends, and `unitsAlike`
+  fails. So `unitsAlike` does assume something about the world.
 
-Which of the two a carried condition is cannot be read off the term.
-It is ruled by hand, and this is the ruling.
+Whether a carried condition assumes something about the world cannot
+be read off its statement in Lean. It is a judgement about the world,
+so `#manifest` cannot make it (see {ref "manifest"}[The manifest]). It
+is made by hand, and the two bullets above are that judgement.
 
 A third condition used to sit here, and now sits nowhere: one unit to
 one end. That can fail of a real stable. Two horses can pull one
@@ -4400,20 +4434,34 @@ wagon, or a horse can stand idle. So it could not stay a field.
 Taking it out showed that no theorem wants it. So it was not made a
 hypothesis either. See *The other findings*.
 
+`unitsAlike` can fail too, yet it stays a field. The library's reason
+is that it cannot be made a hypothesis. No theorem's proof uses it, so
+as a hypothesis it would fail the unused-argument linter. Marking it
+with `_` would record that it does no work. But it does work: it fixes
+the ends the three claims above speak of. So it stays a field, and
+`#manifest` reports it.
+
 Interchangeability of units is *not* hidden down there. The plan is
 indexed by which exact units the man holds. That it depends only on
 how many of them there are is a separate named condition
 (`AllocationPlan.Homogeneous`). It is given in full under *The
 conditions*, along with the other conditions.
 
-The history reading is under *The ladder as a history*. It puts an
-actual allocation (`Allocation`) where the plan was. It reads the
-supply growing (`Stock.Grows`) as something that happened. No theorem
-carries `Stock.Grows`. Added as a hypothesis of the earlier-judged
-ladder (`Temporal.ladder_judged_earlier`), it fails the unused-argument
-linter. As a hypothesis, it appears only in the statement the
-counter-model (`Model.later_judged_ladder_fails`) refutes
-(`Temporal.LadderJudgedLaterFromOrder`).
+The history reading is under
+{ref "ladder-history"}[The ladder as a history]. It puts an actual
+allocation (`Allocation`) where the plan was. It reads the supply
+growing (`Stock.Grows`) as something that happened. Yet no theorem
+carries `Stock.Grows`:
+
+- The ladder judged on the earlier scale (`Temporal.ladder_judged_earlier`)
+  does not need the growth. Added to that theorem as a hypothesis, the
+  growth fails the unused-argument linter. The theorem's earlier scale
+  is the ranking he held at the moment the theorem calls earlier
+  (`earlierTime`). Nothing in the theorem orders its two times.
+- The ladder judged on the later scale is written out as a statement
+  (`Temporal.LadderJudgedLaterFromOrder`). That statement takes the
+  growth as a hypothesis. It is the only one that does. A counter-model
+  shows it false (`Model.later_judged_ladder_fails`).
 
 {docstring Apodictic.Allocation}
 

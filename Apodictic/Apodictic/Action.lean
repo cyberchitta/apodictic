@@ -34,14 +34,17 @@ structure ActionFrame where
   assumed on it here. -/
   Time : Type
   /-- `Believes agent time means want`: at that time, the agent
-  believes that using those means helps bring about that want. Nothing
-  links a means to an end here except what the agent believes. -/
+  believes that using those means helps bring about the end `want`.
+  Nothing links a means to an end here except what the agent
+  believes. -/
   Believes : Agent → Time → Means → End → Prop
   /-- `Prefers agent time X Y`: at that time, the agent values the
   bundle of ends `X` above the bundle `Y`. This is the ranking behind
   the agent's choices. It is read as strict. But that reading is not
-  built in: NO properties are imposed on this relation, strict or
-  otherwise. A theorem that needs one says so.
+  built in: NO properties are imposed on this relation here, strict or
+  otherwise. A theorem that needs one says so. Asymmetry, for one,
+  enters as a claim the theorems that use it carry
+  (`AsymmetricPreference`).
 
   The ranking is kept apart from what the agent actually does. Three
   claims tie the two. Two run from an act to the ranking.
@@ -50,22 +53,30 @@ structure ActionFrame where
   runs the other way, from the ranking to what he does with a stock.
   `ActsInOrder` is stated of an actual allocation. Each is asserted of
   the one trade, act or allocation a theorem is handed, never of every
-  act.
+  act. That follows a rule of method set out under *The other
+  findings*.
 
   The relation ranges over SETS of ends rather than single ends. The
-  tradition draws no line between an end and a composite of ends. The
-  word "atomic" only ever means "not divided further by this action".
-  That is the same relativity as the size of a unit of supply (*MES*
-  p. 28). So there
-  is ONE ranking, over bundles at whatever grain the problem has. An
+  tradition draws no line between an end and a composite of ends. An
+  end is "atomic", a single end, only relative to an action: it is one
+  this action does not divide further. That is the same relativity as
+  the size of a unit of supply, which is whatever enters the action
+  as one thing (*MES* p. 28; see `Stock`). So there is ONE ranking, over bundles at whatever grain the problem has. An
   end in the ordinary sense is a bundle with one member
-  (`PrefersEnd`). Independence of uses (`IndependentUses`) is bundle
-  preference breaking down into preference between ends. Ranging over
-  bundles is what lets it be a named hypothesis, instead of something
-  the vocabulary quietly enforces.
+  (`PrefersEnd`). Independence of uses (`IndependentUses`, under *The
+  conditions*) is bundle preference breaking down into preference
+  between ends. A preference between two bundles that differ in exactly
+  one end carries down to a preference between those two ends. A
+  relation
+  on single ends has no bundles to break down, so it could not state
+  that condition at all. Ranging over bundles is what lets independence
+  of uses be a named hypothesis, instead of something the vocabulary
+  quietly enforces.
 
-  Shape claim (audit): a bundle is a `Set`, so it carries no
-  multiplicity and no order. -/
+  Audit note on shape: an assumption can hide in the shape of a
+  structure, which fields it has and their types, where no signature
+  shows it. Here a bundle is a `Set`, so it carries no multiplicity and
+  no order. That is noted here, not judged. -/
   Prefers : Agent → Time → Set End → Set End → Prop
 
 /-- Preference between two single ends. It is bundle preference
