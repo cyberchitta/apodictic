@@ -23,8 +23,12 @@ Shape claim (audit): a holding counts for the UNION of what its goods
 are believed able to serve. Two goods serving the same end count
 once, and a good counts for every end it could serve, not for one it
 would be put to. For unique goods with separate uses — the scope here,
-Rothbard's vase and typewriter (*MES* p. 86) — the two readings agree;
-where they part, `KeptServesOtherEnds` is the condition that fails.
+Rothbard's vase and typewriter (*MES* p. 86) — the two readings agree.
+Where they part because a kept good is believed to serve an end a
+traded good serves too, `KeptServesOtherEnds` is the condition that
+fails. Where a good counts
+for an end it could serve but would not be put to, no condition
+answers to it.
 
 ## Beliefs and rankings are read at a stated time
 

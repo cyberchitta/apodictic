@@ -114,15 +114,11 @@ neither does the marginal utility of a supply of `n`.
 
 Rothbard makes interchangeability part of what a supply IS: "If a
 specific unit is differently evaluated from all other units, then the
-supply of that good is only one unit" (*MES* p. 23). Where it fails,
-the units are not one good. The library does not build it in. The
+supply of that good is only one unit" (*MES* p. 23). On his account,
+where it fails, the units are not one good. The library does not build it in. The
 size-based form of the law (`Apodictic.marginal_utility`) carries it as
 a hypothesis. So where it fails, that form is silent about these units.
-It does not treat them as one.
-
-Like the plan it constrains, this condition speaks of every sub-stock.
-Each is a part of the stock he might have held. What he actually holds
-is the whole stock. -/
+It does not treat them as one. -/
 def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=

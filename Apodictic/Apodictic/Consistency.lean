@@ -477,7 +477,9 @@ actions occur. Nothing in "there is action" delivers it. His own
 wording gestures past bare existence ("this case no longer implies the
 general conditions presupposed in the category of action"). It does
 not say what those conditions are. Those conditions, left unnamed,
-are the suppressed premise of his derivation. -/
+are the suppressed premise of this step. The step from the dilemma to
+the law needs a premise of its own. The library reconstructs it as
+`ServedInOrder`. -/
 theorem existence_does_not_refute_second_horn :
     ¬ Mises.ExistenceRefutesSecondHorn := by
   intro promise
@@ -739,8 +741,8 @@ theorem coarse_not_swapDominant : ¬ SwapDominant coarsePlan := by
 /-- **The two premise sets are not equivalent.** Swap dominance,
 independence of uses and asymmetry together entail Mises's bridge,
 `ServedInOrder` (`Contrast.rothbard_entails_servedInOrder`). This
-frame shows the converse fails. Reconstruct the Mises route as
-generously as the vocabulary allows. It then rests on a STRICTLY
+frame shows the converse fails. Reconstructed as `ServedInOrder`, the
+Mises route rests on a STRICTLY
 WEAKER allocation premise than swap dominance taken with independence
 of uses and asymmetry. It pays for that with
 comparability of ends (`ComparableServiceable`), which Rothbard's

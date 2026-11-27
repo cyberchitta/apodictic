@@ -201,9 +201,10 @@ theorem exchanged_before {praxis : MediumFrame} (history : History praxis)
     obtain ⟨k, hk, hexchanged⟩ := appraisal.fromPast j agent happraises
     exact ⟨k, Nat.lt_succ_of_le hk, acquired_of_exchanged hexchanged⟩
 
-/-- **Own past price follows from the claim.** Here the condition must
-be stated without quantities and without "rests on". So stated, it is
-the claim restricted to the days before `n`. -/
+/-- **Own past price follows from the claim.** The vocabulary has no
+quantities, and no relation for "rests on", so the condition is stated
+without either. So stated, it is the claim restricted to the days
+before `n`. -/
 theorem ownPastPrice_of_claim {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) (n : ℕ)
     (appraisal : AppraisalFromPast history m) :

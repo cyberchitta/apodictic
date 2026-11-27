@@ -102,8 +102,12 @@ where it does not hold.
 This is NOT a premise Rothbard's argument uses. He ranks wants against
 each other directly. He reads their ranking off his value scale
 (*MES* pp. 25–26, Figure 3). He takes that ranking as given. He never
-argues from bundles at all. Where he makes one fused claim, we split it in two: a claim about
-bundles (swap dominance, `SwapDominant`) and this condition. The split
+argues from bundles at all. He makes one fused claim, of single wants:
+"the universal fact that action uses scarce means to satisfy the most
+urgent of the not yet satisfied wants" (*MES* p. 24). What it says of
+the order of wants we split in two: a claim about bundles (swap
+dominance, `SwapDominant`) and this condition. Its other half, that
+action employs the means, is left out (see `SwapDominant`). The split
 is OURS, and this condition is its cost. Complementarity never comes up
 in his wording. Once the claim is split, it comes up here, as the case
 where this condition fails. To assert this condition rather than

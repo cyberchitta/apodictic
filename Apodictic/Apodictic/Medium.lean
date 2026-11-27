@@ -169,13 +169,13 @@ def History.AcquisitionsPurposive {praxis : MediumFrame} (history : History prax
   ∀ k < n, ∀ agent g, history.AcquiredAgainst k m agent g →
     ∃ e, praxis.Believes agent (history.date k) m e
 
-/-- **Own past price** — a condition, in the only form the vocabulary
-can state without quantities. Take anyone who appraises `m` as a medium
-on a day before `n`, other than day 0. He does so after an exchange of
-`m` on an earlier day.
+/-- **Own past price** — a condition, stated without quantities, since
+the vocabulary has none. Take anyone who appraises `m` as a
+medium on a day before `n`, other than day 0. He does so after an
+exchange of `m` on an earlier day.
 
-"The appraisal RESTS ON that exchange" cannot be said here. What can
-be said coincides with the claim `AppraisalFromPast`, restricted to the
+"The appraisal RESTS ON that exchange" is not stated here: the
+vocabulary has no relation for "rests on". What is stated coincides with the claim `AppraisalFromPast`, restricted to the
 days before `n` (`Apodictic.Regression.ownPastPrice_of_claim`). -/
 def History.OwnPastPrice {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) (n : ℕ) : Prop :=

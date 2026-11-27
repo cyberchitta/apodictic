@@ -352,9 +352,12 @@ it would only relocate the problem: a satisfaction scale still has to
 be connected to WHICH END A UNIT SERVES, and that connection is the
 premise all over again.
 
-So the reading below uses only what the frame already has. It is the
-most generous reconstruction the existing vocabulary allows, and
-whatever it costs lands on the signature where it can be read. -/
+So the reading below uses only what the frame already has. It is a
+generous reading: it asks strictly less than swap dominance taken with
+independence of uses and asymmetry
+(`Apodictic.Contrast.rothbard_entails_servedInOrder`,
+`Apodictic.Model.servedInOrder_not_entail_swapDominant`).
+Whatever it costs lands on the signature where it can be read. -/
 
 /-! Mises's bridge is the praxeological claim
 `Apodictic.ServedInOrder`, and comparability of a good's serviceable
