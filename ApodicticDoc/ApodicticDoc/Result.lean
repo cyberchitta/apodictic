@@ -105,31 +105,40 @@ them is not checked by Lean.
 
 # The horses
 
-Rothbard derives the law of marginal utility over pp. 24–27 of *Man,
-Economy, and State*. He works one case through: a man who owns six
-horses. This document follows that case throughout. The Lean comes
-back to the same six horses once the theorems are stated. The point is
-that you can hold his paragraph beside the formal statement. Then you
-can judge for yourself whether they say the same thing.
+Terms such as library, claim and condition are explained under
+{ref "result"}[The Result].
 
-He sets the case up twice. The first time is by acquisition (*MES*
-p. 24):
+Rothbard derives the law of marginal utility over pp. 24–27 of *Man,
+Economy, and State*. He states it on p. 27:
+
+> The greater the supply of a good, the lower the marginal utility;
+  the smaller the supply, the higher the marginal utility.
+
+He says what the marginal utility is: "This least important end
+fulfilled by the stock is known as … marginal utility" (p. 27). Utility, he adds,
+is "expressible only in terms of higher or lower order in the
+preferences of men" (p. 28).
+
+He works one case through: a man who owns six horses. This document
+follows that case throughout. The library comes back to the same six
+horses once the theorems are stated. The point is that you can hold
+his paragraph beside the formal statement. Then you can judge for
+yourself whether they say the same thing.
+
+He sets the case up twice and takes a horse away. The first set-up
+adds horses one at a time (*MES* p. 24). This builds the law upward,
+as the stock grows:
 
 > The first horse will fulfill the most urgent wants that a horse can
   serve; this follows from the universal fact that action uses scarce
   means to satisfy the most urgent of the not yet satisfied wants.
 
-The second time is for his diagram. This time he counts the ends
-(pp. 25–26):
+He then writes that "for all human actions, as the quantity of the
+supply (stock) of a good increases, the utility (value) of each
+additional unit decreases" (p. 25).
 
-> We assume for simplicity that there are 10 ends which the means
-  could fulfill, and that each unit of means is capable of serving one
-  of the ends. If the supply of the good is 6 units, then the first
-  six ends, ranked in order of importance by the valuing individual,
-  are the ones that are being satisfied. Ends ranked 7–10 remain
-  unsatisfied.
-
-And he takes a horse away (p. 25):
+Between the two set-ups he takes a horse away (p. 25). This takes the law downward, from
+six horses to five:
 
 > Assume that a man has a supply of six (interchangeable) horses. …
   Suppose that he is now faced with the necessity of giving up one
@@ -139,22 +148,52 @@ And he takes a horse away (p. 25):
   important of his wants that were fulfilled by the six horses, the
   loss of a horse will cause him to give up pleasure riding.
 
-That is the whole derivation. Everything below tries to say it in a
-form a machine will check.
+The second set-up numbers the ends, for a diagram of the value
+scale (his Figure 3, not shown here). The numbers are used later: "end
+6" is the sixth-ranked end (pp. 25–26):
+
+> We assume for simplicity that there are 10 ends which the means
+  could fulfill, and that each unit of means is capable of serving one
+  of the ends. If the supply of the good is 6 units, then the first
+  six ends, ranked in order of importance by the valuing individual,
+  are the ones that are being satisfied. Ends ranked 7–10 remain
+  unsatisfied.
+
+These passages carry the derivation. One more comes below.
+Everything below tries to say them in a form a machine will check.
 
 Three pieces of vocabulary carry the argument. They are worth naming
-now, because the argument's shape turns on the third.
+now, because the argument's shape turns on the second.
 
 - The *stock* (`Stock`): the six horses, and the ends a horse can
   serve at all.
 - The *plan* (`AllocationPlan`): for any set of horses he might
   have, which wants he would serve with them.
-- The *preference* the plan expresses (`Prefers`). It ranks bundles of
-  wants, and nothing more is assumed of it. It is not assumed
-  transitive. It is not assumed complete. No numbers are attached.
+- The *preference* (`Prefers`): his ranking of one bundle of wants
+  above another. Here a want and an end are the same thing (`End`). A
+  bundle is a set of them. Nothing more is assumed of the ranking. It is not assumed transitive: A over B and B over C
+  need not put A over C. It is not assumed complete: two bundles need
+  not be ranked either way. No numbers are attached.
 
-The full definitions are under *The vocabulary*. Nothing before that
-part depends on reading them.
+Rothbard's argument is one of two routes to the law (see
+{ref "result"}[The Result]). On it the law needs one claim: swap
+dominance (`SwapDominant`). It ties the plan to the ranking. Take any
+set of his horses. Swap any want the plan would serve for any want a
+horse could serve but the plan would leave unserved. Then he prefers what
+the plan would serve to what the swap leaves him.
+
+Ranking bundles, not single wants, is what lets the step from bundles
+to single wants be a named condition (`IndependentUses`).
+
+A property of the ranking is added only when some theorem forces it.
+On this route the law forces neither transitivity nor completeness. The order among
+single wants comes from swap dominance (`SwapDominant`), with
+independence of uses (`IndependentUses`). See
+{ref "theorems"}[The theorems] and
+{ref "other-findings"}[The other findings].
+
+The full definitions are under {ref "vocabulary"}[The vocabulary]. The
+parts between here and that one can be read without them.
 
 The plan is where the trouble starts. It is worth seeing why now,
 before the formal statement makes it look inevitable.
@@ -164,12 +203,20 @@ six. What he would do with five is not anything he does. It is a plan,
 and it covers stocks he does not own. His own words give it away:
 "which the larger stock *would have* satisfied".
 
+The trouble is not that the plan covers such stocks. Rothbard reasons
+about them himself. The trouble is that the plan is settled in
+advance. It answers for every set of horses at once. It is not a
+choice he makes, and no act of his settles it. That matters because
+Rothbard holds that "value scales do not exist in a void apart from
+the concrete choices of action" (p. 33). On the same page he exempts
+this law from that rule, with no argument. The case is made under
+{ref "finding"}[The finding].
+
 His first passage is about acquiring horses one after another. It can
 be read with no plan at all, as a history of what he did with each.
 That reading returns under *The ladder as a history*.
 
-A second horse passage decides how the plan has to be written down
-(p. 27):
+A later passage (p. 27) decides how the plan has to be written down:
 
 > suppose that the sixth horse that he had previously acquired (named
   "Seabiscuit") he had placed in the service of pleasure riding.
@@ -178,18 +225,30 @@ A second horse passage decides how the plan has to be written down
   (to him) of leading a wagon. He will still give up end 6 by simply
   transferring Seabiscuit from this function to the wagon-leading end.
 
+End 6 here is pleasure riding, the sixth of his ranked ends.
+Seabiscuit is the sixth horse in order of arrival.
+
 Rothbard names two horses to insist that *which* horse goes makes no
 difference. That is only worth saying if the plan could have depended
-on which. So here the plan is indexed by which horses. A separate
-named condition says only the number matters (`plan.Homogeneous`).
+on which. So in the library the plan says what he would serve with
+each particular set of horses. It is not indexed by a number of
+horses (`AllocationPlan`). That only the number matters is a separate
+{ref "conditions"}[condition] (`plan.Homogeneous`). It says any two
+sets of his horses of the same size would serve the same wants. It is assumed only
+where a theorem needs it.
 
-Both of his conclusions are proved of the six horses, under *The
-horses in Lean*:
+The library builds a model of the six horses. Both of his conclusions
+are proved as theorems about it, under
+{ref "horses-lean"}[The horses in Lean]:
 
 - The loss of a horse ends pleasure riding
   (`Model.loss_of_a_horse_ends_pleasure_riding`).
 - Which horse goes makes no difference
   (`Model.which_horse_does_not_matter`).
+
+Neither takes a condition. The second rests on a theorem that the
+model's plan is interchangeable (`horses_homogeneous`). There the
+condition is proved, not assumed.
 
 # The finding
 %%%
@@ -357,6 +416,9 @@ itself to that standing plan?
   out.
 
 # The other findings
+%%%
+tag := "other-findings"
+%%%
 
 The audit turned up more than the one claim. The findings fall into
 three groups.
@@ -654,6 +716,9 @@ Other parts take conditions of their own:
 {docstring Apodictic.Stock.NoNewUses}
 
 # The theorems
+%%%
+tag := "theorems"
+%%%
 
 
 The derivation is three steps. Only the first does any work.
@@ -3230,6 +3295,9 @@ frame cannot show him preferring less cash to more. That case is the
 impulse man's, above, who breaks `RankedAlikeNowOf`.
 
 # The horses in Lean
+%%%
+tag := "horses-lean"
+%%%
 
 This is the case from the opening, built in Lean. It does a second job
 at the same time. Suppose Rothbard's own six horses satisfy swap

@@ -64,8 +64,7 @@
    "sectionNum": "1.1."},
   "path": ["The-Result", "The-finding"],
   "next":
-  {"url":
-   "/The-Result/The-other-findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
+  {"url": "/The-Result/The-other-findings/#other-findings",
    "titleText": "The other findings",
    "title": "The other findings",
    "sectionNum": "1.3."},
@@ -89,8 +88,7 @@
    "title": "The claims",
    "sectionNum": "1.4."},
   "localToc": [],
-  "id":
-  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
+  "id": "other-findings",
   "fragment": "pages/The-Result/The-other-findings.html",
   "depth": 2},
  {"url": "/The-Result/The-claims/",
@@ -98,8 +96,7 @@
   "title": "1.4. The claims",
   "sectionNum": "1.4.",
   "prev":
-  {"url":
-   "/The-Result/The-other-findings/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-other-findings",
+  {"url": "/The-Result/The-other-findings/#other-findings",
    "titleText": "The other findings",
    "title": "The other findings",
    "sectionNum": "1.3."},
@@ -166,8 +163,7 @@
    "sectionNum": "1.4."},
   "path": ["The-Result", "The-conditions"],
   "next":
-  {"url":
-   "/The-Result/The-theorems/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-theorems",
+  {"url": "/The-Result/The-theorems/#theorems",
    "titleText": "The theorems",
    "title": "The theorems",
    "sectionNum": "1.6."},
@@ -238,7 +234,7 @@
     "level": null,
     "html": "<code>no_rival_swap_dominant</code>",
     "dest": "/The-Result/The-theorems/#Apodictic___no_rival_swap_dominant"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-theorems",
+  "id": "theorems",
   "fragment": "pages/The-Result/The-theorems.html",
   "depth": 2},
  {"url": "/The-Result/The-manifest/",
@@ -246,8 +242,7 @@
   "title": "1.7. The manifest",
   "sectionNum": "1.7.",
   "prev":
-  {"url":
-   "/The-Result/The-theorems/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-theorems",
+  {"url": "/The-Result/The-theorems/#theorems",
    "titleText": "The theorems",
    "title": "The theorems",
    "sectionNum": "1.6."},
@@ -726,8 +721,7 @@
    "sectionNum": "1.13."},
   "path": ["The-Result", "Interest"],
   "next":
-  {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+  {"url": "/The-Result/The-horses-in-Lean/#horses-lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
    "sectionNum": "1.15."},
@@ -909,8 +903,7 @@
     "html": "<code>horses_swapDominant</code>",
     "dest":
     "/The-Result/The-horses-in-Lean/#Apodictic___Model___horses_swapDominant"}],
-  "id":
-  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+  "id": "horses-lean",
   "fragment": "pages/The-Result/The-horses-in-Lean.html",
   "depth": 2},
  {"url": "/The-Result/The-vocabulary/",
@@ -918,8 +911,7 @@
   "title": "1.16. The vocabulary",
   "sectionNum": "1.16.",
   "prev":
-  {"url":
-   "/The-Result/The-horses-in-Lean/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses-in-Lean",
+  {"url": "/The-Result/The-horses-in-Lean/#horses-lean",
    "titleText": "The horses in Lean",
    "title": "The horses in Lean",
    "sectionNum": "1.15."},
