@@ -33,9 +33,11 @@ structure and reports its `Prop` fields as a class of their own.
 
 Only structures declared in the `Apodictic` library are opened: this
 audit is not about mathlib's, and `Finset` alone would drag in
-`nodup`. One level only — nothing here nests deeper, and a blind
-recursion would walk into mathlib through the first field that
-mentions it.
+`nodup`. One level only: a blind recursion would walk into mathlib
+through the first field that mentions it. Deeper `Prop` fields do
+exist: an `Exchange`'s `swap_gives` and `swap_gets`, reached through
+`History.exchanges`. They are not printed. They say what an exchange
+is, not something about the situation.
 
 What the command cannot do is SORT what it finds there. Whether a
 carried condition is definitional (it could not fail of a real

@@ -346,7 +346,10 @@ His man needs no scale in advance. The scale shows up choice by
 concrete choice, as each choice is made. The plan is different. It is
 a single standing object. It answers for every set of horses at once,
 before any of the choosing. That is precisely the scale in advance
-that Rothbard says is not needed. So the complaint is not that we
+that Rothbard says is not needed. More than that, he says scales "do
+not exist in a void apart from the concrete choices of action". The
+plan is a scale of the kind he denies. It stands apart from the
+choices. So the complaint is not that we
 asked what he would do with five horses. It is that we gave him a
 settled answer for every set at once. No act of his settles it.
 
@@ -441,7 +444,8 @@ condition the law's wording needs.
 
 - The one the law is derived from is a *praxeological claim*
   (`SwapDominant`, on Rothbard's route). It rides on the signature of
-  every theorem that uses it. If it is false, the law is false.
+  every theorem that uses it. If it is false, praxeology has asserted
+  something false, and the law loses its proof on this route.
 - The one its wording needs is a *condition* of the size form of the
   law (`plan.Homogeneous`). Where it does not hold, the law simply does
   not speak. It says nothing false. It says nothing at all.
@@ -558,7 +562,7 @@ The findings fall into three groups.
   next unit reaches. Rothbard's statement claims less than his premise
   delivers.
 
-*What the law does not need.* This is most of what it usually gets.
+*What the law does not need.* Rothbard's text supplies most of it.
 
 - On Rothbard's route the law needs neither transitivity of preference
   nor completeness. Transitive would mean that A over B and B over C
@@ -601,8 +605,9 @@ The findings fall into three groups.
   the concrete units are actually valued equally" (p. 24). The
   formalization follows p. 24.
 - Three times Rothbard treats which unit goes as making no difference.
-  Each time he gets the answer from interchangeability. In none of the
-  three does he state a condition on the plan (`plan.Homogeneous`).
+  Twice he gets the answer from interchangeability (pp. 26–27,
+  p. 320). On p. 458 he refers back to "the basic law of utility". In
+  none of the three does he state a condition on the plan (`plan.Homogeneous`).
   With six horses: "As a result of the interchangeability of units, it
   does not matter to him which of the six units he must lose"
   (pp. 26–27). In the recapitulation of fundamentals: "The definition
@@ -613,13 +618,17 @@ The findings fall into three groups.
 - That "Therefore" is the step the counter-model refutes
   (`unitsAlike_not_entail_homogeneous`). Units can be alike in what
   they can do. That does not make a plan blind to which of them it
-  has. The charge against the "Therefore" does not need him to have
-  shifted the word's meaning, either. Grant the usual reconciliation.
+  has. Pages 24 and 320 can look opposed. On p. 24 interchangeability
+  "does not mean that the concrete units are actually valued equally".
+  On p. 320 "every unit will always be valued equally with every other"
+  follows a "Therefore". The objection to that "Therefore" holds even
+  if the two pages are consistent. Grant the usual reconciliation.
   On it, p. 24 is about units taken on one after another. Page 320 is
   about units in a stock, each valued at the margin. Both readings are
   still facts about the units or their valuation. The size-based
-  wording needs a fact about the plan over sets of units. Prose has no
-  way to mark that distinction. The machine would not leave it
+  wording needs a fact about the plan over sets of units. In these
+  three passages Rothbard's prose never marks that distinction. The
+  machine would not leave it
   unmarked.
 - Independence of uses is a condition on the situation
   (`IndependentUses agent time`). Take two bundles that are the same

@@ -123,11 +123,11 @@ theorem urgency_principle {praxis : ActionFrame} [DecidableEq praxis.End]
 asymmetric. Then two plans over the same stock cannot both be
 swap-dominant while differing by a single swap at some sub-stock.
 
-This is what Rothbard means by "the" value scale. Here it is derived
-rather than presupposed. He writes as though the actor's ranking were
-simply given — "the" marginal unit, "the" least urgent want (*MES*
-pp. 24–27). He never argues that there is only one. Swap dominance
-(`SwapDominant`) plus asymmetry delivers it. Asymmetry is the
+Rothbard writes of "the" value scale — "the" marginal unit, "the"
+least urgent want (*MES* pp. 24–27) — without arguing there is only
+one. This is a narrow piece of that: not uniqueness, only that no
+rival a single swap away at some sub-stock is also swap-dominant.
+Swap dominance (`SwapDominant`) plus asymmetry delivers it. Asymmetry is the
 praxeological claim `AsymmetricPreference`. It is spent here, by
 `Apodictic.Contrast.rothbard_entails_servedInOrder`, and by the
 theorems its docstring lists. Apart from
