@@ -103,8 +103,7 @@
      "shortTitle": null,
      "sectionNum": "1.12.",
      "path": ["The-Result", "Time-preference"],
-     "id":
-     "Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+     "id": "time-preference",
      "children": []},
     {"url": "/The-Result/Regression-theorem/",
      "titleText": "The regression theorem",
@@ -112,8 +111,7 @@
      "shortTitle": null,
      "sectionNum": "1.13.",
      "path": ["The-Result", "Regression-theorem"],
-     "id":
-     "Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+     "id": "regression",
      "children": []},
     {"url": "/The-Result/Interest/",
      "titleText": "Interest",
@@ -121,7 +119,7 @@
      "shortTitle": null,
      "sectionNum": "1.14.",
      "path": ["The-Result", "Interest"],
-     "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Interest",
+     "id": "interest",
      "children": []},
     {"url": "/The-Result/The-horses-in-Lean/",
      "titleText": "The horses in Lean",

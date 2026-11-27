@@ -400,8 +400,7 @@
    "sectionNum": "1.10."},
   "path": ["The-Result", "Exchange"],
   "next":
-  {"url":
-   "/The-Result/Time-preference/#Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+  {"url": "/The-Result/Time-preference/#time-preference",
    "titleText": "Time preference",
    "title": "Time preference",
    "sectionNum": "1.12."},
@@ -488,8 +487,7 @@
    "sectionNum": "1.11."},
   "path": ["The-Result", "Time-preference"],
   "next":
-  {"url":
-   "/The-Result/Regression-theorem/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+  {"url": "/The-Result/Regression-theorem/#regression",
    "titleText": "The regression theorem",
    "title": "The regression theorem",
    "sectionNum": "1.13."},
@@ -567,7 +565,7 @@
     "html": "<code>waiting_regress_applies</code>",
     "dest":
     "/The-Result/Time-preference/#Apodictic___Model___waiting_regress_applies"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+  "id": "time-preference",
   "fragment": "pages/The-Result/Time-preference.html",
   "depth": 2},
  {"url": "/The-Result/Regression-theorem/",
@@ -575,15 +573,13 @@
   "title": "1.13. The regression theorem",
   "sectionNum": "1.13.",
   "prev":
-  {"url":
-   "/The-Result/Time-preference/#Apodictic___-Machine-Checked-Praxeology--The-Result--Time-preference",
+  {"url": "/The-Result/Time-preference/#time-preference",
    "titleText": "Time preference",
    "title": "Time preference",
    "sectionNum": "1.12."},
   "path": ["The-Result", "Regression-theorem"],
   "next":
-  {"url":
-   "/The-Result/Interest/#Apodictic___-Machine-Checked-Praxeology--The-Result--Interest",
+  {"url": "/The-Result/Interest/#interest",
    "titleText": "Interest",
    "title": "Interest",
    "sectionNum": "1.14."},
@@ -700,8 +696,7 @@
     "html": "<code>ownPastPrice_of_claim</code>",
     "dest":
     "/The-Result/Regression-theorem/#Apodictic___Regression___ownPastPrice_of_claim"}],
-  "id":
-  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+  "id": "regression",
   "fragment": "pages/The-Result/Regression-theorem.html",
   "depth": 2},
  {"url": "/The-Result/Interest/",
@@ -709,8 +704,7 @@
   "title": "1.14. Interest",
   "sectionNum": "1.14.",
   "prev":
-  {"url":
-   "/The-Result/Regression-theorem/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-regression-theorem",
+  {"url": "/The-Result/Regression-theorem/#regression",
    "titleText": "The regression theorem",
    "title": "The regression theorem",
    "sectionNum": "1.13."},
@@ -849,7 +843,7 @@
     "html": "<code>outside_zero_rate</code>",
     "dest":
     "/The-Result/Interest/#Apodictic___Model___ChristmasClub___outside_zero_rate"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Interest",
+  "id": "interest",
   "fragment": "pages/The-Result/Interest.html",
   "depth": 2},
  {"url": "/The-Result/The-horses-in-Lean/",
@@ -857,8 +851,7 @@
   "title": "1.15. The horses in Lean",
   "sectionNum": "1.15.",
   "prev":
-  {"url":
-   "/The-Result/Interest/#Apodictic___-Machine-Checked-Praxeology--The-Result--Interest",
+  {"url": "/The-Result/Interest/#interest",
    "titleText": "Interest",
    "title": "Interest",
    "sectionNum": "1.14."},

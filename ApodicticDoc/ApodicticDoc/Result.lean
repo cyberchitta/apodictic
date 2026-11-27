@@ -693,26 +693,38 @@ tag := "claims"
 %%%
 
 
-The library contains no `axiom`. Every praxeological claim is written
-as a structure. A theorem that needs a claim takes it as a named
+Terms such as library, docstring, claim, condition, linter, frame and
+vocabulary are explained under {ref "result"}[The Result].
+
+The library contains no `axiom`. In Lean, an `axiom` can be used by
+any proof without appearing in the statement of the theorem it
+proves. Only a separate report shows it: the last line of each
+manifest. So instead, every praxeological claim is written as a
+structure. A theorem that needs a claim takes it as a named
 assumption. So to see what a theorem rests on, you read its statement.
 
-Nor can that list be padded. Take, say, a claim about action that the
-proof never touches. A theorem could list it only to look better grounded.
-`#lint only unusedArguments` runs on every build. It fails the build
-when a listed assumption does no work. So the list is held from both
-sides:
+A theorem's statement thus lists the claims it rests on. That list
+cannot be padded either. Take, say, a claim about action that the
+proof never touches. A theorem could list it only to look better
+grounded. `#lint only unusedArguments` runs on every build. It fails
+the build when a listed assumption does no work. So the list is held
+from both sides:
 
-- Lean rejects a theorem that leaves a premise off.
+- Lean rejects a theorem that leaves a premise off. Without the
+  premise, the proof does not check.
 - The linter rejects a theorem that lists a premise it never uses.
 
 That is the reason to do this on a machine. The hold is not perfect.
-Where it gives is set out under *The manifest*.
+Where it gives is set out under {ref "manifest"}[The manifest].
+
+Below, a theorem is said to *spend* a claim when its proof uses it.
 
 Each claim records three things:
 
-- *Source*: a citation, or "tacit".
-- *Status*: one of three verdicts, listed next.
+- *Source*: a citation, or "tacit". *MES* is Rothbard's *Man, Economy,
+  and State*. Citations of Mises and Rothbard are to the Mises Institute
+  editions.
+- *Status*: a verdict, or two, from the three listed next.
 - *Does not say*: the stronger nearby claims it deliberately avoids.
 
 The three verdicts are these:
@@ -721,28 +733,87 @@ The three verdicts are these:
 - suppressed-premise: they use it without saying it.
 - our-reconstruction: a decision the tradition never faced.
 
+A Status may give two verdicts. The first is for the doctrine: what
+the tradition holds. The second is for the claim as written here, or
+for a named part of it, such as its form. So "explicit-in-tradition
+as doctrine; our-reconstruction as a claim" says this: the tradition
+states the doctrine, and the claim as it stands here is ours. Where
+there are two, the Status says which part is ours.
+
 Two rules govern the list:
 
 - A claim is added only when some theorem first needs it. So every
   claim here is one that some theorem actually uses.
-- Only claims meant to hold always belong here. A condition that says
-  when a law applies is a hypothesis instead. The conditions have a
-  part of their own below.
+- Only claims meant to hold always belong here. A condition says when
+  a theorem applies. Where it fails, the theorem says nothing. It is
+  not a claim. A theorem takes it as a hypothesis of its own, or finds
+  it in a field of the vocabulary (see {ref "result"}[The Result]). The
+  docstrings below call such a condition either a hypothesis or a
+  condition. The two words mean the same there. The conditions have a
+  part of their own, {ref "conditions"}[The conditions].
+
+The claims speak of a few things from the vocabulary:
+
+- The stock (`Stock`): the units of one good that a man holds at one
+  time, and the ends the good can serve, by his lights.
+- The plan (`AllocationPlan`), for a stock: for any set of its units he
+  might have, which ends he would serve with exactly those units. It
+  is settled in advance.
+- The preference (`Prefers`): his ranking, at a given time, of one
+  bundle of ends above another. A bundle is a set of ends. Nothing
+  more is built into the ranking. A theorem that needs more takes it as
+  a claim, such as the third below, or as a condition. The same ranking of single ends is
+  `PrefersEnd`.
+- Times have names. `now` is the present time of a claim. It is a
+  variable: any time can play that part.
+
+Take a claim about every plan the man might have. From any one plan
+a neighbour can be defined: the same plan, changed by one swap at one
+set of units. Such a neighbour can break the claim. So a claim of that
+form is refutable by construction. Hence a rule of method: each claim
+about a plan is made of the one plan a theorem is handed, never of
+every plan. The rule is set out under
+{ref "other-findings"}[The other findings].
+
+A dotted name, such as `Apodictic.Model.Impulse`, is a name in the
+library. Names under `Apodictic.Model` are in `Consistency.lean`: the
+small frames and the theorems about them.
 
 There are ten. The first three are these:
 
 - The first is the premise of Rothbard's derivation (`SwapDominant`).
-  On his route it is the only claim the law needs.
-- The second is the premise of Mises's derivation, reconstructed in the same
-  vocabulary (`ServedInOrder`).
-- The third is asymmetry of preference (`AsymmetricPreference`).
-  Neither derivation spends it. A comparison between them does. So do
-  the rival-plan theorem and four theorems under *Interest*.
+  On his route it is the only claim the law of marginal utility needs.
+  The theorem that derives the law there is `marginal_utility`.
+- The second is the premise of Mises's derivation, reconstructed in
+  the same vocabulary (`ServedInOrder`). Mises argues for the law by a
+  dilemma. The dilemma does not deliver this premise. A small frame
+  meets everything the dilemma establishes, and breaks the law
+  (`Model.recurs_does_not_deliver_ladder`). Both are set out under
+  {ref "mises-route"}[Mises's route].
+- The third is asymmetry of preference (`AsymmetricPreference`). If he
+  prefers one bundle to another, he does not prefer the second to the
+  first. Neither derivation spends it. The theorem relating the two
+  routes does (`Contrast.rothbard_entails_servedInOrder`, under
+  *Mises's route*). Four theorems under {ref "interest"}[Interest]
+  also spend it. So does the rival-plan theorem
+  (`no_rival_swap_dominant`, under {ref "theorems"}[The theorems]).
+  Take a plan that satisfies swap dominance, and a rival plan for the
+  same stock. At one set of units on hand, the rival would serve what
+  the first would serve there, with one change. One end the first
+  would serve is swapped out. In its place is an end the good can
+  serve that the first would leave out there. Given asymmetry, the
+  theorem says the rival does not also satisfy swap dominance.
 
 The next two are about what a man actually does, not what he would do:
 
 - The fourth is the premise of the ladder read as a history
-  (`ActsInOrder`). It runs from his ranking to his act.
+  (`ActsInOrder`). The ladder is the law built upward: one horse, then
+  a second, then a third, in Rothbard's example of a man's horses (see
+  {ref "horses"}[The horses]). Read as a history, it is about what the man
+  served as his stock grew. The docstring calls this the temporal
+  reading. The claim runs from his ranking to his act. The theorem
+  under {ref "ladder-history"}[The ladder as a history] carries it
+  (`Temporal.ladder_judged_earlier`).
 - The fifth runs the other way, from an act to his ranking. It is
   demonstrated preference (`DemonstratedPreference`). Rothbard states
   it of any action. Here it is stated of one trade. *Exchange*, *The
@@ -751,34 +822,67 @@ The next two are about what a man actually does, not what he would do:
 The next two are about time:
 
 - The sixth is time preference (`TimePreference`). A satisfaction is
-  preferred sooner rather than later.
+  preferred sooner rather than later. One theorem under
+  {ref "time-preference"}[Time preference] carries it
+  (`TimePreference.less_durable_preferred`). So do the interest
+  theorems that conclude a preference or a rate
+  (`PureInterest.present_sum_preferred`,
+  `PureInterest.present_sum_preferred_to_less` and the three loan
+  theorems under {ref "interest"}[Interest]).
 - The seventh is its demonstration (`DemonstratedTimePreference`). It
   is stated of one act. Taking a satisfaction and forgoing the same
   satisfaction later shows a preference for the sooner. Like the fifth,
-  it runs from an act to his ranking.
+  it runs from an act to his ranking. It is set out under *Time
+  preference*. Two theorems there carry this claim
+  (`TimePreference.consumption_reveals`, `TimePreference.regress`).
 
 The next two are about a medium of exchange. Both are premises of the
-regression theorem:
+regression theorem, under {ref "regression"}[The regression theorem].
+Its argument runs back through a record of exchanges. The docstrings
+call that argument a regress. The seventh claim's docstring uses the
+word for a different argument, Mises's on time preference (see *Time
+preference*).
 
 - The eighth is appraisal from the past (`AppraisalFromPast`). Nobody
   appraises a good as a medium unless it changed hands on some earlier
   day.
 - The ninth is Mises's division of the demand for a medium into two
   (`TwoPartialDemands`). Sort the ends into those reached by passing
-  a good on, and the rest. The sort leaves none over. The ninth is a
-  premise only of the regression theorem's positive form.
+  a good on, and the rest. The sort leaves none over. Classical logic
+  would grant that sort for free, by assuming every statement is true
+  or false. That assumption is called excluded middle. The library's
+  theorems outside `Consistency.lean` do without it: they are
+  constructive. So the sort has to be stated, and this claim states
+  it.
+
+Where the sort is needed comes from the theorem's two forms. Mises
+states the theorem in the negative. Say nobody acquired the good,
+before a given day, for an end other than passing it on. Then on that
+day nobody appraises it as a medium. The positive form turns it round.
+Say the good is a medium on some day. Then on an earlier day, someone
+acquired it for an end other than passing it on. At each step back,
+the proof meets an acquirer and the end he wanted the good for. The
+positive form has to decide whether that end is onward or not. The
+negative form never has to decide. So the positive forms carry the
+ninth claim (`Regression.direct_acquisition_before`,
+`Regression.narrow_acquisition_before`, `Regression.barter_origin`,
+`Regression.prior_money_relates_back`). The negative forms do not.
+Two other theorems carry it too
+(`Regression.partial_demands_exhaust`,
+`Regression.only_onward_without_direct`).
 
 The tenth is the interest theorems' own claim. It is about sums of
-money (`MoreMoneyPreferredWhenSpent`). Take two sums, one part of the
-other. Both are free to hold. They would buy different things. Then
-the larger is preferred at the date it would be spent. The theorems
-that carry it also carry time preference (`TimePreference`).
-
-Where the last three are carried:
-
-- The eighth and ninth are carried by the theorems under *The
-  regression theorem*.
-- The tenth is carried by those under *Interest*.
+money (`MoreMoneyPreferredWhenSpent`). Take two sums of money, one
+part of the other. Take the date he would spend them (`spend`). The
+claim says this. Say both sums are free to hold now: holding them
+costs him nothing. And say the two would buy different ends. Then, at
+that date, he prefers what the larger would buy to what the smaller
+would buy. The claim applies only where the two would buy different
+ends. It does not say that they do. A theorem that needs that takes a
+condition (`BuysMoreThanItsParts`): every strict part of a given sum
+would buy other ends than the whole does. The theorems that carry the
+claim also carry time preference (`TimePreference`). They are under
+*Interest*.
 
 The manifests in each part list exactly which claims each theorem
 carries.
@@ -2074,6 +2178,7 @@ conditions did not hold" now has a list to check against.
 # Time preference
 %%%
 file := "Time-preference"
+tag := "time-preference"
 %%%
 
 Time preference is the third target. Like exchange, it was chosen for
@@ -2424,6 +2529,7 @@ waiting brings back the reading on which the claim cannot fail.
 # The regression theorem
 %%%
 file := "Regression-theorem"
+tag := "regression"
 %%%
 
 The regression theorem is the fourth target. It is Mises's account of
@@ -2830,6 +2936,7 @@ For a medium whose first buyers paid money, the versions come apart:
 # Interest
 %%%
 file := "Interest"
+tag := "interest"
 %%%
 
 *In brief.* Rothbard concludes that a pure rate of interest can never
