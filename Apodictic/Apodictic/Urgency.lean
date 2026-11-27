@@ -58,18 +58,29 @@ theorem insert_sdiff_self_of_mem {α : Type} [DecidableEq α]
 hand. Every end the agent would serve with it is preferred to every
 end the good could serve but he would leave unserved.
 
-This is everything `SwapDominant` gives. It is more than Rothbard
-says. It sets a served end against ANY unserved end the good could
-serve, not only against the one the next unit would reach. It needs
-the hypothesis of independence of uses (`IndependentUses agent time`).
-That hypothesis is what carries a preference between two bundles down
-to a preference between two ends.
+It needs the hypothesis of independence of uses
+(`IndependentUses agent time`). That hypothesis is what carries a
+preference between two bundles down to a preference between two ends.
 
-How the proof goes. Swap the `served` want for the `unserved` one, and
-the plan beats the result. The served bundle is that one want together
-with the rest (`insert_sdiff_self_of_mem`). So the two bundles differ
-in exactly one place. Independence of uses reads the preference
-between those two wants off that. -/
+This theorem is everything `SwapDominant` gives about single ends.
+Swap dominance says nothing beyond its single swaps. Each swap
+it speaks of yields a preference between two bundles that differ in
+exactly one place. Independence of uses turns that into a preference between the
+two ends: the served end over the unserved one. This theorem covers
+every such swap: every sub-stock on hand, every served end, every
+unserved end the good could serve. It is more than Rothbard says. It
+sets a served end against ANY unserved end the good could serve, not
+only against the one the next unit would reach.
+
+How the proof goes. Swap dominance says the served bundle beats the
+bundle with `unserved` swapped in for `served`. Write the served bundle
+as the end `served` together with the rest of the bundle
+(`insert_sdiff_self_of_mem`). The swapped bundle is the end `unserved`
+together with that same rest. Neither end is in the rest. `served`
+was taken out of it. `unserved` is not served at this sub-stock, and
+the rest is part of what is served there. So the two
+bundles differ in exactly one place. Independence of uses reads the
+preference between those two ends off that. -/
 theorem served_over_unserved {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
     {stock : Stock praxis agent time}
@@ -101,10 +112,15 @@ agent had `more` units and drops to `fewer`, one unit fewer
 `fewer` is preferred to every end he has to abandon on the way down.
 The loss falls on the least urgent want.
 
-It is one application of `served_over_unserved`. An abandoned end is
-one the good can serve and the plan does not serve at `fewer`. Beyond
-supplying that much, the fact that `more` is exactly one unit larger
-does no work here. -/
+It is one application of `served_over_unserved`, at the sub-stock
+`fewer`. An abandoned end is one the plan would serve at `more` and
+not at `fewer`. So it is an end the good can serve, since the plan only ever puts a
+unit to an end the good is believed able to serve. That is a field of
+the plan itself (`plan.servesOnlyWhatItCan`), not a hypothesis. And
+the plan leaves it unserved at `fewer`.
+From `stock.OneMore fewer more` the proof uses only that `fewer` is
+on hand: it lies inside `more`, which lies inside the stock. That
+`more` has exactly one unit more than `fewer` is not used. -/
 theorem urgency_principle {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
     {stock : Stock praxis agent time}
@@ -128,10 +144,11 @@ least urgent want (*MES* pp. 24–27) — without arguing there is only
 one. This is a narrow piece of that: not uniqueness, only that no
 rival a single swap away at some sub-stock is also swap-dominant.
 Swap dominance (`SwapDominant`) plus asymmetry delivers it. Asymmetry is the
-praxeological claim `AsymmetricPreference`. It is spent here, by
-`Apodictic.Contrast.rothbard_entails_servedInOrder`, and by the
-theorems its docstring lists. Apart from
-asymmetry, `Prefers` has no properties assumed of it. -/
+praxeological claim `AsymmetricPreference`. This theorem uses it. So
+does `Apodictic.Contrast.rothbard_entails_servedInOrder`, shown under
+Mises's route. The docstring of `AsymmetricPreference` lists the other
+theorems that use it. Apart from asymmetry, the man's ranking of
+bundles (`Prefers`) has no properties assumed of it. -/
 theorem no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
     {stock : Stock praxis agent time}

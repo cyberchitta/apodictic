@@ -54,11 +54,15 @@ satisfied" (p. 25).
 
 It is a set of ends rather than a single end, because nothing here
 assumes that exactly one end drops. Determinacy of the drop is not
-among the law's premises. It is a `Set` rather than a `Finset` for a
-mechanical reason. Subtracting one `Finset` from another requires
+among the law's premises. It is a `Set` (a collection given by a condition on its members)
+rather than a `Finset` (a finite collection listed member by member)
+for a mechanical reason. Subtracting one `Finset` from another requires
 being able to decide when two ends are the same end. An arbitrary
-frame does not give us that. Reaching for `Classical` would put
-`Classical.choice` on the manifest for no praxeological reason at all.
+frame does not give us that. Lean's classical axiom
+(`Classical.choice`) would supply the test. No theorem outside
+`Consistency.lean`, the file of small frames, uses that axiom. Using it here would add it to the
+logical background of every theorem stated with this definition, for
+no praxeological reason at all.
 
 It is a definition, not a claim. Rothbard introduces it as a
 definition ("is called", "is known as"). What licenses calling this
@@ -85,15 +89,21 @@ No interchangeability of units (`plan.Homogeneous`) is needed, because
 the chain names which units are involved. The theorem is one
 application of `urgency_principle`.
 
-Two things go unused, and the statement records both. `_firstStep` is
-listed and does no work at all. The underscore is how that is written
-down. That it does no work is a finding: the chain form does not need
-the first step to be a step. And within the hypothesis that an end is
-marginal at the first step, only half is used. The unused half is
-destructured as `_notNeeded` inside the proof. That is a name in the
-proof, not a binder in the statement. The linter that keeps this list
-honest sees neither case. It is silenced by the underscore. And it
-works a whole binder at a time. -/
+Two things go unused. The first is `_firstStep`. It is listed in the
+statement and does no work at all. The underscore records that. Each
+hypothesis that does no work is recorded as a finding. This one shows
+that the chain form needs nothing of how `small` stands to `medium`:
+not that the first step adds one unit, nor even that `small` lies
+inside `medium`. The second is half of a hypothesis: that an end is
+marginal at the first step, that is, among the ends that step adds
+(`marginalEnds plan small medium`). That has two halves. Only one is
+used: that the end is served at `medium`. That it is not served at `small` is not used. The
+proof records this by naming that half `_notNeeded`. That name is
+inside the proof, not in the statement.
+
+The linter (`#lint only unusedArguments`) catches neither. The
+underscore silences it on `_firstStep`. And it judges each hypothesis
+whole, so it cannot see that half of one goes unused. -/
 theorem marginal_utility_chain
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -116,20 +126,26 @@ theorem marginal_utility_chain
 "The greater the supply of a good, the lower the marginal utility;
 the smaller the supply, the higher the marginal utility."
 
-This is the version stated by supply SIZE. Every end that is marginal
-at a supply of `n` units is preferred to every end marginal at a
-supply of `n + 1`. That holds for ANY two one-unit steps reaching
+This is the version stated by supply SIZE. The first step runs from
+`belowSmaller` to `smaller`, which has `n` units. The second runs from
+`belowLarger` to `larger`, which has `n + 1`. Every end that is
+marginal at a supply of `n` units (one the first step adds) is
+preferred to every end marginal at a supply of `n + 1` (one the second
+step adds). That holds for ANY two one-unit steps reaching
 those sizes. The two steps need not have a single unit in common.
 
 Interchangeability of units (`plan.Homogeneous`) is needed exactly
 once. It is needed to say that the plan at the `n` units below the
 second step is the same as the plan at the `n` units of the first.
-Without it the two steps could not be compared at all.
+Without it, the plan at `smaller` and the plan at `belowLarger` need
+not serve the same ends, though both have `n` units. Then this proof
+has no way to pass from the first step to the second.
 
-Here too only half of the marginality hypothesis is used. The unused
-half is destructured as `_notNeeded` in the proof. That is a
-proof-local name, not a binder in the statement. Every binder this
-theorem lists is used. -/
+Here too only half of the marginality hypothesis is used: that the end
+is served at `smaller`. That it is not served at `belowSmaller` is not
+used. The proof names that half `_notNeeded`. That name is inside the
+proof, not in the statement. Every hypothesis the statement lists is
+used. -/
 theorem marginal_utility
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
