@@ -138,8 +138,8 @@ def SameCount (sum promise : Finset praxis.Means) : Prop :=
   sum.card = promise.card
 
 /-- **Spent sooner** — a condition on the situation. The present sum
-would be spent before the promise pays. It would not be spent on
-something already past at `now`.
+would be spent before the promise pays. And the date of what it would
+buy is not before `now`.
 
 Rothbard's footnote answers this rather than grants it: "It is not
 valid to object that some might prefer to use the money in the future
@@ -213,7 +213,10 @@ a holding by every end its goods are believed able to serve
 says the present sum would buy.
 
 It fails where his other goods add ends of their own. It also fails
-where the two ways of counting differ (shape claims, above). -/
+where the sum's own units could serve more ends than the plan has them
+buy. An ounce could buy something now or be kept for later. The
+library's count credits it with both. The plan credits it with the one
+it would buy. -/
 def Trade.BeforeCountsAsPlanned
     (trade : Trade praxis.toActionFrame)
     {present : Stock praxis.toActionFrame trade.agent trade.time}
@@ -236,8 +239,9 @@ is supplied case by case. Had the lender refused, he would have been
 left with what the present sum would buy, at full value. This is
 Rothbard's reading of a loan's alternative.
 
-Hülsmann's and Deist's lenders are the cases where it fails. There the
-kept sum would buy less than the plan for it, or something else. -/
+Two Austrian writers, Hülsmann and Deist, describe lenders for whom it
+fails. For them the kept sum would buy less than the plan for it, or
+something else. -/
 def Trade.RefusalKeepsSum
     (trade : Trade praxis.toActionFrame)
     {present : Stock praxis.toActionFrame trade.agent trade.time}

@@ -77,8 +77,8 @@ time preference (`TimePreference`). Two conditions do the work. One is
 what the sums would buy (`SamePurchasingPower`). The other is that the
 promise pays (`PromisePays`). The count enters with the loans
 (`SameCount`). The conclusion also needs the present sum to be spent
-sooner (`SpentSooner`). That is the case Rothbard's n. 11 sets
-aside. -/
+sooner (`SpentSooner`). Rothbard's n. 11 dismisses the man for whom
+this fails: he would keep the present sum until the promise pays. -/
 theorem present_sum_preferred
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
@@ -100,16 +100,17 @@ theorem present_sum_preferred
 future money** (S3; *MES* p. 382: "one ounce of present money will
 always be preferred to one ounce or less of future money").
 
-`promise` is a future sum that buys what `sum` buys. It can be of any
-size. No count ties the two. `lesser` is any future sum no larger than
-`promise`. So "or less" is measured against the promise. It is measured
+The promise is a future sum that would buy what the present sum would
+buy. It can be of any size. No count ties the two. The lesser sum is
+any future sum no larger than the promise. So "or less" is measured
+against the promise. It is measured
 against the present sum only where `SameCount` is added, as in the
 loans.
 
 "Or less" chains S2 with `MoreMoneyPreferredWhenSpent` on the future
 sums. That chain is the one place transitivity is needed. The future
 units are interchangeable. So a sum of any units can stand in for a
-part of `promise` of the same size. -/
+part of the promise of the same size. -/
 theorem present_sum_preferred_to_less
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
@@ -208,8 +209,10 @@ loan demonstrates no preference. If `DemonstratedPreference` held of
 it, the lender would prefer the repayment to the kept sum. S3 with
 asymmetry forbids that.
 
-It is stated as the negation of the bridge. Nothing in the library
-says a trade was made, except that the bridge is asserted of it. -/
+So it is stated as: demonstrated preference (`DemonstratedPreference`)
+does not hold of the loan. That claim is the bridge from an act to a
+preference. The library has no other way to say a trade was made. It
+says so only by asserting the bridge of the trade. -/
 theorem no_loan_at_nonpositive_rate
     (trade : Trade praxis.toActionFrame)
     {present future promised : Stock praxis.toActionFrame trade.agent trade.time}

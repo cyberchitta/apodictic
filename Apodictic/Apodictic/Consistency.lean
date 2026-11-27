@@ -1592,7 +1592,8 @@ theorem lend_after_planned :
 
 /-- **Non-vacuity: every rate struck is positive, applied.** The lender
 lends one ounce and is repaid two. Every claim of S5 holds. So does
-every condition. The promised money is its own stock. -/
+every condition. The money promised is taken to be the promises' own
+stock. So the theorem's assumptions can all hold at once. -/
 theorem struck_rate_positive_applies :
     ({.ounce} : Finset Good).card < ({.promiseA, .promiseB} : Finset Good).card :=
   PureInterest.struck_rate_positive loan presentPlan futurePlan futurePlan
@@ -1772,11 +1773,11 @@ theorem inflation_pays_but_not_power (s l : ℕ × ℕ) :
   ⟨(plan_single _ _ _ _ _ _).trans (plan_single _ _ _ _ _ _).symm,
     not_same_of_worse worse worse .promised _ _ s l⟩
 
-/-- **The merged condition fails in both cases alike.** Same
-purchasing power (`SamePurchasingPower`) is asserted between the cash
-and the promise. It fails under
-default risk. It fails under inflation. The promise's plan is the same
-in both. -/
+/-- **The merged condition fails in both cases alike.** The merged
+condition is same purchasing power (`SamePurchasingPower`), asserted
+between the cash and the promise itself, not the money promised. It
+fails under default risk. It fails under inflation. The promise counts
+for the same in both, so its failure cannot say which happened. -/
 theorem merged_fails_in_both (s l : ℕ × ℕ) :
     ¬ SamePurchasingPower (praxis := frame doubt) doubtCash doubtPromise
       {.cash} {.promise} s l ∧
