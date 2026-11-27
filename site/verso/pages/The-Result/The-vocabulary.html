@@ -163,17 +163,19 @@ so <code>#manifest</code> cannot make it (see <a href="/The-Result/The-manifest/
 is made by hand, and the two bullets above are that judgement.</p><p>The library has a rule for a condition that can fail. It becomes a
 named hypothesis wherever the linter allows. The linter allows a
 hypothesis only where some proof uses it. So such a condition stays a
-field only where no proof uses it. The rule does not say which of
-those stay.</p><p>A third condition used to sit here, and now sits nowhere: one unit to
+field only where no proof uses it. Even then, it stays a field only if
+it does work in the vocabulary: it fixes what a claim speaks of.
+Otherwise it is dropped.</p><p>A third condition used to sit here, and now sits nowhere: one unit to
 one end. That can fail of a real stable. Two horses can pull one
 wagon, or a horse can stand idle. No theorem's proof uses it, so it is
-not a hypothesis. Nor is it a field. Dropping it loses nothing: every
+not a hypothesis. It fixes nothing a claim speaks of, so by the rule
+it is dropped, and it is in no field. Dropping it loses nothing: every
 plan that met it is still a plan, and the law still holds of it. See
 <strong>The other findings</strong>.</p><p><code>unitsAlike</code> can fail too, yet it stays a field. No theorem's proof uses it, so
 as a hypothesis it would fail the unused-argument linter. Marking it
 with <code>_</code> would record that it does no work. But it does work: it fixes
-the ends the three claims above speak of. So it stays a field, and
-<code>#manifest</code> reports it.</p><p>Interchangeability of units is <strong>not</strong> hidden down there. The plan is
+the ends the three claims above speak of. So the rule does not drop
+it. It stays a field, and <code>#manifest</code> reports it.</p><p>Interchangeability of units is <strong>not</strong> hidden down there. The plan is
 indexed by which exact units the man holds. That it depends only on
 how many of them there are is a separate named condition
 (<code>AllocationPlan.Homogeneous</code>). It is given in full under <strong>The

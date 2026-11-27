@@ -2958,8 +2958,9 @@ its fields, because it can fail. The library's rule is that a
 condition that can fail becomes a named hypothesis wherever the linter
 allows, and the linter allows one only where a proof uses it.
 Sameness is used by a proof, so it is a hypothesis. One unit to one
-end can fail too. No proof uses it, so it is not a hypothesis. It is
-in no field either (see {ref "vocabulary"}[The vocabulary]). The fields that stay, and why
+end can fail too. No proof uses it, so it is not a hypothesis. It
+fixes nothing a claim speaks of, so it is in no field either (see
+{ref "vocabulary"}[The vocabulary]). The fields that stay, and why
 each assumes nothing about the world, are under *The carried
 conditions* below.
 
@@ -4482,21 +4483,23 @@ is made by hand, and the two bullets above are that judgement.
 The library has a rule for a condition that can fail. It becomes a
 named hypothesis wherever the linter allows. The linter allows a
 hypothesis only where some proof uses it. So such a condition stays a
-field only where no proof uses it. The rule does not say which of
-those stay.
+field only where no proof uses it. Even then, it stays a field only if
+it does work in the vocabulary: it fixes what a claim speaks of.
+Otherwise it is dropped.
 
 A third condition used to sit here, and now sits nowhere: one unit to
 one end. That can fail of a real stable. Two horses can pull one
 wagon, or a horse can stand idle. No theorem's proof uses it, so it is
-not a hypothesis. Nor is it a field. Dropping it loses nothing: every
+not a hypothesis. It fixes nothing a claim speaks of, so by the rule
+it is dropped, and it is in no field. Dropping it loses nothing: every
 plan that met it is still a plan, and the law still holds of it. See
 *The other findings*.
 
 `unitsAlike` can fail too, yet it stays a field. No theorem's proof uses it, so
 as a hypothesis it would fail the unused-argument linter. Marking it
 with `_` would record that it does no work. But it does work: it fixes
-the ends the three claims above speak of. So it stays a field, and
-`#manifest` reports it.
+the ends the three claims above speak of. So the rule does not drop
+it. It stays a field, and `#manifest` reports it.
 
 Interchangeability of units is *not* hidden down there. The plan is
 indexed by which exact units the man holds. That it depends only on

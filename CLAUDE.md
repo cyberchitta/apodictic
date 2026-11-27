@@ -199,6 +199,9 @@ work.
   case is a finding. A condition that can fail becomes a named
   hypothesis wherever the linter allows; it stays a field of the
   vocabulary only where no proof uses it (human decision 2026-11-27).
+  A condition no proof uses stays a field only if it does work in the
+  vocabulary (it fixes what a claim speaks of); otherwise it is
+  dropped (human decision 2026-11-27).
 - Praxeological claims enter at point of first use. Nothing lives in
   Praxeology.lean unless some theorem's signature carries it; doctrinally
   central axioms no theorem yet needs are parked with their
