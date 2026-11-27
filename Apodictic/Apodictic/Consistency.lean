@@ -89,10 +89,12 @@ engaged in "the more important duty (to him) of leading a wagon"
 to anything claimed here. -/
 def manOWar : Horse := 1
 
-/-- Preference between bundles of wants. `X` is preferred to `Y`
-exactly when two things hold. The two bundles differ by a single swap.
-And the want `X` has in place of `Y`'s is the more urgent of the two.
-Here more urgent just means a smaller rank number. -/
+/-- Preference between bundles of wants. A bundle is a set of wants.
+`X` is preferred to `Y` exactly when two things hold. First, the two
+bundles differ by a single swap: `X` has one want `Y` lacks, `Y` has
+one want `X` lacks, and otherwise they are the same. Second, the want
+only `X` has is the more urgent of the two. Here more urgent just means
+a smaller rank number. -/
 def rankPrefers (X Y : Set Want) : Prop :=
   ∃ w w', w ∈ X ∧ w' ∈ Y ∧ w ∉ Y ∧ w' ∉ X ∧ w < w' ∧ X \ {w} = Y \ {w'}
 
@@ -127,8 +129,9 @@ def horsePlan (k : ℕ) : AllocationPlan (horseStock k) where
 take as `[DecidableEq praxis.End]`. -/
 instance : DecidableEq Horses.End := inferInstanceAs (DecidableEq ℕ)
 
-/-- **Interchangeability holds of the plan.** The plan depends on how
-many horses there are. It never depends on which. -/
+/-- **Interchangeability holds of the plan.** The plan takes a set of
+horses. The ends it gives depend only on how many horses are in the
+set, never on which. -/
 theorem horses_homogeneous (k : ℕ) : (horsePlan k).Homogeneous := by
   intro fewer _ more _ hcard
   show Finset.Icc 1 fewer.card = Finset.Icc 1 more.card
@@ -267,10 +270,17 @@ the ends he would serve after losing Seabiscuit. In Rothbard's
 telling, he simply moves Seabiscuit to the wagon. Which of the two
 goes makes no difference to which end is given up.
 
-This is what interchangeability amounts to. It is why the plan is
-indexed by *which* horses, while `Homogeneous` is a separate named
-condition. Rothbard's point has to be statable before it can be
-true. -/
+This is what interchangeability amounts to: the proof is
+interchangeability of units (`horses_homogeneous`) applied to the two
+sets of five horses left. It is also why the plan is encoded as it is.
+The plan (`AllocationPlan`) takes a set of horses, not a number. It
+gives the ends he would serve with exactly those horses. So the two
+sets of five are two different inputs, and they could give different
+ends. That any two sets of the same size give the same ends is a
+separate named condition (`Homogeneous`), and it can fail
+(`unitsAlike_not_entail_homogeneous`). A plan that took only a number
+would build Rothbard's point in, so that it could not fail. Rothbard's
+point has to be statable before it can be true. -/
 theorem which_horse_does_not_matter :
     (horsePlan 6).wouldServe ((Finset.range 6).erase manOWar)
       = (horsePlan 6).wouldServe ((Finset.range 6).erase seabiscuit) := by
@@ -285,10 +295,14 @@ theorem which_horse_does_not_matter :
     (Finset.erase_subset _ _) hcard
 
 /-- **The law itself, applied to the horses.** Every hypothesis of
-`marginal_utility_chain` is met at this frame. So the claim and the
-conditions on the situation can all hold at once, and the law is not
-empty. That is the whole consistency argument. This type-checks, so
-they fit together. -/
+`marginal_utility_chain` is met at this frame. The claim is swap
+dominance (`SwapDominant`), proved by `horses_swapDominant`. The
+conditions are that wants can be told apart, independence of uses
+(`horses_independent`) and the two one-horse steps
+(`horses_one_more`). Lean accepts this proof only because each
+hypothesis is supplied with a proof of it. So the claim and the
+conditions can all hold at once, and the law is not empty. That is the
+whole argument that they are consistent. -/
 theorem horses_law_applies (k n : ℕ) (h : n < k) (h' : n + 1 < k) :
     ∀ addedFirst ∈ marginalEnds (horsePlan k)
         (Finset.range n) (Finset.range (n + 1)),

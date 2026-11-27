@@ -4210,11 +4210,19 @@ impulse man's, above, who breaks `RankedAlikeNowOf`.
 tag := "horses-lean"
 %%%
 
-This is the case from the opening, built in Lean. It does a second job
-at the same time. Suppose Rothbard's own six horses satisfy swap
-dominance (`SwapDominant`) and every condition of the law's chain form
-(`marginal_utility_chain`) at once. Then those assumptions can all hold
-together. So the law, in its chain form, is not empty.
+Terms such as library, claim, condition and frame are explained under
+{ref "result"}[The Result].
+
+This is the case set out under {ref "horses"}[The horses], built in
+Lean. It does a second job at the same time. It shows that the law, in
+its chain form, is not empty. A theorem is not empty when all its
+claims and conditions can hold at once. If they could not, the theorem would be
+true only because nothing ever meets them. Rothbard's own six horses
+meet them all. The man's plan satisfies swap dominance
+(`SwapDominant`, explained under {ref "finding"}[The finding]). And
+the horses meet every condition of the law's chain form, the form
+along a chain of named horses (`marginal_utility_chain`, under
+{ref "theorems"}[The theorems]).
 
 Wants are ranks on the man's value scale. The smaller rank number is
 the more urgent want:
@@ -4223,20 +4231,49 @@ the more urgent want:
 
 The man's plan is the obvious one. With any `n` horses he would serve
 the `n` most urgent wants. This plan satisfies swap dominance
-(`SwapDominant`). Five more things hold here:
+(`SwapDominant`). The proof is the last theorem on this page. Five
+more things hold here. The first three are the chain form's
+conditions:
 
-- Wants can be told apart (`DecidableEq praxis.End`).
-- Uses are independent (`IndependentUses agent time`).
-- One-horse steps exist inside the stable (`stock.OneMore`).
-- Each step has a marginal end.
+- Wants can be told apart (`DecidableEq praxis.End`). For any two
+  wants, whether they are the same want can be decided.
+- Uses are independent (`IndependentUses agent time`, under
+  {ref "conditions"}[The conditions]). Here the horses' jobs do not
+  complement one another.
+- One-horse steps exist inside the stable (`stock.OneMore`). A set of
+  `n` of his horses lies inside a set of `n + 1`, and both lie inside
+  the stable. The chain form takes two such steps, one after the
+  other: from `n` horses to `n + 1`, then from `n + 1` to `n + 2`. Its
+  conclusion compares them. Every want the first step adds is
+  preferred to every want the second step adds.
+
+The other two are not conditions of the chain form:
+
+- Each step has a marginal end (`horses_marginal_nonempty`). Going
+  from `n` horses to `n + 1`, the plan serves one more want, rank
+  `n + 1`. That want is the step's marginal end: served with the larger
+  set, not with the smaller. The law's conclusion speaks of every want
+  a step adds. So this shows it speaks of actual wants here, not of
+  none.
 - Preference is asymmetric (`AsymmetricPreference`).
 
-The last one matters. With it, swap dominance (`SwapDominant`) holds
-somewhere preference is strict. That is how swap dominance was meant
-all along. `no_rival_swap_dominant` needs asymmetry too.
+Asymmetry is a claim, one of {ref "claims"}[The claims]. If he
+prefers one bundle to another, he does not prefer the second to the
+first. It is the strict reading of preference, and preference is
+meant as strict throughout. The chain form does not take it. It is
+proved of this frame (`horses_asymmetric`) for another reason. It
+shows that the two claims can hold together here: swap dominance
+(`SwapDominant`) and asymmetry. The rival-plan theorem
+(`no_rival_swap_dominant`, under {ref "theorems"}[The theorems]) takes
+both. It says this. Take a rival plan for the same stable. At one set
+of horses, it differs from his by a single swap. Then the rival does
+not also satisfy swap dominance. The rival is constrained at that one
+set of horses only. No theorem here applies the rival-plan theorem to
+the horses.
 
-Two of the theorems here are not bookkeeping. They are conclusions
-Rothbard reached himself. The first is his result at p. 25:
+Most theorems here only check that the horses meet one hypothesis or
+another. Two do more. They are conclusions Rothbard reached himself.
+The first is his result at p. 25:
 
 {docstring Apodictic.Model.loss_of_a_horse_ends_pleasure_riding}
 
@@ -4249,18 +4286,28 @@ And the last step is the point:
 
 {docstring Apodictic.Model.horses_law_applies}
 
-That is the law itself, applied to the horses. Every assumption of the
-chain form is met. The size-based form (`marginal_utility`) asks for
-one thing more: interchangeability (`plan.Homogeneous`). The horses
-meet that too:
+That settles the chain form. The size-based form, by the size of the
+supply (`marginal_utility`, under {ref "theorems"}[The theorems]),
+asks for one thing more: interchangeability (`plan.Homogeneous`). The
+horses meet that too:
 
 {docstring Apodictic.Model.horses_homogeneous}
 
-No theorem here applies the size-based form to them.
+But no theorem here applies the size-based form to them. That would
+take one more theorem, and it has not been built. So this page shows
+only the chain form not empty.
 
-Nothing was copied across by hand. `horses_swapDominant` proves
-`SwapDominant (horsePlan k)`, exactly the hypothesis
-`marginal_utility_chain` takes (`dominance`).
+One step above was taken on trust: that the man's plan satisfies swap
+dominance. Here is its proof. `horses_swapDominant` proves
+`SwapDominant (horsePlan k)`, where `horsePlan k` is the man's plan
+for a stable of `k` horses. That is exactly the hypothesis
+`marginal_utility_chain` takes (`dominance`), and
+`horses_law_applies` hands it over as it stands. So nothing was
+copied across by hand. A hand copy would be a second statement of swap
+dominance, written out for the horses. It could differ from the
+hypothesis the law takes. Then the horses would be shown to meet
+something other than that hypothesis. Here there is no second
+statement.
 
 {docstring Apodictic.Model.horses_swapDominant}
 
@@ -4269,13 +4316,18 @@ rather than papered over.
 
 - *No ceiling on the scale.* His ten ends are "for simplicity", to fit
   a diagram. A ceiling would drag an extra condition through every
-  theorem, and it would gain nothing. So here the horses can serve any
-  rank.
-- *Which earlier horse is Man o' War is arbitrary.* Rothbard says only
-  that he arrived before Seabiscuit. So any earlier horse will do. The
-  plan depends only on how many horses there are
-  (`horses_homogeneous`), and nothing about a horse but its identity
-  enters any claim.
+  theorem, and it would gain nothing: without one, his six horses
+  still serve the first six ends, as in his case. So here the horses
+  can serve any rank.
+- *Which earlier horse is Man o' War is arbitrary.* Rothbard calls
+  Seabiscuit "the sixth horse that he had previously acquired". He
+  says only that Man o' War "had arrived earlier" (*MES* p. 27). So
+  any earlier horse will do. Here the horses are numbered 0 to 5.
+  Seabiscuit is horse 5 and Man o' War is horse 1. What the plan
+  serves depends only on how many horses there are
+  (`horses_homogeneous`). A horse's
+  number serves only to tell horses apart. Nothing else about a horse
+  enters any theorem here.
 
 # The vocabulary
 %%%
