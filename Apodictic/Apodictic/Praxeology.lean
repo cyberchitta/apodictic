@@ -259,7 +259,7 @@ and in the second case n–1 units." The reason takes the n–1 case as
 an assumption. It does not say what act would show the choice he would
 make there. And it is given for the definition, not for this claim.
 Rothbard exempts the law circularly. Mises assumes the counterfactual
-case. Neither warrants a counterfactual premise.
+case. Neither warrants his counterfactual premise.
 
 Does not say:
 
