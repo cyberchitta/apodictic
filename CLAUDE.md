@@ -138,7 +138,11 @@ Two lake packages in this repo:
   (human decision 2026-09-04) and may lag the Lean, never
   contradict it. The human reviews it in large chunks, not part by
   part (human decision 2026-09-18). A part is pushed once the
-  checkers are green and a fresh-agent cold read has been applied; the
+  checkers are green and two fresh-agent reads have been applied: a
+  cold read against the Lean and the sources, and a follow-the-page
+  read by an agent given only the page's rendered text, which restates
+  each step and flags any it cannot follow (human decision
+  2026-11-27); the
   claims, conditions, encodings and readings of the sources in it are
   ruled beforehand, in discussion. Any library change is followed by
   a sweep for document text it made false. `generate-doc` does NOT produce Verso's own HTML:
