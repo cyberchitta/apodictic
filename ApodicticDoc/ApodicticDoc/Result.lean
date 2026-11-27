@@ -371,14 +371,16 @@ three groups.
 - The phrase "this bundle, minus this end" hides a premise: that two ends can be told apart in the first place (`DecidableEq praxis.End`).
   It came to light only because the proofs refuse classical logic.
 - The claim that people act splits into three. There is a definition
-  (`Action`). There is a bridge (`DemonstratedPreference`). And there
-  is an existence claim (`Mises.ActionOccurs`). Only the bridge could
-  do deductive work. The law of marginal utility never needs it.
-  Exchange does. There it enters stated
-  of one trade (*The
-  claims*).
+  (`Action`). There is a bridge from an act to a preference
+  (`DemonstratedPreference`). And there is an existence claim
+  (`Mises.ActionOccurs`). Of the three, only the bridge could do
+  deductive work. The law of marginal utility never needs it. Three
+  parts need it: *Exchange*, *The regression theorem* and *Interest*.
+  Each time it enters, it is stated of one trade (*The claims*).
+  *Time preference* needs a second bridge, for acts across dates
+  (`DemonstratedTimePreference`).
 - *The ladder as a history* uses a claim about what a man actually
-  does (`ActsInOrder`). That claim is not the bridge. It runs from his
+  does (`ActsInOrder`). That claim is neither bridge. It runs from his
   ranking to his act. It says nothing about what an act shows he
   prefers.
 - Never assert a claim about *every* structure of a given shape: say,
@@ -445,8 +447,9 @@ The next two are about what a man actually does, not what he would do:
 - The fourth is the premise of the ladder read as a history
   (`ActsInOrder`). It runs from his ranking to his act.
 - The fifth runs the other way, from an act to his ranking. It is
-  demonstrated preference (`DemonstratedPreference`), the premise of
-  exchange. It is stated of one trade.
+  demonstrated preference (`DemonstratedPreference`). Rothbard states
+  it of any action. Here it is stated of one trade. *Exchange*, *The
+  regression theorem* and *Interest* carry it.
 
 The next two are about time:
 
@@ -454,7 +457,8 @@ The next two are about time:
   preferred sooner rather than later.
 - The seventh is its demonstration (`DemonstratedTimePreference`). It
   is stated of one act. Taking a satisfaction and forgoing the same
-  satisfaction later shows a preference for the sooner.
+  satisfaction later shows a preference for the sooner. Like the fifth,
+  it runs from an act to his ranking.
 
 The next two are about a medium of exchange. Both are premises of the
 regression theorem:
@@ -2533,7 +2537,7 @@ The lists below leave out bookkeeping, such as which stock a sum comes
 from.
 
 *S2: present money beats the same amount of future money.* Smith
-prefers ten ounces today to the promise. This uses the claim of time
+prefers ten ounces today to the promise. This uses a first claim, time
 preference (`TimePreference`): he prefers a satisfaction sooner to the
 same satisfaction later. Three conditions make it the same satisfaction, and sooner:
 
@@ -2578,7 +2582,7 @@ conditions:
   no more. (`Trade.AfterCountsAsPlanned`.)
 - The promise is as many ounces as he lent. (`SameCount`.)
 
-*S5: so every rate struck is positive.* This uses the fourth claim,
+*S5: so every rate struck is positive.* This uses a fourth claim,
 demonstrated preference (`DemonstratedPreference`). It is asserted of
 this one loan. Lending showed a preference. Smith preferred his holding
 after the loan to what refusing would have left him. Together with S4, this means a loan he
