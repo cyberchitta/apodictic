@@ -65,7 +65,14 @@ approve every axiom and every design decision. Therefore:
   ONLY (human decision 2026-09-04): no dates, no note paths, no
   "was tried before", no commit hashes. History lives in the lab notebook;
   the result part quotes
-  docstrings live and must read as verdicts.
+  docstrings live and must read as verdicts. A docstring in
+  `Praxeology.lean` changes only to a wording the human has ruled;
+  or by the smallest correction that makes a ruled wording true of
+  the Lean; or by a clarification that a cold read confirms leaves
+  its meaning unchanged (an antecedent named, a pronoun resolved).
+  Either is reported to the human, before and after, and in the
+  commit message. Any other rewording of one is a proposal to the
+  human (human decision 2026-11-27).
 - When Lean forces a decision the verbal tradition never made
   (totality? transitivity? divisibility into units?), that is a
   FINDING. Log it in the lab notebook in the session it happens; it is
@@ -142,7 +149,9 @@ Two lake packages in this repo:
   cadence
   (human decision 2026-09-04) and may lag the Lean, never
   contradict it. The human reviews it in large chunks, not part by
-  part (human decision 2026-09-18). A part is pushed once the
+  part (human decision 2026-09-18). Before writing or changing its
+  prose, or rewording a docstring it shows, load the `document-prose`
+  skill and read `ApodicticDoc/CLAUDE.md`. A part is pushed once the
   checkers are green and two fresh-agent reads have been applied: a
   cold read against the Lean and the sources, and a follow-the-page
   read by an agent given only the page's rendered text, which restates
