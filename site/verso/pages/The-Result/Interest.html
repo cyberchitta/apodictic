@@ -75,10 +75,12 @@ everything Smith owns before or after it. That count credits a holding
 with every end any of its goods is believed able to serve
 (<strong>Exchange</strong>). S2 to S4
 weigh only sums: what ten ounces, or the repayment, would buy. The two
-conditions say the two weighings agree. So Smith's other units of ten
-ounces, and anything else he keeps, must serve no end beyond what the
-sum, or the repayment, would buy. If they did, the loan would be a choice between two
-larger holdings, not between the two sums S3 ranks.</p><p>Some apparent premises do no work, in some steps or in all:</p><ul><li><p><strong>At a zero rate, the second claim.</strong> Only a negative rate needs "more
+conditions say the two weighings agree. So nothing in the holding, not
+even the lent ounces or the repaid ones, may serve an end beyond what the sum, or the
+repayment, would buy. And the holding must serve every end the sum, or
+the repayment, would buy. If either failed, the loan
+would be a choice between two holdings, not between the two sums S3
+ranks.</p><p>Some apparent premises do no work, in some steps or in all:</p><ul><li><p><strong>At a zero rate, the second claim.</strong> Only a negative rate needs "more
   money is preferred" (<code>MoreMoneyPreferredWhenSpent</code>). A separate
   theorem covers a loan that repays exactly the sum lent (below). It
   drops that claim. Of S3's six conditions it keeps only
@@ -96,8 +98,8 @@ larger holdings, not between the two sums S3 ranks.</p><p>Some apparent premises
   cost of holding it reaches the loan only through refusal. (That the
   promise is free to hold is one of S3's conditions.)</p></li><li><p><strong>The borrower, and the market.</strong> Every step is about one lender.</p></li><li><p><strong>Any property of the order of time, and any classical step.</strong> No
   step uses a property of "before" (<code>Before</code>). None uses a step of
-  classical logic, such as excluded middle. <code>#print axioms</code> shows none
-  on these theorems.</p></li></ul><p>What each case breaks:</p><ul><li><p><strong>The bank that lent overnight at a negative rate.</strong> It breaks one of
+  classical logic, such as excluded middle. <code>#print axioms</code> lists only
+  <code>propext</code> and <code>Quot.sound</code> on these theorems, never <code>Classical.choice</code>.</p></li></ul><p>What each case breaks:</p><ul><li><p><strong>The bank that lent overnight at a negative rate.</strong> It breaks one of
   two conditions. If it had no use for the money that day, it breaks
   <code>SpentSooner</code>. Or it breaks <code>RefusalKeepsSum</code>: a bank that refused
   kept the sum at a cost. It held reserves the central bank charged
@@ -991,7 +993,7 @@ does not enter.</p></div></div><code class="hl lean block" data-lean-context="ex
     promisedPlan.servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ promisedPlan.wouldServe subStock, want ∈ promised.serves
 
   logical background: [propext, Quot.sound]
-</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-135168" data-verso-hover="164">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">PureInterest.struck_rate_positive</span></span><span class="inter-text">
+</span></code></span></span><span class="keyword token" data-binding="kw-occ-«command#manifest_»-135440" data-verso-hover="164">#manifest</span><span class="inter-text"> </span><span class="unknown token" data-binding="">PureInterest.struck_rate_positive</span></span><span class="inter-text">
 </span><span class="unknown token" data-binding=""></span></code><pre class="hl lean lean-output information"><span class="verso-message"><span class="text"></span><span class="text"></span><span class="text">manifest of Apodictic.PureInterest.struck_rate_positive
 
   praxeological claims:

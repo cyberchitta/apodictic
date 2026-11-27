@@ -1815,8 +1815,11 @@ case of perishable goods". Winter ice is "a good that loses its
 specific usefulness even if not consumed". Summer ice is "another good
 which requires a different process of production". So the two are
 "for all practical purposes different commodities" (*Human Action*,
-ch. XVIII, §2). Neither is a valuation. Unlike Rothbard's ground,
-Mises's can be checked without asking what the man prefers.
+ch. XVIII, §2). Neither description is a valuation. Both can be checked without
+asking what the man prefers: winter ice serves in summer only through
+a special process of conservation, and summer ice needs a different
+process of production.
+Rothbard's ground cannot.
 
 Lean shows exactly what Rothbard's reading buys. Define "the same
 satisfaction" as "the later is not preferred to the sooner"
@@ -2652,10 +2655,12 @@ everything Smith owns before or after it. That count credits a holding
 with every end any of its goods is believed able to serve
 (*Exchange*). S2 to S4
 weigh only sums: what ten ounces, or the repayment, would buy. The two
-conditions say the two weighings agree. So Smith's other units of ten
-ounces, and anything else he keeps, must serve no end beyond what the
-sum, or the repayment, would buy. If they did, the loan would be a choice between two
-larger holdings, not between the two sums S3 ranks.
+conditions say the two weighings agree. So nothing in the holding, not
+even the lent ounces or the repaid ones, may serve an end beyond what the sum, or the
+repayment, would buy. And the holding must serve every end the sum, or
+the repayment, would buy. If either failed, the loan
+would be a choice between two holdings, not between the two sums S3
+ranks.
 
 Some apparent premises do no work, in some steps or in all:
 
@@ -2681,8 +2686,8 @@ Some apparent premises do no work, in some steps or in all:
 - *The borrower, and the market.* Every step is about one lender.
 - *Any property of the order of time, and any classical step.* No
   step uses a property of "before" (`Before`). None uses a step of
-  classical logic, such as excluded middle. `#print axioms` shows none
-  on these theorems.
+  classical logic, such as excluded middle. `#print axioms` lists only
+  `propext` and `Quot.sound` on these theorems, never `Classical.choice`.
 
 What each case breaks:
 
