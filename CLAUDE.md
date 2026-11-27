@@ -54,7 +54,12 @@ approve every axiom and every design decision. Therefore:
   required fields: `Source:` (citation to Mises/Rothbard, or "tacit"),
   `Status:` (explicit-in-tradition / suppressed-premise /
   our-reconstruction), and `Does not say:` (the nearby stronger
-  claims it omits). Pedigree lives in the docstring, not in a
+  claims it omits). Suppressed-premise: their argument, as written,
+  uses the claim as stated here, and they never state it.
+  Our-reconstruction: the claim as stated here is ours (a form, a
+  separation or a premise they did not state in this shape), whether
+  or not their argument needs something like it (human decision
+  2026-11-27). Pedigree lives in the docstring, not in a
   separate hand-authored catalog — the axiom-by-axiom catalog is the
   source itself plus the Verso document. Docstrings are PEDIGREE
   ONLY (human decision 2026-09-04): no dates, no note paths, no
@@ -182,7 +187,9 @@ work.
   signature, and `#lint only unusedArguments` — mandatory, never
   silenced without a recorded reason — keeps it tight. `_`-prefixing
   a hypothesis is how "this does no work" is recorded, and each such
-  case is a finding.
+  case is a finding. A condition that can fail becomes a named
+  hypothesis wherever the linter allows; it stays a field of the
+  vocabulary only where no proof uses it (human decision 2026-11-27).
 - Praxeological claims enter at point of first use. Nothing lives in
   Praxeology.lean unless some theorem's signature carries it; doctrinally
   central axioms no theorem yet needs are parked with their
