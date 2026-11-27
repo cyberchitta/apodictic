@@ -121,14 +121,21 @@ will bring about a chosen end. By acting he gives up at least one
 alternative end.
 
 The fields hold together as a package. Nothing with fewer parts
-counts as an action. But this is a definition, so it asserts nothing.
-Shape: our-reconstruction.
+counts as an action. The first five fields are the parts. The last
+three are requirements the parts must meet. But this is a definition, so it asserts nothing.
+Shape: our-reconstruction. That is, the choice of fields that set out
+an action, and their types, is ours.
 
-No derivation of the law uses this structure. On both routes the law
-rests on the counterfactual plan alone. The structure does appear in
-Mises's dilemma (`Apodictic.Mises.ActionOccurs`,
-`Apodictic.Mises.ActionRecurs`). The dilemma is machine-checked not to
-deliver the law. -/
+No derivation of the law of marginal utility uses this structure. On
+both routes, Rothbard's and Mises's, the claim the law needs is about
+the counterfactual plan (`SwapDominant`, `ServedInOrder`). The plan
+says, for each set of the agent's units, which ends he would serve with
+exactly those units, settled in advance. Neither claim is about
+anything he does. The structure does appear in Mises's dilemma: in the
+statement that there is action (`Apodictic.Mises.ActionOccurs`), and
+in the statement that two distinct actions occur
+(`Apodictic.Mises.ActionRecurs`). The dilemma is machine-checked not
+to deliver the law. -/
 structure Action (praxis : ActionFrame) where
   /-- The acting person. -/
   agent : praxis.Agent
@@ -140,7 +147,8 @@ structure Action (praxis : ActionFrame) where
   means : praxis.Means
   /-- The ends given up by acting — the raw material of opportunity
   cost. Just a set: saying "the next-best alternative" would
-  presuppose a ranking this file does not have. -/
+  presuppose a ranking of the ends given up, and this definition uses
+  none. -/
   forgone : Set praxis.End
   /-- Action is choice: something is always given up, if only doing
   nothing. -/

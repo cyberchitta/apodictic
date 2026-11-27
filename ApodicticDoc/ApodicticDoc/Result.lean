@@ -4476,14 +4476,28 @@ satisfaction. The frame above has none of them.
 # Claims no theorem uses
 
 
-One claim at the centre of the doctrine is carried by no theorem here.
-It is the claim that there is any action at all (`Mises.ActionOccurs`).
-So it is not among the ten claims under *The claims*.
+Terms such as library, claim and frame are explained under
+{ref "result"}[The Result].
+
+One statement at the centre of the doctrine is carried by no theorem
+here. It is that there is any action at all. The library writes it
+down as a definition (`Mises.ActionOccurs`). A definition only names
+the statement. It does not assume it true. No claim in
+`Praxeology.lean` asserts it, and no theorem takes it as a hypothesis.
+So it is not one of the claims under {ref "claims"}[The claims]. A
+claim is added there only when some theorem first needs it.
+
+The doctrine that people act splits into three here (see
+{ref "other-findings"}[The other findings]). The existence statement
+above is one of the three. The other two, demonstrated preference and
+the definition of action, follow in turn.
 
 Demonstrated preference in Rothbard's sense (`DemonstratedPreference`)
-is not unused. It is the bridge from what a man actually does to what
-he prefers. It is stated of one trade. It is the fifth claim under *The
-claims*. Theorems in three parts carry it:
+is the bridge from what a man actually does to what he prefers. It is
+one of the claims under {ref "claims"}[The claims]. Rothbard states it
+of any action. Here it is asserted only of the one trade a theorem is
+handed. So the claim does not say that every act demonstrates
+preference. Theorems in three parts carry it:
 
 - *Exchange* (`MutualBenefit.reverse_valuations` and the other exchange
   theorems).
@@ -4491,10 +4505,31 @@ claims*. Theorems in three parts carry it:
 - *Interest* (`PureInterest.struck_rate_positive`).
 
 Action itself is a definition here (`Action`). No derivation of the
-law uses it. The existence claim has been tried once. Mises appeals to
-it to close his dilemma. A frame with exactly one action shows that the
-appeal falls short of what he needs. The details are under *Mises's
-route*.
+law of marginal utility uses it. The law is quoted under
+{ref "horses"}[The horses]. Each author's argument for the law is
+here called a route (see {ref "result"}[The Result]). On each route,
+the claim the law needs is about a plan: what the man would do with
+every part of his stock, settled in advance. It is not about anything
+he does. The case is made under {ref "finding"}[The finding].
+
+Other theorems do take an action. Two theorems under
+{ref "time-preference"}[Time preference] do
+(`TimePreference.consumption_reveals`, `TimePreference.regress`). The
+claim they carry, demonstrated time preference
+(`DemonstratedTimePreference`), is stated of one action.
+
+The existence statement appears in one test: of Mises's dilemma. The
+dilemma is his argument for the law, set out under
+{ref "mises-route"}[Mises's route]. Its second horn is that there
+could be only one action. Mises rejects that horn by appeal to the
+existence statement. A frame with exactly one action
+(`Model.Solitary`) tests the appeal. In that frame there is action,
+and there is at most one action. So the existence statement cannot
+rule out that there is only one action. What his step needs is that
+action is plural: that two distinct actions occur
+(`Mises.ActionRecurs`). The library names that too as a definition
+and asserts it nowhere. One theorem takes it as a hypothesis and
+refutes the second horn with it (`Mises.recurs_refutes_second_horn`).
 
 {docstring Apodictic.Action}
 
