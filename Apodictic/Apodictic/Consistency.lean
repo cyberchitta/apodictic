@@ -476,10 +476,12 @@ What his argument needs is `Mises.ActionRecurs`: that two distinct
 actions occur. Nothing in "there is action" delivers it. His own
 wording gestures past bare existence ("this case no longer implies the
 general conditions presupposed in the category of action"). It does
-not say what those conditions are. Those conditions, left unnamed,
-are the suppressed premise of this step. The step from the dilemma to
-the law needs a premise of its own. The library reconstructs it as
-`ServedInOrder`. -/
+not say what those conditions are. The suppressed premise of this
+step lies in those unnamed conditions. The library states what the
+step needs of them as `Mises.ActionRecurs`. The next step, from the
+dilemma to the law, needs a different premise
+(`recurs_does_not_deliver_ladder`, below); the library reconstructs it
+as `ServedInOrder`. -/
 theorem existence_does_not_refute_second_horn :
     ¬ Mises.ExistenceRefutesSecondHorn := by
   intro promise

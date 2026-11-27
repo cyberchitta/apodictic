@@ -739,8 +739,11 @@ Each claim records three things:
 The three verdicts are these:
 
 - explicit-in-tradition: Rothbard or Mises say it.
-- suppressed-premise: they use it without saying it.
-- our-reconstruction: a decision the tradition never faced.
+- suppressed-premise: their argument, as written, uses the claim as
+  stated here, and they never state it.
+- our-reconstruction: the claim as stated here is ours (a form, a
+  separation or a premise they did not state in this shape), whether
+  or not their argument needs something like it.
 
 A Status may give two verdicts. The first is for the doctrine: what
 the tradition holds. The second is for the claim as written here, or
@@ -1635,8 +1638,10 @@ removes. That reading was refused, for three reasons:
 - A satisfaction scale would still have to be connected to which want
   a unit serves. That connection is the premise all over again.
 
-The reading used instead is the most generous one the existing
-vocabulary allows. The agent serves in order of urgency
+The reading used instead is a generous one. It asks strictly less of
+the plan than Rothbard's premise taken with independence of uses and
+asymmetry (the theorem each way is below, under *The two premise
+sets, related*). The agent serves in order of urgency
 (`ServedInOrder`). Take any sub-stock on hand. Suppose the good can
 serve a want, and that want is more urgent than one the plan would
 serve with that sub-stock. Then the plan would serve it too, with the
@@ -1730,7 +1735,8 @@ claim under *The claims*. The theorem below spends it, as do the
 rival-plan theorem (`no_rival_swap_dominant`) and four theorems under
 *Interest*.
 Mises states asymmetry, as a law of thought (*Human Action*, ch. II,
-§2), so its status is explicit-in-tradition.
+§2), so its status is explicit-in-tradition (the status labels are
+explained under {ref "claims"}[The claims]).
 
 The docstring below says the proof's case split needs no classical
 logic. Why the library avoids classical logic is under
@@ -1791,14 +1797,21 @@ The two authors meet it differently:
   which was deduced from the axiom of action". That clause is what
   lets him hand the man a standing plan. The law is then proved from
   that plan. So his warrant is circular (see *The finding*).
-- Mises instead simply announces that the counterfactual costs
-  nothing: "We do not transcend the sphere of praxeological reasoning
-  in establishing the following definition". The definition is the
-  marginal employment, quoted near the top of this part. It is
-  counterfactual: the employment he makes at n units but would not
-  make if, other things being equal, his supply were only n–1 units.
+- Mises prefaces his definition with a remark: "We do not transcend
+  the sphere of praxeological reasoning in establishing the following
+  definition". The definition is the marginal employment, quoted near
+  the top of this part. It is counterfactual: the employment he makes
+  at n units but would not make if, other things being equal, his
+  supply were only n–1 units. He follows it with a reason: "In order
+  to attain this knowledge we do not need any physiological or
+  psychological experience, knowledge, or reasoning. It follows
+  necessarily from our assumptions that people act (choose) and that
+  in the first case acting man has n units of a homogeneous supply and
+  in the second case n–1 units." The reason takes the n–1 case as an
+  assumption. It does not say what act would show the choice he would
+  make there. And it is given for the definition, not for the premise.
 
-Neither warrants the premise. That is as far as this part goes.
+Neither warrants his premise. That is as far as this part goes.
 
 # The circle
 %%%
@@ -1883,16 +1896,24 @@ rule, by name. He attaches no argument. The circle runs like this:
 - The law is then proved from that plan.
 - So the warrant for the premise is the law it is used to prove.
 
-Mises does not see the difficulty, or does not say so. He sets down
-his definition of the marginal employment (`Mises.marginalEmployment`).
-It is the employment a man makes at n units "but would not make if,
-other things being equal, his supply were only n–1 units". So it is
-counterfactual: it turns on what he would do if his supply were
-smaller. He prefaces the definition with a remark: "We do not
-transcend the sphere of praxeological reasoning in establishing the
-following definition" (ch. VII, §1). Rothbard reasons in a circle. Mises
-declares. Neither gives the premise a warrant that stands apart from
-the law it is used to prove.
+Mises meets the difficulty differently. He sets down his definition of
+the marginal employment (`Mises.marginalEmployment`). It is the
+employment a man makes at n units "but would not make if, other things
+being equal, his supply were only n–1 units". So it is counterfactual,
+as his premise is: it turns on what he would do if his supply were
+smaller. He prefaces
+the definition with a remark: "We do not transcend the sphere of
+praxeological reasoning in establishing the following definition"
+(ch. VII, §1). He follows it with a reason: "It follows necessarily
+from our assumptions that people act (choose) and that in the first
+case acting man has n units of a homogeneous supply and in the second
+case n–1 units." The reason takes the n–1 case as an assumption. It
+does not say what act would show the choice he would make there. And
+it is given for the definition, not for the premise.
+
+Rothbard reasons in a circle: his warrant for the premise is the law
+itself. Mises assumes the counterfactual case, and gives his premise
+no warrant.
 
 *The weaker premise does not help.* Mises's premise
 (`ServedInOrder`) is strictly weaker than two claims and a condition
@@ -1948,8 +1969,7 @@ does not reach what it is offered for:
   see *The finding*).
 
 Is that common form one habit, or two coincidences? A proof assistant
-cannot say. Mises's declaration fits the same form trivially, since it
-reaches nothing.
+cannot say.
 
 *What is and is not established.* Established:
 
