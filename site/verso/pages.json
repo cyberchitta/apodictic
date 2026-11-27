@@ -44,8 +44,7 @@
    "sectionNum": "1."},
   "path": ["The-Result", "The-horses"],
   "next":
-  {"url":
-   "/The-Result/The-finding/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-finding",
+  {"url": "/The-Result/The-finding/#finding",
    "titleText": "The finding",
    "title": "The finding",
    "sectionNum": "1.2."},
@@ -71,7 +70,7 @@
    "title": "The other findings",
    "sectionNum": "1.3."},
   "localToc": [],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-finding",
+  "id": "finding",
   "fragment": "pages/The-Result/The-finding.html",
   "depth": 2},
  {"url": "/The-Result/The-other-findings/",
@@ -79,15 +78,13 @@
   "title": "1.3. The other findings",
   "sectionNum": "1.3.",
   "prev":
-  {"url":
-   "/The-Result/The-finding/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-finding",
+  {"url": "/The-Result/The-finding/#finding",
    "titleText": "The finding",
    "title": "The finding",
    "sectionNum": "1.2."},
   "path": ["The-Result", "The-other-findings"],
   "next":
-  {"url":
-   "/The-Result/The-claims/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
+  {"url": "/The-Result/The-claims/#claims",
    "titleText": "The claims",
    "title": "The claims",
    "sectionNum": "1.4."},
@@ -108,8 +105,7 @@
    "sectionNum": "1.3."},
   "path": ["The-Result", "The-claims"],
   "next":
-  {"url":
-   "/The-Result/The-conditions/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
+  {"url": "/The-Result/The-conditions/#conditions",
    "titleText": "The conditions",
    "title": "The conditions",
    "sectionNum": "1.5."},
@@ -156,7 +152,7 @@
     "html": "<code>MoreMoneyPreferredWhenSpent</code>",
     "dest":
     "/The-Result/The-claims/#Apodictic___MoreMoneyPreferredWhenSpent___mk"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
+  "id": "claims",
   "fragment": "pages/The-Result/The-claims.html",
   "depth": 2},
  {"url": "/The-Result/The-conditions/",
@@ -164,8 +160,7 @@
   "title": "1.5. The conditions",
   "sectionNum": "1.5.",
   "prev":
-  {"url":
-   "/The-Result/The-claims/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-claims",
+  {"url": "/The-Result/The-claims/#claims",
    "titleText": "The claims",
    "title": "The claims",
    "sectionNum": "1.4."},
@@ -200,7 +195,7 @@
     "level": null,
     "html": "<code>NoNewUses</code>",
     "dest": "/The-Result/The-conditions/#Apodictic___Stock___NoNewUses"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
+  "id": "conditions",
   "fragment": "pages/The-Result/The-conditions.html",
   "depth": 2},
  {"url": "/The-Result/The-theorems/",
@@ -208,15 +203,13 @@
   "title": "1.6. The theorems",
   "sectionNum": "1.6.",
   "prev":
-  {"url":
-   "/The-Result/The-conditions/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-conditions",
+  {"url": "/The-Result/The-conditions/#conditions",
    "titleText": "The conditions",
    "title": "The conditions",
    "sectionNum": "1.5."},
   "path": ["The-Result", "The-theorems"],
   "next":
-  {"url":
-   "/The-Result/The-manifest/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
+  {"url": "/The-Result/The-manifest/#manifest",
    "titleText": "The manifest",
    "title": "The manifest",
    "sectionNum": "1.7."},
@@ -260,13 +253,12 @@
    "sectionNum": "1.6."},
   "path": ["The-Result", "The-manifest"],
   "next":
-  {"url":
-   "/The-Result/Mises-route/#Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
+  {"url": "/The-Result/Mises-route/#mises-route",
    "titleText": "Mises's route",
    "title": "Mises's route",
    "sectionNum": "1.8."},
   "localToc": [],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
+  "id": "manifest",
   "fragment": "pages/The-Result/The-manifest.html",
   "depth": 2},
  {"url": "/The-Result/Mises-route/",
@@ -274,8 +266,7 @@
   "title": "1.8. Mises's route",
   "sectionNum": "1.8.",
   "prev":
-  {"url":
-   "/The-Result/The-manifest/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-manifest",
+  {"url": "/The-Result/The-manifest/#manifest",
    "titleText": "The manifest",
    "title": "The manifest",
    "sectionNum": "1.7."},
@@ -342,7 +333,7 @@
     "html": "<code>rothbard_premise_holds_where_mises_is_silent</code>",
     "dest":
     "/The-Result/Mises-route/#Apodictic___Model___rothbard_premise_holds_where_mises_is_silent"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
+  "id": "mises-route",
   "fragment": "pages/The-Result/Mises-route.html",
   "depth": 2},
  {"url": "/The-Result/The-circle/",
@@ -350,8 +341,7 @@
   "title": "1.9. The circle",
   "sectionNum": "1.9.",
   "prev":
-  {"url":
-   "/The-Result/Mises-route/#Apodictic___-Machine-Checked-Praxeology--The-Result--Mises___s-route",
+  {"url": "/The-Result/Mises-route/#mises-route",
    "titleText": "Mises's route",
    "title": "Mises's route",
    "sectionNum": "1.8."},
@@ -885,8 +875,7 @@
    "sectionNum": "1.14."},
   "path": ["The-Result", "The-horses-in-Lean"],
   "next":
-  {"url":
-   "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
+  {"url": "/The-Result/The-vocabulary/#vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
    "sectionNum": "1.16."},
@@ -966,7 +955,7 @@
     "level": null,
     "html": "<code>Grows</code>",
     "dest": "/The-Result/The-vocabulary/#Apodictic___Stock___Grows"}],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
+  "id": "vocabulary",
   "fragment": "pages/The-Result/The-vocabulary.html",
   "depth": 2},
  {"url": "/The-Result/Claims-no-theorem-uses/",
@@ -974,8 +963,7 @@
   "title": "1.17. Claims no theorem uses",
   "sectionNum": "1.17.",
   "prev":
-  {"url":
-   "/The-Result/The-vocabulary/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-vocabulary",
+  {"url": "/The-Result/The-vocabulary/#vocabulary",
    "titleText": "The vocabulary",
    "title": "The vocabulary",
    "sectionNum": "1.16."},

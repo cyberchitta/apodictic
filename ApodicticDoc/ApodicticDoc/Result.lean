@@ -13,17 +13,95 @@ set_option verso.code.warnLineLength 0
 tag := "result"
 %%%
 
-How to read this document. A proof assistant will not let you skip a
-step, and it makes you write the missing premise into the theorem's
-own statement. So there is one fixed place to look. Read the
-statement, then read the definitions it names, and you have seen
-everything the result depends on. Two conditions sit one level down,
-inside the structures the theorem takes as arguments — and they are on
-the manifest too, because the command that derives it reads one level
-in. There is no longer anywhere for an assumption to sit unlisted.
+*What this is.* This document rebuilds arguments of Mises and
+Rothbard in Lean 4. Lean is a proof assistant: a program that checks
+every step of a proof. The main case is the law of marginal utility.
+Later parts do the same for exchange, time preference, the regression
+theorem and interest. The aim is to find the premises the verbal
+arguments leave unstated.
 
-Every docstring in this document is pulled out of the library when it is
-built. What you read is what was checked.
+*Terms.* These words are used in every part.
+
+- The library is the Lean code in which every step is checked.
+- A docstring is the text attached to a name in the library.
+- A theorem's signature lists everything it takes: its claims, its
+  conditions, and the things they speak of, such as a man and his
+  stock of goods.
+- A praxeological claim, or claim, is a premise meant to hold of all
+  action, not only in some situations. In the library each claim is a
+  structure: a named bundle of statements, kept in the file
+  `Praxeology.lean`. See {ref "claims"}[The claims].
+- A condition says something about the situation, not about action as
+  such. Where one fails, the theorem says nothing. See
+  {ref "conditions"}[The conditions].
+- The linter (`#lint only unusedArguments`) runs on every build, in
+  every file whose theorems carry a claim or a condition. It fails the
+  build when one of those theorems lists anything it never uses. An
+  exception is a name marked with `_`. That mark records that the hypothesis does no work,
+  and each such case is a finding (see {ref "manifest"}[The manifest]).
+- A frame (`ActionFrame`) is a world of agents, goods, ends and times,
+  with what each agent believes and prefers. The library builds some
+  small frames. Some show that the claims and conditions can hold
+  together. Others show that one premise does not give another.
+- The vocabulary is the library's terms, such as a man's stock of
+  goods and his plan for it. See {ref "vocabulary"}[The vocabulary].
+
+*The result.* Rothbard says the law of marginal utility was "deduced
+from the axiom of action" (*MES* p. 33). So one would expect it to need
+only claims about what people do. Each author gives one verbal
+argument for the law. Here these are called routes: Rothbard's in
+*Man, Economy, and State* (pp. 24–27), and Mises's in *Human Action*
+(ch. VII, §1; see {ref "mises-route"}[Mises's route]). On each route
+the proof of the law checks. On each it needs exactly one claim. That
+claim is not about action:
+
+- On Rothbard's route it is swap dominance (`SwapDominant`).
+- On Mises's route it is that the agent serves in order of urgency
+  (`ServedInOrder`).
+
+Each is about a plan: what the man would do with every part of his
+stock, settled in advance. Neither is about anything he does.
+A third reading of the law trades the plan for a claim about what he
+does (`ActsInOrder`). It proves less in return: the law only on the
+scale he ranked by before his stock grew. The case is made under {ref "finding"}[The finding].
+
+*How to read it.* Lean will not let a proof skip a step. A premise the
+argument needs must be written down, or the proof does not check. It
+goes into the theorem's own statement, or into a definition the
+statement names. So there is one fixed place to look. Read the
+statement, the definitions it names, and the definitions those name in
+turn. Every assumption the theorem rests on is there, or in Lean's
+logical background. The small frames, and every theorem about them,
+are in one file (`Consistency.lean`). For every theorem outside it,
+that background is two axioms of ordinary mathematics (`propext`,
+`Quot.sound`). It holds no claim about economics. Theorems in that file
+may also use a third (`Classical.choice`). No theorem outside that file
+depends on it.
+
+The statement is also printed as a manifest. The project's command
+`#manifest` derives it from the theorem. It sorts what the statement
+lists into kinds: the claims, the conditions, and the things they
+speak of. Some conditions do not appear in the statement itself. They
+are fields of the structures the theorem takes as arguments, such as a
+man's stock of goods. Those structures are definitions the statement
+names. `#manifest` looks inside each of them that the library defines,
+and prints their conditions too. It looks one level deep. Anything
+deeper is in a definition that one of those names, and so on down. The
+law of marginal utility carries two such conditions:
+
+- Every unit of the stock is believed to serve exactly the ends the
+  good can serve, by his lights (`stock.unitsAlike`).
+- Whatever units the man's plan is asked about, it would serve no end
+  the good is not believed able to serve (`plan.servesOnlyWhatItCan`).
+
+The line headed _logical background_ is Lean's own. See
+{ref "manifest"}[The manifest].
+
+Each docstring here is taken from the library each time this document
+is built. It is shown with the Lean signature it is attached to. Lean
+checks that signature. It does not check the docstring's words. Each
+manifest is printed by Lean during the same build. The prose around
+them is not checked by Lean.
 
 # The horses
 
@@ -114,6 +192,9 @@ horses in Lean*:
   (`Model.which_horse_does_not_matter`).
 
 # The finding
+%%%
+tag := "finding"
+%%%
 
 *In brief.* The law of marginal utility needs exactly one praxeological
 claim. That claim is not about action. This holds on both routes the
@@ -394,6 +475,9 @@ three groups.
   something proved here, not something assumed.
 
 # The claims
+%%%
+tag := "claims"
+%%%
 
 
 The library contains no `axiom`. Every praxeological claim is written
@@ -507,6 +591,9 @@ carries.
 {docstring Apodictic.MoreMoneyPreferredWhenSpent}
 
 # The conditions
+%%%
+tag := "conditions"
+%%%
 
 
 The law of marginal utility takes five conditions in all, across its
@@ -642,6 +729,9 @@ theorem is shown here because the rest of the document leans on it.
 {docstring Apodictic.no_rival_swap_dominant}
 
 # The manifest
+%%%
+tag := "manifest"
+%%%
 
 
 Everything the law carries is here, in one place. Nothing outside this
@@ -820,6 +910,7 @@ way Lean has for saying it.
 # Mises's route
 %%%
 file := "Mises-route"
+tag := "mises-route"
 %%%
 
 Rothbard's is not the only derivation the tradition offers. Mises
@@ -2529,15 +2620,8 @@ be zero or negative. From 2014, banks in the euro area lent to one
 another overnight at a negative rate. This part rebuilds his argument.
 It asks which premise such a lender fails.
 
-Some terms come from earlier parts. The library is the Lean code in
-which every step is checked. A docstring is the text attached to a
-name in it, shown here as it stands in the library. A theorem's
-signature lists every claim and condition it takes (*The manifest*).
-The linter rejects a theorem that lists one it never uses (*The
-claims*). A frame is a world of agents, goods and ends. Some are small
-made-up ones, built in the library, where chosen claims and
-conditions hold or fail. The vocabulary is the library's terms, such
-as a man's stock of goods and his plan for it (*The vocabulary*).
+Terms such as library, docstring, signature, linter, frame and
+vocabulary are explained under {ref "result"}[The Result].
 
 The argument has four steps, numbered S2 to S5. Rothbard's argument
 starts one step earlier, with goods: a present good is preferred to
@@ -3215,6 +3299,9 @@ rather than papered over.
   enters any claim.
 
 # The vocabulary
+%%%
+tag := "vocabulary"
+%%%
 
 Reference. These are the definitions the statements above are written
 in. Nothing earlier depends on having read them.
