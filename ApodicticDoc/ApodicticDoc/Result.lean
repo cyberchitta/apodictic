@@ -104,6 +104,9 @@ manifest is printed by Lean during the same build. The prose around
 them is not checked by Lean.
 
 # The horses
+%%%
+tag := "horses"
+%%%
 
 Terms such as library, claim and condition are explained under
 {ref "result"}[The Result].
@@ -255,9 +258,24 @@ condition is proved, not assumed.
 tag := "finding"
 %%%
 
-*In brief.* The law of marginal utility needs exactly one praxeological
-claim. That claim is not about action. This holds on both routes the
-authors wrote:
+Terms such as library, claim and condition are explained under
+{ref "result"}[The Result].
+
+*In brief.* Rothbard states the law of marginal utility on p. 27 of
+*Man, Economy, and State*:
+
+> The greater the supply of a good, the lower the marginal utility;
+  the smaller the supply, the higher the marginal utility.
+
+The marginal utility is the least important end the stock serves:
+"This least important end fulfilled by the stock is known as …
+marginal utility" (p. 27). Rothbard says the law was "deduced from the
+axiom of action" (p. 33). So one would expect it to need only claims
+about what people do. On both routes the authors wrote, it needs
+exactly one praxeological claim. That claim is not about action. It is
+about a plan: what the man would do with every part of his stock,
+settled in advance. It is not about anything he does. Each route has
+its own such claim:
 
 - On Rothbard's route the claim is `SwapDominant`.
 - On Mises's route it is `ServedInOrder`.
@@ -265,10 +283,17 @@ authors wrote:
 A third reading trades it for a claim about action (`ActsInOrder`).
 That reading is taken up at the end of this part.
 
-Go back to the six horses. On Rothbard's route the claim
+Go back to Rothbard's man with six horses (see
+{ref "horses"}[The horses]). On Rothbard's route the claim
 (`SwapDominant`) is about what the man *would* do. For each set of
 horses he might have, which wants would he serve? The answer is a
 plan. It is not a choice he makes.
+
+The claim ties the plan to his ranking. A bundle is a set of wants.
+Take any set of his horses and the bundle the plan would serve with
+it. Make any single swap: trade any want served for any want a horse
+could serve, by his lights, that the plan leaves out. The claim says he prefers the bundle
+the plan would serve to the bundle after the swap.
 
 Rothbard's own premise packs two claims into one sentence (*MES*
 p. 24):
@@ -277,30 +302,41 @@ p. 24):
 - The wants he serves are "the most urgent of the not yet satisfied
   wants".
 
-Only the second does any work here (`SwapDominant`). It does that
-work in the subjunctive. So does his own argument. It holds six horses up against
-five. It asks which want "the larger stock would have satisfied"
-(p. 25). No single real act can answer that.
+Only the second does any work here. The claim (`SwapDominant`) keeps
+it and drops the first. It states it in the subjunctive: over the wants
+he *would* serve. So does Rothbard's own argument. It holds six horses
+up against five. It asks which want "the larger stock would have
+satisfied" (p. 25). No single real act can answer that.
 
-*The subjunctive alone is not the trouble.* It is the obvious complaint, and
-it fails. Reasoning about stocks the man does not hold is Rothbard's
-own practice:
+*The subjunctive alone is not the trouble.* The plan has a trouble,
+and the next paragraphs locate it. One might complain that
+the claim speaks of stocks the man does not hold. That is the obvious
+complaint, and it fails. Reasoning about stocks the man does not hold
+is Rothbard's own practice:
 
 - He builds the law upward, from one horse to two to three.
 - He takes it downward, from six horses to five.
 - He says outright that holding none of a good "does not affect the
   principle" (p. 32).
 
-What he refuses on p. 33 is something else. It is a scale for a wholly
-different endowment: (3X, 4Y, 2Z) against (6X, 8Y, 5Z). Inside the
-stock the man actually has, he allows "adding and subtracting from
-stock". So his line is drawn around the stock in hand. It is not drawn
-at some distance from it. He steps one unit at a time. Stepping that
-way reaches every smaller set of horses there is. The formal claim
-(`SwapDominant`) reaches no further than he does.
+What he refuses on p. 33 is something else. It is a hypothetical value
+scale for a wholly different endowment. His example has several goods,
+X, Y and Z. The man holds three units of X, four of Y and two of Z:
+(3X, 4Y, 2Z). The refused scale is for (6X, 8Y, 5Z). What he allows is different: his choices "for
+adding and subtracting from stock take place in this region". The
+region is that of the stock he has. So the line between what he allows
+and what he refuses is drawn around the stock in hand. It is not drawn
+at some distance from it. Each of his own steps adds or takes away one
+unit of the stock held at that point. His upward build is made of
+such steps: the man "successively finds one horse, then a second, then
+a third" (p. 24). Stepping down one unit at a time from six horses
+reaches
+every set of horses cut from those six. The formal claim
+(`SwapDominant`) speaks only of those sets. It reaches no further than
+he does.
 
-*The trouble is the tense.* Rothbard restricts value scales in two
-phrases (p. 33):
+*The trouble is timing.* What matters is when the answer is settled.
+Rothbard restricts value scales in two phrases (p. 33):
 
 - "value scales do not exist in a void apart from the concrete choices
   of action"
@@ -314,8 +350,9 @@ that Rothbard says is not needed. So the complaint is not that we
 asked what he would do with five horses. It is that we gave him a
 settled answer for every set at once. No act of his settles it.
 
-*The exemption.* He saw a difficulty here. He exempted this law from
-the restriction by name. He did it on that same page, in a subordinate
+*The exemption.* The law itself says something about the man's
+choices before they are made. Rothbard saw a difficulty here. He
+exempted this law by name. He did it on that same page, in a subordinate
 clause, with no argument attached. No one can predict with certainty the
 course of a man's choices, he says, "except that they will follow the law of
 marginal utility, which was deduced from the axiom of action".
@@ -323,14 +360,16 @@ marginal utility, which was deduced from the axiom of action".
 Read the clause slowly, because everything turns on it. Before a man
 makes his choices, Rothbard will say only one thing about them with
 certainty: they
-will obey the law of marginal utility. Saying so is exactly what lets
-him hand the man a plan. The plan already answers for every smaller
-set of horses, as well as for the stock in hand. But the law gets
-proved from that very plan. The warrant for the premise is the
-conclusion.
+will obey the law of marginal utility. The plan, too, says in advance
+what the man would choose. So saying this is what lets him hand the
+man a standing plan, one that answers for every smaller set of horses
+as well as for the stock in hand. But the law gets proved from that
+very plan.
+The warrant for the premise is the conclusion.
 
-*What the machine enforces.* Nothing in the Lean runs backwards. The
-derivation goes one way, from the claim to the law. The claim is never
+*What the machine enforces.* The circle is in the warrant, not in the
+proof. Nothing in the Lean is circular. The derivation goes one way,
+from the claim to the law. The claim is never
 proved anywhere. It is handed in. The build passes. It would pass
 however the claim had been arrived at.
 
@@ -341,19 +380,19 @@ looks. It enforces three things about the assumption:
 - It is stated in full.
 - It is spent in the open, where a reader can see what it cost.
 
-It cannot ask whether Rothbard was entitled to assume it. Nothing can.
-That question took a reader. The reader held the stated claim in one
+It cannot ask whether Rothbard was entitled to assume it. No machine
+check can. That question took a reader. The reader held the stated claim in one
 hand and Rothbard's own rule about value scales in the other. And the
 question could be asked at all only because the encoding refused to
 let the claim stay unsaid.
 
 This is not an objection from outside. The rule is Rothbard's. So is
 the exemption. The claim is Rothbard's in doctrine. Its one-swap form
-is ours.
+is this document's encoding, not Rothbard's.
 
 *The second demand: units.* The same plan has to carry a second thing.
-It sits in a question usually discussed on its own. The law is
-expected to founder on units:
+That thing belongs to a question usually discussed apart from this
+one: the question of units. The law is expected to founder on them:
 
 - To state the law by the size of a supply, you seem to need units the
   agent values equally.
@@ -361,36 +400,50 @@ expected to founder on units:
   acting.
 
 Here the law does not founder. Indifference is assumed nowhere, and
-the law survives without it. What the size-based wording needs is
-weaker. The plan must not care *which* units the man has, only how many
-(`plan.Homogeneous`). With the six horses, any five would be put to
-the same uses. But that is one more thing the standing plan must
-already have settled. Rothbard does not deduce it from the axiom of
-action. He grounds it in his definition of a supply: units "equally
-capable of rendering the same service to the actor" (p. 23).
+the law survives without it. The library states the law in two forms
+(see {ref "theorems"}[The theorems]):
 
-That definition does not reach it. This is checked, not argued
+- By the size of a supply, as Rothbard words it (`marginal_utility`).
+- Along a chain of named units, one added at a time
+  (`marginal_utility_chain`).
+
+The chain form needs no interchangeability of units, because it names
+which units are involved. What the size-based wording needs is weaker
+than indifference. The plan must not care *which* units the man has,
+only how many (`plan.Homogeneous`). With the six horses, any five would be put to
+the same uses. But that is one more thing the standing plan must
+already have settled. Rothbard does not deduce from the axiom of
+action that the plan cares only how many. He grounds it in his
+definition of a supply: units "equally capable of rendering the same
+service to the actor" (p. 23).
+
+That definition does not deliver it. Equal serviceability of the
+units does not give a plan that cares only how many
+(`plan.Homogeneous`). This is checked, not argued: a
+theorem in the library proves it
 (`unitsAlike_not_entail_homogeneous`). Equal serviceability is a fact
-about the horses (`unitsAlike`, a field of the stock). The wording
+about the horses (`unitsAlike`, a condition carried by the stock). The wording
 needs a fact about the man's plan for them. Take one stable of two
 horses, each able to serve any want. It carries a plan that treats the
 two alike. It also carries a plan that does not. The stock cannot
 settle it, because the plan is a separate thing.
 
-Rothbard's other half would settle it: the man "must have valued each
-horse or each cow identically" (p. 23). But he withdraws that on the
-next page. There, interchangeability "does not mean that the concrete
-units are actually valued equally" (p. 24). Taking it back is what
-keeps indifference out of the law. The cost is that the definition no
-longer carries the condition the law's wording needs.
+His definition of a supply has a second half, about valuation. That
+half would settle it: the man "must have valued each horse or each cow
+identically" (p. 23). But he withdraws that on the next page. There,
+interchangeability "does not mean that the concrete units are actually
+valued equally" (p. 24). Valuing each horse identically would be
+indifference among them. So taking it back is what keeps indifference
+out of the law. The cost is that the definition no longer carries the
+condition the law's wording needs.
 
 *Two demands.* The encoding keeps them apart:
 
 - The one the law is derived from is a *praxeological claim*
   (`SwapDominant`, on Rothbard's route). It rides on the signature of
   every theorem that uses it. If it is false, the law is false.
-- The one its wording needs is a *hypothesis* of one form of
-  the law (`plan.Homogeneous`). Where it does not hold, the law simply does
+- The one its wording needs is a *condition* of the size form of the
+  law (`plan.Homogeneous`). Where it does not hold, the law simply does
   not speak. It says nothing false. It says nothing at all.
 
 Telling which of the two gave way in a particular case is exactly what
@@ -399,21 +452,34 @@ an audit like this is for.
 None of this makes the law wrong. The machine checked the reasoning.
 The conclusion follows. The proof uses only what the statement lists.
 One question is left, and it is a narrow one. May praxeology help
-itself to that standing plan?
+itself to that standing plan? Rothbard's own warrant for it is
+circular, as shown above. Whether praxeology has another warrant,
+this page does not settle.
 
 *The other routes.* Rothbard's is not the only derivation.
 
 - Mises reaches the same law by a different argument. Rebuilt the same
   way, it turns out to rest on a claim of the same kind
   (`ServedInOrder`). Mises does not warrant it either. It is set out
-  under *Mises's route*.
-- A third way reads the ladder as a history of what the man served as
-  his stock grew. It spends a claim about what he actually does
-  (`ActsInOrder`), and no plan at all. It proves the ladder only on the
-  scale he ranked by before the stock grew. There the ladder is acting
-  in order restated, given two conditions. It pays for doing without a plan in a
-  different coin. The part called *The ladder as a history* sets it
-  out.
+  under {ref "mises-route"}[Mises's route].
+- A third way reads the ladder as a history. The ladder is the law
+  built upward: one horse, then a second, then a third. As a history it
+  is about what the man served as his stock grew. It spends a claim
+  about what he actually does (`ActsInOrder`), and no plan at all. It
+  proves the ladder only on the scale he ranked by before the stock
+  grew. On that scale it is a short theorem. It restates acting in
+  order about a want the next horse happens to serve. It also needs
+  two conditions. Any two wants the good can serve were ranked at the
+  earlier moment, one way or the other
+  (`earlier.ComparableServiceable`). He learned no new use for the
+  good between the two moments (`earlier.NoNewUses later`). On the
+  later scale the ladder does not follow from acting in order, even
+  granted at both moments (`Model.later_judged_ladder_fails`). It pays
+  for doing without a plan in a different coin. The first two routes
+  rest on a plan their authors refuse. This one needs a man who learned
+  no new use for the good between the two acts. Neither author
+  addresses that condition. Nothing in the texts grants it, and nothing
+  refuses it. The part called {ref "ladder-history"}[The ladder as a history] sets it out.
 
 # The other findings
 %%%
@@ -1320,6 +1386,7 @@ certain as its premise. The premise is the part nobody has derived.
 # The ladder as a history
 %%%
 file := "The-ladder-as-a-history"
+tag := "ladder-history"
 %%%
 
 Both routes read the ladder at one moment. The man holds six horses.

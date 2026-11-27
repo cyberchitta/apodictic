@@ -15,7 +15,7 @@
      "shortTitle": null,
      "sectionNum": "1.1.",
      "path": ["The-Result", "The-horses"],
-     "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+     "id": "horses",
      "children": []},
     {"url": "/The-Result/The-finding/",
      "titleText": "The finding",
@@ -87,8 +87,7 @@
      "shortTitle": null,
      "sectionNum": "1.10.",
      "path": ["The-Result", "The-ladder-as-a-history"],
-     "id":
-     "Apodictic___-Machine-Checked-Praxeology--The-Result--The-ladder-as-a-history",
+     "id": "ladder-history",
      "children": []},
     {"url": "/The-Result/Exchange/",
      "titleText": "Exchange",

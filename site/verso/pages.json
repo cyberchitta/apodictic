@@ -24,8 +24,7 @@
    "sectionNum": ""},
   "path": ["The-Result"],
   "next":
-  {"url":
-   "/The-Result/The-horses/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+  {"url": "/The-Result/The-horses/#horses",
    "titleText": "The horses",
    "title": "The horses",
    "sectionNum": "1.1."},
@@ -49,7 +48,7 @@
    "title": "The finding",
    "sectionNum": "1.2."},
   "localToc": [],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+  "id": "horses",
   "fragment": "pages/The-Result/The-horses.html",
   "depth": 2},
  {"url": "/The-Result/The-finding/",
@@ -57,8 +56,7 @@
   "title": "1.2. The finding",
   "sectionNum": "1.2.",
   "prev":
-  {"url":
-   "/The-Result/The-horses/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-horses",
+  {"url": "/The-Result/The-horses/#horses",
    "titleText": "The horses",
    "title": "The horses",
    "sectionNum": "1.1."},
@@ -342,8 +340,7 @@
    "sectionNum": "1.8."},
   "path": ["The-Result", "The-circle"],
   "next":
-  {"url":
-   "/The-Result/The-ladder-as-a-history/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-ladder-as-a-history",
+  {"url": "/The-Result/The-ladder-as-a-history/#ladder-history",
    "titleText": "The ladder as a history",
    "title": "The ladder as a history",
    "sectionNum": "1.10."},
@@ -389,8 +386,7 @@
     "html": "<code>later_judged_ladder_fails</code>",
     "dest":
     "/The-Result/The-ladder-as-a-history/#Apodictic___Model___later_judged_ladder_fails"}],
-  "id":
-  "Apodictic___-Machine-Checked-Praxeology--The-Result--The-ladder-as-a-history",
+  "id": "ladder-history",
   "fragment": "pages/The-Result/The-ladder-as-a-history.html",
   "depth": 2},
  {"url": "/The-Result/Exchange/",
@@ -398,8 +394,7 @@
   "title": "1.11. Exchange",
   "sectionNum": "1.11.",
   "prev":
-  {"url":
-   "/The-Result/The-ladder-as-a-history/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-ladder-as-a-history",
+  {"url": "/The-Result/The-ladder-as-a-history/#ladder-history",
    "titleText": "The ladder as a history",
    "title": "The ladder as a history",
    "sectionNum": "1.10."},
