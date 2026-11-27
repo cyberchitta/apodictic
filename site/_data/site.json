@@ -5,7 +5,7 @@
   "github": "cyberchitta/apodictic",
   "url": "https://apodictic.cyberchitta.cc",
   "mainSiteUrl": "https://www.cyberchitta.cc",
-  "description": "Austrian economics machine-checked in Lean 4. Each theorem lists every assumption it rests on, and where each came from in Mises and Rothbard. When an Austrian conclusion misses reality, you can point at the assumption that failed.",
+  "description": "Mises said his economics was as certain as mathematics. So it is checked like mathematics, in Lean 4. Each theorem lists every assumption it rests on, and reality can point at the one that failed.",
   "publishedAt": "2026-09-05",
   "form": "living",
   "group": "reference",
