@@ -1170,10 +1170,18 @@ tag := "manifest"
 %%%
 
 
-Everything the law carries is here, in one place. Nothing outside this
-list is assumed. The list is not compiled by reading the source. Nor is
-it transcribed from a command. The command runs here, and what follows
-is what it printed.
+Terms such as library, signature, claim, condition, linter and
+vocabulary are explained under {ref "result"}[The Result].
+
+This part prints the manifest of the law of marginal utility, in its
+size-based form (`marginal_utility`, under
+{ref "theorems"}[The theorems]). Everything that theorem carries is
+here, in one place. Nothing outside this list is assumed. The list is
+not compiled by reading the source. Nor does it rest on a copy of a
+command's output. The command (`#manifest`) itself runs each time this
+page is built. The page's source also holds a copy of what it prints.
+The build checks that the two match. So what follows is what the
+command printed.
 
 ```lean (name := manifestMU)
 #manifest marginal_utility
@@ -1218,39 +1226,88 @@ manifest of Apodictic.marginal_utility
   (3 trailing binders belong to the conclusion, not the signature)
 ```
 
-Read it by kind. The sort is what the audit turns on.
+Read it by kind. The sort is what the audit turns on. If the claim is
+false, praxeology has asserted something false, and the law loses its
+proof on this route. Where a condition does not hold, the law says
+nothing there. It is silent, not wrong. Telling which of the two gave
+way in a particular case is what the audit is for (see
+{ref "finding"}[The finding]).
 
-- The one *praxeological claim* (`SwapDominant`) is the thing that
-  would have to be true of all action for the law to follow.
+The printed manifest has five headed lists, then the logical
+background. Each line in the first four lists is a binder: one thing the statement takes as an argument. The four
+are the praxeological claims, the situational conditions, the
+conditions on the data, and the vocabulary (what the claims are
+about). The fifth lists fields, not binders. The bullets below take the
+lists in turn.
+
+- The one *praxeological claim* is swap dominance (`SwapDominant`,
+  under {ref "claims"}[The claims]). It is a premise meant to hold of
+  all action, not only in some situations. On this route the law is
+  derived from it.
 - The *situational conditions* are what an Austrian points at to say
-  the law did not apply here. They are three of the five set out
-  above:
-  independence of uses (`IndependentUses agent time`),
-  interchangeability of units (`plan.Homogeneous`) and one more unit
-  (`stock.OneMore`). The rest is bookkeeping. It fixes which two
-  supplies are being compared.
-- The *condition on the data* says only that two wants can be told
-  apart.
+  the law did not apply here. The size form compares two one-unit
+  steps (see {ref "theorems"}[The theorems]). The first runs from a
+  set of units `belowSmaller` to a set `smaller`, of `n` units. The
+  second runs from `belowLarger` to `larger`, of `n + 1`. Three of the
+  conditions listed are among the five set out under
+  {ref "conditions"}[The conditions]: independence of uses
+  (`IndependentUses agent time`), interchangeability of units
+  (`plan.Homogeneous`) and one more unit (`stock.OneMore`). One more
+  unit appears twice, once for each step (`stepToSmaller`,
+  `stepToLarger`). The other two lines (`smallerSize`, `largerSize`)
+  are not among the five. They are bookkeeping. They fix which two
+  supplies are being compared: one of `n` units, one of `n + 1`. They
+  are printed under this heading because the command puts there every
+  hypothesis that is neither a claim nor a condition on the data.
+- The *condition on the data* (`[DecidableEq praxis.End]`) says only
+  that two ends can be told apart: for any two ends, whether they are
+  the same end can be decided.
 - The *conditions carried by the vocabulary* are not binders at all.
-  They are fields of the structures the theorem takes as arguments. So
-  whoever supplies a stock and a plan has already discharged them.
-  They are preconditions of using the law in every sense that matters.
-  They are the assumptions an encoding can hide. They are set out
-  again under *The vocabulary*.
+  They are fields of the structures the theorem takes as arguments:
+  the stock (`stock.unitsAlike`) and the plan
+  (`plan.servesOnlyWhatItCan`). So whoever supplies a stock and a plan
+  has already discharged them. They are preconditions of using the law
+  in every sense that matters. But they do not show in the signature.
+  So they are where an encoding could hide an assumption. `#manifest`
+  prints them, so these two are not hidden. They are set out again
+  under {ref "vocabulary"}[The vocabulary].
 
-The last line is Lean's own logical background. `propext` and
-`Quot.sound` arrive with ordinary mathematics. Mathlib's finite sets
-bring both. So does extensionality for sets. `Classical.choice` is
-absent. No proof here fills a gap by assuming that every question has
-a yes-or-no answer. The proofs do split into cases. But they split
-only on whether two ends are the same end. That is why being able to
-tell two ends apart is declared in the statement
-(`[DecidableEq praxis.End]`), instead of slipping in unnoticed.
+The line headed _logical background_ is Lean's own: the axioms the
+theorem depends on. `propext` and `Quot.sound` arrive with ordinary
+mathematics. A proof that uses mathlib's finite sets brings both. So
+does one that uses extensionality for sets. Neither axiom says
+anything about economics (see {ref "result"}[The Result]).
+`Classical.choice` is different, and it is absent. It is the axiom
+behind classical logic. With it, every question counts as having a
+yes-or-no answer, whether or not anything settles it. No proof here
+fills a gap that way.
 
-The chain form carries the same manifest without interchangeability of
-units (`plan.Homogeneous`). The urgency principle carries the same
-claim and kinds of condition as the chain form. The chain form is
-worth printing too, because of one line in it:
+The proofs do split into cases. But they split only on whether two
+ends are the same end. A case split needs a yes-or-no answer. Without
+`Classical.choice`, the logic does not supply one in general. So this
+one answer is asked for in the statement, as the condition on the data
+(`[DecidableEq praxis.End]`). Had a proof used `Classical.choice`
+instead, the statement would not show it. The axiom would appear only
+on the logical background line, with nothing to say what it decided.
+
+The size form needs interchangeability of units (`plan.Homogeneous`)
+for one thing. It says that `smaller` and `belowLarger`, two sets of
+`n` units, would serve the same ends. The law has a second form, the
+chain form (`marginal_utility_chain`, under
+{ref "theorems"}[The theorems]). It names which units are compared:
+`small` inside `medium` inside `large`. Its two steps share a set,
+`medium`. So it needs no interchangeability of units, and no sizes.
+Its manifest has the same claim and the same condition on the data.
+Its situational conditions are independence of uses and two
+one-more-unit steps (`_firstStep`, `secondStep`). The `_` mark is
+explained below. The urgency principle (`urgency_principle`, under
+{ref "theorems"}[The theorems]) says this. Take a unit away. Every end
+he would still serve is preferred to every end he would give up. Its
+one step runs from a set `fewer` to a set `more`
+(`stock.OneMore fewer more`): `more` holds `fewer` and one unit
+besides, and lies inside the stock. It carries the same claim and the same
+kinds of condition as the chain form, with that one step in place of
+two. The chain form is worth printing too, because of one line in it:
 
 ```lean (name := manifestChain)
 #manifest marginal_utility_chain
@@ -1292,56 +1349,105 @@ manifest of Apodictic.marginal_utility_chain
 
 `#manifest` derives both manifests from the theorem itself. It walks
 the signature and sorts every binder by kind. Then it reads one level
-into the vocabulary. There it reports the `Prop` fields of the
-structures the signature names. It decides that a binder is a
-praxeological claim when the head of its type is declared in
-`Praxeology.lean`. That is the project's own rule, asked of the
-compiler rather than of a maintainer. So a claim declared in the wrong
-place shows up as a situational condition. That is the mistake worth
-catching.
+into the vocabulary. There it reports the fields of the library's
+structures that are statements (in Lean, fields of type `Prop`), as
+against data such as a set of units. It decides that a binder is a
+praxeological claim by the name its type is built on: `SwapDominant`
+in `SwapDominant plan`. If that name is declared in the file
+`Praxeology.lean`, the binder is a claim. That is the project's own
+rule: every claim is a structure in `Praxeology.lean`. The command asks
+it of the compiler rather than of a maintainer. So a claim declared in
+the wrong place shows up as a situational condition. That is the
+mistake worth catching.
 
 What `#manifest` will not do is sort what it finds one level down.
-Whether a carried condition could fail of a real situation is a
-judgement about the world. It is not a judgement about the term. So
-the two carried conditions (`stock.unitsAlike`,
-`plan.servesOnlyWhatItCan`) are sorted by hand under *The vocabulary*.
-That sorting is the only thing here a reader is asked to take on
-anyone's word. The lists themselves are printed by the compiler when
-this document is built. A page that showed anything else would not
-build.
+Whether a carried condition could fail in a real situation is a
+judgement about the world. The command reads only the condition's
+statement in Lean. So it cannot make that judgement. The two carried
+conditions (`stock.unitsAlike`, `plan.servesOnlyWhatItCan`) are sorted
+by hand instead, under {ref "vocabulary"}[The vocabulary]. That
+sorting is not checked by the machine. Nor is the list of part-used
+hypotheses below, which comes from reading the proofs. The lists
+themselves are checked. The compiler prints them when this document is
+built. The build compares each printed list with the copy in this
+page's source. If the two differ, the build fails. So this page cannot
+show a list the theorem does not have.
 
-Three things limit how much that settles. Each is load-bearing.
+The lists show what each theorem takes. The linter checks that each
+binder does work (see {ref "claims"}[The claims]). Three things limit
+how much that settles. Each is real.
 
-- The linter set out under *The claims* is never switched off here.
-  But switching it off is possible. So keeping it on is our practice,
-  not something the machine guarantees.
+- The linter is never switched off here. But switching it off is
+  possible. So keeping it on is our practice, not something the
+  machine guarantees.
 - The linter can also be silenced one binder at a time, by prefixing a
   hypothesis with `_`. Doing that is how we record that the hypothesis
   does nothing. `marginal_utility_chain` carries one such binder,
   `_firstStep` (`stock.OneMore small medium`). That it does nothing is
-  itself a finding.
+  itself a finding. Each hypothesis that does no work is recorded as
+  one: the statement asks for more than the proof needs. This one
+  shows that the chain form needs nothing of how `small` stands
+  to `medium`: not that the first step adds one unit, nor even that
+  `small` lies inside `medium` (see {ref "theorems"}[The theorems]).
 - The linter judges each binder whole. So it cannot see a hypothesis
-  half of which is used. That happens in both marginal-utility
-  theorems.
+  only part of which is used. Both marginal-utility theorems have such
+  hypotheses. They are listed below.
 
-`#manifest` closes the second of those. The output above is the proof
-of it. `_firstStep` is listed, and marked *listed, does no work*,
-exactly where the linter has gone quiet. That is the line the chain
-form was printed for.
+`#manifest` does nothing about the first limit: it does not run the
+linter. It closes the second limit. In the chain form's manifest
+above, the line for `_firstStep` ends with the mark
+`-- listed, does no work`. So the binder is listed, and marked, exactly
+where the linter has gone quiet. That is the line the chain form was
+printed for.
 
-`#manifest` does not close the third. A half-used hypothesis looks
-whole to both. And `#manifest` brings a limit of its own. Lean draws no
-line between a signature and a conclusion. So the command cuts at the
-first anonymous binder, and reports how many it dropped. A conclusion
-binder the author named, before that cut, is still listed under
-vocabulary. `atSmaller` and `addedFirst` above are bound in the
-conclusion. So is
-`least` under *The ladder as a history*. No claim is about them. Read
-the count.
+`#manifest` does not close the third limit. A part-used hypothesis
+looks whole to both. Reading the two proofs finds three:
 
-So the guarantee is narrower than "nothing here is idle". It is this:
-nothing here is idle except where the statement says so, in the only
-way Lean has for saying it.
+- Each form's conclusion begins "for every end marginal at the first
+  step, …". So the conclusion carries a hypothesis of its own: that
+  the end is marginal there (`marginalEnds`). (The paragraph after
+  this list says more on binders in a conclusion.) Marginal means
+  served at the step's larger set, and not served at its smaller one.
+  Only the first half is used. In the chain form the first step is
+  from `small` to `medium`. The conclusion still speaks of the ends
+  that step adds, though `_firstStep`, the hypothesis that it is a
+  one-unit step, does no work. The proof names the unused half
+  `_notNeeded`. That name is inside the proof, not in the statement.
+  So neither the linter nor `#manifest` shows it.
+- The chain form's second step (`secondStep`) is handed to the urgency
+  principle. That proof uses only that the smaller supply is on hand:
+  it lies inside the larger, which lies inside the stock. That the
+  larger has exactly one unit more is not used.
+- The size form's first step (`stepToSmaller`), from `belowSmaller`
+  to `smaller`, is used only for this: `smaller` lies inside the stock. That `belowSmaller` lies inside
+  `smaller` is not used. Nor is it used that the step adds one unit.
+
+And `#manifest` brings a limit of its own. Lean draws no line between
+a signature and a conclusion. A conclusion of the form "for every end
+in this set, …" (`∀ x ∈ s, …`) binds things too. It binds the end, and
+a hypothesis that the end is in the set. Lean gives that hypothesis no
+name of its own: it is an anonymous binder. The command takes the
+first anonymous binder, other than a condition on the data, to begin
+the conclusion. It cuts there, and reports how many binders it
+dropped. But a conclusion binder the author named, before that cut, is
+still listed under vocabulary. In the two manifests above, `atSmaller`
+and `addedFirst` are such binders: each is the first end the
+conclusion speaks of. So is `least`, in the manifest under
+{ref "ladder-history"}[The ladder as a history]. They are binders, so
+they are printed under the vocabulary heading, "what the claims are
+about". But no claim is about them. When the command drops any
+binders, the manifest ends with a line in parentheses saying how many.
+When it drops none, there is no such line. Both manifests above end
+with one. The count does not say where the conclusion begins: a named
+binder of the conclusion can sit before the cut, as here. So where
+that line appears, read the statement too.
+
+So the guarantee is narrower than "nothing here is idle", that is,
+"every hypothesis does work in the proof". With the linter on, it is
+this: no hypothesis the signature lists is wholly idle, unless its
+name starts with `_`. A hypothesis can still be partly idle, as the
+three above are. The statement does not say so. Neither the linter nor
+`#manifest` finds such a case. Reading the proofs does.
 
 # Mises's route
 %%%
