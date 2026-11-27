@@ -2229,7 +2229,16 @@ the reading would need it, the frame above shows what goes missing.
 Rothbard, for his part, would not judge on the earlier scale at all.
 When his man must give up one of six horses, "he deals only with his
 presently available stock", in "disregard of past events" (p. 27).
-Judged that way, the ladder is the one-moment law at the later time:
+On the same page he says that which unit came first carries no
+weight: "it does not matter to him which units he acquired first in
+the past". His example makes the point. The man must lose Man o' War,
+a horse that arrived earlier and does the more important work, to
+him, of leading his wagon. He moves Seabiscuit, the sixth horse he
+acquired, from pleasure riding to the wagon. He still gives up "the
+lowest-ranking want that the original stock (in this case, six units)
+was capable of satisfying". So the earlier allocation drops out.
+Judged on the present stock, the ladder is the one-moment law at the
+later time:
 the supply he holds against one unit fewer. Both routes derive that
 law from a premise about a plan (`SwapDominant`, `ServedInOrder`; see
 {ref "circle"}[The circle]). So judging that way brings back the plan,
@@ -2249,14 +2258,23 @@ not theirs.
 exhibits. Both authors deny a scale that stands apart from the
 concrete choices, and the plan is one (see {ref "circle"}[The circle]).
 Judged on the later scale, the history needs a scale that no act can
-show to have stayed put. Judged on the earlier scale, where it is a
+show to have stayed put. On their own doctrine a scale is known only
+from acts. Mises: "These scales have no independent existence apart
+from the actual behavior of individuals. The only source from which
+our knowledge concerning these scales is derived is the observation of
+a man's actions" (ch. IV, §2). Each act shows the scale at one moment.
+So nothing they allow could show it unchanged across two. Judged on
+the earlier scale, where it is a
 theorem, it needs a man who learned no new use for the good between
 the two acts (`earlier.NoNewUses later`). Neither author addresses that condition.
 Nothing in the texts grants it, and nothing refuses it. So the two
 routes pay in different coin:
 
 - The counterfactual routes rest on something their authors refuse.
-- The history route rests on something they never examined.
+- The history route, judged on the earlier scale, needs one condition
+  across the two moments (`earlier.NoNewUses later`), and it is one
+  they never examined.
+  Judged on the later scale, it needs constancy, which they deny.
 
 Reading the ladder as a history moves the cost. It does not remove it.
 
