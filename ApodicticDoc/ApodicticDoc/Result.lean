@@ -2262,6 +2262,9 @@ this reading assumes it stayed put. Those three are where to look.
 file := "Exchange"
 %%%
 
+Terms such as library, docstring, claim, condition, linter and frame
+are explained under {ref "result"}[The Result].
+
 The law of marginal utility is one target. Exchange is the second. It
 was chosen for what it can diagnose. The tradition leans on few
 conclusions more than this one: both parties to a voluntary exchange
@@ -2294,7 +2297,9 @@ voluntary".
 prefers from what he does. That is demonstrated preference
 (`DemonstratedPreference`). Its docstring is given in full under *The
 claims*. The law of marginal utility never needed it. Exchange cannot do
-without it. Three things mark how it is stated:
+without it. Every exchange theorem below runs back from what was done to
+what was preferred, and each one carries the bridge. Three things mark
+how it is stated:
 
 - It is stated of one trade, not of action in general.
 - It ranks whole holdings. One is everything the man owns with one good.
@@ -2306,21 +2311,27 @@ without it. Three things mark how it is stated:
 *How goods count.* The third point above is how goods enter at all. Rothbard
 sets the value scales out as a table. It has two columns, one per party.
 The columns rank goods: A's column puts "(Good Y)" first and "Good X"
-second. The library ranks ends, not goods. So a good counts here for the
+second. "Parentheses around the good indicate that the party does not
+have it in his stock" (p. 85). The library ranks ends, not goods. So a good counts here for the
 ends the man believes it can serve (`ActionFrame.ServedBy`). "A values
 the typewriter above the vase" is read as "A prefers what he believes
 the typewriter can do to what he believes the vase can do". No doctrine
 of how goods take their value from ends is assumed.
 
-But counting a good this way is a choice, and it shows:
+But counting a good this way is a choice. It has two consequences:
 
-- A good counts for every end it could serve. It does not count only for
-  the one it would be put to.
+- A good counts for every end he believes it could serve. It does not
+  count only for the one it would be put to. The definition
+  (`ActionFrame.ServedBy`) asks only what he believes a good can serve.
 - Two goods that serve the same end count for it once.
 
 Rothbard's case is single goods with separate uses. For those, counting
-by goods and counting by ends agree. Where they part, the substitutes condition below
-(`Trade.KeptServesOtherEnds`) is the one that fails. The definitions:
+by goods and counting by ends agree. The substitutes condition below
+(`Trade.KeptServesOtherEnds`) says that nothing he keeps is believed to
+serve an end either traded good serves. Where the two counts part, it
+is the one that fails. `Trade` and
+`Exchange` leave out any condition no proof uses. Five such conditions
+are listed after the theorems. The definitions:
 
 {docstring Apodictic.ActionFrame.ServedBy}
 
@@ -2328,7 +2339,7 @@ by goods and counting by ends agree. Where they part, the substitutes condition 
 
 {docstring Apodictic.Exchange}
 
-*Reverse valuations follow — at a price.* Take Rothbard's own case: "If
+*Reverse valuations follow, given a claim and three conditions per party.* Take Rothbard's own case: "If
 A has a vase and B a typewriter, if each knows of the other's asset, and
 if A values the typewriter more highly, and B values the vase more
 highly, there will be an exchange" (p. 86). Rothbard runs from the
@@ -2373,8 +2384,9 @@ manifest of Apodictic.MutualBenefit.reverse_valuations
   logical background: [propext, Quot.sound]
 ```
 
-The last group on the manifest is the conditions carried by the
-vocabulary. It is taken up below. The rest is one claim and three
+The manifest lists what the theorem takes, sorted by kind (see
+{ref "manifest"}[The manifest]). Its last group is the conditions
+carried by the vocabulary. It is taken up below. The rest is one claim and three
 conditions per party. Rothbard's table shows none of the conditions.
 Here they are for A. B's are the same, with the goods swapped. Each can
 fail.
@@ -2388,7 +2400,8 @@ robbery too. The victim prefers handing over his wallet to what refusing
 would cost him. What it then shows is a ranking of his wallet against
 the threat. It does not rank his wallet against anything he got. So a
 trade records what refusing would have left the man with, alongside the
-goods. A trade is voluntary when that is simply what he had. Rothbard
+goods. A trade is voluntary when refusing would have left him with
+exactly what he held before the trade. Rothbard
 rests the inference on exactly this: "The only reason we know that A and
 B benefit from an exchange is that they voluntarily make the exchange"
 (p. 1239).
@@ -2415,23 +2428,32 @@ That phrase assumes the substitutes condition
 (`Trade.KeptServesOtherEnds`). It does not touch complements. A unique
 left shoe is still half a pair.
 
+The first docstring below compares separability with independence of
+uses (`IndependentUses`). That is a condition the law of marginal
+utility carries, explained under {ref "conditions"}[The conditions].
+
 {docstring Apodictic.Trade.SeparableFromRest}
 
 {docstring Apodictic.Trade.KeptServesOtherEnds}
 
 *What does no work.* Knowledge of the other party is a condition for a
 trade to happen. Every theorem here starts from a trade that did happen.
-So knowledge does no work, and it is not a hypothesis. The
-unused-argument linter reports any hypothesis no proof uses. Here a
-reported hypothesis may not stand. If knowledge were added as one, the
+So knowledge does no work. It is not among the theorems'
+hypotheses, the claims and conditions a theorem takes. The
+unused-argument linter reports any hypothesis no proof uses, and a
+report fails the build. If knowledge were added as a hypothesis, the
 linter would report it.
 
 *"Shifted to a higher position" — on which scale?* The same question
-came up under *The ladder as a history*. It splits the same way here. It
-settles differently. The history reading did not assume a constant
-scale, either as a claim or as a condition. Here constancy enters as a
-condition, for one pair of holdings only. It enters because it buys
-something. Without it nothing can be said about how a trade turns out.
+came up under {ref "ladder-history"}[The ladder as a history]. Is the
+position judged on the scale of the moment he acted, or on a later one?
+Here too there are those two readings. The question is settled
+differently here. The reading under *The ladder as a history* did not
+assume a constant scale,
+either as a claim or as a condition. Here constancy enters as a
+condition, for one pair of holdings only. It enters because the
+later-judged result needs it. Without it that result fails, as a model
+below shows.
 
 Judged on the scale and the beliefs of the moment of trading, Rothbard's
 result is a theorem (`MutualBenefit.better_off_judged_at_trade`). It is
@@ -2461,7 +2483,10 @@ theorem takes one claim and three conditions. Each can fail:
   either way. The theorem adds it as a condition.
 
 Judging afterwards needs the last two. Judging at the trade does without
-them. Each answers to one way the later result fails:
+them. Each answers to one way the later result fails. The beliefs
+condition fails on a change of belief. The ranking condition fails on
+regret. The theorem and its manifest come first, then the two
+conditions:
 
 {docstring Apodictic.MutualBenefit.better_off_judged_later}
 
@@ -2507,9 +2532,11 @@ In neither is A better off by his later lights.
 
 {docstring Apodictic.Model.later_without_ranking_fails}
 
-There is a third variant, where nothing changes. In it, both parties'
-trades are handed to both theorems. So their conditions can all hold at
-once:
+There is a third variant, where nothing changes. In it, every claim and
+condition of `reverse_valuations` and of `better_off_judged_later`
+holds of both parties' trades. So both trades can be handed to both of
+those theorems. That shows their conditions can all hold at once, so
+neither theorem is vacuous. The docstrings call this non-vacuity:
 
 {docstring Apodictic.Model.barter_reverse_valuations_applies}
 
@@ -2527,7 +2554,9 @@ asks only what refusing would have cost. It cannot see deception. The
 cut here is finer. Take a buyer who was deceived, and a buyer who was
 simply mistaken. Both fail the beliefs condition (`Trade.BeliefsHold`).
 Only the first is outside Rothbard's "voluntary". So only the second is
-a case his paragraph covers.
+a case his paragraph covers. He is the mistaken buyer of the opening.
+The opening's second reading, of how the trade turns out, misses him. Here the condition that fails for him has
+a name: the beliefs condition (`Trade.BeliefsHold`).
 
 *The carried conditions.* The first manifest lists two fields of the
 exchange:
@@ -2537,8 +2566,8 @@ exchange:
 
 Neither says anything about the world. Suppose the good A hands over
 were not the good B receives. Then there would be no exchange to speak
-of. Whether a field is of that kind is a judgement. The Lean cannot make
-it. It is made here as it is for the fields of a stock and a plan, under
+of. Whether a field says nothing about the world in this way is a
+judgement. The Lean cannot make it. It is made here as it is for the fields of a stock and a plan, under
 *The vocabulary* later in the document. The second manifest has no such
 group. Nothing is built into a trade as defined. The conditions its
 theorem needs are the named ones it lists.
@@ -2547,9 +2576,9 @@ Five conditions a reader might expect are in neither manifest:
 
 - A and B are two people.
 - The two trades are made at one moment.
-- Two different goods change hands.
 - The good given is not also kept.
 - The good received is not among the kept.
+- Two different goods change hands.
 
 None is a field of `Trade` or of `Exchange`, because no proof uses it.
 
@@ -2574,24 +2603,26 @@ can arise two ways:
   holding with the received good to his holding without it. The given
   good is in both holdings, so they show no ranking of it.
 - The good received was already kept. Then they say only that he prefers
-  his holding without the given good to his holding with it.
+  his holding without the given good to his holding with it. The
+  received good is in both holdings, so they show no ranking of it.
 
-The fifth condition takes the next paragraph.
+The fifth condition, two different goods, takes the next paragraph.
 
 Rothbard states the two-different-goods condition himself: "In
 describing the conditions that must obtain for interpersonal exchange to
 take place (such as reverse valuations), we implicitly assumed that it
 must be two different goods that are being exchanged" (p. 95). For him
 it is a condition for an exchange to take place. So it is like knowledge
-of the other party, above. And every theorem here starts from a trade
-that did happen. Dropping the condition does let in the man who trades a
-good for itself. Of him the bridge, with voluntariness, says that he
+of the other party, above. Every theorem here starts from a trade that
+did happen. So, like knowledge, it does no work in any proof. But
+leaving it out is not idle. It lets in the man who trades a good for
+itself. Of him the bridge, with voluntariness, says that he
 prefers his holding to itself. `Prefers` is meant as strict. But the
 library nowhere assumes that nothing is preferred to itself. That
 follows only from a claim of its own, asymmetry of preference
 (`AsymmetricPreference`, under *The claims*). The exchange theorems do
-not carry it. So as encoded nothing keeps him out. Grant the bridge of
-him, and the theorems still apply. They say only that he ranks a good,
+not carry it. So as encoded nothing keeps him out. Assume the bridge
+of his trade, and the theorems still apply to him. They say only that he ranks a good,
 or a holding, above itself. Add asymmetry (`AsymmetricPreference`), and
 the bridge is false of his voluntary trade. Every theorem here about
 what a trader prefers asks for the bridge and for voluntariness. So with
@@ -2608,8 +2639,11 @@ ladder as a history*. What the later-judged benefit carries is narrower.
 It is a condition that his ranking of these two holdings did not turn
 (`Trade.RankingHolds`). Where it fails, the theorem is silent.
 
-*What a failure would point at.* The two conclusions name different
-places to look. Say a man did not rank the good he got above the good he
+*What a failure would point at.* Two of the conclusions name different
+places to look: reverse valuations (`MutualBenefit.reverse_valuations`)
+and the later-judged benefit (`MutualBenefit.better_off_judged_later`).
+The at-trade result (`MutualBenefit.better_off_judged_at_trade`) takes
+only the bridge and voluntariness. Say a man did not rank the good he got above the good he
 gave. Then look for one of these:
 
 - The trade was not voluntary (`Trade.Voluntary`).

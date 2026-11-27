@@ -52,10 +52,11 @@ is a field because the act alone does not fix it. The same
 handing-over is a trade or a robbery. Which one it is depends on what
 refusing would have cost.
 
-Shape: our-reconstruction. `kept` is read as the rest of the holding.
+Shape: our-reconstruction. That is, the choice of fields that set out
+a trade is ours. `kept` is read as the rest of the holding.
 A `Trade` whose given or received good is also among the kept
 describes no trade. Nothing rules that out, because no theorem in the
-library needs to. Rothbard assumes the two goods differ ("we
+library needs it ruled out. Rothbard assumes the two goods differ ("we
 implicitly assumed that it must be two different goods that are being
 exchanged", *MES* p. 95). For him it is a condition for an exchange to
 take place. No theorem in the library uses that either. So a `Trade`
@@ -95,11 +96,13 @@ that they voluntarily make the exchange" (p. 1239). -/
 def Trade.Voluntary {praxis : ActionFrame} (trade : Trade praxis) : Prop :=
   trade.refusal = trade.before trade.time
 
-/-- **The kept goods serve other ends** — a condition on the
-situation, at the trade's time. Nothing the agent keeps is believed to
-serve an end either traded good serves. It fails for substitutes. Take
-an agent with two umbrellas who trades one away. On the union count he
-gives up no end. So he demonstrates no ranking of the umbrella at all.
+/-- **The kept goods serve other ends than the traded goods** — a
+condition on the situation, at the trade's time. Nothing the agent
+keeps is believed to serve an end either traded good serves. It fails
+for substitutes. Take an agent with two umbrellas who trades one away.
+The umbrella he keeps serves every end the traded one serves. Two goods
+that serve one end count for it once. So he gives up no end, and he
+demonstrates no ranking of the umbrella at all.
 It is the scope of "unique goods" (*MES* p. 86) made explicit. -/
 def Trade.KeptServesOtherEnds {praxis : ActionFrame} (trade : Trade praxis) :
     Prop :=
@@ -111,13 +114,18 @@ def Trade.KeptServesOtherEnds {praxis : ActionFrame} (trade : Trade praxis) :
 /-- **Separable from what is kept** — a condition on the situation, NOT
 a universal claim. Take two holdings that differ in one part only.
 If the agent prefers one holding to the other, he prefers its part to
-the other's. It is asserted only where the rest is what this agent keeps
-in this trade, and where neither part serves an end the kept goods
-already serve.
+the other's. It speaks only of holdings whose rest is what this agent
+keeps in this trade. It speaks only of parts that share no end with
+the kept goods. So it reaches the two traded goods only if their ends
+share none with the kept goods' ends. The substitutes condition
+(`Trade.KeptServesOtherEnds`) says exactly that.
 
-It is the bundle-level cousin of `IndependentUses`, fixed to one
-trade's holding. Nothing is said about any other holding the agent
-might rank. It fails for complements. A man who keeps a right shoe may
+It is like independence of uses (`IndependentUses`). That condition
+says a preference between two bundles that differ in one end carries
+down to those two ends. The rest is any set, and the two ends lie
+outside it. This one says it of two parts that are sets of ends, with
+the rest fixed to one trade's holding. Nothing is said about any other
+holding the agent might rank. It fails for complements. A man who keeps a right shoe may
 rank (right shoe + left shoe) above (right shoe + hat). He may still
 rank a hat above a left shoe on its own. The left shoe's worth is in
 the pair. Rothbard's p. 85 scales list the two goods alone. They never

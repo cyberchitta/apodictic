@@ -1171,8 +1171,9 @@ theorem later_without_beliefs_fails : ¬ MutualBenefit.BetterOffLaterWithoutBeli
   simp [barterTrade, Trade.after, Trade.before, ActionFrame.ServedBy, steadyWants] at h
 
 /-- **Without the ranking condition, the later-judged statement fails.** A
-trades freely. He believes as before. But he now wants decoration. So
-he is not better off by his later lights. -/
+trades freely. He believes as before. But he now wants decoration. The
+vase he gave serves it, and the typewriter he got does not. So he is
+not better off by his later lights. -/
 theorem later_without_ranking_fails : ¬ MutualBenefit.BetterOffLaterWithoutRanking := by
   intro promise
   have h := promise barterRegret (barterTrade honestBeliefs _ false) true
