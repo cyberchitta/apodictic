@@ -2361,13 +2361,23 @@ But counting a good this way is a choice. It has two consequences:
 - A good counts for every end he believes it could serve. It does not
   count only for the one it would be put to. The definition
   (`ActionFrame.ServedBy`) asks only what he believes a good can serve.
-- Two goods that serve the same end count for it once.
+- A holding counts as the set of those ends. So two goods that serve
+  the same end count for it once.
 
 Rothbard's case is single goods with separate uses. For those, counting
 by goods and counting by ends agree. The substitutes condition below
 (`Trade.KeptServesOtherEnds`) says that nothing he keeps is believed to
-serve an end either traded good serves. Where the two counts part, it
-is the one that fails. `Trade` and
+serve an end either traded good serves. The two counts can part in
+two ways, one for each consequence above:
+
+- A good counts for an end it could serve but would not be put to.
+  Then the trade ranks what the goods could do, not what they would
+  be put to. No condition answers to this case.
+- A kept good is believed to serve an end a traded good serves too.
+  Then the substitutes condition fails, since it says no kept good is
+  believed to serve such an end.
+
+`Trade` and
 `Exchange` leave out any condition no proof uses. Five such conditions
 are listed after the theorems. The definitions:
 
@@ -2944,9 +2954,12 @@ the bridge above. It also spends three conditions:
   (`NoPreferenceCarries`), shown below too.
 
 The sequence's docstring keeps sameness (`SameAlternative`) out of
-its fields, because it can fail. The same was done with one unit to
-one end. It can fail of a real stable, so it could not stay a field
-(see {ref "vocabulary"}[The vocabulary]). The fields that stay, and why
+its fields, because it can fail. The library's rule is that a
+condition that can fail becomes a named hypothesis wherever the linter
+allows, and the linter allows one only where a proof uses it.
+Sameness is used by a proof, so it is a hypothesis. One unit to one
+end can fail too. No proof uses it, so it is not a hypothesis. It is
+in no field either (see {ref "vocabulary"}[The vocabulary]). The fields that stay, and why
 each assumes nothing about the world, are under *The carried
 conditions* below.
 
@@ -3538,12 +3551,12 @@ prior money's history adds a conclusion about the prior money.
 *"Its own past price."* Mises's exclusive premise is that the
 appraisal rests on the good's own past price. That premise would best
 be a condition separate from the claim. Then a failure could be laid
-to one or the other. Here it cannot be kept separate. The vocabulary
-has no quantities: no prices, no purchasing power. An appraisal is a
-belief that the good serves an onward end
-(`MediumFrame.AppraisesAsMedium`). It has no size. Nothing in the
-vocabulary links it to an exchange it was formed from. So "rests on"
-has no statement here. What can be stated is that an
+to one or the other. Here it is not kept separate, because the
+vocabulary has no relation for "rests on". Nothing in it links an
+appraisal to an exchange the appraisal was formed from. Nor does the
+vocabulary have quantities: no prices, no purchasing power. An
+appraisal is a belief that the good serves an onward end
+(`MediumFrame.AppraisesAsMedium`). It has no size. What can be stated is that an
 exchange of the good came earlier (`History.OwnPastPrice`). And that
 is the claim again (`Regression.ownPastPrice_of_claim`).
 
@@ -4466,14 +4479,20 @@ be read off its statement in Lean. It is a judgement about the world,
 so `#manifest` cannot make it (see {ref "manifest"}[The manifest]). It
 is made by hand, and the two bullets above are that judgement.
 
+The library has a rule for a condition that can fail. It becomes a
+named hypothesis wherever the linter allows. The linter allows a
+hypothesis only where some proof uses it. So such a condition stays a
+field only where no proof uses it. The rule does not say which of
+those stay.
+
 A third condition used to sit here, and now sits nowhere: one unit to
 one end. That can fail of a real stable. Two horses can pull one
-wagon, or a horse can stand idle. So it could not stay a field.
-Taking it out showed that no theorem wants it. So it was not made a
-hypothesis either. See *The other findings*.
+wagon, or a horse can stand idle. No theorem's proof uses it, so it is
+not a hypothesis. Nor is it a field. Dropping it loses nothing: every
+plan that met it is still a plan, and the law still holds of it. See
+*The other findings*.
 
-`unitsAlike` can fail too, yet it stays a field. The library's reason
-is that it cannot be made a hypothesis. No theorem's proof uses it, so
+`unitsAlike` can fail too, yet it stays a field. No theorem's proof uses it, so
 as a hypothesis it would fail the unused-argument linter. Marking it
 with `_` would record that it does no work. But it does work: it fixes
 the ends the three claims above speak of. So it stays a field, and
