@@ -100,11 +100,12 @@ keeps the ordering half. It states it subjunctively, over what the
 agent WOULD serve. The subjunctive is Rothbard's own. His derivation
 compares a stock of six with a stock of five. It asks which want "the
 larger stock would have satisfied" (p. 25). No single actual
-allocation delivers that comparison. The action half is dropped, not
-answered. Nothing here bridges an act to a preference.
+allocation delivers that comparison. The action half is left out of
+this claim. Nothing here derives it. Nothing here bridges an act to a
+preference.
 
 A tension remains, and it is Rothbard's own. It is not that this claim
-reaches stocks the agent does not hold. That reach is his (see
+reaches sub-stocks the agent does not hold. That reach is his (see
 *Anything about units not on hand*, below). It is that the claim
 attributes a STANDING disposition. The plan is one object, at one
 time. It assigns served ends to every sub-stock at once. That is a
@@ -134,12 +135,21 @@ claim is asserted, never proved. What is circular is Rothbard's
 licence for asserting it.
 
 It is asserted of ONE plan, not of every plan of that shape. That is
-not a hedge. Given one plan, a rival can always be defined. So a claim
-about all such plans could be refuted just by building one. Asserted
-of the single plan a theorem is handed, there is no such rival to
-build. Whether a rival one swap away could also be swap-dominant then
-becomes a theorem (`no_rival_swap_dominant`, `Apodictic.Urgency`). It
-is not a premise.
+not a hedge. Given one plan, a rival can always be defined: the same
+plan with one swap at one set of units. Given asymmetry, such a rival
+breaks any claim about every plan of that shape. Asserted of the
+single plan a theorem is handed, it breaks nothing. Whether that rival
+could also be swap-dominant is then a theorem
+(`Apodictic.no_rival_swap_dominant`), and it cannot. It is not a
+premise.
+
+Within the region it reaches (bullet 4 below), this claim departs
+from Rothbard in INDEXING. It speaks
+of arbitrary sub-stocks where he speaks of sizes. The gap between the
+two is interchangeability. He assumes it throughout. This claim does
+not: interchangeability is the hypothesis `Homogeneous`. Stated
+without that assumption, the claim distinguishes cases he never had to
+tell apart.
 
 Does not say:
 
@@ -149,36 +159,31 @@ Does not say:
 3. Anything about independence of uses. That is the theorems'
    hypothesis `IndependentUses`.
 4. Anything about units not on hand. The plan speaks only of
-   sub-stocks of the units on hand (`subStock ⊆ stock.units`). The
-   reach over stocks the agent does not hold is Rothbard's own, in
-   both directions. He builds the law upward over stocks the actor
-   lacks: the second unit, then the third "added to a stock of two
-   units" (*MES* pp. 23–24). He also takes it downward, six horses to
+   sub-stocks of the units on hand (`subStock ⊆ stock.units`).
+   Rothbard's own law reaches stocks the agent does not hold, in both
+   directions from the one he holds. He builds the law upward over
+   stocks the actor lacks: the second unit, then the third "added to
+   a stock of two units" (*MES* pp. 23–24). He also takes it downward, six horses to
    five (p. 25). Holding none of a good is no obstacle either: "If the
    actor has no units of some goods in his possession, this does not
    affect the principle" (p. 32). The hypothetical scales he refuses
    on the next page are a different thing. They are scales for a
    wholly different multi-good endowment, (3X, 4Y, 2Z) against
    (6X, 8Y, 5Z). Inside the actual stock he permits "adding and
-   subtracting" units of it (p. 33). The line between the two is
-   anchored to the stock the agent has. It is not drawn at some distance from it. It
-   is closed under the single-unit steps he iterates himself: first
-   horse, then second, then third. Taken downward from a stock, those
-   steps reach every sub-stock of it. So quantifying over all of
-   `subStock ⊆ stock.units` covers that region exactly. It is not a
-   reach beyond his text.
-
-   Where this claim does depart from him is in INDEXING, not in
-   reach. It speaks of arbitrary sub-stocks where he speaks of sizes.
-   The gap between the two is interchangeability. He assumes it
-   throughout. This claim does not: interchangeability is the
-   hypothesis `Homogeneous`. Stated without that assumption, the claim
-   distinguishes cases he never had to tell apart.
+   subtracting" units of it (p. 33). The line between those scales
+   and adding to or subtracting from the actual stock is anchored to
+   the stock the agent has. It is not drawn at some distance from it.
+   This claim reaches only downward. His single-unit steps (first
+   horse, then second, then third), taken downward from a stock, reach
+   every sub-stock of it, and quantifying over all of
+   `subStock ⊆ stock.units` covers each of them. The upward step he
+   also permits, adding a unit to the stock, it leaves out.
 5. Anything about interchangeability of units. That two sub-stocks
    of the same size would serve the same ends is the hypothesis
    `Homogeneous`. It is no part of this claim.
-6. That such a plan exists. Nor that it is unique without further
-   properties of `Prefers`. -/
+6. That such a plan exists. That it is unique
+   (`Apodictic.no_rival_swap_dominant` rules out only a rival one swap
+   away). -/
 structure SwapDominant {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop where
@@ -206,7 +211,11 @@ of Rothbard's. The two are not equivalent:
 - This one does not entail his
   (`Apodictic.Model.servedInOrder_not_entail_swapDominant`).
 
-Mises asks less of the agent's allocation and more of his value scale.
+As reconstructed here, Mises's route asks less of the allocation than
+Rothbard's premises taken together: they entail it, given asymmetry,
+and it does not entail them. It asks more of the value scale: any two
+ends the good can serve are ranked (`Stock.ComparableServiceable`),
+which Rothbard's route never needs.
 
 Source: Mises, *Human Action*, ch. VII, §1: "If the supply available
 increases from n–1 units to n units, the increment can be employed
@@ -216,7 +225,8 @@ could be removed by means of the supply n–1". Then the bridge
 sentence the derivation turns on: "It is nothing else than the
 reverse of the statement that what satisfies more is preferred to
 what gives smaller satisfaction." Compare Mises ch. IV, §2. There the
-agreement is interpretive rather than a constraint: "Every action is
+agreement of action with the value scale holds by interpretation. It
+constrains nothing: "Every action is
 always in perfect agreement with the scale of values or wants because
 these scales are nothing but an instrument for the interpretation of a
 man's acting." Rothbard states the doctrine in the same family:
@@ -224,21 +234,32 @@ man's acting." Rothbard states the doctrine in the same family:
 satisfied wants" (*MES* p. 24).
 
 Status: our-reconstruction. Mises argues for the law by a dilemma
-about whether action terminates. He does not argue from a stated
-ordering premise. This claim is what that argument needs and does not
-supply. The dilemma is machine-checked NOT to deliver it
-(`Apodictic.Model.recurs_does_not_deliver_ladder`). Mises offers a
-refutation of his own second horn. It does not go through on the action
-axiom he names (`Apodictic.Model.existence_does_not_refute_second_horn`).
+about whether action terminates: either there are intermediate stages
+before the state in which no further action is possible, or there are
+not. He does not argue from a stated ordering premise. This claim is
+what that argument needs to get from the dilemma to the law, and does
+not supply. The dilemma is machine-checked NOT to deliver it
+(`Apodictic.Model.recurs_does_not_deliver_ladder`). Mises also refutes
+the second horn, that there could be only one action. That refutation
+does not go through on the bare claim that there is action
+(`Apodictic.Mises.ActionOccurs`;
+`Apodictic.Model.existence_does_not_refute_second_horn`).
 
-The warrant problem is Mises's too. It is not Rothbard's bookkeeping.
-Mises restricts value scales exactly as Rothbard does: "These scales
-have no independent existence apart from the actual behavior of
-individuals" (ch. IV, §2). Then, in ch. VII, §1, he declares the
-openly counterfactual definition licit, without argument: "We do not
-transcend the sphere of praxeological reasoning in establishing the
-following definition". Rothbard exempts the law circularly. Mises
-asserts the exemption. Neither warrants it.
+The warrant problem is not Rothbard's alone. Mises has it too. He
+restricts value scales exactly as Rothbard does: "These scales have no
+independent existence apart from the actual behavior of individuals"
+(ch. IV, §2). Then, in ch. VII, §1, he holds the openly counterfactual
+definition licit: "We do not transcend the sphere of praxeological
+reasoning in establishing the following definition". He gives a
+reason: "In order to attain this knowledge we do not need any
+physiological or psychological experience, knowledge, or reasoning. It
+follows necessarily from our assumptions that people act (choose) and
+that in the first case acting man has n units of a homogeneous supply
+and in the second case n–1 units." The reason takes the n–1 case as
+an assumption. It does not say what act would show the choice he would
+make there. And it is given for the definition, not for this claim.
+Rothbard exempts the law circularly. Mises assumes the counterfactual
+case. Neither warrants a counterfactual premise.
 
 Does not say:
 
@@ -271,21 +292,24 @@ there is no contradiction to draw. `Apodictic.no_rival_swap_dominant`
 spends it the same way. So do the loan theorems
 `Apodictic.PureInterest.no_loan_at_zero_rate` and
 `Apodictic.PureInterest.no_loan_at_nonpositive_rate`.
-`Apodictic.PureInterest.struck_rate_positive` passes it on to
-`Apodictic.PureInterest.no_loan_at_nonpositive_rate`. `Apodictic.PureInterest.buysMore_of_unrestricted` spends it
-on one bundle preferred to itself.
+`Apodictic.PureInterest.struck_rate_positive` uses it only by passing
+it to `Apodictic.PureInterest.no_loan_at_nonpositive_rate`, which its
+proof applies. `Apodictic.PureInterest.buysMore_of_unrestricted` uses
+it to rule out a bundle preferred to itself.
 
-Source: tacit. No sentence in Mises or Rothbard asserts it. Rothbard's
-value scales are built from acts of choice. One act cannot demonstrate
-a preference in both directions. But that is an argument from the
-bridge (demonstrated preference), not a statement of his. And the
-bridge as stated here (`DemonstratedPreference`, of one trade) yields
-a preference in one direction only. The nearest explicit treatment is
-Nozick's reconstruction (1977). That is a critic's formalization, not
-the tradition's own words.
+Source: Mises, *Human Action*, ch. II, §2: "The idea that A could at
+the same time be non-A or that to prefer A to B could at the same time
+be to prefer B to A is simply inconceivable and absurd to a human
+mind." Rothbard's value scales are built from acts of choice, and one
+act cannot demonstrate a preference in both directions. But that is an
+argument from the bridge (demonstrated preference), not a statement of
+his. And the bridge as stated here (`DemonstratedPreference`, of one
+trade) yields a preference in one direction only. Nozick's
+reconstruction (1977) treats it explicitly. That is a critic's
+formalization, not the tradition's own words.
 
-Status: our-reconstruction. It is recorded as ours rather than
-attributed, precisely because the search for a source came back empty.
+Status: explicit-in-tradition. Mises states it as a law of thought, of
+preference at one time.
 
 Does not say: not transitivity. Not totality. Not comparability of
 any particular pair. It is asserted of one agent at one time. It is
@@ -355,7 +379,8 @@ Does not say:
    (ch. V, §4). The library does not assert it as a claim. As a
    condition it appears once, for one pair of holdings in one trade
    (`Trade.RankingHolds`). Where the temporal reading would need it,
-   the library exhibits the failure instead (`Apodictic.Model`).
+   the library instead builds a frame in which the ladder fails on the
+   later scale (`Apodictic.Model.later_judged_ladder_fails`).
 5. How much is served. Not that every unit is used. Not that as many
    ends are served as the stock allows. An agent who serves nothing
    satisfies it.
@@ -372,8 +397,8 @@ structure ActsInOrder {praxis : ActionFrame} {agent : praxis.Agent}
 
 /-- **Demonstrated preference, in exchange** — the agent of a trade
 prefers the holding he chose to what refusing would have left him
-with. He prefers it at the time of trading. Both are counted by his
-beliefs at that time.
+with. He prefers it at the time of trading. The holding he chose is
+the set of ends its goods serve, by his beliefs at that time.
 
 This is the bridge from what an agent DOES to the ranking `Prefers`.
 The vocabulary otherwise keeps the two apart. It is asserted of the
@@ -417,7 +442,7 @@ structure DemonstratedPreference {praxis : ActionFrame}
     (trade.after trade.time) trade.refusal
 
 /-- **Time preference** — of two ends that are the same satisfaction,
-the agent at `now` prefers the one attained sooner. This holds
+the agent, at the time `now`, prefers the one attained sooner. This holds
 provided the sooner one is not already past.
 
 Source: Rothbard, *MES*, ch. 1, p. 15: "A fundamental and constant
@@ -460,8 +485,8 @@ Does not say:
    the literature's own account: savouring is "positive utility
    derived from anticipation of future consumption", dread "negative
    utility resulting from contemplation of the future" (Loewenstein,
-   *Economic Journal* 1987, p. 667). It counts as a diagnosis only
-   where the anticipation is shown apart from the choice it explains.
+   *Economic Journal* 1987, p. 667). Anticipation points at a failed
+   condition only where it is shown apart from the choice it explains.
    Inferred from the choice to wait, it is the valuation reading
    again.
 2. Anything about bundles. Preferring a sooner bundle needs
@@ -495,10 +520,10 @@ later moment thereby reveals a higher valuation of present
 satisfaction". Rothbard, *MES*, p. 307: "Any action demonstrates choice
 based on preference: preference for one alternative over others."
 
-Status: explicit-in-tradition. Mises's regress runs on a premise it
-does not state: that an agent with no preference for the sooner
-postpones. This claim is that premise read the other way round
-(`Apodictic.TimePreference.consumption_reveals`). It is carried by
+Status: explicit-in-tradition. Mises states it, in the same paragraph
+as his regress. The regress runs on a premise it does not state: that
+an agent with no preference for the sooner postpones. This claim is
+that premise read the other way round. It is carried by
 `Apodictic.TimePreference.consumption_reveals` and by Mises's regress
 (`Apodictic.TimePreference.regress`).
 
@@ -552,17 +577,20 @@ Does not say:
 1. That the earlier exchange was on the immediately preceding day.
 2. That the appraisal rests on that exchange, or on that exchange
    alone. Nor that pledges, edicts or cross rates play no part.
-   Without quantities the vocabulary cannot say "rests on". See
+   The vocabulary has no relation for "rests on". See
    `History.OwnPastPrice`.
 3. That the earlier exchange was barter (`History.FormedInBarter`).
-4. That the earlier acquirer wanted the good for itself. The regress
-   derives that, from further conditions.
+4. That the earlier acquirer wanted the good for itself, for an end
+   other than passing it on. From further conditions, the regression
+   theorem's positive form derives something weaker: someone, on some
+   earlier day, acquired it so
+   (`Apodictic.Regression.direct_acquisition_before`).
 5. Anything about day 0. That nobody appraises the good as a medium on
    the first day of the record is a separate condition,
    `History.BeginsBeforeMedium`. It is the termination Mises asserts.
 6. That the record is complete. The claim is asserted of the record it
    is handed. Say an earlier exchange happened but is missing from
-   that record. Then that exchange does not satisfy the claim. -/
+   that record. Then the claim cannot use that exchange. -/
 structure AppraisalFromPast {praxis : MediumFrame} (history : History praxis)
     (m : praxis.Means) : Prop where
   /-- An appraisal as a medium on day `n + 1` has an exchange of the
@@ -576,8 +604,10 @@ passing the good `m` on, or not. That is, the demand for a medium
 of exchange divides without remainder into the two demands Mises names.
 
 It is asserted of one frame and one good. Its content is excluded
-middle for the one predicate `Onward m`. The vocabulary cannot decide
-it. Nothing in logic supplies it constructively. So where a theorem
+middle for the one predicate `Onward m`: each end is onward for `m`
+or is not. Classical logic would grant that for free. The theorems
+that need the split are proved constructively and do not assume it,
+and the vocabulary cannot decide it. So where a theorem
 needs the split, the split is this claim.
 
 Source: Mises, *Human Action*, ch. XVII, §4: "Thus the demand for a
@@ -603,8 +633,8 @@ structure TwoPartialDemands (praxis : MediumFrame) (m : praxis.Means) :
   sorted : ∀ e, praxis.Onward m e ∨ ¬ praxis.Onward m e
 
 /-- **More money is preferred when it is spent** — take two sums of
-money, the one part of the other. Both are free to hold, and they would
-buy different ends. Take `spend`, the date the agent would spend
+money, the one part of the other. Say both are free to hold, and they
+would buy different ends. Take `spend`, the date the agent would spend
 them. At that date he prefers what the larger would buy to what the smaller
 would buy.
 
@@ -617,8 +647,9 @@ purchase there. Two further things are conditions, each on the
 theorem that needs it:
 
 - That he ranks it so at `now` too is the condition `RankedAlikeNowOf`.
-- That the larger sum would buy something else is the condition
-  `BuysMoreThanItsParts`.
+- That a sum would buy other ends than each of its strict parts is
+  the condition `BuysMoreThanItsParts`. The claim itself applies only
+  where the two sums differ in what they buy.
 
 Source: Rothbard, *MES* p. 379: "[T]o both present money and future
 money there applies the general rule that more of a good will have
@@ -639,8 +670,13 @@ Known cases refute it as stated:
   later (`Apodictic.Model.Impulse`).
 
 So the claim is cut to money, to sums free to hold, to purchases that
-differ, and to the date of spending. Each failure is a named
-condition. Carried by `Apodictic.PureInterest.present_sum_preferred_to_less`
+differ, and to the date of spending. The claim speaks only of such
+sums, at the date of spending. A theorem that applies it to a sum in
+hand takes the rest as named conditions on that sum: that every unit
+is money (`MoneyFrame.Money`), that every part of it is free to hold
+(`FreeToHoldWithin`), that it would buy other ends than each of its
+strict parts (`BuysMoreThanItsParts`), and that the ranking at `spend`
+holds now (`RankedAlikeNowOf`). Carried by `Apodictic.PureInterest.present_sum_preferred_to_less`
 and the loan theorems built on it.
 
 Does not say:
@@ -657,7 +693,7 @@ Does not say:
    sums of the same size would buy the same is the condition
    `AllocationPlan.Homogeneous`.
 7. That the agent's preferences chain. Transitivity is the condition
-   `ActionFrame.TransitiveOn`, on one chain.
+   `ActionFrame.TransitiveOn`, for three given bundles only.
 8. Anything about acts. It ranks what sums would buy. The bridge to a
    trade is `DemonstratedPreference`. -/
 structure MoreMoneyPreferredWhenSpent {praxis : MoneyFrame}

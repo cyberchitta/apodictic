@@ -1729,8 +1729,8 @@ These three entail Mises's bridge. Asymmetry is the third
 claim under *The claims*. The theorem below spends it, as do the
 rival-plan theorem (`no_rival_swap_dominant`) and four theorems under
 *Interest*.
-Asymmetry is recorded as ours, because no sentence of either author
-states it.
+Mises states asymmetry, as a law of thought (*Human Action*, ch. II,
+§2), so its status is explicit-in-tradition.
 
 The docstring below says the proof's case split needs no classical
 logic. Why the library avoids classical logic is under
