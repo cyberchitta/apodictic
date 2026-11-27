@@ -375,9 +375,10 @@ back to a commodity in barter)".
   other than passing it on, AND against a good that was not then a
   medium. "In barter" is not derived: it is the condition
   `FormedInBarter`, passed through to the conclusion.
-- `prior_money_relates_back`: p. 1021's parenthesis — the good the
-  medium was first acquired against, if it was then a medium itself,
-  had a direct acquisition before that. It is `direct_acquisition_before`
+- `prior_money_relates_back`: p. 1021's parenthesis — some earlier
+  acquisition of the medium was against a good which, if it was then a
+  medium itself, had a direct acquisition before that. The acquisition
+  is found, not the first one. It is `direct_acquisition_before`
   applied to the counter-good, and it costs the claim and the
   conditions for that good too.
 
