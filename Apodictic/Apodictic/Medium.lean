@@ -98,8 +98,12 @@ def Trade.PurelyIndirect {praxis : MediumFrame}
 Shape (audit): the day of an exchange is its index here. Each party's
 beliefs about it are read at `date k`. The `time` fields of the
 exchange's two trades are not consulted. Nothing says the record is
-complete. A claim asserted of an incomplete record asserts more than
-one asserted of the complete record. -/
+complete. The claim about the record (`AppraisalFromPast`) allows an
+appraisal of a good as a medium after day 0 only where the record shows an earlier
+exchange of that good. A record that leaves exchanges out allows no
+more such appraisals, and may allow fewer. So the claim, asserted of
+an incomplete record, can say more than it does of the complete
+record. -/
 structure History (praxis : MediumFrame) where
   /-- The time of each day. -/
   date : ℕ → praxis.Time

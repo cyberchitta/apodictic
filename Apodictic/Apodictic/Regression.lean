@@ -117,8 +117,9 @@ theorem partial_demands_within {praxis : MediumFrame} (agent : praxis.Agent)
   · exact hbelief
 
 /-- **Not-not exhaustive.** No claim here decides the sort of an end.
-Without one, every end the good serves is only not-not in one of the
-two parts. -/
+Without one, what is shown of every end the good serves is a double
+negation. It is not the case that the end is in neither part. That
+does not say which part it is in. -/
 theorem partial_demands_not_not_exhaust {praxis : MediumFrame}
     (agent : praxis.Agent) (time : praxis.Time) (m : praxis.Means) :
     ∀ e ∈ praxis.ServedBy agent time {m},
@@ -444,8 +445,11 @@ say `g` was then a medium. Then someone acquired `g` before `k`, for
 an end other than passing it on.
 
 Both claims, and the conditions `begins` and `purposive`, are carried
-for every good. That is because which good was paid is found, not given. So the record must
-begin before any medium at all. -/
+for every good. The statement does not name the good paid for `m`. The
+proof finds it in the record. So the hypotheses are needed of whatever
+good it finds. The statement carries them for every good, which covers
+any good it might find. In particular `begins` then holds of every
+good: on day 0, nobody appraises any good as a medium. -/
 theorem prior_money_relates_back {praxis : MediumFrame}
     (history : History praxis) (m : praxis.Means) (n : ℕ)
     (twoDemands : ∀ g, TwoPartialDemands praxis g)
