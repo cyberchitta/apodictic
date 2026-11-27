@@ -43,10 +43,12 @@ actor values the total service rendered by two consumers' goods
 equally, he will, because of time preference, choose the less durable
 good"), in its smallest case.
 
-Two goods render the same services `rest`, plus one service more. The
-first renders it at the earlier date (`soon`). The second renders it at
-the later date (`late`). "Values the total service equally" is read as
-two things. The two services are the same satisfaction. And everything
+Two goods render the same shared services, called `rest`, plus one
+service more. The first renders that service at the earlier date.
+That dated service is called `soon`. The second renders it at the
+later date. That one is called `late`. The first is read as the less
+durable good, since that one service of it comes sooner. "Values the
+total service equally" is read as two things. The two services are the same satisfaction. And everything
 else is the same `rest`.
 
 The conclusion is a preference, not a choice. No claim in the library
@@ -107,10 +109,14 @@ would not consume today, but he would not consume tomorrow either, as
 the morrow would confront him with the same alternative."
 
 It is stated from the act. Take an act of consuming at any date of the
-sequence. If it demonstrates, it refutes "no preference for the sooner
-at the first date". What the argument spends is in the signature:
+sequence (`Morrows.ConsumesAt`). Say the act shows a preference for
+the sooner (`DemonstratedTimePreference`). Then it refutes "no
+preference for the sooner at the first date". What the argument
+spends is in the signature:
 
-- the demonstration (Mises's "reveals", in the same section);
+- the claim that the act shows that preference (Mises's "reveals", in
+  the same section);
+- that the act consumes at that date;
 - that each day's offer is the same satisfaction as the next (his "the
   same alternative");
 - that the absence of preference carries from date to date.
@@ -153,13 +159,14 @@ same satisfaction by valuation. Then the later is never preferred. No
 claim is carried: the signature has none. That is because the sentence
 was made true by what "same" was allowed to mean.
 
-The strict half is NOT free on this reading: that the sooner IS
-preferred. Take two ends, neither preferred to the other. The valuation
+On this reading the strict half, that the sooner IS preferred, is
+NOT free. Take two ends, neither preferred to the other. The valuation
 reading counts them the same satisfaction. Time preference then asserts
-a preference that is not there. So on this reading the whole content of
-the claim is one thing: of two ends, one before the other and the
-sooner not yet past, the pair is never left unranked. That is
-comparability, and neither author argues for it. -/
+a preference that is not there. So on this reading the claim says one
+thing. Take two ends, one before the other, the sooner not yet past.
+If the later is not preferred to the sooner, then the sooner is
+preferred to the later. So the pair is never left unranked. That is a
+form of comparability, and neither author argues for it. -/
 theorem valuation_reading_is_free (praxis : DatedFrame)
     (agent : praxis.Agent) (now : praxis.Time) :
     ∀ soon late : praxis.End,

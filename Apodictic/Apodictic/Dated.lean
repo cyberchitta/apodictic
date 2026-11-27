@@ -63,9 +63,10 @@ date in a sequence the agent can have a satisfaction now. Or he can
 have the same satisfaction at the next date: "the morrow would confront
 him with the same alternative" (*Human Action*, ch. XVIII, §2).
 
-It is a structure because the regress is about one such sequence. Its
-`Prop` fields fix only the dates: which offer belongs to which date,
-and that each date comes before the next. That each offer is the same
+It is a structure because the regress is about one such sequence.
+Besides the dates and the offers, its fields state only two facts:
+which offer belongs to which date, and that each date comes before
+the next. That each offer is the same
 satisfaction as the next is what makes it the SAME alternative. It can
 fail: the good perishes. So it is not a field. It is the named
 condition `Morrows.SameAlternative`. -/

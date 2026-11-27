@@ -2693,7 +2693,10 @@ decides when they are met.
 ordered, and an end had no date. That was because no theorem asked for
 either. Time
 preference cannot be stated without them. So the vocabulary grows
-here, and only here. Three things are added:
+here. It grows by extending the frame (`DatedFrame`), not by editing
+it. The earlier theorems are stated over the unextended frame
+(`ActionFrame`). So none of them gets vocabulary it does not use.
+Three things are added:
 
 - Times get a bare relation, "before" (`Before`). It has no
   properties at all.
@@ -2720,25 +2723,39 @@ case of perishable goods". Winter ice is "a good that loses its
 specific usefulness even if not consumed". Summer ice is "another good
 which requires a different process of production". So the two are
 "for all practical purposes different commodities" (*Human Action*,
-ch. XVIII, §2). Neither description is a valuation. Both can be checked without
-asking what the man prefers: winter ice serves in summer only through
-a special process of conservation, and summer ice needs a different
-process of production.
-Rothbard's ground cannot.
+ch. XVIII, §2). Neither description is a valuation. Each says how the
+ice is kept or produced:
 
-Lean shows exactly what Rothbard's reading buys. Define "the same
-satisfaction" as "the later is not preferred to the sooner"
-(`SameByValuation`). Then one half of time preference holds in every
-frame: the later is never preferred. That half carries no claim at
-all:
+- Winter ice serves in summer only through a special process of
+  conservation.
+- Summer ice needs a different process of production.
+
+So each can be checked without asking what the man prefers. Rothbard's
+ground cannot be checked that way. His ground is how the man values
+the two.
+
+Lean shows exactly what Rothbard's reading buys. Two statements about
+a pair of dated ends are in play here. They are called the two halves
+of time preference:
+
+- The negative half: the later is not preferred to the sooner.
+- The strict half: the sooner is preferred to the later. This is what
+  the claim (`TimePreference`) states.
+
+Now define "the same satisfaction" as "the later is not preferred to
+the sooner" (`SameByValuation`). Then the negative half holds in every
+frame, of every pair that is the same satisfaction on this reading. It
+carries no claim at all:
 
 {docstring Apodictic.TimePreference.SameByValuation}
 
 {docstring Apodictic.TimePreference.valuation_reading_is_free}
 
-The other half is not free: that the sooner is preferred. Take a frame
-in which nothing is ranked. It satisfies the valuation reading for
-every pair. And there the sooner is not preferred:
+The strict half is not free. The docstring above gives the reason:
+two ends with neither preferred count as the same satisfaction on this
+reading. The next theorem checks that reason in one frame. Nothing is
+ranked in it. So every pair counts as the same satisfaction on this
+reading. And there the sooner is not preferred:
 
 {docstring Apodictic.Model.valuation_reading_strict_half_fails}
 
@@ -2748,13 +2765,30 @@ One is ranked above the other. Neither author argues for that. And it
 sits badly with a doctrine of Rothbard's own: indifference cannot
 be demonstrated in action. On this reading the claim rules out one
 case: two dated ends, neither preferred to the other. That is exactly
-the case no act of the man's could ever show.
+the case no act of the man's could ever show. So, on this reading, no
+act of his could show the claim false.
 
 The library therefore takes the other road. Sameness is supplied
 separately from the ranking. It is the man's, since satisfactions are
 his. But it is not read off his preferences. So the claim can fail.
 Say a man ranks the same satisfaction higher later. He is then a
 counterexample to the claim, not a case of a different good.
+
+In Lean, sameness is a relation given with the frame
+(`SameSatisfaction`), never defined from the ranking. The library does
+not say how it is fixed in a given case. The ways it can fail are
+listed below, under *What a failure would point at*.
+
+The claim's docstring, below, names three things explained elsewhere:
+
+- The lifting condition (`DatedFrame.LiftsOverRest`), under
+  *Durability* below.
+- The bridge from an act (`DemonstratedTimePreference`), under
+  *Mises's regress* below.
+- The interest theorems, under {ref "interest"}[Interest].
+
+The docstring's point on anticipation is taken up in the last
+paragraph of this page.
 
 {docstring Apodictic.TimePreference}
 
@@ -2833,8 +2867,9 @@ Two things are not reached:
   nothing here asserts.
 - Rothbard's "will choose". The conclusion is a preference. No claim
   here runs from what a man ranks to which of two goods he picks. Only
-  one claim in the library runs from ranking to act (`ActsInOrder`).
-  It is about how a stock is allocated, not about this.
+  one claim in the library runs from ranking to act (`ActsInOrder`,
+  under {ref "claims"}[The claims]). It is about how a stock is
+  allocated, not about this.
 
 *Mises's regress.* Mises does not only assert time preference. He
 argues that action is impossible without it: "If he were not to prefer
@@ -2845,9 +2880,13 @@ would confront him with the same alternative." The argument runs from
 what a man prefers to what he does. So it cannot be stated without a
 bridge between the two. Mises supplies one, in the same section. It
 runs the other way round, from the act to the preference. That is the
-same link read backwards. If consuming shows a preference for the
-sooner, then without that preference there is no consuming that shows
-one. Mises: "He who consumes a nonperishable good instead of
+same link read backwards:
+
+- The bridge: if he consumes, that shows he prefers the sooner.
+- Read backwards: if he does not prefer the sooner, he does not
+  consume. That is the step the regress needs.
+
+Mises states the bridge: "He who consumes a nonperishable good instead of
 postponing consumption for an indefinite later moment thereby reveals
 a higher valuation of present satisfaction". That sentence is the
 second new claim (`DemonstratedTimePreference`). It is stated of one
@@ -2856,10 +2895,22 @@ act:
 {docstring Apodictic.DemonstratedTimePreference}
 
 The regress runs along a sequence (`Morrows`). Each day a satisfaction
-is on offer, and another on the next day. The regress spends three
-conditions. Two are shown below, after the sequence. The third (`ConsumesAt`) only says
-that the act in question takes the day's offer and forgoes the next
-day's.
+is on offer, and another on the next day. The regress spends one claim,
+the bridge above. It also spends three conditions:
+
+- That the act in question consumes (`ConsumesAt`). This only says
+  that the act takes the day's offer and forgoes the next day's.
+- That each day's offer is the same satisfaction as the next
+  (`SameAlternative`), shown below, after the sequence.
+- That the absence of a preference carries from day to day
+  (`NoPreferenceCarries`), shown below too.
+
+The sequence's docstring keeps sameness (`SameAlternative`) out of
+its fields, because it can fail. The same was done with one unit to
+one end. It can fail of a real stable, so it could not stay a field
+(see {ref "vocabulary"}[The vocabulary]). The fields that stay, and why
+each assumes nothing about the world, are under *The carried
+conditions* below.
 
 {docstring Apodictic.Morrows}
 
@@ -2946,11 +2997,18 @@ Three findings are in this:
 - It comes out only as a double negation. Mises carries the *absence*
   of a preference forward. So the argument refutes his having no
   preference on the first day. This argument yields the preference
-  itself only with excluded middle. The library does not assume excluded middle.
+  itself only with excluded middle. The library's theorems outside
+  `Consistency.lean` do without excluded middle. With excluded
+  middle, every question would count as having a yes-or-no answer, whether or not
+  anything settles it (see {ref "manifest"}[The manifest], on
+  `Classical.choice`).
 
-`Waiting` is a frame where a man prefers each satisfaction sooner. In
-it, both claims and every condition of both theorems hold together.
-The test is weak in two places, and they are worth saying:
+`Waiting` is a frame where a man prefers each satisfaction sooner. Its
+name is only a label. In it, both claims and every condition of both
+theorems hold together. So both theorems can be handed this frame.
+That shows their conditions can all hold at once, so neither theorem is vacuous. The docstrings below
+call this non-vacuity. As a test of it, `Waiting` is weak in two
+places, and they are worth saying:
 
 - The durability case is handed an empty rest of the stream. So the
   lifting condition (`LiftsOverRest`) is never tried on a real one.
@@ -2963,11 +3021,24 @@ The test is weak in two places, and they are worth saying:
 {docstring Apodictic.Model.waiting_regress_applies}
 
 *The carried conditions.* The regress's manifest lists two fields of
-the sequence. Each day's offer is attained on that day. Each day comes
-before the next. It also lists three fields of the act. Each of the five
-is of a kind that assumes nothing about the world. Take a sequence
-whose "offer on the third day" arrives on some other day. Or take an
+the sequence:
+
+- Each day's offer is attained on that day (`dated`).
+- Each day comes before the next (`successive`).
+
+It also lists three fields of the act:
+
+- The act gives something up (`forgone_nonempty`).
+- What it takes is not among what it gives up (`chosen_not_forgone`).
+- He believes the means bring about what he takes (`belief`).
+
+Each of the five is of a kind that assumes nothing about the world. Take a
+sequence whose "offer on the third day" arrives on some other day. Or take an
 act that gives nothing up. Neither is a situation that might obtain.
+Nor is an act whose means he does not believe bring about what he
+takes. The docstring of an action (`Action`) says why: its fields hold
+together as a package, and nothing with fewer parts counts as an
+action.
 That each day's offer is the same satisfaction as the next is not of
 that kind. The good may perish. So it is not a field. It is the named
 condition above (`SameAlternative`).
@@ -2998,25 +3069,33 @@ failed:
 - Consuming revealed what Mises says it does
   (`DemonstratedTimePreference`).
 
-The textbook case against the claim is on that list. People will pay
-more for a pleasure a few days off than for the same pleasure now. And
-they will pay more to avoid a pain that is put off: "Subjects on
+The textbook case against the claim is on that list. It is the case
+where the wait itself is worth something to the man
+(`SameSatisfaction`). People will pay more for a pleasure a few
+days off than for the same pleasure now. And they will pay more to avoid a pain that is put off: "Subjects on
 average were willing to pay more to experience a kiss delayed by 3
 days than an immediate kiss or one delayed by three hours or one day"
 (Loewenstein, *Economic Journal* 1987, p. 668). Waiting for a pleasure
 is itself a pleasure. Waiting for a pain is itself a pain. So the
 later option carries a satisfaction that begins now. The pair falls
-outside the claim, which says nothing about it. The move has the shape
-of Rothbard's ice. One test separates a diagnosis from an escape. Can
-the difference be shown without looking at the choice? Summer heat
-can be. "Greater satisfactions", read off the preference, cannot. For
-dread it has been shown. People waiting for an electric shock were
-scanned. The scans told them apart: "Even when no decision was
+outside the claim, which says nothing about it. Setting the pair
+outside the claim has the shape of Rothbard's ice. One test separates
+a diagnosis from an escape. A diagnosis points at a condition that
+failed, and the failure can be shown apart from the choice, as under
+*What a failure would point at* above. An escape reads the failure off
+the choice itself. Then no choice can count against the claim, as on
+Rothbard's reading of the ice. Can
+the difference be shown without looking at the choice? For the ice,
+it can on Mises's ground: the processes of conservation and of
+production above. On Rothbard's "greater satisfactions", read off the
+preference, it cannot. For dread it has been shown. People waiting
+for an electric shock were scanned. The scans told them apart: "Even when no decision was
 required, these extreme dreaders were distinguishable from those who
 dreaded mildly". And the extreme dreaders were the ones who, given the
 choice, "preferred to receive more voltage rather than wait" (Berns et
-al., *Science* 2006). Anticipation that is only inferred from the
-waiting brings back the reading on which the claim cannot fail.
+al., *Science* 2006). This page cites no such showing for savouring,
+as in the kiss. Anticipation that is only inferred from the waiting
+brings back the reading on which the claim cannot fail.
 
 # The regression theorem
 %%%
