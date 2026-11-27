@@ -265,8 +265,7 @@
    "sectionNum": "1.7."},
   "path": ["The-Result", "Mises-route"],
   "next":
-  {"url":
-   "/The-Result/The-circle/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+  {"url": "/The-Result/The-circle/#circle",
    "titleText": "The circle",
    "title": "The circle",
    "sectionNum": "1.9."},
@@ -345,7 +344,7 @@
    "title": "The ladder as a history",
    "sectionNum": "1.10."},
   "localToc": [],
-  "id": "Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+  "id": "circle",
   "fragment": "pages/The-Result/The-circle.html",
   "depth": 2},
  {"url": "/The-Result/The-ladder-as-a-history/",
@@ -353,8 +352,7 @@
   "title": "1.10. The ladder as a history",
   "sectionNum": "1.10.",
   "prev":
-  {"url":
-   "/The-Result/The-circle/#Apodictic___-Machine-Checked-Praxeology--The-Result--The-circle",
+  {"url": "/The-Result/The-circle/#circle",
    "titleText": "The circle",
    "title": "The circle",
    "sectionNum": "1.9."},

@@ -248,7 +248,8 @@ it say which moment came first. Read as a history, the earlier moment
 comes first, and "learns" is said in that reading.
 In the Lean, "earlier" and "later" only name its two arguments. The one
 way it runs is the inclusion: later uses among earlier ones. The
-library's times carry no order (see `Apodictic.Stock.Grows`). It is carried by
+frame (`ActionFrame`) puts no order on its times (see
+`Apodictic.Stock.Grows`). It is carried by
 `Apodictic.Temporal.ladder_judged_earlier` and by nothing else. -/
 def Stock.NoNewUses {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}

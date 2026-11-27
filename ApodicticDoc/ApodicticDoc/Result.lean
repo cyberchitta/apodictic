@@ -1803,6 +1803,7 @@ Neither warrants the premise. That is as far as this part goes.
 # The circle
 %%%
 file := "The-circle"
+tag := "circle"
 %%%
 
 Terms such as library, claim and condition are explained under
@@ -1988,10 +1989,24 @@ file := "The-ladder-as-a-history"
 tag := "ladder-history"
 %%%
 
-Both routes read the ladder at one moment. The man holds six horses.
-The law holds them up against the five he might have held.
+Terms such as library, claim and condition are explained under
+{ref "result"}[The Result].
 
-There is another way to read it. Rothbard tells it that way himself:
+The library derives the law of marginal utility by two routes:
+Rothbard's (see {ref "theorems"}[The theorems]) and Mises's (see
+{ref "mises-route"}[Mises's route]). Mises states the law as a ladder,
+from a supply of n–1 units to n. His sentence is quoted below. Both
+routes read the ladder at one moment. Take Rothbard's man with six
+horses. The law compares the six he holds with five he might have held
+instead. He does not hold those five. So the comparison is with a
+supply he does not hold.
+
+Both routes get that comparison from a plan (`AllocationPlan`). A
+sub-stock is a set of units cut from the man's stock. The plan says,
+for each sub-stock, which wants he would serve with exactly those
+units (see {ref "vocabulary"}[The vocabulary]).
+
+There is another way to read the ladder. Rothbard tells it that way himself:
 "suppose that the isolated individual successively finds one
 horse, then a second, then a third" (p. 24). Mises's ladder runs in
 the same direction, from n–1 units to n.
@@ -2002,26 +2017,30 @@ things the man actually did:
 - What he served when he held n–1 units.
 - What he serves once he holds n.
 
-No stock he does not hold comes into it. Nothing answers in advance
-for every stable he might cut from his own.
+No stock he does not hold comes into it. Unlike the plan, nothing here
+says in advance what he would serve with each sub-stock of his stock.
 
 The library carries this reading in a module of its own. The module
-imports the claims. It imports neither route's theorems. Its objects
-are these:
+imports the claims. It imports neither route's theorems. So it cannot
+borrow a result from either route. Whatever it spends shows on its
+theorem's signature. Its objects are these:
 
 - Two actual allocations (`Allocation`). Each records the wants he
   served with the stock he held at one moment.
 - A supply that grew by one unit from one moment to the other
   (`Stock.Grows`).
 
-Both definitions are under *The vocabulary*.
+Both definitions are under {ref "vocabulary"}[The vocabulary]. In the
+Lean, the two stocks are named `earlier` and `later`. The two
+allocations are named `before` (of `earlier`) and `after` (of
+`later`).
 
 In place of a plan, the reading spends acting in order
-(`ActsInOrder`). It is the fourth claim under *The claims*. It is the
-only claim in the library that runs from what a man ranks to what he
-actually does. Here is what it says. In what he serves with the stock
-he holds, he never passes over a want he prefers, and believes the
-good can serve, for one he ranks lower.
+(`ActsInOrder`). It is the fourth claim under {ref "claims"}[The claims].
+It is the only claim in the library that runs from what a man ranks to
+what he actually does. Here is what it says. With the stock he holds
+at one moment, he never serves a want while passing over one he
+prefers to it and believes the good can serve.
 
 *The question the reading forces.* Rothbard goes on: "When the second
 horse is found, he will be put to work satisfying the most urgent of
@@ -2041,8 +2060,8 @@ The two answers come apart.
 *Judged on the earlier scale, the ladder is a theorem*
 (`Temporal.ladder_judged_earlier`). It is a short one. Read it as
 acting in order restated about a want the next horse happens to serve.
-Do not read it as a route to the law. The manifest below is where that
-shows.
+Do not read it as a route to the law. The manifest below, and what is
+missing from it, shows why.
 
 Take Rothbard's horses. The man holds one horse at the earlier moment
 and two at the later. The theorem's conclusion is about the earlier
@@ -2052,13 +2071,13 @@ two horses and did not serve with one.
 
 The theorem spends one claim and two conditions. Each can fail:
 
-- He acted in order with one horse (`ActsInOrder`). Rothbard says so:
+- He acted in order with one horse (`ActsInOrder before`). Rothbard says so:
   action "uses scarce means to satisfy the most urgent of the not yet
   satisfied wants" (p. 24). This fails if he served a want while
   passing over one he preferred to it and believed a horse could
   serve.
 - At the earlier moment, any two wants a horse can serve were ranked
-  one way or the other (`stock.ComparableServiceable`). This fails if
+  one way or the other (`earlier.ComparableServiceable`). This fails if
   two of them were not ranked against each other at the earlier
   moment. Rothbard's story ranks the wants it names, but does not say
   every pair was ranked. The theorem adds it as a condition.
@@ -2112,7 +2131,14 @@ Read what is not on it:
   refuses it as unused.
 - Nothing about the later scale appears.
 - Nothing about how the later allocation was chosen appears.
-- Nothing about which moment came first appears.
+- Nothing about which moment came first appears. In the Lean,
+  "earlier" and "later" are names only, of the two stocks and their
+  times. The frame these theorems use (`ActionFrame`) puts no order on
+  its times.
+
+The first absence is why it is not a route to the law. Mises's law
+speaks of an increment. This theorem never uses the supply's growth.
+So nothing in it depends on a unit having been added.
 
 One condition does span the two moments: no new uses
 (`earlier.NoNewUses later`). Whatever the good is believed to serve
@@ -2120,28 +2146,41 @@ later, it was believed to serve earlier. He may stop believing in a
 use. He may not start. The routes with a plan read at one moment, so
 one scale ranks everything. Here what spans the moments is a one-way
 condition on belief about the good, not the scale. Without the
-condition, the new horse's want need not have been on the earlier
-scale. Then nothing could be said of it there. The condition is under
-*The conditions* with the rest.
+condition, the new horse's want need not be among the wants a horse
+was believed able to serve at the earlier moment. The theorem's other
+two hypotheses speak only of those wants: acting in order
+(`ActsInOrder before`) and comparability
+(`earlier.ComparableServiceable`). The condition is under
+{ref "conditions"}[The conditions] with the rest.
 
-That makes it a short theorem, and it should be read as one. What it
+It is a short theorem, and it should be read as one. What it
 says is about the earlier act. Whatever he passed over then ranked
 below whatever he served then. The want the second horse later goes to
-is simply one of the wants he passed over. The increment is narration.
+is simply one of the wants he passed over. The added unit is
+narration.
 On this reading, the ladder is acting in order, restated about a want
 the next horse happens to serve.
 
-*Judged on the later scale, it does not follow.* Grant everything a
-premise about one moment can give, at both moments:
+*Judged on the later scale, it does not follow.* Grant, at both
+moments, the one-moment claim and condition the earlier-scale theorem
+used, and one claim more:
 
-- He acts in order (`ActsInOrder`).
-- The good's wants are comparable (`stock.ComparableServiceable`).
-- Preference is asymmetric (`AsymmetricPreference`).
+- He acts in order (`ActsInOrder before`, `ActsInOrder after`). This
+  is a claim.
+- The good's wants are comparable (`earlier.ComparableServiceable`,
+  `later.ComparableServiceable`). This is a condition.
+- Preference is asymmetric: he never prefers one bundle to another and
+  the second to the first at the same moment (`AsymmetricPreference`).
+  This is a claim, the third under {ref "claims"}[The claims]. The
+  earlier-scale theorem does not need it.
 
 Grant two things across the moments:
 
-- The supply grew by one (`Stock.Grows`).
-- The good is believed to serve the same wants.
+- The supply grew by one (`earlier.Grows later`).
+- The good is believed able to serve the same wants at both moments
+  (`later.serves = earlier.serves`). This is more than no new uses,
+  which asks only that the wants the good is believed able to serve
+  later be among those it was believed able to serve earlier.
 
 Then ask for the ladder on the later scale
 (`Temporal.LadderJudgedLaterFromOrder`):
@@ -2154,14 +2193,13 @@ The frame that refutes it is small. There are two moments and two
 wants. He holds one horse, and then two. With one horse, he serves the
 want most urgent then. With two, he serves both. By then the other
 want has become the more urgent. Each act is in order on its own
-scale. But on the later scale, the want the second horse went to
-outranks the want the first horse served. Judged there, the ladder
-fails.
+scale. On the later scale, the want newly served with two horses
+outranks the want served with one. Judged there, the ladder fails.
 
 *What would close the gap, and why it is not assumed.* It would take a
 relation between the man's scales at the two moments. The later scale
-would rank what the earlier ranked, the same way. Both authors deny
-it. Mises: "value judgments are not immutable" (*Human Action*, ch. V,
+would rank what the earlier ranked, the same way. Call that constancy.
+Both authors deny it. Mises: "value judgments are not immutable" (*Human Action*, ch. V,
 §4). Rothbard's own actor changes his mind between moments, a few
 pages before the horses: "the ranking on his preference scale shifts
 to this order" (p. 18). So the history reading does not assume
@@ -2171,23 +2209,29 @@ the reading would need it, the frame above shows what goes missing.
 Rothbard, for his part, would not judge on the earlier scale at all.
 When his man must give up one of six horses, "he deals only with his
 presently available stock", in "disregard of past events" (p. 27).
-Judged that way, the ladder is the one-moment law at the later time.
-That is the plan again, and the circle with it.
+Judged that way, the ladder is the one-moment law at the later time:
+the supply he holds against one unit fewer. Both routes derive that
+law from a premise about a plan (`SwapDominant`, `ServedInOrder`; see
+{ref "circle"}[The circle]). So judging that way brings back the plan,
+and the circle with it.
 
-Both authors deny more than constancy. The rest of what they deny
-bears on the claim this reading does spend (`ActsInOrder`). Both hold
-that a scale of value exists only as it is read off what a man does.
-So a scale and the act it was read from cannot disagree. The passages are quoted in
-`ActsInOrder`'s docstring under *The claims*. The library keeps the
-ranking apart from the act. That way the claim can say something an
-act could contradict. That is why its status is our reconstruction
-and not theirs.
+Constancy is not all they deny. They also deny something that bears
+on the claim this reading does spend, acting in order (`ActsInOrder`).
+Both hold that a scale of value exists only as it is read off what a
+man does. So a scale and the act it was read from cannot disagree. The
+passages are quoted in `ActsInOrder`'s docstring under
+{ref "claims"}[The claims]. The library keeps the ranking apart from
+the act. That way the claim can say something an act could
+contradict. That is why the claim's status is our reconstruction and
+not theirs.
 
 *The trade.* The counterfactual routes need a plan that no act
-exhibits. The history needs a scale that no act can show to have
-stayed put. Or, on the reading that is a theorem, it needs a man who
-learned no new use for the good between the two acts
-(`earlier.NoNewUses later`). Neither author addresses that condition.
+exhibits. Both authors deny a scale that stands apart from the
+concrete choices, and the plan is one (see {ref "circle"}[The circle]).
+Judged on the later scale, the history needs a scale that no act can
+show to have stayed put. Judged on the earlier scale, where it is a
+theorem, it needs a man who learned no new use for the good between
+the two acts (`earlier.NoNewUses later`). Neither author addresses that condition.
 Nothing in the texts grants it, and nothing refuses it. So the two
 routes pay in different coin:
 
@@ -2198,13 +2242,17 @@ Reading the ladder as a history moves the cost. It does not remove it.
 
 *What a failure would point at.* Suppose the ladder, read as a
 history, fails of a real case. Its manifest says where to look.
-Besides the conditions the vocabulary carries, it names three places:
+Some conditions are built into its vocabulary: fields of the stocks
+and allocations it takes, such as each allocation serving only wants
+the good is believed able to serve. Whoever supplies a stock or an
+allocation has already met them (see {ref "manifest"}[The manifest]).
+Besides those, it names three places:
 
-- The man did not act in order (`ActsInOrder`).
+- The man did not act in order (`ActsInOrder before`).
 - He learned a new use for the good between the moments
   (`earlier.NoNewUses later`).
-- Two of the good's wants were never ranked against each other
-  (`stock.ComparableServiceable`).
+- Two of the good's wants were never ranked against each other at the
+  earlier moment (`earlier.ComparableServiceable`).
 
 A scale that moved is not on the list. That is because no theorem on
 this reading assumes it stayed put. Those three are where to look.

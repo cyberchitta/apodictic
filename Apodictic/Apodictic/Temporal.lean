@@ -31,8 +31,8 @@ and the two cases come apart:
 
 - Judged on the earlier scale, the ladder is a theorem
   (`ladder_judged_earlier`).
-- Judged on the later scale, it is refutable with every one-time
-  premise granted at both times
+- Judged on the later scale, it is refutable with acting in order,
+  comparability and asymmetry granted at both times
   (`LadderJudgedLaterFromOrder`, refuted in `Apodictic.Model`).
 
 What separates the two is constancy of the scale across the two times,
@@ -82,9 +82,14 @@ Two phrases are read as history:
 - "the increment can be employed" is read as what the later
   allocation serves that the earlier did not.
 
-`judged` is the time whose scale ranks the two wants. Mises's
-sentence does not say which. The module docstring says why it
-matters. -/
+Besides the two allocations, the definition takes a time, named
+`judged`. It is the time whose scale ranks the two wants. Mises's
+sentence does not say which. The choice matters. Judged on the earlier
+scale, the ladder is a theorem (`ladder_judged_earlier`). Judged on
+the later scale, it does not follow, even with acting in order,
+comparability and asymmetry granted at both times
+(`LadderJudgedLaterFromOrder`, shown false in
+`Apodictic.Model.later_judged_ladder_fails`). -/
 def Ladder {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
     {earlier : Stock praxis agent earlierTime}
@@ -105,25 +110,35 @@ What it spends:
   (`earlier.ComparableServiceable`).
 - Whatever the good is believed to serve at the later time, it was
   believed to serve at the earlier one (`earlier.NoNewUses later`).
-  The increment's want has to be on the earlier scale at all. Only then
-  can that scale rank it.
+  Acting in order and comparability speak only of the wants the good
+  was believed able to serve at the earlier time. No new uses puts the
+  newly served want among them.
 
 What it does NOT spend, as the signature shows:
 
-- Nothing about the later allocation beyond membership.
+- Of the later allocation, nothing beyond which wants it serves.
 - Nothing about the supply having grown. `Stock.Grows` is not a
   hypothesis. Added as one, it fails the unused-argument linter.
-- Nothing about the order of the two times.
+- Nothing about the order of the two times. "Earlier" and "later"
+  are names only, not an order.
 - Nothing about the later scale.
 
-The argument is Mises's. The added want was serviceable and unserved
-before. Had it been more urgent than something served, acting in order
-would have served it. Mises's minimality qualifier is idle here, as on
-both counterfactual routes. `least` need only have been served.
+The argument is Mises's. The newly served want was serviceable and
+unserved before. Comparability ranks it against a want served before,
+one way or the other. Had it ranked above, acting in order would have
+served it. So it ranks below.
+
+Mises's sentence picks out "the least urgent or least painful among
+all those wants which could be removed by means of the supply n–1",
+read here as served before. The proof needs only that the compared
+want was served, not that it was the least urgent one served. So that
+qualifier is idle here. It is idle on the counterfactual readings
+too: the ladder from Rothbard's premises (`Apodictic.Mises.ladder_holds`)
+and from Mises's (`Apodictic.Mises.ladder_from_order`).
 
 So this is the ladder as a statement about the EARLIER allocation.
 What was passed over then ranked below what was served then. Of the
-increment it says only that it was passed over. -/
+newly served want it says only that it was passed over then. -/
 theorem ladder_judged_earlier
     {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
@@ -148,9 +163,11 @@ theorem ladder_judged_earlier
       (order.inOrder least hleastServed added haddedServes hbad)
       haddedNotBefore
 
-/-- **The ladder, judged on the later scale, from everything a
-one-time premise can give** — written out as a `Prop`, so that it can
-be refuted by construction (`Apodictic.Model.later_judged_ladder_fails`).
+/-- **The ladder, judged on the later scale, from acting in order,
+comparability and asymmetry at both times** — written out as a statement in its own
+right (in Lean, a `Prop`). That way it can be shown false: a small
+frame is built in which every hypothesis holds and the conclusion
+fails (`Apodictic.Model.later_judged_ladder_fails`).
 
 Granted at BOTH times:
 
