@@ -430,11 +430,15 @@ that in the farther distant future." / "Time preference is a
 categorial requisite of human action."
 
 Status: explicit-in-tradition as doctrine; our-reconstruction as a
-claim. The authors fix "the same satisfaction" by the satisfaction it
+claim. Rothbard fixes "the same satisfaction" by the satisfaction it
 gives. Ice in summer and ice in winter "are not the same, but
-different goods" (*MES* pp. 15–16, n. 15). Mises's ice is "for all
-practical purposes different commodities". Read that way, the sentence
-cannot fail: whatever is preferred later was a different good. Here
+different goods" (*MES* pp. 15–16, n. 15). Read that way, the sentence
+cannot fail: whatever is preferred later was a different good. Mises
+sets ice aside on another ground, as "the case of perishable goods".
+Winter ice is "a good that loses its specific usefulness even if not
+consumed". Summer ice is "another good which requires a different
+process of production" (*Human Action*, ch. XVIII, §2). Neither is a
+fact about the ranking. Here
 `SameSatisfaction` is supplied apart from `Prefers`. So the claim
 constrains the ranking. An agent who prefers the same satisfaction
 later refutes it. The reading on which it cannot fail is built as the

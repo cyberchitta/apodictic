@@ -1805,13 +1805,20 @@ remembered that it is the same satisfaction (or “good”) that is being
 compared". It then meets the obvious objection: "Since
 ice-in-the-summer provides different (and greater) satisfactions than
 ice-in-the-winter, they are not the same, but different goods"
-(pp. 15–16, n. 15). Mises sets the same case aside. Perishable goods,
-he says, are "for all practical purposes different commodities". On
-that reading, how the man values two dated ends settles whether they
-are the same satisfaction. Then whenever he prefers the later one, it
-was a different good. So the claim is never tested.
+(pp. 15–16, n. 15). On that reading, how the man values two dated
+ends settles whether they are the same satisfaction. Then whenever he
+prefers the later one, it was a different good. So the claim is never
+tested.
 
-Lean shows exactly what that reading buys. Define "the same
+Mises sets the same case aside on another ground. He calls it "the
+case of perishable goods". Winter ice is "a good that loses its
+specific usefulness even if not consumed". Summer ice is "another good
+which requires a different process of production". So the two are
+"for all practical purposes different commodities" (*Human Action*,
+ch. XVIII, §2). Neither is a valuation. Unlike Rothbard's ground,
+Mises's can be checked without asking what the man prefers.
+
+Lean shows exactly what Rothbard's reading buys. Define "the same
 satisfaction" as "the later is not preferred to the sooner"
 (`SameByValuation`). Then one half of time preference holds in every
 frame: the later is never preferred. That half carries no claim at
@@ -1827,7 +1834,7 @@ every pair. And there the sooner is not preferred:
 
 {docstring Apodictic.Model.valuation_reading_strict_half_fails}
 
-So, on this reading of the authors, time preference asserts one
+So, on Rothbard's reading, time preference asserts one
 thing. Take two ends, one before the other, the sooner not yet past.
 One is ranked above the other. Neither author argues for that. And it
 sits badly with a doctrine of Rothbard's own: indifference cannot
@@ -2011,7 +2018,9 @@ preference for the sooner. It costs one claim and three conditions:
   next day's (`ConsumesAt`). It fails if he keeps the good that day.
 - Each day's offer is the same satisfaction as the next
   (`SameAlternative`). This is Mises's "the same alternative", and his
-  "nonperishable". It fails if the good perishes, as ice does.
+  "nonperishable". It fails if the good perishes. Mises's winter ice
+  fails it. That ice serves in summer only after a process of
+  conservation.
 - Having no preference for the sooner carries from each day to the
   next (`NoPreferenceCarries`). It fails if, after a day on which he
   does not prefer the sooner, he comes to prefer it the next day.

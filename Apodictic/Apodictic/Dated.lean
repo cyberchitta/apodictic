@@ -82,8 +82,9 @@ structure Morrows (praxis : DatedFrame) (agent : praxis.Agent) where
 /-- **The same alternative each day** — a condition on the situation.
 For this agent, each day's offer is the same satisfaction as the next
 day's. It is Mises's "the morrow would confront him with the same
-alternative". It fails where the good perishes, or where its use
-depends on the date: his own ice. -/
+alternative". It fails where the good perishes. It fails for Mises's
+own ice. Winter ice serves in summer only after a process of
+conservation. -/
 def Morrows.SameAlternative {praxis : DatedFrame} {agent : praxis.Agent}
     (morrows : Morrows praxis agent) : Prop :=
   ∀ n, praxis.SameSatisfaction agent (morrows.offer n) (morrows.offer (n + 1))
