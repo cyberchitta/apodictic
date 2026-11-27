@@ -3118,15 +3118,22 @@ rather than papered over.
 # The vocabulary
 
 Reference. These are the definitions the statements above are written
-in; nothing earlier depends on having read them.
+in. Nothing earlier depends on having read them.
 
 The basic vocabulary is deliberately bare. Preference is just a
-relation: not assumed transitive, not assumed to rank every pair, and
-time is not assumed ordered. Properties get added when a theorem
-forces them, and so far one has: asymmetry. It is spent under *Mises's
-route*, by the rival-plan theorem under *The theorems*, and by four
-theorems under *Interest*: the loan theorems and the check on the
-unrestricted rule (`buysMore_of_unrestricted`).
+relation. It is not assumed transitive. It is not assumed to rank
+every pair. Time is not assumed ordered. Properties get added when a
+theorem forces them. So far one has been added as a claim: asymmetry
+(`AsymmetricPreference`). Others enter as conditions of particular
+theorems. Asymmetry is spent in three places:
+
+- The theorem relating the two routes spends it
+  (`Contrast.rothbard_entails_servedInOrder`), under *Mises's route*.
+- The rival-plan theorem spends it (`no_rival_swap_dominant`), under
+  *The theorems*.
+- Four theorems under *Interest* spend it: the three loan theorems, and
+  the check on the unrestricted rule
+  (`PureInterest.buysMore_of_unrestricted`).
 
 {docstring Apodictic.ActionFrame}
 
@@ -3139,53 +3146,67 @@ more or fewer of them.
 
 {docstring Apodictic.AllocationPlan}
 
-Two conditions sit a level down, as fields of the structures the
-theorems take as arguments — the stock, the plan, and on the history
-reading an allocation. `servesOnlyWhatItCan` says no unit
-is put to a job the man does not believe the good can do.
-`unitsAlike`, a field of the stock, says every unit is believed to
-serve exactly the same ends — and that is what fixes the range of
-`stock.serves`, which is in turn what the claims quantify over.
-Neither is a binder in any statement, and both are on the manifest
-regardless: `#manifest` reads one level in and reports them, because
-whoever supplies the argument has already discharged them.
+Two conditions sit a level down. They are fields of the structures the
+theorems take as arguments: the stock, the plan, and on the history
+reading an allocation.
 
-The two are not alike, and the manifest does not pretend otherwise. A
-plan that puts a horse to a job the man does not believe a horse can
-do is not a situation that might obtain — it is an incoherent plan, so
-`servesOnlyWhatItCan` assumes nothing about the world, and the same
-field on an allocation, said of what he did, assumes nothing either. A lame horse is
-a situation that might obtain, so `unitsAlike` does. Which of the two
-a carried condition is cannot be read off the term; it is ruled by
-hand, and this is the ruling.
+- `servesOnlyWhatItCan` is a field of the plan and of an allocation.
+  It says no unit is put to a job the man does not believe the good
+  can do.
+- `unitsAlike` is a field of the stock. It says every unit is believed
+  to serve exactly the ends in `stock.serves`. So once a stock holds at
+  least one unit, `unitsAlike` fixes `stock.serves`: it is the set of
+  ends each unit is believed to serve. Three claims quantify
+  over those ends (`SwapDominant`, `ServedInOrder`, `ActsInOrder`).
 
-A third used to sit here, and now sits nowhere. One unit to one end
-can fail of a real stable — two horses to one wagon, or a horse
-standing idle — so it could not stay a field. Taking it out showed
-that no theorem wants it, so it was not made a hypothesis either. See
-the findings.
+Neither condition is a binder in any statement. Both are on the
+manifest regardless. `#manifest` reads one level in and reports them.
+It does so because whoever supplies the argument has already
+discharged them.
+
+The two are not alike, and the manifest does not pretend otherwise:
+
+- Take a plan that puts a horse to a job the man does not believe a
+  horse can do. That is not a situation that might obtain. It is an
+  incoherent plan. So `servesOnlyWhatItCan` assumes nothing about the
+  world. The same field on an allocation is said of what he did. It
+  assumes nothing either.
+- A lame horse is a situation that might obtain. So `unitsAlike` does
+  assume something about the world.
+
+Which of the two a carried condition is cannot be read off the term.
+It is ruled by hand, and this is the ruling.
+
+A third condition used to sit here, and now sits nowhere: one unit to
+one end. That can fail of a real stable. Two horses can pull one
+wagon, or a horse can stand idle. So it could not stay a field.
+Taking it out showed that no theorem wants it. So it was not made a
+hypothesis either. See *The other findings*.
 
 Interchangeability of units is *not* hidden down there. The plan is
-indexed by which exact units the man holds; that it depends only on how
-many of them there are is a separate named condition,
-`AllocationPlan.Homogeneous`, given in full under *The conditions*
-along with the others.
+indexed by which exact units the man holds. That it depends only on
+how many of them there are is a separate named condition
+(`AllocationPlan.Homogeneous`). It is given in full under *The
+conditions*, along with the other conditions.
 
-The history reading, under *The ladder as a history*, puts an actual
-allocation where the plan was, and reads the supply growing as
-something that happened. The second is carried by no theorem: added as
-a hypothesis of the earlier-judged ladder, the linter throws it out,
-and it appears only in the statement the counter-model refutes.
+The history reading is under *The ladder as a history*. It puts an
+actual allocation (`Allocation`) where the plan was. It reads the
+supply growing (`Stock.Grows`) as something that happened. No theorem
+carries `Stock.Grows`. Added as a hypothesis of the earlier-judged
+ladder (`Temporal.ladder_judged_earlier`), it fails the unused-argument
+linter. As a hypothesis, it appears only in the statement the
+counter-model (`Model.later_judged_ladder_fails`) refutes
+(`Temporal.LadderJudgedLaterFromOrder`).
 
 {docstring Apodictic.Allocation}
 
 {docstring Apodictic.Stock.Grows}
 
-The words of exchange — a trade, an exchange, and what a holding
-counts for — are defined under *Exchange*, where they are used. The
-dates time preference needs — a bare "before", the time an end is
-attained, and which ends are the same satisfaction — are defined under
-*Time preference*; the frame above has none of them.
+The words of exchange are defined under *Exchange*, where they are
+used: a trade, an exchange, and what a holding counts for. The dates
+time preference needs are defined under *Time preference*: a bare
+"before", the time an end is attained, and which ends are the same
+satisfaction. The frame above has none of them.
 
 # Claims no theorem uses
 

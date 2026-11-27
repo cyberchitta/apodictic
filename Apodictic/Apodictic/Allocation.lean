@@ -19,24 +19,24 @@ of a real situation.
 
 namespace Apodictic
 
-/-- A stock of some good, held by one agent at one time: finitely many
-units the agent believes will do the same jobs.
+/-- A stock of some good, held by one agent at one time. It is
+finitely many units the agent believes will do the same jobs.
 
 "The same jobs" is the whole of what homogeneity means here. Each
-unit is believed to serve exactly the ends in `serves`, and that is a
-claim about BELIEF, not about preference. Nowhere is it said that the
-agent is indifferent between units. So preference can stay strict,
-and Rothbard's denial that indifference is ever demonstrated in
-action is not contradicted. Whether doing the same jobs is enough for
-the law, or whether indifference between units is needed after all,
-is then something to check rather than something assumed away.
+unit is believed to serve exactly the ends in `serves`. That is a
+statement about BELIEF, not about preference. Nowhere is it said that
+the agent is indifferent between units. So preference can stay
+strict. And Rothbard's denial that indifference is ever demonstrated
+in action is not contradicted. Is doing the same jobs enough for the
+law? Or is indifference between units needed after all? That is then
+something to check. It is not assumed away.
 
-What counts as a unit is left open: `units` lists whatever enters the
+What counts as a unit is left open. `units` lists whatever enters the
 action as one thing. Rothbard holds that the law works "regardless of the
 size of the unit considered. The size of the unit will be the one
 that enters into concrete human action" (*MES* p. 28). Pairs of
 horses make a different stock, with a "new and shorter scale of
-ends", and a good that "cannot be divided into homogeneous units for
+ends". A good that "cannot be divided into homogeneous units for
 purposes of action" is a stock of exactly one unit. -/
 structure Stock (praxis : ActionFrame) (agent : praxis.Agent)
     (time : praxis.Time) where
@@ -49,32 +49,32 @@ structure Stock (praxis : ActionFrame) (agent : praxis.Agent)
   unitsAlike : ∀ unit ∈ units, ∀ want,
     praxis.Believes agent time unit want ↔ want ∈ serves
 
-/-- The agent's plan for the stock: for each `subStock` — each set
-of units he might have — the ends he WOULD serve with exactly those
-units, at the stock's single time.
+/-- The agent's plan for the stock. Take each `subStock`, each set of
+units he might have. The plan gives the ends he WOULD serve with
+exactly those units, at the stock's single time.
 
-This is something new, over and above `Action`, and it has to be. A
-single act of allocating cannot tell the served ends apart from one
-another — they all sit inside the one package chosen. So what the law
-of marginal utility rests on is not action at all: the plan is a
+The plan is something new, over and above `Action`, and it has to be.
+A single act of allocating cannot tell the served ends apart from one
+another. They all sit inside the one package chosen. So what the law
+of marginal utility rests on is not action at all. The plan is a
 separate thing, and no act of the agent's exhibits it.
 
 The plan is indexed by WHICH units, not by how many. To say it depends
-only on the number of them is to say the units are interchangeable,
-and that is not built in here: it is the named condition
-`Homogeneous`, assumed only where a theorem needs it.
+only on the number of them is to say the units are interchangeable.
+That is not built in here. It is the named condition `Homogeneous`,
+assumed only where a theorem needs it.
 
 Field-shape claim (audit): `servesOnlyWhatItCan` is the one condition
-left in field position, and it is definitional — a plan that puts a
-unit to an end the good is not believed able to serve is not a
-coherent plan, rather than a situation that might obtain.
+left in the plan's fields. It is definitional. Take a plan that puts a
+unit to an end the good is not believed able to serve. That is not a
+coherent plan. It is not a situation that might obtain.
 
 One unit to one end is NOT here, and is nowhere: no theorem needs it.
-Rothbard assumes it and says he is assuming it — "each unit of means
-is capable of serving one of the ends", introduced with "We assume for
-simplicity" (*MES* p. 26) — and the ordering the law asserts turns out
-not to want it. Where an extra unit adds no new end, the law is
-silent, which costs nothing. -/
+Rothbard assumes it, and says he is assuming it. He writes "each unit
+of means is capable of serving one of the ends". He introduces it with
+"We assume for simplicity" (*MES* pp. 25–26). The ordering the law
+asserts turns out not to want it. Where an extra unit adds no new end,
+the law is silent. That costs nothing. -/
 structure AllocationPlan {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) where
   /-- The ends the agent would serve with exactly the units in
@@ -146,26 +146,27 @@ def Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent}
   fewer ⊆ more ∧ more ⊆ stock.units ∧ more.card = fewer.card + 1
 
 /-- **An actual allocation** — what the agent does with the stock he
-holds at its time: the ends he serves with it, and nothing else.
+holds at its time. It records the ends he serves with it, and nothing
+else.
 
 This is the object of the TEMPORAL reading of the law
-(`Apodictic.Temporal`). Where `AllocationPlan` assigns served ends to
-every sub-stock at once — the standing disposition the counterfactual
-reading needs — this records one allocation of one stock at one
-time. It is indexed by nothing: not by sub-stock, not by size. What
-the agent would have done with fewer units is not in it and cannot be
-asked of it. Mises's history — "if the supply available increases
-from n–1 units to n units" — is then two of these at two times, not
-one plan read at two sizes.
+(`Apodictic.Temporal`). `AllocationPlan` assigns served ends to every
+sub-stock at once. That is the standing disposition the
+counterfactual reading needs. This structure instead records one
+allocation of one stock at one time. It is indexed by nothing: not by
+sub-stock, not by size. What the agent would have done with fewer
+units is not in it. It cannot be asked of it. Mises's history — "if
+the supply available increases from n–1 units to n units" — is then
+two of these at two times. It is not one plan read at two sizes.
 
-Field-shape claim (audit): `servesOnlyWhatItCan`, as for the plan, is
-definitional — putting a unit to an end the good is not believed able
+Field-shape claim (audit): `servesOnlyWhatItCan` is definitional, as
+for the plan. Putting a unit to an end the good is not believed able
 to serve is not an allocation of that good.
 
-Like the plan, it is a thing over and above `Action`. An `Action` has
-one chosen end; a stock of several units serving several ends is
-several actions, or one action whose end is a bundle. Which of those
-it is the library does not say, and no theorem asks. -/
+Like the plan, an allocation is a thing over and above `Action`. An
+`Action` has one chosen end. A stock of several units serving several
+ends is several actions, or one action whose end is a bundle. The
+library does not say which, and no theorem asks. -/
 structure Allocation {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) where
   /-- The ends the agent serves with the units he holds. -/
@@ -175,15 +176,17 @@ structure Allocation {praxis : ActionFrame} {agent : praxis.Agent}
   servesOnlyWhatItCan : ∀ want ∈ served, want ∈ stock.serves
 
 /-- **The supply grows by one** — Mises's "the supply available
-increases from n–1 units to n units", read as a history: the stock at
-the later time holds every unit of the stock at the earlier time and
+increases from n–1 units to n units", read as a history. The stock at
+the later time holds every unit of the stock at the earlier time, and
 one more.
 
-Says nothing about the order of the two times. `Time` carries no
-order, and this definition does not ask for one: "earlier" and
-"later" are the names of the two arguments, not a relation between
-their indices. Whether any theorem needs the order is exactly what
-leaving it out will show. -/
+It says nothing about the order of the two times. `Time` carries no
+order, and this definition does not ask for one. The words "earlier"
+and "later" are the names of the two arguments. They are not a relation
+between their indices. Leaving the order out lets a theorem show
+whether it needs one. The earlier-judged ladder
+(`Apodictic.Temporal.ladder_judged_earlier`) needs neither this
+definition nor any order on the two times. -/
 def Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}
     (earlier : Stock praxis agent earlierTime)

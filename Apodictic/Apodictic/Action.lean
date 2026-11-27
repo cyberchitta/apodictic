@@ -20,9 +20,9 @@ namespace Apodictic
 
 /-- The vocabulary everything else is built from: bare types and bare
 relations. Nothing here has any property. Preference is not assumed
-transitive, not assumed to rank every pair, and `Time` is not assumed
-ordered. A property gets added only when some theorem forces it, and
-every such forcing is a finding. -/
+transitive. It is not assumed to rank every pair. `Time` is not
+assumed ordered. A property gets added only when some theorem forces
+it. Every such forcing is a finding. -/
 structure ActionFrame where
   /-- Acting persons. -/
   Agent : Type
@@ -30,8 +30,8 @@ structure ActionFrame where
   End : Type
   /-- Means: scarce resources an agent may employ. -/
   Means : Type
-  /-- When action happens. Explicit from the start; no order assumed
-  yet. -/
+  /-- When action happens. It is explicit from the start. No order is
+  assumed on it here. -/
   Time : Type
   /-- `Believes agent time means want`: at that time, the agent
   believes that using those means helps bring about that want. Nothing
@@ -39,30 +39,37 @@ structure ActionFrame where
   Believes : Agent → Time → Means → End → Prop
   /-- `Prefers agent time X Y`: at that time, the agent values the
   bundle of ends `X` above the bundle `Y`. This is the ranking behind
-  the agent's choices, read as strict — but that reading is not
-  assumed anywhere: NO properties are imposed on this relation, strict
-  or otherwise, and a theorem that needs one says so. It is kept apart
-  from what the agent actually does. The one claim that bridges the
-  two (`DemonstratedPreference`) is stated of a trade, not of action in
-  general, and only the exchange theorems carry it.
+  the agent's choices. It is read as strict. But that reading is not
+  built in: NO properties are imposed on this relation, strict or
+  otherwise. A theorem that needs one says so.
 
-  It ranges over SETS of ends rather than single ends. The tradition
-  draws no line between an end and a composite of ends — "atomic"
-  only ever means "not divided further by this action", the same
-  relativity as the size of a unit of supply (*MES* p. 28). So there
-  is ONE ranking, over bundles at whatever grain the problem has, and
-  an end in the ordinary sense is a bundle with one member
-  (`PrefersEnd`). Ranging over bundles is what lets independence of
-  uses — bundle preference breaking down into preference between
-  ends — be a named hypothesis, instead of something the
-  vocabulary quietly enforces.
+  The ranking is kept apart from what the agent actually does. Three
+  claims tie the two. Two run from an act to the ranking.
+  `DemonstratedPreference` is stated of a trade.
+  `DemonstratedTimePreference` is stated of an act across dates. One
+  runs the other way, from the ranking to what he does with a stock.
+  `ActsInOrder` is stated of an actual allocation. Each is asserted of
+  the one trade, act or allocation a theorem is handed, never of every
+  act.
+
+  The relation ranges over SETS of ends rather than single ends. The
+  tradition draws no line between an end and a composite of ends. The
+  word "atomic" only ever means "not divided further by this action".
+  That is the same relativity as the size of a unit of supply (*MES*
+  p. 28). So there
+  is ONE ranking, over bundles at whatever grain the problem has. An
+  end in the ordinary sense is a bundle with one member
+  (`PrefersEnd`). Independence of uses (`IndependentUses`) is bundle
+  preference breaking down into preference between ends. Ranging over
+  bundles is what lets it be a named hypothesis, instead of something
+  the vocabulary quietly enforces.
 
   Shape claim (audit): a bundle is a `Set`, so it carries no
   multiplicity and no order. -/
   Prefers : Agent → Time → Set End → Set End → Prop
 
-/-- Preference between two single ends. This is bundle preference
-between two one-member bundles — a definition, not a second
+/-- Preference between two single ends. It is bundle preference
+between two one-member bundles. It is a definition, not a second
 relation. -/
 abbrev ActionFrame.PrefersEnd (praxis : ActionFrame) (agent : praxis.Agent)
     (time : praxis.Time) (want other : praxis.End) : Prop :=
