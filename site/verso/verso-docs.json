@@ -100,656 +100,657 @@
  "<code>Apodictic.Allocation {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (stock : Stock praxis agent time) : Type</code><span class=\"sep\"></span><code class=\"docstring\">**An actual allocation** — what the agent does with the stock he\nholds at its time. It records the ends he serves with it, and nothing\nelse.\n\nThis is the object of the TEMPORAL reading of the law\n(`Apodictic.Temporal`). `AllocationPlan` assigns served ends to every\nsub-stock at once. That is the standing disposition the\ncounterfactual reading needs. This structure instead records one\nallocation of one stock at one time. It is indexed by nothing: not by\nsub-stock, not by size. What the agent would have done with fewer\nunits is not in it. It cannot be asked of it. Mises's history — \"if\nthe supply available increases from n–1 units to n units\" — is then\ntwo of these at two times. It is not one plan read at two sizes.\n\nField-shape claim (audit): `servesOnlyWhatItCan` is definitional, as\nfor the plan. Putting a unit to an end the good is not believed able\nto serve is not an allocation of that good.\n\nLike the plan, an allocation is a thing over and above `Action`. An\n`Action` has one chosen end. A stock of several units serving several\nends is several actions, or one action whose end is a bundle. The\nlibrary does not say which, and no theorem asks. </code>",
  "5": "<code>praxis.Time</code>",
  "49": "<code>Allocation stock</code>",
+ "480":
+ "<code>Apodictic.Action.means {praxis : ActionFrame} (self : Action praxis) : praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
  "48":
  "<code>Apodictic.ActsInOrder {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (allocation : Allocation stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Acts in order of urgency** — nothing serviceable and more\nurgent is passed over for something less urgent, in what the agent\nACTUALLY does with the stock he holds.\n\nSay the agent serves an end. Say he prefers to it another end he\nbelieves the good can serve. Then he serves that end too. This is the\nactual-action twin of `ServedInOrder`. That claim is subjunctive: it\nis asserted of a plan over sub-stocks the agent may not hold. This one\nis asserted of one allocation of one stock at one time. The TEMPORAL\nreading of the law (`Apodictic.Temporal`) spends it in place of a\nstanding plan.\n\nSource: Rothbard, *MES*, ch. 1, §5.B, p. 24, in the passage that\nnarrates the acquisition of horses one by one: \"The first horse will\nfulfill the most urgent wants that a horse can serve; this follows\nfrom the universal fact that action uses scarce means to satisfy the\nmost urgent of the not yet satisfied wants\". Mises, *Human Action*,\nch. IV, §2, states the same agreement and gives its ground: \"Every\naction is always in perfect agreement with the scale of values or\nwants because these scales are nothing but an instrument for the\ninterpretation of a man's acting.\"\n\nStatus: our-reconstruction. The words are Rothbard's. The claim is\nnot quite his. Both authors deny that a value scale exists apart from\nthe action it is read from. Mises: \"The scale of value manifests\nitself only in real acting; it can be discerned only from the\nobservation of real acting. It is therefore impermissible to contrast\nit with real acting and to use it as a yardstick for the appraisal of\nreal actions\" (ch. V, §4). Rothbard: \"praxeology may deal with\nutilities only as deduced from the concrete actions of human beings\"\n(p. 882). On their account the sentence holds of every act by\ninterpretation. No act could contradict it. Here `PrefersEnd` is a\nranking kept distinct from the allocation. So the claim constrains the\nact. Take an act that serves a lesser end while passing over a\npreferred end he believes the good can serve. That act refutes it.\nOnly the ordering half of Rothbard's sentence is taken. Its \"scarce\nmeans\" half is not.\n\nDoes not say:\n\n1. Anything about sub-stocks the agent does not hold, or about any\n   other time. In particular, nothing about how this allocation\n   relates to one made at another time with a different stock. That\n   relation, if any, is a theorem's to state and pay for.\n2. That action reveals preference. This claim runs from the ranking to\n   the act. The bridge from an act to a preference\n   (`DemonstratedPreference`) is stated of trades only. Allocations\n   are not trades. A bridge that read the ranking off the act would\n   make this claim hold by construction. That is the authors' reading\n   above.\n3. That the ends a good can serve are comparable\n   (`Stock.ComparableServiceable`). Nor anything about the order\n   between two ends both served.\n4. That the scale at this time bears on the scale at any other\n   (constancy). Mises denies it: \"value judgments are not immutable\"\n   (ch. V, §4). The library does not assert it as a claim. As a\n   condition it appears once, for one pair of holdings in one trade\n   (`Trade.RankingHolds`). Where the temporal reading would need it,\n   the library exhibits the failure instead (`Apodictic.Model`).\n5. How much is served. Not that every unit is used. Not that as many\n   ends are served as the stock allows. An agent who serves nothing\n   satisfies it.\n6. Anything about ends the agent does not believe the good can serve.\n   Passing those over is a matter of belief, not of this claim. </code>",
  "479":
- "<code>Apodictic.Action.means {praxis : ActionFrame} (self : Action praxis) : praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
- "478":
  "<code>praxis.Believes self.agent self.time self.means self.chosen</code><span class=\"sep\"></span><code class=\"docstring\">The agent believes the means used will bring about the chosen\nend. </code>",
- "477":
+ "478":
  "<code>self.chosen ∉ self.forgone</code><span class=\"sep\"></span><code class=\"docstring\">The chosen end is not among the forgone. </code>",
- "476":
+ "477":
  "<code>Set.Nonempty.{u} {α : Type u} (s : Set α) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The property `s.Nonempty` expresses the fact that the set `s` is not empty. It should be used\nin theorem assumptions instead of `∃ x, x ∈ s` or `s ≠ ∅` as it gives access to a nice API thanks\nto the dot notation. </code>",
- "475": "<code>Action praxis</code>",
- "474":
+ "476": "<code>Action praxis</code>",
+ "475":
  "<code>self.forgone.Nonempty</code><span class=\"sep\"></span><code class=\"docstring\">Action is choice: something is always given up, if only doing\nnothing. </code>",
- "473":
+ "474":
  "<code>Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends given up by acting — the raw material of opportunity\ncost. Just a set: saying \"the next-best alternative\" would\npresuppose a ranking this file does not have. </code>",
- "472":
+ "473":
  "<code>praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The means employed. </code>",
- "471":
+ "472":
  "<code>praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The end aimed at. </code>",
- "470":
+ "471":
  "<code>praxis.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the action happens. </code>",
+ "470":
+ "<code>praxis.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The acting person. </code>",
  "47":
  "<code>Not (a : Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Not p`, or `¬p`, is the negation of `p`. It is defined to be `p → False`,\nso if your goal is `¬p` you can use `intro h` to turn the goal into\n`h : p ⊢ False`, and if you have `hn : ¬p` and `h : p` then `hn h : False`\nand `(hn h).elim` will prove anything.\nFor more information: [Propositional Logic](https://lean-lang.org/theorem_proving_in_lean4/propositions_and_proofs.html#propositional-logic)\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `¬` in identifiers is `not`.</code>",
  "469":
- "<code>praxis.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The acting person. </code>",
- "468":
  "<code>Apodictic.Action.mk {praxis : ActionFrame} (agent : praxis.Agent) (time : praxis.Time) (chosen : praxis.End)\n  (means : praxis.Means) (forgone : Set praxis.End) (forgone_nonempty : forgone.Nonempty)\n  (chosen_not_forgone : chosen ∉ forgone) (belief : praxis.Believes agent time means chosen) : Action praxis</code>",
- "467":
+ "468":
  "<code>Apodictic.Mises.ActionOccurs (praxis : ActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**\"Our assumption that there is action\"** — bare existence.\n\nThis is the parked action axiom, in the only form the tradition\nstates it: there is action. </code>",
- "466":
+ "467":
  "<code>∀ want ∈ self.served, want ∈ stock.serves</code><span class=\"sep\"></span><code class=\"docstring\">A unit is only ever put to an end the good is believed able to\nserve. </code>",
- "465":
+ "466":
  "<code>Finset praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends the agent serves with the units he holds. </code>",
- "464":
+ "465":
  "<code>Apodictic.Allocation.mk {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (served : Finset praxis.End)\n  (servesOnlyWhatItCan : ∀ want ∈ served, want ∈ stock.serves) : Allocation stock</code>",
- "463":
+ "464":
  "<code>∀ (subStock : Finset praxis.Means), ∀ want ∈ self.wouldServe subStock, want ∈ stock.serves</code><span class=\"sep\"></span><code class=\"docstring\">A unit is only ever put to an end the good is believed able to\nserve. </code>",
- "462":
+ "463":
  "<code>Finset praxis.Means → Finset praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends the agent would serve with exactly the units in\n`subStock`, and no others. </code>",
- "461":
+ "462":
  "<code>Apodictic.AllocationPlan.mk {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (wouldServe : Finset praxis.Means → Finset praxis.End)\n  (servesOnlyWhatItCan : ∀ (subStock : Finset praxis.Means), ∀ want ∈ wouldServe subStock, want ∈ stock.serves) :\n  AllocationPlan stock</code>",
- "460":
+ "461":
  "<code>Iff (a b : Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">If and only if, or logical bi-implication. `a ↔ b` means that `a` implies `b` and vice versa.\nBy `propext`, this implies that `a` and `b` are equal and hence any expression involving `a`\nis equivalent to the corresponding expression with `b` instead.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `↔` in identifiers is `iff`.\n\n * The recommended spelling of `&lt;-&gt;` in identifiers is `iff` (prefer `↔` over `&lt;-&gt;`).</code>",
+ "460":
+ "<code>Apodictic.ActionFrame.Believes (self : ActionFrame) : self.Agent → self.Time → self.Means → self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Believes agent time means want`: at that time, the agent\nbelieves that using those means helps bring about that want. Nothing\nlinks a means to an end here except what the agent believes. </code>",
  "46":
  "<code>Apodictic.ActionFrame.End (self : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Ends: states of affairs an agent may value. </code>",
  "459":
- "<code>Apodictic.ActionFrame.Believes (self : ActionFrame) : self.Agent → self.Time → self.Means → self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Believes agent time means want`: at that time, the agent\nbelieves that using those means helps bring about that want. Nothing\nlinks a means to an end here except what the agent believes. </code>",
- "458":
  "<code>∀ unit ∈ self.units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ self.serves</code><span class=\"sep\"></span><code class=\"docstring\">Every unit is believed to serve exactly the ends in\n`serves`. </code>",
- "457":
+ "458":
  "<code>Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends this good can serve, by the agent's lights. </code>",
- "456":
+ "457":
  "<code>Finset praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The units of the good on hand. </code>",
- "455":
+ "456":
  "<code>Apodictic.Stock.mk {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time} (units : Finset praxis.Means)\n  (serves : Set praxis.End)\n  (unitsAlike : ∀ unit ∈ units, ∀ (want : praxis.End), praxis.Believes agent time unit want ↔ want ∈ serves) :\n  Stock praxis agent time</code>",
- "454": "<code>Set End</code>",
- "453": "<code>Agent → Time → Set End → Set End → Prop</code>",
- "452":
+ "455": "<code>Set End</code>",
+ "454": "<code>Agent → Time → Set End → Set End → Prop</code>",
+ "453":
  "<code>self.Agent → self.Time → Set self.End → Set self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Prefers agent time X Y`: at that time, the agent values the\nbundle of ends `X` above the bundle `Y`. This is the ranking behind\nthe agent's choices. It is read as strict. But that reading is not\nbuilt in: NO properties are imposed on this relation, strict or\notherwise. A theorem that needs one says so.\n\nThe ranking is kept apart from what the agent actually does. Three\nclaims tie the two. Two run from an act to the ranking.\n`DemonstratedPreference` is stated of a trade.\n`DemonstratedTimePreference` is stated of an act across dates. One\nruns the other way, from the ranking to what he does with a stock.\n`ActsInOrder` is stated of an actual allocation. Each is asserted of\nthe one trade, act or allocation a theorem is handed, never of every\nact.\n\nThe relation ranges over SETS of ends rather than single ends. The\ntradition draws no line between an end and a composite of ends. The\nword \"atomic\" only ever means \"not divided further by this action\".\nThat is the same relativity as the size of a unit of supply (*MES*\np. 28). So there\nis ONE ranking, over bundles at whatever grain the problem has. An\nend in the ordinary sense is a bundle with one member\n(`PrefersEnd`). Independence of uses (`IndependentUses`) is bundle\npreference breaking down into preference between ends. Ranging over\nbundles is what lets it be a named hypothesis, instead of something\nthe vocabulary quietly enforces.\n\nShape claim (audit): a bundle is a `Set`, so it carries no\nmultiplicity and no order. </code>",
- "451": "<code>End</code>",
- "450": "<code>Means</code>",
+ "452": "<code>End</code>",
+ "451": "<code>Means</code>",
+ "450": "<code>Time</code>",
  "45":
  "<code>Set.{u} (α : Type u) : Type u</code><span class=\"sep\"></span><code class=\"docstring\">A set is a collection of elements of some type `α`.\n\nAlthough `Set` is defined as `α → Prop`, this is an implementation detail which should not be\nrelied on. Instead, `setOf` and membership of a set (`∈`) should be used to convert between sets\nand predicates.\n</code>",
- "449": "<code>Time</code>",
- "448": "<code>Agent</code>",
- "447": "<code>Agent → Time → Means → End → Prop</code>",
- "446":
+ "449": "<code>Agent</code>",
+ "448": "<code>Agent → Time → Means → End → Prop</code>",
+ "447":
  "<code>self.Agent → self.Time → self.Means → self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Believes agent time means want`: at that time, the agent\nbelieves that using those means helps bring about that want. Nothing\nlinks a means to an end here except what the agent believes. </code>",
- "445":
+ "446":
  "<code>Type</code><span class=\"sep\"></span><code class=\"docstring\">When action happens. It is explicit from the start. No order is\nassumed on it here. </code>",
- "444":
+ "445":
  "<code>Type</code><span class=\"sep\"></span><code class=\"docstring\">Means: scarce resources an agent may employ. </code>",
- "443":
+ "444":
  "<code>Type</code><span class=\"sep\"></span><code class=\"docstring\">Ends: states of affairs an agent may value. </code>",
- "442":
+ "443":
  "<code>Type</code><span class=\"sep\"></span><code class=\"docstring\">Acting persons. </code>",
- "441":
+ "442":
  "<code>Apodictic.ActionFrame.mk (Agent End Means Time : Type) (Believes : Agent → Time → Means → End → Prop)\n  (Prefers : Agent → Time → Set End → Set End → Prop) : ActionFrame</code>",
- "440":
+ "441":
  "<code>Apodictic.Model.horses_swapDominant (k : ℕ) : SwapDominant (Model.horsePlan k)</code><span class=\"sep\"></span><code class=\"docstring\">**The man's plan is swap-dominant.** This is the claim itself,\nproved of this frame and this plan. Serving the `n` most urgent wants\nbeats any one-swap alternative. That is because a want a horse can\nserve, but the plan would leave out, is less urgent than every want the\nplan would serve. It has a larger rank number. </code>",
+ "440":
+ "<code>Apodictic.Model.horses_homogeneous (k : ℕ) : (Model.horsePlan k).Homogeneous</code><span class=\"sep\"></span><code class=\"docstring\">**Interchangeability holds of the plan.** The plan depends on how\nmany horses there are. It never depends on which. </code>",
  "44": "<code>Set praxis.End</code>",
  "439":
- "<code>Apodictic.Model.horses_homogeneous (k : ℕ) : (Model.horsePlan k).Homogeneous</code><span class=\"sep\"></span><code class=\"docstring\">**Interchangeability holds of the plan.** The plan depends on how\nmany horses there are. It never depends on which. </code>",
- "438":
  "<code>Apodictic.marginal_utility_chain {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (small medium large : Finset praxis.Means)\n  (_firstStep : stock.OneMore small medium) (secondStep : stock.OneMore medium large) (addedFirst : praxis.End) :\n  addedFirst ∈ marginalEnds plan small medium →\n    ∀ addedSecond✝ ∈ marginalEnds plan medium large, praxis.PrefersEnd agent time addedFirst addedSecond✝</code><span class=\"sep\"></span><code class=\"docstring\">**The law of marginal utility, along a chain of named units.**\nTake three sub-stocks, `small` inside `medium` inside `large`. Each is\none unit more than the last (`stock.OneMore`). Every\nend the first step adds is preferred to every end the second step\nadds.\n\nNo interchangeability of units (`plan.Homogeneous`) is needed, because\nthe chain names which units are involved. The theorem is one\napplication of `urgency_principle`.\n\nTwo things go unused, and the statement records both. `_firstStep` is\nlisted and does no work at all. The underscore is how that is written\ndown. That it does no work is a finding: the chain form does not need\nthe first step to be a step. And within the hypothesis that an end is\nmarginal at the first step, only half is used. The unused half is\ndestructured as `_notNeeded` inside the proof. That is a name in the\nproof, not a binder in the statement. The linter that keeps this list\nhonest sees neither case. It is silenced by the underscore. And it\nworks a whole binder at a time. </code>",
- "437":
+ "438":
  "<code>Apodictic.Model.Horses : ActionFrame</code><span class=\"sep\"></span><code class=\"docstring\">The frame: one man, one instant, horses for means, ranked wants\nfor ends, and every horse able to serve any want on the scale. </code>",
- "436": "<code>Model.Horses.End</code>",
- "435": "<code>n + 1 &lt; k</code>",
- "434": "<code>n &lt; k</code>",
- "433":
+ "437": "<code>Model.Horses.End</code>",
+ "436": "<code>n + 1 &lt; k</code>",
+ "435": "<code>n &lt; k</code>",
+ "434":
  "<code>Apodictic.Model.horses_law_applies (k n : ℕ) (h : n &lt; k) (h' : n + 1 &lt; k) (addedFirst : Model.Horses.End) :\n  addedFirst ∈ marginalEnds (Model.horsePlan k) (Finset.range n) (Finset.range (n + 1)) →\n    ∀ addedSecond ∈ marginalEnds (Model.horsePlan k) (Finset.range (n + 1)) (Finset.range (n + 2)),\n      Model.Horses.PrefersEnd () () addedFirst addedSecond</code><span class=\"sep\"></span><code class=\"docstring\">**The law itself, applied to the horses.** Every hypothesis of\n`marginal_utility_chain` is met at this frame. So the claim and the\nconditions on the situation can all hold at once, and the law is not\nempty. That is the whole consistency argument. This type-checks, so\nthey fit together. </code>",
- "432":
+ "433":
  "<code>Apodictic.Model.seabiscuit : Model.Horse</code><span class=\"sep\"></span><code class=\"docstring\">Seabiscuit — the horse Rothbard names as the sixth acquired, put\nto pleasure riding (*MES* p. 27). </code>",
- "431":
+ "432":
  "<code>Apodictic.Model.manOWar : Model.Horse</code><span class=\"sep\"></span><code class=\"docstring\">Man o' War — the horse Rothbard names as having arrived earlier,\nengaged in \"the more important duty (to him) of leading a wagon\"\n(*MES* p. 27). Which of the earlier horses he is makes no difference\nto anything claimed here. </code>",
- "430":
+ "431":
  "<code>Finset.erase.{u_1} {α : Type u_1} [DecidableEq α] (s : Finset α) (a : α) : Finset α</code><span class=\"sep\"></span><code class=\"docstring\">`erase s a` is the set `s - {a}`, that is, the elements of `s` which are\nnot equal to `a`. </code>",
+ "430":
+ "<code>Apodictic.Model.which_horse_does_not_matter :\n  (Model.horsePlan 6).wouldServe ((Finset.range 6).erase Model.manOWar) =\n    (Model.horsePlan 6).wouldServe ((Finset.range 6).erase Model.seabiscuit)</code><span class=\"sep\"></span><code class=\"docstring\">**Rothbard's own conclusion, p. 27.** It is the one he names two\nhorses to make. Man o' War was leading a wagon. Seabiscuit was out for\npleasure riding. After losing Man o' War, the man would serve exactly\nthe ends he would serve after losing Seabiscuit. In Rothbard's\ntelling, he simply moves Seabiscuit to the wagon. Which of the two\ngoes makes no difference to which end is given up.\n\nThis is what interchangeability amounts to. It is why the plan is\nindexed by *which* horses, while `Homogeneous` is a separate named\ncondition. Rothbard's point has to be statable before it can be\ntrue. </code>",
  "43":
  "<code>∀ (X Y : Set praxis.End), praxis.Prefers agent time X Y → ¬praxis.Prefers agent time Y X</code><span class=\"sep\"></span><code class=\"docstring\">The asymmetry itself. </code>",
  "429":
- "<code>Apodictic.Model.which_horse_does_not_matter :\n  (Model.horsePlan 6).wouldServe ((Finset.range 6).erase Model.manOWar) =\n    (Model.horsePlan 6).wouldServe ((Finset.range 6).erase Model.seabiscuit)</code><span class=\"sep\"></span><code class=\"docstring\">**Rothbard's own conclusion, p. 27.** It is the one he names two\nhorses to make. Man o' War was leading a wagon. Seabiscuit was out for\npleasure riding. After losing Man o' War, the man would serve exactly\nthe ends he would serve after losing Seabiscuit. In Rothbard's\ntelling, he simply moves Seabiscuit to the wagon. Which of the two\ngoes makes no difference to which end is given up.\n\nThis is what interchangeability amounts to. It is why the plan is\nindexed by *which* horses, while `Homogeneous` is a separate named\ncondition. Rothbard's point has to be statable before it can be\ntrue. </code>",
- "428":
  "<code>Finset.range (n : ℕ) : Finset ℕ</code><span class=\"sep\"></span><code class=\"docstring\">`range n` is the set of natural numbers less than `n`. </code>",
- "427":
+ "428":
  "<code>Apodictic.Model.horsePlan (k : ℕ) : AllocationPlan (Model.horseStock k)</code><span class=\"sep\"></span><code class=\"docstring\">The man's plan: with any `n` horses he serves the `n` most urgent\nwants — ranks `1` through `n`. Which horses they are does not enter,\nwhich is what makes the plan homogeneous below. </code>",
- "426":
+ "427":
  "<code>Apodictic.Model.pleasureRiding : Model.Want</code><span class=\"sep\"></span><code class=\"docstring\">The sixth-ranked end: pleasure riding. Rothbard names it as the\nleast urgent of the wants the six horses serve, and so as the one\ngiven up when a horse is lost (*MES* p. 25). </code>",
- "425":
+ "426":
  "<code>Apodictic.Model.loss_of_a_horse_ends_pleasure_riding :\n  Model.pleasureRiding ∈ marginalEnds (Model.horsePlan 6) (Finset.range 5) (Finset.range 6)</code><span class=\"sep\"></span><code class=\"docstring\">**Rothbard's own conclusion, p. 25.** With six horses the man\nwould serve the six most urgent wants. With five he would not serve\nthe sixth-ranked want. So the sixth-ranked want is one he gives up\nwhen a horse goes. In Rothbard's telling it is pleasure riding: \"the\nloss of a horse will cause him to give up pleasure riding\".\n\nHere it is a calculation about the plan, not a further assumption. </code>",
- "424":
+ "425":
  "<code>Apodictic.Model.Want : Type</code><span class=\"sep\"></span><code class=\"docstring\">A want the horses can serve, named by its place on the man's value\nscale: rank 1 is the most urgent, and the lower the number the more\nurgent the want. There is no rank 0 — the scale starts at one, as\nRothbard's does. </code>",
- "423": "<code>Set Model.Want</code>",
- "422":
+ "424": "<code>Set Model.Want</code>",
+ "423":
  "<code>Apodictic.Model.rankPrefers (X Y : Set Model.Want) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">Preference between bundles of wants. `X` is preferred to `Y`\nexactly when two things hold. The two bundles differ by a single swap.\nAnd the want `X` has in place of `Y`'s is the more urgent of the two.\nHere more urgent just means a smaller rank number. </code>",
- "421":
+ "422":
  "<code>Apodictic.Model.ChristmasClub.presentPlan : AllocationPlan Model.ChristmasClub.presentStock</code><span class=\"sep\"></span><code class=\"docstring\">What he would buy with cash at hand: the impulse, with any. </code>",
- "420":
+ "421":
  "<code>PromisePays Model.ChristmasClub.futurePlan promisedPlan\n  {Model.ChristmasClub.Good.promiseA, Model.ChristmasClub.Good.promiseB} money</code>",
+ "420":
+ "<code>Apodictic.Model.ChristmasClub.Good : Type</code><span class=\"sep\"></span><code class=\"docstring\">Two ounces now, two promises of an ounce at date 1, and two goods\nstanding for whole holdings in the deposit: the hoard (two ounces) and\nthe bond (the club's promise of two). </code>",
  "42":
  "<code>Apodictic.AsymmetricPreference.mk {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (asym : ∀ (X Y : Set praxis.End), praxis.Prefers agent time X Y → ¬praxis.Prefers agent time Y X) :\n  AsymmetricPreference praxis agent time</code>",
- "419":
- "<code>Apodictic.Model.ChristmasClub.Good : Type</code><span class=\"sep\"></span><code class=\"docstring\">Two ounces now, two promises of an ounce at date 1, and two goods\nstanding for whole holdings in the deposit: the hoard (two ounces) and\nthe bond (the club's promise of two). </code>",
- "418": "<code>Finset Model.ChristmasClub.Good</code>",
- "417": "<code>Stock Model.ChristmasClub.frame.toActionFrame () 0</code>",
- "416":
+ "419": "<code>Finset Model.ChristmasClub.Good</code>",
+ "418": "<code>Stock Model.ChristmasClub.frame.toActionFrame () 0</code>",
+ "417":
  "<code>Apodictic.Model.ChristmasClub.outside_zero_rate {promised : Stock Model.ChristmasClub.frame.toActionFrame () 0}\n  (promisedPlan : AllocationPlan promised) (money : Finset Model.ChristmasClub.Good) (s l : ℕ × ℕ)\n  (pays :\n    PromisePays Model.ChristmasClub.futurePlan promisedPlan\n      {Model.ChristmasClub.Good.promiseA, Model.ChristmasClub.Good.promiseB} money) :\n  ¬SamePurchasingPower Model.ChristmasClub.presentPlan promisedPlan\n      {Model.ChristmasClub.Good.ounce, Model.ChristmasClub.Good.ounce'} money s l</code><span class=\"sep\"></span><code class=\"docstring\">**So the zero-rate theorem does not reach him.** Take any money the\nclub's promise pays in. Same purchasing power (`SamePurchasingPower`)\nbetween his cash and that money fails. </code>",
- "415":
+ "416":
  "<code>Apodictic.Model.ChristmasClub.Good.ounce' : Model.ChristmasClub.Good</code>",
- "414":
+ "415":
  "<code>Apodictic.Model.ChristmasClub.Good.ounce : Model.ChristmasClub.Good</code>",
- "413":
+ "414":
  "<code>Apodictic.Model.ChristmasClub.Good.promiseB : Model.ChristmasClub.Good</code>",
- "412":
+ "413":
  "<code>Apodictic.Model.ChristmasClub.Good.promiseA : Model.ChristmasClub.Good</code>",
- "411":
+ "412":
  "<code>Apodictic.Model.ChristmasClub.deposit : Trade Model.ChristmasClub.frame.toActionFrame</code><span class=\"sep\"></span><code class=\"docstring\">The deposit: he gives the hoard, gets the bond, keeps nothing else;\nrefusing would have left him the cash, spent on the impulse. </code>",
- "410":
+ "411":
  "<code>Apodictic.Model.ChristmasClub.futurePlan : AllocationPlan Model.ChristmasClub.futureStock</code><span class=\"sep\"></span><code class=\"docstring\">What he would buy with promises: by count only. </code>",
+ "410":
+ "<code>Apodictic.Model.ChristmasClub.frame : MoneyFrame</code><span class=\"sep\"></span><code class=\"docstring\">The frame. </code>",
  "41":
  "<code>Apodictic.DemonstratedPreference {praxis : ActionFrame} (trade : Trade praxis) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Demonstrated preference, in exchange** — the agent of a trade\nprefers the holding he chose to what refusing would have left him\nwith. He prefers it at the time of trading. Both are counted by his\nbeliefs at that time.\n\nThis is the bridge from what an agent DOES to the ranking `Prefers`.\nThe vocabulary otherwise keeps the two apart. It is asserted of the\ntrade handed to a theorem, not of every trade.\n\nSource: Rothbard, *MES*, p. 307: \"Any action demonstrates choice based\non preference: preference for one alternative over others.\" p. 85, of\nexchange: \"both people make it because they expect that it will\nbenefit them; otherwise they would not have agreed to the exchange.\"\np. 260: \"We deduce the existence of a specific value scale on the\nbasis of the real act\". The doctrine is named \"demonstrated\npreference\" at p. 882, n. 8, citing Rothbard, *Toward a Reconstruction\nof Utility and Welfare Economics* (1956), pp. 224 ff.\n\nStatus: explicit-in-tradition as doctrine; our-reconstruction as a\nclaim. For Rothbard the scale is DEDUCED from the act (p. 260). So the\nsentence cannot fail: it defines what the scale says. Here `Prefers`\nexists apart from the act. So the claim constrains it. A trade made\nagainst the agent's own ranking at that moment refutes it. A slip can\nbe such a trade. So can a compulsion he would disown.\n\nDoes not say:\n\n1. That the agent is better off afterwards. The comparison is made\n   with his beliefs and his scale AT THE TRADE. It does not touch what\n   the holding does for him later, or how he ranks it later\n   (`Trade.BeliefsHold`, `Trade.RankingHolds`).\n2. Anything about the two goods alone. It ranks whole holdings. The\n   descent to \"Y over X\" is a theorem's to pay for\n   (`Trade.SeparableFromRest`, `Trade.KeptServesOtherEnds`).\n3. That the trade was voluntary. Under a threat the claim still holds:\n   the victim prefers handing over to what refusing would cost. It\n   then demonstrates nothing about the goods. `Trade.Voluntary` is what\n   makes `refusal` the old holding.\n4. Anything about other acts, other agents, or other times. It does\n   not say that every act demonstrates preference. </code>",
  "409":
- "<code>Apodictic.Model.ChristmasClub.frame : MoneyFrame</code><span class=\"sep\"></span><code class=\"docstring\">The frame. </code>",
- "408":
  "<code>Apodictic.Model.ChristmasClub.zero_rate_with_every_claim :\n  TimePreference Model.ChristmasClub.frame.toDatedFrame () 0 ∧\n    AsymmetricPreference Model.ChristmasClub.frame.toActionFrame () 0 ∧\n      MoreMoneyPreferredWhenSpent Model.ChristmasClub.futurePlan 1 ∧\n        DemonstratedPreference Model.ChristmasClub.deposit ∧\n          Model.ChristmasClub.deposit.Voluntary ∧\n            {Model.ChristmasClub.Good.promiseA, Model.ChristmasClub.Good.promiseB}.card =\n              {Model.ChristmasClub.Good.ounce, Model.ChristmasClub.Good.ounce'}.card</code><span class=\"sep\"></span><code class=\"docstring\">**A zero rate, struck voluntarily, with every claim holding.** Two\nounces lent, a promise of two got. </code>",
- "407": "<code>Apodictic.Model.Loan.Good.promiseB : Model.Loan.Good</code>",
- "406": "<code>Apodictic.Model.Loan.Good.promiseA : Model.Loan.Good</code>",
- "405": "<code>Apodictic.Model.Loan.Good.ounce : Model.Loan.Good</code>",
- "404":
+ "408": "<code>Apodictic.Model.Loan.Good.promiseB : Model.Loan.Good</code>",
+ "407": "<code>Apodictic.Model.Loan.Good.promiseA : Model.Loan.Good</code>",
+ "406": "<code>Apodictic.Model.Loan.Good.ounce : Model.Loan.Good</code>",
+ "405":
  "<code>Apodictic.Model.Loan.struck_rate_positive_applies :\n  {Model.Loan.Good.ounce}.card &lt; {Model.Loan.Good.promiseA, Model.Loan.Good.promiseB}.card</code><span class=\"sep\"></span><code class=\"docstring\">**Non-vacuity: every rate struck is positive, applied.** The lender\nlends one ounce and is repaid two. Every claim of S5 holds. So does\nevery condition. The money promised is taken to be the promises' own\nstock. So the theorem's assumptions can all hold at once. </code>",
- "403":
+ "404":
  "<code>LT.lt.{u} {α : Type u} [self : LT α] : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The less-than relation: `x &lt; y` \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `&lt;` in identifiers is `lt`.</code>",
- "402": "<code>exchange.first.AfterCountsAsPlanned futurePlan repaid</code>",
- "401": "<code>exchange.first.BeforeCountsAsPlanned presentPlan sum</code>",
- "400":
+ "403": "<code>exchange.first.AfterCountsAsPlanned futurePlan repaid</code>",
+ "402": "<code>exchange.first.BeforeCountsAsPlanned presentPlan sum</code>",
+ "401":
  "<code>AsymmetricPreference praxis.toActionFrame exchange.first.agent exchange.first.time</code>",
+ "400":
+ "<code>praxis.TransitiveOn exchange.first.agent exchange.first.time ↑(presentPlan.wouldServe sum)\n  ↑(futurePlan.wouldServe promise) ↑(futurePlan.wouldServe repaid)</code>",
  "40":
  "<code>Apodictic.PureInterest.buysMore_of_unrestricted {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {stock : Stock praxis.toActionFrame agent now} (plan : AllocationPlan stock)\n  (rule : PureInterest.MoreMoneyPreferredUnrestricted plan)\n  (asymmetric : AsymmetricPreference praxis.toActionFrame agent now) (promise : Finset praxis.Means)\n  (promiseIn : promise ⊆ stock.units) (isMoney : ∀ unit ∈ promise, praxis.Money unit)\n  (free : FreeToHoldWithin promise) : BuysMoreThanItsParts plan promise</code><span class=\"sep\"></span><code class=\"docstring\">**The unrestricted rule says money never satiates.** With\nasymmetry, it gives `BuysMoreThanItsParts` of every free sum of money.\nSuppose a strict part bought what the whole buys. Then the rule would\nhave the agent prefer one bundle to itself. Asymmetry forbids that. So\nthe rule as stated asserts, unseen, that every extra unit of free money\nbuys something more. The library's claim ranks only purchases that\ndiffer. The theorems that need non-satiation carry it as a\ncondition. </code>",
  "4":
  "<code>Apodictic.ActionFrame.Agent (self : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Acting persons. </code>",
  "399":
- "<code>praxis.TransitiveOn exchange.first.agent exchange.first.time ↑(presentPlan.wouldServe sum)\n  ↑(futurePlan.wouldServe promise) ↑(futurePlan.wouldServe repaid)</code>",
- "398":
  "<code>TimePreference praxis.toDatedFrame exchange.first.agent exchange.first.time</code>",
- "397":
+ "398":
  "<code>Stock praxis.toActionFrame exchange.first.agent exchange.first.time</code>",
- "396": "<code>Exchange praxis.toActionFrame</code>",
- "395":
+ "397": "<code>Exchange praxis.toActionFrame</code>",
+ "396":
  "<code>Apodictic.Trade.BeforeCountsAsPlanned {praxis : MoneyFrame} (trade : Trade praxis.toActionFrame)\n  {present : Stock praxis.toActionFrame trade.agent trade.time} (presentPlan : AllocationPlan present)\n  (sum : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The holding before counts as planned** — a condition on one\ntrade. Before the loan, the lender holds some goods. The library counts\na holding by every end its goods are believed able to serve\n(`ActionFrame.ServedBy`). Here that count must equal what his plan\nsays the present sum would buy.\n\nIt fails where his other goods add ends of their own. It also fails\nwhere the sum's own units could serve more ends than the plan has them\nbuy. An ounce could buy something now or be kept for later. The\nlibrary's count credits it with both. The plan credits it with the one\nit would buy. </code>",
- "394":
+ "395":
  "<code>praxis.TransitiveOn trade.agent trade.time ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)\n  ↑(futurePlan.wouldServe repaid)</code>",
- "393": "<code>RankedAlikeNowOf futurePlan spend promise repaid</code>",
- "392": "<code>repaid.card ≤ sum.card</code>",
- "391":
+ "394": "<code>RankedAlikeNowOf futurePlan spend promise repaid</code>",
+ "393": "<code>repaid.card ≤ sum.card</code>",
+ "392":
  "<code>praxis.TransitiveOn agent now ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)\n  ↑(futurePlan.wouldServe lesser)</code>",
- "390": "<code>BuysMoreThanItsParts futurePlan promise</code>",
+ "391": "<code>BuysMoreThanItsParts futurePlan promise</code>",
+ "390": "<code>RankedAlikeNowOf futurePlan spend promise lesser</code>",
  "39":
  "<code>Apodictic.PureInterest.struck_rate_positive {praxis : MoneyFrame} (exchange : Exchange praxis.toActionFrame)\n  {present future promised : Stock praxis.toActionFrame exchange.first.agent exchange.first.time}\n  (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future) (promisedPlan : AllocationPlan promised)\n  (sum promise money repaid : Finset praxis.Means) (soon late : praxis.End) (spend : praxis.Time)\n  (timePreference : TimePreference praxis.toDatedFrame exchange.first.agent exchange.first.time)\n  (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)\n  (pays : PromisePays futurePlan promisedPlan promise money) (sooner : SpentSooner soon late)\n  (count : SameCount sum promise) (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)\n  (homogeneous : futurePlan.Homogeneous) (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)\n  (alike : RankedAlikeNowOf futurePlan spend promise repaid) (buysMore : BuysMoreThanItsParts futurePlan promise)\n  (isMoney : ∀ unit ∈ promise, praxis.Money unit) (free : FreeToHoldWithin promise)\n  (chain :\n    praxis.TransitiveOn exchange.first.agent exchange.first.time ↑(presentPlan.wouldServe sum)\n      ↑(futurePlan.wouldServe promise) ↑(futurePlan.wouldServe repaid))\n  (asymmetric : AsymmetricPreference praxis.toActionFrame exchange.first.agent exchange.first.time)\n  (voluntary : exchange.first.Voluntary) (before : exchange.first.BeforeCountsAsPlanned presentPlan sum)\n  (after : exchange.first.AfterCountsAsPlanned futurePlan repaid)\n  (demonstrated : DemonstratedPreference exchange.first) : sum.card &lt; repaid.card</code><span class=\"sep\"></span><code class=\"docstring\">**Every rate struck is positive** (S5). Take an exchange of present\nmoney for a promise of future money. It is voluntary on the lender's\nside (`Trade.Voluntary`). It demonstrates his preference\n(`DemonstratedPreference`). Then the repaid sum is larger\nthan the sum lent.\n\nIt is bilateral in form and one-sided in content. Only the lender's\ntrade (`exchange.first`) is used. Nothing about the borrower is used.\nThere is no market, no aggregation, no equilibrium. `Voluntary` makes\nthe lender's alternative the holding he had. Whatever set the price\ndoes not enter. </code>",
- "389": "<code>RankedAlikeNowOf futurePlan spend promise lesser</code>",
- "388": "<code>MoreMoneyPreferredWhenSpent futurePlan spend</code>",
- "387":
+ "389": "<code>MoreMoneyPreferredWhenSpent futurePlan spend</code>",
+ "388":
  "<code>LE.le.{u} {α : Type u} [self : LE α] : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The less-equal relation: `x ≤ y` \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `≤` in identifiers is `le`.</code>",
- "386": "<code>lesser.card ≤ promise.card</code>",
- "385": "<code>lesser ⊆ future.units</code>",
- "384": "<code>Apodictic.Model.Impulse.Good.ounce : Model.Impulse.Good</code>",
- "383":
+ "387": "<code>lesser.card ≤ promise.card</code>",
+ "386": "<code>lesser ⊆ future.units</code>",
+ "385": "<code>Apodictic.Model.Impulse.Good.ounce : Model.Impulse.Good</code>",
+ "384":
  "<code>Apodictic.Model.Impulse.not_rankedAlikeNow : ¬RankedAlikeNowOf Model.Impulse.plan 1 {Model.Impulse.Good.ounce} ∅</code><span class=\"sep\"></span><code class=\"docstring\">**He is not ranked alike now**, for his ounce against no cash. </code>",
- "382":
+ "383":
  "<code>Apodictic.Model.Impulse.plan : AllocationPlan Model.Impulse.cash</code><span class=\"sep\"></span><code class=\"docstring\">What he would buy with cash: the impulse, with any. </code>",
- "381":
+ "382":
  "<code>Apodictic.Model.Impulse.now_reading_fails : ¬PureInterest.MoreMoneyPreferredNow Model.Impulse.plan</code><span class=\"sep\"></span><code class=\"docstring\">**The undated reading of the claim is false of him**, though the\ndated claim holds and asymmetry holds at every date. </code>",
- "380":
+ "381":
  "<code>Apodictic.PureInterest.MoreMoneyPreferredNow {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {stock : Stock praxis.toActionFrame agent now} (plan : AllocationPlan stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">\"More money is preferred\", restricted to sums whose purchases\ndiffer. It is ranked at `now`, not at the date the sums would be spent.\nREJECTED as the library's claim. A man whose valuations change between\nnow and the spending refutes it. The dated claim still holds of him\n(`Apodictic.Model.Impulse.now_reading_fails`). </code>",
+ "380":
+ "<code>Apodictic.FreeToHoldWithin {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  (promise : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Free to hold, within the promise** — a condition on the\nsituation. The \"more money\" claim (`MoreMoneyPreferredWhenSpent`)\ncarries this restriction, on the future side. Every part of the promise, the whole included, costs the\nagent nothing to hold.\n\nRothbard abstracts from it in so many words: \"We have abstracted from\nhoarding, which will be dealt with in the chapter on money\" (*MES*\np. 386 n. 11). His own banking pages put a price on it. A depositor\n\"pays the owner of the warehouse a certain sum for the service of\nstorage\" (p. 801). </code>",
  "38":
  "<code>Apodictic.PureInterest.no_loan_at_nonpositive_rate {praxis : MoneyFrame} (trade : Trade praxis.toActionFrame)\n  {present future promised : Stock praxis.toActionFrame trade.agent trade.time} (presentPlan : AllocationPlan present)\n  (futurePlan : AllocationPlan future) (promisedPlan : AllocationPlan promised)\n  (sum promise money repaid : Finset praxis.Means) (soon late : praxis.End) (spend : praxis.Time)\n  (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)\n  (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)\n  (pays : PromisePays futurePlan promisedPlan promise money) (sooner : SpentSooner soon late)\n  (count : SameCount sum promise) (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)\n  (nonPositive : repaid.card ≤ sum.card) (homogeneous : futurePlan.Homogeneous)\n  (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend) (alike : RankedAlikeNowOf futurePlan spend promise repaid)\n  (buysMore : BuysMoreThanItsParts futurePlan promise) (isMoney : ∀ unit ∈ promise, praxis.Money unit)\n  (free : FreeToHoldWithin promise)\n  (chain :\n    praxis.TransitiveOn trade.agent trade.time ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)\n      ↑(futurePlan.wouldServe repaid))\n  (asymmetric : AsymmetricPreference praxis.toActionFrame trade.agent trade.time)\n  (refusal : trade.RefusalKeepsSum presentPlan sum) (after : trade.AfterCountsAsPlanned futurePlan repaid) :\n  ¬DemonstratedPreference trade</code><span class=\"sep\"></span><code class=\"docstring\">**At a rate not above zero, he does not lend** (S4; *MES* p. 386:\n\"at some minimum rate of interest the man will not save at all\"; \"A man\ncould not prefer 10 ounces or even less of future money to 10 ounces of\npresent money\").\n\nA lender gives `sum` now. He gets a promise of `repaid`. Suppose `repaid` is no larger than the sum lent. Then the\nloan demonstrates no preference. If `DemonstratedPreference` held of\nit, the lender would prefer the repayment to the kept sum. S3 with\nasymmetry forbids that.\n\nSo it is stated as: demonstrated preference (`DemonstratedPreference`)\ndoes not hold of the loan. That claim is the bridge from an act to a\npreference. The library has no other way to say a trade was made. It\nsays so only by asserting the bridge of the trade. </code>",
- "379":
- "<code>Apodictic.FreeToHoldWithin {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  (promise : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Free to hold, within the promise** — a condition on the\nsituation. The \"more money\" claim (`MoreMoneyPreferredWhenSpent`)\ncarries this restriction, on the future side. Every part of the promise, the whole included, costs the\nagent nothing to hold.\n\nRothbard abstracts from it in so many words: \"We have abstracted from\nhoarding, which will be dealt with in the chapter on money\" (*MES*\np. 386 n. 11). His own banking pages put a price on it. A depositor\n\"pays the owner of the warehouse a certain sum for the service of\nstorage\" (p. 801). </code>",
- "378": "<code>FreeToHoldWithin promise</code>",
- "377": "<code>∀ unit ∈ promise, praxis.Money unit</code>",
- "376": "<code>promise ⊆ stock.units</code>",
- "375": "<code>AsymmetricPreference praxis.toActionFrame agent now</code>",
- "374": "<code>PureInterest.MoreMoneyPreferredUnrestricted plan</code>",
- "373":
+ "379": "<code>FreeToHoldWithin promise</code>",
+ "378": "<code>∀ unit ∈ promise, praxis.Money unit</code>",
+ "377": "<code>promise ⊆ stock.units</code>",
+ "376": "<code>AsymmetricPreference praxis.toActionFrame agent now</code>",
+ "375": "<code>PureInterest.MoreMoneyPreferredUnrestricted plan</code>",
+ "374":
  "<code>Apodictic.PureInterest.MoreMoneyPreferredUnrestricted {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {stock : Stock praxis.toActionFrame agent now} (plan : AllocationPlan stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">\"More money is preferred\", as Rothbard's general rule states it\n(*MES* p. 379: \"more of a good will have greater utility than less of\nit\"). It is cut to money free to hold. Take two sums of money, one part\nof the other. The larger is preferred at `now`, whatever each would\nbuy. REJECTED as the library's claim. It is stated so the rejection is\nchecked (`buysMore_of_unrestricted`). </code>",
- "372":
+ "373":
  "<code>Apodictic.Trade.AfterCountsAsPlanned {praxis : MoneyFrame} (trade : Trade praxis.toActionFrame)\n  {future : Stock praxis.toActionFrame trade.agent trade.time} (futurePlan : AllocationPlan future)\n  (repaid : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The holding after counts as planned** — a condition on one\ntrade. After the loan, the lender holds some goods. They count for what\nhis plan says the repaid sum would buy, and nothing else. </code>",
- "371": "<code>trade.AfterCountsAsPlanned futurePlan repaid</code>",
- "370":
+ "372": "<code>trade.AfterCountsAsPlanned futurePlan repaid</code>",
+ "371":
  "<code>Apodictic.Trade.RefusalKeepsSum {praxis : MoneyFrame} (trade : Trade praxis.toActionFrame)\n  {present : Stock praxis.toActionFrame trade.agent trade.time} (presentPlan : AllocationPlan present)\n  (sum : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Refusing keeps the sum** — a condition on one trade. The refusal\nis supplied case by case. Had the lender refused, he would have been\nleft with what the present sum would buy, at full value. This is\nRothbard's reading of a loan's alternative.\n\nTwo Austrian writers, Hülsmann and Deist, describe lenders for whom it\nfails. For them the kept sum would buy less than the plan for it, or\nsomething else. </code>",
+ "370": "<code>trade.RefusalKeepsSum presentPlan sum</code>",
  "37":
  "<code>Apodictic.PureInterest.no_loan_at_zero_rate {praxis : MoneyFrame} (trade : Trade praxis.toActionFrame)\n  {present future promised : Stock praxis.toActionFrame trade.agent trade.time} (presentPlan : AllocationPlan present)\n  (futurePlan : AllocationPlan future) (promisedPlan : AllocationPlan promised)\n  (sum promise money repaid : Finset praxis.Means) (soon late : praxis.End)\n  (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)\n  (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)\n  (pays : PromisePays futurePlan promisedPlan promise money) (sooner : SpentSooner soon late)\n  (count : SameCount sum promise) (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)\n  (zero : repaid.card = sum.card) (homogeneous : futurePlan.Homogeneous)\n  (asymmetric : AsymmetricPreference praxis.toActionFrame trade.agent trade.time)\n  (refusal : trade.RefusalKeepsSum presentPlan sum) (after : trade.AfterCountsAsPlanned futurePlan repaid) :\n  ¬DemonstratedPreference trade</code><span class=\"sep\"></span><code class=\"docstring\">**At a rate of exactly zero, he does not lend** — a loan that repays\nexactly the sum lent demonstrates no preference. It does not use \"more\nmoney is preferred\" (`MoreMoneyPreferredWhenSpent`). It uses no\ncondition on satiation (`BuysMoreThanItsParts`). It uses none on\nvaluations at the spending (`RankedAlikeNowOf`). Two claims carry it:\ntime preference (`TimePreference`) and asymmetry\n(`AsymmetricPreference`). The conditions are:\n\n- purchasing power (`SamePurchasingPower`);\n- a promise that pays (`PromisePays`);\n- the present sum spent sooner (`SpentSooner`);\n- the promise's count (`SameCount`);\n- interchangeable units (`AllocationPlan.Homogeneous`);\n- the two conditions on the trade (`Trade.RefusalKeepsSum`,\n  `Trade.AfterCountsAsPlanned`). </code>",
- "369": "<code>trade.RefusalKeepsSum presentPlan sum</code>",
- "368":
+ "369":
  "<code>AsymmetricPreference praxis.toActionFrame trade.agent trade.time</code>",
- "367": "<code>futurePlan.Homogeneous</code>",
- "366": "<code>repaid.card = sum.card</code>",
- "365": "<code>repaid ⊆ future.units</code>",
- "364": "<code>promise ⊆ future.units</code>",
- "363": "<code>SameCount sum promise</code>",
- "362":
+ "368": "<code>futurePlan.Homogeneous</code>",
+ "367": "<code>repaid.card = sum.card</code>",
+ "366": "<code>repaid ⊆ future.units</code>",
+ "365": "<code>promise ⊆ future.units</code>",
+ "364": "<code>SameCount sum promise</code>",
+ "363":
  "<code>TimePreference praxis.toDatedFrame trade.agent trade.time</code>",
- "361": "<code>Stock praxis.toActionFrame trade.agent trade.time</code>",
- "360":
+ "362": "<code>Stock praxis.toActionFrame trade.agent trade.time</code>",
+ "361":
  "<code>Apodictic.Model.CertaintySplit.merged_fails_in_both (s l : ℕ × ℕ) :\n  ¬SamePurchasingPower Model.CertaintySplit.doubtCash Model.CertaintySplit.doubtPromise {Model.CertaintySplit.Good.cash}\n        {Model.CertaintySplit.Good.promise} s l ∧\n    ¬SamePurchasingPower Model.CertaintySplit.inflationCash Model.CertaintySplit.inflationPromise\n        {Model.CertaintySplit.Good.cash} {Model.CertaintySplit.Good.promise} s l</code><span class=\"sep\"></span><code class=\"docstring\">**The merged condition fails in both cases alike.** The merged\ncondition is same purchasing power (`SamePurchasingPower`), asserted\nbetween the cash and the promise itself, not the money promised. It\nfails under default risk. It fails under inflation. The promise counts\nfor the same in both, so its failure cannot say which happened. </code>",
+ "360":
+ "<code>Apodictic.Model.CertaintySplit.inflationCash :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.worse Model.CertaintySplit.Good.cash\n      Model.CertaintySplit.soon ⋯)</code>",
  "36":
  "<code>Apodictic.AsymmetricPreference (praxis : ActionFrame) (agent : praxis.Agent) (time : praxis.Time) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Asymmetry of preference** — if one bundle is preferred to\nanother, the other is not preferred to the first.\n\nThis is the \"strict\" reading of `Prefers`.\n`Apodictic.Contrast.rothbard_entails_servedInOrder` argues by\ncontradiction from a preference running both ways. Without asymmetry\nthere is no contradiction to draw. `Apodictic.no_rival_swap_dominant`\nspends it the same way. So do the loan theorems\n`Apodictic.PureInterest.no_loan_at_zero_rate` and\n`Apodictic.PureInterest.no_loan_at_nonpositive_rate`.\n`Apodictic.PureInterest.struck_rate_positive` passes it on to\n`Apodictic.PureInterest.no_loan_at_nonpositive_rate`. `Apodictic.PureInterest.buysMore_of_unrestricted` spends it\non one bundle preferred to itself.\n\nSource: tacit. No sentence in Mises or Rothbard asserts it. Rothbard's\nvalue scales are built from acts of choice. One act cannot demonstrate\na preference in both directions. But that is an argument from the\nbridge (demonstrated preference), not a statement of his. And the\nbridge as stated here (`DemonstratedPreference`, of one trade) yields\na preference in one direction only. The nearest explicit treatment is\nNozick's reconstruction (1977). That is a critic's formalization, not\nthe tradition's own words.\n\nStatus: our-reconstruction. It is recorded as ours rather than\nattributed, precisely because the search for a source came back empty.\n\nDoes not say: not transitivity. Not totality. Not comparability of\nany particular pair. It is asserted of one agent at one time. It is\nasserted of the bundle-level relation. The end-level case follows from\nit, since `PrefersEnd` is `Prefers` on singletons. </code>",
  "359":
- "<code>Apodictic.Model.CertaintySplit.inflationCash :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.worse Model.CertaintySplit.Good.cash\n      Model.CertaintySplit.soon ⋯)</code>",
- "358":
  "<code>Apodictic.Model.CertaintySplit.inflationPromised :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.worse Model.CertaintySplit.Good.promised\n      Model.CertaintySplit.worse ⋯)</code>",
- "357":
+ "358":
  "<code>Apodictic.Model.CertaintySplit.inflationPromise :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.worse Model.CertaintySplit.Good.promise\n      Model.CertaintySplit.worse ⋯)</code>",
- "356":
+ "357":
  "<code>Prod.{u, v} (α : Type u) (β : Type v) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">The product type, usually written `α × β`. Product types are also called pair or tuple types.\nElements of this type are pairs in which the first element is an `α` and the second element is a\n`β`.\n\nProducts nest to the right, so `(x, y, z) : α × β × γ` is equivalent to `(x, (y, z)) : α × (β × γ)`.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `×` in identifiers is `Prod`.</code>",
- "355": "<code>ℕ × ℕ</code>",
- "354":
+ "356": "<code>ℕ × ℕ</code>",
+ "355":
  "<code>Apodictic.Model.CertaintySplit.inflation_pays_but_not_power (s l : ℕ × ℕ) :\n  PromisePays Model.CertaintySplit.inflationPromise Model.CertaintySplit.inflationPromised\n      {Model.CertaintySplit.Good.promise} {Model.CertaintySplit.Good.promised} ∧\n    ¬SamePurchasingPower Model.CertaintySplit.inflationCash Model.CertaintySplit.inflationPromised\n        {Model.CertaintySplit.Good.cash} {Model.CertaintySplit.Good.promised} s l</code><span class=\"sep\"></span><code class=\"docstring\">**Inflation: the promise pays, purchasing power does not hold.** </code>",
- "353":
+ "354":
  "<code>Apodictic.Model.CertaintySplit.Good.promise : Model.CertaintySplit.Good</code>",
- "352":
+ "353":
  "<code>Apodictic.Model.CertaintySplit.doubtPromise :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.late Model.CertaintySplit.Good.promise\n      Model.CertaintySplit.worse ⋯)</code>",
- "351":
+ "352":
  "<code>Apodictic.Model.CertaintySplit.late : ℕ × ℕ</code><span class=\"sep\"></span><code class=\"docstring\">An ounce's worth at date 1: the same satisfaction, later. </code>",
- "350":
+ "351":
  "<code>Apodictic.Model.CertaintySplit.soon : ℕ × ℕ</code><span class=\"sep\"></span><code class=\"docstring\">An ounce's worth now. </code>",
+ "350":
+ "<code>Apodictic.Model.CertaintySplit.Good.promised : Model.CertaintySplit.Good</code>",
  "35":
  "<code>Membership.mem.{u, v} {α : outParam (Type u)} {γ : Type v} [self : Membership α γ] : γ → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The membership relation `a ∈ s : Prop` where `a : α`, `s : γ`. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `∈` in identifiers is `mem`.</code>",
  "349":
- "<code>Apodictic.Model.CertaintySplit.Good.promised : Model.CertaintySplit.Good</code>",
- "348":
  "<code>Apodictic.Model.CertaintySplit.Good.cash : Model.CertaintySplit.Good</code>",
- "347":
+ "348":
  "<code>Apodictic.Model.CertaintySplit.doubtPromised :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.late Model.CertaintySplit.Good.promised\n      Model.CertaintySplit.late ⋯)</code>",
- "346":
+ "347":
  "<code>Apodictic.Model.CertaintySplit.doubtCash :\n  AllocationPlan\n    (Model.CertaintySplit.stock Model.CertaintySplit.worse Model.CertaintySplit.late Model.CertaintySplit.Good.cash\n      Model.CertaintySplit.soon ⋯)</code>",
- "345":
+ "346":
  "<code>Apodictic.Model.CertaintySplit.doubt_power_but_not_pays :\n  SamePurchasingPower Model.CertaintySplit.doubtCash Model.CertaintySplit.doubtPromised {Model.CertaintySplit.Good.cash}\n      {Model.CertaintySplit.Good.promised} Model.CertaintySplit.soon Model.CertaintySplit.late ∧\n    ¬PromisePays Model.CertaintySplit.doubtPromise Model.CertaintySplit.doubtPromised\n        {Model.CertaintySplit.Good.promise} {Model.CertaintySplit.Good.promised}</code><span class=\"sep\"></span><code class=\"docstring\">**Default risk: purchasing power holds, the promise does not pay.** </code>",
- "344":
+ "345":
  "<code>Apodictic.SameCount {praxis : MoneyFrame} (sum promise : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The same count** — a condition on the situation, of bookkeeping.\nThe promise is as many units as the present sum. This is Rothbard's\n\"the same amount of future money\" (*MES* p. 376), where it does work.\nOnly the loan theorems use it. They use it to compare the repaid sum\nwith the promise. </code>",
- "343":
+ "344":
  "<code>Apodictic.SpentSooner {praxis : MoneyFrame} {now : praxis.Time} (soon late : praxis.End) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Spent sooner** — a condition on the situation. The present sum\nwould be spent before the promise pays. And the date of what it would\nbuy is not before `now`.\n\nRothbard's footnote answers this rather than grants it: \"It is not\nvalid to object that some might prefer to use the money in the future\nrather than in the present. That is not the issue here, which is one of\navailability for use\" (*MES* p. 386 n. 11). The objector is the man for\nwhom this condition fails. He would hold the present sum until the date\nthe promise pays. </code>",
- "342": "<code>SpentSooner soon late</code>",
- "341":
+ "343": "<code>SpentSooner soon late</code>",
+ "342":
  "<code>Apodictic.PromisePays {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {future promised : Stock praxis.toActionFrame agent now} (futurePlan : AllocationPlan future)\n  (promisedPlan : AllocationPlan promised) (promise money : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The promise pays** — a condition on the situation. It is\nRothbard's world of certainty, for one promise. The agent's plan counts\nthe promise for exactly what it counts the promised money for.\n\nIt fails where he believes the promise may not pay, or may pay only in\npart. The promise then counts for something other than the promised\nmoney would buy. The credit premium lands here, and only here. </code>",
- "340": "<code>PromisePays futurePlan promisedPlan promise money</code>",
+ "341": "<code>PromisePays futurePlan promisedPlan promise money</code>",
+ "340":
+ "<code>Apodictic.SamePurchasingPower {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {present future : Stock praxis.toActionFrame agent now} (presentPlan : AllocationPlan present)\n  (futurePlan : AllocationPlan future) (sum promise : Finset praxis.Means) (soon late : praxis.End) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Same purchasing power** — a condition on the situation. Each of two\nsums would buy one satisfaction. Each would buy it at its own date. The\ntwo satisfactions are the same. The theorems assert this between the present sum and the\nmoney promised.\n\nMises: \"present goods are valued higher than future goods of the same\nkind and quantity\" (*Human Action*, ch. XIX, §1). Rothbard's \"the same\namount of future money\" (*MES* p. 376) is not part of it. Equal counts\nof ounces are the same good at two dates only if they buy the same\nthing. That is what this condition says. The count is a separate\ncondition (`SameCount`), carried only where it is used.\n\nIt fails where the money buys less at the later date. That is\nRothbard's purchasing-power component (*MES* p. 797) and Mises's price\npremium. Whether the promise pays is a separate condition\n(`PromisePays`). </code>",
  "34":
  "<code>Apodictic.ActionFrame.PrefersEnd (praxis : ActionFrame) (agent : praxis.Agent) (time : praxis.Time)\n  (want other : praxis.End) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">Preference between two single ends. It is bundle preference\nbetween two one-member bundles. It is a definition, not a second\nrelation. </code>",
  "339":
- "<code>Apodictic.SamePurchasingPower {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {present future : Stock praxis.toActionFrame agent now} (presentPlan : AllocationPlan present)\n  (futurePlan : AllocationPlan future) (sum promise : Finset praxis.Means) (soon late : praxis.End) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Same purchasing power** — a condition on the situation. Each of two\nsums would buy one satisfaction. Each would buy it at its own date. The\ntwo satisfactions are the same. The theorems assert this between the present sum and the\nmoney promised.\n\nMises: \"present goods are valued higher than future goods of the same\nkind and quantity\" (*Human Action*, ch. XIX, §1). Rothbard's \"the same\namount of future money\" (*MES* p. 376) is not part of it. Equal counts\nof ounces are the same good at two dates only if they buy the same\nthing. That is what this condition says. The count is a separate\ncondition (`SameCount`), carried only where it is used.\n\nIt fails where the money buys less at the later date. That is\nRothbard's purchasing-power component (*MES* p. 797) and Mises's price\npremium. Whether the promise pays is a separate condition\n(`PromisePays`). </code>",
- "338":
  "<code>SamePurchasingPower presentPlan promisedPlan sum money soon late</code>",
- "337":
+ "338":
  "<code>Apodictic.MoneyFrame.toDatedFrame (self : MoneyFrame) : DatedFrame</code>",
- "336": "<code>TimePreference praxis.toDatedFrame agent now</code>",
- "335": "<code>AllocationPlan promised</code>",
- "334": "<code>AllocationPlan future</code>",
- "333": "<code>AllocationPlan present</code>",
- "332":
+ "337": "<code>TimePreference praxis.toDatedFrame agent now</code>",
+ "336": "<code>AllocationPlan promised</code>",
+ "335": "<code>AllocationPlan future</code>",
+ "334": "<code>AllocationPlan present</code>",
+ "333":
  "<code>Apodictic.PureInterest.present_sum_preferred {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {present future promised : Stock praxis.toActionFrame agent now} (presentPlan : AllocationPlan present)\n  (futurePlan : AllocationPlan future) (promisedPlan : AllocationPlan promised)\n  (sum promise money : Finset praxis.Means) (soon late : praxis.End)\n  (timePreference : TimePreference praxis.toDatedFrame agent now)\n  (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)\n  (pays : PromisePays futurePlan promisedPlan promise money) (sooner : SpentSooner soon late) :\n  praxis.Prefers agent now ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)</code><span class=\"sep\"></span><code class=\"docstring\">**Present money is preferred to the same amount of future money**\n(S2; *MES* p. 376: \"It follows from the law of time preference that\npresent money is worth more than present expectations of the same\namount of future money\").\n\n\"The same amount\" does no work here. No count is carried. The claim used is\ntime preference (`TimePreference`). Two conditions do the work. One is\nwhat the sums would buy (`SamePurchasingPower`). The other is that the\npromise pays (`PromisePays`). The count enters with the loans\n(`SameCount`). The conclusion also needs the present sum to be spent\nsooner (`SpentSooner`). Rothbard's n. 11 dismisses the man for whom\nthis fails: he would keep the present sum until the promise pays. </code>",
- "331": "<code>Finset toDatedFrame.Means</code>",
- "330": "<code>toDatedFrame.Time</code>",
+ "332": "<code>Finset toDatedFrame.Means</code>",
+ "331": "<code>toDatedFrame.Time</code>",
+ "330": "<code>toDatedFrame.Agent</code>",
  "33":
  "<code>∀ subStock ⊆ stock.units,\n  ∀ served ∈ plan.wouldServe subStock,\n    ∀ better ∈ stock.serves, praxis.PrefersEnd agent time better served → better ∈ plan.wouldServe subStock</code><span class=\"sep\"></span><code class=\"docstring\">The ordering itself. </code>",
- "329": "<code>toDatedFrame.Agent</code>",
- "328":
+ "329":
  "<code>toDatedFrame.Agent → toDatedFrame.Time → Finset toDatedFrame.Means → Prop</code>",
- "327":
+ "328":
  "<code>self.Agent → self.Time → Finset self.Means → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`FreeToHold agent t sum`: at `t`, holding exactly the units in\n`sum` costs the agent nothing — no storage, custody, tax or risk of\nloss eats into it. Supplied; no properties. </code>",
- "326": "<code>toDatedFrame.Means</code>",
- "325": "<code>toDatedFrame.Means → Prop</code>",
- "324":
+ "327": "<code>toDatedFrame.Means</code>",
+ "326": "<code>toDatedFrame.Means → Prop</code>",
+ "325":
  "<code>self.Means → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Money m`: the unit `m` is an amount of money, or a promise of an\namount of money at a later date. Money is Mises's: \"the thing which\nserves as the generally accepted and commonly used medium of\nexchange\" (*Human Action*, ch. XVII, §3). Supplied; no properties:\nwhether a unit is money is a fact about the situation, checked by\nwhoever applies a theorem, and each theorem that needs it names it as\na hypothesis. </code>",
- "323":
+ "324":
  "<code>Apodictic.MoneyFrame.mk (toDatedFrame : DatedFrame) (Money : toDatedFrame.Means → Prop)\n  (FreeToHold : toDatedFrame.Agent → toDatedFrame.Time → Finset toDatedFrame.Means → Prop) : MoneyFrame</code>",
- "322":
+ "323":
  "<code>Apodictic.Regression.ownPastPrice_of_claim {praxis : MediumFrame} (history : History praxis) (m : praxis.Means) (n : ℕ)\n  (appraisal : AppraisalFromPast history m) : history.OwnPastPrice m n</code><span class=\"sep\"></span><code class=\"docstring\">**Own past price follows from the claim.** Here the condition must\nbe stated without quantities and without \"rests on\". So stated, it is\nthe claim restricted to the days before `n`. </code>",
- "321": "<code>∀ (g : praxis.Means), history.AcquisitionsPurposive g n</code>",
- "320": "<code>∀ (g : praxis.Means), history.BeginsBeforeMedium g</code>",
+ "322": "<code>∀ (g : praxis.Means), history.AcquisitionsPurposive g n</code>",
+ "321": "<code>∀ (g : praxis.Means), history.BeginsBeforeMedium g</code>",
+ "320": "<code>∀ (g : praxis.Means), AppraisalFromPast history g</code>",
  "32":
  "<code>Apodictic.ServedInOrder.mk {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} {plan : AllocationPlan stock}\n  (inOrder :\n    ∀ subStock ⊆ stock.units,\n      ∀ served ∈ plan.wouldServe subStock,\n        ∀ better ∈ stock.serves, praxis.PrefersEnd agent time better served → better ∈ plan.wouldServe subStock) :\n  ServedInOrder plan</code>",
- "319": "<code>∀ (g : praxis.Means), AppraisalFromPast history g</code>",
- "318": "<code>∀ (g : praxis.Means), TwoPartialDemands praxis g</code>",
- "317":
+ "319": "<code>∀ (g : praxis.Means), TwoPartialDemands praxis g</code>",
+ "318":
  "<code>Apodictic.Regression.prior_money_relates_back {praxis : MediumFrame} (history : History praxis) (m : praxis.Means)\n  (n : ℕ) (twoDemands : ∀ (g : praxis.Means), TwoPartialDemands praxis g)\n  (appraisal : ∀ (g : praxis.Means), AppraisalFromPast history g)\n  (begins : ∀ (g : praxis.Means), history.BeginsBeforeMedium g)\n  (purposive : ∀ (g : praxis.Means), history.AcquisitionsPurposive g n) (medium : history.MediumAt n m) :\n  ∃ k &lt; n,\n    ∃ agent g, history.AcquiredAgainst k m agent g ∧ (history.MediumAt k g → ∃ k' &lt; k, history.DirectAcquisitionAt k' g)</code><span class=\"sep\"></span><code class=\"docstring\">**The prior money relates back** — *Power and Market*'s\nparenthesis. Say anyone appraises `m` as a medium on day `n`. Then\nsomeone acquired `m` on an earlier day `k`, against some good `g`. And\nsay `g` was then a medium. Then someone acquired `g` before `k`, for\nan end other than passing it on.\n\nBoth claims, and the conditions `begins` and `purposive`, are carried\nfor every good. That is because which good was paid is found, not given. So the record must\nbegin before any medium at all. </code>",
- "316":
+ "317":
  "<code>Apodictic.MediumFrame.ValuesDirectly (praxis : MediumFrame) (agent : praxis.Agent) (time : praxis.Time)\n  (m : praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The agent, at that time, believes `m` serves some end other than an\nonward one: he values `m` for an \"other employment\" in the broad\nreading. </code>",
- "315": "<code>history.FormedInBarter m n</code>",
- "314":
+ "316": "<code>history.FormedInBarter m n</code>",
+ "315":
  "<code>Apodictic.Regression.barter_origin {praxis : MediumFrame} (history : History praxis) (m : praxis.Means) (n : ℕ)\n  (twoDemands : TwoPartialDemands praxis m) (appraisal : AppraisalFromPast history m)\n  (begins : history.BeginsBeforeMedium m) (purposive : history.AcquisitionsPurposive m n)\n  (barter : history.FormedInBarter m n) (medium : history.MediumAt n m) :\n  ∃ k &lt; n,\n    ∃ agent g,\n      history.AcquiredAgainst k m agent g ∧ praxis.ValuesDirectly agent (history.date k) m ∧ ¬history.MediumAt k g</code><span class=\"sep\"></span><code class=\"docstring\">**Barter origin** — Rothbard's p. 275 version, positive. Say anyone\nappraises `m` as a medium on day `n`. Then someone acquired `m` on an\nearlier day for an end other than passing it on. And he gave for it a\ngood that was not then a medium. </code>",
- "313":
+ "314":
  "<code>Apodictic.History.NarrowAcquisitionAt {praxis : MediumFrame} (history : History praxis) (narrow : praxis.End → Prop)\n  (k : ℕ) (m : praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">On day `k`, someone acquired `m` for an end other than passing it\non that is in `narrow`. </code>",
- "312": "<code>history.OtherEmploymentsNarrow narrow m n</code>",
- "311":
+ "313": "<code>history.OtherEmploymentsNarrow narrow m n</code>",
+ "312":
  "<code>Apodictic.Regression.narrow_acquisition_before {praxis : MediumFrame} (history : History praxis)\n  (narrow : praxis.End → Prop) (m : praxis.Means) (n : ℕ) (twoDemands : TwoPartialDemands praxis m)\n  (appraisal : AppraisalFromPast history m) (begins : history.BeginsBeforeMedium m)\n  (purposive : history.AcquisitionsPurposive m n) (narrowReading : history.OtherEmploymentsNarrow narrow m n)\n  (medium : history.MediumAt n m) : ∃ k &lt; n, history.NarrowAcquisitionAt narrow k m</code><span class=\"sep\"></span><code class=\"docstring\">**A narrow acquisition before.** This is the positive form, for\nthe narrow reading. </code>",
- "310": "<code>praxis.End → Prop</code>",
- "31":
- "<code>Apodictic.Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (stock : Stock praxis agent time) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Comparability of the ends a good can serve** — a condition on\nthe situation, NOT a praxeological claim.\n\nAny two ends the good can serve are ranked one way or the other. It\nis confined to one stock's serviceable ends, because that is all any\ntheorem needs. It is not asserted of every pair of ends in the frame.\n\nWhere it fails, a theorem carrying it is SILENT rather than false. An\nagent may simply never have had occasion to rank two ends against each\nother. Rothbard's own doctrine is that scales are revealed in action\nand nowhere else. That doctrine makes such agents the normal case\nrather than the exotic one. Mises says the same thing in almost the\nsame words: \"the scale of values or wants manifests itself only in the\nreality of action. These scales have no independent existence apart\nfrom the actual behavior of individuals\" (*Human Action*, ch. IV, §2).\n\nIt is carried by the Mises route (`Apodictic.Mises.ladder_from_order`).\nIt is carried by the ladder read as a history\n(`Apodictic.Temporal.ladder_judged_earlier`). It is carried by no\ntheorem on the Rothbard route. That asymmetry is a finding. Swap\ndominance (`SwapDominant`), with independence of uses\n(`IndependentUses`), forces a comparison between every served end and\nevery unserved serviceable one (`Apodictic.served_over_unserved`). So\nwhere both hold, this condition can only fail for a pair that never\nstraddles a margin. See\n`Apodictic.Model.rothbard_premise_holds_where_mises_is_silent`. </code>",
- "309":
+ "311": "<code>praxis.End → Prop</code>",
+ "310":
  "<code>Apodictic.Regression.partial_demands_exhaust {praxis : MediumFrame} (agent : praxis.Agent) (time : praxis.Time)\n  (m : praxis.Means) (twoDemands : TwoPartialDemands praxis m) :\n  praxis.ServedBy agent time {m} = praxis.DirectEnds agent time m ∪ praxis.OnwardEnds agent time m</code><span class=\"sep\"></span><code class=\"docstring\">**The two partial demands exhaust what the good serves.** It holds\ngiven that every end is onward for `m` or not (`TwoPartialDemands`). </code>",
- "308":
+ "31":
+ "<code>Apodictic.Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (stock : Stock praxis agent time) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Comparability of the ends a good can serve** — a condition on\nthe situation, NOT a praxeological claim.\n\nAny two ends the good can serve are ranked one way or the other. It\nis confined to one stock's serviceable ends, because that is all any\ntheorem needs. It is not asserted of every pair of ends in the frame.\n\nWhere it fails, a theorem carrying it is SILENT rather than false. An\nagent may simply never have had occasion to rank two ends against each\nother. Rothbard's own doctrine is that scales are revealed in action\nand nowhere else. That doctrine makes such agents the normal case\nrather than the exotic one. Mises says the same thing in almost the\nsame words: \"the scale of values or wants manifests itself only in the\nreality of action. These scales have no independent existence apart\nfrom the actual behavior of individuals\" (*Human Action*, ch. IV, §2).\n\nIt is carried by the Mises route (`Apodictic.Mises.ladder_from_order`).\nIt is carried by the ladder read as a history\n(`Apodictic.Temporal.ladder_judged_earlier`). It is carried by no\ntheorem on the Rothbard route. That asymmetry is a finding: Mises's\nroute needs a condition on the agent's value scale that Rothbard's\nroute does not.\n\nSwap dominance (`SwapDominant`), with independence of uses\n(`IndependentUses`), already ranks some pairs. Take any sub-stock on\nhand. Every end the plan would serve with it is preferred to every end\nthe good can serve that the plan would leave unserved with it\n(`Apodictic.served_over_unserved`). So where both hold, this condition\ncan fail only for a pair that no sub-stock splits: at every sub-stock,\nthe plan serves both or neither. A frame where swap dominance holds\nand this condition fails is built in\n`Apodictic.Model.rothbard_premise_holds_where_mises_is_silent`. </code>",
+ "309":
  "<code>Union.union.{u} {α : Type u} [self : Union α] : α → α → α</code><span class=\"sep\"></span><code class=\"docstring\">`a ∪ b` is the union of `a` and `b`. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `∪` in identifiers is `union`.</code>",
- "307":
+ "308":
  "<code>Apodictic.MediumFrame.DirectEnds (praxis : MediumFrame) (agent : praxis.Agent) (time : praxis.Time) (m : praxis.Means) :\n  Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The other ends the agent believes `m` serves: the direct part of his\ndemand for it. </code>",
- "306":
+ "307":
  "<code>Apodictic.Regression.partial_demands_not_not_exhaust {praxis : MediumFrame} (agent : praxis.Agent) (time : praxis.Time)\n  (m : praxis.Means) (e : praxis.End) :\n  e ∈ praxis.ServedBy agent time {m} → ¬e ∉ praxis.DirectEnds agent time m ∪ praxis.OnwardEnds agent time m</code><span class=\"sep\"></span><code class=\"docstring\">**Not-not exhaustive.** No claim here decides the sort of an end.\nWithout one, every end the good serves is only not-not in one of the\ntwo parts. </code>",
- "305": "<code>history.MediumAt n m</code>",
- "304": "<code>TwoPartialDemands praxis m</code>",
- "303":
+ "306": "<code>history.MediumAt n m</code>",
+ "305": "<code>TwoPartialDemands praxis m</code>",
+ "304":
  "<code>Apodictic.Regression.direct_acquisition_before {praxis : MediumFrame} (history : History praxis) (m : praxis.Means)\n  (n : ℕ) (twoDemands : TwoPartialDemands praxis m) (appraisal : AppraisalFromPast history m)\n  (begins : history.BeginsBeforeMedium m) (purposive : history.AcquisitionsPurposive m n)\n  (medium : history.MediumAt n m) : ∃ k &lt; n, history.DirectAcquisitionAt k m</code><span class=\"sep\"></span><code class=\"docstring\">**A direct acquisition before** — the positive form. Say anyone\nappraises `m` as a medium on day `n`. Then someone acquired `m` on an\nearlier day for an end other than passing it on. Beyond what the\nnegative form assumes, it assumes that every end is onward for `m` or\nnot (`TwoPartialDemands`). </code>",
- "302": "<code>∀ k &lt; n, ¬history.DirectAcquisitionAt k m</code>",
- "301":
+ "303": "<code>∀ k &lt; n, ¬history.DirectAcquisitionAt k m</code>",
+ "302":
  "<code>Apodictic.History.AcquisitionsPurposive {praxis : MediumFrame} (history : History praxis) (m : praxis.Means) (n : ℕ) :\n  Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Acquisitions are purposive** — a condition on the situation.\nWhoever acquired `m` on a day before `n` believed, that day, that `m`\nserves some end. It fails where someone acquired `m` before day `n`\nbelieving it served no end at all. Say he took it only to be rid of\nthe good he gave for it. </code>",
- "300": "<code>history.AcquisitionsPurposive m n</code>",
+ "301": "<code>history.AcquisitionsPurposive m n</code>",
+ "300": "<code>history.BeginsBeforeMedium m</code>",
  "30":
  "<code>Apodictic.Model.existence_does_not_refute_second_horn : ¬Mises.ExistenceRefutesSecondHorn</code><span class=\"sep\"></span><code class=\"docstring\">**Existence does not refute the second horn.** Mises calls one\naction followed by a terminal state \"manifestly incompatible with our\nassumption that there is action\". The frame `Solitary` admits exactly\none action. It satisfies both halves he calls incompatible. So the\nstep is not valid as stated.\n\nWhat his argument needs is `Mises.ActionRecurs`: that two distinct\nactions occur. Nothing in \"there is action\" delivers it. His own\nwording gestures past bare existence (\"this case no longer implies the\ngeneral conditions presupposed in the category of action\"). It does\nnot say what those conditions are. Naming them is the suppressed\npremise of his derivation. </code>",
  "3": "<code>praxis.Agent</code>",
- "299": "<code>history.BeginsBeforeMedium m</code>",
- "298": "<code>AppraisalFromPast history m</code>",
- "297":
+ "299": "<code>AppraisalFromPast history m</code>",
+ "298":
  "<code>Apodictic.Regression.no_medium_without_direct_acquisition {praxis : MediumFrame} (history : History praxis)\n  (m : praxis.Means) (n : ℕ) (appraisal : AppraisalFromPast history m) (begins : history.BeginsBeforeMedium m)\n  (purposive : history.AcquisitionsPurposive m n) (noDirect : ∀ k &lt; n, ¬history.DirectAcquisitionAt k m) :\n  ¬history.MediumAt n m</code><span class=\"sep\"></span><code class=\"docstring\">**No medium without a direct acquisition before.** This is Mises's\nnegative form of the genetic claim, in the broad reading. </code>",
- "296":
+ "297":
  "<code>Apodictic.MediumFrame.OnwardEnds (praxis : MediumFrame) (agent : praxis.Agent) (time : praxis.Time) (m : praxis.Means) :\n  Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The onward ends the agent believes `m` serves: the medium-of-exchange\npart of his demand for it. </code>",
- "295": "<code>trade.PurelyIndirect</code>",
- "294": "<code>trade.KeptServesOtherEnds</code>",
- "293": "<code>trade.SeparableFromRest</code>",
- "292":
+ "296": "<code>trade.PurelyIndirect</code>",
+ "295": "<code>trade.KeptServesOtherEnds</code>",
+ "294": "<code>trade.SeparableFromRest</code>",
+ "293":
  "<code>Apodictic.Regression.indirect_ranks_onward_ends {praxis : MediumFrame} (trade : Trade praxis.toActionFrame)\n  (demonstrated : DemonstratedPreference trade) (voluntary : trade.Voluntary) (separable : trade.SeparableFromRest)\n  (unique : trade.KeptServesOtherEnds) (pure : trade.PurelyIndirect) :\n  praxis.Prefers trade.agent trade.time (praxis.OnwardEnds trade.agent trade.time trade.gets)\n    (praxis.ServedBy trade.agent trade.time {trade.gives})</code><span class=\"sep\"></span><code class=\"docstring\">**Indirect exchange ranks onward ends.** Take a trade in which the\nagent wants the received good only to pass it on. He ranks the ends he\nexpects to reach by passing it on above the ends of the good he gave.\nHe ranks them on his scale at the time of trading. </code>",
- "291": "<code>Trade praxis.toActionFrame</code>",
- "290":
+ "292": "<code>Trade praxis.toActionFrame</code>",
+ "291":
  "<code>Apodictic.Trade.PurelyIndirect {praxis : MediumFrame} (trade : Trade praxis.toActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Purely indirect** — a condition on one trade. Every end the agent\nbelieves the received good serves is an onward end. He wants the good\nonly to pass it on. It fails where he believes the good also serves an\nend that is not onward: he wants it for itself too. </code>",
+ "290":
+ "<code>Apodictic.History.MediumAt {praxis : MediumFrame} (history : History praxis) (n : ℕ) (m : praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">On day `n`, someone appraises `m` as a medium. </code>",
  "29":
  "<code>Apodictic.Model.recurs_does_not_deliver_ladder : Mises.ActionRecurs Model.Plural ∧ ¬Mises.LadderHolds Model.pluralPlan</code><span class=\"sep\"></span><code class=\"docstring\">**Refuting the second horn does not deliver the ladder.** Take a\nframe where action is plural. Mises's dilemma is won outright there.\nIn that frame the ladder fails.\n\nAnd it fails for a substantive reason, not a degenerate one.\nPreference here is asymmetric (`plural_asymmetric`) and non-empty\n(`plural_prefers_nontrivial`). What goes wrong is the agent's plan. It\nserves the less urgent end first. So the unit he adds brings in\nsomething MORE urgent than what he was already serving. Mises's\nsentence is false of this agent. Everything the dilemma establishes\nis true of him.\n\nSo the step from \"there are intermediate stages\" to the law is not\nvalid on its own. What has to be added is that the plan respects the\nordering. The library reconstructs it as `ServedInOrder`. That is\nstrictly weaker than Rothbard's premises (`SwapDominant`, with\nindependence of uses and asymmetry). In Mises's own text the addition\nis a single unargued sentence: \"It is nothing else than the reverse of the\nstatement that what satisfies more is preferred to what gives smaller\nsatisfaction.\"\n\nThis does not show Mises's derivation is unsalvageable. It shows the\ndilemma is not the premise. </code>",
  "289":
- "<code>Apodictic.History.MediumAt {praxis : MediumFrame} (history : History praxis) (n : ℕ) (m : praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">On day `n`, someone appraises `m` as a medium. </code>",
- "288":
  "<code>Apodictic.History.DirectAcquisitionAt {praxis : MediumFrame} (history : History praxis) (k : ℕ) (m : praxis.Means) :\n  Prop</code><span class=\"sep\"></span><code class=\"docstring\">On day `k`, someone acquired `m` for an end other than passing it\non. In the broad reading, this is `m` having \"exchange value on account\nof other employments\". </code>",
- "287":
+ "288":
  "<code>Apodictic.History.AcquiredAgainst {praxis : MediumFrame} (history : History praxis) (k : ℕ) (m : praxis.Means)\n  (agent : praxis.Agent) (g : praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">On day `k`, `agent` acquired `m`, giving `g` for it. </code>",
- "286":
+ "287":
  "<code>Apodictic.MediumFrame.toActionFrame (self : MediumFrame) : ActionFrame</code>",
- "285":
+ "286":
  "<code>ℕ → Set (Exchange praxis.toActionFrame)</code><span class=\"sep\"></span><code class=\"docstring\">The exchanges made on each day. </code>",
- "284":
+ "285":
  "<code>ℕ → praxis.Time</code><span class=\"sep\"></span><code class=\"docstring\">The time of each day. </code>",
- "283":
+ "284":
  "<code>Apodictic.History.mk {praxis : MediumFrame} (date : ℕ → praxis.Time)\n  (exchanges : ℕ → Set (Exchange praxis.toActionFrame)) : History praxis</code>",
- "282": "<code>toActionFrame.Means</code>",
- "281": "<code>toActionFrame.Means → toActionFrame.End → Prop</code>",
- "280":
+ "283": "<code>toActionFrame.Means</code>",
+ "282": "<code>toActionFrame.Means → toActionFrame.End → Prop</code>",
+ "281":
  "<code>self.Means → self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Onward m e`: the agent would reach the end `e` by giving `m`\nitself away in a later trade. The relation has no properties. </code>",
+ "280":
+ "<code>Apodictic.MediumFrame.mk (toActionFrame : ActionFrame) (Onward : toActionFrame.Means → toActionFrame.End → Prop) :\n  MediumFrame</code>",
  "28":
  "<code>Apodictic.Model.servedInOrder_not_entail_swapDominant : ServedInOrder Model.coarsePlan ∧ ¬SwapDominant Model.coarsePlan</code><span class=\"sep\"></span><code class=\"docstring\">**The two premise sets are not equivalent.** Rothbard's set\nentails Mises's bridge, `ServedInOrder`\n(`Contrast.rothbard_entails_servedInOrder`). This frame shows the\nconverse fails. Reconstruct the Mises route as generously as the\nvocabulary allows. It then rests on a STRICTLY WEAKER allocation\npremise than Rothbard's set. It pays for that with\ncomparability of ends (`ComparableServiceable`), which Rothbard's\nroute never needs. </code>",
  "279":
- "<code>Apodictic.MediumFrame.mk (toActionFrame : ActionFrame) (Onward : toActionFrame.Means → toActionFrame.End → Prop) :\n  MediumFrame</code>",
- "278":
  "<code>Apodictic.Model.waiting_regress_applies (n : ℕ) : ¬¬Model.Waiting.PrefersEnd () 0 (0, 0) (0, 1)</code><span class=\"sep\"></span><code class=\"docstring\">**Non-vacuity: the regress applies in `Waiting`.** There the agent\nprefers the sooner at every date. So no absence of preference has\nanything to carry. </code>",
- "277":
+ "278":
  "<code>EmptyCollection.emptyCollection.{u} {α : Type u} [self : EmptyCollection α] : α</code><span class=\"sep\"></span><code class=\"docstring\">`∅` or `{}` is the empty set or empty collection.\nIt is supported by the `EmptyCollection` typeclass. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `{}` in identifiers is `empty`.\n\n * The recommended spelling of `∅` in identifiers is `empty`.</code>",
- "276":
+ "277":
  "<code>Prod.mk.{u, v} {α : Type u} {β : Type v} (fst : α) (snd : β) : α × β</code><span class=\"sep\"></span><code class=\"docstring\">Constructs a pair. This is usually written `(x, y)` instead of `Prod.mk x y`.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `(a, b)` in identifiers is `mk`.</code>",
- "275":
+ "276":
  "<code>Unit.unit : Unit</code><span class=\"sep\"></span><code class=\"docstring\">The only element of the unit type.\n\nIt can be written as an empty tuple: `()`.\n</code>",
- "274":
+ "275":
  "<code>Apodictic.Model.Waiting : DatedFrame</code><span class=\"sep\"></span><code class=\"docstring\">One man; ends are (kind, date); times are dates. The earlier of\ntwo same-kind single ends is preferred; no other bundle is ranked. </code>",
- "273":
+ "274":
  "<code>Apodictic.Model.waiting_less_durable_applies : Model.Waiting.Prefers () 0 (insert (0, 1) ∅) (insert (0, 2) ∅)</code><span class=\"sep\"></span><code class=\"docstring\">**Non-vacuity: the durability corollary applies.** </code>",
- "272": "<code>morrows.NoPreferenceCarries</code>",
- "271": "<code>DemonstratedTimePreference act</code>",
- "270": "<code>morrows.SameAlternative</code>",
+ "273": "<code>morrows.NoPreferenceCarries</code>",
+ "272": "<code>DemonstratedTimePreference act</code>",
+ "271": "<code>morrows.SameAlternative</code>",
+ "270":
+ "<code>Apodictic.Morrows.ConsumesAt {praxis : DatedFrame} {agent : praxis.Agent} (morrows : Morrows praxis agent) (n : ℕ)\n  (act : Action praxis.toActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The agent consumes at date `n`: the act, at that date, takes the\noffer now and forgoes the offer on the morrow. </code>",
  "27":
  "<code>Apodictic.Contrast.rothbard_entails_servedInOrder {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (asymmetric : AsymmetricPreference praxis agent time) :\n  ServedInOrder plan</code><span class=\"sep\"></span><code class=\"docstring\">**Rothbard's premises entail Mises's bridge.**\n\nGrant swap dominance (`SwapDominant`), independence of uses\n(`IndependentUses agent time`) and asymmetry of preference\n(`AsymmetricPreference`). Then the agent serves in order of urgency.\nThat is exactly `ServedInOrder`, the premise the Misesian route was\nbuilt on.\n\nSo the two routes are NOT independent. Whatever else is true of\nMises's derivation, its premise is available to anyone who already\nhas Rothbard's. The second route's bridge (`ServedInOrder`)\ntherefore adds no premise the first route lacked.\n\nThe proof is the contrapositive of `served_over_unserved`. Suppose\nthe more urgent end were left unserved. Then Rothbard's workhorse,\n`served_over_unserved`, says the served end is preferred to it. And\nasymmetry contradicts the assumption that it was the more urgent of\nthe two. The case split on whether the end is served is decidable,\nnot classical. `plan.wouldServe subStock` is a `Finset`. So membership\nis decidable given `[DecidableEq praxis.End]`, which the route already\ncarries. </code>",
- "269":
- "<code>Apodictic.Morrows.ConsumesAt {praxis : DatedFrame} {agent : praxis.Agent} (morrows : Morrows praxis agent) (n : ℕ)\n  (act : Action praxis.toActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The agent consumes at date `n`: the act, at that date, takes the\noffer now and forgoes the offer on the morrow. </code>",
- "268": "<code>morrows.ConsumesAt n act</code>",
- "267":
+ "269": "<code>morrows.ConsumesAt n act</code>",
+ "268":
  "<code>Apodictic.Morrows.NoPreferenceCarries {praxis : DatedFrame} {agent : praxis.Agent} (morrows : Morrows praxis agent) :\n  Prop</code><span class=\"sep\"></span><code class=\"docstring\">**No time preference carries to the morrow** — a condition on the\nsituation. Say on some date the agent does not prefer the offer now to\nthe offer on the morrow. Then he does not on the next date either.\n\nThis is constancy of the scale, cut to the one thing the regress\nspends: the ABSENCE of a preference, for this sequence, from one date\nto the next. Both authors deny constancy in general (Rothbard: scales\n\"differ for the same individual at different times\", *MES* p. 17). </code>",
- "266":
+ "267":
  "<code>∀ (n : ℕ), praxis.Before (self.date n) (self.date (n + 1))</code><span class=\"sep\"></span><code class=\"docstring\">Each date comes before the next. </code>",
- "265":
+ "266":
  "<code>Apodictic.Morrows.date {praxis : DatedFrame} {agent : praxis.Agent} (self : Morrows praxis agent) : ℕ → praxis.Time</code><span class=\"sep\"></span><code class=\"docstring\">The successive dates. </code>",
- "264":
+ "265":
  "<code>Apodictic.Morrows.offer {praxis : DatedFrame} {agent : praxis.Agent} (self : Morrows praxis agent) : ℕ → praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The satisfaction on offer at each date. </code>",
- "263": "<code>Morrows praxis agent</code>",
- "262":
+ "264": "<code>Morrows praxis agent</code>",
+ "263":
  "<code>∀ (n : ℕ), praxis.attained (self.offer n) = self.date n</code><span class=\"sep\"></span><code class=\"docstring\">The offer at a date is attained at that date. </code>",
- "261":
+ "262":
  "<code>ℕ → praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The satisfaction on offer at each date. </code>",
- "260":
+ "261":
  "<code>ℕ → praxis.Time</code><span class=\"sep\"></span><code class=\"docstring\">The successive dates. </code>",
+ "260":
+ "<code>Apodictic.Morrows.mk {praxis : DatedFrame} {agent : praxis.Agent} (date : ℕ → praxis.Time) (offer : ℕ → praxis.End)\n  (dated : ∀ (n : ℕ), praxis.attained (offer n) = date n)\n  (successive : ∀ (n : ℕ), praxis.Before (date n) (date (n + 1))) : Morrows praxis agent</code>",
  "26":
  "<code>Apodictic.Mises.ladder_from_order {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (order : ServedInOrder plan)\n  (comparable : stock.ComparableServiceable) : Mises.LadderHolds plan</code><span class=\"sep\"></span><code class=\"docstring\">**The ladder, derived the Misesian way.**\n\nNeither `SwapDominant` nor `IndependentUses` appears. Two things\nstand in their place. The agent serves in order of urgency\n(`ServedInOrder`). And the ends the good can serve are comparable\n(`ComparableServiceable`). That is a genuinely different premise set\nfor the same conclusion. Such a set is what the second theorem target\nwas for.\n\nThe argument is Mises's own, made honest. The added end is\nserviceable and unserved at the smaller supply. Suppose it were MORE\nurgent than something already served there. Then serving in order\nwould have admitted it. So it is not more urgent. Comparability turns\n\"not more urgent\" into \"less urgent\". That step is where the route\npays.\n\nMises's minimality qualifier is idle here too. `least` need only be\nserved at the smaller supply, exactly as in `ladder_for_every_served`.\nTwo different premise sets, the same idle qualifier. </code>",
  "259":
- "<code>Apodictic.Morrows.mk {praxis : DatedFrame} {agent : praxis.Agent} (date : ℕ → praxis.Time) (offer : ℕ → praxis.End)\n  (dated : ∀ (n : ℕ), praxis.attained (offer n) = date n)\n  (successive : ∀ (n : ℕ), praxis.Before (date n) (date (n + 1))) : Morrows praxis agent</code>",
- "258":
  "<code>Apodictic.Morrows.SameAlternative {praxis : DatedFrame} {agent : praxis.Agent} (morrows : Morrows praxis agent) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The same alternative each day** — a condition on the situation.\nFor this agent, each day's offer is the same satisfaction as the next\nday's. It is Mises's \"the morrow would confront him with the same\nalternative\". It fails where the good perishes. It fails for Mises's\nown ice. Winter ice serves in summer only after a process of\nconservation. </code>",
- "257":
+ "258":
  "<code>Apodictic.Morrows (praxis : DatedFrame) (agent : praxis.Agent) : Type</code><span class=\"sep\"></span><code class=\"docstring\">**The morrow's alternative** — Mises's regress, as data. At each\ndate in a sequence the agent can have a satisfaction now. Or he can\nhave the same satisfaction at the next date: \"the morrow would confront\nhim with the same alternative\" (*Human Action*, ch. XVIII, §2).\n\nIt is a structure because the regress is about one such sequence. Its\n`Prop` fields fix only the dates: which offer belongs to which date,\nand that each date comes before the next. That each offer is the same\nsatisfaction as the next is what makes it the SAME alternative. It can\nfail: the good perishes. So it is not a field. It is the named\ncondition `Morrows.SameAlternative`. </code>",
- "256": "<code>praxis.LiftsOverRest agent now rest soon late</code>",
- "255": "<code>¬praxis.Before (praxis.attained soon) now</code>",
- "254":
+ "257": "<code>praxis.LiftsOverRest agent now rest soon late</code>",
+ "256": "<code>¬praxis.Before (praxis.attained soon) now</code>",
+ "255":
  "<code>praxis.Before (praxis.attained soon) (praxis.attained late)</code>",
- "253": "<code>praxis.SameSatisfaction agent soon late</code>",
- "252": "<code>TimePreference praxis agent now</code>",
- "251":
+ "254": "<code>praxis.SameSatisfaction agent soon late</code>",
+ "253": "<code>TimePreference praxis agent now</code>",
+ "252":
  "<code>Apodictic.Model.valuation_reading_strict_half_fails :\n  ¬∀ (praxis : DatedFrame) (agent : praxis.Agent) (now : praxis.Time) (soon late : praxis.End),\n      TimePreference.SameByValuation praxis agent now soon late →\n        praxis.Before (praxis.attained soon) (praxis.attained late) →\n          ¬praxis.Before (praxis.attained soon) now → praxis.PrefersEnd agent now soon late</code><span class=\"sep\"></span><code class=\"docstring\">**On the valuation reading, the strict half of time preference is\nnot free.** It fails where nothing is ranked. There every pair counts as\nthe same satisfaction by valuation. And the sooner is not preferred. </code>",
- "250":
+ "251":
  "<code>Apodictic.TimePreference.SameByValuation (praxis : DatedFrame) (agent : praxis.Agent) (now : praxis.Time)\n  (soon late : praxis.End) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">\"The same satisfaction\", fixed by the ranking: the later is not\npreferred to the sooner. This is the reading of *MES* pp. 15–16, n. 15.\nIce in summer \"provides different (and greater) satisfactions\" than ice\nin winter. So the two are different goods. REJECTED as the library's\nencoding. It is stated so that the rejection is checked. </code>",
+ "250": "<code>toActionFrame.End</code>",
  "25":
  "<code>Apodictic.ServedInOrder {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Served in order of urgency** — nothing serviceable and more\nurgent is passed over for something less urgent.\n\nSay the good can serve an end. Say that end is more urgent than\nsomething the agent WOULD serve. Then he would serve it too. Like\n`SwapDominant`, it is subjunctive throughout. It is asserted of one\ngiven plan.\n\nThis is the premise of MISES's route to the law\n(`Apodictic.Mises.ladder_from_order`). `SwapDominant` is the premise\nof Rothbard's. The two are not equivalent:\n\n- Rothbard's premises entail this one, given asymmetry\n  (`Apodictic.Contrast.rothbard_entails_servedInOrder`).\n- This one does not entail his\n  (`Apodictic.Model.servedInOrder_not_entail_swapDominant`).\n\nMises asks less of the agent's allocation and more of his value scale.\n\nSource: Mises, *Human Action*, ch. VII, §1: \"If the supply available\nincreases from n–1 units to n units, the increment can be employed\nonly for the removal of a want which is less urgent or less painful\nthan the least urgent or least painful among all those wants which\ncould be removed by means of the supply n–1\". Then the bridge\nsentence the derivation turns on: \"It is nothing else than the\nreverse of the statement that what satisfies more is preferred to\nwhat gives smaller satisfaction.\" Compare Mises ch. IV, §2. There the\nagreement is interpretive rather than a constraint: \"Every action is\nalways in perfect agreement with the scale of values or wants because\nthese scales are nothing but an instrument for the interpretation of a\nman's acting.\" Rothbard states the doctrine in the same family:\n\"action uses scarce means to satisfy the most urgent of the not yet\nsatisfied wants\" (*MES* p. 24).\n\nStatus: our-reconstruction. Mises argues for the law by a dilemma\nabout whether action terminates. He does not argue from a stated\nordering premise. This claim is what that argument needs and does not\nsupply. The dilemma is machine-checked NOT to deliver it\n(`Apodictic.Model.recurs_does_not_deliver_ladder`). Mises offers a\nrefutation of his own second horn. It does not go through on the action\naxiom he names (`Apodictic.Model.existence_does_not_refute_second_horn`).\n\nThe warrant problem is Mises's too. It is not Rothbard's bookkeeping.\nMises restricts value scales exactly as Rothbard does: \"These scales\nhave no independent existence apart from the actual behavior of\nindividuals\" (ch. IV, §2). Then, in ch. VII, §1, he declares the\nopenly counterfactual definition licit, without argument: \"We do not\ntranscend the sphere of praxeological reasoning in establishing the\nfollowing definition\". Rothbard exempts the law circularly. Mises\nasserts the exemption. Neither warrants it.\n\nDoes not say:\n\n1. Anything about bundles. That the served bundle beats each one-swap\n   rival is `SwapDominant`. That is a different claim, of a different\n   shape.\n2. That the ends a good can serve are comparable. That is the\n   situational condition `Stock.ComparableServiceable`. The route that\n   uses this claim needs it separately.\n3. Anything about actual action. No bridge from an act to a\n   preference is part of this claim.\n4. Anything about units not on hand. It speaks of\n   `subStock ⊆ stock.units`, the same region `SwapDominant` speaks of. </code>",
- "249": "<code>toActionFrame.End</code>",
- "248": "<code>toActionFrame.Agent</code>",
- "247":
+ "249": "<code>toActionFrame.Agent</code>",
+ "248":
  "<code>toActionFrame.Agent → toActionFrame.End → toActionFrame.End → Prop</code>",
- "246":
+ "247":
  "<code>self.Agent → self.End → self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`SameSatisfaction agent e e'`: for that agent, `e` and `e'` are\nthe same satisfaction, differing (at most) in date. Supplied\nindependently of `Prefers`. </code>",
- "245":
+ "246":
  "<code>self.End → self.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the end is attained. </code>",
- "244": "<code>toActionFrame.Time</code>",
- "243": "<code>toActionFrame.Time → toActionFrame.Time → Prop</code>",
- "242":
+ "245": "<code>toActionFrame.Time</code>",
+ "244": "<code>toActionFrame.Time → toActionFrame.Time → Prop</code>",
+ "243":
  "<code>self.Time → self.Time → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Before t t'`: `t` comes before `t'`. No properties. </code>",
- "241":
+ "242":
  "<code>Apodictic.DatedFrame.mk (toActionFrame : ActionFrame) (Before : toActionFrame.Time → toActionFrame.Time → Prop)\n  (attained : toActionFrame.End → toActionFrame.Time)\n  (SameSatisfaction : toActionFrame.Agent → toActionFrame.End → toActionFrame.End → Prop) : DatedFrame</code>",
- "240":
+ "241":
  "<code>Apodictic.Model.steadyWants : Bool → Bool → Bool</code><span class=\"sep\"></span><code class=\"docstring\">A wants typing and B wants decoration, at every time. </code>",
+ "240":
+ "<code>Apodictic.Model.honestBeliefs : Bool → Bool → Bool → Bool → Prop</code><span class=\"sep\"></span><code class=\"docstring\">Each good serves the end that shares its name: the vase decoration,\nthe typewriter typing. </code>",
  "24":
  "<code>Singleton.singleton.{u, v} {α : outParam (Type u)} {β : Type v} [self : Singleton α β] : α → β</code><span class=\"sep\"></span><code class=\"docstring\">`singleton x` is a collection with the single element `x` (notation: `{x}`). \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `{x}` in identifiers is `singleton`.</code>",
  "239":
- "<code>Apodictic.Model.honestBeliefs : Bool → Bool → Bool → Bool → Prop</code><span class=\"sep\"></span><code class=\"docstring\">Each good serves the end that shares its name: the vase decoration,\nthe typewriter typing. </code>",
- "238":
  "<code>Apodictic.Model.barterTrade (believes : Bool → Bool → Bool → Bool → Prop) (wanted : Bool → Bool → Bool) (agent : Bool) :\n  Trade (Model.barterFrame believes wanted)</code><span class=\"sep\"></span><code class=\"docstring\">Agent `agent`'s side: he gives the good named like himself and gets\nthe other, keeping nothing else. Refusing leaves him his own good. </code>",
- "237":
+ "238":
  "<code>Bool : Type</code><span class=\"sep\"></span><code class=\"docstring\">The Boolean values, `true` and `false`.\n\nLogically speaking, this is equivalent to `Prop` (the type of propositions). The distinction is\npublic important for programming: both propositions and their proofs are erased in the code generator,\nwhile `Bool` corresponds to the Boolean type in most programming languages and carries precisely one\nbit of run-time information.\n</code>",
- "236": "<code>Bool</code>",
- "235":
+ "237": "<code>Bool</code>",
+ "236":
  "<code>Apodictic.Model.barter_better_off_later_applies (agent : Bool) :\n  Model.barterOk.Prefers agent true ((Model.barterTrade Model.honestBeliefs Model.steadyWants agent).after true)\n    ((Model.barterTrade Model.honestBeliefs Model.steadyWants agent).before true)</code><span class=\"sep\"></span><code class=\"docstring\">**Non-vacuity: the later-judged theorem applies** where beliefs and\nranking both hold. </code>",
- "234":
+ "235":
  "<code>Bool.true : Bool</code><span class=\"sep\"></span><code class=\"docstring\">The Boolean value `true`, not to be confused with the proposition `True`. </code>",
- "233":
+ "234":
  "<code>Bool.false : Bool</code><span class=\"sep\"></span><code class=\"docstring\">The Boolean value `false`, not to be confused with the proposition `False`. </code>",
- "232":
+ "233":
  "<code>Apodictic.Model.barterOk : ActionFrame</code><span class=\"sep\"></span><code class=\"docstring\">Everything holds. </code>",
- "231":
+ "232":
  "<code>Apodictic.Model.barter_reverse_valuations_applies :\n  Model.barterOk.Prefers false false (Model.barterOk.ServedBy false false {true})\n      (Model.barterOk.ServedBy false false {false}) ∧\n    Model.barterOk.Prefers true false (Model.barterOk.ServedBy true false {false})\n      (Model.barterOk.ServedBy true false {true})</code><span class=\"sep\"></span><code class=\"docstring\">**Non-vacuity: the exchange is handed to `reverse_valuations`.** </code>",
- "230":
+ "231":
  "<code>Apodictic.MutualBenefit.BetterOffLaterWithoutRanking : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The later-judged statement with the ranking condition dropped. False\nwhere the agent changes his mind — refuted by construction in\n`Apodictic.Model`. </code>",
+ "230":
+ "<code>Apodictic.Model.later_without_ranking_fails : ¬MutualBenefit.BetterOffLaterWithoutRanking</code><span class=\"sep\"></span><code class=\"docstring\">**Without the ranking condition, the later-judged statement fails.** A\ntrades freely. He believes as before. But he now wants decoration. So\nhe is not better off by his later lights. </code>",
  "23":
  "<code>SDiff.sdiff.{u} {α : Type u} [self : SDiff α] : α → α → α</code><span class=\"sep\"></span><code class=\"docstring\">`a \\ b` is the set difference of `a` and `b`,\nconsisting of all elements in `a` that are not in `b`.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `\\` in identifiers is `sdiff`.</code>",
  "229":
- "<code>Apodictic.Model.later_without_ranking_fails : ¬MutualBenefit.BetterOffLaterWithoutRanking</code><span class=\"sep\"></span><code class=\"docstring\">**Without the ranking condition, the later-judged statement fails.** A\ntrades freely. He believes as before. But he now wants decoration. So\nhe is not better off by his later lights. </code>",
- "228":
  "<code>Apodictic.MutualBenefit.BetterOffLaterWithoutBeliefs : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The later-judged statement with the beliefs condition dropped. False\nwhere the agent learns the good he got does less than he thought —\nrefuted by construction in `Apodictic.Model`. </code>",
- "227":
+ "228":
  "<code>Apodictic.Model.later_without_beliefs_fails : ¬MutualBenefit.BetterOffLaterWithoutBeliefs</code><span class=\"sep\"></span><code class=\"docstring\">**Without the beliefs condition, the later-judged statement fails.** A\ntrades freely. He ranks as before. But he learns the typewriter serves\nnothing. So he is not better off by his later lights. </code>",
- "226": "<code>trade.RankingHolds later</code>",
- "225": "<code>trade.BeliefsHold later</code>",
- "224":
+ "227": "<code>trade.RankingHolds later</code>",
+ "226": "<code>trade.BeliefsHold later</code>",
+ "225":
  "<code>Apodictic.MutualBenefit.better_off_judged_later {praxis : ActionFrame} (trade : Trade praxis) (later : praxis.Time)\n  (demonstrated : DemonstratedPreference trade) (voluntary : trade.Voluntary) (beliefsHold : trade.BeliefsHold later)\n  (rankingHolds : trade.RankingHolds later) : praxis.Prefers trade.agent later (trade.after later) (trade.before later)</code><span class=\"sep\"></span><code class=\"docstring\">**Better off, judged later** — the holding after ranks above the\nholding before on the agent's scale at `later`. Each holding is\ncounted by what he believes at `later`. It needs two things to have\nheld: the beliefs about the goods, and the ranking of the two\nholdings. </code>",
- "223":
+ "224":
  "<code>Apodictic.Trade.before {praxis : ActionFrame} (trade : Trade praxis) (judged : praxis.Time) : Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The holding before the trade, counted by the agent's beliefs at\n`judged`. </code>",
- "222": "<code>trade.Voluntary</code>",
- "221": "<code>DemonstratedPreference trade</code>",
- "220":
+ "223": "<code>trade.Voluntary</code>",
+ "222": "<code>DemonstratedPreference trade</code>",
+ "221":
  "<code>Apodictic.MutualBenefit.better_off_judged_at_trade {praxis : ActionFrame} (trade : Trade praxis)\n  (demonstrated : DemonstratedPreference trade) (voluntary : trade.Voluntary) :\n  praxis.Prefers trade.agent trade.time (trade.after trade.time) (trade.before trade.time)</code><span class=\"sep\"></span><code class=\"docstring\">**Better off, judged at the trade** — the holding after ranks\nabove the holding before. The ranking is on the scale and beliefs of\nthe moment of trading. This is Rothbard's \"shifted to a higher\nposition\", read on the scale the traders had \"before making the\nexchange\". </code>",
+ "220": "<code>exchange.second.KeptServesOtherEnds</code>",
  "22":
  "<code>Insert.insert.{u, v} {α : outParam (Type u)} {γ : Type v} [self : Insert α γ] : α → γ → γ</code><span class=\"sep\"></span><code class=\"docstring\">`insert x xs` inserts the element `x` into the collection `xs`. </code>",
- "219": "<code>exchange.second.KeptServesOtherEnds</code>",
- "218": "<code>exchange.first.KeptServesOtherEnds</code>",
- "217": "<code>exchange.second.SeparableFromRest</code>",
- "216": "<code>exchange.first.SeparableFromRest</code>",
- "215": "<code>exchange.second.Voluntary</code>",
- "214": "<code>exchange.first.Voluntary</code>",
- "213": "<code>DemonstratedPreference exchange.second</code>",
- "212": "<code>DemonstratedPreference exchange.first</code>",
- "211":
+ "219": "<code>exchange.first.KeptServesOtherEnds</code>",
+ "218": "<code>exchange.second.SeparableFromRest</code>",
+ "217": "<code>exchange.first.SeparableFromRest</code>",
+ "216": "<code>exchange.second.Voluntary</code>",
+ "215": "<code>exchange.first.Voluntary</code>",
+ "214": "<code>DemonstratedPreference exchange.second</code>",
+ "213": "<code>DemonstratedPreference exchange.first</code>",
+ "212":
  "<code>Apodictic.MutualBenefit.reverse_valuations {praxis : ActionFrame} (exchange : Exchange praxis)\n  (demonstratedA : DemonstratedPreference exchange.first) (demonstratedB : DemonstratedPreference exchange.second)\n  (voluntaryA : exchange.first.Voluntary) (voluntaryB : exchange.second.Voluntary)\n  (separableA : exchange.first.SeparableFromRest) (separableB : exchange.second.SeparableFromRest)\n  (uniqueA : exchange.first.KeptServesOtherEnds) (uniqueB : exchange.second.KeptServesOtherEnds) :\n  praxis.Prefers exchange.first.agent exchange.first.time\n      (praxis.ServedBy exchange.first.agent exchange.first.time {exchange.first.gets})\n      (praxis.ServedBy exchange.first.agent exchange.first.time {exchange.first.gives}) ∧\n    praxis.Prefers exchange.second.agent exchange.second.time\n      (praxis.ServedBy exchange.second.agent exchange.second.time {exchange.first.gives})\n      (praxis.ServedBy exchange.second.agent exchange.second.time {exchange.first.gets})</code><span class=\"sep\"></span><code class=\"docstring\">**Reverse valuations** (*MES* p. 85). In an exchange, A ranks B's\ngood above his own. B ranks A's good above his own. Each ranks on his\nown scale, by his own beliefs, at the time of his trade. </code>",
- "210":
+ "211":
  "<code>self.second.gives = self.first.gets</code><span class=\"sep\"></span><code class=\"docstring\">What B gives, A gets. </code>",
+ "210":
+ "<code>Apodictic.Trade.gives {praxis : ActionFrame} (self : Trade praxis) : praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The good given up. </code>",
  "21":
  "<code>Apodictic.ActionFrame.Prefers (self : ActionFrame) : self.Agent → self.Time → Set self.End → Set self.End → Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Prefers agent time X Y`: at that time, the agent values the\nbundle of ends `X` above the bundle `Y`. This is the ranking behind\nthe agent's choices. It is read as strict. But that reading is not\nbuilt in: NO properties are imposed on this relation, strict or\notherwise. A theorem that needs one says so.\n\nThe ranking is kept apart from what the agent actually does. Three\nclaims tie the two. Two run from an act to the ranking.\n`DemonstratedPreference` is stated of a trade.\n`DemonstratedTimePreference` is stated of an act across dates. One\nruns the other way, from the ranking to what he does with a stock.\n`ActsInOrder` is stated of an actual allocation. Each is asserted of\nthe one trade, act or allocation a theorem is handed, never of every\nact.\n\nThe relation ranges over SETS of ends rather than single ends. The\ntradition draws no line between an end and a composite of ends. The\nword \"atomic\" only ever means \"not divided further by this action\".\nThat is the same relativity as the size of a unit of supply (*MES*\np. 28). So there\nis ONE ranking, over bundles at whatever grain the problem has. An\nend in the ordinary sense is a bundle with one member\n(`PrefersEnd`). Independence of uses (`IndependentUses`) is bundle\npreference breaking down into preference between ends. Ranging over\nbundles is what lets it be a named hypothesis, instead of something\nthe vocabulary quietly enforces.\n\nShape claim (audit): a bundle is a `Set`, so it carries no\nmultiplicity and no order. </code>",
  "209":
- "<code>Apodictic.Trade.gives {praxis : ActionFrame} (self : Trade praxis) : praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The good given up. </code>",
- "208":
  "<code>Apodictic.Exchange.first {praxis : ActionFrame} (self : Exchange praxis) : Trade praxis</code><span class=\"sep\"></span><code class=\"docstring\">A's side. </code>",
- "207":
+ "208":
  "<code>Apodictic.Trade.gets {praxis : ActionFrame} (self : Trade praxis) : praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The good received. </code>",
- "206":
+ "207":
  "<code>Apodictic.Exchange.second {praxis : ActionFrame} (self : Exchange praxis) : Trade praxis</code><span class=\"sep\"></span><code class=\"docstring\">B's side. </code>",
- "205": "<code>Exchange praxis</code>",
- "204":
+ "206": "<code>Exchange praxis</code>",
+ "205":
  "<code>self.second.gets = self.first.gives</code><span class=\"sep\"></span><code class=\"docstring\">What A gives, B gets. </code>",
- "203":
+ "204":
  "<code>Trade praxis</code><span class=\"sep\"></span><code class=\"docstring\">B's side. </code>",
- "202":
+ "203":
  "<code>Trade praxis</code><span class=\"sep\"></span><code class=\"docstring\">A's side. </code>",
- "201":
+ "202":
  "<code>Apodictic.Exchange.mk {praxis : ActionFrame} (first second : Trade praxis) (swap_gives : second.gets = first.gives)\n  (swap_gets : second.gives = first.gets) : Exchange praxis</code>",
- "200":
+ "201":
  "<code>Apodictic.Exchange (praxis : ActionFrame) : Type</code><span class=\"sep\"></span><code class=\"docstring\">A two-party exchange. It is two trades, each party giving what\nthe other gets. \"A gives up a good to B in exchange for a good that B\ngives up to A\" (*MES* p. 85). No theorem in the library uses that A\nand B are two people. None uses that the two trades are made at one\nmoment. An `Exchange` does not require either. </code>",
+ "200":
+ "<code>Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">What refusing would have left him with, as ends. </code>",
  "20":
  "<code>Apodictic.Stock.serves {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (self : Stock praxis agent time) : Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends this good can serve, by the agent's lights. </code>",
  "2":
  "<code>Apodictic.ActionFrame : Type 1</code><span class=\"sep\"></span><code class=\"docstring\">The vocabulary everything else is built from: bare types and bare\nrelations. Nothing here has any property. Preference is not assumed\ntransitive. It is not assumed to rank every pair. `Time` is not\nassumed ordered. A property gets added only when some theorem forces\nit. Every such forcing is a finding. </code>",
  "199":
- "<code>Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">What refusing would have left him with, as ends. </code>",
- "198":
  "<code>Set praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The rest of the agent's holding, untouched by the trade. </code>",
- "197":
+ "198":
  "<code>praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The good received. </code>",
- "196":
+ "197":
  "<code>praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The good given up. </code>",
- "195":
+ "196":
  "<code>praxis.Time</code><span class=\"sep\"></span><code class=\"docstring\">When the trade is made. </code>",
- "194":
+ "195":
  "<code>praxis.Agent</code><span class=\"sep\"></span><code class=\"docstring\">The trading party. </code>",
- "193":
+ "194":
  "<code>Apodictic.Trade.mk {praxis : ActionFrame} (agent : praxis.Agent) (time : praxis.Time) (gives gets : praxis.Means)\n  (kept : Set praxis.Means) (refusal : Set praxis.End) : Trade praxis</code>",
- "192":
+ "193":
  "<code class=\"docstring\">A type universe. `Type ≡ Type 0`, `Type u ≡ Sort (u + 1)`. </code>",
- "191": "<code>Set praxis.Means</code>",
- "190":
+ "192": "<code>Set praxis.Means</code>",
+ "191":
  "<code>Apodictic.ActionFrame.ServedBy (praxis : ActionFrame) (agent : praxis.Agent) (time : praxis.Time)\n  (goods : Set praxis.Means) : Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends the agent believes, at that time, that some good in\n`goods` can serve. A holding counts for this bundle. </code>",
+ "190":
+ "<code>Apodictic.Model.later_judged_ladder_fails : ¬Temporal.LadderJudgedLaterFromOrder</code><span class=\"sep\"></span><code class=\"docstring\">**The later-judged ladder does not follow from one-time premises.**\nEvery hypothesis of `Temporal.LadderJudgedLaterFromOrder` holds in\nthis frame. Its conclusion does not. What is missing is a relation\nbetween the two scales. This frame is exactly a case where there is\nnone. </code>",
  "19":
  "<code>Apodictic.AllocationPlan.wouldServe {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (self : AllocationPlan stock) : Finset praxis.Means → Finset praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">The ends the agent would serve with exactly the units in\n`subStock`, and no others. </code>",
  "189":
- "<code>Apodictic.Model.later_judged_ladder_fails : ¬Temporal.LadderJudgedLaterFromOrder</code><span class=\"sep\"></span><code class=\"docstring\">**The later-judged ladder does not follow from one-time premises.**\nEvery hypothesis of `Temporal.LadderJudgedLaterFromOrder` holds in\nthis frame. Its conclusion does not. What is missing is a relation\nbetween the two scales. This frame is exactly a case where there is\nnone. </code>",
- "188":
  "<code>Apodictic.Temporal.LadderJudgedLaterFromOrder : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The ladder, judged on the later scale, from everything a\none-time premise can give** — written out as a `Prop`, so that it can\nbe refuted by construction (`Apodictic.Model.later_judged_ladder_fails`).\n\nGranted at BOTH times:\n\n- Acting in order.\n- Comparability of the good's ends.\n- Asymmetry of preference.\n\nGranted across the two times:\n\n- The supply grew by one.\n- The good is believed to serve the same ends.\n\nNot granted: any relation between the two scales. The statement is\nfalse in a frame where the scale reverses between the two times. Both\nauthors say that situation cannot be excluded. </code>",
- "187":
- "<code>Apodictic.Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent} {earlierTime laterTime : praxis.Time}\n  (earlier : Stock praxis agent earlierTime) (later : Stock praxis agent laterTime) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The supply grows by one** — Mises's \"the supply available\nincreases from n–1 units to n units\", read as a history. The stock at\nthe later time holds every unit of the stock at the earlier time, and\none more.\n\nIt says nothing about the order of the two times. `Time` carries no\norder, and this definition does not ask for one. The words \"earlier\"\nand \"later\" are the names of the two arguments. They are not a relation\nbetween their indices. Leaving the order out lets a theorem show\nwhether it needs one. The earlier-judged ladder\n(`Apodictic.Temporal.ladder_judged_earlier`) needs neither this\ndefinition nor any order on the two times. </code>",
- "186": "<code>earlier.NoNewUses later</code>",
- "185": "<code>earlier.ComparableServiceable</code>",
- "184": "<code>ActsInOrder before</code>",
- "183": "<code>Allocation later</code>",
- "182": "<code>Allocation earlier</code>",
- "181":
+ "188": "<code>earlier.NoNewUses later</code>",
+ "187": "<code>earlier.ComparableServiceable</code>",
+ "186": "<code>ActsInOrder before</code>",
+ "185": "<code>Allocation later</code>",
+ "184": "<code>Allocation earlier</code>",
+ "183":
  "<code>Apodictic.Temporal.Ladder {praxis : ActionFrame} {agent : praxis.Agent} {earlierTime laterTime : praxis.Time}\n  {earlier : Stock praxis agent earlierTime} {later : Stock praxis agent laterTime} (before : Allocation earlier)\n  (after : Allocation later) (judged : praxis.Time) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Mises's ladder as a history**, judged on the scale of a stated\ntime.\n\n\"If the supply available increases from n–1 units to n units, the\nincrement can be employed only for the removal of a want which is\nless urgent or less painful than the least urgent or least painful\namong all those wants which could be removed by means of the supply\nn–1\" (*Human Action*, ch. VII, §1).\n\nTwo phrases are read as history:\n\n- \"could be removed by means of the supply n–1\" is read as WAS\n  removed by it, at the earlier time.\n- \"the increment can be employed\" is read as what the later\n  allocation serves that the earlier did not.\n\n`judged` is the time whose scale ranks the two wants. Mises's\nsentence does not say which. The module docstring says why it\nmatters. </code>",
- "180":
+ "182":
  "<code>Apodictic.Model.marginStock : Stock Model.Margin () ()</code><span class=\"sep\"></span><code class=\"docstring\">Two units, four serviceable ends. </code>",
- "18": "<code>praxis.End</code>",
- "179":
+ "181":
  "<code>Apodictic.Model.marginPlan : AllocationPlan Model.marginStock</code><span class=\"sep\"></span><code class=\"docstring\">Serve the most urgent ends first, as many as there are units —\ncapped at two, so ends 3 and 4 are never served. </code>",
- "178":
+ "180":
  "<code>Apodictic.Model.coarsePlan : AllocationPlan Model.coarseStock</code><span class=\"sep\"></span><code class=\"docstring\">The agent serves ends 0 and 1, leaving 2 unserved. </code>",
- "177": "<code>stock.ComparableServiceable</code>",
- "176": "<code>ServedInOrder plan</code>",
- "175":
+ "18": "<code>praxis.End</code>",
+ "179": "<code>stock.ComparableServiceable</code>",
+ "178": "<code>ServedInOrder plan</code>",
+ "177":
  "<code>Apodictic.Model.pluralPlan : AllocationPlan Model.pluralStock</code><span class=\"sep\"></span><code class=\"docstring\">**A badly ordered plan.** With no units the agent would serve\n`false`, the LESS urgent end; the extra unit is what brings in `true`,\nthe more urgent one.\n\nNothing in the vocabulary forbids this. `AllocationPlan` requires only\nthat a unit be put to an end the good can serve — it does not require\nthe agent to serve his most urgent wants first. That requirement is\nexactly what `SwapDominant` supplies, and this plan is what its\nabsence looks like. </code>",
- "174":
+ "176":
  "<code>And (a b : Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`And a b`, or `a ∧ b`, is the conjunction of propositions. It can be\nconstructed and destructed like a pair: if `ha : a` and `hb : b` then\n`⟨ha, hb⟩ : a ∧ b`, and if `h : a ∧ b` then `h.left : a` and `h.right : b`.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `∧` in identifiers is `and`.</code>",
- "173":
+ "175":
  "<code>Apodictic.Model.Plural : ActionFrame</code><span class=\"sep\"></span><code class=\"docstring\">Action is plural here — belief is unrestricted, so either end may\nbe chosen.\n\nPreference is NOT empty, and that is the point of this frame. `true`\nis the urgent end and `false` the less urgent one: a bundle is\npreferred exactly when it secures `true` and the rival does not. So\n`PrefersEnd true false` holds, `PrefersEnd false true` does not, and\nthe relation is asymmetric (`plural_asymmetric`). The ladder will\nfail here for a reason about the ORDERING, not because nothing is\npreferred to anything. </code>",
- "172":
+ "174":
  "<code>Apodictic.Mises.ActionRecurs (praxis : ActionFrame) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**What refuting the second horn actually requires** — that action\nis plural.\n\nMises writes that one action followed by a terminal state is\n\"manifestly incompatible with our assumption that there is action\".\nIt is not: see `ActionOccurs` above, and the counter-model in\n`Apodictic.Consistency`. What IS incompatible with the second horn is\nthis — that two distinct actions occur.\n\nNamed here as a statement, NOT asserted. Whether the tradition\nlicenses it, and on what pedigree, is exactly the question route C\nputs to Mises. His own hedge — \"this case no longer implies the\ngeneral conditions presupposed in the category of action\" — is\nreaching for something past bare existence without saying what. </code>",
- "171":
+ "173":
  "<code>Apodictic.Mises.ExistenceRefutesSecondHorn : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Existence does not refute the second horn.** The converse of\nwhat Mises needs, and it fails: `ActionOccurs` is compatible with\n`AtMostOneAction` — exactly one action — so bare existence cannot do\nthe work his argument gives it.\n\nStated here as an implication about an arbitrary frame so that the\ncounter-model in `Apodictic.Consistency` refutes it by construction. </code>",
- "170":
+ "172":
  "<code>Apodictic.Contrast.marginalEmployment_eq_marginalEnds {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (fewer more : Finset praxis.Means) :\n  Mises.marginalEmployment plan fewer more = marginalEnds plan fewer more</code><span class=\"sep\"></span><code class=\"docstring\">**The two definitions of the marginal ends coincide.** One is\nMises's \"marginal employment\" (`Mises.marginalEmployment`). It is the\nemployment a man makes at `n` units and would not make at `n–1`. The\nother is Rothbard's marginal utility of a supply (`marginalEnds`). It\nis the set of ends the larger stock serves and the smaller does not.\nThe two are the same set, definitionally. Each module states its own, because\n`Apodictic.Mises` is isolated. That they agree is proved here, where\nboth are in scope. The agreement is what licenses saying the two\nroutes reach the same law. </code>",
+ "171":
+ "<code>Apodictic.Mises.ladder_holds {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) : Mises.LadderHolds plan</code><span class=\"sep\"></span><code class=\"docstring\">**Mises's ladder, derived from Rothbard's premise and independence\nof uses** — the control comes back positive.\n\n`LadderHolds` follows outright from `SwapDominant` and\n`IndependentUses`. Mises's own derivation is the dilemma about\nintermediate stages and the appeal to the category of action. Once\nthe conclusion is read counterfactually, that derivation supplies\nnothing the conclusion needs.\n\n**And his minimality qualifier does no work.** The hypothesis\n`LeastUrgentServed plan fewer least` is a conjunction. Only its first\nhalf is consumed: that `least` is served at the smaller supply. The\nsecond half says that nothing served there ranks below it. That half\nis destructured as `_minimality` and never used. The linter cannot see\nthis, because it works a whole binder at a time. Both halves arrive in\none binder. `ladder_for_every_served` above is what makes the idleness\na machine fact instead of a comment.\n\nSo Mises's sentence adds two things to Rothbard's. One is the upward\ndirection. The other is the \"least urgent\" restriction. The first is a\nnarration, and the second is idle. </code>",
+ "170":
+ "<code>Apodictic.Mises.ladder_for_every_served {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (fewer more : Finset praxis.Means) (step : stock.OneMore fewer more)\n  (kept : praxis.End) :\n  kept ∈ plan.wouldServe fewer →\n    ∀ added ∈ Mises.marginalEmployment plan fewer more, praxis.PrefersEnd agent time kept added</code><span class=\"sep\"></span><code class=\"docstring\">**The ladder holds for EVERY end served at the smaller supply** —\nnot only for the least urgent one.\n\nThis is the control. It is deliberately stated in the strong form\nMises does not state. His sentence singles out \"the least urgent or\nleast painful among all those wants which could be removed by means\nof the supply n–1\". This theorem drops the qualifier and keeps the\nconclusion. Whatever the extra unit adds is less urgent than ANYTHING\nthe smaller supply serves.\n\nWhat it spends is `SwapDominant plan` — Rothbard's premise, and the\nwhole of the warrant problem. It also spends independence of uses\n(`IndependentUses agent time`) and decidable equality of ends\n(`DecidableEq praxis.End`). It spends nothing Misesian at all. </code>",
  "17":
  "<code>∀ subStock ⊆ stock.units,\n  ∀ served ∈ plan.wouldServe subStock,\n    ∀ unserved ∈ stock.serves,\n      unserved ∉ plan.wouldServe subStock →\n        praxis.Prefers agent time (↑(plan.wouldServe subStock))\n          (insert unserved (↑(plan.wouldServe subStock) \\ {served}))</code><span class=\"sep\"></span><code class=\"docstring\">The one-swap dominance itself. </code>",
  "169":
- "<code>Apodictic.Mises.ladder_holds {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) : Mises.LadderHolds plan</code><span class=\"sep\"></span><code class=\"docstring\">**Mises's ladder, derived from Rothbard's premise and independence\nof uses** — the control comes back positive.\n\n`LadderHolds` follows outright from `SwapDominant` and\n`IndependentUses`. Mises's own derivation is the dilemma about\nintermediate stages and the appeal to the category of action. Once\nthe conclusion is read counterfactually, that derivation supplies\nnothing the conclusion needs.\n\n**And his minimality qualifier does no work.** The hypothesis\n`LeastUrgentServed plan fewer least` is a conjunction. Only its first\nhalf is consumed: that `least` is served at the smaller supply. The\nsecond half says that nothing served there ranks below it. That half\nis destructured as `_minimality` and never used. The linter cannot see\nthis, because it works a whole binder at a time. Both halves arrive in\none binder. `ladder_for_every_served` above is what makes the idleness\na machine fact instead of a comment.\n\nSo Mises's sentence adds two things to Rothbard's. One is the upward\ndirection. The other is the \"least urgent\" restriction. The first is a\nnarration, and the second is idle. </code>",
- "168":
- "<code>Apodictic.Mises.ladder_for_every_served {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (fewer more : Finset praxis.Means) (step : stock.OneMore fewer more)\n  (kept : praxis.End) :\n  kept ∈ plan.wouldServe fewer →\n    ∀ added ∈ Mises.marginalEmployment plan fewer more, praxis.PrefersEnd agent time kept added</code><span class=\"sep\"></span><code class=\"docstring\">**The ladder holds for EVERY end served at the smaller supply** —\nnot only for the least urgent one.\n\nThis is the control. It is deliberately stated in the strong form\nMises does not state. His sentence singles out \"the least urgent or\nleast painful among all those wants which could be removed by means\nof the supply n–1\". This theorem drops the qualifier and keeps the\nconclusion. Whatever the extra unit adds is less urgent than ANYTHING\nthe smaller supply serves.\n\nWhat it spends is `SwapDominant plan` — Rothbard's premise, and the\nwhole of the warrant problem. It also spends independence of uses\n(`IndependentUses agent time`) and decidable equality of ends\n(`DecidableEq praxis.End`). It spends nothing Misesian at all. </code>",
- "167":
  "<code>Apodictic.Mises.LadderHolds {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Mises's ladder** — his statement of the law. It is written out\nas a target, so that what proves it, and from what, is legible.\n\n\"If the supply available increases from n–1 units to n units, the\nincrement can be employed only for the removal of a want which is\nless urgent or less painful than the least urgent or least painful\namong all those wants which could be removed by means of the supply\nn–1\" (*Human Action*, ch. VII, §1).\n\nIt is a `def` of a Prop, not a theorem, and deliberately so. It is\nreached twice below, from two different premise sets. `ladder_holds`\nderives it from Rothbard's premise. `ladder_from_order` derives it\nfrom Mises's own bridge. Which premises each spends is on each\ntheorem's signature. </code>",
- "166":
+ "168":
  "<code>Apodictic.Mises.LeastUrgentServed {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (subStock : Finset praxis.Means) (want : praxis.End) :\n  Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Least urgent among those served** — Mises's \"the least urgent\nor least painful among all those wants which could be removed by\nmeans of the supply n–1\".\n\nIt is not a claim about action, and not a condition of any theorem.\nIt is a definition used inside the law's statement. It says of a\ngiven end that nothing else served at that sub-stock ranks below it.\nIt is stated of an end the law quantifies over. It is never asserted\nto exist. Whether such an end exists at all is a separate question. That\nquestion cannot be answered without saying more about `Prefers` than\nthe library assumes.\n\nInside the law it enters as a hypothesis on that end, not as a\nderived object. That is the first\nplace the two routes visibly differ. Rothbard's derivation never needs\na minimum. It compares two named steps. Mises's sentence names a\nminimum. </code>",
- "165":
+ "167":
  "<code>Apodictic.Mises.marginalEmployment {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (fewer more : Finset praxis.Means) : Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">**Mises's marginal employment** — the ends served at the larger\nsupply and not at the smaller.\n\n\"We call that employment of a unit of a homogeneous supply which a man\nmakes if his supply is n units, but would not make if, other things\nbeing equal, his supply were only n–1 units, the least urgent\nemployment or the marginal employment, and the utility derived from it\nmarginal utility\" (*Human Action*, ch. VII, §1).\n\nIt is stated as the DIFFERENCE of two counterfactual allocations at\none time. That is what \"other things being equal\" asks for.\n\nIt restates `marginalEnds` (in `Apodictic.MarginalUtility`)\ndeliberately, because `Apodictic.Mises` does not import\n`Apodictic.MarginalUtility` or `Apodictic.Urgency`. That the two\ncoincide is a theorem for a module importing both, not an `import`\nhere.\n\nIt is a definition, not a claim. Mises introduces it as a definition\n(\"We call that employment ...\"). He prefaces it with the remark that\nestablishing it does not transcend praxeological reasoning. </code>",
- "164":
+ "166":
  "<code class=\"docstring\">Print a theorem's manifest: every binder in its signature sorted\nby kind, plus the logical background Lean itself supplies. See\n`Apodictic.Manifest` for what decides a kind and for the two\nlimits. </code>",
- "163":
+ "165":
  "<code>False : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`False` is the empty proposition. Thus, it has no introduction rules.\nIt represents a contradiction. `False` elimination rule, `False.rec`,\nexpresses the fact that anything follows from a contradiction.\nThis rule is sometimes called ex falso (short for ex falso sequitur quodlibet),\nor the principle of explosion.\nFor more information: [Propositional Logic](https://lean-lang.org/theorem_proving_in_lean4/propositions_and_proofs.html#propositional-logic)\n</code>",
- "162":
+ "164":
  "<code>↑(rival.wouldServe subStock) = insert unserved (↑(plan.wouldServe subStock) \\ {served})</code>",
- "161": "<code>unserved ∉ plan.wouldServe subStock</code>",
- "160": "<code>unserved ∈ stock.serves</code>",
+ "163": "<code>unserved ∉ plan.wouldServe subStock</code>",
+ "162": "<code>unserved ∈ stock.serves</code>",
+ "161": "<code>served ∈ stock.serves</code>",
+ "160": "<code>served ∈ plan.wouldServe subStock</code>",
  "16":
  "<code>Apodictic.SwapDominant.mk {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} {plan : AllocationPlan stock}\n  (swap :\n    ∀ subStock ⊆ stock.units,\n      ∀ served ∈ plan.wouldServe subStock,\n        ∀ unserved ∈ stock.serves,\n          unserved ∉ plan.wouldServe subStock →\n            praxis.Prefers agent time (↑(plan.wouldServe subStock))\n              (insert unserved (↑(plan.wouldServe subStock) \\ {served}))) :\n  SwapDominant plan</code>",
- "159": "<code>served ∈ stock.serves</code>",
- "158": "<code>served ∈ plan.wouldServe subStock</code>",
- "157": "<code>SwapDominant rival</code>",
- "156": "<code>AsymmetricPreference praxis agent time</code>",
- "155": "<code>larger.card = n + 1</code>",
- "154":
+ "159": "<code>SwapDominant rival</code>",
+ "158": "<code>AsymmetricPreference praxis agent time</code>",
+ "157": "<code>larger.card = n + 1</code>",
+ "156":
  "<code>Eq.{u_1} {α : Sort u_1} : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The equality relation. It has one introduction rule, `Eq.refl`.\nWe use `a = b` as notation for `Eq a b`.\nA fundamental property of equality is that it is an equivalence relation.\n```\nvariable (α : Type) (a b c d : α)\nvariable (hab : a = b) (hcb : c = b) (hcd : c = d)\n\nexample : a = d :=\n  Eq.trans (Eq.trans hab (Eq.symm hcb)) hcd\n```\nEquality is much more than an equivalence relation, however. It has the important property that every assertion\nrespects the equivalence, in the sense that we can substitute equal expressions without changing the truth value.\nThat is, given `h1 : a = b` and `h2 : p a`, we can construct a proof for `p b` using substitution: `Eq.subst h1 h2`.\nExample:\n```\nexample (α : Type) (a b : α) (p : α → Prop)\n        (h1 : a = b) (h2 : p a) : p b :=\n  Eq.subst h1 h2\n\nexample (α : Type) (a b : α) (p : α → Prop)\n    (h1 : a = b) (h2 : p a) : p b :=\n  h1 ▸ h2\n```\nThe triangle in the second presentation is a macro built on top of `Eq.subst` and `Eq.symm`, and you can enter it by typing `\\t`.\nFor more information: [Equality](https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#equality)\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `=` in identifiers is `eq`.</code>",
- "153":
+ "155":
  "<code>Finset.card.{u_1} {α : Type u_1} (s : Finset α) : ℕ</code><span class=\"sep\"></span><code class=\"docstring\">`s.card` is the number of elements of `s`, aka its cardinality.\n\nThe notation `#s` can be accessed in the `Finset` locale. </code>",
- "152": "<code>smaller.card = n</code>",
- "151": "<code>stock.OneMore belowLarger larger</code>",
- "150": "<code>stock.OneMore belowSmaller smaller</code>",
+ "154": "<code>smaller.card = n</code>",
+ "153": "<code>stock.OneMore belowLarger larger</code>",
+ "152": "<code>stock.OneMore belowSmaller smaller</code>",
+ "151": "<code>plan.Homogeneous</code>",
+ "150": "<code>stock.OneMore medium large</code>",
  "15":
  "<code>Apodictic.Stock.units {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (self : Stock praxis agent time) : Finset praxis.Means</code><span class=\"sep\"></span><code class=\"docstring\">The units of the good on hand. </code>",
- "149": "<code>plan.Homogeneous</code>",
- "148": "<code>stock.OneMore medium large</code>",
- "147": "<code>stock.OneMore small medium</code>",
- "146":
+ "149": "<code>stock.OneMore small medium</code>",
+ "148":
  "<code>Apodictic.marginal_utility_chain {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (small medium large : Finset praxis.Means)\n  (_firstStep : stock.OneMore small medium) (secondStep : stock.OneMore medium large) (addedFirst : praxis.End) :\n  addedFirst ∈ marginalEnds plan small medium →\n    ∀ addedSecond ∈ marginalEnds plan medium large, praxis.PrefersEnd agent time addedFirst addedSecond</code><span class=\"sep\"></span><code class=\"docstring\">**The law of marginal utility, along a chain of named units.**\nTake three sub-stocks, `small` inside `medium` inside `large`. Each is\none unit more than the last (`stock.OneMore`). Every\nend the first step adds is preferred to every end the second step\nadds.\n\nNo interchangeability of units (`plan.Homogeneous`) is needed, because\nthe chain names which units are involved. The theorem is one\napplication of `urgency_principle`.\n\nTwo things go unused, and the statement records both. `_firstStep` is\nlisted and does no work at all. The underscore is how that is written\ndown. That it does no work is a finding: the chain form does not need\nthe first step to be a step. And within the hypothesis that an end is\nmarginal at the first step, only half is used. The unused half is\ndestructured as `_notNeeded` inside the proof. That is a name in the\nproof, not a binder in the statement. The linter that keeps this list\nhonest sees neither case. It is silenced by the underscore. And it\nworks a whole binder at a time. </code>",
- "145":
- "<code>Classical.choice.{u} {α : Sort u} : Nonempty α → α</code><span class=\"sep\"></span><code class=\"docstring\">**The axiom of choice**. `Nonempty α` is a proof that `α` has an element,\nbut the element itself is erased. The axiom `choice` supplies a particular\nelement of `α` given only this proof.\n\nThe textbook axiom of choice normally makes a family of choices all at once,\nbut that is implied from this formulation, because if `α : ι → Type` is a\nfamily of types and `h : ∀ i, Nonempty (α i)` is a proof that they are all\nnonempty, then `fun i =&gt; Classical.choice (h i) : ∀ i, α i` is a family of\nchosen elements. This is actually a bit stronger than the ZFC choice axiom;\nthis is sometimes called \"[global choice](https://en.wikipedia.org/wiki/Axiom_of_global_choice)\".\n\nIn Lean, we use the axiom of choice to derive the law of excluded middle\n(see `Classical.em`), so it will often show up in axiom listings where you\nmay not expect. You can use `#print axioms my_thm` to find out if a given\ntheorem depends on this or other axioms.\n\nThis axiom can be used to construct \"data\", but obviously there is no algorithm\nto compute it, so Lean will require you to mark any definition that would\ninvolve executing `Classical.choice` or other axioms as `noncomputable`, and\nwill not produce any executable code for such definitions.\n</code>",
- "144":
- "<code>Apodictic.marginalEnds {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (fewer more : Finset praxis.Means) : Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">**Marginal utility of a one-unit step**, from `fewer` to `more`,\nin Rothbard's own sense. It is the ends the extra unit adds. These are\nthe same ends that would be given up if it were lost.\n\"The marginal utility of the supply is the end that must be given up\nas the result of a loss of the unit\" (*MES* p. 27); \"he gives up the\nleast urgent of the wants which the larger stock would have\nsatisfied\" (p. 25).\n\nIt is a set of ends rather than a single end, because nothing here\nassumes that exactly one end drops. Determinacy of the drop is not\namong the law's premises. It is a `Set` rather than a `Finset` for a\nmechanical reason. Subtracting one `Finset` from another requires\nbeing able to decide when two ends are the same end. An arbitrary\nframe does not give us that. Reaching for `Classical` would put\n`Classical.choice` on the manifest for no praxeological reason at all.\n\nIt is a definition, not a claim. Rothbard introduces it as a\ndefinition (\"is called\", \"is known as\"). What licenses calling this\nthe utility of the *unit* is imputation of value from ends back to\nmeans: \"actors value means strictly in accordance with their valuation\nof the ends that they believe the means can serve\" (p. 19).\n\nIt is indexed by the step rather than by a size. The reason is that\nwhich ends a unit adds can depend on which units are already on hand,\nunless interchangeability of units (`plan.Homogeneous`) holds. </code>",
- "143": "<code>stock.OneMore fewer more</code>",
- "142":
+ "147": "<code>stock.OneMore fewer more</code>",
+ "146":
  "<code>Apodictic.urgency_principle {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (fewer more : Finset praxis.Means) (step : stock.OneMore fewer more)\n  (kept : praxis.End) :\n  kept ∈ plan.wouldServe fewer →\n    ∀ lost ∈ plan.wouldServe more, lost ∉ plan.wouldServe fewer → praxis.PrefersEnd agent time kept lost</code><span class=\"sep\"></span><code class=\"docstring\">**The urgency principle** (Rothbard), stated as a loss. Suppose the\nagent had `more` units and drops to `fewer`, one unit fewer\n(`stock.OneMore fewer more`). Every end he would still serve at\n`fewer` is preferred to every end he has to abandon on the way down.\nThe loss falls on the least urgent want.\n\nIt is one application of `served_over_unserved`. An abandoned end is\none the good can serve and the plan does not serve at `fewer`. Beyond\nsupplying that much, the fact that `more` is exactly one unit larger\ndoes no work here. </code>",
- "141":
+ "145":
  "<code>Apodictic.insert_sdiff_self_of_mem {α : Type} [DecidableEq α] {bundle : Set α} {want : α} (h : want ∈ bundle) :\n  bundle = insert want (bundle \\ {want})</code><span class=\"sep\"></span><code class=\"docstring\">Taking a member out of a set and putting it straight back leaves\nthe set alone. Proved here rather than borrowed because mathlib's\n`Set.insert_sdiff_singleton` is classical; with decidable equality\nthis version is constructive. </code>",
- "140": "<code>subStock ⊆ stock.units</code>",
+ "144": "<code>subStock ⊆ stock.units</code>",
+ "143": "<code>praxis.IndependentUses agent time</code>",
+ "142": "<code>SwapDominant plan</code>",
+ "141": "<code>Allocation ?m.12</code>",
+ "140":
+ "<code>Apodictic.Stock.Grows {praxis : ActionFrame} {agent : praxis.Agent} {earlierTime laterTime : praxis.Time}\n  (earlier : Stock praxis agent earlierTime) (later : Stock praxis agent laterTime) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The supply grows by one** — Mises's \"the supply available\nincreases from n–1 units to n units\", read as a history. The stock at\nthe later time holds every unit of the stock at the earlier time, and\none more.\n\nIt says nothing about the order of the two times. `Time` carries no\norder, and this definition does not ask for one. The words \"earlier\"\nand \"later\" are the names of the two arguments. They are not a relation\nbetween their indices. Leaving the order out lets a theorem show\nwhether it needs one. The earlier-judged ladder\n(`Apodictic.Temporal.ladder_judged_earlier`) needs neither this\ndefinition nor any order on the two times. </code>",
  "14": "<code>Finset praxis.Means</code>",
- "139": "<code>praxis.IndependentUses agent time</code>",
- "138": "<code>SwapDominant plan</code>",
+ "139": "<code>Stock praxis agent laterTime</code>",
+ "138": "<code>Stock praxis agent earlierTime</code>",
  "137":
- "<code>DecidableEq.{u} (α : Sort u) : Sort (max 1 u)</code><span class=\"sep\"></span><code class=\"docstring\">Propositional equality is `Decidable` for all elements of a type.\n\nIn other words, an instance of `DecidableEq α` is a means of deciding the proposition `a = b` is\nfor all `a b : α`.\n</code>",
- "136": "<code>Stock praxis agent laterTime</code>",
- "135": "<code>Stock praxis agent earlierTime</code>",
- "134":
- "<code>Apodictic.Stock.NoNewUses {praxis : ActionFrame} {agent : praxis.Agent} {earlierTime laterTime : praxis.Time}\n  (earlier : Stock praxis agent earlierTime) (later : Stock praxis agent laterTime) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The good is believed to serve no new use** — whatever the good is\nbelieved to serve at the later moment, it was believed to serve at\nthe earlier one. The later stock's serviceable ends are among the\nearlier stock's.\n\nIt is a situational condition. It is the one condition on the history\nreading that spans two moments. It runs one way. It is about BELIEF\nabout the good, not about the scale of values. Between the two moments\nthe man learns no new use for the good. The condition is there so that\nthe want the added unit goes to was on the earlier scale at all. Where\nhe does learn one, the earlier-judged ladder is silent.\n\nDoes not say that the good's uses stay the same. A use believed in\nearlier may be dropped later. It says nothing about the scale at\neither moment. It says nothing about which units are held, or about\nthe order of the two times. It is carried by\n`Apodictic.Temporal.ladder_judged_earlier` and by nothing else. </code>",
- "133":
+ "<code>Apodictic.Stock.NoNewUses {praxis : ActionFrame} {agent : praxis.Agent} {earlierTime laterTime : praxis.Time}\n  (earlier : Stock praxis agent earlierTime) (later : Stock praxis agent laterTime) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**The good is believed to serve no new use** — whatever the good is\nbelieved to serve at the later moment, it was believed to serve at\nthe earlier one. The later stock's serviceable ends are among the\nearlier stock's.\n\nIt is a situational condition. It is the one condition on the history\nreading that spans two moments. It runs one way. It is about BELIEF\nabout the good, not about the scale of values. Between the two moments\nthe man learns no new use for the good.\n\nIts theorem is the ladder judged on the earlier scale\n(`Apodictic.Temporal.ladder_judged_earlier`). That theorem ranks a\nwant on the earlier scale, the ranking he held at the earlier moment.\nThe want is one served at the later moment and not at the earlier\none. Where the supply grew by one unit between the two moments\n(`Apodictic.Stock.Grows`), it is the want the added unit goes to. The\ntheorem does not need the growth as a hypothesis. That want has to be\namong the wants the good was believed able to serve at the earlier\nmoment. Only of those wants do the theorem's other two hypotheses\nspeak: comparability (`earlier.ComparableServiceable`) and acting in\norder (`ActsInOrder before`). This condition puts it there. Where he does learn a new use, that theorem\nis silent.\n\nDoes not say that the good's uses stay the same. A use believed in\nearlier may be dropped later. It says nothing about the scale at\neither moment. It says nothing about which units are held. Nor does\nit say which moment came first. Read as a history, the earlier moment\ncomes first, and \"learns\" is said in that reading.\nIn the Lean, \"earlier\" and \"later\" only name its two arguments. The one\nway it runs is the inclusion: later uses among earlier ones. The\nlibrary's times carry no order (see `Apodictic.Stock.Grows`). It is carried by\n`Apodictic.Temporal.ladder_judged_earlier` and by nothing else. </code>",
+ "136":
  "<code>Apodictic.Model.rothbard_premise_holds_where_mises_is_silent :\n  SwapDominant Model.marginPlan ∧ ¬Model.marginStock.ComparableServiceable</code><span class=\"sep\"></span><code class=\"docstring\">**A situation where Rothbard's premise holds and Mises's route\ndoes not apply.**\n\nSwap dominance (`SwapDominant`) holds for this agent. Comparability\n(`ComparableServiceable`) fails. So `Mises.ladder_from_order` does not\napply at all: its premise is unavailable.\n\nComparability is a condition. So this is what \"Mises's law covers\nfewer situations\" means concretely. It means an agent with two ends he\nhas never had occasion to rank against each other. Suppose\ncomparability were a claim. Then praxeology would assert that no such\nagent exists. This frame would then be a counter-example to the claim,\nnot a gap in the theorem's reach. </code>",
- "132":
+ "135":
  "<code>Apodictic.served_over_unserved {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (plan : AllocationPlan stock) (dominance : SwapDominant plan)\n  (independent : praxis.IndependentUses agent time) (subStock : Finset praxis.Means) (onHand : subStock ⊆ stock.units)\n  (served : praxis.End) :\n  served ∈ plan.wouldServe subStock →\n    ∀ unserved ∈ stock.serves, unserved ∉ plan.wouldServe subStock → praxis.PrefersEnd agent time served unserved</code><span class=\"sep\"></span><code class=\"docstring\">**Served over unserved** — the workhorse. Take any sub-stock on\nhand. Every end the agent would serve with it is preferred to every\nend the good could serve but he would leave unserved.\n\nThis is everything `SwapDominant` gives. It is more than Rothbard\nsays. It sets a served end against ANY unserved end the good could\nserve, not only against the one the next unit would reach. It needs\nthe hypothesis of independence of uses (`IndependentUses agent time`).\nThat hypothesis is what carries a preference between two bundles down\nto a preference between two ends.\n\nHow the proof goes. Swap the `served` want for the `unserved` one, and\nthe plan beats the result. The served bundle is that one want together\nwith the rest (`insert_sdiff_self_of_mem`). So the two bundles differ\nin exactly one place. Independence of uses reads the preference\nbetween those two wants off that. </code>",
- "131":
+ "134":
  "<code>Apodictic.Temporal.ladder_judged_earlier {praxis : ActionFrame} {agent : praxis.Agent}\n  {earlierTime laterTime : praxis.Time} {earlier : Stock praxis agent earlierTime}\n  {later : Stock praxis agent laterTime} (before : Allocation earlier) (after : Allocation later)\n  (order : ActsInOrder before) (comparable : earlier.ComparableServiceable) (noNewUses : earlier.NoNewUses later) :\n  Temporal.Ladder before after earlierTime</code><span class=\"sep\"></span><code class=\"docstring\">**The ladder, judged on the earlier scale** — a theorem, from a\nclaim about actual action and two situational conditions.\n\nWhat it spends:\n\n- The earlier allocation acts in order (`ActsInOrder before`).\n- The good's serviceable ends are comparable at the earlier time\n  (`earlier.ComparableServiceable`).\n- Whatever the good is believed to serve at the later time, it was\n  believed to serve at the earlier one (`earlier.NoNewUses later`).\n  The increment's want has to be on the earlier scale at all. Only then\n  can that scale rank it.\n\nWhat it does NOT spend, as the signature shows:\n\n- Nothing about the later allocation beyond membership.\n- Nothing about the supply having grown. `Stock.Grows` is not a\n  hypothesis. Added as one, it fails the unused-argument linter.\n- Nothing about the order of the two times.\n- Nothing about the later scale.\n\nThe argument is Mises's. The added want was serviceable and unserved\nbefore. Had it been more urgent than something served, acting in order\nwould have served it. Mises's minimality qualifier is idle here, as on\nboth counterfactual routes. `least` need only have been served.\n\nSo this is the ladder as a statement about the EARLIER allocation.\nWhat was passed over then ranked below what was served then. Of the\nincrement it says only that it was passed over. </code>",
+ "133":
+ "<code>Apodictic.marginalEnds {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) (fewer more : Finset praxis.Means) : Set praxis.End</code><span class=\"sep\"></span><code class=\"docstring\">**Marginal utility of a one-unit step**, from `fewer` to `more`,\nin Rothbard's own sense. It is the ends the extra unit adds. These are\nthe same ends that would be given up if it were lost.\n\"The marginal utility of the supply is the end that must be given up\nas the result of a loss of the unit\" (*MES* p. 27); \"he gives up the\nleast urgent of the wants which the larger stock would have\nsatisfied\" (p. 25).\n\nIt is a set of ends rather than a single end, because nothing here\nassumes that exactly one end drops. Determinacy of the drop is not\namong the law's premises. It is a `Set` rather than a `Finset` for a\nmechanical reason. Subtracting one `Finset` from another requires\nbeing able to decide when two ends are the same end. An arbitrary\nframe does not give us that. Reaching for `Classical` would put\n`Classical.choice` on the manifest for no praxeological reason at all.\n\nIt is a definition, not a claim. Rothbard introduces it as a\ndefinition (\"is called\", \"is known as\"). What licenses calling this\nthe utility of the *unit* is imputation of value from ends back to\nmeans: \"actors value means strictly in accordance with their valuation\nof the ends that they believe the means can serve\" (p. 19).\n\nIt is indexed by the step rather than by a size. The reason is that\nwhich ends a unit adds can depend on which units are already on hand,\nunless interchangeability of units (`plan.Homogeneous`) holds. </code>",
+ "132":
+ "<code>Apodictic.ActionFrame.IndependentUses (praxis : ActionFrame) (agent : praxis.Agent) (time : praxis.Time) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Independence of uses** — a condition on the situation, NOT a\nuniversal claim. A bundle is a set of ends. Take a set of ends, and\ntwo ends outside it, `want` and `other`. Suppose he prefers the set\nwith `want` added to the set with `other` added. Then he prefers\n`want` to `other`. So a preference between two bundles that differ in\nexactly one end carries down to a preference between those two ends.\nIt fails where uses are complementary. Say end B is worth having only\nalongside end A, and A is in the set. He may prefer the set with B\nadded to the set with some C added. Yet on their own he may not prefer\nB to C. Then this condition fails. It is named here so that the theorems\nthat need it carry it as a hypothesis. It is also named so that a reader can point at it\nwhere it does not hold.\n\nThis is NOT a premise Rothbard's argument uses. He ranks wants against\neach other directly. He reads their ranking off his value scale\n(*MES* pp. 25–26, Figure 3). He takes that ranking as given. He never\nargues from bundles at all. Where he makes one fused claim, we split it in two: a claim about\nbundles (swap dominance, `SwapDominant`) and this condition. The split\nis OURS, and this condition is its cost. Complementarity never comes up\nin his wording. Once the claim is split, it comes up here, as the case\nwhere this condition fails. To assert this condition rather than\nhypothesize it would be to assert that complementarity never\nhappens. </code>",
+ "131":
+ "<code>Classical.choice.{u} {α : Sort u} : Nonempty α → α</code><span class=\"sep\"></span><code class=\"docstring\">**The axiom of choice**. `Nonempty α` is a proof that `α` has an element,\nbut the element itself is erased. The axiom `choice` supplies a particular\nelement of `α` given only this proof.\n\nThe textbook axiom of choice normally makes a family of choices all at once,\nbut that is implied from this formulation, because if `α : ι → Type` is a\nfamily of types and `h : ∀ i, Nonempty (α i)` is a proof that they are all\nnonempty, then `fun i =&gt; Classical.choice (h i) : ∀ i, α i` is a family of\nchosen elements. This is actually a bit stronger than the ZFC choice axiom;\nthis is sometimes called \"[global choice](https://en.wikipedia.org/wiki/Axiom_of_global_choice)\".\n\nIn Lean, we use the axiom of choice to derive the law of excluded middle\n(see `Classical.em`), so it will often show up in axiom listings where you\nmay not expect. You can use `#print axioms my_thm` to find out if a given\ntheorem depends on this or other axioms.\n\nThis axiom can be used to construct \"data\", but obviously there is no algorithm\nto compute it, so Lean will require you to mark any definition that would\ninvolve executing `Classical.choice` or other axioms as `noncomputable`, and\nwill not produce any executable code for such definitions.\n</code>",
  "130":
- "<code>Apodictic.ActionFrame.IndependentUses (praxis : ActionFrame) (agent : praxis.Agent) (time : praxis.Time) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Independence of uses** — a condition on the situation, NOT a\nuniversal claim. Take two bundles that differ in exactly one slot.\nThen preferring one bundle to the other carries down to preferring the\none end to the other. It fails where uses are complementary: where B\nis worth having only alongside A. It is named here so that the\ntheorems that need it carry it as a hypothesis. It is also named so\nthat a reader can point at it where it does not hold.\n\nThis is NOT a premise Rothbard spends. He ranks wants against each\nother directly. He ranks them off a scale that is already ranked\n(*MES* pp. 25–26, Figure 3). He never argues from bundles at all.\nThis condition is what OUR decomposition costs. Where he makes one\nfused claim, we make a claim about bundles (`SwapDominant`) plus\nthis condition. His wording never has to face complementarity. Once the pieces are pulled\napart, complementarity lands here. To assert this condition rather\nthan hypothesize it would be to assert that complementarity never\nhappens. </code>",
+ "<code>DecidableEq.{u} (α : Sort u) : Sort (max 1 u)</code><span class=\"sep\"></span><code class=\"docstring\">Propositional equality is `Decidable` for all elements of a type.\n\nIn other words, an instance of `DecidableEq α` is a means of deciding the proposition `a = b` is\nfor all `a b : α`.\n</code>",
  "13":
  "<code>Apodictic.no_rival_swap_dominant {praxis : ActionFrame} [DecidableEq praxis.End] {agent : praxis.Agent}\n  {time : praxis.Time} {stock : Stock praxis agent time} (asymmetry : AsymmetricPreference praxis agent time)\n  (plan rival : AllocationPlan stock) (dominance : SwapDominant plan) (rivalDominance : SwapDominant rival)\n  (subStock : Finset praxis.Means) (onHand : subStock ⊆ stock.units) (served unserved : praxis.End)\n  (hserved : served ∈ plan.wouldServe subStock) (hservedPossible : served ∈ stock.serves)\n  (hunservedPossible : unserved ∈ stock.serves) (hunserved : unserved ∉ plan.wouldServe subStock)\n  (hswap : ↑(rival.wouldServe subStock) = insert unserved (↑(plan.wouldServe subStock) \\ {served})) : False</code><span class=\"sep\"></span><code class=\"docstring\">**No rival plan, one swap away.** Suppose preference is\nasymmetric. Then two plans over the same stock cannot both be\nswap-dominant while differing by a single swap at some sub-stock.\n\nRothbard writes of \"the\" value scale — \"the\" marginal unit, \"the\"\nleast urgent want (*MES* pp. 24–27) — without arguing there is only\none. This is a narrow piece of that: not uniqueness, only that no\nrival a single swap away at some sub-stock is also swap-dominant.\nSwap dominance (`SwapDominant`) plus asymmetry delivers it. Asymmetry is the\npraxeological claim `AsymmetricPreference`. It is spent here, by\n`Apodictic.Contrast.rothbard_entails_servedInOrder`, and by the\ntheorems its docstring lists. Apart from\nasymmetry, `Prefers` has no properties assumed of it. </code>",
  "129":
- "<code>Apodictic.Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (stock : Stock praxis agent time) (fewer more : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`more` is `fewer` plus one unit, both inside the stock. It is said\nwith an inclusion and a count, not by naming the extra unit. That way\nsub-stocks are only ever supposed, never constructed. That is why\nnothing here needs to decide when two units are the same unit. </code>",
+ "<code>Apodictic.Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  (stock : Stock praxis agent time) (fewer more : Finset praxis.Means) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`more` is `fewer` plus one unit, both inside the stock. A\nsub-stock is a set of the stock's units. The definition says three\nthings: `fewer` is inside `more`, `more` is inside the stock, and\n`more` has one unit more than `fewer`. It does not name the extra\nunit. So every sub-stock here is one a theorem is handed. None is\nbuilt from another by adding a named unit. In Lean, adding a unit to a\nfinite set needs a test of whether that unit is already in it: a test\nof when two units are the same unit (decidable equality of units). An\narbitrary frame does not supply that test. A theorem could take it as\nan extra argument, as the library's theorems take decidable equality\nof ends (`[DecidableEq praxis.End]`). Or it could take it from Lean's\nclassical axiom (`Classical.choice`), which no theorem outside\n`Consistency.lean` uses. Stated with an inclusion and a count, as\nhere, nothing needs the test, so neither is needed. </code>",
  "128":
  "<code>Ne.{u} {α : Sort u} (a b : α) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`a ≠ b`, or `Ne a b` is defined as `¬ (a = b)` or `a = b → False`,\nand asserts that `a` and `b` are not equal.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `≠` in identifiers is `ne`.</code>",
  "127":
@@ -765,7 +766,7 @@
  "122":
  "<code>Apodictic.ActionFrame.TransitiveOn (praxis : ActionFrame) (agent : praxis.Agent) (time : praxis.Time)\n  (X Y Z : Set praxis.End) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Transitive on one chain** — a condition on the situation, NOT a\nclaim. It covers these three bundles only. If the first is preferred\nto the second, and the second to the third, the first is preferred to\nthe third.\n\nNeither author states transitivity. Rothbard's \"one ounce or less\"\n(*MES* p. 382) chains two preferences. It needs transitivity for that\none chain. </code>",
  "121":
- "<code>Apodictic.AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Interchangeability of units** — a condition on the situation,\nNOT a praxeological claim. The plan depends only on how many units\nthere are, not on which ones. Any two sub-stocks of the same size\nwould serve the same ends.\n\nWithout it, the phrase \"the plan at `n` units\" picks out nothing in\nparticular. So neither does the marginal utility of a supply of `n`.\nRothbard makes interchangeability part of what a supply IS: \"If a\nspecific unit is differently evaluated from all other units, then the\nsupply of that good is only one unit\" (*MES* p. 23). Where it fails,\nthe units are not one good. Then the supply-size form of the law does\nnot treat them as one. Like the plan it constrains, this condition\nspeaks of sub-stocks the agent may not hold. </code>",
+ "<code>Apodictic.AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent} {time : praxis.Time}\n  {stock : Stock praxis agent time} (plan : AllocationPlan stock) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">**Interchangeability of units** — a condition on the situation,\nNOT a praxeological claim. The plan depends only on how many units\nthere are, not on which ones. Any two sub-stocks of the same size\nwould serve the same ends.\n\nA sub-stock is a set of the stock's units. Marginal utility is read off\nthe plan: the ends it would serve with the larger of two sub-stocks and\nnot with the smaller (`marginalEnds`). Without this condition, the\nphrase \"the plan at `n` units\" picks out nothing in particular. So\nneither does the marginal utility of a supply of `n`.\n\nRothbard makes interchangeability part of what a supply IS: \"If a\nspecific unit is differently evaluated from all other units, then the\nsupply of that good is only one unit\" (*MES* p. 23). Where it fails,\nthe units are not one good. The library does not build it in. The\nsize-based form of the law (`Apodictic.marginal_utility`) carries it as\na hypothesis. So where it fails, that form is silent about these units.\nIt does not treat them as one.\n\nLike the plan it constrains, this condition speaks of every sub-stock.\nEach is a part of the stock he might have held. What he actually holds\nis the whole stock. </code>",
  "120":
  "<code>Apodictic.PureInterest.present_sum_preferred_to_less {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}\n  {present future promised : Stock praxis.toActionFrame agent now} (presentPlan : AllocationPlan present)\n  (futurePlan : AllocationPlan future) (promisedPlan : AllocationPlan promised)\n  (sum promise money lesser : Finset praxis.Means) (soon late : praxis.End) (spend : praxis.Time)\n  (timePreference : TimePreference praxis.toDatedFrame agent now)\n  (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)\n  (pays : PromisePays futurePlan promisedPlan promise money) (sooner : SpentSooner soon late)\n  (promiseIn : promise ⊆ future.units) (lesserIn : lesser ⊆ future.units) (notMore : lesser.card ≤ promise.card)\n  (homogeneous : futurePlan.Homogeneous) (moreMoney : MoreMoneyPreferredWhenSpent futurePlan spend)\n  (alike : RankedAlikeNowOf futurePlan spend promise lesser) (buysMore : BuysMoreThanItsParts futurePlan promise)\n  (isMoney : ∀ unit ∈ promise, praxis.Money unit) (free : FreeToHoldWithin promise)\n  (chain :\n    praxis.TransitiveOn agent now ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe promise)\n      ↑(futurePlan.wouldServe lesser)) :\n  praxis.Prefers agent now ↑(presentPlan.wouldServe sum) ↑(futurePlan.wouldServe lesser)</code><span class=\"sep\"></span><code class=\"docstring\">**One ounce of present money is preferred to one ounce or less of\nfuture money** (S3; *MES* p. 382: \"one ounce of present money will\nalways be preferred to one ounce or less of future money\").\n\nThe promise is a future sum that would buy what the present sum would\nbuy. It can be of any size. No count ties the two. The lesser sum is\nany future sum no larger than the promise. So \"or less\" is measured\nagainst the promise. It is measured\nagainst the present sum only where `SameCount` is added, as in the\nloans.\n\n\"Or less\" chains S2 with `MoreMoneyPreferredWhenSpent` on the future\nsums. That chain is the one place transitivity is needed. The future\nunits are interchangeable. So a sum of any units can stand in for a\npart of the promise of the same size. </code>",
  "12":

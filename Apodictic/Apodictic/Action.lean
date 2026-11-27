@@ -76,21 +76,27 @@ abbrev ActionFrame.PrefersEnd (praxis : ActionFrame) (agent : praxis.Agent)
   praxis.Prefers agent time {want} {other}
 
 /-- **Independence of uses** — a condition on the situation, NOT a
-universal claim. Take two bundles that differ in exactly one slot.
-Then preferring one bundle to the other carries down to preferring the
-one end to the other. It fails where uses are complementary: where B
-is worth having only alongside A. It is named here so that the
-theorems that need it carry it as a hypothesis. It is also named so
-that a reader can point at it where it does not hold.
+universal claim. A bundle is a set of ends. Take a set of ends, and
+two ends outside it, `want` and `other`. Suppose he prefers the set
+with `want` added to the set with `other` added. Then he prefers
+`want` to `other`. So a preference between two bundles that differ in
+exactly one end carries down to a preference between those two ends.
+It fails where uses are complementary. Say end B is worth having only
+alongside end A, and A is in the set. He may prefer the set with B
+added to the set with some C added. Yet on their own he may not prefer
+B to C. Then this condition fails. It is named here so that the theorems
+that need it carry it as a hypothesis. It is also named so that a reader can point at it
+where it does not hold.
 
-This is NOT a premise Rothbard spends. He ranks wants against each
-other directly. He ranks them off a scale that is already ranked
-(*MES* pp. 25–26, Figure 3). He never argues from bundles at all.
-This condition is what OUR decomposition costs. Where he makes one
-fused claim, we make a claim about bundles (`SwapDominant`) plus
-this condition. His wording never has to face complementarity. Once the pieces are pulled
-apart, complementarity lands here. To assert this condition rather
-than hypothesize it would be to assert that complementarity never
+This is NOT a premise Rothbard's argument uses. He ranks wants against
+each other directly. He reads their ranking off his value scale
+(*MES* pp. 25–26, Figure 3). He takes that ranking as given. He never
+argues from bundles at all. Where he makes one fused claim, we split it in two: a claim about
+bundles (swap dominance, `SwapDominant`) and this condition. The split
+is OURS, and this condition is its cost. Complementarity never comes up
+in his wording. Once the claim is split, it comes up here, as the case
+where this condition fails. To assert this condition rather than
+hypothesize it would be to assert that complementarity never
 happens. -/
 def ActionFrame.IndependentUses (praxis : ActionFrame) (agent : praxis.Agent)
     (time : praxis.Time) : Prop :=

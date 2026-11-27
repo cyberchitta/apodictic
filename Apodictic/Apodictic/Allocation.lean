@@ -90,14 +90,23 @@ NOT a praxeological claim. The plan depends only on how many units
 there are, not on which ones. Any two sub-stocks of the same size
 would serve the same ends.
 
-Without it, the phrase "the plan at `n` units" picks out nothing in
-particular. So neither does the marginal utility of a supply of `n`.
+A sub-stock is a set of the stock's units. Marginal utility is read off
+the plan: the ends it would serve with the larger of two sub-stocks and
+not with the smaller (`marginalEnds`). Without this condition, the
+phrase "the plan at `n` units" picks out nothing in particular. So
+neither does the marginal utility of a supply of `n`.
+
 Rothbard makes interchangeability part of what a supply IS: "If a
 specific unit is differently evaluated from all other units, then the
 supply of that good is only one unit" (*MES* p. 23). Where it fails,
-the units are not one good. Then the supply-size form of the law does
-not treat them as one. Like the plan it constrains, this condition
-speaks of sub-stocks the agent may not hold. -/
+the units are not one good. The library does not build it in. The
+size-based form of the law (`Apodictic.marginal_utility`) carries it as
+a hypothesis. So where it fails, that form is silent about these units.
+It does not treat them as one.
+
+Like the plan it constrains, this condition speaks of every sub-stock.
+Each is a part of the stock he might have held. What he actually holds
+is the whole stock. -/
 def AllocationPlan.Homogeneous {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=
@@ -123,12 +132,18 @@ from the actual behavior of individuals" (*Human Action*, ch. IV, §2).
 It is carried by the Mises route (`Apodictic.Mises.ladder_from_order`).
 It is carried by the ladder read as a history
 (`Apodictic.Temporal.ladder_judged_earlier`). It is carried by no
-theorem on the Rothbard route. That asymmetry is a finding. Swap
-dominance (`SwapDominant`), with independence of uses
-(`IndependentUses`), forces a comparison between every served end and
-every unserved serviceable one (`Apodictic.served_over_unserved`). So
-where both hold, this condition can only fail for a pair that never
-straddles a margin. See
+theorem on the Rothbard route. That asymmetry is a finding: Mises's
+route needs a condition on the agent's value scale that Rothbard's
+route does not.
+
+Swap dominance (`SwapDominant`), with independence of uses
+(`IndependentUses`), already ranks some pairs. Take any sub-stock on
+hand. Every end the plan would serve with it is preferred to every end
+the good can serve that the plan would leave unserved with it
+(`Apodictic.served_over_unserved`). So where both hold, this condition
+can fail only for a pair that no sub-stock splits: at every sub-stock,
+the plan serves both or neither. A frame where swap dominance holds
+and this condition fails is built in
 `Apodictic.Model.rothbard_premise_holds_where_mises_is_silent`. -/
 def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time) : Prop :=
@@ -136,10 +151,20 @@ def Stock.ComparableServiceable {praxis : ActionFrame} {agent : praxis.Agent}
     praxis.PrefersEnd agent time one other ∨
       praxis.PrefersEnd agent time other one
 
-/-- `more` is `fewer` plus one unit, both inside the stock. It is said
-with an inclusion and a count, not by naming the extra unit. That way
-sub-stocks are only ever supposed, never constructed. That is why
-nothing here needs to decide when two units are the same unit. -/
+/-- `more` is `fewer` plus one unit, both inside the stock. A
+sub-stock is a set of the stock's units. The definition says three
+things: `fewer` is inside `more`, `more` is inside the stock, and
+`more` has one unit more than `fewer`. It does not name the extra
+unit. So every sub-stock here is one a theorem is handed. None is
+built from another by adding a named unit. In Lean, adding a unit to a
+finite set needs a test of whether that unit is already in it: a test
+of when two units are the same unit (decidable equality of units). An
+arbitrary frame does not supply that test. A theorem could take it as
+an extra argument, as the library's theorems take decidable equality
+of ends (`[DecidableEq praxis.End]`). Or it could take it from Lean's
+classical axiom (`Classical.choice`), which no theorem outside
+`Consistency.lean` uses. Stated with an inclusion and a count, as
+here, nothing needs the test, so neither is needed. -/
 def Stock.OneMore {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} (stock : Stock praxis agent time)
     (fewer more : Finset praxis.Means) : Prop :=
@@ -201,14 +226,29 @@ earlier stock's.
 It is a situational condition. It is the one condition on the history
 reading that spans two moments. It runs one way. It is about BELIEF
 about the good, not about the scale of values. Between the two moments
-the man learns no new use for the good. The condition is there so that
-the want the added unit goes to was on the earlier scale at all. Where
-he does learn one, the earlier-judged ladder is silent.
+the man learns no new use for the good.
+
+Its theorem is the ladder judged on the earlier scale
+(`Apodictic.Temporal.ladder_judged_earlier`). That theorem ranks a
+want on the earlier scale, the ranking he held at the earlier moment.
+The want is one served at the later moment and not at the earlier
+one. Where the supply grew by one unit between the two moments
+(`Apodictic.Stock.Grows`), it is the want the added unit goes to. The
+theorem does not need the growth as a hypothesis. That want has to be
+among the wants the good was believed able to serve at the earlier
+moment. Only of those wants do the theorem's other two hypotheses
+speak: comparability (`earlier.ComparableServiceable`) and acting in
+order (`ActsInOrder before`). This condition puts it there. Where he does learn a new use, that theorem
+is silent.
 
 Does not say that the good's uses stay the same. A use believed in
 earlier may be dropped later. It says nothing about the scale at
-either moment. It says nothing about which units are held, or about
-the order of the two times. It is carried by
+either moment. It says nothing about which units are held. Nor does
+it say which moment came first. Read as a history, the earlier moment
+comes first, and "learns" is said in that reading.
+In the Lean, "earlier" and "later" only name its two arguments. The one
+way it runs is the inclusion: later uses among earlier ones. The
+library's times carry no order (see `Apodictic.Stock.Grows`). It is carried by
 `Apodictic.Temporal.ladder_judged_earlier` and by nothing else. -/
 def Stock.NoNewUses {praxis : ActionFrame} {agent : praxis.Agent}
     {earlierTime laterTime : praxis.Time}

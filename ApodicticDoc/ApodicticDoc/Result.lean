@@ -922,39 +922,90 @@ tag := "conditions"
 %%%
 
 
-The law of marginal utility takes five conditions in all, across its
-routes here, besides the claims. Each says something about the
+Terms such as library, claim, condition and frame are explained under
+{ref "result"}[The Result].
+
+The law of marginal utility is read three ways here. Two are the
+routes: Rothbard's and Mises's. The third is the ladder read as a
+history. All three are introduced under {ref "result"}[The Result].
+The third has a part of its own,
+{ref "ladder-history"}[The ladder as a history]. Across the three, the law takes five conditions besides the claims
+(see {ref "claims"}[The claims]). Each says something about the
 situation, not about action as such. Each is written into the
-statement. So a reader can point at one and say: that is the one that
-did not hold. Where one fails, the law says nothing. It is silent, not
-wrong.
+statement of every theorem that needs it. So a reader can point at
+one and say: that is the one that did not hold. Where one fails, the
+law says nothing. It is silent, not wrong.
+
+The list speaks of the man's plan (`AllocationPlan`). For each set of
+his units, the plan says which wants he would serve with exactly those
+units. Such a set is a sub-stock. The plan is under
+{ref "vocabulary"}[The vocabulary].
 
 - One more unit (`stock.OneMore fewer more`). The two piles compared
-  are both on hand. They differ by exactly one unit. The plan says
-  nothing about piles outside the man's stock. Neither does the law.
-- Independence of uses (`IndependentUses agent time`). What one want
-  is worth does not depend on which other wants are being served.
+  are both sub-stocks: both are cut from the units on hand. They
+  differ by exactly one unit. So the theorems that carry it compare
+  only parts of the man's own stock. Rothbard's route and Mises's
+  route carry it. The ladder read as a history does not.
+- Independence of uses (`IndependentUses agent time`). A bundle is a
+  set of wants. Take two bundles that differ in one want only: the
+  first has want X where the second has want Y. If he prefers the
+  first bundle to the second, he prefers X to Y. Put loosely: what one
+  want is worth does not depend on which other wants are being served.
+  Of the three readings, only Rothbard's route carries it.
 - Interchangeability of units (`plan.Homogeneous`). The plan depends
-  only on how many units there are, not on which ones. Of the law's
-  forms, only the size-based one needs it.
+  only on how many units there are, not on which ones. On Rothbard's
+  route the law has two forms (see {ref "theorems"}[The theorems]).
+  The chain form (`marginal_utility_chain`) names which units. The
+  size-based form (`marginal_utility`) compares supplies by size. Only
+  the size-based form carries this condition. No theorem on Mises's
+  route carries it.
 - Comparability (`stock.ComparableServiceable`). Any two wants the
   good can serve are ranked one way or the other. Mises's route needs
-  it. So does the ladder read as a history. Rothbard's route never
-  does.
+  it (`Mises.ladder_from_order`). So does the ladder read as a history
+  (`Temporal.ladder_judged_earlier`). No theorem on
+  Rothbard's route carries it. That route's claim is swap dominance
+  (`SwapDominant`, under {ref "claims"}[The claims]). At any sub-stock,
+  swap one want the plan serves for one the good can serve but the plan
+  leaves unserved. He prefers the wants the plan would serve there to
+  the wants left after the swap. With independence of uses, this ranks
+  some pairs of wants. At any sub-stock, he prefers every want the plan
+  would serve to every want the good can serve that the plan would
+  leave unserved (`served_over_unserved`, under
+  {ref "theorems"}[The theorems]). Every pair of wants that route's
+  theorems compare is of that kind: one served at a sub-stock, one left
+  unserved there. That is so for `urgency_principle` directly, and for
+  the chain form through it. For the size-based form it holds once
+  interchangeability of units (`plan.Homogeneous`) makes the plan the
+  same at its two sub-stocks of one size. So those pairs are ranked without
+  comparability. What stays unranked is under
+  {ref "mises-route"}[Mises's route].
 - No new uses (`earlier.NoNewUses later`). At the later moment, the
   good is believed to serve no use it was not believed to serve at the
   earlier one. Only the ladder read as a history needs it. There it is
-  the one condition that spans two moments. It is about belief in what
-  the good can do, not about the scale. And it runs one way. The man
-  learns no new use, though he may drop an old one.
+  the one condition that spans two moments. It is about what he
+  believes the good can do, not about how he ranks his wants. And it
+  runs one way: whatever is believed later was believed earlier, not
+  the reverse. The man learns no new use, though he may drop an old
+  one.
 
-Nothing here has to say which plan is the man's. A theorem is handed a
-plan. Its statement is about that plan. So there is no rival plan
-anyone could build to refute the theorem.
+No theorem here has to pick out which plan is the man's. Each is
+handed a plan, and its statement is about that plan. The other way
+would be a claim about every plan the man might have. Such a claim can
+be refuted by construction. From any one plan a neighbour can be
+built: the same plan, changed by one swap at one set of units. Take
+the claim that every such plan satisfies swap dominance. If preference
+is asymmetric, the neighbour of a plan that satisfies it does not
+(`no_rival_swap_dominant`, under {ref "theorems"}[The theorems]). So
+nothing here is said of every plan. The one condition here that
+speaks of a plan (`plan.Homogeneous`) ranges over every sub-stock.
+But it is a condition on the one plan the theorem is handed. So
+there is no rival plan anyone could build to refute the theorem. This
+is the rule of method under
+{ref "other-findings"}[The other findings].
 
-All five are given in full here, in the order they are listed above.
-They are given in full because these are the conditions a reader has
-to judge.
+Each of the five is shown below: first its Lean definition, then its
+docstring. They come in the order of the list above. They are shown
+whole because these are the conditions a reader has to judge.
 
 Other parts take conditions of their own:
 
@@ -966,8 +1017,8 @@ Other parts take conditions of their own:
   given in full under *The regression theorem*.
 - The interest theorems' are about sums of money and a loan. They are
   given in full under *Interest*. Some of the interest theorems take
-  interchangeability of units (`plan.Homogeneous`) too, for promises of
-  future money.
+  interchangeability of units too. They take it of his plan for a
+  stock of future money (`futurePlan.Homogeneous`).
 
 {docstring Apodictic.Stock.OneMore}
 
