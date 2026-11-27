@@ -1747,7 +1747,8 @@ not.
 
 {docstring Apodictic.Model.servedInOrder_not_entail_swapDominant}
 
-So on the allocation, Mises's premise is strictly the weaker. Still,
+So on the allocation, Mises's premise is strictly weaker than swap
+dominance taken with independence of uses and asymmetry. Still,
 neither premise set contains the other. The reason is that his route pays
 for the weaker premise with comparability of wants
 (`stock.ComparableServiceable`). Rothbard's route never needs it. Mises
@@ -1804,55 +1805,113 @@ Neither warrants the premise. That is as far as this part goes.
 file := "The-circle"
 %%%
 
-Two derivations of one law have now been rebuilt. Both give way at
-the same place. The pieces are under *The finding* and *Mises's
-route*. This part sets them side by side. It says plainly what the
-audit establishes about them, and what it does not. It is short,
-because most of the work is already done.
+Terms such as library, claim and condition are explained under
+{ref "result"}[The Result].
 
-*Both deny needing what both use.* Here are two sentences, one from
-each author:
+Two derivations of one law, the law of marginal utility, have now
+been rebuilt. Both give way at the same place. The pieces are under
+{ref "finding"}[The finding] and {ref "mises-route"}[Mises's route].
+This part sets them side by side. It says plainly what the audit
+establishes about them, and what it does not. It is short, because
+most of the work is already done.
 
-- Rothbard's man has "no need for him to formulate hypothetical value
-  scales" (p. 33).
-- Mises's scales have "no independent existence apart from the actual
-  behavior of individuals" (ch. IV, §2).
+Two words recur below. A sub-stock is a set of units cut from the
+man's stock (see {ref "conditions"}[The conditions]). The plan
+(`AllocationPlan`) says, for each sub-stock, which wants he would
+serve with exactly those units (see {ref "vocabulary"}[The vocabulary]).
+
+*Both deny needing what both use.* Here are the two authors' rules
+about value scales:
+
+- Rothbard: value scales "do not exist in a void apart from the
+  concrete choices of action", and "there is no need for him to
+  formulate hypothetical value scales" (p. 33).
+- Mises: the scales have "no independent existence apart from the
+  actual behavior of individuals" (ch. IV, §2).
 
 They state the same rule. A man's ranking shows up in what he does,
 and nowhere else.
 
-Then each author derives the law from a premise that rule forbids:
+Then each author derives the law from a premise that rule forbids.
+The premises come first. Why the rule forbids them comes after.
 
-- Rothbard's premise (`SwapDominant`) ranks the wants the man would
-  serve. It does so for every stable he could cut from his own.
-- Mises's route asks less of the man's plan and more of the ranking
-  (`stock.ComparableServiceable`). Its premise (`ServedInOrder`) is
-  written over exactly the same stables.
+
+- Rothbard's premise (`SwapDominant`) ranks the wants the man's plan
+  would serve. It does so for every sub-stock.
+- Mises's premise (`ServedInOrder`) is written over exactly the same
+  sub-stocks. His route asks less of the man's plan and more of his
+  ranking. The more is a condition: every pair of wants the good can
+  serve is ranked, one way or the other (`stock.ComparableServiceable`;
+  see {ref "mises-route"}[Mises's route]).
 
 So the two premises (`SwapDominant`, `ServedInOrder`) range over the
-same region: every subset of the stock in hand. Neither reaches an inch past it. Reach was never the
-trouble, on either route. The trouble is what both premises are. Each
-is a settled answer, held in advance, for every one of those stables
-at once. That is the scale in advance that both authors say a man does
-not need.
+same region: every subset of the stock in hand. Neither reaches past
+it. They do speak of supplies he does not hold: the sub-stocks smaller
+than his stock. The obvious complaint is that this is the trouble.
+{ref "finding"}[The finding] shows the complaint fails:
 
-*What each then helps himself to.* Rothbard sees the difficulty. He
-exempts the law from the rule by name, in a subordinate clause. The
-exemption's only warrant is the derivation. Mises does not see the
-difficulty, or does not say so. He sets down his counterfactual
-definition (`Mises.marginalEmployment`). He announces that in doing so
-"We do not transcend the sphere of praxeological reasoning" (ch. VII,
-§1). One reasons in a circle. The other declares. Neither gives the
-premise a warrant that stands apart from the law it is used to prove.
+- Reasoning about such supplies is Rothbard's own practice.
+- One-unit steps down, of the kind he takes, reach every sub-stock
+  from the stock in hand.
+- On p. 33, the line between what he allows and what he refuses is
+  drawn around the stock in hand.
 
-*The weaker premise does not help.* On the allocation, Mises's premise
-(`ServedInOrder`) is strictly the weaker. A reader might hope that
-weakening it further reaches something about actual choices alone.
-Here is the reason to expect not. The law compares two supplies. The
+So how far the premises reach is not the trouble, on either route.
+
+The trouble is what both premises are. Each is a claim about the plan.
+The plan is a settled answer, held in advance, for every one of those
+sub-stocks at once. It answers before any of the choosing. On the rule
+above, a scale shows up choice by concrete choice, as each choice is
+made (see *The finding*). So no act of his settles the plan. It is a scale that
+stands apart from the concrete choices. Both rules deny such a scale.
+The case is made for Rothbard under *The finding*, and for Mises under
+*Mises's route*.
+
+*What each then helps himself to.* Rothbard sees the difficulty. The
+law says something about the man's choices before they are made. So
+does the plan. On p. 33, the page that states his rule, he says no one
+can predict with certainty the course of a man's choices, "except that
+they will follow the law of marginal utility, which was deduced from
+the axiom of action". That subordinate clause exempts the law from the
+rule, by name. He attaches no argument. The circle runs like this:
+
+- The clause says in advance what his choices will obey. The plan, too,
+  says in advance what he would choose. So the clause is what lets him
+  hand the man a standing plan: one settled in advance, for every
+  sub-stock at once.
+- The law is then proved from that plan.
+- So the warrant for the premise is the law it is used to prove.
+
+Mises does not see the difficulty, or does not say so. He sets down
+his definition of the marginal employment (`Mises.marginalEmployment`).
+It is the employment a man makes at n units "but would not make if,
+other things being equal, his supply were only n–1 units". So it is
+counterfactual: it turns on what he would do if his supply were
+smaller. He prefaces the definition with a remark: "We do not
+transcend the sphere of praxeological reasoning in establishing the
+following definition" (ch. VII, §1). Rothbard reasons in a circle. Mises
+declares. Neither gives the premise a warrant that stands apart from
+the law it is used to prove.
+
+*The weaker premise does not help.* Mises's premise
+(`ServedInOrder`) is strictly weaker than two claims and a condition
+taken together:
+
+- Rothbard's premise (`SwapDominant`).
+- Independence of uses (`IndependentUses`).
+- Asymmetry of preference (`AsymmetricPreference`).
+
+The three entail it (`Contrast.rothbard_entails_servedInOrder`). It
+does not entail Rothbard's premise
+(`Model.servedInOrder_not_entail_swapDominant`). Both theorems are
+under *Mises's route*. A reader might hope that weakening it further reaches
+something about actual choices alone. Here is the reason to expect
+not. On both routes the law compares two supplies at one moment. The
 man holds one of them. So whatever premise delivers the law at one
 moment has to say something about the supply he does not hold. The
 only thing that can be said about that supply is what he would do with
-it. Weakening the premise changes how much it says in that tense. It
+it. That is the counterfactual tense: what he would do, not what he
+did. Weakening the premise changes how much it says in that tense. It
 cannot change the tense.
 
 That is a reason, not a result. Nothing here proves that no premise
@@ -1860,49 +1919,68 @@ about actual choices can reach the law. No one has tried to prove it.
 What the audit has is two routes. Each rests on a standing
 counterfactual that its author disowns.
 
-A third reading speaks only of what the man did. On it, he held the
-smaller supply at an earlier moment. It is set out under *The ladder
-as a history*. It pays in a different coin.
+A third reading drops the one moment. It speaks only of what the man
+did. On it, he held the smaller supply at an earlier moment. It needs
+no plan. It pays instead with conditions. One is that he learned no
+new use for the good between the two moments (`earlier.NoNewUses
+later`). The part called
+{ref "ladder-history"}[The ladder as a history] sets it out.
 
 *One shape, if you like.* What follows is a reading, not a finding.
-It is offered as a reading. These are the two defects the audit turned up in
-Rothbard:
+These are the two defects the audit turned up in Rothbard:
 
 - The circle, here.
-- The inference about units, set out under *The other findings*.
+- The inference about units: from his definition of a supply (p. 23)
+  to a plan that cares only how many units the man has. It is set out
+  under {ref "other-findings"}[The other findings].
 
 The two have a common form. Each time, what is offered as a warrant
 does not reach what it is offered for:
 
-- The exemption is offered for the plan. It reaches only the law.
-- The definition of a supply is offered for the plan not caring which
-  units the man has (`plan.Homogeneous`). It reaches only the units.
+- The exemption is offered as the warrant for the standing plan. What
+  it names is only the law.
+- Rothbard's definition of a supply is offered as the warrant for a
+  plan that does not care which units the man has, only how many
+  (`plan.Homogeneous`). What it reaches is a fact about the units
+  only: each is equally able to serve (`stock.unitsAlike`). A fact
+  about the plan does not follow (`Model.unitsAlike_not_entail_homogeneous`;
+  see *The finding*).
 
-Mises's declaration fits the same form trivially, since it reaches
-nothing. Is that one habit, or two coincidences? A proof assistant
-cannot say.
+Is that common form one habit, or two coincidences? A proof assistant
+cannot say. Mises's declaration fits the same form trivially, since it
+reaches nothing.
 
 *What is and is not established.* Established:
 
 - Each derivation follows from its stated premise and conditions.
 - Each premise is a claim about what the man would do.
 - Each author restricts value scales to what the man does do.
-- Neither author warrants his premise.
+- Neither author gives his premise a warrant that stands apart from
+  the law.
 
 Not established:
 
 - That the law is false.
 - That praxeology cannot have it.
 
-A ladder theorem from actual action does exist, judged on the earlier
-scale (`Temporal.ladder_judged_earlier`). It rests on acting in order
-(`ActsInOrder`). What it reaches, and what it costs, is under *The
-ladder as a history*.
+One more fact sits beside the second. The third reading above has a
+theorem (`Temporal.ladder_judged_earlier`). It proves the ladder read
+as a history: each want the later allocation serves, and the earlier
+did not, ranks below the least urgent want the earlier one served (see
+{ref "ladder-history"}[The ladder as a history]). It rests on
+acting in order (`ActsInOrder`), a claim about what the man actually
+does, and on no plan. It also takes two conditions. So a ladder does
+follow from a claim about action without a plan, but only on the
+scale he ranked by before the stock grew. On
+the later scale the ladder does not follow from acting in order
+(`Model.later_judged_ladder_fails`). What it reaches, and what
+it costs, is under *The ladder as a history*.
 
 The audit began with a question. Is the certainty Mises claimed for
 this law the certainty of a theorem? The answer is as narrow as the
-two lists under *What is and is not established*. The derivation is as
-certain as its premise. The premise is the part nobody has derived.
+two lists under *What is and is not established*. Each derivation is
+as certain as its premise. The premises are the part nobody has
+derived.
 
 # The ladder as a history
 %%%
