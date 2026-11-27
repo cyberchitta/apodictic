@@ -1455,6 +1455,9 @@ file := "Mises-route"
 tag := "mises-route"
 %%%
 
+Terms such as library, docstring, signature, claim, condition, linter
+and frame are explained under {ref "result"}[The Result].
+
 Rothbard's is not the only derivation the tradition offers. Mises
 reaches the same law in *Human Action* (ch. VII, §1). His argument has
 a wholly different shape. The library carries his route as a second
@@ -1462,7 +1465,7 @@ target. It is built in a module that cannot see Rothbard's theorems at
 all. So whatever his argument spends has to be stated there, and it
 shows on the signature. This part asks what his argument spends. A
 proof that could reach for Rothbard's lemmas would have assumed the
-answer.
+answer to that question.
 
 His statement of the law:
 
@@ -1472,20 +1475,40 @@ His statement of the law:
   among all those wants which could be removed by means of the supply
   n–1.
 
-His wording differs from Rothbard's in two ways:
+This statement is called his ladder here (`Mises.LadderHolds`). His
+wording differs from Rothbard's in two ways:
 
-- His ladder runs upward, from n–1 to n. Rothbard takes a horse away.
+- His ladder runs upward, from n–1 to n. Rothbard's example runs
+  downward: he takes a horse away, six horses to five (see
+  {ref "horses"}[The horses]).
 - His ladder singles out a least urgent want
-  (`Mises.LeastUrgentServed`). Rothbard compares two named steps.
+  (`Mises.LeastUrgentServed`). Rothbard's law names no least want. It
+  compares what a fifth horse adds with what a sixth adds (see
+  {ref "theorems"}[The theorems]).
 
 Mises's statement is read here as Rothbard's is read. Two supplies are
 held up against each other at one time. The reason is that Mises's
 own definition has that shape. The marginal employment
 (`Mises.marginalEmployment`) is the one a man makes at n units "but
 would not make if, other things being equal, his supply were only n–1
-units". On another reading, the ladder is a history of acquisitions.
-That reading is a separate target, set out under *The ladder as a
-history*.
+units". Mises prefaces that definition with a remark: establishing it
+does not transcend praxeological reasoning. The remark returns at the
+end of this part. On another reading, the ladder is a history of
+acquisitions. That reading is a separate target, set out under *The
+ladder as a history*.
+
+The docstrings below speak of a few things from the vocabulary (see
+{ref "vocabulary"}[The vocabulary]):
+
+- A sub-stock is a set of units cut from the man's stock (see
+  {ref "conditions"}[The conditions]). Each supply compared here is
+  one.
+- The plan (`AllocationPlan`): for any sub-stock, which wants he would
+  serve with exactly those units. It is settled in advance.
+- The preference (`Prefers`): his ranking of one bundle of wants above
+  another. A bundle is a set of wants. Nothing more is built into the
+  ranking. The same ranking of single wants is `PrefersEnd`. One want
+  is more urgent than another when he prefers it in that ranking.
 
 {docstring Apodictic.Mises.marginalEmployment}
 
@@ -1494,12 +1517,24 @@ history*.
 {docstring Apodictic.Mises.LadderHolds}
 
 *His conclusion is Rothbard's.* Before asking what Mises's argument
-spends, ask whether it has to spend anything. Does the ladder
-(`Mises.LadderHolds`) follow outright from Rothbard's premise
-(`SwapDominant`) and independence of uses (`IndependentUses`)? It
-does. The proof is a few lines. Two things fall out of it:
+spends, ask whether it has to spend anything. Rothbard's premise is
+swap dominance (`SwapDominant`, under {ref "claims"}[The claims]).
+Take any sub-stock. Take one want the plan would serve with that
+sub-stock, and one the good can serve that the plan would leave
+unserved. Swap the second in for the first. Then the man prefers what
+the plan would serve to what the swap leaves him. Whether
+Rothbard may assume this at all is the warrant problem, set out under {ref "finding"}[The finding]. Add
+independence of uses (`IndependentUses`, under
+{ref "conditions"}[The conditions]). Does the ladder
+(`Mises.LadderHolds`) follow outright from these two? It does. So his
+conclusion needs nothing beyond Rothbard's premise and independence of
+uses. The docstrings below call this check the control. It comes back
+positive: the ladder follows. The proof is a few lines. Two things
+fall out of it:
 
-- The upward direction is narration.
+- The upward direction is narration. The ladder's statement holds two
+  supplies, `fewer` and `more`, at one time. Nothing in it runs upward
+  or downward.
 - The least-urgent qualifier does no work at all. The proof consumes
   only that the want was served at the smaller supply. The machine can
   show as much, because the same conclusion goes through for every
@@ -1540,12 +1575,20 @@ each step.
 First, the refutation of the second horn. Mises says one action
 followed by a terminal state is incompatible with "our assumption that
 there is action". It is not. Take a frame that admits exactly one
-action. It satisfies both halves he calls incompatible. What his step
-needs is that action is plural: that two distinct actions occur
-(`Mises.ActionRecurs`). The bare claim that there is action
-(`Mises.ActionOccurs`) does not deliver plurality. This is the first
-time the library has put that claim to any work. It was too weak for
-the job.
+action (`Model.Solitary`). Both of these hold in it:
+
+- There is action (`Mises.ActionOccurs`).
+- There is at most one action (`Mises.AtMostOneAction`). That is the
+  second horn.
+
+So the two are not incompatible. What his step needs is that action is
+plural: that two distinct actions occur (`Mises.ActionRecurs`). The
+bare statement that there is action (`Mises.ActionOccurs`) does not
+deliver plurality. That statement is what the tradition calls the
+axiom of action, in the only form the tradition states it: there is
+action. The library names it as a definition and asserts it nowhere.
+This is the first time the library has put it to any work. It was too
+weak for the job.
 
 {docstring Apodictic.Model.existence_does_not_refute_second_horn}
 
@@ -1553,20 +1596,32 @@ Second, grant him the horn. Let action be plural, so the dilemma is
 won. The ladder still does not follow. Take a frame with three
 features:
 
-- It has two actions.
-- Its preference is asymmetric and not empty.
-- Its plan serves the less urgent want first.
+- It has two actions. So action is plural, and that is everything the
+  dilemma establishes.
+- Its preference is asymmetric and not empty. Asymmetric means: if he
+  prefers one bundle of wants to another, he does not prefer the second
+  to the first (`AsymmetricPreference`, under
+  {ref "claims"}[The claims]). The frame satisfies that claim too.
+  Not empty means some want really is preferred to another. With
+  nothing preferred, every ranking the ladder asks for would fail at
+  once, and the failure would show nothing.
+- With no units, its plan would serve the less urgent want. Only with
+  one unit would it serve the more urgent one too. That is what breaks
+  the law.
 
 That frame meets everything the dilemma establishes. And it breaks the
 law.
 
 {docstring Apodictic.Model.recurs_does_not_deliver_ladder}
 
-So the dilemma is not the premise. What carries Mises from it to the
-law is a single sentence. He offers it as though it added nothing: "It
-is nothing else than the reverse of the statement that what satisfies
-more is preferred to what gives smaller satisfaction." That sentence
-is where his premise lives. The sentence is unargued.
+So the dilemma does not supply the premise the law needs. What carries
+Mises from it to the law is a single sentence. In his text it comes
+straight after this one: "Thus the law of marginal utility is already
+implied in the category of action." He offers it as though it added
+nothing: "It is nothing else than the reverse of the statement that
+what satisfies more is preferred to what gives smaller satisfaction."
+That second sentence is where his premise for the law lives. It is
+reconstructed below as `ServedInOrder`. The sentence is unargued.
 
 *His premise, reconstructed.* There is a tempting reading of that
 sentence. It adds a scale of satisfaction to the vocabulary. The scale
@@ -1574,22 +1629,31 @@ would be a second ordering, on states, by how much uneasiness each
 removes. That reading was refused, for three reasons:
 
 - It would enlarge the ontology on one sentence's authority.
-- It invites cardinal degrees through the back door.
+- It invites cardinal degrees through the back door: how much one
+  state satisfies, as an amount. The ranking here attaches no numbers
+  (see {ref "horses"}[The horses]).
 - A satisfaction scale would still have to be connected to which want
   a unit serves. That connection is the premise all over again.
 
 The reading used instead is the most generous one the existing
 vocabulary allows. The agent serves in order of urgency
-(`ServedInOrder`). Suppose the good can serve a want, and that want is
-more urgent than one on his plan. Then the plan has it too. That is a
-praxeological claim. Like Rothbard's, it is subjunctive throughout. It
-is the second under *The claims*.
+(`ServedInOrder`). Take any sub-stock on hand. Suppose the good can
+serve a want, and that want is more urgent than one the plan would
+serve with that sub-stock. Then the plan would serve it too, with the
+same sub-stock. That is a praxeological claim. Like Rothbard's, it is
+subjunctive throughout. It is the second under
+{ref "claims"}[The claims].
 
-One thing more is needed. It is a condition, not a claim. It says that
+One thing more is needed. Serving in order shows only this: the want
+a unit adds is not more urgent than any want already served at the
+smaller supply. The law says it is less urgent. To pass from the one
+to the other, the two wants must be ranked one way or the other. The
+route takes this as a condition, not a claim. The condition says that
 every pair of wants the good can serve is ranked, one way or the other
 (`stock.ComparableServiceable`). Where a pair is not, the theorem is
-silent. This condition is the fourth under *The conditions*. It is the
-one Rothbard's route never asks for.
+silent. This condition is the fourth under
+{ref "conditions"}[The conditions]. It is the one Rothbard's route
+never asks for.
 
 {docstring Apodictic.Mises.ladder_from_order}
 
@@ -1626,17 +1690,31 @@ manifest of Apodictic.Mises.ladder_from_order
   (5 trailing binders belong to the conclusion, not the signature)
 ```
 
-Hold it against the manifest of `marginal_utility`. Swap dominance
-(`SwapDominant`) is gone. So is independence of uses
-(`IndependentUses agent time`). So is `DecidableEq praxis.End`. The
-one-unit steps (`stock.OneMore`) move into the law's statement.
-Interchangeability of units (`plan.Homogeneous`) and the two counts
-are gone too. They are gone from the chain form
-(`marginal_utility_chain`) as well. In their place are one claim
-(`ServedInOrder`) and one condition (`stock.ComparableServiceable`).
-The Rothbard route carries neither. The two carried conditions are the
-same. So is the logical background. This is what the second target was
-for. It is not a verdict on one reconstruction. It is a trade between
+Hold it against the manifest of `marginal_utility`, printed under
+{ref "manifest"}[The manifest]. These are gone:
+
+- Swap dominance (`SwapDominant`).
+- Independence of uses (`IndependentUses agent time`).
+- The condition on the data (`DecidableEq praxis.End`).
+- The one-unit steps (`stock.OneMore`), as hypotheses. They sit inside
+  the ladder's statement (`Mises.LadderHolds`) instead. It speaks of
+  every pair of sub-stocks one unit apart.
+- Interchangeability of units (`plan.Homogeneous`), and the two sizes
+  (`smallerSize`, `largerSize`). Mises's ladder compares within one
+  step: the added want against a want served at the same smaller
+  supply. So it never needs two sub-stocks of one size to serve the
+  same ends. Rothbard's chain form (`marginal_utility_chain`, under
+  {ref "theorems"}[The theorems]) states the law along a chain of named
+  units. It lacks interchangeability and the sizes too.
+
+In their place are one claim (`ServedInOrder`) and one condition
+(`stock.ComparableServiceable`). The Rothbard route carries neither.
+Two things are the same in both manifests. The conditions carried by
+the vocabulary are the same two (`stock.unitsAlike`,
+`plan.servesOnlyWhatItCan`). The logical background is the same,
+`[propext, Quot.sound]` (see {ref "manifest"}[The manifest]). The
+comparison of the two manifests is what the second target was for. It
+is not a verdict on one reconstruction. It is a trade between
 two, computed from the signatures rather than argued.
 
 *The two premise sets, related.* Are the routes independent, then?
@@ -1654,11 +1732,18 @@ rival-plan theorem (`no_rival_swap_dominant`) and four theorems under
 Asymmetry is recorded as ours, because no sentence of either author
 states it.
 
+The docstring below says the proof's case split needs no classical
+logic. Why the library avoids classical logic is under
+{ref "manifest"}[The manifest].
+
 {docstring Apodictic.Contrast.rothbard_entails_servedInOrder}
 
-The converse fails. A frame can rank wants and serve them in order. It
-can still be too coarse to rank bundles. Then serving in order
-(`ServedInOrder`) holds where swap dominance (`SwapDominant`) does not.
+The converse fails. Serving in order (`ServedInOrder`) compares single
+wants. Swap dominance (`SwapDominant`) compares bundles: what the plan
+would serve, against the same bundle with one swap made. A frame can
+rank wants and serve them in order. It can still be too coarse to rank
+those bundles. Then serving in order holds where swap dominance does
+not.
 
 {docstring Apodictic.Model.servedInOrder_not_entail_swapDominant}
 
@@ -1666,28 +1751,53 @@ So on the allocation, Mises's premise is strictly the weaker. Still,
 neither premise set contains the other. The reason is that his route pays
 for the weaker premise with comparability of wants
 (`stock.ComparableServiceable`). Rothbard's route never needs it. Mises
-asks less of the agent's plan and more of the agent's value scale. And
-the price is paid in situations. There are agents for whom Rothbard's
-premise holds and Mises's route does not apply. The gap is narrow.
-Why it is narrow is itself a small finding. Swap dominance, with
-independence of uses (`IndependentUses`), already ranks each served
-want against each unserved one the good could reach. So the only pairs
-left unranked are those that never sit on opposite sides of a margin.
+asks less of the agent's plan and more of the agent's value scale.
+Comparability is a condition, not a claim. So the price is paid in
+situations: where comparability fails, Mises's route is silent. There
+are agents for whom Rothbard's premise holds and Mises's route does
+not apply. The gap is narrow. Why it is narrow is itself a small
+finding. Swap dominance, with independence of uses (`IndependentUses`),
+already ranks each served want against each unserved one the good
+could reach (`served_over_unserved`, under
+{ref "theorems"}[The theorems]). So every pair that some sub-stock
+splits, one want served there and the other not, is already ranked.
+Comparability can then fail only for a pair that no sub-stock splits:
+at every sub-stock, the plan serves both or neither. That is why the
+gap is narrow.
 
 {docstring Apodictic.Model.rothbard_premise_holds_where_mises_is_silent}
 
-*Where this leaves the question.* *The finding* left one question.
-May praxeology help itself to a standing plan? Mises's route does not
-escape that question. It meets it in another form. His premise is as
-counterfactual as Rothbard's. It says what the agent would serve at
-every smaller supply. And Mises restricts value scales exactly as
-Rothbard does, three chapters earlier: "These scales have no
-independent existence apart from the actual behavior of individuals"
-(ch. IV, §2). Rothbard exempts the law by name. Mises instead simply
-announces that the counterfactual costs nothing: "We do not transcend
-the sphere of praxeological reasoning in establishing the following
-definition". Neither warrants the premise. That is as far as this part
-goes.
+*Where this leaves the question.* {ref "finding"}[The finding] left
+one question. May praxeology help itself to a standing plan? A
+standing plan is settled in advance. It answers for every set of the
+man's units at once, and no act of his settles it. Rothbard's rule is
+that "value scales do not exist in a void apart from the concrete
+choices of action" (p. 33). The plan is a scale of the kind that rule
+denies. That is the case made under *The finding*.
+
+Mises's route does not escape that question. It meets it in another
+form. His premise is as counterfactual as Rothbard's. It says what the
+agent would serve at every smaller supply. And Mises restricts value
+scales exactly as Rothbard does, three chapters earlier: "These scales
+have no independent existence apart from the actual behavior of
+individuals" (ch. IV, §2). So the warrant problem is Mises's too.
+
+The two authors meet it differently:
+
+- Rothbard exempts the law by name, on the page that states his rule.
+  No one can predict with certainty the course of a man's choices, he
+  says, "except that they will follow the law of marginal utility,
+  which was deduced from the axiom of action". That clause is what
+  lets him hand the man a standing plan. The law is then proved from
+  that plan. So his warrant is circular (see *The finding*).
+- Mises instead simply announces that the counterfactual costs
+  nothing: "We do not transcend the sphere of praxeological reasoning
+  in establishing the following definition". The definition is the
+  marginal employment, quoted near the top of this part. It is
+  counterfactual: the employment he makes at n units but would not
+  make if, other things being equal, his supply were only n–1 units.
+
+Neither warrants the premise. That is as far as this part goes.
 
 # The circle
 %%%

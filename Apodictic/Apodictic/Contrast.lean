@@ -21,7 +21,7 @@ module answers is whether those two premise sets are independent.
 namespace Apodictic
 namespace Contrast
 
-/-- **Rothbard's premises entail Mises's bridge.**
+/-- **Swap dominance, independence of uses and asymmetry entail Mises's bridge.**
 
 Grant swap dominance (`SwapDominant`), independence of uses
 (`IndependentUses agent time`) and asymmetry of preference
@@ -31,17 +31,20 @@ built on.
 
 So the two routes are NOT independent. Whatever else is true of
 Mises's derivation, its premise is available to anyone who already
-has Rothbard's. The second route's bridge (`ServedInOrder`)
-therefore adds no premise the first route lacked.
+grants these three. The second route's bridge (`ServedInOrder`)
+therefore adds no claim beyond them. Mises's route also carries a condition,
+comparability (`ComparableServiceable`), which is not among them.
 
 The proof is the contrapositive of `served_over_unserved`. Suppose
 the more urgent end were left unserved. Then Rothbard's workhorse,
 `served_over_unserved`, says the served end is preferred to it. And
 asymmetry contradicts the assumption that it was the more urgent of
-the two. The case split on whether the end is served is decidable,
-not classical. `plan.wouldServe subStock` is a `Finset`. So membership
-is decidable given `[DecidableEq praxis.End]`, which the route already
-carries. -/
+the two. The proof splits on whether the end is served. That split
+needs no classical logic (`Classical.choice`). `plan.wouldServe
+subStock` is a finite set (a `Finset`). Whether an end belongs to a
+finite set can be decided once any two ends can be told apart
+(`[DecidableEq praxis.End]`). This theorem carries that, as Rothbard's
+route does. -/
 theorem rothbard_entails_servedInOrder
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}

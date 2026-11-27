@@ -90,15 +90,17 @@ It is not a claim about action, and not a condition of any theorem.
 It is a definition used inside the law's statement. It says of a
 given end that nothing else served at that sub-stock ranks below it.
 It is stated of an end the law quantifies over. It is never asserted
-to exist. Whether such an end exists at all is a separate question. That
-question cannot be answered without saying more about `Prefers` than
-the library assumes.
+to exist. Whether such an end exists at all is a separate question.
+`Prefers` is not assumed transitive or complete. So the ends served at
+a sub-stock may have no least one: two of them may be unranked, or
+three ranked in a cycle. Saying more about `Prefers` would be needed to
+rule that out.
 
 Inside the law it enters as a hypothesis on that end, not as a
-derived object. That is the first
-place the two routes visibly differ. Rothbard's derivation never needs
-a minimum. It compares two named steps. Mises's sentence names a
-minimum. -/
+derived object. The law speaks of any end that is least, if there is
+one. It never constructs one. Mises's sentence names a minimum. Rothbard's
+derivation never needs one: it compares two named steps. Naming a
+minimum is the first place the two routes visibly differ. -/
 def LeastUrgentServed {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock)
@@ -116,11 +118,13 @@ less urgent or less painful than the least urgent or least painful
 among all those wants which could be removed by means of the supply
 n–1" (*Human Action*, ch. VII, §1).
 
-It is a `def` of a Prop, not a theorem, and deliberately so. It is
-reached twice below, from two different premise sets. `ladder_holds`
-derives it from Rothbard's premise. `ladder_from_order` derives it
-from Mises's own bridge. Which premises each spends is on each
-theorem's signature. -/
+It is a definition of a statement (a `def` of a `Prop`), not a
+theorem, and deliberately so. It says what the law asserts and proves
+nothing. It is reached twice below, from two different premise sets.
+`ladder_holds` derives it from Rothbard's premise. `ladder_from_order`
+derives it from Mises's own bridge, `ServedInOrder`: that the agent
+serves in order of urgency. Which premises
+each spends is on each theorem's signature. -/
 def LadderHolds {praxis : ActionFrame} {agent : praxis.Agent}
     {time : praxis.Time} {stock : Stock praxis agent time}
     (plan : AllocationPlan stock) : Prop :=
@@ -174,7 +178,9 @@ the smaller supply serves.
 What it spends is `SwapDominant plan` — Rothbard's premise, and the
 whole of the warrant problem. It also spends independence of uses
 (`IndependentUses agent time`) and decidable equality of ends
-(`DecidableEq praxis.End`). It spends nothing Misesian at all. -/
+(`DecidableEq praxis.End`): whether two ends are the same can be
+decided. The proof takes one end out of a set and puts it back, and
+that step asks for it. It spends nothing Misesian at all. -/
 theorem ladder_for_every_served
     {praxis : ActionFrame} [DecidableEq praxis.End]
     {agent : praxis.Agent} {time : praxis.Time}
@@ -206,17 +212,21 @@ of uses** — the control comes back positive.
 
 `LadderHolds` follows outright from `SwapDominant` and
 `IndependentUses`. Mises's own derivation is the dilemma about
-intermediate stages and the appeal to the category of action. Once
-the conclusion is read counterfactually, that derivation supplies
-nothing the conclusion needs.
+intermediate stages and the appeal to the category of action, set out
+below. This theorem takes no premise from that derivation. So, once
+the conclusion is read counterfactually (as `LadderHolds`: two
+supplies at one time), that derivation supplies nothing the conclusion
+needs. Read as a history, the ladder is a different statement, with
+its own theorem and premises (`Apodictic.Temporal`).
 
 **And his minimality qualifier does no work.** The hypothesis
 `LeastUrgentServed plan fewer least` is a conjunction. Only its first
 half is consumed: that `least` is served at the smaller supply. The
-second half says that nothing served there ranks below it. That half
-is destructured as `_minimality` and never used. The linter cannot see
-this, because it works a whole binder at a time. Both halves arrive in
-one binder. `ladder_for_every_served` above is what makes the idleness
+second half says that nothing served there ranks below it. The proof
+splits the hypothesis into its two halves and names the second
+`_minimality`. The `_` marks a name the proof never uses. The linter cannot see
+this. It judges each hypothesis whole, and both halves arrive in one
+hypothesis. `ladder_for_every_served` above is what makes the idleness
 a machine fact instead of a comment.
 
 So Mises's sentence adds two things to Rothbard's. One is the upward
@@ -368,8 +378,8 @@ would have admitted it. So it is not more urgent. Comparability turns
 "not more urgent" into "less urgent". That step is where the route
 pays.
 
-Mises's minimality qualifier is idle here too. `least` need only be
-served at the smaller supply, exactly as in `ladder_for_every_served`.
+Mises's minimality qualifier is idle here too. The end named `least`
+need only be served at the smaller supply, exactly as in `ladder_for_every_served`.
 Two different premise sets, the same idle qualifier. -/
 theorem ladder_from_order
     {praxis : ActionFrame}
