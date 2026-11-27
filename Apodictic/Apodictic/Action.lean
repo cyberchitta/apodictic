@@ -99,16 +99,18 @@ def ActionFrame.IndependentUses (praxis : ActionFrame) (agent : praxis.Agent)
       praxis.Prefers agent time (insert want rest) (insert other rest) →
         praxis.PrefersEnd agent time want other
 
-/-- An action: an agent, at a time, uses means in the belief that they
-will bring about a chosen end, giving up at least one alternative end
-in doing so.
+/-- An action. An agent, at a time, uses means. He believes the means
+will bring about a chosen end. By acting he gives up at least one
+alternative end.
 
-The fields hold together as a package — nothing with fewer parts
-counts as an action — but this is a definition, so it asserts
-nothing. Shape: our-reconstruction. No derivation of the law uses it;
-on both routes the law rests on the counterfactual plan alone. Where
-it does appear is in Mises's dilemma (`Apodictic.Mises.ActionOccurs`,
-`Apodictic.Mises.ActionRecurs`), which is machine-checked not to
+The fields hold together as a package. Nothing with fewer parts
+counts as an action. But this is a definition, so it asserts nothing.
+Shape: our-reconstruction.
+
+No derivation of the law uses this structure. On both routes the law
+rests on the counterfactual plan alone. The structure does appear in
+Mises's dilemma (`Apodictic.Mises.ActionOccurs`,
+`Apodictic.Mises.ActionRecurs`). The dilemma is machine-checked not to
 deliver the law. -/
 structure Action (praxis : ActionFrame) where
   /-- The acting person. -/

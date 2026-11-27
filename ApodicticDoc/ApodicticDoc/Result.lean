@@ -3211,17 +3211,25 @@ satisfaction. The frame above has none of them.
 # Claims no theorem uses
 
 
-One claim at the centre of the doctrine is used by no theorem here,
-and so is not on the list: the claim that there is any action at all.
-The bridge from what a man actually does to what he prefers —
-demonstrated preference, in Rothbard's sense — is not among the
-unused: exchange spends it, and it is the fifth claim under *The
-claims*.
+One claim at the centre of the doctrine is carried by no theorem here.
+It is the claim that there is any action at all (`Mises.ActionOccurs`).
+So it is not among the ten claims under *The claims*.
 
-Action itself is a definition here, and no derivation of the law uses
-it. The existence claim has been tried once. Mises appeals to it to
-close his dilemma, and a frame with exactly one action shows the appeal
-falls short of what he needs; the details are under *Mises's route*.
+Demonstrated preference in Rothbard's sense (`DemonstratedPreference`)
+is not unused. It is the bridge from what a man actually does to what
+he prefers. It is stated of one trade. It is the fifth claim under *The
+claims*. Theorems in three parts carry it:
+
+- *Exchange* (`MutualBenefit.reverse_valuations` and the other exchange
+  theorems).
+- *The regression theorem* (`Regression.indirect_ranks_onward_ends`).
+- *Interest* (`PureInterest.struck_rate_positive`).
+
+Action itself is a definition here (`Action`). No derivation of the
+law uses it. The existence claim has been tried once. Mises appeals to
+it to close his dilemma. A frame with exactly one action shows that the
+appeal falls short of what he needs. The details are under *Mises's
+route*.
 
 {docstring Apodictic.Action}
 
