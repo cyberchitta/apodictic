@@ -486,121 +486,206 @@ this page does not settle.
 tag := "other-findings"
 %%%
 
-The audit turned up more than the one claim. The findings fall into
-three groups.
+Terms such as library, claim and condition are explained under
+{ref "result"}[The Result].
+
+The audit turned up more than the one claim. This part lists the rest.
+Most of it is about the law of marginal utility. Rothbard states it on
+p. 27 of *Man, Economy, and State*:
+
+> The greater the supply of a good, the lower the marginal utility;
+  the smaller the supply, the higher the marginal utility.
+
+The marginal utility is the least important end the stock serves:
+"This least important end fulfilled by the stock is known as …
+marginal utility" (p. 27). Here a want and an end are the same thing
+(`End`). A bundle is a set of ends.
+
+Two pieces of the library recur below. They are set out under
+{ref "horses"}[The horses] and {ref "finding"}[The finding].
+
+- The plan (`AllocationPlan`): for any set of units the man might
+  have, which ends he would serve with them.
+- Swap dominance (`SwapDominant`), the one claim the law needs on
+  Rothbard's route. Take any set of his units, and the ends the plan
+  would serve with it. Make any single swap: take out any end the plan
+  would serve, and put in any end it leaves out that he believes the
+  good could serve. The claim says he prefers what the plan would
+  serve to what the swap leaves him.
+
+The findings fall into three groups.
 
 *What the derivation is, and what it delivers.*
 
-- Rothbard's derivation is one step from an asserted premise (p. 24).
-  The one-step proof is faithful to him. The audit
-  point is elsewhere. He calls the law "derived from the fundamental
-  axiom of human action" (p. 27). That derivation rests on an
-  assertion.
-- The law is strict, as Rothbard's is. Non-increasing marginal utility
-  is the neoclassical form. It is not his.
-- Nothing assumes that exactly one want is given up. Rothbard's phrase
-  "the marginal unit" takes that for granted. The law here holds for
-  every want that goes.
-- One unit to one end is not needed at all. Rothbard assumes it. He flags the
-  assumption: "each unit of means is capable of serving
-  one of the ends". He prefaces it "We assume for
-  simplicity" (pp. 25–26). It
-  reads like a premise of the derivation. It is not a premise of
-  anything here. It was built into what a plan *is*,
-  where no statement showed it. It has since been taken out of the plan
-  (`AllocationPlan`). No theorem asked for it back. Take a stock whose next unit opens no
-  further want. The law passes over that case in silence. The six
-  horses are not such a case: there the law speaks. So nothing is
-  lost. It is a simplification its own author
-  flagged. The ordering does not want it.
+- Rothbard's derivation takes one step. It starts from what he calls
+  the "universal fact that action uses scarce means to satisfy the
+  most urgent of the not yet satisfied wants" (p. 24). He asserts that
+  premise. The library's proof has three steps, and only the first
+  does any work (see {ref "theorems"}[The theorems]). So it too has one
+  working step, and is faithful to him. So the audit's point is not
+  the proof. It is the premise. He calls the law "derived from the
+  fundamental axiom of human action" (p. 27). That derivation rests on
+  an assertion.
+- The law is strict, as Rothbard's is. The theorem
+  (`marginal_utility`) says that every end marginal at the smaller
+  supply is preferred to every end marginal at the larger. It is not
+  the weaker claim that the one is ranked no lower. That weaker form,
+  non-increasing marginal utility, is the neoclassical one. It is not
+  his.
+- Nothing assumes that exactly one end is given up. Rothbard's phrase
+  "the marginal unit" takes that for granted. Here, when the supply
+  shrinks by one unit, the law holds for every end given up.
+- One unit to one end is not needed at all. Rothbard assumes it. He
+  flags the assumption: "each unit of means is capable of serving one
+  of the ends". He prefaces it "We assume for simplicity"
+  (pp. 25–26). It reads like a premise of the derivation. It is not a
+  premise of any theorem here. At first the library built it into the
+  definition of a plan (`AllocationPlan`). There it sat in a field of
+  the plan, not in any theorem's statement. It has since been taken
+  out. No theorem asked for it back. Without it, adding one unit may
+  add no new end. The law speaks of every end a one-unit step adds.
+  Where the step adds none, the law says nothing about it. Every plan
+  that met the assumption is still a plan, and the law still holds of
+  it. So dropping the assumption loses nothing. The six horses meet it:
+  each horse added serves one more end, so there the law speaks (see
+  {ref "horses"}[The horses]). It is a simplification its own
+  author flagged. The ordering the law states does not need it.
 - The proof never uses the fact that the end at the smaller supply is
   the marginal one. The law holds for every end served there. It holds
   against every end the next unit would add. Something stronger holds
-  still. A served end beats *any* unserved end that could be served
-  (`served_over_unserved`), not only the one the next unit reaches.
-  Rothbard's statement claims less than his premise delivers.
+  still. A theorem (`served_over_unserved`) shows that a served end
+  beats *any* unserved end that could be served, not only the one the
+  next unit reaches. Rothbard's statement claims less than his premise
+  delivers.
 
 *What the law does not need.* This is most of what it usually gets.
 
-- No property of preference is forced. Transitivity is not forced.
-  Neither is completeness. Rothbard assumes a single ranked value scale
-  (Figure 3, pp. 25–26). None of it is needed, because the plan
-  already carries the ordering.
-- Interchangeability of units (`plan.Homogeneous`) is not needed
-  for the ordering. Here the
-  plan is indexed by which units. With that, two results go through
-  without interchangeability: the urgency principle (`urgency_principle`) and the law
-  along a chain of named units (`marginal_utility_chain`). Among the law's theorems, it is needed
-  exactly once:
-  to state the law by size of supply
-  (`plan.Homogeneous`). The phrase "the plan at `n` units" picks out
-  one thing only if two piles of the same size serve the same ends. So interchangeability bears on the
-  wording, not on the derivation. That is why it is a
-  hypothesis and not a praxeological claim. Rothbard makes it part of
-  what a supply *is* (p. 23). On his definition, a stock where it
-  fails is not one good but several. But his definition does not
-  deliver it. It speaks of units "equally capable of rendering the
-  same service". That is a fact about the units. The wording needs a
-  fact about the man's plan over them. One stock carries plans of both
-  kinds (`unitsAlike_not_entail_homogeneous`). So no condition on the
-  units can decide it.
-- Indifference between units is needed nowhere. Rothbard defines a
-  supply with the words "valued equally" and "regards ...
-  indifferently" (p. 23). He takes them back on the next page:
-  interchangeability "does not mean that the concrete units are
-  actually valued equally" (p. 24). The formalization follows p. 24.
-- Rothbard does say which unit goes, three times. Each time he gets
-  the answer from interchangeability. In none of the three does he state a
-  condition on the plan (`plan.Homogeneous`). With six horses: "As a result of the
-  interchangeability of units, it does not matter to him which of the
-  six units he must lose" (pp. 26–27). In the recapitulation of
-  fundamentals: "The definition of a good is that it consists of an
-  interchangeable supply of one or more units. Therefore, every unit
-  will always be valued equally with every other" (p. 320). And a
-  lost unit costs the lowest-ranked use "regardless of which end the
-  unit is supplying at present" (p. 458).
+- On Rothbard's route the law needs neither transitivity of preference
+  nor completeness. Transitive would mean that A over B and B over C
+  puts A over C. Complete would mean that any two bundles are ranked
+  one way or the other. Rothbard assumes a single ranked value scale
+  (Figure 3, pp. 25–26). The law does not need one. The ordering comes
+  from the plan instead, through swap dominance (`SwapDominant`) and
+  independence of uses (`IndependentUses`, explained below).
+- Interchangeability of units (`plan.Homogeneous`) is not needed for
+  the ordering. It is the condition that any two sets of his units of
+  the same size would serve the same ends. Here the plan is indexed by
+  which units, not by how many. With that, two theorems go
+  through without interchangeability:
+  the urgency principle (`urgency_principle`), and the law along a
+  chain of named units (`marginal_utility_chain`). The chain is three
+  named sets of units, each one unit more than the last. Among the
+  law's theorems, interchangeability is needed exactly once: to state
+  the law by size of supply (`marginal_utility`). The phrase "the plan
+  at `n` units" picks out one thing only if two piles of the same size
+  serve the same ends. So interchangeability bears on the wording, not
+  on the derivation. Where it fails, the law stated by size says
+  nothing, and the chain form still holds. That is why it is a
+  condition and not a praxeological claim.
+- Rothbard makes interchangeability part of what a supply *is*
+  (p. 23). On his definition, a stock where it fails is not one good
+  but several. But what his definition fixes is a fact about the
+  units. It speaks of units "equally capable of rendering the same
+  service". The wording needs a fact about the man's plan for them. So
+  his definition does not deliver the condition. One stock can carry a
+  plan that cares only how many units it has, and a plan that cares
+  which. The library's counter-model is two horses, each able to serve
+  any want, with one plan of each kind
+  (`unitsAlike_not_entail_homogeneous`, a theorem). So no condition on
+  the units can decide it.
+- Indifference between units is needed nowhere. No claim or condition
+  in the library says the man is indifferent between units, and the
+  law is proved without one. Rothbard defines a supply with the words
+  "valued equally" and "regards ... indifferently" (p. 23). He takes
+  them back on the next page: interchangeability "does not mean that
+  the concrete units are actually valued equally" (p. 24). The
+  formalization follows p. 24.
+- Three times Rothbard treats which unit goes as making no difference.
+  Each time he gets the answer from interchangeability. In none of the
+  three does he state a condition on the plan (`plan.Homogeneous`).
+  With six horses: "As a result of the interchangeability of units, it
+  does not matter to him which of the six units he must lose"
+  (pp. 26–27). In the recapitulation of fundamentals: "The definition
+  of a good is that it consists of an interchangeable supply of one or
+  more units. Therefore, every unit will always be valued equally with
+  every other" (p. 320). And a lost unit costs the lowest-ranked use
+  "regardless of which end the unit is supplying at present" (p. 458).
 - That "Therefore" is the step the counter-model refutes
   (`unitsAlike_not_entail_homogeneous`). Units can be alike in what
   they can do. That does not make a plan blind to which of them it
-  has. The charge does not need him to have shifted the word's
-  meaning, either. Grant the usual reconciliation. On it, p. 24 is
-  about units taken on one after another. Page 320 is about units in a
-  stock, each valued at the margin. Both readings are still facts
-  about the units or their valuation. The size-based wording needs a
-  fact about the plan over sub-stocks. Prose has no way to mark that
-  distinction. The machine would not leave it unmarked.
+  has. The charge against the "Therefore" does not need him to have
+  shifted the word's meaning, either. Grant the usual reconciliation.
+  On it, p. 24 is about units taken on one after another. Page 320 is
+  about units in a stock, each valued at the margin. Both readings are
+  still facts about the units or their valuation. The size-based
+  wording needs a fact about the plan over sets of units. Prose has no
+  way to mark that distinction. The machine would not leave it
+  unmarked.
 - Independence of uses is a condition on the situation
-  (`IndependentUses agent time`). It can be stated at all only once
-  preference ranges over bundles of ends rather than single ends.
-  Where uses are complementary, the law says nothing. The statement
-  admits as much.
+  (`IndependentUses agent time`). Take two bundles that are the same
+  except that one has one end where the other has another. It says
+  that preferring the first bundle to the second carries down to
+  preferring its end to the other's. So it can be stated at all only
+  once preference ranges over bundles of ends, not just single ends.
+  It fails where uses are complementary: where one end is worth having
+  only alongside another. There the law says nothing. The law's
+  statement carries the condition. So the statement itself shows where
+  the law is silent.
 
 *About the formalizing, not the doctrine.*
 
-- The phrase "this bundle, minus this end" hides a premise: that two ends can be told apart in the first place (`DecidableEq praxis.End`).
-  It came to light only because the proofs refuse classical logic.
+- The swap takes one end out of a bundle and puts another in. Forming
+  "this bundle, minus this end" hides a premise: that two ends can be
+  told apart in the first place (`DecidableEq praxis.End`). Classical
+  logic would grant that for free, by assuming every question has a
+  yes-or-no answer. The proofs refuse classical logic. So the premise
+  had to be stated, and that is how it came to light (see
+  {ref "manifest"}[The manifest]).
 - The claim that people act splits into three. There is a definition
-  (`Action`). There is a bridge from an act to a preference
-  (`DemonstratedPreference`). And there is an existence claim
-  (`Mises.ActionOccurs`). Of the three, only the bridge could do
-  deductive work. The law of marginal utility never needs it. Three
-  parts need it: *Exchange*, *The regression theorem* and *Interest*.
-  Each time it enters, it is stated of one trade (*The claims*).
-  *Time preference* needs a second bridge, for acts across dates
-  (`DemonstratedTimePreference`).
-- *The ladder as a history* uses a claim about what a man actually
-  does (`ActsInOrder`). That claim is neither bridge. It runs from his
+  (`Action`). It asserts nothing. There is an existence statement, from
+  Mises's argument (`Mises.ActionOccurs`; see
+  {ref "mises-route"}[Mises's route]). It says only that some action
+  occurs. It says nothing about what anyone prefers. And there is a
+  bridge from an act to a preference (`DemonstratedPreference`). It
+  says that, at a trade, the man prefers the holding he chose to what
+  refusing would have left him with. Of the three, only the bridge could do deductive
+  work. The law of marginal utility never needs it. Three parts need
+  it: *Exchange*, *The regression theorem* and *Interest*. Rothbard
+  states it of any action. Each time it enters here, it is stated of
+  one trade (see {ref "claims"}[The claims]). *Time preference* needs
+  a second bridge, for acts across dates (`DemonstratedTimePreference`).
+- The ladder is the law built upward: one horse, then a second, then
+  a third. Read as a history, it is about what the man served as his
+  stock grew (see {ref "ladder-history"}[The ladder as a history]).
+  That reading uses a claim about what a man actually does
+  (`ActsInOrder`). That claim is neither of the two bridges just named
+  (`DemonstratedPreference`, `DemonstratedTimePreference`). Each of
+  those runs from an act to his ranking. This one runs from his
   ranking to his act. It says nothing about what an act shows he
-  prefers.
-- Never assert a claim about *every* structure of a given shape: say,
-  every plan the man might have. Hand someone one plan. They can cook up a neighbour of it that breaks the claim. So a claim of that
-  form is refutable by construction. Make it about the one plan the
-  theorem actually receives. Then the same construction is harmless.
-  Better: it turns into a result. One of the theorems below takes
-  asymmetric preference (`AsymmetricPreference`). Given that, it proves
-  that two plans satisfying swap dominance (`SwapDominant`) cannot differ by
-  a single swap (`no_rival_swap_dominant`). So "the" value scale is
-  something proved here, not something assumed.
+  prefers. So tying the ranking to what he does here takes a
+  separate claim in each direction.
+- One finding became a rule of method. Take a claim about *every*
+  structure of a given shape: say, every plan the man might have. A
+  plan is only a rule saying which ends each set of units would serve.
+  So from any one plan you can define a neighbour: the same plan,
+  changed by one swap at one set of units. Such a neighbour can break
+  the claim. So a claim of that form is refutable by construction. The
+  rule: never assert one. Make the claim about the one plan the
+  theorem actually receives. Then the construction of a neighbour is
+  harmless. Better: it turns into a result. The theorem
+  `no_rival_swap_dominant`, shown under {ref "theorems"}[The theorems],
+  says that, if preference is asymmetric, the neighbour cannot also
+  satisfy swap dominance (`SwapDominant`). Two plans satisfying it cannot differ by a single
+  swap at some set of units. The theorem takes one more claim:
+  preference is asymmetric (`AsymmetricPreference`, one of
+  {ref "claims"}[The claims]). If he prefers one bundle to another, he
+  does not prefer the second to the first. Rothbard writes as though
+  the man's value scale were simply given: "the" marginal unit, "the"
+  least urgent want (*MES* pp. 24–27). He never argues that there is
+  only one. Here that scale is the plan. What is proved is narrower:
+  no rival plan that, at some set of units, is one swap from his also
+  satisfies swap dominance. The theorem says nothing of a rival plan
+  that is never a single swap from his, at any set of units.
 
 # The claims
 %%%
