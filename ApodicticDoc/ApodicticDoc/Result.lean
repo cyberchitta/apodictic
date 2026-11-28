@@ -4483,9 +4483,9 @@ is made by hand, and the two bullets above are that judgement.
 The library has a rule for a condition that can fail. It becomes a
 named hypothesis wherever the linter allows. The linter allows a
 hypothesis only where some proof uses it. So such a condition stays a
-field only where no proof uses it. Even then, it stays a field only if
-it does work in the vocabulary: it fixes what a claim speaks of.
-Otherwise it is dropped.
+field only where no proof uses it. A condition no proof uses stays a
+field if it does work in the vocabulary, that is, if it fixes what a
+claim speaks of. If it does no work, it is dropped.
 
 A third condition used to sit here, and now sits nowhere: one unit to
 one end. That can fail of a real stable. Two horses can pull one
@@ -4498,8 +4498,8 @@ plan that met it is still a plan, and the law still holds of it. See
 `unitsAlike` can fail too, yet it stays a field. No theorem's proof uses it, so
 as a hypothesis it would fail the unused-argument linter. Marking it
 with `_` would record that it does no work. But it does work: it fixes
-the ends the three claims above speak of. So the rule does not drop
-it. It stays a field, and `#manifest` reports it.
+the ends the three claims above speak of. So, by the rule, it stays a
+field, and `#manifest` reports it.
 
 Interchangeability of units is *not* hidden down there. The plan is
 indexed by which exact units the man holds. That it depends only on
