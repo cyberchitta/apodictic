@@ -43,7 +43,7 @@ Current content:
 - The regress from the weak first step (`ApodicticDraft.WeakRegress`),
   a rival to the library's `regress`. The unruled claim is in
   `ApodicticDraft.Claims`.
-- Certainty named apart from purchasing power: promoted
+- Certainty named apart from `BuysSameSatisfaction`: promoted
   (`ClaimPays`, in `Apodictic.Money`); each half failing alone,
   promoted too (`Apodictic.Model.CertaintySplit`). No claim.
 - What `KeptServesOtherEnds` leaves of a good both traded and kept
@@ -57,7 +57,7 @@ Current content:
   `MorePreferredWhereDiffers`, in `ApodicticDraft.Claims`.
 - A Christmas Club saver lending at a zero rate with every claim
   holding (`ApodicticDraft.ChristmasClubToy`): what fails is
-  `SamePurchasingPower`. No claim.
+  `BuysSameSatisfaction`. No claim.
 - The "more money" claim dated at the spending, against the stock-wide
   condition `RankedAlikeNow` (`ApodicticDraft.ValuedAlike`), with a toy
   whose valuations change, which refutes the undated claim.

@@ -14,7 +14,7 @@ question of a zero or negative pure interest rate."
 - `present_sum_preferred` (S2): present money over the same amount of
   future money. `TimePreference`, plus three conditions: the present
   sum and the promised money buy the same satisfaction
-  (`SamePurchasingPower`), the promise pays (`PromisePays`), and the
+  (`BuysSameSatisfaction`), the promise pays (`PromisePays`), and the
   present sum would be spent sooner (`SpentSooner`).
 - `present_sum_preferred_to_less` (S3): "one ounce or less". Adds the
   claim `MoreMoneyPreferredWhenSpent`, and conditions: the future units
@@ -55,16 +55,17 @@ section Sums
 variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
   {present future promised : Stock praxis.toActionFrame agent now}
 
-/-- Same purchasing power with the promised money, and a promise that
-pays, give the same between the present sum and the promise. -/
-theorem samePurchasingPower_of_promisePays
+/-- If the present sum and the promised money would buy the same
+satisfaction, and the promise pays, then the present sum and the
+promise would buy the same satisfaction. -/
+theorem buysSameSatisfaction_of_promisePays
     (presentPlan : AllocationPlan present) (futurePlan : AllocationPlan future)
     (promisedPlan : AllocationPlan promised)
     (sum promise money : Finset praxis.Means) (soon late : praxis.End)
-    (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
+    (buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late)
     (pays : PromisePays futurePlan promisedPlan promise money) :
-    SamePurchasingPower presentPlan futurePlan sum promise soon late := by
-  obtain ⟨buysSoon, buysLate, same⟩ := power
+    BuysSameSatisfaction presentPlan futurePlan sum promise soon late := by
+  obtain ⟨buysSoon, buysLate, same⟩ := buysSame
   exact ⟨buysSoon, pays.trans buysLate, same⟩
 
 /-- **Present money is preferred to the same amount of future money**
@@ -74,7 +75,7 @@ amount of future money").
 
 "The same amount" does no work here. No count is carried. The claim used is
 time preference (`TimePreference`). Two conditions do the work. One is
-what the sums would buy (`SamePurchasingPower`). The other is that the
+what the sums would buy (`BuysSameSatisfaction`). The other is that the
 promise pays (`PromisePays`). The count enters with the loans
 (`SameCount`). The conclusion also needs the present sum to be spent
 sooner (`SpentSooner`). Rothbard's n. 11 dismisses the man for whom
@@ -84,14 +85,14 @@ theorem present_sum_preferred
     (promisedPlan : AllocationPlan promised)
     (sum promise money : Finset praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis.toDatedFrame agent now)
-    (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
+    (buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late)
     (pays : PromisePays futurePlan promisedPlan promise money)
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late) :
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
       ↑(futurePlan.wouldServe promise) := by
   obtain ⟨buysSoon, buysLate, same⟩ :=
-    samePurchasingPower_of_promisePays presentPlan futurePlan promisedPlan sum
-      promise money soon late power pays
+    buysSameSatisfaction_of_promisePays presentPlan futurePlan promisedPlan sum
+      promise money soon late buysSame pays
   obtain ⟨before, notPast⟩ := sooner
   rw [buysSoon, buysLate, coe_single, coe_single]
   exact timePreference.sooner soon late same before notPast
@@ -117,7 +118,7 @@ theorem present_sum_preferred_to_less
     (sum promise money lesser : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame agent now)
-    (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
+    (buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late)
     (pays : PromisePays futurePlan promisedPlan promise money)
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late)
     (promiseIn : promise ⊆ future.units) (lesserIn : lesser ⊆ future.units)
@@ -133,7 +134,7 @@ theorem present_sum_preferred_to_less
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
       ↑(futurePlan.wouldServe lesser) := by
   have overSame := present_sum_preferred presentPlan futurePlan promisedPlan
-    sum promise money soon late timePreference power pays sooner
+    sum promise money soon late timePreference buysSame pays sooner
   rcases Nat.eq_or_lt_of_le notMore with equal | fewer
   · rw [homogeneous lesser lesserIn promise promiseIn equal]
     exact overSame
@@ -165,7 +166,7 @@ valuations at the spending (`RankedAlikeNowOf`). Two claims carry it:
 time preference (`TimePreference`) and asymmetry
 (`AsymmetricPreference`). The conditions are:
 
-- purchasing power (`SamePurchasingPower`);
+- the same satisfaction bought (`BuysSameSatisfaction`);
 - a promise that pays (`PromisePays`);
 - the present sum spent sooner (`SpentSooner`);
 - the promise's count (`SameCount`);
@@ -179,7 +180,7 @@ theorem no_loan_at_zero_rate
     (promisedPlan : AllocationPlan promised)
     (sum promise money repaid : Finset praxis.Means) (soon late : praxis.End)
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
-    (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
+    (buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late)
     (pays : PromisePays futurePlan promisedPlan promise money)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
     (count : SameCount sum promise)
@@ -195,7 +196,7 @@ theorem no_loan_at_zero_rate
   rw [after, refusal] at chose
   have equal : repaid.card = promise.card := zero.trans count
   have kept := present_sum_preferred presentPlan futurePlan promisedPlan
-    sum promise money soon late timePreference power pays sooner
+    sum promise money soon late timePreference buysSame pays sooner
   rw [← homogeneous repaid repaidIn promise promiseIn equal] at kept
   exact asymmetric.asym _ _ kept chose
 
@@ -221,7 +222,7 @@ theorem no_loan_at_nonpositive_rate
     (sum promise money repaid : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
-    (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
+    (buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late)
     (pays : PromisePays futurePlan promisedPlan promise money)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
     (count : SameCount sum promise)
@@ -245,7 +246,7 @@ theorem no_loan_at_nonpositive_rate
   rw [after, refusal] at chose
   have notMore : repaid.card ≤ promise.card := count ▸ nonPositive
   have kept := present_sum_preferred_to_less presentPlan futurePlan
-    promisedPlan sum promise money repaid soon late spend timePreference power
+    promisedPlan sum promise money repaid soon late spend timePreference buysSame
     pays sooner promiseIn repaidIn notMore homogeneous moreMoney alike buysMore
     isMoney free chain
   exact asymmetric.asym _ _ kept chose
@@ -271,7 +272,7 @@ theorem struck_rate_positive
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame exchange.first.agent
       exchange.first.time)
-    (power : SamePurchasingPower presentPlan promisedPlan sum money soon late)
+    (buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late)
     (pays : PromisePays futurePlan promisedPlan promise money)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
@@ -296,7 +297,7 @@ theorem struck_rate_positive
     sum.card < repaid.card :=
   Nat.lt_of_not_le fun nonPositive =>
     no_loan_at_nonpositive_rate exchange.first presentPlan futurePlan
-      promisedPlan sum promise money repaid soon late spend timePreference power
+      promisedPlan sum promise money repaid soon late spend timePreference buysSame
       pays sooner count promiseIn repaidIn nonPositive homogeneous moreMoney
       alike buysMore isMoney free chain asymmetric (voluntary.trans before)
       after demonstrated
@@ -365,7 +366,7 @@ end Rejected
 
 #print axioms exists_part_of_card
 #print axioms coe_single
-#print axioms samePurchasingPower_of_promisePays
+#print axioms buysSameSatisfaction_of_promisePays
 #print axioms present_sum_preferred
 #print axioms present_sum_preferred_to_less
 #print axioms no_loan_at_zero_rate

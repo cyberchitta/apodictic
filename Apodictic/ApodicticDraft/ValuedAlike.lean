@@ -88,7 +88,7 @@ theorem present_sum_preferred_to_less_when_spent
     (sum promise lesser : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame agent now)
-    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
+    (buysSame : BuysSameSatisfaction presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := now) soon late)
     (promiseIn : promise ⊆ future.units) (lesserIn : lesser ⊆ future.units)
     (notMore : lesser.card ≤ promise.card)
@@ -103,7 +103,7 @@ theorem present_sum_preferred_to_less_when_spent
     praxis.Prefers agent now ↑(presentPlan.wouldServe sum)
       ↑(futurePlan.wouldServe lesser) :=
   present_sum_preferred_to_less_where_differs presentPlan futurePlan sum promise
-    lesser soon late timePreference power sooner promiseIn lesserIn notMore
+    lesser soon late timePreference buysSame sooner promiseIn lesserIn notMore
     homogeneous (whereDiffers_of_whenSpent futurePlan spend moreMoney alike)
     buysMore money free chain
 
@@ -121,7 +121,7 @@ theorem no_loan_at_nonpositive_rate_when_spent
     (sum promise repaid : Finset praxis.Means) (soon late : praxis.End)
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame trade.agent trade.time)
-    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
+    (buysSame : BuysSameSatisfaction presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := trade.time) soon late)
     (count : SameCount sum promise)
     (promiseIn : promise ⊆ future.units) (repaidIn : repaid ⊆ future.units)
@@ -140,7 +140,7 @@ theorem no_loan_at_nonpositive_rate_when_spent
     (after : trade.AfterCountsAsPlanned futurePlan repaid) :
     ¬ DemonstratedPreference trade :=
   no_loan_at_nonpositive_rate_where_differs trade presentPlan futurePlan sum
-    promise repaid soon late timePreference power sooner count promiseIn repaidIn
+    promise repaid soon late timePreference buysSame sooner count promiseIn repaidIn
     nonPositive homogeneous
     (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
     money free chain asymmetric refusal after
@@ -155,7 +155,7 @@ theorem struck_rate_positive_when_spent
     (spend : praxis.Time)
     (timePreference : TimePreference praxis.toDatedFrame exchange.first.agent
       exchange.first.time)
-    (power : SamePurchasingPower presentPlan futurePlan sum promise soon late)
+    (buysSame : BuysSameSatisfaction presentPlan futurePlan sum promise soon late)
     (sooner : SpentSooner (praxis := praxis) (now := exchange.first.time)
       soon late)
     (count : SameCount sum promise)
@@ -178,7 +178,7 @@ theorem struck_rate_positive_when_spent
     (demonstrated : DemonstratedPreference exchange.first) :
     sum.card < repaid.card :=
   struck_rate_positive_where_differs exchange presentPlan futurePlan sum promise
-    repaid soon late timePreference power sooner count promiseIn repaidIn
+    repaid soon late timePreference buysSame sooner count promiseIn repaidIn
     homogeneous (whereDiffers_of_whenSpent futurePlan spend moreMoney alike) buysMore
     money free chain asymmetric voluntary before after demonstrated
 

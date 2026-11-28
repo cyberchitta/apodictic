@@ -94,7 +94,7 @@ section Sums
 variable {praxis : MoneyFrame} {agent : praxis.Agent} {now : praxis.Time}
   {present future promised stock : Stock praxis.toActionFrame agent now}
 
-/-- **Same purchasing power** — a condition on the situation. Each of two
+/-- **Buys the same satisfaction** — a condition on the situation. Each of two
 sums would buy one satisfaction. Each would buy it at its own date. The
 two satisfactions are the same. The theorems assert this between the present sum and the
 money promised.
@@ -106,11 +106,14 @@ of ounces are the same good at two dates only if they buy the same
 thing. That is what this condition says. The count is a separate
 condition (`SameCount`), carried only where it is used.
 
-It fails where the money buys less at the later date. That is
-Rothbard's purchasing-power component (*MES* p. 797) and Mises's price
-premium. Whether the promise pays is a separate condition
-(`PromisePays`). -/
-def SamePurchasingPower (presentPlan : AllocationPlan present)
+It fails where a sum would not buy just its one satisfaction, or where
+the two satisfactions are not the same. Rising prices are one way: the
+money buys less at the later date. That is Rothbard's purchasing-power
+component (*MES* p. 797) and Mises's price premium. No price need
+change for it to fail: at the same prices, the two sums may buy
+different satisfactions. Whether the promise pays is a separate
+condition (`PromisePays`). -/
+def BuysSameSatisfaction (presentPlan : AllocationPlan present)
     (futurePlan : AllocationPlan future) (sum promise : Finset praxis.Means)
     (soon late : praxis.End) : Prop :=
   presentPlan.wouldServe sum = {soon} ∧

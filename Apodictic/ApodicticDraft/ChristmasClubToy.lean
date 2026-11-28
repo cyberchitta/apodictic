@@ -13,7 +13,7 @@ Built on `ApodicticDraft.Toy`'s frame. Every claim holds of him:
 `TimePreference`, `AsymmetricPreference`, `DemonstratedPreference` of
 his trade, `MoreMoneyPreferred` on his plan for promises. Unlike the
 toy's saver, `SpentSooner` HOLDS: he would spend the cash before the
-club pays. What fails is `SamePurchasingPower`: what his cash would buy
+club pays. What fails is `BuysSameSatisfaction`: what his cash would buy
 is not the same satisfaction as what the promise would buy. On the plan
 reading (I-16), the theorems are silent about him, and the signature
 says why.
@@ -101,11 +101,11 @@ theorem club_spent_sooner :
     SpentSooner (praxis := frame clubBeliefs) (now := (0 : ℕ)) impulse plenty :=
   ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
 
-/-- **What fails for him is `SamePurchasingPower`.** Whatever his two
+/-- **What fails for him is `BuysSameSatisfaction`.** Whatever his two
 ounces at hand would buy and whatever the promise of two would buy, they
 are not the same satisfaction. -/
-theorem club_not_same_purchasing_power (soonEnd lateEnd : ℕ × ℕ) :
-    ¬ SamePurchasingPower (praxis := frame clubBeliefs) (now := (0 : ℕ))
+theorem club_not_buys_same_satisfaction (soonEnd lateEnd : ℕ × ℕ) :
+    ¬ BuysSameSatisfaction (praxis := frame clubBeliefs) (now := (0 : ℕ))
       (presentPlan clubBeliefs {.ounce, .ounce'} impulse club_present_alike)
       (futurePlan clubBeliefs club_future_alike)
       {.ounce, .ounce'} {.promiseA, .promiseB} soonEnd lateEnd := by
@@ -119,7 +119,7 @@ theorem club_not_same_purchasing_power (soonEnd lateEnd : ℕ × ℕ) :
 
 #print axioms zero_rate_with_every_claim
 #print axioms club_spent_sooner
-#print axioms club_not_same_purchasing_power
+#print axioms club_not_buys_same_satisfaction
 
 end ChristmasClubToy
 end ApodicticDraft

@@ -1658,8 +1658,8 @@ end Loan
 /-!
 ## Pure interest: each half of the certainty split failing alone
 
-The promise pays (`PromisePays`) and the money buys as much later
-(`SamePurchasingPower`, between the present sum and the promised
+The promise pays (`PromisePays`) and the money buys the same
+satisfaction later (`BuysSameSatisfaction`, between the present sum and the promised
 money) are separate conditions. Here each fails while the other holds.
 In both cases the promise's plan is the same, so a single condition
 asserted between the present sum and the promise cannot tell them apart.
@@ -1745,11 +1745,11 @@ theorem late_ne_worse : late ≠ worse := fun h => by
   have : (1 : ℕ) = 2 := congrArg Prod.fst h
   omega
 
-/-- Same purchasing power fails between cash buying `soon` and any
+/-- `BuysSameSatisfaction` fails between cash buying `soon` and any
 good buying `worse`, whatever ends it is asked of. -/
 theorem not_same_of_worse (promiseBuys promisedBuys : ℕ × ℕ) (g : Good)
     cashAlike otherAlike (s l : ℕ × ℕ) :
-    ¬ SamePurchasingPower (praxis := frame (beliefs promiseBuys promisedBuys))
+    ¬ BuysSameSatisfaction (praxis := frame (beliefs promiseBuys promisedBuys))
       (plan promiseBuys promisedBuys Good.cash soon cashAlike)
       (plan promiseBuys promisedBuys g worse otherAlike)
       {Good.cash} {g} s l := by
@@ -1770,9 +1770,9 @@ def doubtCash := plan worse late .cash soon (fun _ => Iff.rfl)
 def doubtPromise := plan worse late .promise worse (fun _ => Iff.rfl)
 def doubtPromised := plan worse late .promised late (fun _ => Iff.rfl)
 
-/-- **Default risk: purchasing power holds, the promise does not pay.** -/
-theorem doubt_power_but_not_pays :
-    SamePurchasingPower (praxis := frame doubt) doubtCash doubtPromised
+/-- **Default risk: the sums buy the same satisfaction, the promise does not pay.** -/
+theorem doubt_same_but_not_pays :
+    BuysSameSatisfaction (praxis := frame doubt) doubtCash doubtPromised
       {.cash} {.promised} soon late ∧
     ¬ PromisePays (praxis := frame doubt) doubtPromise doubtPromised
       {.promise} {.promised} := by
@@ -1790,30 +1790,30 @@ def inflationCash := plan worse worse .cash soon (fun _ => Iff.rfl)
 def inflationPromise := plan worse worse .promise worse (fun _ => Iff.rfl)
 def inflationPromised := plan worse worse .promised worse (fun _ => Iff.rfl)
 
-/-- **Inflation: the promise pays, purchasing power does not hold.** -/
-theorem inflation_pays_but_not_power (s l : ℕ × ℕ) :
+/-- **Inflation: the promise pays, the sums do not buy the same satisfaction.** -/
+theorem inflation_pays_but_not_same (s l : ℕ × ℕ) :
     PromisePays (praxis := frame inflation) inflationPromise inflationPromised
       {.promise} {.promised} ∧
-    ¬ SamePurchasingPower (praxis := frame inflation) inflationCash
+    ¬ BuysSameSatisfaction (praxis := frame inflation) inflationCash
       inflationPromised {.cash} {.promised} s l :=
   ⟨(plan_single _ _ _ _ _ _).trans (plan_single _ _ _ _ _ _).symm,
     not_same_of_worse worse worse .promised _ _ s l⟩
 
 /-- **The merged condition fails in both cases alike.** The merged
-condition is same purchasing power (`SamePurchasingPower`), asserted
+condition is `BuysSameSatisfaction`, asserted
 between the cash and the promise itself, not the money promised. It
 fails under default risk. It fails under inflation. The promise counts
 for the same in both, so its failure cannot say which happened. -/
 theorem merged_fails_in_both (s l : ℕ × ℕ) :
-    ¬ SamePurchasingPower (praxis := frame doubt) doubtCash doubtPromise
+    ¬ BuysSameSatisfaction (praxis := frame doubt) doubtCash doubtPromise
       {.cash} {.promise} s l ∧
-    ¬ SamePurchasingPower (praxis := frame inflation) inflationCash
+    ¬ BuysSameSatisfaction (praxis := frame inflation) inflationCash
       inflationPromise {.cash} {.promise} s l :=
   ⟨not_same_of_worse worse late .promise _ _ s l,
     not_same_of_worse worse worse .promise _ _ s l⟩
 
-#print axioms doubt_power_but_not_pays
-#print axioms inflation_pays_but_not_power
+#print axioms doubt_same_but_not_pays
+#print axioms inflation_pays_but_not_same
 #print axioms merged_fails_in_both
 
 end CertaintySplit
@@ -1959,7 +1959,7 @@ on an impulse. The club takes the two ounces and pays two back at date
 1, which buy what he saves for. He lends at a zero rate, voluntarily,
 and time preference, asymmetry, the claim that more money is preferred
 and demonstrated preference of the deposit all hold of him. Spent
-sooner holds too. What fails is same purchasing power: his cash would
+sooner holds too. What fails is `BuysSameSatisfaction`: his cash would
 not buy the same satisfaction as the club's payment, so the zero-rate
 theorem does not reach him. What the frame does not model is his
 preferring less cash at hand to more: a sum of cash here buys one end
@@ -2136,10 +2136,10 @@ theorem spent_sooner :
     SpentSooner (praxis := frame) (now := (0 : ℕ)) impulse plenty :=
   ⟨Nat.zero_lt_one, Nat.lt_irrefl 0⟩
 
-/-- **Same purchasing power fails** between his cash and the club's
+/-- **`BuysSameSatisfaction` fails** between his cash and the club's
 promise, whatever ends it is asked of. -/
-theorem not_same_purchasing_power (s l : ℕ × ℕ) :
-    ¬ SamePurchasingPower (praxis := frame) (now := (0 : ℕ)) presentPlan futurePlan
+theorem not_buys_same_satisfaction (s l : ℕ × ℕ) :
+    ¬ BuysSameSatisfaction (praxis := frame) (now := (0 : ℕ)) presentPlan futurePlan
       {.ounce, .ounce'} {.promiseA, .promiseB} s l := by
   rintro ⟨buysSoon, buysLate, same⟩
   have hs : ({impulse} : Finset (ℕ × ℕ)) = {s} := buysSoon
@@ -2150,20 +2150,20 @@ theorem not_same_purchasing_power (s l : ℕ × ℕ) :
   exact Nat.succ_ne_zero 2 this
 
 /-- **So the zero-rate theorem does not reach him.** Take any money the
-club's promise pays in. Same purchasing power (`SamePurchasingPower`)
+club's promise pays in. `BuysSameSatisfaction`
 between his cash and that money fails. -/
 theorem outside_zero_rate {promised : Stock frame.toActionFrame () 0}
     (promisedPlan : AllocationPlan promised) (money : Finset Good) (s l : ℕ × ℕ)
     (pays : PromisePays (praxis := frame) futurePlan promisedPlan
       ({Good.promiseA, Good.promiseB} : Finset Good) money) :
-    ¬ SamePurchasingPower (praxis := frame) presentPlan promisedPlan
+    ¬ BuysSameSatisfaction (praxis := frame) presentPlan promisedPlan
       ({Good.ounce, Good.ounce'} : Finset Good) money s l :=
-  fun power => by
-    have merged := PureInterest.samePurchasingPower_of_promisePays
+  fun buysSame => by
+    have merged := PureInterest.buysSameSatisfaction_of_promisePays
       (praxis := frame) (agent := ()) (now := (0 : ℕ))
       presentPlan futurePlan promisedPlan ({Good.ounce, Good.ounce'} : Finset Good)
-      ({Good.promiseA, Good.promiseB} : Finset Good) money s l power pays
-    exact not_same_purchasing_power s l merged
+      ({Good.promiseA, Good.promiseB} : Finset Good) money s l buysSame pays
+    exact not_buys_same_satisfaction s l merged
 
 #print axioms zero_rate_with_every_claim
 #print axioms spent_sooner

@@ -3680,7 +3680,7 @@ preference (`TimePreference`): he prefers a satisfaction sooner to the
 same satisfaction later. Three conditions make it the same satisfaction, and sooner:
 
 - The promised money would buy a coat as good as today's.
-  (`SamePurchasingPower`. Rising prices are one way to break it.)
+  (`BuysSameSatisfaction`. Rising prices are one way to break it.)
 - He counts the promise as the money it promises. (`PromisePays`.
   Doubt about the borrower breaks it.)
 - He would spend today's ounces first. (`SpentSooner`. It breaks if he
@@ -3820,7 +3820,7 @@ What each case breaks:
   classical step, and no theorem takes it. This is a reading of the
   case. No frame is built for it.
 - *The Christmas club saver.* He lends at zero. The zero-rate theorem
-  never covered him, because he breaks `SamePurchasingPower`. No price
+  never covered him, because he breaks `BuysSameSatisfaction`. No price
   need rise for that. The condition asks that the two sums buy the
   same satisfaction. His cash would buy an impulse. The club pays for
   what he saves for. Built in the library.
@@ -3829,7 +3829,7 @@ What each case breaks:
   (S3), comparing his cash with no cash. He is never put in a loan.
   Built in the library.
 - *Rising prices, and doubt about the borrower.* Rising prices break
-  `SamePurchasingPower`. Doubt breaks `PromisePays`. Both are S2's
+  `BuysSameSatisfaction`. Doubt breaks `PromisePays`. Both are S2's
   conditions. Each can break while the other holds. Built in the library.
 
 The detail follows.
@@ -3882,7 +3882,7 @@ A theorem takes a sum from each: the present sum (the sum lent, in the
 loans), the promise, and the money it promises. (The three future sums at the top of this part, the
 promise, the smaller sum and the repayment, all come from the second
 stock.) S2's first two conditions compare them.
-`SamePurchasingPower` compares the present sum with the money
+`BuysSameSatisfaction` compares the present sum with the money
 promised. `PromisePays` compares the promise with the money promised.
 
 *Present money over future money.* Rothbard: "It follows from the
@@ -3894,7 +3894,7 @@ does follow, but not from the amount.
 
 The three conditions:
 
-{docstring Apodictic.SamePurchasingPower}
+{docstring Apodictic.BuysSameSatisfaction}
 
 {docstring Apodictic.PromisePays}
 
@@ -3907,26 +3907,27 @@ two dates only if they buy the same thing. That is what the proof
 uses. So none of the conditions above says the sums are the same
 amount. The count enters later. There "repaid no more than lent" has
 to be compared with a promise. The count is a condition of its own
-(`SameCount`). (`SamePurchasingPower` and `PromisePays` once each held
+(`SameCount`). (`BuysSameSatisfaction` and `PromisePays` once each held
 an equality of counts that this step never used. The linter checks
 whole assumptions, not their parts. So it could not see that. The
 counts were moved out by hand.)
 
 *Two things a reader might merge are kept apart.* One is that the
-money will buy as much later. Rising prices break it. The other is
+money would buy the same satisfaction later. Rising prices are one way
+to break it. The other is
 that the promise will pay. A risk of default breaks it. Each has its
 own name, so a failure points at one of them. A frame shows this. It
 has one agent, with an ounce and a promise of one. Each condition
 fails while the other holds. The two could be merged into one
-condition. It would use the same definition, `SamePurchasingPower`,
+condition. It would use the same definition, `BuysSameSatisfaction`,
 but compare the cash with the promise itself, not with the money
 promised. Call it the merged condition. It fails the same way in both
 cases. So it cannot say
 which happened:
 
-{docstring Apodictic.Model.CertaintySplit.doubt_power_but_not_pays}
+{docstring Apodictic.Model.CertaintySplit.doubt_same_but_not_pays}
 
-{docstring Apodictic.Model.CertaintySplit.inflation_pays_but_not_power}
+{docstring Apodictic.Model.CertaintySplit.inflation_pays_but_not_same}
 
 {docstring Apodictic.Model.CertaintySplit.merged_fails_in_both}
 
@@ -4033,7 +4034,7 @@ it: time preference, for one, does not. Whether a given saver is such
 a man is a question about him. A saver who locks his money in a
 Christmas club looks like one. The club holds his money until just
 before the holidays. But the club case below needs only a failure of
-`SamePurchasingPower`.
+`BuysSameSatisfaction`.
 
 Mises's own account of action has room for this man. A valuation that
 changes is not a lapse from action: "If the valuations change, acting
@@ -4081,7 +4082,7 @@ manifest of Apodictic.PureInterest.struck_rate_positive
     demonstrated : DemonstratedPreference exchange.first
 
   situational conditions:
-    power : SamePurchasingPower presentPlan promisedPlan sum money soon late
+    buysSame : BuysSameSatisfaction presentPlan promisedPlan sum money soon late
     pays : PromisePays futurePlan promisedPlan promise money
     sooner : SpentSooner soon late
     count : SameCount sum promise
@@ -4172,7 +4173,8 @@ repaid over keeping the sum, or one of the theorem's assumptions
 failed. These
 are the ones a case is likely to land on:
 
-- The money would buy less at repayment (`SamePurchasingPower`).
+- The money would buy less, or something else, at repayment
+  (`BuysSameSatisfaction`).
 - He doubted the promise would pay (`PromisePays`).
 - He had no use for the sum before the promise paid (`SpentSooner`).
 - Refusing would not have left him the sum at full value, because
@@ -4245,7 +4247,7 @@ The Christmas club saver lends at zero. The zero-rate theorem does not
 reach him, because one of S2's conditions fails at once. A sum counts
 for what he would buy with it. The cash in his hand would buy an
 impulse. The club pays for what he saves for. Those are not the same
-satisfaction. So `SamePurchasingPower` fails. It fails between his
+satisfaction. So `BuysSameSatisfaction` fails. It fails between his
 cash and any money the club's promise pays in. The library builds him
 too, with every claim holding:
 
