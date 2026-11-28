@@ -15,10 +15,6 @@ switch to structures made both crashes unreachable. History lives in
 -/
 #doc (Manual) "Apodictic: Machine-Checked Praxeology" =>
 
-%%%
-authors := ["restlessronin"]
-%%%
-
 Mises claimed that the theorems of praxeology are "perfectly certain
 and incontestable, like the correct mathematical theorems" (*Human
 Action*, ch. II, §3). They follow, he held, from the plain fact that

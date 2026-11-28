@@ -84,3 +84,4 @@ pre, code {
 .verso-page ol.section-toc { list-style: none; padding-left: 0; }
 .verso-page ol.section-toc ol { list-style: none; padding-left: 1.25rem; }
 .verso-page .titlepage .authors { opacity: 0.7; margin-bottom: 1rem; }
+.verso-page .titlepage .authors:empty { display: none; }
